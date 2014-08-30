@@ -3,11 +3,32 @@
   <channel>
     <title>cat_in_136.blog()</title>
     <description></description>
-    <link>http://cat-in-136.github.io//</link>
-    <atom:link href="http://cat-in-136.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 31 Aug 2014 00:06:47 +0900</pubDate>
-    <lastBuildDate>Sun, 31 Aug 2014 00:06:47 +0900</lastBuildDate>
+    <link>http://cat-in-136.github.io/</link>
+    <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 31 Aug 2014 00:47:04 +0900</pubDate>
+    <lastBuildDate>Sun, 31 Aug 2014 00:47:04 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Hello github page, Goodbye blogger. this blog has moved to github.io!</title>
+        <description>&lt;p&gt;
+cat_in_136.blog() has moved from blogger to github page!
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Old location: http://cat-in-136.blogspot.com/&lt;/li&gt;
+  &lt;li&gt;New location: &lt;a href=&quot;http://cat-in-136.github.io/&quot;&gt;http://cat-in-136.github.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Japanese(和文): cat_in_136.blog() は、github page (&lt;a href=&quot;http://cat-in-136.github.io/&quot;&gt;http://cat-in-136.github.io/&lt;/a&gt;) に引っ越ししました。
+&lt;/p&gt;
+</description>
+        <pubDate>Sun, 31 Aug 2014 00:26:00 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/08/hello-gh-pages-goodbye-blogger.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/08/hello-gh-pages-goodbye-blogger.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 32.0 beta 4 default preference and firefox 31.0</title>
@@ -51,8 +72,8 @@ table.diff_firefox32_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Thu, 07 Aug 2014 23:13:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/08/diff-between-firefox-320-beta-4-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/08/diff-between-firefox-320-beta-4-default.html</guid>
+        <link>http://cat-in-136.github.io/2014/08/diff-between-firefox-320-beta-4-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/08/diff-between-firefox-320-beta-4-default.html</guid>
         
         <category>pref diff</category>
         
@@ -103,8 +124,8 @@ table.diff_firefox31_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Mon, 07 Jul 2014 23:58:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/07/diff-between-firefox-310-beta-6-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/07/diff-between-firefox-310-beta-6-default.html</guid>
+        <link>http://cat-in-136.github.io/2014/07/diff-between-firefox-310-beta-6-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/07/diff-between-firefox-310-beta-6-default.html</guid>
         
         <category>pref diff</category>
         
@@ -261,8 +282,8 @@ USB メモリのような操作感でマウントして使える。
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 29 Jun 2014 23:48:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/06/lukstruecrypt.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/06/lukstruecrypt.html</guid>
+        <link>http://cat-in-136.github.io/2014/06/lukstruecrypt.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/06/lukstruecrypt.html</guid>
         
         <category>luks</category>
         
@@ -319,8 +340,8 @@ table.diff_firefox30_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Sun, 18 May 2014 11:01:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/05/diff-between-firefox-300-beta-5-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/05/diff-between-firefox-300-beta-5-default.html</guid>
+        <link>http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html</guid>
         
         <category>pref diff</category>
         
@@ -459,8 +480,8 @@ Therefore, some sorta addon would be needed.&lt;/p&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 12 May 2014 23:31:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/05/note-do-same-without.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/05/note-do-same-without.html</guid>
+        <link>http://cat-in-136.github.io/2014/05/note-do-same-without.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/05/note-do-same-without.html</guid>
         
         <category>firefox</category>
         
@@ -718,8 +739,8 @@ $ &lt;kbd&gt;ruby doxy_struct_xml_to_json.rb struct__Foo&lt;/kbd&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 27 Apr 2014 23:32:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html</guid>
+        <link>http://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html</guid>
         
         <category>howto</category>
         
@@ -946,8 +967,8 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
 
 </description>
         <pubDate>Sun, 06 Apr 2014 12:07:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/04/google-maps-javascript-api.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/04/google-maps-javascript-api.html</guid>
+        <link>http://cat-in-136.github.io/2014/04/google-maps-javascript-api.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/04/google-maps-javascript-api.html</guid>
         
         <category>howto</category>
         
@@ -998,8 +1019,8 @@ table.diff_firefox29_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Sun, 30 Mar 2014 08:48:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/03/diff-between-firefox-290-beta-3-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/03/diff-between-firefox-290-beta-3-default.html</guid>
+        <link>http://cat-in-136.github.io/2014/03/diff-between-firefox-290-beta-3-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/03/diff-between-firefox-290-beta-3-default.html</guid>
         
         <category>pref diff</category>
         
@@ -1280,257 +1301,8 @@ x座標成分&lt;code&gt;Px(u)&lt;/code&gt;と&lt;code&gt;Py(u)&lt;/code&gt;を�
 --&gt;&lt;/style&gt;
 </description>
         <pubDate>Wed, 26 Mar 2014 08:00:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/03/bezier-4-diff.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/03/bezier-4-diff.html</guid>
-        
-        <category>math</category>
-        
-        <category>bézier</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</title>
-        <description>&lt;aside&gt;
-&lt;div style=&quot;background: #ffd; border: solid 3px #ff8&quot;&gt;
-この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
-必要です
-もし数式部分が読めない場合は
-&lt;a href=&quot;http://getfirefox.com/&quot;&gt;Firefoxをインストールする&lt;/a&gt;か
-&lt;button onclick=&quot;var a=document.createElement(&amp;quot;script&amp;quot;);a.setAttribute(&amp;quot;type&amp;quot;,&amp;quot;application/javascript&amp;quot;);a.setAttribute(&amp;quot;src&amp;quot;,&amp;quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;);document.body.appendChild(a);&quot;&gt;このボタンをクリックしてMathJaxを使って無理矢理表示する&lt;/button&gt;
-などしてください。
-&lt;/div&gt;
-&lt;/aside&gt;
-
-&lt;p&gt;ベジェ曲線の円弧についていままで90度で計算してきた。
-しかし、この数字に意味付けはなかった。
-ただ単にドローソフトがそういう実装になっていたからだ。&lt;/p&gt;
-
-&lt;p&gt;そこで、任意の中心角の円弧をベジェ曲線で曲線近似するときの
-制御点の位置を算出してみよう。&lt;/p&gt;
-
-&lt;h4&gt;ベジェ曲線の近似円弧の制御点位置&lt;/h4&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://1.bp.blogspot.com/-Ezck2skyk_Q/UxNGvjn5wWI/AAAAAAAAAbA/2iJvsXMKoJY/s1600/generic-kappa.png&quot; imageanchor=&quot;1&quot; &gt;&lt;img border=&quot;0&quot; src=&quot;http://1.bp.blogspot.com/-Ezck2skyk_Q/UxNGvjn5wWI/AAAAAAAAAbA/2iJvsXMKoJY/s1600/generic-kappa.png&quot; alt=&quot;135degree arc using Bézier&quot; width=&quot;262&quot; height=&quot;302&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;AOBのなす角度を90度から&lt;var&gt;&amp;#x03B8;&lt;/var&gt;に拡張する。
-頂点Bはそのままで、
-BB&#39;が頂点Bでの接線、BB&#39;の長さが&lt;var&gt;&amp;#x03BA;&lt;/var&gt;とする。
-AA&#39;が頂点Aでの接線、AA&#39;の長さも対称性より&lt;var&gt;&amp;#x03BA;&lt;/var&gt;である。&lt;/p&gt;
-
-&lt;p&gt;すると、各点の座標は下記のようになる&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\begin{aligned}
-\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
-\text{B:}&amp;amp;(1,0)\\
-\text{A&#39;:}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
-\text{B&#39;:}&amp;amp;(1,\kappa)\\
-\text{C:}&amp;amp;(\cos\frac{\theta}{2},\sin\frac{\theta}{2})\\
-\end{aligned}&quot;&gt;&lt;semantics&gt;&lt;mtable columnspacing=&quot;0em&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A&#39;:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B&#39;:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;C:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\begin{aligned}
-\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
-\text{B:}&amp;amp;(1,0)\\
-\text{A&#39;:}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
-\text{B&#39;:}&amp;amp;(1,\kappa)\\
-\text{C:}&amp;amp;(\cos\frac{\theta}{2},\sin\frac{\theta}{2})\\
-\end{aligned}
-&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.1)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;ベジェ曲線の定義より、ベジェ曲線上の任意の点はパラメータ&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;u (0\leq u \leq 1)&quot; display=&quot;inline&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;u(0\leq u \leq 1)&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;を使って、下記の通りとなる：&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}&#39;3u(1-u)^2+\bm{B}&#39;3u^2(1-u)+\bm{B}u^3&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;&lt;mo&gt;&amp;#x2061;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}&#39;3u(1-u)^2+\bm{B}&#39;3u^2(1-u)+\bm{B}u^3&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.2)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;ベジェ曲線の中間点Cは&lt;var&gt;u&lt;/var&gt;=1/2として&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\bm{P}\left(\frac{1}{2}\right)=\frac{\bm{A}}{8}+\frac{3\bm{A}&#39;}{8}+\frac{3\bm{B}&#39;}{8}+\frac{\bm{B}}{8}&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;&lt;mo&gt;&amp;#x2061;&lt;/mo&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}\left(\frac{1}{2}\right)=\frac{\bm{A}}{8}+\frac{3\bm{A}&#39;}{8}+\frac{3\bm{B}&#39;}{8}+\frac{\bm{B}}{8}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.3)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;となる。&lt;/p&gt;
-
-&lt;p&gt;(3.3)式に(3.1)の頂点データを代入することで、x座標成分として&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\frac{1}{8}(4\cos\theta + 3\kappa\sin\theta + 4)&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\frac{1}{8}(4\cos\theta + 3\kappa\sin\theta + 4)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.4)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;同様に、y座標成分として&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\frac{1}{8}(4 \sin\theta + 3\kappa (1-\cos\theta))&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\frac{1}{8}(4 \sin\theta + 3\kappa (1-\cos\theta))&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.5)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;が得られる。
-ここが円弧の中心点Cになるようにすればよい。&lt;/p&gt;
-
-&lt;p&gt;よって(3.4)式から&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\begin{aligned}
-\cos\frac{\theta}{2}&amp;amp;=&amp;amp;\frac{1}{8} (4 \cos\theta + 3 \kappa \sin\theta + 4)\\
-8\cos\frac{\theta}{2}&amp;amp;=&amp;amp;4 \left(2\cos^2\frac{\theta}{2}-1\right)+6 \kappa \cos\frac\theta2 \sin\frac\theta2+4\\
-8\cos\frac{\theta}{2}&amp;amp;=&amp;amp;8 \cos^2\frac\theta2+6 \kappa \cos\frac\theta2 \sin\frac\theta2\\
-\kappa&amp;amp;=&amp;amp;\frac{8 \cos\frac\theta2-8 \cos^2\frac\theta2}{6 \cos\frac\theta2 \sin\frac\theta2}\\
-&amp;amp;=&amp;amp;\frac{4}{3} \left({\frac{1-\cos\frac\theta2}{\sin\frac\theta2}}\right)\\
-&amp;amp;=&amp;amp;\frac{4}{3}\cdot\tan\frac\theta4
-\end{aligned}&quot;&gt;&lt;semantics&gt;&lt;mtable columnspacing=&quot;0em&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;msup&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B7;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;tan&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\begin{aligned}
-\cos\frac{\theta}{2}&amp;amp;=&amp;amp;\frac{1}{8} (4 \cos\theta + 3 \kappa \sin\theta + 4)\\
-8\cos\frac{\theta}{2}&amp;amp;=&amp;amp;4 \left(2\cos^2\frac{\theta}{2}-1\right)+6 \kappa \cos\frac\theta2 \sin\frac\theta2+4\\
-8\cos\frac{\theta}{2}&amp;amp;=&amp;amp;8 \cos^2\frac\theta2+6 \kappa \cos\frac\theta2 \sin\frac\theta2\\
-\kappa&amp;amp;=&amp;amp;\frac{8 \cos\frac\theta2-8 \cos^2\frac\theta2}{6 \cos\frac\theta2 \sin\frac\theta2}\\
-&amp;amp;=&amp;amp;\frac{4}{3} \left({\frac{1-\cos\frac\theta2}{\sin\frac\theta2}}\right)\\
-&amp;amp;=&amp;amp;\frac{4}{3}\cdot\tan\frac\theta4
-\end{aligned}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.6)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;と&lt;var&gt;&amp;#x03BA;&lt;/var&gt;の値が得られた。&lt;/p&gt;
-
-&lt;p&gt;なお、この算出過程で&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\theta = \pi \,\text{[rad]}\,(= 180\degree)&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;&amp;#x03C0;&lt;/mi&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;mtext&gt;[rad]&lt;/mtext&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;180&lt;/mn&gt;&lt;mo&gt;°&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\theta = \pi \,\text{[rad]}\,(= 180\degree)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;を除外
-してしまっている。この場合のみだけ、y軸成分の(3.5)式から計算して出すと&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\begin{aligned}
-\sin\frac\theta2&amp;amp;=&amp;amp;\frac{1}{8} (4 \sin\theta+3 \kappa (1-\cos\theta))\\
-0&amp;amp;=&amp;amp;\frac{1}{8} (0+3 \kappa (1-0))\\
-\kappa&amp;amp;=&amp;amp;\frac{4}{3}
-\end{aligned}&quot;&gt;&lt;semantics&gt;&lt;mtable columnspacing=&quot;0em&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\begin{aligned}
-\sin\frac\theta2&amp;amp;=&amp;amp;\frac{1}{8} (4 \sin\theta+3 \kappa (1-\cos\theta))\\
-0&amp;amp;=&amp;amp;\frac{1}{8} (0+3 \kappa (1-0))\\
-\kappa&amp;amp;=&amp;amp;\frac{4}{3}
-\end{aligned}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.6)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;となり、結局以下の単一の式で表現できる：&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B7;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;tan&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.7)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;アタリマエのことながら、この結果に対して&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\theta = \pi/2 \,\text{[rad]}\,(= 90\degree)&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;&amp;#x03C0;&lt;/mi&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;mtext&gt;[rad]&lt;/mtext&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;90&lt;/mn&gt;&lt;mo&gt;°&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\theta = \pi/2 \,\text{[rad]}\,(= 90\degree)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;を代入することで
-よく知られた90度の場合の&lt;var&gt;&amp;#x03BA;&lt;/var&gt;の値が得られる。&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\frac{4}{3}\cdot \tan\frac{\pi/2}{4}=\frac{4 (\sqrt{2}-1)}{3}&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;⋅&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;tan&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msqrt&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msqrt&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\frac{4}{3}\cdot \tan\frac{\pi/2}{4}=\frac{4 (\sqrt{2}-1)}{3}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(3.8)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4&gt;ベジェ曲線の円弧の中心角&lt;/h4&gt;
-
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://3.bp.blogspot.com/-T1VKk8CM4-U/UxNHKka1koI/AAAAAAAAAbM/cunB--Rx770/s1600/generic-theta-tile.png&quot; imageanchor=&quot;1&quot; &gt;&lt;img border=&quot;0&quot; src=&quot;http://3.bp.blogspot.com/-T1VKk8CM4-U/UxNHKka1koI/AAAAAAAAAbM/cunB--Rx770/s320/generic-theta-tile.png&quot; width=&quot;320&quot; height=&quot;320&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;&lt;var&gt;&amp;#x03B8;&lt;/var&gt;を変えて描画させてみると、
-180度まではまずまずの近似であるが、180度を超えるとかけ離れた概形になってしまう。
-180度以上の円弧を描くときは分割が必須である。&lt;/p&gt;
-
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;div id=&quot;bezier-curve-generic-canvas-out&quot;&gt;
-&lt;/div&gt;
-&lt;/figure&gt;
-
-&lt;script type=&quot;application/javascript&quot; src=&quot;data:application/javascript;base64,CndpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJsb2FkIiwgZnVuY3Rpb24oKSB7CiAgInVzZSBzdHJpY3QiOwoKICB2YXIgb091dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJiZXppZXItY3VydmUtZ2VuZXJpYy1jYW52YXMtb3V0Iik7CiAgdmFyIG9DYW52YXMgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJjYW52YXMiKTsKICBvQ2FudmFzLnNldEF0dHJpYnV0ZSgid2lkdGgiLCAiMzIwIik7CiAgb0NhbnZhcy5zZXRBdHRyaWJ1dGUoImhlaWdodCIsICIzMjAiKTsKICB2YXIgY3R4ID0gb0NhbnZhcy5nZXRDb250ZXh0KCIyZCIpOwoKICB2YXIgdGhldGEgPSA5MCA+PiAwOwogIGZ1bmN0aW9uIGRyYXdDYW52YXMoKSB7CiAgICB2YXIgYW5nbGVSID0gLSB0aGV0YSAqIE1hdGguUEkgLyAxODA7CiAgICB2YXIgc2luQVIgPSBNYXRoLnNpbihhbmdsZVIpOwogICAgdmFyIGNvc0FSID0gTWF0aC5jb3MoYW5nbGVSKTsKICAgIHZhciBrYXBwYSA9IDQgKiBNYXRoLnRhbihhbmdsZVIgLyA0KSAvIDM7CiAgICB2YXIgb3JpZ2luWCA9ICsob0NhbnZhcy53aWR0aCAvIDIpOwogICAgdmFyIG9yaWdpblkgPSArKG9DYW52YXMuaGVpZ2h0IC8gMik7CiAgICB2YXIgcmFkaXVzID0gKzc1OwoKICAgIGN0eC5maWxsU3R5bGUgPSAiIzAwMDAwMCI7CiAgICBjdHguZmlsbFJlY3QoMCwgMCwgb0NhbnZhcy53aWR0aCwgb0NhbnZhcy5oZWlnaHQpOwoKICAgIGN0eC5zdHJva2VTdHlsZSA9ICIjODg4ODg4IjsKICAgIGN0eC5saW5lV2lkdGggPSAyOwoKICAgIGN0eC5iZWdpblBhdGgoKTsKICAgIGN0eC5hcmMob3JpZ2luWCwgb3JpZ2luWSwgcmFkaXVzLAogICAgICAgICAgICAwLCBNYXRoLlBJKjIsIHRydWUpOwogICAgY3R4LnN0cm9rZSgpOwoKICAgIGN0eC5iZWdpblBhdGgoKTsKICAgIGN0eC5tb3ZlVG8ob3JpZ2luWCwgb3JpZ2luWSk7CiAgICBjdHgubGluZVRvKG9yaWdpblggKyByYWRpdXMsIG9yaWdpblkpOwogICAgY3R4LmxpbmVUbyhvcmlnaW5YICsgcmFkaXVzLCBvcmlnaW5ZICsgcmFkaXVzICoga2FwcGEpOwogICAgY3R4Lm1vdmVUbyhvcmlnaW5YLCBvcmlnaW5ZKTsKICAgIGN0eC5saW5lVG8ob3JpZ2luWCArIHJhZGl1cyAqIGNvc0FSLCBvcmlnaW5ZICsgcmFkaXVzICogc2luQVIpOwogICAgY3R4LmxpbmVUbyhvcmlnaW5YICsgcmFkaXVzICogKGNvc0FSICsga2FwcGEgKiBzaW5BUiksIG9yaWdpblkgKyByYWRpdXMgKiAoc2luQVIgLSBrYXBwYSAqIGNvc0FSKSk7CiAgICBjdHguc3Ryb2tlKCk7CgogICAgY3R4LmZpbGxTdHlsZSA9ICIjZmZmZmZmIjsKCiAgICBjdHguZm9udCA9ICI2NHB4IG1vbm9zcGFjZSI7CiAgICBjdHgudGV4dEFsaWduID0gImNlbnRlciI7CiAgICBjdHgudGV4dEJhc2VsaW5lID0gIm1pZGRsZSI7CiAgICBjdHguZmlsbFRleHQoIiIgKyB0aGV0YSwgb3JpZ2luWCwgb3JpZ2luWSk7CgogICAgY3R4LnN0cm9rZVN0eWxlID0gIiNmZjAwMDAiOwogICAgY3R4LmxpbmVXaWR0aCA9IDM7CgogICAgY3R4LmJlZ2luUGF0aCgpOwogICAgY3R4Lm1vdmVUbyhvcmlnaW5YICsgcmFkaXVzLCBvcmlnaW5ZKTsKICAgIGN0eC5iZXppZXJDdXJ2ZVRvKG9yaWdpblggKyByYWRpdXMsIG9yaWdpblkgKyByYWRpdXMgKiBrYXBwYSwKICAgICAgICAgICAgICAgICAgICAgIG9yaWdpblggKyByYWRpdXMgKiAoY29zQVIgKyBrYXBwYSAqIHNpbkFSKSwgb3JpZ2luWSArIHJhZGl1cyAqIChzaW5BUiAtIGthcHBhICogY29zQVIpLAogICAgICAgICAgICAgICAgICAgICAgb3JpZ2luWCArIHJhZGl1cyAqIGNvc0FSLCBvcmlnaW5ZICsgcmFkaXVzICogc2luQVIpOwogICAgY3R4LnN0cm9rZSgpOwoKICAgIHRoZXRhICs9IDUgPj4gMDsKICAgIGlmICh0aGV0YSA+PSAzNjApIHsKICAgICAgdGhldGEgPSA1ID4+IDA7CiAgICB9CiAgICB3aW5kb3cuc2V0VGltZW91dChkcmF3Q2FudmFzLCAxMDApOwogIH0KICB3aW5kb3cuc2V0VGltZW91dChkcmF3Q2FudmFzLCAxMDApOwoKCiAgb091dC5hcHBlbmRDaGlsZChvQ2FudmFzKTsKfSwgZmFsc2UpOwo=&quot;&gt;&lt;/script&gt;
-
-&lt;h4&gt;まとめ&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;円を分割してベジェ曲線で描画するとき、2分割（中心角180度）以上した方がよい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ins&gt;
-&lt;p&gt;しかし、&lt;a href=&quot;/2014/03/bezier-4-diff.html&quot;&gt;この感覚的な結論は正しくないことが後で判明&lt;/a&gt;&lt;/p&gt;
-&lt;/ins&gt;
-
-&lt;h4&gt;参考文献&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://ja.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E9%96%A2%E6%95%B0%E3%81%AE%E5%85%AC%E5%BC%8F%E3%81%AE%E4%B8%80%E8%A6%A7&quot;&gt;三角関数の公式の一覧&lt;/a&gt;, Wikipedia (ja)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://park12.wakwak.com/~shp/cgi-bin/wiki.cgi/view/bezier_curve&quot;&gt;s.h&#39;s page - [graphic] ベジエ曲線&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 07 Mar 2014 07:00:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io//2014/03/bezier-3-general-theta.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io//2014/03/bezier-3-general-theta.html</guid>
+        <link>http://cat-in-136.github.io/2014/03/bezier-4-diff.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/03/bezier-4-diff.html</guid>
         
         <category>math</category>
         
