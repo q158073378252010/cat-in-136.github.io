@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>（メモ）platex+dvipdfmxをfedora13で使う方法 cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/08/platexdvipdfmxfedora13.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="（メモ）platex+dvipdfmxをfedora13で使う方法" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/08/platexdvipdfmxfedora13.html" rel="bookmark">（メモ）platex+dvipdfmxをfedora13で使う方法</a></h1>
+    <p class="meta"><time>2010-08-06T23:10:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <h4>インストール</h4>
+
+<ol>
+<li>texlive-texmfやtexlive-texmf-east-asian、texlive-texmf-errata-east-asianなどをyum/PackageKitでインストールする。依存関係はyum/PackageKitが解決してくれる。
+</li>
+<li>pxdviを必要とする場合、xdvik, sazanami-gothic-fonts, sazanami-mincho-fontsをインストールする（pxdviでは日本語表示用フォントとしてさざなみフォントを使用するため）</li>
+<li>dvipdfmxを必要とする場合、dvipdfmx をインストールする</li>
+</ol>
+
+<h4>後工程</h4>
+
+<p>
+/usr/share/texmf/web2c/texmf.cnf のパラメータ CMAPFONTS の設定を下記の通り修正する。
+</p>
+<pre><code>CMAPFONTS = .;$TEXMF/fonts/cmap//;/usr/share/ghostscript/<em>8.70</em>/Resource/CMap/
+↓
+CMAPFONTS = .;$TEXMF/fonts/cmap//;/usr/share/ghostscript/<em>8.71</em>/Resource/CMap/
+</code></pre>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/08/platexdvipdfmxfedora13.html&amp;text=%EF%BC%88%E3%83%A1%E3%83%A2%EF%BC%89platex+dvipdfmx%E3%82%92fedora13%E3%81%A7%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/08/platexdvipdfmxfedora13.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/08/platexdvipdfmxfedora13.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/08/platexdvipdfmxfedora13.html&amp;linkname=%EF%BC%88%E3%83%A1%E3%83%A2%EF%BC%89platex+dvipdfmx%E3%82%92fedora13%E3%81%A7%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-08-06T23:10:00+09:00</time>
+      (Modified: <time>2010-08-06T23:10:00+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-08-06-platexdvipdfmxfedora13.html">_posts/2010-08-06-platexdvipdfmxfedora13.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-08-06-platexdvipdfmxfedora13.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" title="rpmbuild setting for multi core CPU (2)" rel="prev">&#x2190;rpmbuild setting for multi core CPU (2)</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/08/hack-micropolis-aka-simcity-and-get.html" title="Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!" rel="next">Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-12-31</span>
+      <a class="post-link" href="/2013/12/cookie.html">Cookie のブロックを検出する方法：更新</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-09-15</span>
+      <a class="post-link" href="/2010/09/nerinefirefox4.html">NerineをFirefox4で動くよう改造してみる</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-01-03</span>
+      <a class="post-link" href="/2011/01/pov-ray.html">水平線から上がった初日の出のアレをPOV-Rayで再現したい</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-04-27</span>
+      <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">C言語の構造体を構造分析したい〜静的解析としての doxygen</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

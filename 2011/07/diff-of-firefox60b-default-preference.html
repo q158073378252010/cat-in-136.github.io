@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Diff of firefox6.0b default preference and firefox5.0 cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2011/07/diff-of-firefox60b-default-preference.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Diff of firefox6.0b default preference and firefox5.0" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2011/07/diff-of-firefox60b-default-preference.html" rel="bookmark">Diff of firefox6.0b default preference and firefox5.0</a></h1>
+    <p class="meta"><time>2011-07-10T11:49:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+This is difference between the default preference of Firefox 5.0 and one of 6.0b2.
+</p>
+
+<dl>
+<dt>Default pref Javascript files:</dt>
+<dd>(omni.jar){/greprefs.js,/defaults/pref/{firefox.js,firefox-branding.js,firefox-l10n.js,services-sync.js}}</dd>
+</dl>
+
+<div>
+<table class="diff_firefox6_pref_diff">
+<thead><tr><td></td><td>Firefox 5</td><td>Firefox 6</td></tr></thead>
+<tbody><tr class="oldkey"><td>accelerometer.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>app.<wbr />support.<wbr />baseURL</td><td>http://support.mozilla.com/1/%APP%/%VERSION%/%OS%/%LOCALE%/</td><td>http://support.mozilla.com/1/firefox/%VERSION%/%OS%/%LOCALE%/</td></tr><tr class="oldkey"><td>app.<wbr />update.<wbr />timer</td><td>600000</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>app.<wbr />update.<wbr />timerMinimumDelay</td><td class="undefined">undefined</td><td>120</td></tr><tr class="oldkey"><td>bidi.<wbr />characterset</td><td>1</td><td class="undefined">undefined</td></tr><tr><td>browser.<wbr />dictionaries.<wbr />download.<wbr />url</td><td>https://addons.mozilla.org/%LOCALE%/%APP%/dictionaries/</td><td>https://addons.mozilla.org/%LOCALE%/firefox/dictionaries/</td></tr><tr><td>browser.<wbr />geolocation.<wbr />warning.<wbr />infoURL</td><td>http://www.mozilla.com/%LOCALE%/%APP%/geolocation/</td><td>http://www.mozilla.com/%LOCALE%/firefox/geolocation/</td></tr><tr class="oldkey"><td>browser.<wbr />microsummary.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>browser.<wbr />microsummary.<wbr />updateGenerators</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>browser.<wbr />safebrowsing.<wbr />warning.<wbr />infoURL</td><td>http://www.mozilla.com/%LOCALE%/%APP%/phishing-protection/</td><td>http://www.mozilla.com/%LOCALE%/firefox/phishing-protection/</td></tr><tr><td>browser.<wbr />search.<wbr />searchEnginesURL</td><td>https://addons.mozilla.org/%LOCALE%/%APP%/search-engines/</td><td>https://addons.mozilla.org/%LOCALE%/firefox/search-engines/</td></tr><tr><td>browser.<wbr />sessionhistory.<wbr />optimize_<wbr />eviction</td><td>false</td><td>true</td></tr><tr class="newkey"><td>browser.<wbr />sessionstore.<wbr />restore_<wbr />hidden_<wbr />tabs</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>browser.<wbr />urlbar.<wbr />formatting.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>device.<wbr />motion.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />chrome.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />hud.<wbr />loglimit.<wbr />console</td><td class="undefined">undefined</td><td>200</td></tr><tr class="newkey"><td>devtools.<wbr />hud.<wbr />loglimit.<wbr />cssparser</td><td class="undefined">undefined</td><td>200</td></tr><tr class="newkey"><td>devtools.<wbr />hud.<wbr />loglimit.<wbr />exception</td><td class="undefined">undefined</td><td>200</td></tr><tr class="newkey"><td>devtools.<wbr />hud.<wbr />loglimit.<wbr />network</td><td class="undefined">undefined</td><td>200</td></tr><tr class="newkey"><td>devtools.<wbr />scratchpad.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />webconsole.<wbr />position</td><td class="undefined">undefined</td><td>above</td></tr><tr class="newkey"><td>dom.<wbr />server-<wbr />events.<wbr />default-<wbr />reconnection-<wbr />time</td><td class="undefined">undefined</td><td>5000</td></tr><tr class="newkey"><td>dom.<wbr />server-<wbr />events.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>extensions.<wbr />getAddons.<wbr />get.<wbr />url</td><td>https://services.addons.mozilla.org/%LOCALE%/%APP%/api/%API_VERSION%/search/guid:%IDS%?src=firefox&amp;appOS=%OS%&amp;appVersion=%VERSION%&amp;tMain=%TIME_MAIN%&amp;tFirstPaint=%TIME_FIRST_PAINT%&amp;tSessionRestored=%TIME_SESSION_RESTORED%</td><td>https://services.addons.mozilla.org/%LOCALE%/firefox/api/%API_VERSION%/search/guid:%IDS%?src=firefox&amp;appOS=%OS%&amp;appVersion=%VERSION%&amp;tMain=%TIME_MAIN%&amp;tFirstPaint=%TIME_FIRST_PAINT%&amp;tSessionRestored=%TIME_SESSION_RESTORED%</td></tr><tr><td>extensions.<wbr />getAddons.<wbr />search.<wbr />browseURL</td><td>https://addons.mozilla.org/%LOCALE%/%APP%/search?q=%TERMS%</td><td>https://addons.mozilla.org/%LOCALE%/firefox/search?q=%TERMS%</td></tr><tr><td>extensions.<wbr />getAddons.<wbr />search.<wbr />url</td><td>https://services.addons.mozilla.org/%LOCALE%/%APP%/api/%API_VERSION%/search/%TERMS%/all/%MAX_RESULTS%/%OS%/%VERSION%?src=firefox</td><td>https://services.addons.mozilla.org/%LOCALE%/firefox/api/%API_VERSION%/search/%TERMS%/all/%MAX_RESULTS%/%OS%/%VERSION%?src=firefox</td></tr><tr><td>extensions.<wbr />getMoreThemesURL</td><td>https://addons.mozilla.org/%LOCALE%/%APP%/getpersonas</td><td>https://addons.mozilla.org/%LOCALE%/firefox/getpersonas</td></tr><tr><td>extensions.<wbr />webservice.<wbr />discoverURL</td><td>https://services.addons.mozilla.org/%LOCALE%/%APP%/discovery/pane/%VERSION%/%OS%</td><td>https://services.addons.mozilla.org/%LOCALE%/firefox/discovery/pane/%VERSION%/%OS%</td></tr><tr class="oldkey"><td>gfx.<wbr />downloadable_<wbr />fonts.<wbr />sanitize.<wbr />preserve_<wbr />otl_<wbr />tables</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>intl.<wbr />accept_<wbr />charsets</td><td>iso-8859-1,*,utf-8</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>intl.<wbr />hyphenation-<wbr />alias.<wbr />en</td><td class="undefined">undefined</td><td>en-us</td></tr><tr class="newkey"><td>intl.<wbr />hyphenation-<wbr />alias.<wbr />en-<wbr />*</td><td class="undefined">undefined</td><td>en-us</td></tr><tr><td>javascript.<wbr />options.<wbr />jitprofiling.<wbr />chrome</td><td>false</td><td>true</td></tr><tr><td>javascript.<wbr />options.<wbr />methodjit.<wbr />chrome</td><td>false</td><td>true</td></tr><tr class="newkey"><td>media.<wbr />volume_<wbr />scale</td><td class="undefined">undefined</td><td>1.0</td></tr><tr class="oldkey"><td>mousewheel.<wbr />enable_<wbr />pixel_<wbr />scrolling</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>network.<wbr />IDN.<wbr />whitelist.<wbr />asia</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />IDN.<wbr />whitelist.<wbr />lv</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />IDN.<wbr />whitelist.<wbr />xn-<wbr />-<wbr />fzc2c9e2c</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />IDN.<wbr />whitelist.<wbr />xn-<wbr />-<wbr />ogbpf8fl</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />IDN.<wbr />whitelist.<wbr />xn-<wbr />-<wbr />xkc2al3hye2a</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />connection-<wbr />retry-<wbr />timeout</td><td class="undefined">undefined</td><td>250</td></tr><tr><td>network.<wbr />http.<wbr />max-<wbr />connections</td><td>30</td><td>256</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />auto-<wbr />follow-<wbr />http-<wbr />redirects</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />extensions.<wbr />stream-<wbr />deflate</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />max-<wbr />message-<wbr />size</td><td class="undefined">undefined</td><td>16000000</td></tr><tr class="oldkey"><td>network.<wbr />websocket.<wbr />override-<wbr />security-<wbr />block</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />timeout.<wbr />close</td><td class="undefined">undefined</td><td>20</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />timeout.<wbr />open</td><td class="undefined">undefined</td><td>20</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />timeout.<wbr />ping.<wbr />request</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>network.<wbr />websocket.<wbr />timeout.<wbr />ping.<wbr />response</td><td class="undefined">undefined</td><td>10</td></tr><tr class="newkey"><td>toolkit.<wbr />telemetry.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>toolkit.<wbr />telemetry.<wbr />server</td><td class="undefined">undefined</td><td>http://telemetry.allizom.org</td></tr></tbody></table>
+</div>
+
+<script type="text/javascript" defer="defer"><!-- /* --><![CDATA[ *///
+(function(){
+    var s = document.createElement("link");
+    s.rel = "stylesheet";
+    s.type = "text/css";
+    s.href = "data:text/css;base64,dGFibGUuZGlmZl9maXJlZm94Nl9wcmVmX2RpZmYgeyBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOyBmb250LXNpemU6IHgtc21hbGw7IG92ZXJmbG93OiBhdXRvOyB9CnRhYmxlLmRpZmZfZmlyZWZveDZfcHJlZl9kaWZmIHRkIHsgYm9yZGVyOiAxcHggc29saWQgI2RkZDsgcGFkZGluZzogMXB4OyB2ZXJ0aWNhbC1hbGlnbjogdG9wOyB9CnRhYmxlLmRpZmZfZmlyZWZveDZfcHJlZl9kaWZmIHRkLnVuZGVmaW5lZCB7IGNvbG9yOiAjODg4OyBmb250LXN0eWxlOiBpdGFsaWM7IH0KdGFibGUuZGlmZl9maXJlZm94Nl9wcmVmX2RpZmYgdHIuc2FtZXZhbCB0ZDpmaXJzdC1jaGlsZCB7IGNvbG9yOiAjNDQ0OyB9CnRhYmxlLmRpZmZfZmlyZWZveDZfcHJlZl9kaWZmIHRyLm5ld2tleSAgdGQ6Zmlyc3QtY2hpbGQgeyB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsgICAgfQp0YWJsZS5kaWZmX2ZpcmVmb3g2X3ByZWZfZGlmZiB0ci5vbGRrZXkgIHRkOmZpcnN0LWNoaWxkIHsgdGV4dC1kZWNvcmF0aW9uOiBsaW5lLXRocm91Z2g7IH0KCnRhYmxlLmRpZmZfZmlyZWZveDZfcHJlZl9kaWZmIHRyOmhvdmVyIHsgYmFja2dyb3VuZC1jb2xvcjogI2VlZTsgfQp0YWJsZS5kaWZmX2ZpcmVmb3g2X3ByZWZfZGlmZiB0ciB7IC1tb3otdHJhbnNpdGlvbjogYmFja2dyb3VuZCAwLjEyNXMgZWFzZS1pbi1vdXQgMHM7IH0K";
+    document.getElementsByTagName("head")[0].appendChild(s);
+})();
+/* ]]><!-- */ --></script>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2011/07/diff-of-firefox60b-default-preference.html&amp;text=Diff%20of%20firefox6.0b%20default%20preference%20and%20firefox5.0+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2011/07/diff-of-firefox60b-default-preference.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2011/07/diff-of-firefox60b-default-preference.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2011/07/diff-of-firefox60b-default-preference.html&amp;linkname=Diff%20of%20firefox6.0b%20default%20preference%20and%20firefox5.0+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2011-07-10T11:49:00+09:00</time>
+      (Modified: <time>2011-07-10T11:49:00+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-07-10-diff-of-firefox60b-default-preference.html">_posts/2011-07-10-diff-of-firefox60b-default-preference.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-07-10-diff-of-firefox60b-default-preference.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2011/05/diff-of-firefox50b2-default-preference.html" title="Diff of firefox5.0b2 default preference and firefox4.0.1" rel="prev">&#x2190;Diff of firefox5.0b2 default preference and firefox4.0.1</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2011/07/tips-webrick-proxy-server-with-digest.html" title="[TIPS] WEBrick proxy server with Digest Auth" rel="next">[TIPS] WEBrick proxy server with Digest Auth&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-12-12</span>
+      <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-03-19</span>
+      <a class="post-link" href="/2012/03/diff-between-firefox-11-default.html">Diff between firefox 11 default preference and firefox 10.0.2</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-03-30</span>
+      <a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-02-08</span>
+      <a class="post-link" href="/2012/02/diff-between-firefox-11-beta-default.html">Diff between firefox 11-beta default preference and firefox 10</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-10-23</span>
+      <a class="post-link" href="/2011/10/diff-of-firefox-8-beta-default.html">Diff of firefox 8-beta default preference and firefox 7.0.1</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

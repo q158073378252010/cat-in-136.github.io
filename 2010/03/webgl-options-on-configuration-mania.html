@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>WebGL options on Configuration Mania cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/03/webgl-options-on-configuration-mania.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="WebGL options on Configuration Mania" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/03/webgl-options-on-configuration-mania.html" rel="bookmark">WebGL options on Configuration Mania</a></h1>
+    <p class="meta"><time>2010-03-13T22:50:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+Last Sat Mar 3, I added three WebGL options for <a href="http://www.mozilla.org/projects/firefox/3.7a2/releasenotes/">Firefox 3.7a2</a> to Configuration Mania. <del datetime="2010-04-10T15:30:02Z">I uploaded the experimental version of Configuration Mania <a href="http://bitbucket.org/cat_in_136/configuration-mania/downloads/">at the bitbucket's download page</a>.</del><ins datetime="2010-04-10T15:30:02Z">This function is captured in current release of Configuration Mania.</ins>
+</p>
+<p>
+By the way, Most of WebGL demo (e.g. <a href="http://people.mozilla.com/~vladimir/webgl/spore/sporeview.html">Spore Creature View</a>) on the web doesn't work on <strong>my</strong> Firefox 3.7a2.  Configuration Mania's behavior is evil? WebGL behavior on Firefox 3.7a2 is unstable? I don't yet identify which cause WebGL errors.
+</p>
+<h3>How to enable WebGL with Configuration Mania</h3>
+<p>
+If you have a video-card with OpenGL <em>2.0</em>,
+</p>
+<ol>
+<li>Click "Tools"-&gt;"Configuration Mania" menu, and then open "Configuration Mania" dialog</li>
+<li>Click "Browser" tab</li>
+<li>Click "Page control", and then expand its settings.</li>
+<li>Check "Enable WebGL".</li>
+<li>Click "OK" button. ("Close" button on Mac or Linux)</li>
+<li>Restart Firefox</li>
+</ol>
+<p>
+If you don't have a video-card with OpenGL <em>2.0</em> (e.g. you have an old video-card), Just try software rendering with OSMesaLib. To get <code>OSMESA32.dll</code> and configure, follow these steps:
+</p>
+<ol>
+<li>Go to <a href="http://blog.vlad1.com/2009/09/21/webgl-samples/">http://blog.vlad1.com/2009/09/21/webgl-samples/</a>.</li>
+<li>Download <code>webgl-mesa-751.zip</code></li>
+<li>Extract it, then a single file <code>OSMESA32.DLL</code> is extracted.</li>
+<li>Check "Browser"-&gt;"Page controls"-&gt;"Enable WebGL"</li>
+<li>Check "Browser"-&gt;"Page controls"-&gt;"Use software rendering"</li>
+<li>Put path to <code>OSMESA32.DLL</code> in "Browser"-&gt;"Page controls"-&gt;"OSMesaLib path"</li>
+</ol>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      <a class="tag" href="/tags.html#tag_configuration%20mania">Configuration mania</a>
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/03/webgl-options-on-configuration-mania.html&amp;text=WebGL%20options%20on%20Configuration%20Mania+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/03/webgl-options-on-configuration-mania.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/03/webgl-options-on-configuration-mania.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/03/webgl-options-on-configuration-mania.html&amp;linkname=WebGL%20options%20on%20Configuration%20Mania+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-03-13T22:50:00+09:00</time>
+      (Modified: <time>2010-04-11T00:34:44+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-03-13-webgl-options-on-configuration-mania.html">_posts/2010-03-13-webgl-options-on-configuration-mania.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-03-13-webgl-options-on-configuration-mania.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/03/ie6-died-but-ie-doesnt-yet-support.html" title="IE6 died, but IE doesn&#39;t yet support addEventListener..." rel="prev">&#x2190;IE6 died, but IE doesn&#39;t yet support addEventListener...</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/03/pitfall-of-unicode-in-mingw32.html" title="Pitfall of &quot;Unicode in Mingw32&quot;" rel="next">Pitfall of &quot;Unicode in Mingw32&quot;&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-03-28</span>
+      <a class="post-link" href="/2010/03/configuration-mania-1122010032801.html">UPDATE#2: Configuration Mania 1.12.2010032801: Hardware accelerated browsing settings for Fx3.7</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-04</span>
+      <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">OOPP Setting on Configuration Mania</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-15</span>
+      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-09-12</span>
+      <a class="post-link" href="/2010/09/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-06-26</span>
+      <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and_26.html">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

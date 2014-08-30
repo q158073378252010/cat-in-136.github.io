@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Firefox supports Nested jar: Protocol! cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/10/firefox-supports-nested-jar-protocol.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Firefox supports Nested jar: Protocol!" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/10/firefox-supports-nested-jar-protocol.html" rel="bookmark">Firefox supports Nested jar: Protocol!</a></h1>
+    <p class="meta"><time>2010-10-11T23:48:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+<code>jar:</code> protocol refer to a file compressed in a <abbr title="Java ARchive">JAR</abbr> (or ZIP) file. Syntax is as following:
+</p>
+<div>
+<code>jar:<var style="background-color:#fdd;color:#000;">url</var>!/<var style="background-color:#dfd;color:#000;">entry</var></code>
+</div>
+<p>
+This URL points to a file <var style="background-color:#dfd;color:#000;">entry</var> in archive file <var style="background-color:#fdd;color:#000;">url</var>. <var style="background-color:#fdd;color:#000;">url</var> can be <em>any</em> protocol, for example, <code>http:</code>, <code>ftp:</code>, <code>file:</code>, etc.
+</p>
+<div>
+<code>jar:<span style="background-color:#fdd;color:#000;">http://example.com/foobar.jar</span>!/<span style="background-color:#dfd;color:#000;">path/to/foobar.txt</span></code>
+</div>
+<p>
+</p>
+
+<h4>Nested <code>jar:</code></h4>
+
+<p>
+So, I thought <var style="background-color:#fdd;color:#000;">url</var> can be <code>jar:</code> protocol and I'll call it "Nested <code>jar:</code> protocol."
+</p>
+<div>
+<code>jar:<span style="background-color:#fdd;color:#000;">jar:<var style="border: #f00 solid 1px;">url</var>!/<var style="border: #080 solid 1px;">entry</var></span>!/<var style="background-color:#dfd;color:#000;">entry</var></code>
+</div>
+<p>
+This nested-<code>jar:</code>-protocol URL points to a file <var style="background-color:#dfd;color:#000;">entry</var> in a JAR file <var style="border: #080 solid 1px;">entry</var> in a JAR file <var style="border: #f00 solid 1px;">url</var>.
+</p>
+<p>
+This nested <code>jar:</code> protocol is supported on Firefox (and maybe all of Mozilla/Gecko based applications.)
+</p>
+<p>
+Note that Java does not treat nested <code>jar:</code> protocol. When open the URL, <code>MalformedURLException</code> was thrown.
+</p>
+<pre class="prettyprint"><code>URL url = new URL("jar:jar:file:///tmp/test.jar.jar!/test.jar!/test.txt");
+InputStream is = url.openStream(); # throws MalformedURLException : "no !/ in spec"
+</code></pre>
+
+<h4>Reference</h4>
+<ul>
+<li><a href="http://docs.sun.com/source/819-0913/author/jar.html#jarprotocol">JAR Files - The JAR: Protocol</a></li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/10/firefox-supports-nested-jar-protocol.html&amp;text=Firefox%20supports%20Nested%20jar:%20Protocol!+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/10/firefox-supports-nested-jar-protocol.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/10/firefox-supports-nested-jar-protocol.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/10/firefox-supports-nested-jar-protocol.html&amp;linkname=Firefox%20supports%20Nested%20jar:%20Protocol!+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-10-11T23:48:00+09:00</time>
+      (Modified: <time>2010-10-11T23:48:00+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-10-11-firefox-supports-nested-jar-protocol.html">_posts/2010-10-11-firefox-supports-nested-jar-protocol.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-10-11-firefox-supports-nested-jar-protocol.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/10/bmi.html" title="今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる" rel="prev">&#x2190;今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/10/study-for-html5-version-of-browser4two.html" title="Study for #HTML5 version of &quot;browser4two&quot; (the original is #iPad app)" rel="next">Study for #HTML5 version of &quot;browser4two&quot; (the original is #iPad app)&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2011-03-19</span>
+      <a class="post-link" href="/2011/03/javascript-typed-array-use-native.html">JavaScript Typed Array use native endian</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-27</span>
+      <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-05-20</span>
+      <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-10-08</span>
+      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-02-27</span>
+      <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>&quot;View Page Source&quot; in browser tabs without any addons cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/02/view-page-source-in-browser-tabs.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="&quot;View Page Source&quot; in browser tabs without any addons" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/02/view-page-source-in-browser-tabs.html" rel="bookmark">&quot;View Page Source&quot; in browser tabs without any addons</a></h1>
+    <p class="meta"><time>2010-02-27T22:52:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+Drag following bookmarklet to your bookmarks toolbar, then click it.
+</p>
+<ul>
+<li><a href="javascript:(function(){location.href = 'view-source:'+location.href})();">View Page Source in the current tab</a></li>
+<li><a href="javascript:(function(){window.open('view-source:'+location.href,'_blank');})();">View Page Source in a new tab</a></li>
+</ul>
+<p>
+NOTE: If "Tabs"-&gt;"Open new windows in a new tab instead" on the Firefox Preference is not checked, the bookmarklet "View Page Source in a new tab" does not work (view page source in a new <em>window</em>.)
+</p>
+
+<h3>Supported browser</h3>
+<p>
+These bookmarklets work with not only Firefox but also Safari and Google Chrome.
+These do not work with IE and Opera because they do not support "view-source:" URI scheme.
+</p>
+<p>
+"view-source:" URI scheme refer to source-code for a given URI. This bookmarklet generate and open "view-source:" URI.
+</p>
+
+<h3>Extra edition</h3>
+
+<p>
+On firefox, "view-source:" scheme is also applicable to "data:" scheme. Following bookmarklet is the demo to show source code of JavaScript-generated partial html code.
+</p>
+
+<ul>
+
+<li><a href="javascript:(function(){var a=window.getSelection();var b=location.href;if(a.rangeCount!=0){var c=a.getRangeAt(0);if(!c.collapsed){var d=document.createElement('div');d.appendChild(c.cloneContents());b='data:text/html;base64,'+btoa(d.innerHTML)}}window.open('view-source:'+b,'_blank')})();">View Page/Selection Source in a new tab</a> : If some text is selected, then view selection source. If no text is selected, then view page source.</li>
+</ul>
+<p>
+These bookmarklets work with only Firefox.
+</p>
+
+<p>
+Original code of this bookmarklet is as follows
+</p>
+<pre class="prettyprint"><code>
+javascript:(function() {
+  var selection = window.getSelection();
+  var url = location.href;
+  if (selection.rangeCount != 0) {
+    var range = selection.getRangeAt(0);
+    if (! range.collapsed) {
+      var div = document.createElement("div");
+      div.appendChild(range.cloneContents());
+      url = "data:text/html;base64," + btoa(div.innerHTML);
+    }
+  }
+  window.open("view-source:" + url, "_blank");
+})();
+</code></pre>
+
+<h3>See also</h3>
+
+<ul>
+<li><a href="https://wiki.mozilla.org/Firefox/Projects/View_Source_in_Tab">View Source in Tab</a> : a proposal of changing "View Page Source" behaviour</li>
+<li><a href="http://piro.sakura.ne.jp/xul/_viewsourceintab.html.en">Source Viewer Tab</a> : a famous addon for this purpose, but full of future is available</li>
+<li><a href="http://en.wikipedia.org/wiki/View-source_URI_scheme">View-source URI scheme</a> (wikipedia)</li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/02/view-page-source-in-browser-tabs.html&amp;text=%22View%20Page%20Source%22%20in%20browser%20tabs%20without%20any%20addons+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/02/view-page-source-in-browser-tabs.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/02/view-page-source-in-browser-tabs.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/02/view-page-source-in-browser-tabs.html&amp;linkname=%22View%20Page%20Source%22%20in%20browser%20tabs%20without%20any%20addons+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-02-27T22:52:00+09:00</time>
+      (Modified: <time>2010-02-28T14:21:01+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-02-27-view-page-source-in-browser-tabs.html">_posts/2010-02-27-view-page-source-in-browser-tabs.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-02-27-view-page-source-in-browser-tabs.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/02/fontforge-script-to-merge-and-replace.html" title="fontforge script to merge and replace font glyphs" rel="prev">&#x2190;fontforge script to merge and replace font glyphs</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/03/m-ipam1mipag-circle.html" title="「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい" rel="next">「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2011-05-20</span>
+      <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-11</span>
+      <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-26</span>
+      <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">nsIPref is deprecated and removed on Firefox 3.7</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-12-24</span>
+      <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

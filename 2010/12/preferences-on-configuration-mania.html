@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Preferences on Configuration Mania which are not supported on Firefox 4. cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/12/preferences-on-configuration-mania.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Preferences on Configuration Mania which are not supported on Firefox 4." />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/12/preferences-on-configuration-mania.html" rel="bookmark">Preferences on Configuration Mania which are not supported on Firefox 4.</a></h1>
+    <p class="meta"><time>2010-12-25T16:33:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+Following 10 configs on Configuration Mania does not seem to be supported on Firefox <em>4</em>.
+In addition, I found that 7 configs (with <strong>strongly emphasized (bold)</strong> texts) are no longer supported on current stable Firefox. I'll work this issue.
+</p>
+
+<table>
+<thead>
+<tr><td>Name</td><td>State</td><td>Configuration Mania Setting</td></tr>
+</thead>
+<tbody>
+<tr><td><code>bidi<wbr />.controlstextmode</code></td><td>Not found in Firefox4b8 source code</td><td>UI<wbr />-&gt;Bidi<wbr />-&gt;Controls</td></tr>
+<tr><td><code>browser<wbr />.download<wbr />.antivirus<wbr />.dontclean</code></td><td><strong><a href="https://developer.mozilla.org/en/Download_Manager_preferences">Obsolute in Firefox3.5</a></strong></td><td>Security<wbr />-&gt;Anti-Virus<wbr />-&gt;Try to clean a downloaded file when a virus is detected</td></tr>
+<tr><td><code>browser<wbr />.history<wbr />_expire<wbr />_days</code></td><td><strong><a href="http://hg.mozilla.org/releases/mozilla-2.0/file/09565753ce5f/toolkit/components/places/src/nsNavHistory.cpp#l2075" rel="nofollow">Source code says it's old pref</a></strong></td><td>Security<wbr />-&gt;Privacy<wbr />-&gt;Browsing History</td></tr>
+<tr><td><code>browser<wbr />.history<wbr />_expire<wbr />_sites</code></td><td>Not found in Firefox4b8 source code</td><td>Security<wbr />-&gt;Privacy<wbr />-&gt;Browsing History</td></tr>
+<tr><td><code>browser<wbr />.sessionstore<wbr />.enabled</code></td><td><strong><a href="http://kb.mozillazine.org/Browser.sessionstore.enabled">superseded w/ other settings on Firefox 3.5+</strong></a></td><td>Browser<wbr />-&gt;session Store<wbr />-&gt;Disable Session Store</td></tr>
+<tr><td><code>browser<wbr />.tabs<wbr />.disableBackgroundClose</code></td><td><strong><a href="http://kb.mozillazine.org/Browser.tabs.disableBackgroundClose">only available on development build</a></strong></td><td>Browser<wbr />-&gt;TabBrowsing<wbr />-&gt;Display a close button...<wbr />-&gt;on All tabs<wbr />-&gt;Clicking on the close tab button of a tab in backgrund will switch to that tab, not close it</td></tr>
+<tr><td><code>content<wbr />.max<wbr />.tokenizing<wbr />.time</code></td><td><strong>Not found in Firefox3.5+ source code</strong></td><td>Browser<wbr />-&gt;Paint&amp;Rendering<wbr />-&gt;Maximum time to interrupt the process</td></tr>
+<tr><td><code>content<wbr />.switch<wbr />.threshold</code></td><td><strong>Not found in Firefox3.5+ source code</strong></td><td>Browser<wbr />-&gt;Paint&amp;Rendering<wbr />-&gt;"High<wbr />-&gt;Low frequency interrupt mode switch Threshold"</td></tr>
+<tr><td><code>extensions<wbr />.hideInstallButton</code></td><td>Removed in Firefox4</td><td>Add-ons<wbr />-&gt;Show Install button on the add-on dialog</td></tr>
+<tr><td><code>signon<wbr />.expireMasterPassword</code></td><td>Not found in Firefox4b8 source code</td><td>Security<wbr />-&gt;Privacy<wbr />-&gt;Master Password Timeout</td></tr>
+<tr><td><code>svg<wbr />.enabled</code></td><td><a href="http://hg.mozilla.org/mozilla-central/rev/9e3b27acb9ef" rel="nofollow">Removed in Firefox4</a></td><td>Browser<wbr />-&gt;Page control<wbr />-&gt;Enable rendering SVG content</td></tr>
+<tr><td><code>webgl<wbr />.software<wbr />_render</code></td><td><strong><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=582053">renamed to <code>webgl<wbr />.force<wbr />_osmesa</code></a></strong></td><td>Browser<wbr />-&gt;Page control<wbr />-&gt;Enable WebGL<wbr />-&gt;Use software renderer</td></tr>
+</tbody></table>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_configuration%20mania">Configuration mania</a>
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/12/preferences-on-configuration-mania.html&amp;text=Preferences%20on%20Configuration%20Mania%20which%20are%20not%20supported%20on%20Firefox%204.+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/12/preferences-on-configuration-mania.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/12/preferences-on-configuration-mania.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/12/preferences-on-configuration-mania.html&amp;linkname=Preferences%20on%20Configuration%20Mania%20which%20are%20not%20supported%20on%20Firefox%204.+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-12-25T16:33:00+09:00</time>
+      (Modified: <time>2010-12-25T16:33:56+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-12-25-preferences-on-configuration-mania.html">_posts/2010-12-25-preferences-on-configuration-mania.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-12-25-preferences-on-configuration-mania.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/12/xmlserializerserializetostring-is.html" title="XMLSerializer().serializeToString() is a simple useful HTML2XML Converter." rel="prev">&#x2190;XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2011/01/pov-ray.html" title="水平線から上がった初日の出のアレをPOV-Rayで再現したい" rel="next">水平線から上がった初日の出のアレをPOV-Rayで再現したい&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-02-27</span>
+      <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-12-12</span>
+      <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-03-13</span>
+      <a class="post-link" href="/2010/03/webgl-options-on-configuration-mania.html">WebGL options on Configuration Mania</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-11</span>
+      <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

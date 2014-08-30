@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>C言語の構造体を構造分析したい〜静的解析としての doxygen cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="C言語の構造体を構造分析したい〜静的解析としての doxygen" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/04/c-struct-with-doxygen-xml.html" rel="bookmark">C言語の構造体を構造分析したい〜静的解析としての doxygen</a></h1>
+    <p class="meta"><time>2014-04-27T23:32:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>ソースコードからドキュメント生成するツールとしていにしえの時代から有名な
+<a href="http://www.doxygen.org/" title="Doxygen: Main Page">doxygen</a> には xml 出力があるので、静的解析ツールの補助として
+いろいろと活用ができそう。</p>
+
+<h4>使い方</h4>
+
+<pre style="background-color: #000; color: #fff; padding: 2px; overflow: auto;"><samp>$ <kbd>doxygen -g</kbd>
+</samp></pre>
+
+<p>で生成された Doxyfile ないしすでにある Doxyfile において
+<code>GENERATE_XML</code> を <code>YES</code> にして、</p>
+
+<pre class="prettyprint"><code># If the GENERATE_XML tag is set to YES doxygen will generate an XML file that
+# captures the structure of the code including all documentation.
+# The default value is: NO.
+
+GENERATE_XML           = <ins>YES</ins>
+</code></pre>
+
+<p>ドキュメントをつくるように doxygen を実行すると xml が出力される。
+html 出力などほかの出力も有効にしているならば、一緒に出力される。</p>
+
+<pre style="background-color: #000; color: #fff; padding: 2px; overflow: auto;"><samp>$ doxygen Doxyfile
+</samp></pre>
+
+<h4>具体例</h4>
+
+<p>構造体 <code>struct _Foo</code> にどんなメンバがあるかを構造分析したい：</p>
+
+<pre class="prettyprint lang-c"><code>// foobar.h
+typedef enum _BarType {
+  BAR_TYPE_A,
+  BAR_TYPE_B
+} BarType;
+
+#define NUM_B 3
+
+typedef union _Bar {
+  uint a;
+  uint b[NUM_B];
+} Bar;
+
+typedef struct _Foo {
+  BarType bartype;
+  Bar bar;
+} Foo;
+</code></pre>
+
+<p>doxygen の実行</p>
+
+<pre style="background-color: #000; color: #fff; padding: 2px; overflow: auto;"><samp>$ <kbd>ls</kbd>
+foobar.h
+$ <kbd>doxygen -g</kbd>
+
+
+Configuration file 'Doxyfile' created.
+
+Now edit the configuration file and enter
+
+  doxygen Doxyfile
+
+to generate the documentation for your project
+
+$ <kbd>vi Doxyfile</kbd>
+$ <kbd>doxygen Doxyfile</kbd>
+(略)
+$ <kbd>ls -F</kbd>
+Doxyfile  foobar.h  html/  latex/  xml/
+$ <kbd>ls -F xml</kbd>
+combine.xslt  foobar_8h.xml  index.xsd        union__Bar.xml
+compound.xsd  index.xml      struct__Foo.xml
+</samp></pre>
+
+<p>構造体 <code>struct _Foo</code> の構造を見るには <code>struct__Foo.xml</code> を見るという風な単純な構造となっている：</p>
+
+<pre class="prettyprint lang-xml"><code>&lt;?xml version='1.0' encoding='UTF-8' standalone='no'?&gt;
+&lt;doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6"&gt;
+  &lt;compounddef id="struct__Foo" kind="struct" prot="public"&gt;
+    &lt;compoundname&gt;_Foo&lt;/compoundname&gt;
+      &lt;sectiondef kind="public-attrib"&gt;
+      &lt;memberdef kind="variable" id="struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d" prot="public" static="no" mutable="no"&gt;
+        &lt;type&gt;BarType&lt;/type&gt;
+        &lt;definition&gt;BarType _Foo::bartype&lt;/definition&gt;
+        &lt;argsstring&gt;&lt;/argsstring&gt;
+        &lt;name&gt;bartype&lt;/name&gt;
+        &lt;briefdescription&gt;
+        &lt;/briefdescription&gt;
+        &lt;detaileddescription&gt;
+        &lt;/detaileddescription&gt;
+        &lt;inbodydescription&gt;
+        &lt;/inbodydescription&gt;
+        &lt;location file="/tmp/doxytest/foobar.h" line="12" column="1" bodyfile="/tmp/doxytest/foobar.h" bodystart="12" bodyend="-1"/&gt;
+      &lt;/memberdef&gt;
+      &lt;memberdef kind="variable" id="struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8" prot="public" static="no" mutable="no"&gt;
+        &lt;type&gt;&lt;ref refid="union__Bar" kindref="compound"&gt;Bar&lt;/ref&gt;&lt;/type&gt;
+        &lt;definition&gt;Bar _Foo::bar&lt;/definition&gt;
+        &lt;argsstring&gt;&lt;/argsstring&gt;
+        &lt;name&gt;bar&lt;/name&gt;
+        &lt;briefdescription&gt;
+        &lt;/briefdescription&gt;
+        &lt;detaileddescription&gt;
+        &lt;/detaileddescription&gt;
+        &lt;inbodydescription&gt;
+        &lt;/inbodydescription&gt;
+        &lt;location file="/tmp/doxytest/foobar.h" line="13" column="1" bodyfile="/tmp/doxytest/foobar.h" bodystart="13" bodyend="-1"/&gt;
+      &lt;/memberdef&gt;
+      &lt;/sectiondef&gt;
+    &lt;briefdescription&gt;
+    &lt;/briefdescription&gt;
+    &lt;detaileddescription&gt;
+    &lt;/detaileddescription&gt;
+    &lt;collaborationgraph&gt;
+      &lt;node id="4"&gt;
+        &lt;label&gt;_Bar&lt;/label&gt;
+        &lt;link refid="union__Bar"/&gt;
+      &lt;/node&gt;
+      &lt;node id="3"&gt;
+        &lt;label&gt;_Foo&lt;/label&gt;
+        &lt;link refid="struct__Foo"/&gt;
+        &lt;childnode refid="4" relation="usage"&gt;
+          &lt;edgelabel&gt;bar&lt;/edgelabel&gt;
+        &lt;/childnode&gt;
+      &lt;/node&gt;
+    &lt;/collaborationgraph&gt;
+    &lt;location file="/tmp/doxytest/foobar.h" line="11" column="1" bodyfile="/tmp/doxytest/foobar.h" bodystart="11" bodyend="14"/&gt;
+    &lt;listofallmembers&gt;
+      &lt;member refid="struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8" prot="public" virt="non-virtual"&gt;&lt;scope&gt;_Foo&lt;/scope&gt;&lt;name&gt;bar&lt;/name&gt;&lt;/member&gt;
+      &lt;member refid="struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d" prot="public" virt="non-virtual"&gt;&lt;scope&gt;_Foo&lt;/scope&gt;&lt;name&gt;bartype&lt;/name&gt;&lt;/member&gt;
+    &lt;/listofallmembers&gt;
+  &lt;/compounddef&gt;
+&lt;/doxygen&gt;
+</code></pre>
+
+<p><code>memberdef</code> 要素の中身を探していけば良い。他のファイルにその定義がある場合は <code>ref</code> 要素
+があるようなので再帰的に処理を行えば探せる。</p>
+
+<p>というわけで、さくっと doxygen の xml 出力を利用して、<a href="https://gist.github.com/cat-in-136/11336549">C言語構造体の構造を JSON で吐き出すスクリプトを書いてみた</a>。
+100 行未満で書けるのだから doxygen の xml 出力は強力である。</p>
+
+<pre class="prettyprint lang-ruby"><code>#!/usr/bin/ruby
+# vim: filetype=ruby fileencoding=UTF-8 shiftwidth=2 tabstop=2 autoindent expandtab
+# 
+# MIT License
+
+require 'rexml/document'
+require 'json'
+
+class DoxyStructXml
+  def initialize
+    @structs = {}
+  end
+  attr_reader :structs
+
+  def load_doxy_struct_xml_file(file)
+    File.open(file, 'r') do |f|
+      doc = REXML::Document.new(f)
+
+      id = doc.elements['doxygen/compounddef'].attributes['id']
+
+      members = []
+      doc.elements.each('doxygen/compounddef//memberdef') do |elem|
+        member = {}
+        if elem.elements['type/ref']
+          member[:typeref] = elem.elements['type/ref'].attributes['refid']
+          member[:type] = elem.elements['type/ref'].text
+        else
+          member[:type] = elem.elements['type'].text
+        end
+        member[:argsstring] = elem.elements['argsstring'].text
+        member[:name] = elem.elements['name'].text
+
+        members &lt;&lt; member
+      end
+
+      @structs[id] = {
+        :name =&gt; doc.elements['doxygen/compounddef/compoundname'].text,
+        :members =&gt; members
+      }
+    end
+  end
+
+  def data(struct_id)
+    d = {}
+    d[:id] = struct_id
+    d[:name] = @structs[struct_id][:name]
+    d[:members] = []
+    @structs[struct_id][:members].each do |member|
+      m = {}
+      m[:name] = member[:name]
+      m[:type] = member[:type]
+      m[:name] &lt;&lt; member[:argsstring] if member[:argsstring]
+      if member[:typeref]
+        m[:type_data] = data(member[:typeref])
+      end
+      d[:members] &lt;&lt; m
+    end
+
+    d
+  end
+end
+
+if $0 == __FILE__
+  doxy_struct_xml = DoxyStructXml.new
+  Dir.glob('{struct,union}_*.xml') do |file|
+    doxy_struct_xml.load_doxy_struct_xml_file(file)
+  end
+
+  struct_id = ARGV[0]
+
+  unless struct_id
+    $stderr &lt;&lt; "Usage: ruby #{$0} struct_id\n"
+    $stderr &lt;&lt; "struct_id: "
+    doxy_struct_xml.structs.each do |key,value|
+      $stderr &lt;&lt; key &lt;&lt; "  "
+    end
+    $stderr &lt;&lt; "\n\n"
+    exit 1
+  end
+
+  if doxy_struct_xml.structs[struct_id]
+    $stdout &lt;&lt; JSON.dump(doxy_struct_xml.data(struct_id))
+    $stdout &lt;&lt; "\n"
+  else
+    $stderr &lt;&lt; "#{struct_id} does not found"
+    exit 1
+  end
+end
+</code></pre>
+
+<p>列挙体が扱えないことが残念なことこの上ない。</p>
+
+<pre style="background-color: #000; color: #fff; padding: 2px; overflow: auto;"><samp>$ <kbd>ruby doxy_struct_xml_to_json.rb</kbd>
+Usage: ruby doxy_struct_xml_to_json.rb struct_id
+struct_id: struct__Foo  union__Bar  
+
+$ <kbd>ruby doxy_struct_xml_to_json.rb struct__Foo</kbd>
+{"id":"struct__Foo","name":"_Foo","members":[{"name":"bartype","type":"BarType"},{"name":"bar","type":"Bar","type_data":{"id":"union__Bar","name":"_Bar","members":[{"name":"a","type":"uint"},{"name":"b[NUM_B]","type":"uint"}]}}]}
+</samp></pre>
+
+<h4>参考文献</h4>
+
+<ul>
+<li><a href="http://www.stack.nl/~dimitri/doxygen/manual/output.html">Doxygen Manual: Output Formats</a></li>
+<li><a href="http://kotatuinu.cocolog-nifty.com/blog/2011/10/doxygen-1981.html" title="Doxygenの出力結果から構造体を展開させるプログラム">Doxygenの出力結果から構造体を展開させるプログラム</a> - 備忘ぶ録</li>
+</ul>
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_howto">Howto</a>
+      
+      <a class="tag" href="/tags.html#tag_c-language">C-language</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html&amp;text=C%E8%A8%80%E8%AA%9E%E3%81%AE%E6%A7%8B%E9%80%A0%E4%BD%93%E3%82%92%E6%A7%8B%E9%80%A0%E5%88%86%E6%9E%90%E3%81%97%E3%81%9F%E3%81%84%E3%80%9C%E9%9D%99%E7%9A%84%E8%A7%A3%E6%9E%90%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%20doxygen+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2014/04/c-struct-with-doxygen-xml.html&amp;linkname=C%E8%A8%80%E8%AA%9E%E3%81%AE%E6%A7%8B%E9%80%A0%E4%BD%93%E3%82%92%E6%A7%8B%E9%80%A0%E5%88%86%E6%9E%90%E3%81%97%E3%81%9F%E3%81%84%E3%80%9C%E9%9D%99%E7%9A%84%E8%A7%A3%E6%9E%90%E3%81%A8%E3%81%97%E3%81%A6%E3%81%AE%20doxygen+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2014-04-27T23:32:00+09:00</time>
+      (Modified: <time>2014-04-27T23:32:00+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-04-27-c-struct-with-doxygen-xml.html">_posts/2014-04-27-c-struct-with-doxygen-xml.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-04-27-c-struct-with-doxygen-xml.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2014/04/google-maps-javascript-api.html" title="カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法" rel="prev">&#x2190;カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2014/05/note-do-same-without.html" title="Note: do same without browser.tabs.closeButtons on Firefox 31+" rel="next">Note: do same without browser.tabs.closeButtons on Firefox 31+&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2014-06-29</span>
+      <a class="post-link" href="/2014/06/lukstruecrypt.html">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-03-18</span>
+      <a class="post-link" href="/2013/03/css.html">CSSの改行を含む属性値を含むセレクターについて</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-11-26</span>
+      <a class="post-link" href="/2013/11/define.html">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-09-23</span>
+      <a class="post-link" href="/2012/09/gr-sakura-linux-comusb.html">（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

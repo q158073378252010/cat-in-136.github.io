@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/03/m-ipam1mipag-circle.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://1.bp.blogspot.com/_mg7ZLoSThok/S39Fz8hgxbI/AAAAAAAAAAw/VDXLlBRPj4o/s72-c/M%2B1x%2BIPAG-circle.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/03/m-ipam1mipag-circle.html" rel="bookmark">「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい</a></h1>
+    <p class="meta"><time>2010-03-03T23:27:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+M+1M+IPAG circle（M+1M + IPAゴシック を、濁点と半濁点を判別しやすくしたもの）の組み合わせのものが<a href="http://mix-mplus-ipa.sourceforge.jp/">M+ と IPAフォントの合成フォントのサイト</a>で提供されていなかったので、作りたかったのでござる。なお、以下linux前提で書き記す。
+</p>
+<h2>最終的にできるもの</h2>
+<ul>
+<li>M+1M+IPAG-circle.ttf</li>
+<li>M+1P+IPAG-circle.ttf</li>
+<li>M+1VM+IPAG-circle.ttf</li>
+</ul>
+<p>
+M+1P+IPAG-circle.ttf, M+1VM+IPAG-circle.ttf はM+ と IPAフォントの合成フォントのサイトで配布されているので、普通の人にとってはやる意味は無い。また、M+ と IPAフォントの合成フォントのサイトで配布されているのは古めのM+フォントおよびIPAフォントなので、現在配布されている新しいフォント若干異なるものができるはず。
+</p>
+<h2>準備するもの</h2>
+<p>
+まず<a href="http://fontforge.sourceforge.net/">pdfforge</a>を取得する。（apt/yum/PackageKit etc...などでどうぞ）
+</p>
+<p>
+<a href="http://mplus-fonts.sourceforge.jp/">M+フォント</a>と<a href="http://ossipedia.ipa.go.jp/ipafont/">IPAフォント</a>をダウンロードしてきて、そのなかの以下のファイルを取り出す。半濁点巨大化処理したひらがなカタカナを持ってくるために使う「M+1P+IPAG-circle.ttf」「M+1VM+IPAG-circle.ttf」は<a href="http://mix-mplus-ipa.sourceforge.jp/">M+ と IPAフォントの合成フォントのサイト</a>から持ってくる。
+</p>
+<ul>
+<li>mplus-1p-regular.ttf</li>
+<li>mplus-1m-regular.ttf</li>
+<li>ipag.otf</li>
+<li>M+P+IPAG-circle.ttf</li>
+<li>M+1VM+IPAG-circle.ttf</li>
+</ul>
+<h2>方法</h2>
+<ol>
+<li>上述のフォントファイル(*.ttf,*.otf)をすべてを適当なフォルダに置く</li>
+<li>フォルダ"out"を作る（ここにフォルダが生成される）</li>
+<li>下に示すスクリプトファイルを作って"m++ipa-maru.pe"とかいう名前で、フォントファイルを置いたフォルダに置く</li>
+<li>コマンド以下のコマンドを打つ。ここで、カレントディレクトリはフォントファイルを置いたフォルダに設定されているものとする。<br>
+<code>$ fontforge -script m++ipa-maru.pe</code></li>
+</ol>
+<h3>m++ipa-maru.peの中身</h3>
+<pre class="prettyprint"><code># Note that following 4 files are required.
+Mplus1p = "mplus-1p-regular.ttf";
+Mplus1m = "mplus-1m-regular.ttf";
+KanjiFont = "ipag.otf";
+MaruFont = "M+1VM+IPAG-circle.ttf";
+MaruPFont = "M+1P+IPAG-circle.ttf";
+
+Mplus1p_kanji = "M+1P+IPAG";
+Mplus1p_kanji_circle      = Mplus1p_kanji + "-circle";
+Mplus1p_kanji_circle_name = Mplus1p_kanji + " circle";
+Mplus1m_kanji = "M+1M+IPAG";
+Mplus1m_kanji_circle      = Mplus1m_kanji + "-circle";
+Mplus1m_kanji_circle_name = Mplus1m_kanji + " circle";
+Mplus1vm_kanji = "M+1VM+IPAG";
+Mplus1vm_kanji_circle      = Mplus1vm_kanji + "-circle";
+Mplus1vm_kanji_circle_name = Mplus1vm_kanji + " circle";
+
+copyright_mplus = "Copyright(c) 2009 M+ FONTS PROJECT\n";
+copyright_marufix = "Copyright(c) 2006 itouhiro (itouh)\n";
+copyright_ipa = "Copyright(c) Information-technology Promotion Agency, Japan (IPA), 2003-2009. You must accept \"http://ipafont.ipa.go.jp/ipa_font_license_v1.html\" to use this product.\n";
+copyright_bitstream = "Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved.\n";
+
+family = Mplus1p_kanji_circle;
+family_name = Mplus1p_kanji_circle_name;
+copyright_notice = copyright_mplus + copyright_marufix + copyright_ipa;
+Open(Mplus1p);
+## Mplus1p + MaruP + IPA
+MergeFonts(KanjiFont);
+Select(0u3041, 0u309F, 0u30A0, 0u30FF);
+Cut(); # delete all of HIRAGANA and KATAKANA
+MergeFonts(MaruPFont);
+SetFontNames(family + "-Regular", family_name, family_name + " Regular", "Regular", copyright_notice);
+Generate("out/" + family + ".ttf", "", 4);
+
+## Mplus1p + Maru + IPA + Vera
+family = Mplus1vm_kanji_circle;
+family_name = Mplus1vm_kanji_circle_name;
+copyright_notice += copyright_bitstream;
+Select(0u0020, 0u00FF);
+Cut(); # delete all of latin-1 chars
+MergeFonts(MaruFont);
+SetFontNames(family + "-Regular", family_name, family_name + " Regular", "Regular", copyright_notice);
+Generate("out/" + family + ".ttf", "", 4);
+
+Close();
+
+
+family = Mplus1m_kanji_circle;
+family_name = Mplus1m_kanji_circle_name;
+copyright_notice = copyright_mplus + copyright_marufix + copyright_ipa;
+Open(Mplus1m);
+## Mplus1m + Maru + IPA
+MergeFonts(KanjiFont);
+Select(0u3041, 0u309F, 0u30A0, 0u30FF);
+Cut(); # delete all of HIRAGANA and KATAKANA
+MergeFonts(MaruFont);
+SetFontNames(family + "-Regular", family_name, family_name + " Regular", "Regular", copyright_notice);
+Generate("out/" + family + ".ttf", "", 4);
+Close();
+</code></pre>
+<h3>完成品</h3>
+<div>
+<a href="http://1.bp.blogspot.com/_mg7ZLoSThok/S39Fz8hgxbI/AAAAAAAAAAw/VDXLlBRPj4o/s1600-h/M%2B1x%2BIPAG-circle.png"><img style="display:block; margin:0px auto 10px; text-align:center;width: 320px; height: 187px;" src="http://1.bp.blogspot.com/_mg7ZLoSThok/S39Fz8hgxbI/AAAAAAAAAAw/VDXLlBRPj4o/s320/M%2B1x%2BIPAG-circle.png" /></a>
+</div>
+<h2>参考文献</h2>
+<ul>
+<li><a href="http://mplus-fonts.sourceforge.jp/mplus-outline-fonts/download/#ipag">IPA フォントとの合成</a>@M+ outline font</li>
+<li><a href="http://mix-mplus-ipa.sourceforge.jp/">M+ と IPAフォントの合成フォント</a></li>
+<li><a href="http://sourceforge.jp/cvs/view/mplus-fonts/mplus_outline_fonts/release/m%2B%2Bipa.pe?view=markup">/mplus-fonts/mplus_outline_fonts/release/m++ipa.pe</a> (mplus-fonts CVS repository)</li>
+<li><a href="http://fontforge.sourceforge.net/ja/scripting.html">FontForge でフォントを変更するためのスクリプトの書き方</a></li>
+<li>その他<a href="/search/label/font">このブログのフォント関連記事</a></li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      <a class="tag" href="/tags.html#tag_font">Font</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/03/m-ipam1mipag-circle.html&amp;text=%E3%80%8CM+%20%E3%81%A8%20IPA%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%81%AE%E5%90%88%E6%88%90%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%80%8D%E3%81%AEM+1M+IPAG%20circle%E3%82%92%E8%87%AA%E4%BD%9C%E3%81%97%E3%81%9F%E3%81%84+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/03/m-ipam1mipag-circle.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/03/m-ipam1mipag-circle.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/03/m-ipam1mipag-circle.html&amp;linkname=%E3%80%8CM+%20%E3%81%A8%20IPA%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%81%AE%E5%90%88%E6%88%90%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%80%8D%E3%81%AEM+1M+IPAG%20circle%E3%82%92%E8%87%AA%E4%BD%9C%E3%81%97%E3%81%9F%E3%81%84+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-03-03T23:27:00+09:00</time>
+      (Modified: <time>2010-03-03T23:47:17+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-03-03-m-ipam1mipag-circle.html">_posts/2010-03-03-m-ipam1mipag-circle.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-03-03-m-ipam1mipag-circle.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/02/view-page-source-in-browser-tabs.html" title="&quot;View Page Source&quot; in browser tabs without any addons" rel="prev">&#x2190;&quot;View Page Source&quot; in browser tabs without any addons</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/03/mingw32undefined-reference-to-winmain16.html" title="mingw32での「undefined reference to `WinMain@16&#39;」" rel="next">mingw32での「undefined reference to `WinMain@16&#39;」&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-02-19</span>
+      <a class="post-link" href="/2010/02/fontforge-script-to-merge-and-replace.html">fontforge script to merge and replace font glyphs</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-03-05</span>
+      <a class="post-link" href="/2014/03/bezier-1-kappa.html">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-15</span>
+      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

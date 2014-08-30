@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Tip: JavaScript Operators for Obfuscation cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2011/01/tip-javascript-operators-for.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Tip: JavaScript Operators for Obfuscation" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2011/01/tip-javascript-operators-for.html" rel="bookmark">Tip: JavaScript Operators for Obfuscation</a></h1>
+    <p class="meta"><time>2011-01-25T00:13:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <dl>
+<dt><code>!!<var>arg</var></code></dt>
+<dd>Return <code>true</code> when <var>arg</var> is defined, <code>false</code> when undefined.</dd>
+<dt><code>+!!<var>arg</var></code></dt>
+<dd>Same as <code>!!<var>arg</var></code>, but returns 1 or 0.</dd>
+<dt><code>[]+<var>arg</var></code></dt>
+<dd>Convert <var>arg</var> into a string.</dd>
+<dt><code><var>arg</var>|0</code></dt>
+<dt><code><var>arg</var>&gt;&gt;0</code></dt>
+<dt><code>~~<var>arg</var></code></dt>
+<dd>Convert <var>arg</var> into an integer. (e.g. <code>~~-2.5</code> makes <code>-2</code>.) Important thing is dislike <code>parseInt(null)</code> makes <code>NaN</code>, <code>null|0</code>, <code>null&gt;&gt;0</code> and <code>~~null</code> make 0.</dd>
+<dt><code>-~<var>arg</var></code></dt>
+<dd>Return the next number of <var>arg</var>. This technique is based on <a href="http://en.wikipedia.org/wiki/Two%27s_complement">Two's complement</a>.</dd>
+<dt><code>!{}</code></dt>
+<dt><code>![]</code></dt>
+<dd><code>false</code>.</dd>
+<dt><code>!!{}</code></dt>
+<dt><code>!![]</code></dt>
+<dd><code>true</code>.</dd>
+</dl>
+
+<h4>Reference</h4>
+<ul>
+<li><a href="http://utf-8.jp/public/jsfuck.html">JSF*ck</a></li>
+<li><a href="http://jsdo.it/uupaa/9YFT">jsのオレオレ演算子</a></li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2011/01/tip-javascript-operators-for.html&amp;text=Tip:%20JavaScript%20Operators%20for%20Obfuscation+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2011/01/tip-javascript-operators-for.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2011/01/tip-javascript-operators-for.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2011/01/tip-javascript-operators-for.html&amp;linkname=Tip:%20JavaScript%20Operators%20for%20Obfuscation+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2011-01-25T00:13:00+09:00</time>
+      (Modified: <time>2011-01-25T01:23:07+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-01-25-tip-javascript-operators-for.html">_posts/2011-01-25-tip-javascript-operators-for.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-01-25-tip-javascript-operators-for.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2011/01/xul-tip-scrolling-for-tabs-on-xul.html" title="XUL Tip: Scrolling for tabs on XUL tabbox" rel="prev">&#x2190;XUL Tip: Scrolling for tabs on XUL tabbox</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2011/02/tip-how-to-convert-from-gnu-arch-to.html" title="Tip: How to convert from GNU-Arch to Mercurial repository" rel="next">Tip: How to convert from GNU-Arch to Mercurial repository&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-02-07</span>
+      <a class="post-link" href="/2010/02/phsspf.html">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-01-28</span>
+      <a class="post-link" href="/2012/01/javaswinglookandfeel.html">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-07-25</span>
+      <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html">[Updated] rpmbuild setting for multi core CPU</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-05-20</span>
+      <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-02-18</span>
+      <a class="post-link" href="/2012/02/v-highisdb-tmmmmbinottv.html">メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

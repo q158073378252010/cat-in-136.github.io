@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>IE6 died, but IE doesn&#39;t yet support addEventListener... cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/03/ie6-died-but-ie-doesnt-yet-support.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="IE6 died, but IE doesn&#39;t yet support addEventListener..." />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/03/ie6-died-but-ie-doesnt-yet-support.html" rel="bookmark">IE6 died, but IE doesn&#39;t yet support addEventListener...</a></h1>
+    <p class="meta"><time>2010-03-10T23:58:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+Last Thursday, <a href="http://ie6funeral.com/">Aten Design Group held a funeral for IE6</a>.
+</p>
+<blockquote cite="http://ie6funeral.com/">
+Internet Explorer Six, resident of the interwebs for over 8 years, died the morning of March 1, 2010 in Mountain View, California, as a result of <a href="http://googleenterprise.blogspot.com/2010/01/modern-browsers-for-modern-applications.html">a workplace injury sustained at the headquarters of Google, Inc</a>.
+</blockquote>
+<p>
+As you know, IE6 does not support many JavaScript functions such as <a href="http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-Registration-interfaces"><code>addEventListener</code></a>. So JavaScript programmers must write wrapper-functions code. For example, <a href="http://www.prototypejs.org/api/event/observe"><code>Event.observe</code></a> calls <code>attachEvent</code> on IE6 but <code>addEventListener</code> on any other modern browsers. JavaScript libraries is IE-wrapper-function collections in a sense.
+</p>
+<p>
+His son IE7 and his grand-daughter IE8 also don't support <code>addEventListener</code>. Following table is a very, very simple unit test :
+</p>
+<table id="still_attach_event_alive_table">
+<tbody>
+<tr>
+<td><code>window.addEventListener("load", ...)</code></td>
+<td id="still_attach_event_alive_test" style="background-color: #f00; color: #fff;">NG</td>
+</tr>
+</tbody>
+</table>
+<script type="text/javascript"><!-- /* --><![CDATA[ /* */
+try {
+  window.addEventListener("load", function() {
+    var td = document.getElementById("still_attach_event_alive_test");
+    td.style.backgroundColor = "#080";
+    td.style.color = "#fff";
+    td.innerHTML = "OK";
+  }, false);
+} catch (e) {
+}
+/* ]]><!-- */// --></script>
+<p>
+I don't know if IE9 pass this test or not.
+</p>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      <a class="tag" href="/tags.html#tag_windows">Windows</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/03/ie6-died-but-ie-doesnt-yet-support.html&amp;text=IE6%20died,%20but%20IE%20doesn't%20yet%20support%20addEventListener...+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/03/ie6-died-but-ie-doesnt-yet-support.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/03/ie6-died-but-ie-doesnt-yet-support.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/03/ie6-died-but-ie-doesnt-yet-support.html&amp;linkname=IE6%20died,%20but%20IE%20doesn't%20yet%20support%20addEventListener...+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-03-10T23:58:00+09:00</time>
+      (Modified: <time>2010-03-10T23:58:00+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-03-10-ie6-died-but-ie-doesnt-yet-support.html">_posts/2010-03-10-ie6-died-but-ie-doesnt-yet-support.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-03-10-ie6-died-but-ie-doesnt-yet-support.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/03/uac-shield-icon-incompatibility-between.html" title="UAC shield icon incompatibility between Vista and 7" rel="prev">&#x2190;UAC shield icon incompatibility between Vista and 7</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/03/webgl-options-on-configuration-mania.html" title="WebGL options on Configuration Mania" rel="next">WebGL options on Configuration Mania&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-04-27</span>
+      <a class="post-link" href="/2010/04/bitly-url-shortener-for-intranet.html">bit.ly URL shortener for intranet</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-10-08</span>
+      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-12-24</span>
+      <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-19</span>
+      <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">Tip: Calling window.atob() and btoa() from Jetpack-SDK</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-16</span>
+      <a class="post-link" href="/2010/05/runninginboard-generator.html">Running_in_board Generator (駅名標ジェネレータ)</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

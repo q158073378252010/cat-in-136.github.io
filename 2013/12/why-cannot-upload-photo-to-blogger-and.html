@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed? cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2013/12/why-cannot-upload-photo-to-blogger-and.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://2.bp.blogspot.com/-7LFw27ck1Jk/UrxMltTeD-I/AAAAAAAAAZI/RuGI1y8RnYI/s72-c/error.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2013/12/why-cannot-upload-photo-to-blogger-and.html" rel="bookmark">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a></h1>
+    <p class="meta"><time>2013-12-28T10:00:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <h4>Question</h4>
+
+<div style="border: double #008 5px; padding: 1ex;">
+
+<p>I cannot upload a photo to Blogger.</p>
+
+<figure style="display: block; margin: 1em; text-align: center;">
+<a href="http://2.bp.blogspot.com/-7LFw27ck1Jk/UrxMltTeD-I/AAAAAAAAAZI/RuGI1y8RnYI/s1600/error.png"><img style="border: none 0;" src="http://2.bp.blogspot.com/-7LFw27ck1Jk/UrxMltTeD-I/AAAAAAAAAZI/RuGI1y8RnYI/s400/error.png" width="400" height="222" alt="In order to select an item from your online storage, please sign in" /></a>
+</figure>
+
+<p>When I try to upload photos to my Blogger post, I got following alert:</p>
+
+<blockquote>
+  <p>In order to select an item from your online storage, please sign in</p>
+</blockquote>
+
+<p>I clicked "Sign in" button because I have no choice.
+A popup window was opened, I signed in again, the popup was closed,
+and then I got following alert:</p>
+
+<blockquote>
+  <p>There was an error!<br />
+  Details:<br />
+  The feature you requested is currently unavailable. Please try again later.</p>
+</blockquote>
+
+<p>WTF?</p>
+
+</div>
+
+<h4>(Usual-) Answer</h4>
+
+<div style="border: double #800 5px; padding: 1ex;">
+<p style="font-size: x-large;">Solution: Allow third-party cookies to <code>docs.google.com</code>.</p>
+</div>
+
+<p>For example, In Firefox:</p>
+
+<ul>
+<li>Solution A: Choose "Always" ("From visited" may be ok) on "Firefox Options(Preferences)"->"Privacy"->"Accept third-party cookies"; or</li>
+<li>Solution B: Click "Exceptions" next to "Accept cookies from sites" on "Firefox Options(Preferences)"->"Privacy" and then Allow (or Allow for Session) <code>docs.google.com</code></li>
+</ul>
+
+<figure style="display: block; margin: 1em; text-align: center;">
+<a href="http://1.bp.blogspot.com/-wupxDkr2FLI/UrxMmJfV16I/AAAAAAAAAZY/XoA3rXWpCH4/s1600/settingA.png" ><img src="http://1.bp.blogspot.com/-wupxDkr2FLI/UrxMmJfV16I/AAAAAAAAAZY/XoA3rXWpCH4/s320/settingA.png"  width="320" height="290" /></a>
+<figcaption>Solution A</figcaption>
+</figure>
+<figure style="display: block; margin: 1em; text-align: center;">
+<a href="http://3.bp.blogspot.com/-tuvAgyNX9FA/UrxMmQol-BI/AAAAAAAAAZQ/tKRp_MkYqTM/s1600/settingB.png"  ><img src="http://3.bp.blogspot.com/-tuvAgyNX9FA/UrxMmQol-BI/AAAAAAAAAZQ/tKRp_MkYqTM/s320/settingB.png" width="320" height="76" /></a>
+<figcaption>Solution B</figcaption>
+</figure>
+
+<p>Note: Once you completed to upload photos, you may configure your browser to block the third-party cookies.</p>
+
+<aside>
+<figure style="display: block; margin: 1em; text-align: center;">
+<img src="http://4.bp.blogspot.com/-W61CKDVHQ04/UrxUesq0yHI/AAAAAAAAAZw/bwqlmHHxdd4/s1600/3720985079_dc16ea0e47_n.jpg" width="320" height="240" />
+<figcaption>(Image Credit: <a href="http://www.flickr.com/photos/universityofscrantonlibrary/3720985079/">By University of Scranton community, on Flickr, CC-BY-2.0</a>)</figcaption>
+</figure>
+</aside>
+
+<h4>Why <code>docs.google.com</code>?</h4>
+
+<p>All the photo in Blogger is stored in Google Drive.</p>
+
+<p>To upload photo, your browser will send a HTTP request
+to Google Drive (<code>docs.google.com</code>)
+with your-session-ID cookie.
+This cookie is third-party cookie because <code>docs.google.com</code> is <strong>different</strong> than
+the domain shown on your browser address bar <code>www.blogger.com</code>.</p>
+
+<figure style="display: block; margin: 1em; text-align: center;">
+<a href="http://2.bp.blogspot.com/-imNarKpzoX4/UrxMmBG1oKI/AAAAAAAAAZg/t22n88a-7j8/s1600/nocookie_log.png" ><img src="http://2.bp.blogspot.com/-imNarKpzoX4/UrxMmBG1oKI/AAAAAAAAAZg/t22n88a-7j8/s400/nocookie_log.png" width="400" height="198" /></a>
+<figcaption>HTTP Connection Log when clicking "Insert Image" button ("No cookies for this request" indicates blocking the cookie!)</figcaption>
+</figure>
+
+<p>If you configure your browser to block this third-party cookies,
+Your browser does not send your-session-ID cookie.
+<code>docs.google.com</code> server does not receive session ID.
+Thus, <code>docs.google.com</code> says "please sign in".</p>
+
+<p style="font-size: larger;">BTW, I wonder why Blogger does not use sorta proxy (for example, use of <code>https://www.blogger.com/google_drive/...</code>).</p>
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      
+      <a class="tag" href="/tags.html#tag_cookie">Cookie</a>
+      
+      <a class="tag" href="/tags.html#tag_security">Security</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2013/12/why-cannot-upload-photo-to-blogger-and.html&amp;text=Why%20cannot%20upload%20a%20photo%20to%20Blogger%20and%20Why%20is%20%22In%20order%20to%20select%20an%20item%20from%20your%20online%20storage,%20please%20sign%20in%22%20displayed?+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2013/12/why-cannot-upload-photo-to-blogger-and.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2013/12/why-cannot-upload-photo-to-blogger-and.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2013/12/why-cannot-upload-photo-to-blogger-and.html&amp;linkname=Why%20cannot%20upload%20a%20photo%20to%20Blogger%20and%20Why%20is%20%22In%20order%20to%20select%20an%20item%20from%20your%20online%20storage,%20please%20sign%20in%22%20displayed?+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2013-12-28T10:00:00+09:00</time>
+      (Modified: <time>2013-12-28T10:00:01+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-12-28-why-cannot-upload-photo-to-blogger-and.html">_posts/2013-12-28-why-cannot-upload-photo-to-blogger-and.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-12-28-why-cannot-upload-photo-to-blogger-and.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2013/12/diff-between-firefox-270-beta-1-default.html" title="Diff between firefox 27.0 beta 1 default preference and firefox 26.0 " rel="prev">&#x2190;Diff between firefox 27.0 beta 1 default preference and firefox 26.0 </a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2013/12/cookie.html" title="Cookie のブロックを検出する方法：更新" rel="next">Cookie のブロックを検出する方法：更新&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2013-02-24</span>
+      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-04-13</span>
+      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-06-27</span>
+      <a class="post-link" href="/2012/06/m1.html">M+1フォントの「あ」について</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

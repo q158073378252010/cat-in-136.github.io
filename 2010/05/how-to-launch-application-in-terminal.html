@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>How to Launch &quot;Application in Terminal&quot; from (your) GTK Application cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/05/how-to-launch-application-in-terminal.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="How to Launch &quot;Application in Terminal&quot; from (your) GTK Application" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/05/how-to-launch-application-in-terminal.html" rel="bookmark">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a></h1>
+    <p class="meta"><time>2010-05-02T00:27:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p><code>system(3)</code> executes an external command. This is an example that the external command is a CUI application.</p>
+
+<pre class="prettyprint"><code>int ret;
+ret = system("/path/to/shellscript.sh");
+</code></pre>
+
+<p>If <code>system(3)</code> is called from CUI application, standard output can be write to the <em>terminal</em> and standard input can be read from the <em>terminal</em>. But GTK+ applications (or any other typical GUI application) don't have the <em>terminal</em>.</p>
+
+<p>For GTK+ application (without the terminal), the external command must be launch with terminal emulator.</p>
+
+<p>Here is a simple example of launching <code>/path/to/shellscript.sh</code> with terminal emulator.</p>
+
+<pre class="prettyprint"><code>int ret;
+ret = system("xterm -e /path/to/shellscript.sh");
+</code></pre>
+
+<p>It's simple. But hard-coding <code>"xterm -e "</code> is not smart.</p>
+
+<p>Following example is depends on User's terminal emulator preference (e.g. <a href="http://library.gnome.org/users/user-guide/2.27/prefs-preferredapps.html.en">Gnome Preferred Applications preference tool</a>):</p>
+
+<pre class="prettyprint"><code>GAppInfo *appinfo = NULL;
+gboolean ret = FALSE;
+
+appinfo = g_app_info_create_from_commandline("/path/to/shellscript.sh",
+                                             NULL,
+                                             G_APP_INFO_CREATE_NEEDS_TERMINAL,
+                                             NULL);
+g_assert(appinfo != NULL); // TODO error handling is not implemented.
+
+ret = g_app_info_launch(appinfo, NULL, NULL, NULL);
+g_assert(ret == TRUE); // TODO error handling is not implemented.
+</code></pre>
+
+<p>Note that:</p>
+<ul>
+<li>In this way, external application execute background. (<code>system(3)</code> function is foreground)</li>
+<li>On my environment, following code does not work (segmentation fault at calling <code>g_app_info_create_from_commandline()</code>). GTK seems to be required.</li>
+</ul>
+
+<pre class="prettyprint"><code>#include &lt;glib.h&gt;
+#include &lt;gio/gio.h&gt;
+//#include &lt;gtk/gtk.h&gt;// !! HERE is required!
+
+static const gchar *SCRIPT_PATH = "/path/to/shellscript.sh";
+
+int main(int argc, char *argv[])
+{
+    GAppInfo *appinfo = NULL;
+    gboolean ret = FALSE;
+
+    //gtk_init(&amp;argc, &amp;argv);// !! HERE is required!
+
+    appinfo = g_app_info_create_from_commandline(SCRIPT_PATH,
+                                                 NULL,
+                                                 G_APP_INFO_CREATE_NEEDS_TERMINAL,
+                                                 NULL);
+    g_assert(appinfo != NULL); // TODO error handling is not implemented.
+    ret = g_app_info_launch(appinfo,
+                            NULL,
+                            NULL,
+                            NULL);
+    g_assert(ret == TRUE); // TODO error handling is not implemented.
+
+    return 0;
+}
+</code></pre>
+
+<h4>See also</h4>
+<ul>
+<li><a href="http://library.gnome.org/devel/gio/stable/GAppInfo.html">GAppInfo - GIO Reference Manual</a></li>
+<li><a href="http://git.gnome.org/browse/gtk+/tree/gtk/gtkshow.c?h=gtk-2-18#n58"><code>gtk_show_uri</code> implementation</a></li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_gtk">Gtk</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/05/how-to-launch-application-in-terminal.html&amp;text=How%20to%20Launch%20%22Application%20in%20Terminal%22%20from%20(your)%20GTK%20Application+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/05/how-to-launch-application-in-terminal.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/05/how-to-launch-application-in-terminal.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/05/how-to-launch-application-in-terminal.html&amp;linkname=How%20to%20Launch%20%22Application%20in%20Terminal%22%20from%20(your)%20GTK%20Application+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-05-02T00:27:00+09:00</time>
+      (Modified: <time>2010-05-02T00:28:24+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-05-02-how-to-launch-application-in-terminal.html">_posts/2010-05-02-how-to-launch-application-in-terminal.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-05-02-how-to-launch-application-in-terminal.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/04/bitly-url-shortener-for-intranet.html" title="bit.ly URL shortener for intranet" rel="prev">&#x2190;bit.ly URL shortener for intranet</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/05/oopp-setting-on-configuration-mania.html" title="OOPP Setting on Configuration Mania" rel="next">OOPP Setting on Configuration Mania&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2012-12-11</span>
+      <a class="post-link" href="/2012/12/llvm-clangast.html">LLVM-ClangのASTを解析するまっとうな方法について</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-03-17</span>
+      <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-04-22</span>
+      <a class="post-link" href="/2012/04/unicodemingw32twinmainwwinmain.html">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-12-24</span>
+      <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

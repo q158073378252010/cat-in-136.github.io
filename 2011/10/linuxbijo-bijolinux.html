@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2011/10/linuxbijo-bijolinux.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2011/10/linuxbijo-bijolinux.html" rel="bookmark">美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux</a></h1>
+    <p class="meta"><time>2011-10-26T23:01:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <div style="float: left; width: 180px; height: 280px;">
+<script type="text/javascript"><!-- /* --><![CDATA[ /* */
+var oStyle = document.createElement("link");
+oStyle.setAttribute("rel", "stylesheet");
+oStyle.setAttribute("type", "text/css");
+oStyle.setAttribute("href", "data:text/css;base64,I2Jpam8tZnJhbWVCaWpvTGludXgwOSB7YmFja2dyb3VuZDogdHJhbnNwYXJlbnQgISBpbXBvcnRhbnQ7fQ==");
+document.getElementsByTagName("head")[0].appendChild(oStyle);
+// ]]><!-- --></script>
+<script src="http://bijo-linux.com/bp/js/bijo-0.9.js"></script>
+</div>
+<p>
+<a href="http://bijo-linux.com/">美女Linux</a>というLinuxのコマンドを女の子の画像付きで紹介するサイトがある。
+久しぶりに見たら<a href="http://bijo-linux.com/girls/">対応コマンド数は400程度もあり</a>、普通に使えるレベルになりつつある。
+</p>
+<p>
+しかしながら、美女Linuxをコマンドリファレンスとして使用するには不便であり、ブラウザから該当ページをたどっていくか、あるいは、"<code>http://bijo-linux.com/girls/<strong>display</strong></code>" といった風に直接URLを入れなければならない。
+これは非常に不便であり、コマンドラインで例えば <code>man display</code> とだけば打てば良い、<a href="http://bijo-linux.com/girls/man/"><code>man</code>コマンド</a> と比べて遥かに使いづらい。
+</p>
+<p>
+というわけで、美女Linuxを使いやすくすることを目的として <code>bijo</code> コマンドの製作を行った。
+使い方は極めてシンプルで、例えば
+</p>
+<pre style="background-color: #000; color: #fff;"><code>% bijo display</code></pre>
+<p>
+と打てば、Firefox が立ち上がり <a href="http://bijo-linux.com/girls/display/"><code>display</code> コマンド</a>の説明を参照することが可能だ。
+</p>
+<p>
+ソースコードは下記の通り。実行には ruby が必要。
+</p>
+
+<ins style="text-decoration: none;">
+<div style="background-color: #fee; border: #f00 solid 1px; box-shadow: 0 0 5px #f00; padding: 5px; color: #f00;">
+（追記2012/02/18）以下に示したソースコードでは現状の美女Linuxにアクセスできなくなっています。
+とりあえず<a href="https://gist.github.com/1858211/">https://gist.github.com/1858211/</a>にて
+なるべく使えるコードをおいておこうと思います。
+（が、無保証なので、いつかメンテナンスがされなくなったり動作しなくなることありえますのでご了承ください。）
+</div>
+</ins>
+
+<pre class="prettyprint" style="clear: both;"><code>#!/bin/env ruby
+# Copyright (C) 2011 by cat_in_136
+#  
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the &quot;Software&quot;), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+require &quot;optparse&quot;
+
+config = {
+  :place =&gt; :tokyo,
+  :app   =&gt; 'firefox',
+}
+
+opts = OptionParser.new
+opts.version = &quot;0.1&quot;
+opts.banner = &quot;Usage: #{$0} [options] COMMAND&quot;
+opts.on('-p', '--place=WHERE', [:tokyo, :kobe], 'Which do you like, tokyo or kobe?') do |w|
+  config[:place] = w
+end
+opts.on('--browser=BROWSER', 'browser command to open the page.') do |browser|
+  config[:app] = browser
+end
+opts.parse!(ARGV)
+
+
+if ARGV.length != 0
+  command = ARGV.shift
+  url = &quot;http://bijo-linux.com/girls/#{command}/&quot;
+  if config[:place] == :kobe
+    url = &quot;http://kobe.bijo-linux.com/girls/#{command}/&quot;
+  end
+else
+  url = &quot;http://bijo-linux.com/&quot;
+  if config[:place] == :kobe
+    url = &quot;http://kobe.bijo-linux.com/&quot;
+  end
+end
+
+exec(config[:app], url)
+</code></pre>
+
+<p>
+なお、美女Linuxには神戸版の<a href="http://kobe.bijo-linux.com/">神戸美女Linux</a>もあるが、<code>-p kobe</code>というオプションをつけると神戸美女Linuxになるようにした。
+</p>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_linux">Linux</a>
+      
+      <a class="tag" href="/tags.html#tag_cui">Cui</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2011/10/linuxbijo-bijolinux.html&amp;text=%E7%BE%8E%E5%A5%B3Linux%E3%81%8C%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%8B%E3%82%89%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%9B%E3%81%AA%E3%81%84%E3%81%A8%E4%B8%8D%E4%BE%BF%E3%81%AA%E3%81%AE%E3%81%A7bijo%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%8A%20.@bijolinux+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2011/10/linuxbijo-bijolinux.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2011/10/linuxbijo-bijolinux.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2011/10/linuxbijo-bijolinux.html&amp;linkname=%E7%BE%8E%E5%A5%B3Linux%E3%81%8C%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%8B%E3%82%89%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%9B%E3%81%AA%E3%81%84%E3%81%A8%E4%B8%8D%E4%BE%BF%E3%81%AA%E3%81%AE%E3%81%A7bijo%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%8A%20.@bijolinux+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2011-10-26T23:01:00+09:00</time>
+      (Modified: <time>2012-02-18T18:01:08+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-10-26-linuxbijo-bijolinux.html">_posts/2011-10-26-linuxbijo-bijolinux.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-10-26-linuxbijo-bijolinux.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2011/10/diff-of-firefox-8-beta-default.html" title="Diff of firefox 8-beta default preference and firefox 7.0.1" rel="prev">&#x2190;Diff of firefox 8-beta default preference and firefox 7.0.1</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2011/12/diff-of-firefox-9-beta-default.html" title="Diff of firefox 9-beta default preference and firefox 8" rel="next">Diff of firefox 9-beta default preference and firefox 8&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2013-03-04</span>
+      <a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-04-27</span>
+      <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">C言語の構造体を構造分析したい〜静的解析としての doxygen</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-12-24</span>
+      <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-15</span>
+      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>SaaS/PaaS/IaaS判定法（案） cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2012/11/saaspaasiaas.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="SaaS/PaaS/IaaS判定法（案）" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2012/11/saaspaasiaas.html" rel="bookmark">SaaS/PaaS/IaaS判定法（案）</a></h1>
+    <p class="meta"><time>2012-11-23T14:30:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>Misty sky じゃない方の クラウド (Cloud computing)について。</p>
+
+<p>クラウドのサービスモデルには、主に以下の3つがある。</p>
+
+<ul>
+<li>SaaS (Software as a Service)</li>
+<li>PaaS (Platform as a Service) </li>
+<li>IaaS (Infrastructure as a Service) </li>
+</ul>
+
+<p>Software(Application), Platform, Infrastructure はそれぞれレイヤと扱っていいと
+考えている。</p>
+
+<table summary="XaaS のレイヤのスタック構造">
+<col />
+<thead>
+<tr>
+ <th>service layers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+ <td>Application</td>
+</tr>
+<tr>
+ <td>Platform</td>
+</tr>
+<tr>
+ <td>Infrastructure</td>
+</tr>
+</tbody>
+</table>
+
+<p>Infrastructure は最も下層で基本的なコンピューティング環境、
+Application は最も上の層でソフトウェアパッケージを意味する。
+つまり、IaaSの利用者は Application と Platform を自分で用意するが、
+PaaSの利用者は Application を用意する必要がある。
+そして、SaaSの利用者は、利用するだけだ。</p>
+
+<h4>SaaS/PaaS/IaaS判定法（案）</h4>
+
+<p>これを踏まえて SaaS/PaaS/IaaS 判定法（案）は下記の通り：</p>
+
+<ul>
+<li>利用できるソフトウェアが特定化されている（自由に追加できない）のならば、それは SaaS である。</li>
+<li>ネットワーク設定・OS変更させてくれない（または隠蔽されている）ならば、それは PaaS である。</li>
+<li>ネットワーク設定・OS変更などをさせてくれるならば、それは IaaS である。</li>
+</ul>
+
+<h4>例題</h4>
+
+<div style="padding: 1ex; border: double 5px #888;">
+<p>問：以下を SaaS/PaaS/IaaS に分類しなさい。</p>
+
+<ol>
+<li>Amazon EC2</li>
+<li>Google App Engine</li>
+<li>Google Apps</li>
+<li>Amazon S3</li>
+<li>Github</li>
+<li>ウイルスバスター クラウド</li>
+</ol>
+</div>
+
+<p>解</p>
+
+<ol>
+<li><a href="http://aws.amazon.com/ec2/" title="Amazon Elastic Compute Cloud" rel="nofollow">Amazon EC2</a> は、 Xen 上で動く OS を選べるので、 IaaS である。</li>
+<li><a href="https://developers.google.com/appengine/" title="Google App Engine" rel="nofollow">Google App Engine</a> は、OS などは隠蔽されているので、 PaaS である。</li>
+<li><a href="https://www.google.com/enterprise/apps/" title="Google Apps" rel="nofollow">Google Apps</a> は、Google が提供する Gmail やカレンダーなどのソフトウェアに特定されるので、 SaaS である。</li>
+<li><a href="http://aws.amazon.com/s3/" title="Amazon Simple Storage Service" rel="nofollow">Amazon S3</a> は、ストレージに特定されているので、 SaaS と言える。
+しかし、ストレージそのものは最終製品ではなく、
+また Dropbox や iCloud と違ってストレージそのものを売り物としていないので、
+作るアプリケーションは特定化されていないが OS などは隠蔽されているので、
+PaaS とも言える。</li>
+<li><a href="https://github.com/" title="Github" rel="nofollow">Github</a> は、（格納できるソフトウェアソースは任意性があるが、）
+ソフト開発プロジェクトのためのホスティングサービス
+（ハードウェアやドキュメント執筆目的などでもよいが）に特定化されているので、
+SaaS である。</li>
+<li><a href="http://safe.trendmicro.jp/purchase/vb.aspx" title="ウイルスバスター クラウド" rel="nofollow">ウイルスバスター クラウド</a> は、「あとは楽しむだけ」であるので、 SaaS である。
+(ウイルス対策ソフトに特定化されているので SaaS である。)</li>
+</ol>
+
+<h4>参考文献</h4>
+
+<ul>
+<li><a href="http://csrc.nist.gov/publications/nistpubs/800-145/SP800-145.pdf" title="NIST SP 800-145, The NIST Definition of Cloud Computing">NIST SP 800-145, The NIST Definition of Cloud Computing</a></li>
+</ul>
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      <a class="tag" href="/tags.html#tag_cloud%20computing">Cloud computing</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2012/11/saaspaasiaas.html&amp;text=SaaS/PaaS/IaaS%E5%88%A4%E5%AE%9A%E6%B3%95%EF%BC%88%E6%A1%88%EF%BC%89+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2012/11/saaspaasiaas.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2012/11/saaspaasiaas.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2012/11/saaspaasiaas.html&amp;linkname=SaaS/PaaS/IaaS%E5%88%A4%E5%AE%9A%E6%B3%95%EF%BC%88%E6%A1%88%EF%BC%89+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2012-11-23T14:30:00+09:00</time>
+      (Modified: <time>2012-11-23T14:33:07+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-11-23-saaspaasiaas.html">_posts/2012-11-23-saaspaasiaas.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-11-23-saaspaasiaas.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2012/11/twitter-api.html" title="「このツイートをサイトに埋め込む」のための隠し Twitter API の存在" rel="prev">&#x2190;「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2012/12/diff-between-firefox-18-beta-3-default.html" title="Diff between firefox 18 beta 3 default preference and firefox 17.0.1" rel="next">Diff between firefox 18 beta 3 default preference and firefox 17.0.1&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2012-08-05</span>
+      <a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-04-13</span>
+      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-03-05</span>
+      <a class="post-link" href="/2014/03/bezier-1-kappa.html">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-02-07</span>
+      <a class="post-link" href="/2010/02/phsspf.html">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-03-07</span>
+      <a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

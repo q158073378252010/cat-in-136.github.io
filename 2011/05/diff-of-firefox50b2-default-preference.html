@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Diff of firefox5.0b2 default preference and firefox4.0.1 cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2011/05/diff-of-firefox50b2-default-preference.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Diff of firefox5.0b2 default preference and firefox4.0.1" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2011/05/diff-of-firefox50b2-default-preference.html" rel="bookmark">Diff of firefox5.0b2 default preference and firefox4.0.1</a></h1>
+    <p class="meta"><time>2011-05-22T11:25:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+This is difference between the default preference of Firefox 4.0.1 and one of 5.0b2. Unlike <a href="/2010/12/diff-of-firefox40b7-default-preference.html" title="Diff of firefox4.0b7 default preference and firefox3.6">3.6 and 4.0</a>, only a few of preferences are changed. 
+</p>
+
+<dl>
+<dt>Default pref Javascript files:</dt>
+<dd>(omni.jar){/greprefs.js,/defaults/pref/{firefox.js,firefox-branding.js,firefox-l10n.js,services-sync.js}}</dd>
+</dl>
+
+<div>
+<table class="diff_firefox4_pref_diff"><thead><tr><td></td><td>4.0.1</td><td>5.0b2</td></tr></thead><tbody><tr><td>accessibility.<wbr>typeaheadfind.<wbr>enablesound</td><td>true</td><td>false</td></tr><tr class="oldkey"><td>browser.<wbr>panorama.<wbr>welcome_<wbr>url</td><td>http://www.mozilla.com/firefox/panorama/</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>custtoolbar.<wbr>personal_<wbr>toolbar_<wbr>folder</td><td></td><td class="undefined">undefined</td></tr><tr class="newkey"><td>dom.<wbr>min_<wbr>background_<wbr>timeout_<wbr>value</td><td class="undefined">undefined</td><td>1000</td></tr><tr><td>dom.<wbr>min_<wbr>timeout_<wbr>value</td><td>10</td><td>4</td></tr><tr class="oldkey"><td>general.<wbr>startup.<wbr>browser</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>gfx.<wbr>font_<wbr>rendering.<wbr>harfbuzz.<wbr>level</td><td>2</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>gfx.<wbr>font_<wbr>rendering.<wbr>harfbuzz.<wbr>scripts</td><td class="undefined">undefined</td><td>3</td></tr><tr><td>intl.<wbr>charsetmenu.<wbr>browser.<wbr>more3</td><td>GB2312, x-gbk, gb18030, HZ-GB-2312, ISO-2022-CN, Big5, Big5-HKSCS, x-euc-tw, EUC-JP, ISO-2022-JP, Shift_JIS, EUC-KR, x-windows-949, x-johab, ISO-2022-KR</td><td>GB2312, gbk, gb18030, HZ-GB-2312, ISO-2022-CN, Big5, Big5-HKSCS, x-euc-tw, EUC-JP, ISO-2022-JP, Shift_JIS, EUC-KR, x-windows-949, x-johab, ISO-2022-KR</td></tr><tr><td>intl.<wbr>charsetmenu.<wbr>browser.<wbr>unicode</td><td>UTF-8, UTF-16LE, UTF-16BE, UTF-32, UTF-32LE, UTF-32BE</td><td>UTF-8, UTF-16LE, UTF-16BE</td></tr><tr class="oldkey"><td>profile.<wbr>allow_<wbr>automigration</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>services.<wbr>sync.<wbr>sendVersionInfo</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>services.<wbr>sync.<wbr>storageAPI</td><td>1.0</td><td class="undefined">undefined</td></tr></tbody></table>
+</div>
+
+<script type="text/javascript" defer="defer"><!-- /* --><![CDATA[ *///
+(function(){
+    var s = document.createElement("link");
+    s.rel = "stylesheet";
+    s.type = "text/css";
+    s.href = "data:text/css;base64,dGFibGUuZGlmZl9maXJlZm94NF9wcmVmX2RpZmYgeyBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlOyBmb250LXNpemU6IHgtc21hbGw7IG92ZXJmbG93OiBhdXRvOyB9CnRhYmxlLmRpZmZfZmlyZWZveDRfcHJlZl9kaWZmIHRkIHsgYm9yZGVyOiAxcHggc29saWQgI2RkZDsgcGFkZGluZzogMXB4OyB2ZXJ0aWNhbC1hbGlnbjogdG9wOyB9CnRhYmxlLmRpZmZfZmlyZWZveDRfcHJlZl9kaWZmIHRkLnVuZGVmaW5lZCB7IGNvbG9yOiAjODg4OyBmb250LXN0eWxlOiBpdGFsaWM7IH0KdGFibGUuZGlmZl9maXJlZm94NF9wcmVmX2RpZmYgdHIuc2FtZXZhbCB0ZDpmaXJzdC1jaGlsZCB7IGNvbG9yOiAjNDQ0OyB9CnRhYmxlLmRpZmZfZmlyZWZveDRfcHJlZl9kaWZmIHRyLm5ld2tleSAgdGQ6Zmlyc3QtY2hpbGQgeyB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsgICAgfQp0YWJsZS5kaWZmX2ZpcmVmb3g0X3ByZWZfZGlmZiB0ci5vbGRrZXkgIHRkOmZpcnN0LWNoaWxkIHsgdGV4dC1kZWNvcmF0aW9uOiBsaW5lLXRocm91Z2g7IH0KCnRhYmxlLmRpZmZfZmlyZWZveDRfcHJlZl9kaWZmIHRyOmhvdmVyIHsgYmFja2dyb3VuZC1jb2xvcjogI2VlZTsgfQp0YWJsZS5kaWZmX2ZpcmVmb3g0X3ByZWZfZGlmZiB0ciB7IC1tb3otdHJhbnNpdGlvbjogYmFja2dyb3VuZCAwLjEyNXMgZWFzZS1pbi1vdXQgMHM7IH0K";
+    document.getElementsByTagName("head")[0].appendChild(s);
+})();
+/* ]]><!-- */ --></script>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2011/05/diff-of-firefox50b2-default-preference.html&amp;text=Diff%20of%20firefox5.0b2%20default%20preference%20and%20firefox4.0.1+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2011/05/diff-of-firefox50b2-default-preference.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2011/05/diff-of-firefox50b2-default-preference.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2011/05/diff-of-firefox50b2-default-preference.html&amp;linkname=Diff%20of%20firefox5.0b2%20default%20preference%20and%20firefox4.0.1+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2011-05-22T11:25:00+09:00</time>
+      (Modified: <time>2011-05-22T11:27:26+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-05-22-diff-of-firefox50b2-default-preference.html">_posts/2011-05-22-diff-of-firefox50b2-default-preference.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-05-22-diff-of-firefox50b2-default-preference.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2011/05/angry-birds-web-ver-hacks-modify-level.html" title="Angry Birds (Web ver.) Hacks: Modify the Level Data!" rel="prev">&#x2190;Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2011/07/diff-of-firefox60b-default-preference.html" title="Diff of firefox6.0b default preference and firefox5.0" rel="next">Diff of firefox6.0b default preference and firefox5.0&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2011-08-20</span>
+      <a class="post-link" href="/2011/08/diff-of-firefox70-default-preference.html">Diff of firefox7.0 default preference and firefox6.0</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-02-20</span>
+      <a class="post-link" href="/2013/02/diff-between-firefox-19-default.html">Diff between firefox 19 default preference and firefox 18.0.2</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-12-03</span>
+      <a class="post-link" href="/2011/12/diff-of-firefox-9-beta-default.html">Diff of firefox 9-beta default preference and firefox 8</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-08-07</span>
+      <a class="post-link" href="/2014/08/diff-between-firefox-320-beta-4-default.html">Diff between firefox 32.0 beta 4 default preference and firefox 31.0</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-10-23</span>
+      <a class="post-link" href="/2011/10/diff-of-firefox-8-beta-default.html">Diff of firefox 8-beta default preference and firefox 7.0.1</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

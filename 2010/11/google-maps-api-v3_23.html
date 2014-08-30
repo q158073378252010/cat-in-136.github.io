@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Google Maps API v3 で地下鉄路線図を表示する cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/11/google-maps-api-v3_23.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Google Maps API v3 で地下鉄路線図を表示する" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/11/google-maps-api-v3_23.html" rel="bookmark">Google Maps API v3 で地下鉄路線図を表示する</a></h1>
+    <p class="meta"><time>2010-11-23T22:38:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <div id="google_metro_only_map_canvas" style="width: 100%; height: 280px; border: solid thin #000;">読み込み中です。しばらくお待ち下さい。</div>
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;lang=ja"></script>
+<script defer="defer" async="async" id="google_metro_only_map_script">
+(function () {
+    var tokyo = new google.maps.LatLng(35.681283, 139.750042);
+
+    var mapdiv = document.getElementById("google_metro_only_map_canvas");
+    var map = new google.maps.Map(mapdiv, {
+      zoom: 11,
+      center: tokyo,
+      mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, "subway"]
+      }
+    });
+
+    var subwayMapType = new google.maps.ImageMapType({
+        name: "地下鉄", alt: "地下鉄を見る",
+        tileSize: new google.maps.Size(256,256),
+        isPng: true,
+        maxZoom: 22,
+        minZoom: 10,
+        getTileUrl: function(coord, zoom) {
+            var mt = ((coord.y & 0x1 == 0)? 0 : 2) | (coord.x & 0x1);
+            var url = "http://mt%m.google.com/mapslt?lyrs=transit&x=%x&y=%y&z=%z&w=256&h=256&style=1"
+              .replace("%m", mt)
+              .replace("%x", coord.x).replace("%y", coord.y)
+              .replace("%z", zoom);
+            return url;
+        }
+    });
+    map.mapTypes.set("subway", subwayMapType);
+    map.setMapTypeId("subway");
+})();
+</script>
+
+<p>
+日本のGoogleマップでは、地下鉄の駅検索などをしたときに地下鉄の路線が強調表示される。
+これはGoogleがそういうマップ画像を保持しているからできるのだが、現状Google Maps APIのいずれのバージョンも提供していない。
+</p>
+<p>
+Googleマップでのその画像は"<code>http://mt0.google.com/mapslt?lyrs=transit&amp;x=?&amp;y=?&amp;z=?</code>"として、取得している。<code>x,y,z</code>はそれぞれ<a href="http://code.google.com/intl/ja/apis/maps/documentation/javascript/overlays.html#MapCoordinates">Google Maps API の地図の座標</a>で述べられる<code>x,y</code>およびズーム値である。
+というわけで、結局以下のとおりカスタムマップを使って、地下鉄の路線図を簡単に利用することができる。
+
+</p>
+<pre class="prettyprint"><code>    var subwayMapType = new google.maps.ImageMapType({
+        name: "地下鉄", alt: "地下鉄を見る",
+        tileSize: new google.maps.Size(256,256),
+        isPng: true,
+        maxZoom: 22,
+        minZoom: 10,
+        getTileUrl: function(coord, zoom) {
+            var mt = ((coord.y &amp; 0x1 == 0)? 0 : 2) | (coord.x &amp; 0x1);
+            var url = "http://mt%m.google.com/mapslt?lyrs=transit&amp;x=%x&amp;y=%y&amp;z=%z&amp;w=256&amp;h=256&amp;style=1"
+              .replace("%m", mt)
+              .replace("%x", coord.x).replace("%y", coord.y)
+              .replace("%z", zoom);
+            return url;
+        }
+    });
+    map.overlayMapTypes.insertAt(0, subwayMapType); // オーバーレイ表示するときの例
+</code></pre>
+<p>
+なお、このコードでは画像をダウンロードするURLにおいて、ドメイン名を<code>mt0</code>～<code>mt3</code>まで分散する仕掛けを入れてある。これはGoogleのサーバのロードバランスや画像ファイルのダウンロードの速度の向上に役に立つはずだが、検証はしていない。
+
+</p>
+<p>
+残念なのは、<del datetime="2010-12-31T18:08Z">日本の地下鉄しかサポートされていないこと、</del>著作権表示の設定ができないため路線図のみ表示するとこの記事の冒頭に示したように著作権表示ができないことである。
+</p>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      
+      <a class="tag" href="/tags.html#tag_train%20and%20rails">Train and rails</a>
+      
+      <a class="tag" href="/tags.html#tag_google%20maps">Google maps</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/11/google-maps-api-v3_23.html&amp;text=Google%20Maps%20API%20v3%20%E3%81%A7%E5%9C%B0%E4%B8%8B%E9%89%84%E8%B7%AF%E7%B7%9A%E5%9B%B3%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/11/google-maps-api-v3_23.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/11/google-maps-api-v3_23.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/11/google-maps-api-v3_23.html&amp;linkname=Google%20Maps%20API%20v3%20%E3%81%A7%E5%9C%B0%E4%B8%8B%E9%89%84%E8%B7%AF%E7%B7%9A%E5%9B%B3%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-11-23T22:38:00+09:00</time>
+      (Modified: <time>2012-12-23T12:15:36+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-11-23-google-maps-api-v3_23.html">_posts/2010-11-23-google-maps-api-v3_23.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-11-23-google-maps-api-v3_23.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/11/google-maps-api-v3.html" title="Google Maps API v3 で鉄道網のみを表示する" rel="prev">&#x2190;Google Maps API v3 で鉄道網のみを表示する</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/11/how-to-create-restart-less-firefox4.html" title="How to create restart-less #Firefox4 extension *WITHOUT* Jetpack" rel="next">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2012-12-23</span>
+      <a class="post-link" href="/2012/12/google-maps-api-v3-2.html">Google Maps API v3 で地下鉄路線図を表示する〜パート2〜</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-14</span>
+      <a class="post-link" href="/2010/11/google-maps-api-v3.html">Google Maps API v3 で鉄道網のみを表示する</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-10-08</span>
+      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-16</span>
+      <a class="post-link" href="/2010/05/runninginboard-generator.html">Running_in_board Generator (駅名標ジェネレータ)</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-07-19</span>
+      <a class="post-link" href="/2010/07/lissajous-curve-in-html5-cakejs.html">Lissajous curve in HTML5 cakejs</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

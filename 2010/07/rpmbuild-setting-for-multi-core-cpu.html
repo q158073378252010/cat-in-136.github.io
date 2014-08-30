@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>[Updated] rpmbuild setting for multi core CPU cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/07/rpmbuild-setting-for-multi-core-cpu.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="[Updated] rpmbuild setting for multi core CPU" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html" rel="bookmark">[Updated] rpmbuild setting for multi core CPU</a></h1>
+    <p class="meta"><time>2010-07-25T11:27:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+<code>rpmbuild(8)</code> is a command to build a RPM file (binary software package.)
+Usually rpmbuild's build process is running with only one CPU.
+But it is possible to run with more than one CPU.
+To run with more than one CPU, edit <code>~/.rpmmacros</code> and add:
+</p>
+<code class="prettyprint"><pre>
+%__make         /usr/bin/make -j <var>6</var>
+</pre></code>
+<p>
+Specify <code>-j <em>6</em></code> if you have a hexa-core CPU. Specify <code>-j <em>4</em></code> if dual-core.
+<ins date="2011-04-16T04:08:18Z">Clearer advices that just only <code>-j</code> make to create as many threads as it feels like.</ins>
+</p>
+
+<ins date="2011-04-16T04:08:18Z"><p>To get the full story, follow <a href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">the next article</a>.</p></ins>
+
+
+<h4>See also</h4>
+<ul>
+<li><a href="http://www.rpm.org/wiki/PackagerDocs/Macros#ConfigurationusingMacros">PackagerDocs/Macros ConfigurationusingMacros</a> - in <a href="http://www.rpm.org/">rpm.org</a> wiki</li>
+<li><a href="http://www.redhat.com/archives/rpm-list/2004-July/msg00004.html">Re: rpmbuild using more than one cpu</a> - redhat rpm-list, July 1, 2004</li>
+<li><code>man 1 make</code></li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_make">Make</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/07/rpmbuild-setting-for-multi-core-cpu.html&amp;text=[Updated]%20rpmbuild%20setting%20for%20multi%20core%20CPU+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/07/rpmbuild-setting-for-multi-core-cpu.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/07/rpmbuild-setting-for-multi-core-cpu.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/07/rpmbuild-setting-for-multi-core-cpu.html&amp;linkname=[Updated]%20rpmbuild%20setting%20for%20multi%20core%20CPU+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-07-25T11:27:00+09:00</time>
+      (Modified: <time>2011-04-16T13:15:13+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-07-25-rpmbuild-setting-for-multi-core-cpu.html">_posts/2010-07-25-rpmbuild-setting-for-multi-core-cpu.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-07-25-rpmbuild-setting-for-multi-core-cpu.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/07/lissajous-curve-in-html5-cakejs.html" title="Lissajous curve in HTML5 cakejs" rel="prev">&#x2190;Lissajous curve in HTML5 cakejs</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" title="rpmbuild setting for multi core CPU (2)" rel="next">rpmbuild setting for multi core CPU (2)&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-07-31</span>
+      <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">rpmbuild setting for multi core CPU (2)</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-04</span>
+      <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">OOPP Setting on Configuration Mania</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-05-20</span>
+      <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-15</span>
+      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-02-04</span>
+      <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">AMO warns use of &quot;setTimeout()&quot;</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

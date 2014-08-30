@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Google Maps API v3 で地下鉄路線図を表示する〜パート2〜 cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2012/12/google-maps-api-v3-2.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Google Maps API v3 で地下鉄路線図を表示する〜パート2〜" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2012/12/google-maps-api-v3-2.html" rel="bookmark">Google Maps API v3 で地下鉄路線図を表示する〜パート2〜</a></h1>
+    <p class="meta"><time>2012-12-23T13:47:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+<a href="/2010/11/google-maps-api-v3_23.html">Google Maps API v3 で地下鉄路線図を表示する</a>
+で、地下鉄路線図だけを表示することを紹介したが、
+今回は他に地図を表示する方法(URL)を見つけたよ、という話。
+</p>
+
+<p>
+経路検索でアクセスしている画像ファイルなどを見た結果、
+以前記事を書いた時と違って下記のようなURLに変わっていることに気づいた。
+</p>
+<div style="margin: 5px; border: solid 1px #aaa;">
+<code>https://mts?.google.com/mapslt?lyrs=transit:prev|fahu:1|pm:1|sr:なんかいろいろ|vm:1,m%40203000000&amp;x=?&amp;y=?&amp;z=?&amp;w=256&amp;h=256&amp;hl=x-local&amp;style=18</code>
+</div>
+
+<p>
+このURLには style なるものがあったり色々遊べそうである。
+で、不要そうなものを削り試行錯誤のうえ、以下のようなURLのアクセスで
+ImageTileLayer で表示させればよいと判明。
+</p>
+<div style="margin: 5px; border: solid 1px #aaa;">
+<code>https://mts?.google.com/mapslt?lyrs=transit:prev|pm:1|vm:1,m&amp;x=?&amp;y=?&amp;z=?&amp;w=256&amp;h=256&amp;style=?</code>
+</div>
+
+<p>
+オススメの style は以下の通り(style=21が個人的オススメ)：
+</p>
+
+<ul>
+<li>style=0: 地下鉄を含む経路検索結果と同じような地図表示</li>
+<li>style=1: 地名・駅名などのみ。オーバーレイして使うほうがいいだろう。</li>
+<li>style=2: 文字がでかい。目が悪くても見やすいのではないか。</li>
+<li>style=3: 文字がない。白地図的使い方ができそう。</li>
+<li>style=4: 衛星画像で地下鉄を含む経路検索結果でオーバーレイ表示される画像</li>
+<li>style=5: 文字がほとんどない。地下鉄と道路の対比がしやすい。</li>
+<li>style=15: 地下鉄網だけ表示。オーバーレイして使うほうがいいだろう。</li>
+<li>style=21: 道路表示を目立たなくしたもの。鉄道網が把握しやすい。</li>
+<li>style=22: モノクロの中から浮き上がる地下鉄網</li>
+<li>style=25: 闇の中から浮き上がる地下鉄網</li>
+</ul>
+
+<div id="google_rail_rail_rails" style="width: 100%; height: 480px; border: solid thin #000;"></div>
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script defer="defer" src="data:text/javascript;base64,
+Z29vZ2xlLm1hcHMuZXZlbnQuYWRkRG9tTGlzdGVuZXIod2luZG93LCAibG9hZCIsIGZ1bmN0aW9u
+ICgpIHsKICB2YXIgY3JlYXRlVHJhbnNpdE1hcFR5cGUgPSBmdW5jdGlvbiBjcmVhdGVUcmFuc2l0
+TWFwVHlwZSAoc3R5bGVJZCwgbmFtZSwgYWx0KSB7CiAgICBpZiAobmFtZSA9PSB1bmRlZmluZWQp
+IG5hbWUgPSAic3R5bGU9IitzdHlsZUlkOwogICAgcmV0dXJuIG5ldyBnb29nbGUubWFwcy5JbWFn
+ZU1hcFR5cGUoewogICAgICBuYW1lOiBuYW1lLCBhbHQ6IGFsdCwKICAgICAgdGlsZVNpemU6IG5l
+dyBnb29nbGUubWFwcy5TaXplKDI1NiwyNTYpLAogICAgICBpc1BuZzogdHJ1ZSwKICAgICAgbWF4
+Wm9vbTogMjIsCiAgICAgIG1pblpvb206IDEwLAogICAgICBnZXRUaWxlVXJsOiBmdW5jdGlvbihj
+b29yZCwgem9vbSkgewogICAgICAgIHZhciBtdCA9ICgoY29vcmQueSAmIDB4MSA9PSAwKT8gMCA6
+IDIpIHwgKGNvb3JkLnggJiAweDEpOwogICAgICAgIHZhciB1cmwgPSAiaHR0cDovL210cyVtLmdv
+b2dsZS5jb20vbWFwc2x0P2x5cnM9dHJhbnNpdDpwcmV2fHBtOjF8dm06MSxtJng9JXgmeT0leSZ6
+PSV6Jnc9MjU2Jmg9MjU2JnN0eWxlPSVzIgogICAgICAgICAgLnJlcGxhY2UoIiVtIiwgbXQpCiAg
+ICAgICAgICAucmVwbGFjZSgiJXgiLCBjb29yZC54KS5yZXBsYWNlKCIleSIsIGNvb3JkLnkpCiAg
+ICAgICAgICAucmVwbGFjZSgiJXoiLCB6b29tKQogICAgICAgICAgLnJlcGxhY2UoIiVzIiwgc3R5
+bGVJZCk7CiAgICAgICAgcmV0dXJuIHVybDsKICAgICAgfQogICAgfSk7CiAgfTsKICB2YXIgdG1h
+cHMgPSBbCiAgICBjcmVhdGVUcmFuc2l0TWFwVHlwZSgwKSwKICAgIGNyZWF0ZVRyYW5zaXRNYXBU
+eXBlKDEpLAogICAgY3JlYXRlVHJhbnNpdE1hcFR5cGUoMiksCiAgICBjcmVhdGVUcmFuc2l0TWFw
+VHlwZSgzKSwKICAgIGNyZWF0ZVRyYW5zaXRNYXBUeXBlKDQpLAogICAgY3JlYXRlVHJhbnNpdE1h
+cFR5cGUoNSksCiAgICBjcmVhdGVUcmFuc2l0TWFwVHlwZSgxNSksCiAgICBjcmVhdGVUcmFuc2l0
+TWFwVHlwZSgyMSksCiAgICBjcmVhdGVUcmFuc2l0TWFwVHlwZSgyMiksCiAgICBjcmVhdGVUcmFu
+c2l0TWFwVHlwZSgyNCkKICBdOwogIHZhciBtYXBUeXBlSWRzID0gW2dvb2dsZS5tYXBzLk1hcFR5
+cGVJZC5ST0FETUFQXTsKICBmb3IgKHZhciBpID0gMDsgaSA8IHRtYXBzLmxlbmd0aDsgaSsrKSB7
+CiAgICBtYXBUeXBlSWRzLnB1c2godG1hcHNbaV0ubmFtZSk7CiAgfQoKICB2YXIgb01hcENhbnZh
+cyA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJnb29nbGVfcmFpbF9yYWlsX3JhaWxzIik7CiAg
+dmFyIG1hcE9wdGlvbnMgPSB7CiAgICB6b29tOiAxMiwKICAgIGNlbnRlcjogbmV3IGdvb2dsZS5t
+YXBzLkxhdExuZygzNS42OTA5MjEsIDEzOS43MDAyNTgpLCAvLyBTaGluanVrdQogICAgc3RyZWV0
+Vmlld0NvbnRyb2w6IGZhbHNlLAogICAgbWFwVHlwZUNvbnRyb2xPcHRpb25zOiB7CiAgICAgIG1h
+cFR5cGVJZHM6IG1hcFR5cGVJZHMsCiAgICAgIHN0eWxlOiBnb29nbGUubWFwcy5NYXBUeXBlQ29u
+dHJvbFN0eWxlLkRST1BET1dOX01FTlUKICAgIH0sCiAgICBtYXBUeXBlSWQ6IG1hcFR5cGVJZHNb
+MV0KICB9OwogIHZhciBtYXAgPSBuZXcgZ29vZ2xlLm1hcHMuTWFwKG9NYXBDYW52YXMsIG1hcE9w
+dGlvbnMpOwogIGZvciAodmFyIGkgPSAwOyBpIDwgdG1hcHMubGVuZ3RoOyBpKyspIHsKICAgIG1h
+cC5tYXBUeXBlcy5zZXQodG1hcHNbaV0ubmFtZSwgdG1hcHNbaV0pOwogIH0KfSk7Cg==">
+</script>
+
+<p>
+ImageMapType クラスの作り方は下記の通り。
+あとは、この MapType を登録する（登録処理部のソース略）。
+</p>
+
+<pre class="prettyprint"><code>function createTransitMapType (styleId, name, alt) {
+  if (name == undefined) name = "style="+styleId;
+  return new google.maps.ImageMapType({
+    name: name, alt: alt,
+    tileSize: new google.maps.Size(256,256),
+    isPng: true,
+    maxZoom: 22,
+    minZoom: 10,
+    getTileUrl: function(coord, zoom) {
+      var mt = ((coord.y &amp; 0x1 == 0)? 0 : 2) | (coord.x &amp; 0x1);
+      var url = "http://mts%m.google.com/mapslt?lyrs=transit:prev|pm:1|vm:1,m&amp;x=%x&amp;y=%y&amp;z=%z&amp;w=256&amp;h=256&amp;style=%s"
+        .replace("%m", mt)
+        .replace("%x", coord.x).replace("%y", coord.y)
+        .replace("%z", zoom)
+        .replace("%s", styleId);
+      return url;
+    }
+  });
+}
+</code></pre>
+
+<p>
+なお、これはドキュメント化されていない非公式なものなので、
+いつ使えなくなるかわからない代物なので注意するように。
+</p>
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      
+      <a class="tag" href="/tags.html#tag_train%20and%20rails">Train and rails</a>
+      
+      <a class="tag" href="/tags.html#tag_google%20maps">Google maps</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2012/12/google-maps-api-v3-2.html&amp;text=Google%20Maps%20API%20v3%20%E3%81%A7%E5%9C%B0%E4%B8%8B%E9%89%84%E8%B7%AF%E7%B7%9A%E5%9B%B3%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E3%80%9C%E3%83%91%E3%83%BC%E3%83%882%E3%80%9C+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2012/12/google-maps-api-v3-2.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2012/12/google-maps-api-v3-2.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2012/12/google-maps-api-v3-2.html&amp;linkname=Google%20Maps%20API%20v3%20%E3%81%A7%E5%9C%B0%E4%B8%8B%E9%89%84%E8%B7%AF%E7%B7%9A%E5%9B%B3%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E3%80%9C%E3%83%91%E3%83%BC%E3%83%882%E3%80%9C+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2012-12-23T13:47:00+09:00</time>
+      (Modified: <time>2012-12-23T13:49:01+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-12-23-google-maps-api-v3-2.html">_posts/2012-12-23-google-maps-api-v3-2.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-12-23-google-maps-api-v3-2.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2012/12/llvm-clangast.html" title="LLVM-ClangのASTを解析するまっとうな方法について" rel="prev">&#x2190;LLVM-ClangのASTを解析するまっとうな方法について</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2012/12/tip-how-to-run-new-firefox-instance-w.html" title="Tip: How to run a new Firefox instance w/ temporary profile" rel="next">Tip: How to run a new Firefox instance w/ temporary profile&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-11-23</span>
+      <a class="post-link" href="/2010/11/google-maps-api-v3_23.html">Google Maps API v3 で地下鉄路線図を表示する</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-03-04</span>
+      <a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-03-26</span>
+      <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-10-08</span>
+      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

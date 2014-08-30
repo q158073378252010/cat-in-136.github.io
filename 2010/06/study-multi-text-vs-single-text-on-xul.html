@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Study: multi-text vs single-text on XUL elements cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/06/study-multi-text-vs-single-text-on-xul.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Study: multi-text vs single-text on XUL elements" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/06/study-multi-text-vs-single-text-on-xul.html" rel="bookmark">Study: multi-text vs single-text on XUL elements</a></h1>
+    <p class="meta"><time>2010-06-22T22:38:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+<code>&lt;description&gt;</code> is used to create a block of text. There are two ways:
+</p>
+
+<pre class="prettyprint"><code>&lt;description&gt;This text will word wrap when displayed.&lt;description&gt;
+&lt;description label="This text will not word wrap when displayed."/&gt;
+</code></pre>
+
+<p>
+It's simple. Text content will word wrap when displayed. Attribute will not.
+</p>
+
+<pre class="prettyprint"><code>&lt;label&gt;This text will word wrap when displayed.&lt;label&gt;
+&lt;label value="This text will not word wrap when displayed."/&gt;
+</code></pre>
+<pre class="prettyprint"><code>&lt;button&gt;This text will word wrap when displayed.&lt;button&gt;
+&lt;button label="This text will not word wrap when displayed."/&gt;
+</code></pre>
+
+<h3>
+Exception</h3>
+
+<p>
+e.g. <code>radio</code> element:</p>
+
+<pre class="prettyprint"><code>&lt;radio label="This text will word wrap when displayed."/&gt;
+</code></pre>
+
+<p>
+Why? Firefox expands this code to</p>
+
+<pre class="prettyprint"><code>&lt;xul:hbox class="radio-spacer-box"&gt;
+   &lt;!-- **snip** --&gt;
+&lt;/xul:hbox&gt;
+&lt;xul:hbox class="radio-label-center-box" flex="1"&gt;
+  &lt;xul:hbox class="radio-label-box"&gt;
+    &lt;xul:image class="radio-icon" src=""/&gt;
+    &lt;xul:label class="radio-label" flex="1"&gt;
+      <strong>This text will word wrap when displayed.</strong>
+    &lt;/xul:label&gt;
+  &lt;/xul:hbox&gt;
+&lt;/xul:hbox&gt;
+</code></pre>
+
+<p>
+The text "This text will word wrap when displayed." is expanded to text content (not attribute!) of <code>label</code> element.
+</p>
+
+<p>
+e.g. <code>richlistitem</code> element:</p>
+
+<pre class="prettyprint"><code>&lt;richlistitem&gt;This text will not word wrap when displayed."&lt;/richlistitem&gt;
+</code></pre>
+
+<p>
+I don't know why.</p>
+
+<h3>
+Effect of &lt;html:br/&gt;</h3>
+
+<p>
+(X)HTML's <code>br</code> element represents a line break. <code>html:br</code> element can be readily applied to XUL.</p>
+
+<pre class="prettyprint"><code>&lt;description&gt;This text is&lt;html:br/&gt; multiple line.&lt;description&gt;
+</code></pre>
+
+<p>
+<code>html:br</code> element can not be applied to attribute.</p>
+
+<ul>
+<li>this code is invalid.
+<pre class="prettyprint"><code>&lt;radio label="br can not be&lt;html:br/&gt; applied to attribute."/&gt;
+</code></pre>
+</li>
+<li>this radio button label is "br can not be&lt;html:br/&gt; applied to attribute."
+<pre class="prettyprint"><code>&lt;radio label="br can not be&amp;lt;html:br/&amp;gt; applied to attribute."/&gt;
+</code></pre>
+</li>
+</ul>
+
+<h4>
+See also</h4>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en/XUL/description">description</a> - MDC</li>
+</ul>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_xul">Xul</a>
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/06/study-multi-text-vs-single-text-on-xul.html&amp;text=Study:%20multi-text%20vs%20single-text%20on%20XUL%20elements+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/06/study-multi-text-vs-single-text-on-xul.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/06/study-multi-text-vs-single-text-on-xul.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/06/study-multi-text-vs-single-text-on-xul.html&amp;linkname=Study:%20multi-text%20vs%20single-text%20on%20XUL%20elements+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-06-22T22:38:00+09:00</time>
+      (Modified: <time>2010-06-22T23:49:12+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-06-22-study-multi-text-vs-single-text-on-xul.html">_posts/2010-06-22-study-multi-text-vs-single-text-on-xul.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-06-22-study-multi-text-vs-single-text-on-xul.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/06/study-for-browser-panel-issue-and.html" title="Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot;" rel="prev">&#x2190;Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot;</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/06/moz-resize-can-be-applied-to-any.html" title="-moz-resize can be applied to any elements!?" rel="next">-moz-resize can be applied to any elements!?&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-12-23</span>
+      <a class="post-link" href="/2010/12/xmlserializerserializetostring-is.html">XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-11-26</span>
+      <a class="post-link" href="/2013/11/define.html">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-26</span>
+      <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">nsIPref is deprecated and removed on Firefox 3.7</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

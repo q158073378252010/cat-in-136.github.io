@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Handling namespaceless XML file with SAX cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2010/10/handling-namespaceless-xml-file-with.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Handling namespaceless XML file with SAX" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2010/10/handling-namespaceless-xml-file-with.html" rel="bookmark">Handling namespaceless XML file with SAX</a></h1>
+    <p class="meta"><time>2010-10-27T22:51:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+On the <abbr title="Simple API for XML">SAX</abbr> handlers' function, 3 element name present:
+</p>
+<pre class="prettyprint"><code>void startElement(<strong>String uri</strong>,
+                  <strong>String localName</strong>,
+                  <strong>String qName</strong>,
+                  Attributes atts)
+                  throws SAXException</code></pre>
+<p>
+For example, when <code>&lt;foobar:test xmlns:foobar="http://example.com/foobar"&gt;</code> tag is seeked, SAX call <code>startElement</code> function with following parameters:
+
+</p>
+<div>
+<table>
+<tbody>
+<tr>
+<th>uri</th>
+<td><code>"http://example.com/foobar"</code></td>
+</tr>
+<tr>
+<th>localName</th>
+<td><code>"test"</code></td>
+</tr>
+<tr>
+
+<th>qName</th>
+<td><code>"foobar:test"</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>
+When handling the Namespaceless XML documents, only <var>qName</var> seems to be used. But old Java Runtime such as Android 1.5(?), only <var>localName</var> seems to be used.
+
+</p>
+<div>
+<table>
+<thead>
+<tr>
+<th></th>
+<td>J2SE 6</td>
+<td>Android 2.2</td>
+<td>Android 1.5</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>uri</th>
+
+<td><code>""</code></td>
+<td><code>""</code></td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<th>localName</th>
+<td><code>""</code></td>
+<td><code>""</code></td>
+<td><code>"test"</code></td>
+</tr>
+
+<tr>
+<th>qName</th>
+<td><code>"test"</code></td>
+<td><code>"test"</code></td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+Sourcecode for Android 2.2/1.5 is as following:
+</p>
+<pre class="prettyprint"><code>public void testSAX() throws Exception {
+    final TextView tv = new TextView(this);
+
+    ByteArrayInputStream input = new ByteArrayInputStream("&lt;test&gt;&lt;/test&gt;".getBytes());
+
+    SAXParserFactory factory = SAXParserFactory.newInstance();
+    SAXParser parser = factory.newSAXParser();
+    parser.parse(input, new DefaultHandler() {
+        @Override
+        public void startElement(String uri, String localName,
+                String qName, Attributes attributes) throws SAXException {
+            System.out.println("uri: " + uri);
+            System.out.println("localName: " + localName);
+            System.out.println("qName: " + qName);
+     
+            tv.setText(
+                "uri: " + uri + "\n" +
+                "localName: " + localName + "\n" +
+                "test: " + qName
+            );
+
+            super.startElement(uri, localName, qName, attributes);
+        }
+    });
+
+    setContentView(tv);
+}</code></pre>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_java">Java</a>
+      
+      <a class="tag" href="/tags.html#tag_xml">Xml</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2010/10/handling-namespaceless-xml-file-with.html&amp;text=Handling%20namespaceless%20XML%20file%20with%20SAX+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2010/10/handling-namespaceless-xml-file-with.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2010/10/handling-namespaceless-xml-file-with.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2010/10/handling-namespaceless-xml-file-with.html&amp;linkname=Handling%20namespaceless%20XML%20file%20with%20SAX+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2010-10-27T22:51:00+09:00</time>
+      (Modified: <time>2010-10-27T22:51:00+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-10-27-handling-namespaceless-xml-file-with.html">_posts/2010-10-27-handling-namespaceless-xml-file-with.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-10-27-handling-namespaceless-xml-file-with.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2010/10/study-for-html5-version-of-browser4two.html" title="Study for #HTML5 version of &quot;browser4two&quot; (the original is #iPad app)" rel="prev">&#x2190;Study for #HTML5 version of &quot;browser4two&quot; (the original is #iPad app)</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2010/10/handling-namespaceless-xml-file-with_29.html" title="Handling namespaceless XML file with SAX (2)" rel="next">Handling namespaceless XML file with SAX (2)&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-10-29</span>
+      <a class="post-link" href="/2010/10/handling-namespaceless-xml-file-with_29.html">Handling namespaceless XML file with SAX (2)</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-03-06</span>
+      <a class="post-link" href="/2010/03/uac-shield-icon-incompatibility-between.html">UAC shield icon incompatibility between Vista and 7</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-03-20</span>
+      <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">inode# is different from NTFS FileRef#</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-08-05</span>
+      <a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-04-13</span>
+      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

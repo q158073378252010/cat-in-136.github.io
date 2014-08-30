@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>[TIPS] WEBrick proxy server with Digest Auth cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2011/07/tips-webrick-proxy-server-with-digest.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="[TIPS] WEBrick proxy server with Digest Auth" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2011/07/tips-webrick-proxy-server-with-digest.html" rel="bookmark">[TIPS] WEBrick proxy server with Digest Auth</a></h1>
+    <p class="meta"><time>2011-07-16T21:30:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>
+Well-known WEBrick proxy server with BASIC auth is as following:
+</p>
+<code><pre class="prettyprint lang-ruby">auth_proc = Proc.new do |req,res|
+  WEBrick::HTTPAuth.proxy_basic_auth(req,res,'proxy') do |user,pass|
+    user == "user" &amp;&amp; pass == "pass"
+  end
+end
+server = WEBrick::HTTPProxyServer.new({
+  :Port => 8080,
+  :ProxyAuthProcess =&gt; auth_proc
+})
+Signal.trap("INT") do server.shutdown end
+server.start
+</pre></code>
+<p>
+But There is not a DIGEST version of <code>proxy_basic_auth()</code> method...
+</p>
+<p>
+Solution: Use <code class="prettyprint lang-ruby">WEBrick::HTTPAuth::ProxyDigestAuth</code>:
+</p>
+<code><pre class="prettyprint lang-ruby">require "webrick"
+require "webrick/httpproxy"
+require "webrick/httpauth/digestauth"
+require "webrick/httpauth/basicauth"
+require "webrick/httpauth/userdb"
+
+userdb = Hash.new
+userdb.extend(WEBrick::HTTPAuth::UserDB)
+userdb.auth_type = WEBrick::HTTPAuth::ProxyDigestAuth # or WEBrick::HTTPAuth::ProxyBasicAuth
+userdb.set_passwd("realm", "user", "pass")
+authenticator = userdb.auth_type.new({
+     :Realm =&gt; "realm",
+     :UserDB =&gt; userdb,
+     :Algorithm =&gt; "MD5",
+})
+
+auth_proc = Proc.new do |req,res|
+    authenticator.authenticate(req, res)
+end
+server = WEBrick::HTTPProxyServer.new({
+  :Port => 8080,
+  :ProxyAuthProcess =&gt; auth_proc
+})
+Signal.trap("INT") do server.shutdown end
+server.start
+</pre></code>
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_ruby">Ruby</a>
+      
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2011/07/tips-webrick-proxy-server-with-digest.html&amp;text=[TIPS]%20WEBrick%20proxy%20server%20with%20Digest%20Auth+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2011/07/tips-webrick-proxy-server-with-digest.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2011/07/tips-webrick-proxy-server-with-digest.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2011/07/tips-webrick-proxy-server-with-digest.html&amp;linkname=[TIPS]%20WEBrick%20proxy%20server%20with%20Digest%20Auth+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2011-07-16T21:30:00+09:00</time>
+      (Modified: <time>2011-07-16T21:30:11+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-07-16-tips-webrick-proxy-server-with-digest.html">_posts/2011-07-16-tips-webrick-proxy-server-with-digest.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-07-16-tips-webrick-proxy-server-with-digest.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2011/07/diff-of-firefox60b-default-preference.html" title="Diff of firefox6.0b default preference and firefox5.0" rel="prev">&#x2190;Diff of firefox6.0b default preference and firefox5.0</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2011/08/unicode.html" title="サンマルクカフェのアキュート付きの&quot;ェ&quot;をUnicodeで再現しようとしたが失敗した" rel="next">サンマルクカフェのアキュート付きの&quot;ェ&quot;をUnicodeで再現しようとしたが失敗した&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2014-04-27</span>
+      <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">C言語の構造体を構造分析したい〜静的解析としての doxygen</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-11-05</span>
+      <a class="post-link" href="/2012/11/twitter-api.html">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2013-11-26</span>
+      <a class="post-link" href="/2013/11/define.html">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

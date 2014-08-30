@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>小うるさい端末 chatty ――を zsh で。 cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io//2013/11/chatty-zsh.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="小うるさい端末 chatty ――を zsh で。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://3.bp.blogspot.com/-klo7sXvXtMc/Um0uFwQsc2I/AAAAAAAAAYY/CvrGvZrXzGk/s72-c/zle-chatty.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2013/11/chatty-zsh.html" rel="bookmark">小うるさい端末 chatty ――を zsh で。</a></h1>
+    <p class="meta"><time>2013-11-01T00:30:00+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <h3>動機づけ</h3>
+
+<blockquote cite="http://0xcc.net/chatty/">
+<p>
+chatty はユーザが入力した文字列に応じて端末のタイトルバーに 小うるさいメッセージを表示するソフトウェアです。
+</p>
+</blockquote>
+
+<p>という<a href="http://0xcc.net/chatty/" title="chatty: 小うるさい端末">代物</a>があるのだが、<strong>zsh 単独でやってみたい</strong>。</p>
+
+
+<figure style="display: block; margin: 1em; text-align: center;">
+<a href="http://3.bp.blogspot.com/-klo7sXvXtMc/Um0uFwQsc2I/AAAAAAAAAYY/CvrGvZrXzGk/s1600/zle-chatty.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="http://3.bp.blogspot.com/-klo7sXvXtMc/Um0uFwQsc2I/AAAAAAAAAYY/CvrGvZrXzGk/s400/zle-chatty.png" style="border: none 0;" width="400" height="117" /></a>
+<figcaption>zsh で chatty 動作イメージ</figcaption>
+</figure>
+
+<h3>表示領域</h3>
+
+<p><a href="http://0xcc.net/chatty/" title="chatty: 小うるさい端末">本家 chatty</a> は、複雑な処理となる端末エミュレーションを嫌った結果なのか、
+小うるさいメッセージはタイトルバーに表示される。</p>
+
+<p>しかし、端末エミュレータをいじっている時にタイトルバーを見ることは稀だと思う。
+小うるさい感を出すためには、ユーザが入力している近傍に小うるさいメッセージを出したほうが良いであろう。</p>
+
+<p><abbr title="Zsh Line Editor">zle</abbr>では、
+コマンド入力行のすぐ下にメッセージを表示するコマンド<code>zle -M "..."</code>が用意されているので、これを使うことにする。</p>
+
+<p>例えば、<a href="http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Special-Widgets" title="'The Z Shell Manual' sub-clause 18.5.1 Special Widgets">zsh のマニュアルのZLEの章</a>にあるように下記のようにすると、</p>
+
+<pre class="pretty-print"><code>zle-isearch-update() { zle -M "Line $HISTNO"; }
+zle -N zle-isearch-update
+zle-isearch-exit() { zle -M ""; }
+zle -N zle-isearch-exit
+</code></pre>
+
+<p>インクリメンタルサーチ時に下に行数<code>"Line $HISTNO"</code>が表示される。</p>
+
+<pre style="padding: 2px; background-color: #000; color: #fff;"><code>[cat@localhost /tmp]$ <u>net</u>stat -altup
+bck-i-search: net_
+Line 284
+</code></pre>
+
+<h3>辞書</h3>
+
+<p>辞書化することも考えたが<strong>面倒くさくなったのでやめた</strong>。
+現状 <code>if</code>/<code>elif</code> の連なりというひどく固定的なコードになっている。</p>
+
+<h3>コード</h3>
+
+<p>で、<code>self-insert</code>, <code>magic-space</code>, <code>backward-delete-char</code>, <code>delete-char-or-list</code> をホックして、
+そのときの入力コマンド(<code>$BUFFER</code>)を毎度条件判定してメッセージを表示するという方法に至った。</p>
+
+<pre class="prettyprint"><code># chatty: 小うるさい端末 のzsh版 
+#
+# 元ネタ：http://0xcc.net/chatty/
+# 
+# Usage:
+#     autoload chatty-on
+#     chatty-on              
+#
+
+chatty-on() {
+  zle -N self-insert          chatty-self-insert
+  zle -N magic-space          chatty-magic-space
+  zle -N backward-delete-char chatty-backward-delete-char
+  zle -N delete-char-or-list  chatty-delete-char-or-list
+  return 0
+}
+chatty-off() {
+  zle -A .self-insert          self-insert
+  zle -A .magic-space          magic-space
+  zle -A .backward-delete-char backward-delete-char
+  zle -A .delete-char-or-list  delete-char-or-list
+  return 0
+}
+
+chatty-self-insert() {
+  zle .$WIDGET "$@"
+  chatty-info
+}
+chatty-magic-space() {
+  zle .$WIDGET "$@"
+  chatty-info
+}
+chatty-backward-delete-char() {
+  zle .$WIDGET "$@"
+  chatty-info
+}
+chatty-delete-char-or-list() {
+  zle .$WIDGET "$@"
+  chatty-info
+}
+
+chatty-info() {
+  if [[ "$BUFFER" =~ "^ *man ?$" ]]; then
+    zle -M "google使えよ"
+  elif [[ "$BUFFER" =~ "^ *mail ?$" ]]; then
+    zle -M "仕事しないでメールばっかり"
+  elif [[ "$BUFFER" =~ "^ *more ?$" ]]; then
+    zle -M "まだこんなコマンドあったのか"
+  elif [[ "$BUFFER" =~ "^ *reboot ?$" ]]; then
+    zle -M "面倒なトラブルは再起動で解決"
+  elif [[ "$BUFFER" =~ "^ *vi ?$" ]]; then
+    zle -M "emacsは嫌いなのね"
+  elif [[ "$BUFFER" =~ "^ *vim ?$" ]]; then
+    zle -M "お〜れだっけ V.I.M. &lt;http://www.taiyaki.org/misc/vim/&gt;"
+  elif [[ "$BUFFER" =~ "^ *sudo ?$" ]]; then
+    zle -M "他人のメールでも見るんでしょ〜"
+  elif [[ "$BUFFER" =~ "^ *vipw ?$" ]]; then
+    zle -M "rootの雑用ご苦労さま"
+  elif [[ "$BUFFER" =~ "^ *w3m ?$" ]]; then
+    zle -M "仕事中に目立たずネットサーフィンするのだ"
+  elif [[ "$BUFFER" =~ "^ *find ?$" ]]; then
+    zle -M "ファイルってすぐどっかいっちゃうんだよね"
+  elif [[ "$BUFFER" =~ "^ *telnet ?$" ]]; then
+    zle -M "余所の計算機に不正侵入しちゃいまーす"
+  elif [[ "$BUFFER" =~ "^ *xman ?$" ]]; then
+    zle -M "うげ。まだこんなのあったのか"
+  elif [[ "$BUFFER" =~ "^ *killall ?$" ]]; then
+    zle -M "皆殺し大好き"
+  elif [[ "$BUFFER" =~ "^ *./configure ?$" ]]; then
+    zle -M "途中でこけたりして"
+  elif [[ "$BUFFER" =~ "^ *#jet ?$" ]]; then
+    zle -M "jet氏のメッセージ"
+  elif [[ "$BUFFER" =~ "^ *make ?$" ]]; then
+    zle -M "ソースからビルドかよ"
+  elif [[ "$BUFFER" =~ "^ *rm -f ?$" ]]; then
+    zle -M "実は大切なファイルだったりして..."
+  elif [[ "$BUFFER" =~ "^ *rpm ?$" ]]; then
+    zle -M "バイナリで手抜きかよ"
+  elif [[ "$BUFFER" =~ "^ *ssh ?$" ]]; then
+    zle -M "隠しごとかよ"
+  elif [[ "$BUFFER" =~ "^ *pwd ?$" ]]; then
+    zle -M "今いる場所ぐらい覚えとけよ"
+  elif [[ "$BUFFER" =~ "^ *emacs ?$" ]]; then
+    zle -M "やっぱりお前もAの横のCapsLock死ねとか思ってるの?"
+  elif [[ "$BUFFER" =~ "^ *gimp ?$" ]]; then
+    zle -M "失敗した写真の修正?"
+  elif [[ "$BUFFER" =~ "^ *kill ?$" ]]; then
+    zle -M "ひでーやつだ"
+  elif [[ "$BUFFER" =~ "^ *less ?$" ]]; then
+    zle -M "むしろ動体視力鍛えてcatでしょ"
+  elif [[ "$BUFFER" =~ "^ *ls ?$" ]]; then
+    zle -M "cdの後のそれは癖なんか?"
+  else
+    # clear
+    zle -M ""
+  fi
+}
+
+# Handle zsh autoloading conventions
+chatty-on "$@"
+</code></pre>
+
+<p>使い方は <code>chatty-on</code> というファイル名で <code>/usr/share/zsh/site-functions</code> (などの<code>$fpath</code>が通っているフォルダ)に置いた上で、下記を実行する。</p>
+
+<pre style="padding: 2px; background-color: #000; color: #fff;"><code>% autoload chatty-on
+% chatty-on
+</code></pre>
+
+<p>ただし、お試しとして使うために <code>$fpath</code>が通っているフォルダに置きたくない場合は、
+下記でもよい。</p>
+
+<pre style="padding: 2px; background-color: #000; color: #fff;"><code>% source /path/to/chatty-on
+% chatty-on
+</code></pre>
+
+<h3>参考文献</h3>
+
+<ul>
+<li><a href="http://0xcc.net/chatty/" title="chatty: 小うるさい端末">chatty: 小うるさい端末</a>, 0xcc.net</li>
+</ul>
+
+
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_zsh">Zsh</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io//2013/11/chatty-zsh.html&amp;text=%E5%B0%8F%E3%81%86%E3%82%8B%E3%81%95%E3%81%84%E7%AB%AF%E6%9C%AB%20chatty%20%E2%80%95%E2%80%95%E3%82%92%20zsh%20%E3%81%A7%E3%80%82+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io//2013/11/chatty-zsh.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io//2013/11/chatty-zsh.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io//2013/11/chatty-zsh.html&amp;linkname=%E5%B0%8F%E3%81%86%E3%82%8B%E3%81%95%E3%81%84%E7%AB%AF%E6%9C%AB%20chatty%20%E2%80%95%E2%80%95%E3%82%92%20zsh%20%E3%81%A7%E3%80%82+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2013-11-01T00:30:00+09:00</time>
+      (Modified: <time>2013-11-03T22:06:55+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-11-01-chatty-zsh.html">_posts/2013-11-01-chatty-zsh.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-11-01-chatty-zsh.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2013/10/blog-post.html" title="デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト" rel="prev">&#x2190;デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</a>
+    
+  </div>
+  <div class="next-post">
+    
+    <a href="/2013/11/this-is-difference-between-default.html" title="Diff between firefox 26.0 beta 5 default preference and firefox 25.0" rel="next">Diff between firefox 26.0 beta 5 default preference and firefox 25.0&#x2192;</a>
+    
+  </div>
+</nav>
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-05-19</span>
+      <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2012-09-23</span>
+      <a class="post-link" href="/2012/09/gr-sakura-linux-comusb.html">（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
