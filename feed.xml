@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 06 Sep 2014 15:36:13 +0900</pubDate>
-    <lastBuildDate>Sat, 06 Sep 2014 15:36:13 +0900</lastBuildDate>
+    <pubDate>Sat, 06 Sep 2014 15:39:04 +0900</pubDate>
+    <lastBuildDate>Sat, 06 Sep 2014 15:39:04 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -40,7 +40,7 @@ Atom 形式で&lt;a href=&quot;https://support.google.com/blogger/answer/97416?h
 &lt;li&gt;転居先をページ内に表示&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;[かつて auto redirect で失敗](/2013/12/blogger-cookie-javascript.html)
+&lt;p&gt;&lt;a href=&quot;/2013/12/blogger-cookie-javascript.html&quot;&gt;かつて auto redirect で失敗&lt;/a&gt;
 したことがあった経緯などを考えて、安直に後者とした。&lt;/p&gt;
 
 &lt;p&gt;具体的には HTML/JavaScript のウィジットで下記を表示するようにした。&lt;/p&gt;
