@@ -5,9 +5,102 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 06 Sep 2014 13:51:29 +0900</pubDate>
-    <lastBuildDate>Sat, 06 Sep 2014 13:51:29 +0900</lastBuildDate>
+    <pubDate>Sat, 06 Sep 2014 15:36:13 +0900</pubDate>
+    <lastBuildDate>Sat, 06 Sep 2014 15:36:13 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Jekyll移行メモ</title>
+        <description>&lt;p&gt;Blogger から Jekyll (Github pages) に移行したときのメモ。&lt;/p&gt;
+
+&lt;h3&gt;Bloggerからの取り込み&lt;/h3&gt;
+
+&lt;p&gt;Blogger からは設定→その他→ブログツール→ブログをエクスポート
+Atom 形式で&lt;a href=&quot;https://support.google.com/blogger/answer/97416?hl=ja&quot; title=&quot;ブログをエクスポートまたはインポートする - Blogger ヘルプ&quot;&gt;ブログのデータが取り出せる&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;あとは jekyll-import を使って &lt;code&gt;./_posts/&lt;/code&gt; フォルダへインポートできる&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% jekyll-import blogger --source path/to/blog-08-31-2014.xml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;と思ったが、そもそも jekyll-import が blogger 対応していなかったので
+それに対応させるため &lt;a href=&quot;https://github.com/jekyll/jekyll-import/pull/162&quot; title=&quot;Add Blogger (blogspot.com) importer by cat-in-136 · Pull Request #162 · jekyll/jekyll-import&quot;&gt;blogger importer の開発&lt;/a&gt;が必要になってしまった。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll-import/pull/162&quot; title=&quot;Add Blogger (blogspot.com) importer by cat-in-136 · Pull Request #162 · jekyll/jekyll-import&quot;&gt;Blogger importer&lt;/a&gt;のプルリクエストがマージされたならば、
+上に示したようなコマンドを叩くだけでインポートできるようになるはずだ。
+（それまでは gem を自分でビルドしてインストールするなどすること。）&lt;/p&gt;
+
+&lt;h3&gt;転居元の施策&lt;/h3&gt;
+
+&lt;p&gt;Blogger には、独自ドメインを取っているときは打開策がいくつかありそうだが、
+そうじゃない場合は下記のふたつのいずれかで転居先を示すしかないようだ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;meta redirect&lt;/li&gt;
+&lt;li&gt;転居先をページ内に表示&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[かつて auto redirect で失敗](/2013/12/blogger-cookie-javascript.html)
+したことがあった経緯などを考えて、安直に後者とした。&lt;/p&gt;
+
+&lt;p&gt;具体的には HTML/JavaScript のウィジットで下記を表示するようにした。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;
+This blog has moved to github page (&amp;lt;a href=&quot;http://cat-in-136.github.io/&quot;&amp;gt;http://cat-in-136.github.io/&amp;lt;/a&amp;gt;).
+&amp;lt;script&amp;gt;
+(function (){
+  var oLink = document.querySelector(&quot;link[rel=canonical]&quot;);
+  if (oLink) {
+    var canoUrl = oLink.getAttribute(&quot;href&quot;);
+    if (canoUrl != &quot;http://cat-in-136.github.io/&quot;) {
+      document.writeln(&quot;&amp;lt;br /&amp;gt;&quot; + &quot;The content would be available at new blog site&quot;.link(canoUrl));
+    }
+  }
+})();
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;なお、&lt;code&gt;link[rel=canonical]&lt;/code&gt;は、下記のような JavaScript で生成するコードを入れている。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;script&amp;gt;
+document.writeln(&quot;&amp;lt;link href=&#39;&quot; + location.href.replace(location.host + &quot;/&quot;, &quot;cat-in-136.github.io/&quot;) +&quot;&#39; rel=&#39;canonical&#39;/&amp;gt;&quot;);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このようなことをするため記事のパーマリンクは Blogger と合わせた
+&lt;code&gt;/:year/:month/:title.html&lt;/code&gt; としている。
+そうすることで、上に示したように、ドメインを記事ページのURLに対してドメイン名を変えるだけの処理で済む。&lt;/p&gt;
+
+&lt;p&gt;コンテンツのコピーが共存すると Google によってコピーサイトペナルティを
+移転先が喰らいやすいというリスクはあるが、
+ここは幸いにも過疎ブログなので失うものは極めて少ないので
+細かいことは考えない。&lt;/p&gt;
+
+&lt;h3&gt;DISQUS&lt;/h3&gt;
+
+&lt;p&gt;コメント欄の移行は &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; に移行した。
+Blogger からのインポートした後にドメインを &lt;code&gt;cat-in-136.blogspot.com&lt;/code&gt; →
+&lt;code&gt;cat-in-136.github.io&lt;/code&gt; と変えただけ。&lt;/p&gt;
+
+&lt;p&gt;記事のパーマリンクを Blogger と合わせた
+&lt;code&gt;/:year/:month/:title.html&lt;/code&gt; としたお陰でこれだけでよい。&lt;/p&gt;
+
+&lt;p&gt;なお、本ブログのソースコードでパット見トラッキングコードの類はまったく
+ないように見えると思うが、
+disqus ウィジットの iframe 中からの読み込みで ssl.google-analysis.com への接続がある。
+（しかし disqus のトラッキングコードなので筆者はトラッキングの傾向は
+見れない）&lt;/p&gt;
+</description>
+        <pubDate>Sat, 06 Sep 2014 15:34:30 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/09/move-to-jekyll.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/09/move-to-jekyll.html</guid>
+        
+        <category>blogger</category>
+        
+        <category>jekyll</category>
+        
+        
+      </item>
     
       <item>
         <title>Hello github page, Goodbye blogger. this blog has moved to github.io!</title>
@@ -1025,288 +1118,6 @@ table.diff_firefox29_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</title>
-        <description>&lt;aside&gt;
-&lt;div style=&quot;background: #ffd; border: solid 3px #ff8&quot;&gt;
-この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
-必要です
-もし数式部分が読めない場合は
-&lt;a href=&quot;http://getfirefox.com/&quot;&gt;Firefoxをインストールする&lt;/a&gt;か
-&lt;button onclick=&quot;var a=document.createElement(&amp;quot;script&amp;quot;);a.setAttribute(&amp;quot;type&amp;quot;,&amp;quot;application/javascript&amp;quot;);a.setAttribute(&amp;quot;src&amp;quot;,&amp;quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;);document.body.appendChild(a);&quot;&gt;このボタンをクリックしてMathJaxを使って無理矢理表示する&lt;/button&gt;
-などしてください。
-&lt;/div&gt;
-&lt;/aside&gt;
-
-&lt;p&gt;&lt;a href=&quot;/2014/03/bezier-1-kappa.html&quot; title=&quot;ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?&quot;&gt;ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?&lt;/a&gt;から始まり
-ベジェ曲線で描く円の誤差について
-&lt;a href=&quot;/2014/03/bezier-2-diff.html&quot; title=&quot;ベジェ曲線で描く円と真円の差について&quot;&gt;ベジェ曲線で描く円と真円の差について&lt;/a&gt;
-にて議論した。
-次に、ドローソフトで一般的な中心角90度に注目し、これを一般化したのが
-&lt;a href=&quot;/2014/03/bezier-3-general-theta.html&quot; title=&quot;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&quot;&gt;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&lt;/a&gt;
-ということであった。&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://3.bp.blogspot.com/-T1VKk8CM4-U/UxNHKka1koI/AAAAAAAAAbM/cunB--Rx770/s1600/generic-theta-tile.png&quot; imageanchor=&quot;1&quot; &gt;&lt;img border=&quot;0&quot; src=&quot;http://3.bp.blogspot.com/-T1VKk8CM4-U/UxNHKka1koI/AAAAAAAAAbM/cunB--Rx770/s320/generic-theta-tile.png&quot; width=&quot;320&quot; height=&quot;320&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;しかし&lt;a href=&quot;/2014/03/bezier-3-general-theta.html&quot; title=&quot;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&quot;&gt;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&lt;/a&gt;では、
-中心角の大きさとベジェ曲線で描く円と真円の誤差の関係について定式化をしていなかった。
-これは数式の途中式が複雑だったら投げ出していたのだが、
-改めて&lt;a href=&quot;http://maxima.sourceforge.net/&quot; title=&quot;Maxima, a Computer Algebra System&quot;&gt;maxima&lt;/a&gt;使って解いてみるとシンプルにまとまった。&lt;/p&gt;
-
-&lt;h4&gt;制御点の位置&lt;/h4&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://1.bp.blogspot.com/-Ezck2skyk_Q/UxNGvjn5wWI/AAAAAAAAAbA/2iJvsXMKoJY/s1600/generic-kappa.png&quot; imageanchor=&quot;1&quot; &gt;&lt;img border=&quot;0&quot; src=&quot;http://1.bp.blogspot.com/-Ezck2skyk_Q/UxNGvjn5wWI/AAAAAAAAAbA/2iJvsXMKoJY/s1600/generic-kappa.png&quot; alt=&quot;135degree arc using Bézier&quot; width=&quot;262&quot; height=&quot;302&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;&lt;a href=&quot;/2014/03/bezier-3-general-theta.html&quot; title=&quot;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&quot;&gt;前回&lt;/a&gt;とかぶるがまずは制御点の位置、要するに&lt;var&gt;&amp;#x03BA;&lt;/var&gt;を求める。&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}&#39;3u(1-u)^2+\bm{B}&#39;3u^2(1-u)+\bm{B}u^3&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;&lt;mo&gt;&amp;#x2061;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}&#39;3u(1-u)^2+\bm{B}&#39;3u^2(1-u)+\bm{B}u^3&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(4.1)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\begin{aligned}
-\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
-\text{B:}&amp;amp;(1,0)\\
-\text{A&#39;:}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
-\text{B&#39;:}&amp;amp;(1,\kappa)\\
-\end{aligned}&quot;&gt;&lt;semantics&gt;&lt;mtable columnspacing=&quot;0em&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A&#39;:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B&#39;:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\begin{aligned}
-\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
-\text{B:}&amp;amp;(1,0)\\
-\text{A&#39;:}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
-\text{B&#39;:}&amp;amp;(1,\kappa)\\
-\end{aligned}
-&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(4.2)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;このベジェ曲線の定義(4.1)式に、座標(4.2)を代入して
-x座標成分&lt;code&gt;Px(u)&lt;/code&gt;と&lt;code&gt;Py(u)&lt;/code&gt;を求める。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i1) &lt;kbd&gt;P(u):=A*(1-u)^3+Ac*3*u*(1-u)^2+Bc*3*u^2*(1-u)+B*u^3;&lt;/kbd&gt;
-                          3                 2         2              3
-(%o1)    P(u) := A (1 - u)  + Ac 3 u (1 - u)  + Bc 3 u  (1 - u) + B u
-(%i2) &lt;kbd&gt;Px(u):=sublis([A = cos(theta),B = 1,Ac = cos(theta)+k*sin(theta),Bc = 1],P(u));&lt;/kbd&gt;
-(%o2) Px(u) := sublis([A = cos(theta), B = 1, Ac = cos(theta) + k sin(theta), 
-                                                                 Bc = 1], P(u))
-(%i3) &lt;kbd&gt;Py(u):=sublis([A = sin(theta),B = 0,Ac = sin(theta)-k*cos(theta),Bc = k],P(u));&lt;/kbd&gt;
-(%o3) Py(u) := sublis([A = sin(theta), B = 0, Ac = sin(theta) - k cos(theta), 
-                                                                 Bc = k], P(u))
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;ベジェ曲線の中間点&lt;var&gt;u&lt;/var&gt;=1/2に注目して&lt;var&gt;&amp;#x03BA;&lt;/var&gt;の値を得る。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i4) &lt;kbd&gt;solve([Px(1/2) = cos(theta/2)],k);&lt;/kbd&gt;
-                                                theta
-                           4 cos(theta) - 8 cos(-----) + 4
-                                                  2
-(%o4)               [k = - -------------------------------]
-                                    3 sin(theta)
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここからmaximaは簡略化がたいして出来ないのであるが、
-&lt;code&gt;theta/4&lt;/code&gt;を使うことを明示的に指示すれば簡略化ができることに気づいた。
-つまり&lt;code&gt;theta/4&lt;/code&gt;を明示的に他の変数&lt;code&gt;t&lt;/code&gt;に書き換えた上で簡略化を指示した。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i5) &lt;kbd&gt;sublis([theta = 4*t],%);&lt;/kbd&gt;
-                             4 cos(4 t) - 8 cos(2 t) + 4
-(%o5)                 [k = - ---------------------------]
-                                     3 sin(4 t)
-(%i6) &lt;kbd&gt;trigsimp(%),trigexpand;&lt;/kbd&gt;
-                                     4 sin(t)
-(%o6)                           [k = --------]
-                                     3 cos(t)
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;これより、&amp;#x03BA;の値が求まった。&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B7;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;tan&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(4.3)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4&gt;ベジェ曲線で描く円と真円の差、一般化。&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;/2014/03/bezier-2-diff.html&quot; title=&quot;ベジェ曲線で描く円と真円の差について&quot;&gt;ベジェ曲線で描く円と真円の差について&lt;/a&gt;と同じように解く、力技で。&lt;/p&gt;
-
-&lt;p&gt;ベジェ曲線の近似円弧の半径方向の大きさ&lt;code&gt;Pp(u)&lt;/code&gt;は：&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i7) &lt;kbd&gt;Pp(u):=Px(u)^2+Py(u)^2;&lt;/kbd&gt;
-                                      2        2
-(%o7)                      Pp(u) := Px (u) + Py (u)
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;これを&lt;var&gt;&amp;#x03B8;&lt;/var&gt;=90度で計算したときと同様に微分=0の式を立てる。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i8) &lt;kbd&gt;diff(sublis([k = 4/3*tan(theta/4)],Pp(u)),u) = 0$&lt;/kbd&gt;
-(%i9) &lt;kbd&gt;sublis([theta = 4*t],%);&lt;/kbd&gt;
-              4 tan(t) sin(4 t)
-(%o9) 2 (- 6 (----------------- + cos(4 t)) (1 - u) u + 6 (1 - u) u
-                      3
-      4 tan(t) sin(4 t)                    2                     2
- + 3 (----------------- + cos(4 t)) (1 - u)  - 3 cos(4 t) (1 - u) )
-              3
-   3              2      4 tan(t) sin(4 t)                    2
- (u  + 3 (1 - u) u  + 3 (----------------- + cos(4 t)) (1 - u)  u
-                                 3
-                   3                   2
- + cos(4 t) (1 - u) ) + 2 (- 4 tan(t) u
-                 4 tan(t) cos(4 t)
- - 6 (sin(4 t) - -----------------) (1 - u) u + 8 tan(t) (1 - u) u
-                         3
-                 4 tan(t) cos(4 t)         2                     2
- + 3 (sin(4 t) - -----------------) (1 - u)  - 3 sin(4 t) (1 - u) )
-                         3
-                    2                 4 tan(t) cos(4 t)         2
- (4 tan(t) (1 - u) u  + 3 (sin(4 t) - -----------------) (1 - u)  u
-                                              3
-                   3
- + sin(4 t) (1 - u) ) = 0
-(%i10) &lt;kbd&gt;trigsimp(trigexpand(%));&lt;/kbd&gt;
-                 6     5          6     4          6     3          6     2
-(%o10) - (384 sin (t) u  - 960 sin (t) u  + 832 sin (t) u  - 288 sin (t) u
-                                                      6           2
-                                              + 32 sin (t) u)/(sin (t) - 1) = 0
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;なお、&lt;code&gt;(%o8)&lt;/code&gt;はあまりにも長いので出力を省略した。
-ともあれこちらについても
-&lt;code&gt;theta/4&lt;/code&gt;を明示的に他の変数&lt;code&gt;t&lt;/code&gt;に書き換えた上で簡略化を指示することで
-かなり式が簡単になっていると思う。&lt;/p&gt;
-
-&lt;p&gt;これを解くと&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i11) &lt;kbd&gt;solve(%,u);&lt;/kbd&gt;
-                       1        sqrt(3) - 3      sqrt(3) + 3
-(%o11)     [u = 1, u = -, u = - -----------, u = -----------, u = 0]
-                       2             6                6
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;この解のうち、&lt;var&gt;u&lt;/var&gt;=0,1/2,0 は、ベジェ曲線の位置と円が一致するところであり&lt;code&gt;Pp(u)&lt;/code&gt;が極小（最小）値となるのである。
-極大値をとる&lt;var&gt;u&lt;/var&gt;は以下の２つである。&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;u=\frac{3\pm \sqrt{3}\,}{6}=\frac{1}{2}\pm\frac{\sqrt{3}\,}{6}&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x00B1;&lt;/mo&gt;&lt;msqrt&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msqrt&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B1;&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;msqrt&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msqrt&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;u=\frac{3\pm \sqrt{3}\,}{6}=\frac{1}{2}\pm\frac{\sqrt{3}\,}{6}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(4.4)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;これは&lt;a href=&quot;/2014/03/bezier-2-diff.html&quot; title=&quot;ベジェ曲線で描く円と真円の差について&quot;&gt;ベジェ曲線で描く円と真円の差について&lt;/a&gt;の(2.7)式と完全に同一であり、
-ベジェ曲線で描く円と真円の差が最大となる位置に中心角&lt;var&gt;&amp;#x03B8;&lt;/var&gt;が依存していない
-ことがいま示された。&lt;/p&gt;
-
-&lt;p&gt;そして最大値を求めるには、このときの&lt;code&gt;Pp(u)&lt;/code&gt;の値であるからにして：&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i12) &lt;kbd&gt;sublis([k = 4/3*tan(theta/4),u = (sqrt(3)+3)/6],Pp(u))$&lt;/kbd&gt;
-(%i13) trigsimp(trigexpand(sublis([theta = 4*t],%))),factor;
-                            2               2        2
-                        (sin (t) + 3) (2 sin (t) - 3)
-(%o13)                  ------------------------------
-                                        2
-                                  27 cos (t)
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;すなわち最大値は：&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\left\|\bm{P}\left(\frac{1}{2}\pm\frac{\sqrt{3}}{6}\right)\right\|=\sqrt{\frac{\left(\sin ^2\frac{\theta}{4}+3\right)\left(2\sin ^2\frac{\theta}{4}-3\right)^2}{{27 \cos ^2\frac{\theta}{4}}}\,}&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mo&gt;&amp;#x2016;&lt;/mo&gt;&lt;mrow&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B1;&lt;/mo&gt;&lt;mfrac&gt;&lt;msqrt&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msqrt&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;#x2016;&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;msqrt&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mo rspace=&quot;0em&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mrow&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mo rspace=&quot;0em&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mrow&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;27&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mo rspace=&quot;0em&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mspace width=&quot;thinmathspace&quot;&gt;&lt;/mspace&gt;&lt;/mrow&gt;&lt;/sqrt&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\left\|\bm{P}\left(\frac{1}{2}\pm\frac{\sqrt{3}}{6}\right)\right\|=\sqrt{\frac{\left(\sin ^2\frac{\theta}{4}+3\right)\left(2\sin ^2\frac{\theta}{4}-3\right)^2}{{27 \cos ^2\frac{\theta}{4}}}\,}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(4.5)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;なお、中心角90度について求めると、
-&lt;a href=&quot;/2014/03/bezier-2-diff.html&quot; title=&quot;ベジェ曲線で描く円と真円の差について&quot;&gt;ベジェ曲線で描く円と真円の差について&lt;/a&gt;の(2.8)式と同一の結果が得られるので
-確かに一般化した式であるとわかる。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i14) &lt;kbd&gt;limit((%o13), t, %pi/2/4)$&lt;/kbd&gt;
-(%i15) float(sqrt(%));
-(%o15)                         1.000272530007428
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;さて、(4.5)式をグラフ化する。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i16) &lt;kbd&gt;deg_to_rad(d) := %pi * d / 180$&lt;/kbd&gt;
-(%i17) &lt;kbd&gt;plot2d(sublis([theta=deg_to_rad(theta)], limit(sqrt(%o13), t, theta/4)),
-       [theta, 0, 270], [ylabel, &quot;Pmax&quot;])$&lt;/kbd&gt;
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://4.bp.blogspot.com/-n6MVqiqD7G0/UypMUJfGiyI/AAAAAAAAAbo/V3k4mdgmsvQ/s1600/diff-general-Pmax-theta.png&quot; &gt;&lt;img src=&quot;http://4.bp.blogspot.com/-n6MVqiqD7G0/UypMUJfGiyI/AAAAAAAAAbo/V3k4mdgmsvQ/s1600/diff-general-Pmax-theta.png&quot; width=&quot;467&quot; height=&quot;251&quot; /&gt;&lt;/a&gt;
-&lt;figcaption&gt;(4.5)式の図示&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;なおここで、0〜270度しかプロットしていないのは、360度までプロットすると無限大に発散してしまうからである。&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i18) &lt;kbd&gt;limit((%o13), t, 2*%pi/4);&lt;/kbd&gt;
-(%o18)                                    inf
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;単調増加で中心角が増えると急激に1から離れていく様子がわかる。
-前回
-&lt;a href=&quot;/2014/03/bezier-3-general-theta.html&quot; title=&quot;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&quot;&gt;ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&lt;/a&gt;
-といったが、これは&lt;strong&gt;撤回、
-実際にどこまで誤差を認めるかをベースに考えるのが良さそう&lt;/strong&gt;だ。&lt;/p&gt;
-
-&lt;style type=&quot;text/css&quot; scoped=&quot;scoped&quot;&gt;&lt;!--
-.maxima-output {
-  background-color: #fff;
-  color: #000;
-  font-size: smaller;
-  border: solid 1px #888;
-}
-.maxima-output kbd {
-  color: #008;
-}
---&gt;&lt;/style&gt;
-</description>
-        <pubDate>Wed, 26 Mar 2014 08:00:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/03/bezier-4-diff.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/03/bezier-4-diff.html</guid>
-        
-        <category>math</category>
-        
-        <category>bézier</category>
         
         
       </item>
