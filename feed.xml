@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 06 Sep 2014 15:39:04 +0900</pubDate>
-    <lastBuildDate>Sat, 06 Sep 2014 15:39:04 +0900</lastBuildDate>
+    <pubDate>Wed, 10 Sep 2014 22:10:42 +0900</pubDate>
+    <lastBuildDate>Wed, 10 Sep 2014 22:10:42 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -76,6 +76,37 @@ document.writeln(&quot;&amp;lt;link href=&#39;&quot; + location.href.replace(loc
 ここは幸いにも過疎ブログなので失うものは極めて少ないので
 細かいことは考えない。&lt;/p&gt;
 
+&lt;ins date=&quot;2014-09-10T22:00:00+09:00&quot;&gt;
+&lt;p&gt;
+と書いたものの2014-09-10現在、うまくいっているようである。
+すなわち JavaScript で生成された link[rel=canonical] を Google のクローラはうまくフォローしている模様。
+&lt;/p&gt;
+
+&lt;p&gt;
+より link[rel=canonical] をうまく追跡するために、Blogger に入れているテンプレートを
+下記の通りとし、記事ページ以外についてもそれなりに対応するページヘの
+link[rel=canonical] を入れるようにした。
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;b:if cond=&#39;data:blog.pageType == &amp;amp;quot;index&amp;amp;quot;&#39;&amp;gt;
+  &amp;lt;link href=&#39;http://cat-in-136.github.io/&#39; rel=&#39;canonical&#39;/&amp;gt;
+  &amp;lt;meta content=&#39;http://cat-in-136.github.io/&#39; property=&#39;og:url&#39;/&amp;gt;
+&amp;lt;/b:if&amp;gt;
+&amp;lt;b:if cond=&#39;data:blog.pageType == &amp;amp;quot;archive&amp;amp;quot;&#39;&amp;gt;
+  &amp;lt;link href=&#39;http://cat-in-136.github.io/archive.html&#39; rel=&#39;canonical&#39;/&amp;gt;
+  &amp;lt;meta content=&#39;http://cat-in-136.github.io/archive.html&#39; property=&#39;og:url&#39;/&amp;gt;
+&amp;lt;/b:if&amp;gt;
+&amp;lt;b:if cond=&#39;data:blog.pageType == &amp;amp;quot;item&amp;amp;quot;&#39;&amp;gt;
+  &amp;lt;script&amp;gt;
+    document.writeln(&amp;amp;quot;&amp;lt;link href=&#39;&amp;amp;quot; + location.href.replace(location.host + &amp;amp;quot;/&amp;amp;quot;, &amp;amp;quot;cat-in-136.github.io/&amp;amp;quot;) +&amp;amp;quot;&#39; rel=&#39;canonical&#39;/&amp;gt;&amp;amp;quot;);
+    document.writeln(&amp;amp;quot;&amp;lt;meta content=&#39;&amp;amp;quot; + location.href.replace(location.host + &amp;amp;quot;/&amp;amp;quot;, &amp;amp;quot;cat-in-136.github.io/&amp;amp;quot;) +&amp;amp;quot;&#39; property=&#39;og:url&#39;/&amp;gt;&amp;amp;quot;);
+  &amp;lt;/script&amp;gt;
+
+  &amp;lt;!-- snip --&amp;gt;
+&amp;lt;/b:if&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/ins&gt;
+
 &lt;h3&gt;DISQUS&lt;/h3&gt;
 
 &lt;p&gt;コメント欄の移行は &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; に移行した。
@@ -119,6 +150,10 @@ Japanese(和文): cat_in_136.blog() は、github page (&lt;a href=&quot;http://c
         <pubDate>Sun, 31 Aug 2014 00:26:00 +0900</pubDate>
         <link>http://cat-in-136.github.io/2014/08/hello-gh-pages-goodbye-blogger.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2014/08/hello-gh-pages-goodbye-blogger.html</guid>
+        
+        <category>blogger</category>
+        
+        <category>jekyll</category>
         
         
       </item>

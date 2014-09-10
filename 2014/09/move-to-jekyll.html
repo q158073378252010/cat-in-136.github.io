@@ -104,6 +104,37 @@ document.writeln("&lt;link href='" + location.href.replace(location.host + "/", 
 ここは幸いにも過疎ブログなので失うものは極めて少ないので
 細かいことは考えない。</p>
 
+<ins date="2014-09-10T22:00:00+09:00">
+<p>
+と書いたものの2014-09-10現在、うまくいっているようである。
+すなわち JavaScript で生成された link[rel=canonical] を Google のクローラはうまくフォローしている模様。
+</p>
+
+<p>
+より link[rel=canonical] をうまく追跡するために、Blogger に入れているテンプレートを
+下記の通りとし、記事ページ以外についてもそれなりに対応するページヘの
+link[rel=canonical] を入れるようにした。
+</p>
+
+<pre class="prettyprint lang-html"><code>&lt;b:if cond='data:blog.pageType == &amp;quot;index&amp;quot;'&gt;
+  &lt;link href='http://cat-in-136.github.io/' rel='canonical'/&gt;
+  &lt;meta content='http://cat-in-136.github.io/' property='og:url'/&gt;
+&lt;/b:if&gt;
+&lt;b:if cond='data:blog.pageType == &amp;quot;archive&amp;quot;'&gt;
+  &lt;link href='http://cat-in-136.github.io/archive.html' rel='canonical'/&gt;
+  &lt;meta content='http://cat-in-136.github.io/archive.html' property='og:url'/&gt;
+&lt;/b:if&gt;
+&lt;b:if cond='data:blog.pageType == &amp;quot;item&amp;quot;'&gt;
+  &lt;script&gt;
+    document.writeln(&amp;quot;&lt;link href='&amp;quot; + location.href.replace(location.host + &amp;quot;/&amp;quot;, &amp;quot;cat-in-136.github.io/&amp;quot;) +&amp;quot;' rel='canonical'/&gt;&amp;quot;);
+    document.writeln(&amp;quot;&lt;meta content='&amp;quot; + location.href.replace(location.host + &amp;quot;/&amp;quot;, &amp;quot;cat-in-136.github.io/&amp;quot;) +&amp;quot;' property='og:url'/&gt;&amp;quot;);
+  &lt;/script&gt;
+
+  &lt;!-- snip --&gt;
+&lt;/b:if&gt;
+</code></pre>
+</ins>
+
 <h3>DISQUS</h3>
 
 <p>コメント欄の移行は <a href="https://disqus.com/">disqus</a> に移行した。
@@ -142,7 +173,7 @@ disqus ウィジットの iframe 中からの読み込みで ssl.google-analysis
     <div class="meta">
       Author: cat_in_136
       Date: <time>2014-09-06T15:34:30+09:00</time>
-      (Modified: <time>2014-09-06T15:38:45+09:00</time>)
+      (Modified: <time>2014-09-10T22:02:46+09:00</time>)
     </div>
     
     <div class="meta">
@@ -196,13 +227,13 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li>
-      <span class="post-date">2014-08-31</span>
-      <a class="post-link" href="/2014/08/hello-gh-pages-goodbye-blogger.html">Hello github page, Goodbye blogger. this blog has moved to github.io!</a>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
     
     <li>
-      <span class="post-date">2010-11-29</span>
-      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
     
     <li>
@@ -211,8 +242,8 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li>
-      <span class="post-date">2014-04-06</span>
-      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+      <span class="post-date">2014-08-31</span>
+      <a class="post-link" href="/2014/08/hello-gh-pages-goodbye-blogger.html">Hello github page, Goodbye blogger. this blog has moved to github.io!</a>
     </li>
     
   </ul>
