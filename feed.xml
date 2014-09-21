@@ -5,9 +5,424 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 15 Sep 2014 13:17:15 +0900</pubDate>
-    <lastBuildDate>Mon, 15 Sep 2014 13:17:15 +0900</lastBuildDate>
+    <pubDate>Sun, 21 Sep 2014 20:01:27 +0900</pubDate>
+    <lastBuildDate>Sun, 21 Sep 2014 20:01:27 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</title>
+        <description>&lt;p&gt;WiFi 内蔵 SD カードである &lt;a href=&quot;http://www.pqigroup.com/prod_in.aspx?mnuid=1286&amp;amp;modid=138&amp;amp;prodid=426&quot;&gt;PQI Air Card&lt;/a&gt;[1] には
+WiFi の子機として繋ぐモードで動かすことができる。
+WiFi AP が DHCP などで動的な IP 割り当てをしているときに、
+PQI Air Card がどの IP アドレスで繋がっているかわからない。
+しかしながら、PQI Air Card のほとんどの設定はブラウザからアクセスする必要があって、
+これには IP アドレスがわからないと繋ぐことができない[4]。
+そこで、PQI Air Card を探すために Yo と話しかけられたら Yo と返す
+極めて簡素なプロトコルを設計し、これで簡易なデバイス検出(device discovery)をすることを試みた。
+そのために PQI Air Card に乗っけるプログラムの作成と、
+簡易デバイス検出クライアントを作成し検証した。&lt;/p&gt;
+
+&lt;h3&gt;背景&lt;/h3&gt;
+
+&lt;p&gt;WiFi 内蔵 SD カードを親機(WiFi AP)とする使い方はネットワーク接続が簡単ではあるが、
+子機として繋げている機器からはインターネット接続ができなくなるなど不便である。
+インターネット接続を維持する場合は、SD カードを子機として共通の WiFi AP に繋げる必要がある[4]。
+PQI Air Card はどちらの方法でも使えることができる。
+本エントリでは前者をステーション動作、後者をホットスポット動作と呼ぶこととする。&lt;/p&gt;
+
+&lt;p&gt;ステーション動作のときは PQI Air Card の IP アドレスは明らかであり、
+子機のデフォルトゲートウェイとおなじになる。
+一方で、ホットスポット動作のときは IP アドレスは環境ごとに変わりうる。
+というのも親機(WiFi AP)によって IP アドレスが割り当てられるからである。&lt;/p&gt;
+
+&lt;p&gt;ホットスポット動作のときの IP アドレスを判断する方法はいくつか提案されている。
+もっとも根本的な解決策は PQI Air Card (の MAC アドレス) に対して、
+固定 IP を割り当てることである。
+これは親機(WiFi AP)における機能によって解決する方法である。
+これ以外の方法は公式的には PQI Air Card には存在しないと思われる。&lt;/p&gt;
+
+&lt;p&gt;他の WiFi 内蔵 SD カードでのこの問題の解決策としては、
+SD カード側が NetBIOS 名や Bonjour 名を広告して
+Windows 機（samba クライアント）や Mac から見れる
+ようにしている事例(Flash Air)[2]、
+外部サーバにそのままファイルを同期アップロードすることによって
+SD カード側の IP アドレスを知る必要性をほとんどなくしてしまった事例(Eye-Fi)[3]
+がみられる。&lt;/p&gt;
+
+&lt;p&gt;いっぽうで PQI Air Card の中では Linux が動いているが、
+SD カードのルートに &lt;code&gt;autorun.sh&lt;/code&gt; という名前のシェルスクリプトのファイルを置くと
+任意の動作をさせることができる[6]。
+これを利用して親機(WiFi AP)に繋がった時点で twitter の Mention で伝えるという
+解決策も提示されている[4]。&lt;/p&gt;
+
+&lt;p&gt;外部のネットワーク (e.g. twitter) を使わずに、
+WiFi AP を安っすい固定割り当てができないものでも使えるようにし、
+そして Flash Air などを使わずになんとかしたいと思ったので、
+簡易デバイス検出の仕組みを作成し検証した次第である。&lt;/p&gt;
+
+&lt;h3&gt;プロトコル Yo&lt;/h3&gt;
+
+&lt;p&gt;本目的で使えそうなプロトコルとしては下記が上げられる。
+これらのいくつかは “Simple” と謳っており、
+実際確かにシンプルなものもあるのだが、
+いずれも私が求めるシンプルさよりも遥かに複雑であった。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NetBIOS Name service&lt;/li&gt;
+  &lt;li&gt;Simple Network Management Protocol (SNMP)&lt;/li&gt;
+  &lt;li&gt;Multicast DNS (mDNS), DNS-based service discovery (DNS-SD)&lt;/li&gt;
+  &lt;li&gt;Simple Service Discovery Protocol (SSDP), Universal Plug and Play (UPnP)&lt;/li&gt;
+  &lt;li&gt;Service Location Protocol (SLP)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;そこで、極めて実装が簡単なプロトコルを設計した。
+設計したといえない程の簡単なやりとりである。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;UDPを使い、機器（サービス）側のポート番号は既知とする。&lt;/li&gt;
+  &lt;li&gt;あるクライアントから機器（サービス）に UDP で &lt;code&gt;REQUEST-MESSAGE&lt;/code&gt; を送信したとき、
+機器（サービス）はそのクライアントに対して &lt;code&gt;RESPONSE-MESSAGE&lt;/code&gt; を送信する&lt;/li&gt;
+  &lt;li&gt;クライアント→機器（サービス）はユニキャスト・ブロードキャストのいずれでもよい&lt;/li&gt;
+  &lt;li&gt;機器（サービス）→クライアントはユニキャストである&lt;/li&gt;
+  &lt;li&gt;データ構造
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code&gt;REQUEST-MESSAGE: &quot;Yo&quot; CLIENT-ARBITARY-TEXT&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code&gt;RESPONSE-MESSAGE: REQUEST-MESSAGE CR-LF &quot;Yo&quot; SERVICE-ARBITARY-TEXT&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code&gt;CLIENT-ARBITARY-TEXT&lt;/code&gt;, &lt;code&gt;SERVICE-ARBITARY-TEXT&lt;/code&gt;: 改行を含まない任意のテキスト&lt;/li&gt;
+      &lt;li&gt;&lt;code&gt;CR-LF: &quot;\r\n&quot;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要するに、下記の通り “Yo” をやりとりしてるだけの話である。&lt;/p&gt;
+
+&lt;pre&gt;
+|Client side                   Service side|
+|                                          |
+|    &quot;Yo from laptop&quot;                      |
+|-----------------------------------------&amp;gt;|
+|                                          |
+| &quot;Yo from laptop\r\nYo from PQI_AIR_CARD&quot; |
+|&amp;lt;-----------------------------------------|
+|                                          |
+&lt;/pre&gt;
+
+&lt;p&gt;リクエストメッセージの送信をUDPブロードキャストにすることで、
+クライアントは所望の “Yo” が戻ってきたアドレスを確認することで
+PQI Air Card の IP アドレスがわかる。&lt;/p&gt;
+
+&lt;h3&gt;PQI Air Card への Yo サービスの導入&lt;/h3&gt;
+
+&lt;p&gt;下記のとおり C 言語で書いた：&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;/* yo_service.c
+ * under MIT license
+ * 
+ * Copyright (c) 2014 @cat_in_136
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the &quot;Software&quot;), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;signal.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/socket.h&amp;gt;
+#include &amp;lt;netinet/in.h&amp;gt;
+#include &amp;lt;arpa/inet.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+
+/** Have SIGTERM been received? */
+static int isTermReceived = 0;
+
+/** Open a UDP connection.
+ *
+ * @param[in] b_addr bind address, may be INADDR_ANY.
+ * @param[in] port Port number.
+ * @return a file descriptor for the socket on success, -1 on error.
+ */
+static int open_udp_conn(in_addr_t b_addr, u_short port)
+{
+  int sock;
+  int ret;
+  struct sockaddr_in addr;
+
+  sock = socket(AF_INET, SOCK_DGRAM, 0);
+  if (sock == -1) {
+    perror(&quot;Socket open error.&quot;);
+    return sock;
+  }
+
+  memset(&amp;amp;addr, 0, sizeof(addr));
+  addr.sin_family = AF_INET;
+  addr.sin_port = htons(port);
+  addr.sin_addr.s_addr = b_addr;
+  ret = bind(sock, (struct sockaddr *) &amp;amp;addr, sizeof(addr));
+  if (ret == -1) {
+    perror(&quot;bind error.&quot;);
+    close(sock);
+    return -1;
+  }
+
+  return sock;
+}
+
+/** Listen a UDP packet and send a packet of the response.
+ *
+ * @param[in] sock the socket.
+ * @param[in] msg the response message.
+ * @param[in] msg_len length of the response message.
+ */
+static void handle_udp_conn(int sock, const char *msg, size_t msg_len)
+{
+  static const char * CRLF = &quot;\r\n&quot;;
+  char buf[1024];
+  ssize_t s;
+  struct sockaddr src_addr;
+  socklen_t addrlen;
+
+  // receive a packet
+  memset(buf, 0, sizeof(buf));
+  s = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *) &amp;amp;src_addr, &amp;amp;addrlen);
+  if (s == 0) {
+    perror(&quot;empty message received&quot;);
+    return;
+  }
+
+  //puts(buf);
+  
+  // build response message
+  if ((s + strlen(CRLF) + msg_len) &amp;lt; sizeof(buf)) {
+    memcpy(&amp;amp;buf[s], CRLF, strlen(CRLF));
+    s += strlen(CRLF);
+
+    memcpy(&amp;amp;buf[s], msg, msg_len);
+    s += msg_len;
+
+    sendto(sock, buf, s, 0, (struct sockaddr *) &amp;amp;src_addr, addrlen);
+  }
+}
+
+/** Close the UDP connection.
+ *
+ * @param[in] sock the socket.
+ * @return 0 on success, -1 on error.
+ */
+static int close_udp_conn(int sock)
+{
+  close(sock);
+
+  return 0;
+}
+
+static void signal_handler(int signo)
+{
+  if (signo == SIGTERM) {
+    isTermReceived = 1;
+  }
+}
+
+int main(int argc, char *argv[]) {
+  int ret;
+  int sock;
+  in_addr_t b_addr;
+  u_short port;
+  char *response_msg;
+  size_t response_msg_len;
+
+  if(signal(SIGTERM, signal_handler) == SIG_ERR) {
+    perror(&quot;SIGTERM handler error&quot;);
+    //return EXIT_FAILURE;
+  }
+
+  if (argc != 4) {
+    printf(&quot;Usage: %s bind_address port response_msg\n&quot;, argv[0]);
+    printf(&quot;Example:\n&quot;);
+    printf(&quot;  %s 0.0.0.0 22222\n&quot;, argv[0]);
+    return EXIT_FAILURE;
+  }
+
+  ret = inet_aton(argv[1], (struct in_addr *) &amp;amp;b_addr);
+  if (ret == 0) {
+    perror(&quot;Invalid IP address&quot;);
+    return EXIT_FAILURE;
+  }
+  port = atoi(argv[2]);
+  if (port == 0) {
+    perror(&quot;Invalid IP port&quot;);
+    return EXIT_FAILURE;
+  }
+  response_msg = argv[3];
+  response_msg_len = strlen(argv[3]);
+
+  sock = open_udp_conn(b_addr, port);
+  if (sock == -1) {
+    perror(&quot;Failed to open socket&quot;);
+    return EXIT_FAILURE;
+  }
+
+  while (isTermReceived == 0) {
+    handle_udp_conn(sock, response_msg, response_msg_len);
+  }
+
+  ret = close_udp_conn(sock);
+  if (ret == -1) {
+    perror(&quot;Failed to close socket&quot;);
+    return EXIT_FAILURE;
+  }
+
+  return EXIT_SUCCESS;
+}
+
+/* vim:set tabstop=2 expandtab shiftwidth=2 softtabstop=0: */
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これを PQI Air Card 向けにコンパイルをした。
+商用であるが無料で使える &lt;a href=&quot;http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/&quot; title=&quot;Sourcery CodeBench Lite Edition including ARM GCC IDE - Mentor Graphics&quot;&gt;Sourcery CodeBench Lite&lt;/a&gt; という
+のでコンパイルした（クロスコンパイル環境によるコンパイル）。
+なお、ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV) のバイナリを生成する
+コンパイラならどれをつかってもかまわないはずであるし、
+PC上でデバッグ検証をするのならば普通に x86_64 の gcc などでコンパイルして
+動作検証すればよい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;samp&gt;% arm-none-linux-gnueabi-gcc -o yo_service yo_service.c -O2 -Wall -static
+% arm-none-linux-gnueabi-strip -s yo_service
+&lt;/samp&gt;&lt;/pre&gt;
+
+&lt;p&gt;この &lt;code&gt;yo_service&lt;/code&gt; をSDカードの任意の場所に置く。
+（&lt;code&gt;/path/to/yo_service&lt;/code&gt;に置いたものとする）&lt;/p&gt;
+
+&lt;p&gt;そしてSDカードのルートの&lt;code&gt;autorun.sh&lt;/code&gt;には下記を記述する（または追記する）。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-sh&quot;&gt;&lt;code&gt;#!/bin/sh
+
+sleep 5
+
+ln -s /mnt/sd/path/to/yo_service /bin/yo_service
+chmod +x /bin/yo_service
+sync; sync; sync
+
+yo_service 0.0.0.0 10091 &quot;Yo from PQI_AIR_CARD&quot; &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あとはカメラの電源を入れたときに &lt;code&gt;yo_service&lt;/code&gt; が起動し常駐するようになる。&lt;/p&gt;
+
+&lt;h3&gt;使用&lt;/h3&gt;
+
+&lt;p&gt;機器（サービス）側の実装とデプロイで疲れてしまったので、
+クライアント側は下記のような適当な ruby コードで確認した。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-ruby&quot;&gt;&lt;code&gt;#!/usr/bin/ruby
+require &quot;socket&quot;
+
+udp = nil
+begin
+  udp = UDPSocket.open
+  udp.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, 1)
+
+  udp.bind(&quot;0.0.0.0&quot;, 20091)
+
+  udp.send(&quot;Yo from laptop&quot;, 0, &quot;255.255.255.255&quot;, 10091)
+
+  res, res_addr = udp.recvfrom(2048)
+  p res
+  p res_addr
+ensure
+  udp.close unless udp.nil?
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;カメラに電源を入れた後しばらく待って (PQI Air Card の WiFi が確立する時間)
+下記実行したらきちんと “Yo” が帰ってきた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;samp&gt;% ruby yo_send_test.rb
+&quot;Yo from laptop\r\nYo from PQI_AIR_CARD&quot;
+[&quot;AF_INET&quot;, 10091, &quot;192.168.1.3&quot;, &quot;192.168.1.3&quot;]
+&lt;/samp&gt;&lt;/pre&gt;
+
+&lt;p&gt;なお、ファイアウォールを導入している場合は、
+UDPの受信ポートを開放しないと動作しないようだ。
+上に示した ruby コードの例では 20091 版ポートを開放する必要がある模様。&lt;/p&gt;
+
+&lt;p&gt;これで PQI Air Card は 192.168.1.3 であることがわかるので、
+PQI Air Card にブラウザなり FTP なり telnet なりで接続ができる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;samp&gt;% telnet 192.168.1.3
+Trying 192.168.1.3...
+Connected to 192.168.1.3.
+Escape character is &#39;^]&#39;.
+
+# 
+&lt;/samp&gt;&lt;/pre&gt;
+
+&lt;p&gt;ただしこの ruby コードはかなり雑であり、
+PQI Air Card の WiFi が確立する前だったりの原因で
+“Yo” が帰ってこなかった場合の考慮が抜けているので、
+その場合は Ctrl+C をするなど対策が必要だ。&lt;/p&gt;
+
+&lt;p&gt;UDP のパケット欠落や、その他複数の “Yo” を返す機器（サービス）がある場合については、
+クライアント側のアプリの改良は当然ながら必要である。
+UDP は TCP と違って再送などがないのでそれもプログラムとして組み込む必要があるが、
+実際に何回か試した所、1m 程度の範囲内ならばエラーなしで届いているので
+UDP の再送他はなくてもどうにかなってしまっている。&lt;/p&gt;
+
+&lt;h3&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;PQI Air Card を探すために Yo と話しかけられたら Yo と返す
+極めて簡素なプロトコルを設計、実装をし、検証をした。&lt;/p&gt;
+
+&lt;p&gt;その結果、200 行未満の機器（サービス）側のコードと
+やっつけなクライアント側のコードでそれなりに満足のできる結果がえられた。&lt;/p&gt;
+
+&lt;p&gt;今後の課題として、
+UDP のパケット欠落や、その他複数の “Yo” を返す機器（サービス）の検討が必要だが、
+これでそれなりに満足してしまったのと、
+NetBIOS 等が入っていない（or 導入が困難）かつ自作プログラムを送り込めるガジェット
+なんてそんなにないだろうから、
+クライアント側のアプリの改良はすることはないだろう。&lt;/p&gt;
+
+&lt;h3&gt;特記事項&lt;/h3&gt;
+
+&lt;p&gt;“Yo”というキーワードはSNSの&lt;a href=&quot;http://www.justyo.co/&quot; title=&quot;Yo - It&amp;apos;s that simple.&quot;&gt;Yo&lt;/a&gt;にインスパイヤされた。&lt;/p&gt;
+
+&lt;h3&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[1] &lt;a href=&quot;http://www.pqigroup.com/prod_in.aspx?mnuid=1286&amp;amp;modid=138&amp;amp;prodid=426&quot;&gt;PQI Air Card&lt;/a&gt;, PQI Group&lt;/li&gt;
+  &lt;li&gt;[2] &lt;a href=&quot;https://www.flashair-developers.com/ja/documents/api/config/&quot;&gt;FlashAir Developers - ドキュメント - APIガイド - CONFIG&lt;/a&gt;, &lt;code&gt;APPNAME&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;[3] &lt;a href=&quot;http://jp.eyefi.com/products/cloud&quot;&gt;Eyefi （アイファイ）クラウド - 安全なクラウドで便利に同期&lt;/a&gt;, Eyefi Japan&lt;/li&gt;
+  &lt;li&gt;[4] 竹内義晴 「&lt;a href=&quot;http://blogs.itmedia.co.jp/takewave/2013/04/pqi-air-card2-1e41.html&quot;&gt;これはいい！PQI Air Cardの2つの不満を解決する方法&lt;/a&gt;」, 「竹内義晴の、しごとのみらい」, 2013-04-02&lt;/li&gt;
+  &lt;li&gt;[5] あきみち &lt;a href=&quot;http://www.geekpage.jp/programming/linux-network/&quot;&gt;Linuxネットワークプログラミング&lt;/a&gt;, Geekなぺーじ&lt;/li&gt;
+  &lt;li&gt;[6] moyashi, 「&lt;a href=&quot;http://hitoriblog.com/?p=12627&quot;&gt;デジカメ内部でRubyを動かす狂気！無線LAN内蔵SDカードアダプタPQI Air Cardの間違った使い方&lt;/a&gt;」, ひとりぶろぐ, 2012-11-02&lt;/li&gt;
+  &lt;li&gt;[7] とんすけ, 「&lt;a href=&quot;http://ameblo.jp/tonsuke-usagi/entry-11212317428.html&quot;&gt;FlucardでプログラムとかCGIとか&lt;/a&gt;」, とんすけぶろぐ, 2012-04-03&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 21 Sep 2014 19:55:07 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html</guid>
+        
+        <category>PQI Air Card</category>
+        
+        <category>linux</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 33.0 beta 3 default preference and firefox 32.0</title>
@@ -925,234 +1340,6 @@ $ &lt;kbd&gt;ruby doxy_struct_xml_to_json.rb struct__Foo&lt;/kbd&gt;
         <category>howto</category>
         
         <category>c-language</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</title>
-        <description>&lt;p&gt;&lt;a href=&quot;http://imgcity.chirijin.com/&quot; title=&quot;空想都市へ行こう！ ／ 地理人が、空想都市を詳細地図で描く。&quot;&gt;地理人さんの想像都市&lt;/a&gt;を&lt;a href=&quot;http://rawgithub.com/cat-in-136/9703504/raw/index.html&quot; title=&quot;空想都市中村市勝手にスクロールマップ&quot;&gt;勝手にスクロール地図化&lt;/a&gt;を作ったところ受け取った、
-&lt;a href=&quot;https://twitter.com/koridentetsu/statuses/447643865491599360&quot;&gt;下記メンション&lt;/a&gt;に対する一定の回答として。&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; cite=&quot;https://twitter.com/koridentetsu/statuses/447643865491599360&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://twitter.com/cat_in_136&quot;&gt;@cat_in_136&lt;/a&gt; 突然で申し訳ありませんが、僕も地理人さんと同じく架空の地図を作っているものです。僕も同じようにこの地図（ &lt;a href=&quot;http://t.co/NZxdIIJbVZ&quot; title=&quot;http://www27.atpages.jp/souzoumap/Maps/Expmaps.HTM&quot;&gt;http://t.co/NZxdIIJbVZ&lt;/a&gt; ）でスクロール/拡大縮小地図を作りたいと思っているのですが、方法を教示いただいてもよろしいでしょうか？&lt;/p&gt;&amp;mdash; 想像地図の篠永 (MACHO筋トレ) (@koridentetsu) &lt;a href=&quot;https://twitter.com/koridentetsu/statuses/447643865491599360&quot;&gt;March 23, 2014&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;async&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://developers.google.com/maps/documentation/javascript/&quot; title=&quot;Google Maps JavaScript API&quot;&gt;Google Maps API&lt;/a&gt;を駆使すればいくらでもできるが、
-極めて簡単にできるようにしてみた。&lt;/p&gt;
-
-&lt;h4&gt;テンプレを落とす&lt;/h4&gt;
-
-&lt;p&gt;一から作るのはダルいと思うのでテンプレートを用意した。
-&quot;Download ZIP&quot;というところをクリックしてZIPをダウンロードする。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/cat-in-136/custom_map_tutorial&quot;&gt;https://github.com/cat-in-136/custom_map_tutorial&lt;/a&gt;&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://1.bp.blogspot.com/-2GhpEqnDGWA/U0C8NVqTUfI/AAAAAAAAAb4/5Zu7s5W0Pk8/s1600/howto-github.png&quot; &gt;&lt;img src=&quot;http://1.bp.blogspot.com/-2GhpEqnDGWA/U0C8NVqTUfI/AAAAAAAAAb4/5Zu7s5W0Pk8/s320/howto-github.png&quot; width=&quot;320&quot; height=&quot;184&quot; alt=&quot;github の Download ZIP の位置&quot; /&gt;&lt;/a&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;余計な補足：もちろんgitを使って、&lt;kbd&gt;git clone https://github.com/cat-in-136/custom_map_tutorial.git&lt;/kbd&gt;でクローンして…をやってもいい。&lt;/p&gt;
-
-&lt;h3&gt;フォルダー構成&lt;/h3&gt;
-
-&lt;p&gt;テンプレートのファイルの構造は（本記事執筆時）以下のようになっている：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;simple_tile\&lt;/code&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;gmap3\&lt;/code&gt;  --- Google Maps API をつかったカスタムマップのテンプレート
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;index.css&lt;/code&gt; --- スタイルシート、変更不要&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.html&lt;/code&gt; --- HTMLファイル、変更箇所後述&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;index.js&lt;/code&gt; --- JavaScriptファイル、変更箇所後述&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;osm-feaflet\&lt;/code&gt; --- （本記事の対象外） Open Street Map を使ったカスタムマップのテンプレート&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;tile\&lt;/code&gt; --- サンプル地図データ
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_*_*.png&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;tools\&lt;/code&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ImageSlicerForCustomMap\&lt;/code&gt; --- 私謹製の画像分割ツール
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;bin\&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Release\&lt;/code&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ImageSlicerForCustomMap.exe&lt;/code&gt; --- 画像分割ツール&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;*.cs&lt;/code&gt;など --- ソースコード&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;テンプレートとは言っているが、これ自体がサンプルとなるようにしてある。
-上記の &lt;code&gt;index.html&lt;/code&gt; をウェブブラウザーでそのまま開くと私が適当に作った
-地図が表示されるようになっている。&lt;/p&gt;
-
-&lt;p&gt;まずは、適当な作業用フォルダーを作成し、その中で
-&lt;code&gt;gmap3&lt;/code&gt;フォルダーをコピーする。
-この中のファイルは変更が必要だが後述する。&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://4.bp.blogspot.com/-i4OnzCHS-Ro/U0C9hF1OHjI/AAAAAAAAAcE/UwbSklAfVsg/s1600/howto-copy.png&quot;&gt;&lt;img src=&quot;http://4.bp.blogspot.com/-i4OnzCHS-Ro/U0C9hF1OHjI/AAAAAAAAAcE/UwbSklAfVsg/s320/howto-copy.png&quot; width=&quot;320&quot; height=&quot;101&quot; /&gt;&lt;/a&gt;
-&lt;figcaption&gt;&lt;code&gt;gmap3&lt;/code&gt;フォルダーのコピー&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-
-&lt;p&gt;そして、地図データ用のフォルダーとして&lt;code&gt;tile&lt;/code&gt;フォルダーを作成する。
-ここに格納すべき画像ファイルは次節で述べる。&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://3.bp.blogspot.com/-uMxDL1ADYGo/U0C9jHPeLOI/AAAAAAAAAcM/OkmMVtmvzLI/s1600/howto-tilefolder.png&quot;&gt;&lt;img src=&quot;http://3.bp.blogspot.com/-uMxDL1ADYGo/U0C9jHPeLOI/AAAAAAAAAcM/OkmMVtmvzLI/s320/howto-tilefolder.png&quot; width=&quot;320&quot; height=&quot;127&quot; /&gt;&lt;/a&gt;
-&lt;figcaption&gt;新しいフォルダーから&lt;code&gt;tile&lt;/code&gt;フォルダーを作る&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h4&gt;地図画像ファイルの作成&lt;/h4&gt;
-
-&lt;p&gt;地図の画像を256x256ピクセルで分割してほしい。
-その時に画像のファイル名を下記のようにする：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_0_0.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_1_0.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_2_0.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;...&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_10_0.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_0_1.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_1_1.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;...&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;custom_map_tile_10_9.png&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;数字の部分はルールがあり&lt;/strong&gt;、位置関係が下記のようにする必要がある。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;左上が &lt;code&gt;custom_map_tile_0_0.png&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;一つ右（東）に位置する画像はひとつめの数字を進める。&lt;/li&gt;
-&lt;li&gt;一つ下（南）に位置する画像はふたつめの数字を進める。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;要するに数字は下記のようなルールで番号を付けていく。&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://2.bp.blogspot.com/-Ra40O9FExdo/U0C9mpvFwRI/AAAAAAAAAcU/eXen4SWWmdg/s1600/howto-tilesystem.png&quot;&gt;&lt;img src=&quot;http://2.bp.blogspot.com/-Ra40O9FExdo/U0C9mpvFwRI/AAAAAAAAAcU/eXen4SWWmdg/s320/howto-tilesystem.png&quot; width=&quot;192&quot; height=&quot;192&quot; /&gt;&lt;/a&gt;
-&lt;figcaption&gt;タイルの数字の関係&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;なお、テンプレートのところにちゃっかり入っている
- &lt;code&gt;ImageSlicerForCustomMap.exe&lt;/code&gt; は、
-これをするためのツールであって、この exe ファイルに
-PNG ファイルまたは JPEG ファイルをドラッグアンドドロップすると
-同一フォルダに 256x256 ピクセルで分割したファイルが生成するようになっている。&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;http://2.bp.blogspot.com/-pezNrqwqyIo/U0C-cjlND8I/AAAAAAAAAcc/7i7t7cjpKps/s1600/howto-split.png&quot;&gt;&lt;img src=&quot;http://2.bp.blogspot.com/-pezNrqwqyIo/U0C-cjlND8I/AAAAAAAAAcc/7i7t7cjpKps/s320/howto-split.png&quot; width=&quot;320&quot; height=&quot;119&quot; /&gt;&lt;/a&gt;
-&lt;figcaption&gt;&lt;code&gt;ImageSlicerForCustomMap.exe&lt;/code&gt;へのドラッグアンドドロップ&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;&lt;a href=&quot;http://2.bp.blogspot.com/-i5EIcN3n1aA/U0C-efn1NJI/AAAAAAAAAck/6Awk6cslVt4/s1600/howto-aftersplit.png&quot;&gt;&lt;img src=&quot;http://2.bp.blogspot.com/-i5EIcN3n1aA/U0C-efn1NJI/AAAAAAAAAck/6Awk6cslVt4/s320/howto-aftersplit.png&quot; width=&quot;276&quot; height=&quot;320&quot; /&gt;&lt;/a&gt;
-&lt;figcaption&gt;&lt;code&gt;ImageSlicerForCustomMap.exe&lt;/code&gt;へのドラッグアンドドロップの事後&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;小規模な地図ならば一旦一枚にまとめた巨大画像ファイルを作って、
-それを &lt;code&gt;ImageSlicerForCustomMap.exe&lt;/code&gt; にドラッグアンドドロップすればつくれるだろう。&lt;/p&gt;
-
-&lt;h4&gt;テンプレートで必要な箇所を修正する&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;gmap3&lt;/code&gt;フォルダー配下のファイルの一部は手直しが必要だ。&lt;/p&gt;
-
-&lt;h5&gt;index.html での修正箇所&lt;/h5&gt;
-
-&lt;p&gt;以下のタイトル部分をお好みのタイトルに変える：&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;  &amp;lt;title&amp;gt;＿タイトル＿&amp;lt;/title&amp;gt;
-↓
-  &amp;lt;title&amp;gt;&lt;ins&gt;私の想像地図&lt;/ins&gt;&amp;lt;/title&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;次は必須ではないが、JavaScriptがうまくうごかなかった
-環境とかのために何らかのリンクを貼ったほうがよいと思われる。
-（検索エンジン最適化も兼ねる）&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt; &amp;lt;div id=&quot;map_canvas&quot;&amp;gt;
-   JavaScript を有効にしてください。
- &amp;lt;/div&amp;gt;
-↓
- &amp;lt;div id=&quot;map_canvas&quot;&amp;gt;
-   JavaScript を有効にしてください。
-   &lt;ins&gt;もしくは &amp;lt;a href=&quot;http://hoge.example.com/map.pdf&quot;&amp;gt;私の想像地図をPDFでみる&amp;lt;/a&amp;gt;&lt;/ins&gt;
- &amp;lt;/div&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5&gt;index.css での修正箇所&lt;/h5&gt;
-
-&lt;p&gt;変更点なし。&lt;/p&gt;
-
-&lt;h5&gt;index.js での修正箇所&lt;/h5&gt;
-
-&lt;p&gt;以下の部分をあなたのウェブページなどに変える。
-私だったら下記のように変える：&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;  copyrightSpan.innerHTML = &quot;地図データ &amp;amp;#169; &quot; + &quot;＿地図製作者＿&quot;.link(&quot;http://example.com/＿地図製作者のページへのリンク＿&quot;);
-↓
-  copyrightSpan.innerHTML = &quot;地図データ &amp;amp;#169; &quot; + &quot;&lt;ins&gt;@cat_in_136&lt;/ins&gt;&quot;.link(&quot;&lt;ins&gt;http://cat-in-136.blogspot.com/&lt;/ins&gt;&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;余計な注釈：地図画像を上の例とは違った置き方やファイル名とした場合は下記の箇所を変えると動作する。html ファイルからの相対パスかあるいは絶対パスを指定する。以下は変更例：&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;      return &quot;../tile/custom_map_tile_%y_%x.png&quot;
-       .replace(&quot;%x&quot;, x.toString())
-       .replace(&quot;%y&quot;, y.toString());
-↓
-      return &quot;&lt;ins&gt;http://map-image.example.com/hoge/huga/tile_%y_%x.png&lt;/ins&gt;&quot;
-       .replace(&quot;%x&quot;, x.toString())
-       .replace(&quot;%y&quot;, y.toString());
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4&gt;以上でできあがり&lt;/h4&gt;
-
-&lt;p&gt;以上で出来上がり。
-自分一人で楽しむのならばそのままウェブブラウザで開けば良い。&lt;/p&gt;
-
-&lt;p&gt;公開するのならばそのフォルダ構成のままウェブサーバーにアップロードする。
-すなわち以下の様にする：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;http://map.example.com/hoge/huga/gmap3/index.html&lt;/code&gt; --- ここにアクセスしてもらう&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;http://map.example.com/hoge/huga/gmap3/index.css&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;http://map.example.com/hoge/huga/gmap3/index.js&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;http://map.example.com/hoge/huga/tile/custom_map_tile_*_*.png&lt;/code&gt; --- 先程作った地図画像は tile フォルダ以下に置く&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;補足&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;この方法のポイントとして縮尺を表示しないようにしている。
-&lt;ul&gt;
-&lt;li&gt;Google Maps API はメルカトル図法をベースとしているため、緯度経度を考慮しないと縮尺をあわせることはむずかしい。&lt;/li&gt;
-&lt;li&gt;しかし縮尺を表示しないことで単にスクロール機能だけを流用することができる。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;規約上 Google のロゴを消すのは（技術上可能だが）してはいけない。
-&lt;ul&gt;
-&lt;li&gt;かえってリアリティが出ているともいえる。&lt;/li&gt;
-&lt;li&gt;クリックすると &lt;a href=&quot;https://maps.google.com/maps?ll=85.051129,-180&quot; rel=&quot;nofollow&quot;&gt;Google Maps の北極海付近に飛ばされる&lt;/a&gt;が&lt;strong&gt;キニシナイキニシナイ&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;初期位置の調整方法は現在考え中
-&lt;ul&gt;
-&lt;li&gt;どのようにすればいいのだろう…&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;これを書いた後に&lt;a href=&quot;https://github.com/bramus/photoshop-google-maps-tile-cutter&quot; title=&quot;PS_Bramus.GoogleMapsTileCutter - A Photoshop script that cuts image tiles from any image for direct use with Google Maps&quot;&gt;PS_Bramus.GoogleMapsTileCutter&lt;/a&gt;というものを発見してしまったorz&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sun, 06 Apr 2014 12:07:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/04/google-maps-javascript-api.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/04/google-maps-javascript-api.html</guid>
-        
-        <category>howto</category>
-        
-        <category>google maps</category>
         
         
       </item>
