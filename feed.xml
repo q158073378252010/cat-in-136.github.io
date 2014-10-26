@@ -5,9 +5,61 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 21 Sep 2014 20:01:27 +0900</pubDate>
-    <lastBuildDate>Sun, 21 Sep 2014 20:01:27 +0900</lastBuildDate>
+    <pubDate>Mon, 27 Oct 2014 00:11:18 +0900</pubDate>
+    <lastBuildDate>Mon, 27 Oct 2014 00:11:18 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Diff between firefox 34.0 beta 3 default preference and firefox 33.0</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 34.0 beta 3 and one of 33.0.
+&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 33.0 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 34.0 beta 3 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;table class=&quot;diff_firefox34_pref_diff&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 33.0&lt;/td&gt;&lt;td&gt;Firefox 34.0 beta 3&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;allow_&lt;wbr /&gt;checkerboarding&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;asyncscroll.&lt;wbr /&gt;throttle&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;asyncscroll.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;content_&lt;wbr /&gt;response_&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;cross_&lt;wbr /&gt;slide.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;danger_&lt;wbr /&gt;zone_&lt;wbr /&gt;x&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;danger_&lt;wbr /&gt;zone_&lt;wbr /&gt;y&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;enlarge_&lt;wbr /&gt;displayport_&lt;wbr /&gt;when_&lt;wbr /&gt;clipped&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;accel_&lt;wbr /&gt;base_&lt;wbr /&gt;mult&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;accel_&lt;wbr /&gt;interval_&lt;wbr /&gt;ms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;500&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;accel_&lt;wbr /&gt;supplemental_&lt;wbr /&gt;mult&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;friction&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.002&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;repaint_&lt;wbr /&gt;interval&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;75&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;stop_&lt;wbr /&gt;on_&lt;wbr /&gt;tap_&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.05&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;stopped_&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.01&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;max_&lt;wbr /&gt;velocity_&lt;wbr /&gt;inches_&lt;wbr /&gt;per_&lt;wbr /&gt;ms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;-1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;max_&lt;wbr /&gt;velocity_&lt;wbr /&gt;queue_&lt;wbr /&gt;size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;min_&lt;wbr /&gt;skate_&lt;wbr /&gt;speed&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;num_&lt;wbr /&gt;paint_&lt;wbr /&gt;duration_&lt;wbr /&gt;samples&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;fling_&lt;wbr /&gt;friction&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.02&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;fling_&lt;wbr /&gt;stopped_&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.4&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;min_&lt;wbr /&gt;pan_&lt;wbr /&gt;distance_&lt;wbr /&gt;ratio&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;snap_&lt;wbr /&gt;back.&lt;wbr /&gt;mass&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;snap_&lt;wbr /&gt;back.&lt;wbr /&gt;spring_&lt;wbr /&gt;friction&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;snap_&lt;wbr /&gt;back.&lt;wbr /&gt;spring_&lt;wbr /&gt;stiffness&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.6&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;stretch_&lt;wbr /&gt;factor&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;pan_&lt;wbr /&gt;repaint_&lt;wbr /&gt;interval&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;250&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;touch_&lt;wbr /&gt;start_&lt;wbr /&gt;tolerance&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.2222222&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;use_&lt;wbr /&gt;paint_&lt;wbr /&gt;duration&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;velocity_&lt;wbr /&gt;bias&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;velocity_&lt;wbr /&gt;relevance_&lt;wbr /&gt;time_&lt;wbr /&gt;ms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;150&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;x_&lt;wbr /&gt;skate_&lt;wbr /&gt;size_&lt;wbr /&gt;multiplier&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;x_&lt;wbr /&gt;stationary_&lt;wbr /&gt;size_&lt;wbr /&gt;multiplier&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;3.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;y_&lt;wbr /&gt;skate_&lt;wbr /&gt;size_&lt;wbr /&gt;multiplier&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2.5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;y_&lt;wbr /&gt;stationary_&lt;wbr /&gt;size_&lt;wbr /&gt;multiplier&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;3.5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;zoom_&lt;wbr /&gt;animation_&lt;wbr /&gt;duration_&lt;wbr /&gt;ms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;250&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;directory.&lt;wbr /&gt;source&lt;/td&gt;&lt;td&gt;https://tiles.services.mozilla.com/v2/links/fetch&lt;/td&gt;&lt;td&gt;https://tiles.services.mozilla.com/v2/links/fetch/%LOCALE%&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;appRepURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://sb-ssl.google.com/safebrowsing/clientreport/download?key=%GOOGLE_API_KEY%&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;policy.&lt;wbr /&gt;dataSubmissionPolicyAccepted&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;policy.&lt;wbr /&gt;dataSubmissionPolicyAcceptedVersion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;policy.&lt;wbr /&gt;dataSubmissionPolicyBypassAcceptance&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;policy.&lt;wbr /&gt;dataSubmissionPolicyBypassNotification&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;policy.&lt;wbr /&gt;dataSubmissionPolicyResponseTime&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;policy.&lt;wbr /&gt;dataSubmissionPolicyResponseType&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;command-&lt;wbr /&gt;button-&lt;wbr /&gt;frames.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;remote.&lt;wbr /&gt;wifi.&lt;wbr /&gt;visible&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;storage.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;styleeditor.&lt;wbr /&gt;transitions&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;splitconsoleEnabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;splitconsoleHeight&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;fetch.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;global-&lt;wbr /&gt;constructor.&lt;wbr /&gt;disable.&lt;wbr /&gt;mozContact&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;navigator-&lt;wbr /&gt;property.&lt;wbr /&gt;disable.&lt;wbr /&gt;mozContacts&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;sms.&lt;wbr /&gt;maxReadAheadEntries&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;udpsocket.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;webcrypto.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;experiments.&lt;wbr /&gt;manifest.&lt;wbr /&gt;cert.&lt;wbr /&gt;checkAttributes&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;experiments.&lt;wbr /&gt;manifest.&lt;wbr /&gt;cert.&lt;wbr /&gt;requireBuiltin&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;experiments.&lt;wbr /&gt;manifest.&lt;wbr /&gt;certs.&lt;wbr /&gt;1.&lt;wbr /&gt;commonName&lt;/td&gt;&lt;td&gt;*.cdn.mozilla.net&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;experiments.&lt;wbr /&gt;manifest.&lt;wbr /&gt;certs.&lt;wbr /&gt;1.&lt;wbr /&gt;issuerName&lt;/td&gt;&lt;td&gt;CN=Cybertrust Public SureServer SV CA,O=Cybertrust Inc&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;default.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;default.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;default.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;minimum-&lt;wbr /&gt;size.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;minimum-&lt;wbr /&gt;size.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;minimum-&lt;wbr /&gt;size.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;monospace.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;monospace&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;monospace.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;monospace&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;monospace.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;monospace&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;sans-&lt;wbr /&gt;serif.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;sans-serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;sans-&lt;wbr /&gt;serif.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;sans-serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;sans-&lt;wbr /&gt;serif.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;sans-serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;serif.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;serif.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;name.&lt;wbr /&gt;serif.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;serif&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;size.&lt;wbr /&gt;fixed.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;size.&lt;wbr /&gt;fixed.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;size.&lt;wbr /&gt;fixed.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;size.&lt;wbr /&gt;variable.&lt;wbr /&gt;tr&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;size.&lt;wbr /&gt;variable.&lt;wbr /&gt;x-&lt;wbr /&gt;baltic&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;font.&lt;wbr /&gt;size.&lt;wbr /&gt;variable.&lt;wbr /&gt;x-&lt;wbr /&gt;central-&lt;wbr /&gt;euro&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;scroll-&lt;wbr /&gt;graph&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;tiled-&lt;wbr /&gt;drawtarget.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;async-&lt;wbr /&gt;containerless-&lt;wbr /&gt;scrolling.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;font-&lt;wbr /&gt;features.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;prefixes.&lt;wbr /&gt;font-&lt;wbr /&gt;features&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;ruby.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-&lt;wbr /&gt;behavior.&lt;wbr /&gt;damping-&lt;wbr /&gt;ratio&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-&lt;wbr /&gt;behavior.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-&lt;wbr /&gt;behavior.&lt;wbr /&gt;spring-&lt;wbr /&gt;constant&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;250.0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;spammy_&lt;wbr /&gt;warnings.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;lightweightThemes.&lt;wbr /&gt;getMoreURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://addons.mozilla.org/%LOCALE%/firefox/themes&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;lightweightThemes.&lt;wbr /&gt;recommendedThemes&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[{&quot;id&quot;:&quot;recommended-1&quot;,&quot;homepageURL&quot;:&quot;https://addons.mozilla.org/firefox/addon/a-web-browser-renaissance/&quot;,&quot;headerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/1.header.jpg&quot;,&quot;footerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/1.footer.jpg&quot;,&quot;textcolor&quot;:&quot;#000000&quot;,&quot;accentcolor&quot;:&quot;#f2d9b1&quot;,&quot;iconURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/1.icon.jpg&quot;,&quot;previewURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/1.preview.jpg&quot;,&quot;author&quot;:&quot;Sean.Martell&quot;,&quot;version&quot;:&quot;0&quot;},{&quot;id&quot;:&quot;recommended-2&quot;,&quot;homepageURL&quot;:&quot;https://addons.mozilla.org/firefox/addon/space-fantasy/&quot;,&quot;headerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/2.header.jpg&quot;,&quot;footerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/2.footer.jpg&quot;,&quot;textcolor&quot;:&quot;#ffffff&quot;,&quot;accentcolor&quot;:&quot;#d9d9d9&quot;,&quot;iconURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/2.icon.jpg&quot;,&quot;previewURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/2.preview.jpg&quot;,&quot;author&quot;:&quot;fx5800p&quot;,&quot;version&quot;:&quot;1.0&quot;},{&quot;id&quot;:&quot;recommended-3&quot;,&quot;homepageURL&quot;:&quot;https://addons.mozilla.org/firefox/addon/linen-light/&quot;,&quot;headerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/3.header.png&quot;,&quot;footerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/3.footer.png&quot;,&quot;textcolor&quot;:&quot;#None&quot;,&quot;accentcolor&quot;:&quot;#ada8a8&quot;,&quot;iconURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/3.icon.png&quot;,&quot;previewURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/3.preview.png&quot;,&quot;author&quot;:&quot;DVemer&quot;,&quot;version&quot;:&quot;1.0&quot;},{&quot;id&quot;:&quot;recommended-4&quot;,&quot;homepageURL&quot;:&quot;https://addons.mozilla.org/firefox/addon/pastel-gradient/&quot;,&quot;headerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/4.header.png&quot;,&quot;footerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/4.footer.png&quot;,&quot;textcolor&quot;:&quot;#000000&quot;,&quot;accentcolor&quot;:&quot;#000000&quot;,&quot;iconURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/4.icon.png&quot;,&quot;previewURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/4.preview.png&quot;,&quot;author&quot;:&quot;darrinhenein&quot;,&quot;version&quot;:&quot;1.0&quot;},{&quot;id&quot;:&quot;recommended-5&quot;,&quot;homepageURL&quot;:&quot;https://addons.mozilla.org/firefox/addon/carbon-light/&quot;,&quot;headerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/5.header.png&quot;,&quot;footerURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/5.footer.png&quot;,&quot;textcolor&quot;:&quot;#3b3b3b&quot;,&quot;accentcolor&quot;:&quot;#2e2e2e&quot;,&quot;iconURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/5.icon.jpg&quot;,&quot;previewURL&quot;:&quot;resource:///chrome/browser/content/browser/defaultthemes/5.preview.jpg&quot;,&quot;author&quot;:&quot;Jaxivo&quot;,&quot;version&quot;:&quot;1.0&quot;}]&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;CSP&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src &#39;self&#39; data: http://www.gravatar.com/ about: file: chrome:; font-src &#39;none&#39;; connect-src wss://*.tokbox.com https://*.opentok.com https://*.tokbox.com wss://*.mozilla.com https://*.mozilla.org wss://*.mozaws.net&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;dispatcher&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;Error&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;sdk&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;baseUrl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://input.mozilla.org/api/v1/feedback&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;product&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;Loop&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;fxa_&lt;wbr /&gt;oauth.&lt;wbr /&gt;profile&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;fxa_&lt;wbr /&gt;oauth.&lt;wbr /&gt;tokendata&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;legal.&lt;wbr /&gt;ToS_&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://accounts.firefox.com/legal/terms&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;legal.&lt;wbr /&gt;privacy_&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/privacy/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;oauth.&lt;wbr /&gt;google.&lt;wbr /&gt;redirect_&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;urn:ietf:wg:oauth:2.0:oob:auto&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;oauth.&lt;wbr /&gt;google.&lt;wbr /&gt;scope&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://www.google.com/m8/feeds&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;soft_&lt;wbr /&gt;start_&lt;wbr /&gt;hostname&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;soft-start.loop.services.mozilla.com&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;soft_&lt;wbr /&gt;start_&lt;wbr /&gt;ticket_&lt;wbr /&gt;number&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;-1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;throttled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;screensharing.&lt;wbr /&gt;allow_&lt;wbr /&gt;on_&lt;wbr /&gt;old_&lt;wbr /&gt;platforms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;play-&lt;wbr /&gt;stand-&lt;wbr /&gt;alone&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;spdy.&lt;wbr /&gt;enabled.&lt;wbr /&gt;http2draft&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;clearOnShutdown.&lt;wbr /&gt;openWindows&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;cpd.&lt;wbr /&gt;openWindows&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;panicButton.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;panicButton.&lt;wbr /&gt;enabledLocales&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;ast da de en-GB en-US es-AR es-CL es-ES es-MX fi fr fy-NL he hu it ja ja-JP-mac ko lv nb-NO nn-NO pa-IN pl pt-BR rm ru sk sl zh-TW&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;panicButton.&lt;wbr /&gt;useLocaleList&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;apps.&lt;wbr /&gt;privileged.&lt;wbr /&gt;CSP.&lt;wbr /&gt;default&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;default-src *; script-src &#39;self&#39;; object-src &#39;none&#39;; style-src &#39;self&#39; &#39;unsafe-inline&#39;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;csp.&lt;wbr /&gt;newbackend.&lt;wbr /&gt;enable&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;enable_&lt;wbr /&gt;alpn&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;version.&lt;wbr /&gt;fallback-&lt;wbr /&gt;limit&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;version.&lt;wbr /&gt;min&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;selectedEngine&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;ui.&lt;wbr /&gt;scrollToClick&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;disable-&lt;wbr /&gt;angle&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;prefer-&lt;wbr /&gt;native-&lt;wbr /&gt;gl&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox34_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox34_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox34_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox34_pref_diff td.json { word-break: break-all; }
+table.diff_firefox34_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox34_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox34_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox34_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox34_pref_diff td.json { word-break: break-all; }
+
+table.diff_firefox34_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox34_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Sun, 26 Oct 2014 23:56:56 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/10/diff-between-firefox-340-beta-3-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/10/diff-between-firefox-340-beta-3-default.html</guid>
+        
+        <category>pref diff</category>
+        
+        <category>mozilla</category>
+        
+        
+      </item>
     
       <item>
         <title>PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</title>
@@ -1081,265 +1133,6 @@ Therefore, some sorta addon would be needed.&lt;/p&gt;
         <category>firefox</category>
         
         <category>howto</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>C言語の構造体を構造分析したい〜静的解析としての doxygen</title>
-        <description>&lt;p&gt;ソースコードからドキュメント生成するツールとしていにしえの時代から有名な
-&lt;a href=&quot;http://www.doxygen.org/&quot; title=&quot;Doxygen: Main Page&quot;&gt;doxygen&lt;/a&gt; には xml 出力があるので、静的解析ツールの補助として
-いろいろと活用ができそう。&lt;/p&gt;
-
-&lt;h4&gt;使い方&lt;/h4&gt;
-
-&lt;pre style=&quot;background-color: #000; color: #fff; padding: 2px; overflow: auto;&quot;&gt;&lt;samp&gt;$ &lt;kbd&gt;doxygen -g&lt;/kbd&gt;
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;で生成された Doxyfile ないしすでにある Doxyfile において
-&lt;code&gt;GENERATE_XML&lt;/code&gt; を &lt;code&gt;YES&lt;/code&gt; にして、&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;# If the GENERATE_XML tag is set to YES doxygen will generate an XML file that
-# captures the structure of the code including all documentation.
-# The default value is: NO.
-
-GENERATE_XML           = &lt;ins&gt;YES&lt;/ins&gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ドキュメントをつくるように doxygen を実行すると xml が出力される。
-html 出力などほかの出力も有効にしているならば、一緒に出力される。&lt;/p&gt;
-
-&lt;pre style=&quot;background-color: #000; color: #fff; padding: 2px; overflow: auto;&quot;&gt;&lt;samp&gt;$ doxygen Doxyfile
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h4&gt;具体例&lt;/h4&gt;
-
-&lt;p&gt;構造体 &lt;code&gt;struct _Foo&lt;/code&gt; にどんなメンバがあるかを構造分析したい：&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;// foobar.h
-typedef enum _BarType {
-  BAR_TYPE_A,
-  BAR_TYPE_B
-} BarType;
-
-#define NUM_B 3
-
-typedef union _Bar {
-  uint a;
-  uint b[NUM_B];
-} Bar;
-
-typedef struct _Foo {
-  BarType bartype;
-  Bar bar;
-} Foo;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;doxygen の実行&lt;/p&gt;
-
-&lt;pre style=&quot;background-color: #000; color: #fff; padding: 2px; overflow: auto;&quot;&gt;&lt;samp&gt;$ &lt;kbd&gt;ls&lt;/kbd&gt;
-foobar.h
-$ &lt;kbd&gt;doxygen -g&lt;/kbd&gt;
-
-
-Configuration file &#39;Doxyfile&#39; created.
-
-Now edit the configuration file and enter
-
-  doxygen Doxyfile
-
-to generate the documentation for your project
-
-$ &lt;kbd&gt;vi Doxyfile&lt;/kbd&gt;
-$ &lt;kbd&gt;doxygen Doxyfile&lt;/kbd&gt;
-(略)
-$ &lt;kbd&gt;ls -F&lt;/kbd&gt;
-Doxyfile  foobar.h  html/  latex/  xml/
-$ &lt;kbd&gt;ls -F xml&lt;/kbd&gt;
-combine.xslt  foobar_8h.xml  index.xsd        union__Bar.xml
-compound.xsd  index.xml      struct__Foo.xml
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;構造体 &lt;code&gt;struct _Foo&lt;/code&gt; の構造を見るには &lt;code&gt;struct__Foo.xml&lt;/code&gt; を見るという風な単純な構造となっている：&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;&lt;code&gt;&amp;lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39; standalone=&#39;no&#39;?&amp;gt;
-&amp;lt;doxygen xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;compound.xsd&quot; version=&quot;1.8.6&quot;&amp;gt;
-  &amp;lt;compounddef id=&quot;struct__Foo&quot; kind=&quot;struct&quot; prot=&quot;public&quot;&amp;gt;
-    &amp;lt;compoundname&amp;gt;_Foo&amp;lt;/compoundname&amp;gt;
-      &amp;lt;sectiondef kind=&quot;public-attrib&quot;&amp;gt;
-      &amp;lt;memberdef kind=&quot;variable&quot; id=&quot;struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d&quot; prot=&quot;public&quot; static=&quot;no&quot; mutable=&quot;no&quot;&amp;gt;
-        &amp;lt;type&amp;gt;BarType&amp;lt;/type&amp;gt;
-        &amp;lt;definition&amp;gt;BarType _Foo::bartype&amp;lt;/definition&amp;gt;
-        &amp;lt;argsstring&amp;gt;&amp;lt;/argsstring&amp;gt;
-        &amp;lt;name&amp;gt;bartype&amp;lt;/name&amp;gt;
-        &amp;lt;briefdescription&amp;gt;
-        &amp;lt;/briefdescription&amp;gt;
-        &amp;lt;detaileddescription&amp;gt;
-        &amp;lt;/detaileddescription&amp;gt;
-        &amp;lt;inbodydescription&amp;gt;
-        &amp;lt;/inbodydescription&amp;gt;
-        &amp;lt;location file=&quot;/tmp/doxytest/foobar.h&quot; line=&quot;12&quot; column=&quot;1&quot; bodyfile=&quot;/tmp/doxytest/foobar.h&quot; bodystart=&quot;12&quot; bodyend=&quot;-1&quot;/&amp;gt;
-      &amp;lt;/memberdef&amp;gt;
-      &amp;lt;memberdef kind=&quot;variable&quot; id=&quot;struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8&quot; prot=&quot;public&quot; static=&quot;no&quot; mutable=&quot;no&quot;&amp;gt;
-        &amp;lt;type&amp;gt;&amp;lt;ref refid=&quot;union__Bar&quot; kindref=&quot;compound&quot;&amp;gt;Bar&amp;lt;/ref&amp;gt;&amp;lt;/type&amp;gt;
-        &amp;lt;definition&amp;gt;Bar _Foo::bar&amp;lt;/definition&amp;gt;
-        &amp;lt;argsstring&amp;gt;&amp;lt;/argsstring&amp;gt;
-        &amp;lt;name&amp;gt;bar&amp;lt;/name&amp;gt;
-        &amp;lt;briefdescription&amp;gt;
-        &amp;lt;/briefdescription&amp;gt;
-        &amp;lt;detaileddescription&amp;gt;
-        &amp;lt;/detaileddescription&amp;gt;
-        &amp;lt;inbodydescription&amp;gt;
-        &amp;lt;/inbodydescription&amp;gt;
-        &amp;lt;location file=&quot;/tmp/doxytest/foobar.h&quot; line=&quot;13&quot; column=&quot;1&quot; bodyfile=&quot;/tmp/doxytest/foobar.h&quot; bodystart=&quot;13&quot; bodyend=&quot;-1&quot;/&amp;gt;
-      &amp;lt;/memberdef&amp;gt;
-      &amp;lt;/sectiondef&amp;gt;
-    &amp;lt;briefdescription&amp;gt;
-    &amp;lt;/briefdescription&amp;gt;
-    &amp;lt;detaileddescription&amp;gt;
-    &amp;lt;/detaileddescription&amp;gt;
-    &amp;lt;collaborationgraph&amp;gt;
-      &amp;lt;node id=&quot;4&quot;&amp;gt;
-        &amp;lt;label&amp;gt;_Bar&amp;lt;/label&amp;gt;
-        &amp;lt;link refid=&quot;union__Bar&quot;/&amp;gt;
-      &amp;lt;/node&amp;gt;
-      &amp;lt;node id=&quot;3&quot;&amp;gt;
-        &amp;lt;label&amp;gt;_Foo&amp;lt;/label&amp;gt;
-        &amp;lt;link refid=&quot;struct__Foo&quot;/&amp;gt;
-        &amp;lt;childnode refid=&quot;4&quot; relation=&quot;usage&quot;&amp;gt;
-          &amp;lt;edgelabel&amp;gt;bar&amp;lt;/edgelabel&amp;gt;
-        &amp;lt;/childnode&amp;gt;
-      &amp;lt;/node&amp;gt;
-    &amp;lt;/collaborationgraph&amp;gt;
-    &amp;lt;location file=&quot;/tmp/doxytest/foobar.h&quot; line=&quot;11&quot; column=&quot;1&quot; bodyfile=&quot;/tmp/doxytest/foobar.h&quot; bodystart=&quot;11&quot; bodyend=&quot;14&quot;/&amp;gt;
-    &amp;lt;listofallmembers&amp;gt;
-      &amp;lt;member refid=&quot;struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8&quot; prot=&quot;public&quot; virt=&quot;non-virtual&quot;&amp;gt;&amp;lt;scope&amp;gt;_Foo&amp;lt;/scope&amp;gt;&amp;lt;name&amp;gt;bar&amp;lt;/name&amp;gt;&amp;lt;/member&amp;gt;
-      &amp;lt;member refid=&quot;struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d&quot; prot=&quot;public&quot; virt=&quot;non-virtual&quot;&amp;gt;&amp;lt;scope&amp;gt;_Foo&amp;lt;/scope&amp;gt;&amp;lt;name&amp;gt;bartype&amp;lt;/name&amp;gt;&amp;lt;/member&amp;gt;
-    &amp;lt;/listofallmembers&amp;gt;
-  &amp;lt;/compounddef&amp;gt;
-&amp;lt;/doxygen&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;memberdef&lt;/code&gt; 要素の中身を探していけば良い。他のファイルにその定義がある場合は &lt;code&gt;ref&lt;/code&gt; 要素
-があるようなので再帰的に処理を行えば探せる。&lt;/p&gt;
-
-&lt;p&gt;というわけで、さくっと doxygen の xml 出力を利用して、&lt;a href=&quot;https://gist.github.com/cat-in-136/11336549&quot;&gt;C言語構造体の構造を JSON で吐き出すスクリプトを書いてみた&lt;/a&gt;。
-100 行未満で書けるのだから doxygen の xml 出力は強力である。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-ruby&quot;&gt;&lt;code&gt;#!/usr/bin/ruby
-# vim: filetype=ruby fileencoding=UTF-8 shiftwidth=2 tabstop=2 autoindent expandtab
-# 
-# MIT License
-
-require &#39;rexml/document&#39;
-require &#39;json&#39;
-
-class DoxyStructXml
-  def initialize
-    @structs = {}
-  end
-  attr_reader :structs
-
-  def load_doxy_struct_xml_file(file)
-    File.open(file, &#39;r&#39;) do |f|
-      doc = REXML::Document.new(f)
-
-      id = doc.elements[&#39;doxygen/compounddef&#39;].attributes[&#39;id&#39;]
-
-      members = []
-      doc.elements.each(&#39;doxygen/compounddef//memberdef&#39;) do |elem|
-        member = {}
-        if elem.elements[&#39;type/ref&#39;]
-          member[:typeref] = elem.elements[&#39;type/ref&#39;].attributes[&#39;refid&#39;]
-          member[:type] = elem.elements[&#39;type/ref&#39;].text
-        else
-          member[:type] = elem.elements[&#39;type&#39;].text
-        end
-        member[:argsstring] = elem.elements[&#39;argsstring&#39;].text
-        member[:name] = elem.elements[&#39;name&#39;].text
-
-        members &amp;lt;&amp;lt; member
-      end
-
-      @structs[id] = {
-        :name =&amp;gt; doc.elements[&#39;doxygen/compounddef/compoundname&#39;].text,
-        :members =&amp;gt; members
-      }
-    end
-  end
-
-  def data(struct_id)
-    d = {}
-    d[:id] = struct_id
-    d[:name] = @structs[struct_id][:name]
-    d[:members] = []
-    @structs[struct_id][:members].each do |member|
-      m = {}
-      m[:name] = member[:name]
-      m[:type] = member[:type]
-      m[:name] &amp;lt;&amp;lt; member[:argsstring] if member[:argsstring]
-      if member[:typeref]
-        m[:type_data] = data(member[:typeref])
-      end
-      d[:members] &amp;lt;&amp;lt; m
-    end
-
-    d
-  end
-end
-
-if $0 == __FILE__
-  doxy_struct_xml = DoxyStructXml.new
-  Dir.glob(&#39;{struct,union}_*.xml&#39;) do |file|
-    doxy_struct_xml.load_doxy_struct_xml_file(file)
-  end
-
-  struct_id = ARGV[0]
-
-  unless struct_id
-    $stderr &amp;lt;&amp;lt; &quot;Usage: ruby #{$0} struct_id\n&quot;
-    $stderr &amp;lt;&amp;lt; &quot;struct_id: &quot;
-    doxy_struct_xml.structs.each do |key,value|
-      $stderr &amp;lt;&amp;lt; key &amp;lt;&amp;lt; &quot;  &quot;
-    end
-    $stderr &amp;lt;&amp;lt; &quot;\n\n&quot;
-    exit 1
-  end
-
-  if doxy_struct_xml.structs[struct_id]
-    $stdout &amp;lt;&amp;lt; JSON.dump(doxy_struct_xml.data(struct_id))
-    $stdout &amp;lt;&amp;lt; &quot;\n&quot;
-  else
-    $stderr &amp;lt;&amp;lt; &quot;#{struct_id} does not found&quot;
-    exit 1
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;列挙体が扱えないことが残念なことこの上ない。&lt;/p&gt;
-
-&lt;pre style=&quot;background-color: #000; color: #fff; padding: 2px; overflow: auto;&quot;&gt;&lt;samp&gt;$ &lt;kbd&gt;ruby doxy_struct_xml_to_json.rb&lt;/kbd&gt;
-Usage: ruby doxy_struct_xml_to_json.rb struct_id
-struct_id: struct__Foo  union__Bar  
-
-$ &lt;kbd&gt;ruby doxy_struct_xml_to_json.rb struct__Foo&lt;/kbd&gt;
-{&quot;id&quot;:&quot;struct__Foo&quot;,&quot;name&quot;:&quot;_Foo&quot;,&quot;members&quot;:[{&quot;name&quot;:&quot;bartype&quot;,&quot;type&quot;:&quot;BarType&quot;},{&quot;name&quot;:&quot;bar&quot;,&quot;type&quot;:&quot;Bar&quot;,&quot;type_data&quot;:{&quot;id&quot;:&quot;union__Bar&quot;,&quot;name&quot;:&quot;_Bar&quot;,&quot;members&quot;:[{&quot;name&quot;:&quot;a&quot;,&quot;type&quot;:&quot;uint&quot;},{&quot;name&quot;:&quot;b[NUM_B]&quot;,&quot;type&quot;:&quot;uint&quot;}]}}]}
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h4&gt;参考文献&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.stack.nl/~dimitri/doxygen/manual/output.html&quot;&gt;Doxygen Manual: Output Formats&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://kotatuinu.cocolog-nifty.com/blog/2011/10/doxygen-1981.html&quot; title=&quot;Doxygenの出力結果から構造体を展開させるプログラム&quot;&gt;Doxygenの出力結果から構造体を展開させるプログラム&lt;/a&gt; - 備忘ぶ録&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 27 Apr 2014 23:32:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html</guid>
-        
-        <category>howto</category>
-        
-        <category>c-language</category>
         
         
       </item>
