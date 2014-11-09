@@ -5,9 +5,131 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 10 Nov 2014 00:41:33 +0900</pubDate>
-    <lastBuildDate>Mon, 10 Nov 2014 00:41:33 +0900</lastBuildDate>
+    <pubDate>Mon, 10 Nov 2014 01:12:35 +0900</pubDate>
+    <lastBuildDate>Mon, 10 Nov 2014 01:12:35 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>ブログの画像の引っ越しとSVG化(Retina対応とも)</title>
+        <description>&lt;p&gt;
+&lt;a href=&quot;/2014/09/move-to-jekyll.html&quot;&gt;Jekyll移行メモ&lt;/a&gt;
+に沿った引っ越しを Blogger からしてきたのだが、
+この度画像も github page のレポジトリに移動してきた。
+&lt;/p&gt;
+&lt;p&gt;
+また、この際に合わせて一部の図絵を SVG に変換して、
+それを直接参照させるようにすることとした。
+理由としては以下がある。
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;現在のモダンなブラウザは、スマートデバイスも含めて SVG に対応している&lt;/li&gt;
+&lt;li&gt;Retina Display やスマートデバイスなどでの高DPI環境下での見栄え&lt;/li&gt;
+&lt;li&gt;例え容量が増えたとしてもインターネット回線は（特にモバイルで）スループットが上がっているので単純なものなら気にする必要はないのではなか&lt;/li&gt;
+&lt;li&gt;そもそも、レポジトリに入れるのならば準テキストな形式の方が気持ちいい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;面倒くさいので、色々はしょってみた&lt;/h4&gt;
+&lt;p&gt;
+なお、Android 2.x 以前や iOS 4.x 以下、そして IE8 以下といった非対応ブラウザを
+通常考慮しなければならないが、面倒くさいという理由で、
+これは&lt;em&gt;考えないこととした&lt;/em&gt;。
+また、一般のサイトで提供している&lt;em&gt;フォールバックも提供しない&lt;/em&gt;。
+&lt;/p&gt;
+&lt;p&gt;
+というか、そもそもサムネイルとかも面倒とかいうふざけた理由で提供していないので、
+縮小画像でも HTML &amp;lt;img&amp;gt; タグ的に縮小している。
+これによって、高 DPI 環境下でキレイに表示されるので、
+これまた結果オーライとみなしてあんま考えないこととした。
+&lt;/p&gt;
+
+&lt;h4&gt;予想外のユーザビリティ向上&lt;/h4&gt;
+
+&lt;p&gt;
+SVG 化したことで、図中のテキストが選択などができるようになったという、
+予想外にユーザビリティが上がることとなった。
+例えば、
+&lt;a href=&quot;/2012/02/v-highisdb-tmmmmbinottv.html&quot;&gt;メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた&lt;/a&gt;
+での&lt;a href=&quot;/images/mobacas-protocol-stack.svg&quot;&gt;プロトコル・スタックの図&lt;/a&gt;はかつてはPNGラスター画像であった。
+今回、文献元のPDFファイルをもとにinkscapeでSVG化したものに差し替えた。
+テキストがテキストデータとして扱えるので、
+多くのブラウザでは図中のテキストが選択や検索対象にできるようになっている。
+例えば、図中の&quot;ARIB STD-B31/B29&quot;を選択してコピペなどができるようになった。
+&lt;/p&gt;
+&lt;p&gt;
+ただ、テキスト部分が環境によって適用されるフォントが異なるので、
+意図したとおりの表示がなされないという問題がある。
+フォントデータを一部埋め込めばいいわけであるが、
+わざわざそこまでは対策していない。
+&lt;/p&gt;
+
+&lt;h4&gt;github側でgzip転送するので容量はそう増えない&lt;/h4&gt;
+
+&lt;p&gt;
+github page は CDN のようなものが導入されていて、
+&lt;samp&gt;Content-Encoding: &quot;gzip&quot;&lt;/samp&gt;でレスポンスが帰ってくるので、
+それの恩恵も得られる。
+SVG化すると&amp;lt;冗長な&amp;gt;&amp;lt;タグ&amp;gt;&amp;lt;/冗長な&amp;gt;が付加されるため
+ファイルはおおきくなっているケースも多い。
+が、gzipで軽くなっている例も結構あるようだ（詳細未調査）。
+&lt;/p&gt;
+
+&lt;p&gt;
+最後に極端に転送量が減っている例として、
+&lt;a href=&quot;/2012/02/v-highisdb-tmmmmbinottv.html&quot;&gt;メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた&lt;/a&gt;
+での&lt;a href=&quot;/images/mobacas-protocol-stack.svg&quot;&gt;プロトコル・スタックの図&lt;/a&gt;で比較をあげる：
+&lt;/p&gt;
+&lt;figure style=&quot;display: block; text-align: center;&quot;&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;td&gt;項目&lt;/td&gt;
+&lt;td&gt;容量(bytes)&lt;/td&gt;
+&lt;td&gt;削減率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PNG画像 688x355&lt;/td&gt;
+&lt;td&gt;22801&lt;/td&gt;
+&lt;td&gt;100%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PNG画像サムネイル表示 400x206&lt;/td&gt;
+&lt;td&gt;40563&lt;/td&gt;
+&lt;td&gt;178%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVG画像&lt;/td&gt;
+&lt;td&gt;12180&lt;/td&gt;
+&lt;td&gt;53.4%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SVG画像+gzip圧縮転送&lt;/td&gt;
+&lt;td&gt;2536&lt;/td&gt;
+&lt;td&gt;11.1%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+これは blogger/Gdrive の自動生成しているサムネイルがかえって容量が増えているというひどい事例となった。
+この画像については実に 9割近くの転送量が削減されていることがわかる。
+（実際にはこれにHTTPヘッダなどが付いてくるが省略計算）
+&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 10 Nov 2014 01:09:50 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html</guid>
+        
+        <category>blogger</category>
+        
+        <category>jekyll</category>
+        
+        <category>svg</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 34.0 beta 3 default preference and firefox 33.0</title>
@@ -993,146 +1115,6 @@ table.diff_firefox30_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Note: do same without browser.tabs.closeButtons on Firefox 31+</title>
-        <description>&lt;p&gt;Unfortunately &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=865826&quot; title=&quot;Bug 865826 - Remove the browser.tabs.closeButtons pref&quot;&gt;Bug865826&lt;/a&gt; remove &lt;a href=&quot;http://kb.mozillazine.org/Browser.tabs.closeButtons&quot;&gt;&lt;code&gt;browser.tabs.closeButtons&lt;/code&gt;&lt;/a&gt; pref (&quot;Browser&quot; -&amp;gt; &quot;TabBrowsing&quot; -&amp;gt; &quot;Display a close button ...&quot; in Configuration Mania).
-This removal would be captured in upcoming Firefox 31.&lt;/p&gt;
-
-&lt;p&gt;In this article, I describe how to do same without &lt;code&gt;browser.tabs.closeButtons&lt;/code&gt; pref.&lt;/p&gt;
-
-&lt;h4&gt;Use addons&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://addons.mozilla.org/firefox/addon/no-close-buttons/&quot;&gt;No Close Buttons&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Only &quot;Value=2: Display no close button&quot; (as of version 0.1)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://addons.mozilla.org/firefox/addon/classicthemerestorer/&quot; title=&quot;Classic Theme Restorer&quot;&gt;Classic Theme Restorer (Customize Australis)&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;Only &quot;Value=2: Display no close button&quot; (as of version 1.1.8)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As of May 2014, there is &lt;em&gt;no&lt;/em&gt; addon providing a close button at the end of the tab strip (Value=3).&lt;/p&gt;
-
-&lt;h4&gt;Use &lt;code&gt;userChrome.css&lt;/code&gt;&lt;/h4&gt;
-
-&lt;h5&gt;Value=0: Display a close button on the Active tab Only&lt;/h5&gt;
-
-
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img src=&quot;/images/note-do-same-without-value0.png&quot; width=&quot;713&quot; height=&quot;74&quot; /&gt;
-&lt;figcaption style=&quot;display: block; text-align: center;&quot;&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;@-moz-document url(chrome://browser/content/browser.xul) {
-  .tab-close-button:not([selected]) {
-    display: none;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5&gt;Value=1: Display close buttons on All tabs&lt;/h5&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img src=&quot;/images/note-do-same-without-value1.png&quot; width=&quot;713&quot; height=&quot;74&quot; /&gt;
-&lt;figcaption style=&quot;display: block; text-align: center;&quot;&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Default. There is nothing to do.&lt;/p&gt;
-
-&lt;h5&gt;Value=2: Display no close button&lt;/h5&gt;
-
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img src=&quot;/images/note-do-same-without-value2.png&quot; width=&quot;713&quot; height=&quot;74&quot; /&gt;
-&lt;figcaption style=&quot;display: block; text-align: center;&quot;&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;@-moz-document url(chrome://browser/content/browser.xul) {
-  .tab-close-button {
-    display: none;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5&gt;Value=3: Display a close button at the end of the tab strip (Firefox 1.x behavior)&lt;/h5&gt;
-
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img src=&quot;/images/note-do-same-without-value3.png&quot; width=&quot;713&quot; height=&quot;74&quot; /&gt;
-&lt;figcaption style=&quot;display: block; text-align: center;&quot;&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;The close button at the end of the tab strip has been removed in &lt;a href=&quot;https://hg.mozilla.org/integration/fx-team/rev/1c2ef0d3d997&quot;&gt;1c2ef0d3d997&lt;/a&gt;.
-Therefore, some sorta addon would be needed.&lt;/p&gt;
-
-&lt;p&gt;For example, to get back the close button, add following user script using &lt;a href=&quot;http://userchromejs.mozdev.org/&quot;&gt;userChrome.js&lt;/a&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;// ==UserScript==
-// @name close_btn_end_tab_strip.uc.js
-// @include main
-// ==/UserScript==
-(function () {
-  var tabsCloseButton = document.createElement(&quot;toolbarbutton&quot;);
-  tabsCloseButton.setAttribute(&quot;id&quot;, &quot;tabs-closebutton&quot;);
-  tabsCloseButton.setAttribute(&quot;class&quot;, &quot;close-button tabs-closebutton close-icon&quot;);
-  tabsCloseButton.setAttribute(&quot;command&quot;, &quot;cmd_close&quot;);
-  tabsCloseButton.setAttribute(&quot;label&quot;, &quot;Close Tab&quot;);
-  tabsCloseButton.setAttribute(&quot;cui-areatype&quot;, &quot;toolbar&quot;);
-  tabsCloseButton.setAttribute(&quot;tooltiptext&quot;, &quot;Close Tab&quot;);
-
-  var tabsToolbar = document.getElementById(&quot;TabsToolbar&quot;);
-  tabsToolbar.appendChild(tabsCloseButton);
-})();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(Note: To hide close buttons on tabs, the user CSS rule described in value=2 is also required.)&lt;/p&gt;
-
-&lt;h5&gt;FYI: More customize!&lt;/h5&gt;
-
-&lt;p&gt;Example 1. Display close button when the cursor hovers over the tab, even if tab width is smaller than &lt;code&gt;browser.tabs.tabClipWidth&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;@-moz-document url(chrome://browser/content/browser.xul) {
-  tab:hover .tab-close-button {
-    display: -moz-box ! important;
-  }
-  tab:not(:hover) .tab-close-button {
-    display: none ! important;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Example 2. Display close button when the cursor hovers near the tabbar, even if tab width is smaller than &lt;code&gt;browser.tabs.tabClipWidth&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;@-moz-document url(chrome://browser/content/browser.xul) {
-  .tabbrowser-tabs[closebuttons=&quot;activetab&quot;] .tab-close-button {
-    display: -moz-box ! important;
-  }
-  tab:not(:hover) .tab-close-button {
-    display: none ! important;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4&gt;Reference&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=865826&quot; title=&quot;Bug 865826 - Remove the browser.tabs.closeButtons pref&quot;&gt;Bug 865826 - Remove the browser.tabs.closeButtons pref&lt;/a&gt; - Mozilla Bugzilla&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 12 May 2014 23:31:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/05/note-do-same-without.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/05/note-do-same-without.html</guid>
-        
-        <category>firefox</category>
-        
-        <category>howto</category>
         
         
       </item>
