@@ -8,9 +8,9 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="HTML5 textarea placeholder attribute must not contains LF." />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://2.bp.blogspot.com/_mg7ZLoSThok/TBTxienCLjI/AAAAAAAAADI/l2UpwFKvhKA/s72-c/placeholderLF.png" />
+  <meta property="og:image" content="/images/placeholderLF.png" />
   <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -42,7 +42,8 @@
   <p>The placeholder attribute for &lt;input&gt; and &lt;textarea&gt; is supported on Firefox3.7/Chrome/Safari. Placeholder text is displayed when text is empty and is not focused. It is very easy to use:</p><pre class="prettyprint"><code>&lt;input type="text" placeholder="empty text" value=""&gt;
 &lt;textarea placeholder="empty text"&gt;
 &lt;/textarea&gt;
-</code></pre><p>When <code>placeholder="foo&amp;#x0a;bar"</code> is specified to &lt;textarea&gt;, "&amp;#x0a;"(LF) is removed on Firefox. On Chrome, line break after "foo".</p><p><img src="http://2.bp.blogspot.com/_mg7ZLoSThok/TBTxienCLjI/AAAAAAAAADI/l2UpwFKvhKA/s1600/placeholderLF.png" style="width:242px; height:125px; text-align: center; margin: auto;" /></p><p>Since <a href="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder">HTML 5 specification</a> deny "&amp;#x0a;"(LF) to <code>placeholder</code> attribute, it seems to be no matter. <strong>"&amp;#x0a;"(LF) MUST NOT be contained in <code>placeholder</code> attribute.</strong> (i.e. <code>placeholder</code> must be a single-line text)</p><blockquote cite="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder"><p>The attribute, if specified, must have a value that contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters. </p></blockquote><h4>Sample</h4><textarea placeholder="foo&#x0a;bar"></textarea>
+</code></pre><p>When <code>placeholder="foo&amp;#x0a;bar"</code> is specified to &lt;textarea&gt;, "&amp;#x0a;"(LF) is removed on Firefox. On Chrome, line break after "foo".</p><p><img src="/images/placeholderLF.png" width="242" height="125" /></p><p>Since <a href="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder">HTML 5 specification</a> deny "&amp;#x0a;"(LF) to <code>placeholder</code> attribute, it seems to be no matter. <strong>"&amp;#x0a;"(LF) MUST NOT be contained in <code>placeholder</code> attribute.</strong> (i.e. <code>placeholder</code> must be a single-line text)</p><blockquote cite="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder"><p>The attribute, if specified, must have a value that contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters. </p></blockquote><h4>Sample</h4><textarea placeholder="foo&#x0a;bar"></textarea>
+
   </article>
 
   <footer class="post-footer">
@@ -66,7 +67,7 @@
     <div class="meta">
       Author: cat_in_136
       Date: <time>2010-06-13T23:46:00+09:00</time>
-      (Modified: <time>2010-06-20T23:23:55+09:00</time>)
+      (Modified: <time>2014-11-10T00:02:30+09:00</time>)
     </div>
     
     <div class="meta">
@@ -122,23 +123,23 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li>
-      <span class="post-date">2014-05-12</span>
-      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+      <span class="post-date">2010-06-20</span>
+      <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and.html">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot;</a>
     </li>
     
     <li>
-      <span class="post-date">2013-09-24</span>
-      <a class="post-link" href="/2013/09/blog-post.html">もしも英語の地名を漢字にしてみたら〜はわざわざ考えるまでもなかったの巻</a>
+      <span class="post-date">2012-11-05</span>
+      <a class="post-link" href="/2012/11/twitter-api.html">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</a>
     </li>
     
     <li>
-      <span class="post-date">2013-02-24</span>
-      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
+      <span class="post-date">2011-02-05</span>
+      <a class="post-link" href="/2011/02/tip-how-to-convert-from-gnu-arch-to.html">Tip: How to convert from GNU-Arch to Mercurial repository</a>
     </li>
     
     <li>
-      <span class="post-date">2010-03-28</span>
-      <a class="post-link" href="/2010/03/configuration-mania-1122010032801.html">UPDATE#2: Configuration Mania 1.12.2010032801: Hardware accelerated browsing settings for Fx3.7</a>
+      <span class="post-date">2010-06-30</span>
+      <a class="post-link" href="/2010/06/no-xul-element-is-used-on-current.html">No XUL &lt;expander&gt; element is used on current mozilla.</a>
     </li>
     
   </ul>

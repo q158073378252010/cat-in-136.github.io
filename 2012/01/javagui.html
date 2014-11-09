@@ -8,9 +8,9 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="JavaのGUIをベクトルデータとしてスクリーンショットを撮る" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://4.bp.blogspot.com/-krBgrERBqNQ/TxJbkilJi5I/AAAAAAAAALw/bjo9dxED0Do/s72-c/swingset_java_ocean_gv.png" />
+  <meta property="og:image" content="/images/swingset_java_ocean_gv.png" />
   <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -206,15 +206,19 @@ class ComponentPrintableWrapper implements Printable {
 
 
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://4.bp.blogspot.com/-krBgrERBqNQ/TxJbkilJi5I/AAAAAAAAALw/bjo9dxED0Do/s1600/swingset_java_ocean_gv.png" imageanchor="1"><img border="0" height="305" src="http://4.bp.blogspot.com/-krBgrERBqNQ/TxJbkilJi5I/AAAAAAAAALw/bjo9dxED0Do/s400/swingset_java_ocean_gv.png" width="400" /></a></div>
+<figure style="display: block; 1em margin: auto; text-align: center; font-size: smaller;">
+<a href="/images/swingset_java_ocean_gv.png"><img src="/images/swingset_java_ocean_gv.png" width="320" height="244" /></a>
+<figcaption>SwingSet の PostScript 出力結果</figcaption>
+</figure>
 
 <p>注意する点は、グラデーション部などは画像となっているが、境界線(border)は線とベクトルデータのままになっている。
 テキストもベクトルデータのままだが、残念ながらアウトラインデータになっているのでテキスト改竄といったことを簡単にはできない。
 とはいえ、inkscape の PostScript 読み込み機能（内部的には一旦PDFに変換されている）を使って読み込んだ後、変形などをして編集することが可能だ。</p>
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://3.bp.blogspot.com/-jWj1kjgtl_4/TxJbmIWgxoI/AAAAAAAAAL4/HAuvxlbKjIE/s1600/swingset_java_ocean_inkscape.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="296" src="http://3.bp.blogspot.com/-jWj1kjgtl_4/TxJbmIWgxoI/AAAAAAAAAL4/HAuvxlbKjIE/s400/swingset_java_ocean_inkscape.png" width="400" /></a></div>
+<figure style="display: block; 1em margin: auto; text-align: center; font-size: smaller;">
+<a href="/images/swingset_java_ocean_inkscape.png"><img src="/images/swingset_java_ocean_inkscape.png" width="320" height="237" /></a>
+<figcaption>SwingSet の PostScript 出力結果を inkscape で開いた図</figcaption>
+</figure>
 
 <p>いくつか Look And Feel (いわゆるテーマのようなもの) を変えていくつかとってみたが、Nimbus といった半透明を使ったものや、GTK+ といった外部レンダリングエンジンを使ったものは画像として書き出されてしまう。 
 後者はしょうがないが、半透明などは PostScript で表現できないからそうなっているんだろうか。
@@ -222,11 +226,15 @@ class ComponentPrintableWrapper implements Printable {
 あと、ここには載せないが、Swing ではない AWT の GUI 部品は本手法を使ってベクトルデータを抜き出すことは出来なかった。</p>
 
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://3.bp.blogspot.com/-_x1FSAUiSJ8/TxJbnWo9P8I/AAAAAAAAAMA/vRre6mm_SsI/s1600/swingset_motif_inkscape.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="247" src="http://3.bp.blogspot.com/-_x1FSAUiSJ8/TxJbnWo9P8I/AAAAAAAAAMA/vRre6mm_SsI/s400/swingset_motif_inkscape.png" width="400" /></a></div>
+<figure style="display: block; margin: 1em auto; text-align: center; font-size: smaller;">
+<a href="/images/swingset_motif_inkscape.png"><img src="/images/swingset_motif_inkscape.png" width="320" height="198" /></a>
+<figcaption>SwingSet MotifLookAndFeel の場合</figcaption>
+</figure>
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://1.bp.blogspot.com/-u_EUsgzRjHk/TxJboPJKAWI/AAAAAAAAAME/zmkT9QKEyXQ/s1600/swingset_nimbus_gv.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="327" src="http://1.bp.blogspot.com/-u_EUsgzRjHk/TxJboPJKAWI/AAAAAAAAAME/zmkT9QKEyXQ/s400/swingset_nimbus_gv.png" width="400" /></a></div>
+<figure style="display: block; margin: 1em auto; text-align: center; font-size: smaller;">
+<a href="/images/swingset_nimbus_gv.png"><img src="/images/swingset_nimbus_gv.png" width="320" height="262" /></a>
+<figcaption>SwingSet NimbusLookAndFeel の場合</figcaption>
+</figure>
 
 <h4>Conclusion</h4>
 
@@ -247,6 +255,7 @@ class ComponentPrintableWrapper implements Printable {
 </ol>
 
 </div>
+
   </article>
 
   <footer class="post-footer">
@@ -274,7 +283,7 @@ class ComponentPrintableWrapper implements Printable {
     <div class="meta">
       Author: cat_in_136
       Date: <time>2012-01-15T19:59:00+09:00</time>
-      (Modified: <time>2013-03-04T20:42:54+09:00</time>)
+      (Modified: <time>2014-11-10T00:02:34+09:00</time>)
     </div>
     
     <div class="meta">
@@ -325,28 +334,28 @@ var disqus_shortname = 'catin136blog';
   <ul>
     
     <li>
+      <span class="post-date">2013-02-24</span>
+      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+    </li>
+    
+    <li>
       <span class="post-date">2012-01-28</span>
       <a class="post-link" href="/2012/01/javaswinglookandfeel.html">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</a>
     </li>
     
     <li>
-      <span class="post-date">2012-03-24</span>
-      <a class="post-link" href="/2012/03/0f.html">零階(0F)の必要性について</a>
+      <span class="post-date">2013-04-13</span>
+      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
     
     <li>
-      <span class="post-date">2011-12-24</span>
-      <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
-    </li>
-    
-    <li>
-      <span class="post-date">2011-01-03</span>
-      <a class="post-link" href="/2011/01/pov-ray.html">水平線から上がった初日の出のアレをPOV-Rayで再現したい</a>
-    </li>
-    
-    <li>
-      <span class="post-date">2010-11-27</span>
-      <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</a>
+      <span class="post-date">2012-05-19</span>
+      <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
     </li>
     
   </ul>

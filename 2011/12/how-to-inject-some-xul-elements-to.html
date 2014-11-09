@@ -8,9 +8,9 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://3.bp.blogspot.com/-BkoEzqIhB10/TvVCVEa_frI/AAAAAAAAALc/oNGFq_oB2gw/s72-c/Do_you_want_to_wait_for_restart_firefox.png" />
+  <meta property="og:image" content="/images/Do_you_want_to_wait_for_restart_firefox.png" />
   <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -39,8 +39,10 @@
   </header>
 
   <article class="post-content">
-  <div class="separator" style="clear: both; text-align: center;">
-<a href="http://3.bp.blogspot.com/-BkoEzqIhB10/TvVCVEa_frI/AAAAAAAAALc/oNGFq_oB2gw/s1600/Do_you_want_to_wait_for_restart_firefox.png" style="margin-left:1em; margin-right:1em"><img style="border:0;width:400px;height:50px;" height="50" width="400" src="http://3.bp.blogspot.com/-BkoEzqIhB10/TvVCVEa_frI/AAAAAAAAALc/oNGFq_oB2gw/s400/Do_you_want_to_wait_for_restart_firefox.png" /></a><br />Do you want to wait for restart?</div>
+  <figure style="clear: both; text-align: center;">
+<img src="/images/Do_you_want_to_wait_for_restart_firefox.png" width="498" height="62" />
+<figcaption style="display: block; text-align: center;">Do you want to wait for restart?</figcaption>
+</figure>
 
 <p>See also: <a href="/2010/11/how-to-create-restart-less-firefox4.html">How to create restart-less #Firefox4 extension <em>WITHOUT</em> Jetpack</a></p>
 
@@ -95,8 +97,9 @@ BrowserWindowObserver.prototype = {
 <li>When <code>observe()</code> is called with <code>aTopic</code>=<code>"domwindowopened"</code>, the DOM tree is not generated and the browser type is not specified. So, an event listener is required so to wait for <code>"DOMContentLoaded"</code> (refer to following sequence diagram.)</li>
 </ul>
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://1.bp.blogspot.com/-0xfE-14SW6M/TvVMHRFEqmI/AAAAAAAAALo/aFotNwrdLtQ/s1600/restart-less%2Baddon.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img border="0" height="292" width="400" src="http://1.bp.blogspot.com/-0xfE-14SW6M/TvVMHRFEqmI/AAAAAAAAALo/aFotNwrdLtQ/s400/restart-less%2Baddon.png" /></a></div>
+<figure style="clear: both; text-align: center;">
+<object width="524" height="383" data="/images/restart-less-addon.svg"></object>
+</figure>
 
 
 
@@ -203,6 +206,7 @@ function browserWindowShutdownFunc(aWindow) {
 <li><a href="https://developer.mozilla.org/en/nsIWindowMediator">nsIWindowMediator</a> - MDN XPCOM Interface Reference</li>
 <li><a href="https://developer.mozilla.org/en/Gecko-Specific_DOM_Events#DOMContentLoaded">DOMContentLoaded (Gecko-Specific DOM Events)</a> - MDN Docs</li>
 </ul>
+
   </article>
 
   <footer class="post-footer">
@@ -224,7 +228,7 @@ function browserWindowShutdownFunc(aWindow) {
     <div class="meta">
       Author: cat_in_136
       Date: <time>2011-12-24T18:00:00+09:00</time>
-      (Modified: <time>2011-12-24T18:35:35+09:00</time>)
+      (Modified: <time>2014-11-10T00:02:34+09:00</time>)
     </div>
     
     <div class="meta">
@@ -280,23 +284,23 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li>
       <span class="post-date">2010-06-26</span>
       <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and_26.html">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</a>
     </li>
     
     <li>
+      <span class="post-date">2010-08-15</span>
+      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+    </li>
+    
+    <li>
       <span class="post-date">2012-01-15</span>
       <a class="post-link" href="/2012/01/javagui.html">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</a>
-    </li>
-    
-    <li>
-      <span class="post-date">2010-08-19</span>
-      <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">Tip: Calling window.atob() and btoa() from Jetpack-SDK</a>
-    </li>
-    
-    <li>
-      <span class="post-date">2014-05-12</span>
-      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
     
   </ul>

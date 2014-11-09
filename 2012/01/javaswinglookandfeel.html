@@ -8,9 +8,9 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード" />
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://1.bp.blogspot.com/-eKkyeVWK6gA/TyPIyofn42I/AAAAAAAAAMo/IBTxlqBnujk/s72-c/VerySimpleLAFSwingSet2.png" />
+  <meta property="og:image" content="/images/VerySimpleLAFSwingSet2.png" />
   <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -79,8 +79,9 @@ public class VerySimpleLookAndFeel extends BasicLookAndFeel {
 出るので実用にはさすがに向かないだろう。
 外見は Windows のクラシックモードに似ている。</p>
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://1.bp.blogspot.com/-eKkyeVWK6gA/TyPIyofn42I/AAAAAAAAAMo/IBTxlqBnujk/s1600/VerySimpleLAFSwingSet2.png" style="margin-left: 1em; margin-right: 1em;"><img height="304" src="http://1.bp.blogspot.com/-eKkyeVWK6gA/TyPIyofn42I/AAAAAAAAAMo/IBTxlqBnujk/s320/VerySimpleLAFSwingSet2.png" width="320" style="border: 0;" /></a></div>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<a href="/images/VerySimpleLAFSwingSet2.png"><img src="/images/VerySimpleLAFSwingSet2.png" width="340" height="304" /></a>
+</figure>
 
 <p>これは <code>BasicLookAndFeel</code> クラスが抽象クラスとはいえ、
 Look And Feels の動作に必要な殆どの処理が入っているからできるのである。
@@ -90,8 +91,9 @@ Look And Feels の動作に必要な殆どの処理が入っているからで�
 それが、例えば <a href="http://java.sun.com/javase/ja/6/docs/ja/api/javax/swing/plaf/basic/BasicButtonUI.html" title="javax.swing.plaf.BasicButtonUI"><code>BasicButtonUI</code></a>クラスである。
 <code>BasicLookAndFeel</code> の派生クラスを作れば、内部で <a href="http://java.sun.com/javase/ja/6/docs/ja/api/javax/swing/plaf/basic/BasicButtonUI.html" title="javax.swing.plaf.BasicButtonUI"><code>BasicButtonUI</code></a> を参照して動作するという仕組みだ。</p>
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://2.bp.blogspot.com/-LN5jfyyoax4/TyPIO76zLzI/AAAAAAAAAMY/Px4aRXlxPs0/s1600/Laf_Class_dia.png" style="margin-left: 1em; margin-right: 1em;"><img height="230" src="http://2.bp.blogspot.com/-LN5jfyyoax4/TyPIO76zLzI/AAAAAAAAAMY/Px4aRXlxPs0/s320/Laf_Class_dia.png" width="320" style="border: 0;" /></a></div>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<a href="/images/Laf_Class_dia.svg"><object width="320" height="231" data="/images/Laf_Class_dia.svg"></object></a>
+</figure>
 
 <p>ただ、すべてが動作するわけではなく <code>JFileChooser</code> などが動作しない
 わけだが、これはさらにそのエラーを対処すれば動作するだろう、が試してはいない。</p>
@@ -104,8 +106,9 @@ Look And Feels の動作に必要な殆どの処理が入っているからで�
 動くわけではないのであくまで参考までに。</p>
 
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="http://4.bp.blogspot.com/-kruJq2Dv3Wo/TyPIxDVwTXI/AAAAAAAAAMg/q0bakwzAsvI/s1600/RedmondLAFSwingSet2.png" style="margin-left: 1em; margin-right: 1em;"><img height="304" src="http://4.bp.blogspot.com/-kruJq2Dv3Wo/TyPIxDVwTXI/AAAAAAAAAMg/q0bakwzAsvI/s320/RedmondLAFSwingSet2.png" width="320" style="border: 0;" /></a></div>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<a href="/images/RedmondLAFSwingSet2.png"><img src="/images/RedmondLAFSwingSet2.png" width="340" height="304" /></a>
+</figure>
 
 <h3 id="reference">Reference</h3>
 
@@ -115,6 +118,7 @@ Look And Feels の動作に必要な殆どの処理が入っているからで�
 <li><a href="http://hg.openjdk.java.net/jdk7/jsn/jdk/file/tip/src/share/classes/com/sun/java/swing/plaf/windows/WindowsLookAndFeel.java" title="src/share/classes/com/sun/java/swing/plaf/windows/WindowsLookAndFeel.java"><code>WindowsLookAndFeel.java</code></a> - OpenJDK JDK7 Source code.</li>
 <li><a href="https://gist.github.com/1693524">https://gist.github.com/1693524</a> - 本稿で使用したソース一式</li>
 </ul>
+
   </article>
 
   <footer class="post-footer">
@@ -142,7 +146,7 @@ Look And Feels の動作に必要な殆どの処理が入っているからで�
     <div class="meta">
       Author: cat_in_136
       Date: <time>2012-01-28T19:15:00+09:00</time>
-      (Modified: <time>2012-01-28T19:15:57+09:00</time>)
+      (Modified: <time>2014-11-10T00:02:35+09:00</time>)
     </div>
     
     <div class="meta">
@@ -198,23 +202,23 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li>
-      <span class="post-date">2012-03-24</span>
-      <a class="post-link" href="/2012/03/0f.html">零階(0F)の必要性について</a>
+      <span class="post-date">2013-02-24</span>
+      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
     
     <li>
-      <span class="post-date">2011-02-23</span>
-      <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">Visual Guide : New pref of Configuration Mania v1.14.2011022201</a>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
     
     <li>
-      <span class="post-date">2010-11-01</span>
-      <a class="post-link" href="/2010/11/bloggers-stats-is-flash-free-but-looks.html">Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics</a>
+      <span class="post-date">2012-05-19</span>
+      <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
     </li>
     
     <li>
-      <span class="post-date">2010-11-27</span>
-      <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</a>
+      <span class="post-date">2013-04-13</span>
+      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
     
   </ul>
