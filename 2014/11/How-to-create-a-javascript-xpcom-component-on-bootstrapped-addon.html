@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>How to create a JavaScript XPCOM component on bootstrapped addon cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="How to create a JavaScript XPCOM component on bootstrapped addon" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,user-scalable=yes" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" rel="bookmark">How to create a JavaScript XPCOM component on bootstrapped addon</a></h1>
+    <p class="meta"><time>2014-11-16T23:04:54+09:00</time></p>
+  </header>
+
+  <article class="post-content">
+  <p>This post describes how to create a JavaScript XPCOM component
+on bootstrapped (restartless) addon.</p>
+
+<h4>On bootstrapped extension</h4>
+
+<ol>
+  <li>Define the component name such as <code>@mozilla.org/foo/bar;1</code>;</li>
+  <li>Generate GUID for the component.
+    <ul>
+      <li>If you have Visual Studio, you may use <a href="http://msdn.microsoft.com/library/ms241442(v=vs.80).aspx"><code>guidgen</code></a>.</li>
+      <li>
+        <p>On linux, you may use <code>uuidgen</code>(1).</p>
+
+	<pre style="background-color: #000; color: #fff;"><code>% uuidgen
+22e1de77-790a-4a78-9ed4-8a8fca8c9f0f
+% 
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Create the component code (in the bootstrap.js).</p>
+
+    <pre class="prettyprint"><code>const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+const Cr = Components.results;
+    
+Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+    
+function ComponentFooBar() { }
+ComponentFooBar.prototype = {
+  classDescription: "foobar class",
+  contractID: "@mozilla.org/foo/bar;1",
+  classID: Components.ID("{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}"),
+  QueryInterface: XPCOMUtils.generateQI([]),
+
+  // members to implement...
+};
+//
+const ComponentFooBarFactory = Object.freeze({
+  createInstance: function(aOuter, aIID) {
+    if (aOuter) { throw Cr.NS_ERROR_NO_AGGREGATION; }
+    return new ComponentFooBar();
+  },
+  loadFactory: function (aLock) { /* unused */ },
+  QueryInterface: XPCOMUtils.generateQI([Ci.nsIFactory])
+});
+</code></pre>
+
+    <ul>
+      <li>You may specify base interface to <code>ComponentFooBar.prototype.QueryInterface</code> and implement methods.</li>
+    </ul>
+  </li>
+  <li>
+    <p>To regist the component on startup, add the following codes to the <code>startup()</code> in bootstrap.js:</p>
+
+    <pre class="prettyprint"><code>function startup(params, aReason) {
+  const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
+  registrar.registerFactory(ComponentFooBar.prototype.classID,
+                            ComponentFooBar.prototype.classDescription,
+                            ComponentFooBar.prototype.contractID,
+                            ComponentFooBarFactory);
+}
+</code></pre>
+  </li>
+  <li>
+    <p>To release the component on shutdown, add the following codes to the <code>shutdown()</code> in bootstrap.js:</p>
+
+    <pre class="prettyprint"><code>function shutdown(params, aReason) {
+  const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
+  registrar.unregisterFactory(ComponentFooBar.prototype.classID,
+                              ComponentFooBarFactory);
+}
+</code></pre>
+
+    <ul>
+      <li>Note: bootstrapped add-ons <em>must</em> take care to clean up any component registrations at shutdown. So you must not miss this clean-up code.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>NOTE: On non-bootstrap extension</h4>
+
+<p>If not bootstrapped add-on, you can use <code>chrome.manifest</code> and do same thing without using <code>nsIComponentRegistrar</code>.</p>
+
+<ol>
+  <li>
+    <p>Add following lines to chrome.manifest:</p>
+
+    <pre><code>component {22e1de77-790a-4a78-9ed4-8a8fca8c9f0f} components/FooBar.js
+contract @mozilla.org/foo/var;1 {22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}
+</code></pre>
+  </li>
+  <li>
+    <p>Create the component code in components/FooBar.js</p>
+
+    <pre class="prettyprint"><code>const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+const Cr = Components.results;
+    
+Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+    
+function ComponentFooBar() { }
+ComponentFooBar.prototype = {
+  classDescription: "foobar class",
+  contractID: "@mozilla.org/foo/bar;1",
+  classID: Components.ID("{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}"),
+  QueryInterface: XPCOMUtils.generateQI([]),
+
+  // members to implement...
+};
+this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
+</code></pre>
+  </li>
+</ol>
+
+<h4>Reference</h4>
+
+<ul>
+  <li><a href="http://mxr.mozilla.org/mozilla-central/source/js/xpconnect/loader/XPCOMUtils.jsm">resource://gre/modules/XPCOMUtils.jsm</a></li>
+  <li><a href="http://stackoverflow.com/questions/18354668/how-to-implement-xpcom-component-nsicontentpolicy-in-bootstrapped-firefox-exte">How to implement XPCOM component (nsIContentPolicy) in bootstrapped Firefox extension</a> - Stack Overflow</li>
+  <li><a href="https://bitbucket.org/cat_in_136/configuration-mania/commits/fe98ca888a84">https://bitbucket.org/cat_in_136/configuration-mania/commits/fe98ca888a84</a> “use about:confmania for in-content configuration mania URL”</li>
+</ul>
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta">
+      Tag:
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html&amp;text=How%20to%20create%20a%20JavaScript%20XPCOM%20component%20on%20bootstrapped%20addon+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html&amp;linkname=How%20to%20create%20a%20JavaScript%20XPCOM%20component%20on%20bootstrapped%20addon+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    <div class="meta">
+      Author: cat_in_136
+      Date: <time>2014-11-16T23:04:54+09:00</time>
+      (Modified: <time>2014-11-16T23:04:54+09:00</time>)
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-11-16-How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">_posts/2014-11-16-How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-11-16-How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">History</a>)
+    </div>
+    
+  </footer>
+
+  <style type="text/css"><!-- /* --><![CDATA[ /* */
+@import "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css";
+pre.prettyprint { overflow: auto; }
+  /* ]]><!-- */ --></style>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2014/11/blog-image-moving-and-svg.html" title="ブログの画像の引っ越しとSVG化(Retina対応とも)" rel="prev">&#x2190;ブログの画像の引っ越しとSVG化(Retina対応とも)</a>
+    
+  </div>
+  <div class="next-post">
+    
+  </div>
+</nav>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2011-12-24</span>
+      <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-05-26</span>
+      <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">nsIPref is deprecated and removed on Firefox 3.7</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2010-08-19</span>
+      <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">Tip: Calling window.atob() and btoa() from Jetpack-SDK</a>
+    </li>
+    
+    <li>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <div class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
