@@ -5,9 +5,61 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 24 Nov 2014 11:50:34 +0900</pubDate>
-    <lastBuildDate>Mon, 24 Nov 2014 11:50:34 +0900</lastBuildDate>
+    <pubDate>Fri, 19 Dec 2014 00:16:56 +0900</pubDate>
+    <lastBuildDate>Fri, 19 Dec 2014 00:16:56 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Diff between firefox 35.0 beta 5 default preference and firefox 34.0.5</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 35.0 beta 5 and one of 34.0.5.
+&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 34.0.5 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 35.0 beta 5 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;table class=&quot;diff_firefox35_pref_diff&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 34.0.5&lt;/td&gt;&lt;td&gt;Firefox 36.0 beta 5&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;app.&lt;wbr&gt;update.&lt;wbr&gt;badge&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;axis_&lt;wbr&gt;lock.&lt;wbr&gt;breakout_&lt;wbr&gt;angle&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.3926991&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;axis_&lt;wbr&gt;lock.&lt;wbr&gt;breakout_&lt;wbr&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.03125&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;axis_&lt;wbr&gt;lock.&lt;wbr&gt;direct_&lt;wbr&gt;pan_&lt;wbr&gt;angle&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1.047197&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;axis_&lt;wbr&gt;lock.&lt;wbr&gt;lock_&lt;wbr&gt;angle&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.5235987&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;axis_&lt;wbr&gt;lock.&lt;wbr&gt;mode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;axis_&lt;wbr&gt;lock_&lt;wbr&gt;mode&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr&gt;smooth_&lt;wbr&gt;scroll_&lt;wbr&gt;repaint_&lt;wbr&gt;interval&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;75&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;bidi.&lt;wbr&gt;edit.&lt;wbr&gt;delete_&lt;wbr&gt;immediately&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr&gt;aboutHomeSnippets.&lt;wbr&gt;updateUrl&lt;/td&gt;&lt;td&gt;https://snippets.mozilla.com/%STARTPAGE_VERSION%/%NAME%/%VERSION%/%APPBUILDID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/&lt;/td&gt;&lt;td&gt;https://snippets.cdn.mozilla.net/%STARTPAGE_VERSION%/%NAME%/%VERSION%/%APPBUILDID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;apps.&lt;wbr&gt;URL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://marketplace.firefox.com/discovery/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;devedition.&lt;wbr&gt;theme.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;devedition.&lt;wbr&gt;theme.&lt;wbr&gt;showCustomizeButton&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr&gt;search.&lt;wbr&gt;defaultenginename.&lt;wbr&gt;US&lt;/td&gt;&lt;td&gt;chrome://browser-region/locale/region.properties&lt;/td&gt;&lt;td&gt;data:text/plain,&lt;wbr&gt;browser.search.defaultenginename.US=Yahoo&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;search.&lt;wbr&gt;geoSpecificDefaults&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr&gt;search.&lt;wbr&gt;order.&lt;wbr&gt;US.&lt;wbr&gt;1&lt;/td&gt;&lt;td&gt;chrome://browser-region/locale/region.properties&lt;/td&gt;&lt;td&gt;data:text/plain,browser.search.order.US.1=Yahoo&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr&gt;search.&lt;wbr&gt;order.&lt;wbr&gt;US.&lt;wbr&gt;2&lt;/td&gt;&lt;td&gt;chrome://browser-region/locale/region.properties&lt;/td&gt;&lt;td&gt;data:text/plain,browser.search.order.US.2=Google&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr&gt;search.&lt;wbr&gt;order.&lt;wbr&gt;US.&lt;wbr&gt;3&lt;/td&gt;&lt;td&gt;chrome://browser-region/locale/region.properties&lt;/td&gt;&lt;td&gt;data:text/plain,browser.search.order.US.3=Bing&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;tabs.&lt;wbr&gt;remote&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;tabs.&lt;wbr&gt;remote.&lt;wbr&gt;desktopbehavior&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;uitour.&lt;wbr&gt;whitelist.&lt;wbr&gt;add.&lt;wbr&gt;260&lt;/td&gt;&lt;td&gt;www.mozilla.org,support.mozilla.org&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;uitour.&lt;wbr&gt;whitelist.&lt;wbr&gt;add.&lt;wbr&gt;340&lt;/td&gt;&lt;td&gt;about:home&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;uitour.&lt;wbr&gt;whitelist.&lt;wbr&gt;add.&lt;wbr&gt;341&lt;/td&gt;&lt;td&gt;www.mozilla.org,support.mozilla.org,about:home&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr&gt;urlbar.&lt;wbr&gt;unifiedcomplete&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;canvas.&lt;wbr&gt;filters.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr&gt;healthreport.&lt;wbr&gt;service.&lt;wbr&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr&gt;devedition.&lt;wbr&gt;promo.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr&gt;editor.&lt;wbr&gt;enableCodeFolding&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr&gt;scratchpad.&lt;wbr&gt;enableCodeFolding&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr&gt;styleeditor.&lt;wbr&gt;source-&lt;wbr&gt;maps-&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr&gt;timeline.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dns.&lt;wbr&gt;ttl-&lt;wbr&gt;experiment.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dns.&lt;wbr&gt;ttl-&lt;wbr&gt;experiment.&lt;wbr&gt;variant&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr&gt;abortablepromise.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr&gt;enable_&lt;wbr&gt;resource_&lt;wbr&gt;timing&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr&gt;imagecapture.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr&gt;ipc.&lt;wbr&gt;plugins.&lt;wbr&gt;flash.&lt;wbr&gt;disable-&lt;wbr&gt;protected-&lt;wbr&gt;mode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr&gt;unsafe_&lt;wbr&gt;legacy_&lt;wbr&gt;crypto.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr&gt;window_&lt;wbr&gt;experimental_&lt;wbr&gt;bindings&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;geo.&lt;wbr&gt;wifi.&lt;wbr&gt;logging.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr&gt;downloadable_&lt;wbr&gt;fonts.&lt;wbr&gt;woff2.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr&gt;fxaccounts.&lt;wbr&gt;migrateToDevEdition&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr&gt;css.&lt;wbr&gt;clip-&lt;wbr&gt;path-&lt;wbr&gt;shapes.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr&gt;css.&lt;wbr&gt;filters.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr&gt;css.&lt;wbr&gt;font-&lt;wbr&gt;loading-&lt;wbr&gt;api.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr&gt;css.&lt;wbr&gt;masking.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr&gt;css.&lt;wbr&gt;object-&lt;wbr&gt;fit-&lt;wbr&gt;and-&lt;wbr&gt;position.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr&gt;event-&lt;wbr&gt;regions.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr&gt;CSP&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src &#39;self&#39; data: http://www.gravatar.com/ about: file: chrome:; font-src &#39;none&#39;; connect-src wss://*.tokbox.com https://*.opentok.com https://*.tokbox.com wss://*.mozilla.com https://*.mozilla.org wss://*.mozaws.net&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src &#39;self&#39; data: http://www.gravatar.com/ about: file: chrome:; font-src &#39;none&#39;; connect-src wss://*.tokbox.com https://*.opentok.com https://*.tokbox.com wss://*.mozilla.com https://*.mozilla.org wss://*.mozaws.net; media-src blob:&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;gettingStarted.&lt;wbr&gt;seen&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;gettingStarted.&lt;wbr&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/hello/start&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;learnMoreUrl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://www.firefox.com/hello/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr&gt;legal.&lt;wbr&gt;ToS_&lt;wbr&gt;url&lt;/td&gt;&lt;td&gt;https://hello.firefox.com/legal/terms/&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/about/legal/terms/firefox-hello/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr&gt;legal.&lt;wbr&gt;privacy_&lt;wbr&gt;url&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/privacy/&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/privacy/firefox-hello/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr&gt;ringtone&lt;/td&gt;&lt;td&gt;chrome://browser/content/loop/shared/sounds/Firefox-Long.ogg&lt;/td&gt;&lt;td&gt;chrome://browser/content/loop/shared/sounds/ringtone.ogg&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;rooms.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr&gt;server&lt;/td&gt;&lt;td&gt;https://loop.services.mozilla.com&lt;/td&gt;&lt;td&gt;https://loop.services.mozilla.com/v0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;soft_&lt;wbr&gt;start_&lt;wbr&gt;hostname&lt;/td&gt;&lt;td&gt;soft-start.loop.services.mozilla.com&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;soft_&lt;wbr&gt;start_&lt;wbr&gt;ticket_&lt;wbr&gt;number&lt;/td&gt;&lt;td&gt;-1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;support_&lt;wbr&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://support.mozilla.org/kb/group-conversations-firefox-hello-webrtc&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;throttled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr&gt;throttled2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr&gt;fragmented-&lt;wbr&gt;mp4.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr&gt;peerconnection.&lt;wbr&gt;ice.&lt;wbr&gt;loopback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr&gt;peerconnection.&lt;wbr&gt;trickle_&lt;wbr&gt;ice&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr&gt;http.&lt;wbr&gt;altsvc.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr&gt;http.&lt;wbr&gt;altsvc.&lt;wbr&gt;oe&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr&gt;http.&lt;wbr&gt;network-&lt;wbr&gt;changed.&lt;wbr&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr&gt;http.&lt;wbr&gt;spdy.&lt;wbr&gt;enabled.&lt;wbr&gt;http2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr&gt;http.&lt;wbr&gt;spdy.&lt;wbr&gt;enabled.&lt;wbr&gt;http2draft&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr&gt;notify.&lt;wbr&gt;changed&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugins.&lt;wbr&gt;hideMissingPluginsNotification&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugins.&lt;wbr&gt;notifyMissingFlash&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr&gt;panicButton.&lt;wbr&gt;enabledLocales&lt;/td&gt;&lt;td&gt;ast da de en-GB en-US es-AR es-CL es-ES es-MX fi fr fy-NL he hu it ja ja-JP-mac ko lv nb-NO nn-NO pa-IN pl pt-BR rm ru sk sl zh-TW&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr&gt;panicButton.&lt;wbr&gt;useLocaleList&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr&gt;cert_&lt;wbr&gt;pinning.&lt;wbr&gt;process_&lt;wbr&gt;headers_&lt;wbr&gt;from_&lt;wbr&gt;non_&lt;wbr&gt;builtin_&lt;wbr&gt;roots&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr&gt;sync.&lt;wbr&gt;prefs.&lt;wbr&gt;sync.&lt;wbr&gt;privacy.&lt;wbr&gt;trackingprotection.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;social.&lt;wbr&gt;share.&lt;wbr&gt;activationPanelEnabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;social.&lt;wbr&gt;shareDirectory&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://activations.cdn.mozilla.net/sharePanel.html&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;startup.&lt;wbr&gt;homepage_&lt;wbr&gt;override_&lt;wbr&gt;url&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/whatsnew/?oldversion=%OLD_VERSION%&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;svg.&lt;wbr&gt;path-&lt;wbr&gt;caching.&lt;wbr&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr&gt;distance.&lt;wbr&gt;threshold&lt;/td&gt;&lt;td&gt;1500&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr&gt;inflatesize.&lt;wbr&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;urlclassifier.&lt;wbr&gt;gethash.&lt;wbr&gt;timeout_&lt;wbr&gt;ms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;xpinstall.&lt;wbr&gt;whitelist.&lt;wbr&gt;add&lt;/td&gt;&lt;td&gt;addons.mozilla.org&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;xpinstall.&lt;wbr&gt;whitelist.&lt;wbr&gt;add.&lt;wbr&gt;180&lt;/td&gt;&lt;td&gt;marketplace.firefox.com&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
+																																																																																																																																																																																																																																																															&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox35_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox35_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox35_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox35_pref_diff td.json { word-break: break-all; }
+table.diff_firefox35_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox35_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox35_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox35_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox35_pref_diff td.json { word-break: break-all; }
+
+table.diff_firefox35_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox35_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Fri, 19 Dec 2014 00:11:35 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/12/diff-between-firefox-350-beta-5-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/12/diff-between-firefox-350-beta-5-default.html</guid>
+        
+        <category>pref diff</category>
+        
+        <category>mozilla</category>
+        
+        
+      </item>
     
       <item>
         <title>How to create a JavaScript XPCOM component on bootstrapped addon</title>
@@ -1036,170 +1088,6 @@ table.diff_firefox31_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</title>
-        <description>&lt;p&gt;結局開発終了騒ぎのあった &lt;a href=&quot;http://truecrypt.ch/&quot; title=&quot;TCnext | Site dedicated to the next &amp;quot;truecrypt&amp;quot;&quot;&gt;TrueCryptはフォークされた&lt;/a&gt; のであるが、
-このタイミングでLUKS(Linux Unified Key Setup)に触っておこうというお話し。&lt;/p&gt;
-
-&lt;p&gt;LUKSは実ドライブのボリューム暗号化で使われることが多いようだが、
-今回は TrueCrypt でありがちな運用方法である
-仮想ドライブ（ファイル）を使ったものである。&lt;/p&gt;
-
-&lt;p&gt;結論は単にループデバイスを介して普通にLUKSの設定をするだけであったが、
-メモとして残しておく。&lt;/p&gt;
-
-&lt;h4&gt;作成&lt;/h4&gt;
-
-&lt;h5&gt;仮想ドライブファイルの作成&lt;/h5&gt;
-
-&lt;p&gt;まず仮想ドライブファイルとなるファイルを作る。
-仮に 1G byte で作るのならば…&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;% dd if=/dev/zero of=/path/to/foobar.img bs=1k count=1M
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;ファイルを置く場所が ext4 などならば fallocate(1) を使って作ってもよい。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;% fallocate -l 1G /path/to/foobar.img
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;なお本手法ではディスクイメージをそのまま扱う都合上、
-可変ドライブに対応しない（対応できない）。
-どうしてもというのならば、スパースファイルでも使えばよいと思う。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;% touch /path/to/foobar.img
-% truncate -s 1G /path/to/foobar.img
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h5&gt;暗号化仮想ドライブの構築&lt;/h5&gt;
-
-&lt;p&gt;仮想ドライブファイルをループデバイスに割り当てる。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# losetup /dev/loop0 /path/to/foobar.img
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここでは /dev/loop0 を使っているが
-また、 /dev/loop* が起動時に生成されない環境の場合は、
-mknod(1) を使って予めループデバイスを作成しておくこと。&lt;/p&gt;
-
-&lt;p&gt;次に、ループデバイスに対して cryptsetup(1) を実行して
-LUKS の暗号化の設定をする。
-下の例ではデフォルト設定で行っている。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# cryptsetup luksFormat /dev/loop0
-WARNING!
-========
-This will overwrite data on /dev/loop0 irrevocably.
-
-Are you sure? (Type uppercase yes): &lt;kbd&gt;YES&lt;/kbd&gt;
-Enter passphrase: 
-Verify passphrase: 
-# 
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;次に /dev/mapper/foobar にデバイスマッピングしてから、
-ファイルシステムを構築する。
-この例ではファイルシステムとして ext4 を使っている。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# cryptsetup luksOpen /dev/loop0 foobar
-Enter passphrase for /path/to/foobar.img:
-# mkfs.ext4 /dev/mapper/foobar
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h5&gt;暗号化仮想ドライブのマウント/アンマウント&lt;/h5&gt;
-
-&lt;p&gt;あとは &lt;samp&gt;/dev/mapper/foobar&lt;/samp&gt; を普通にマウント(mount(1))すればすぐに使える。
-使い終わったら普通にアンマウント(umount(1))する。&lt;/p&gt;
-
-&lt;p&gt;なおパーミッションなどをこの段階で設定をしておくといいかもしれない。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# mkdir /mnt/foobar
-# mount /dev/mapper/foobar /mnt/foobar
-# chown 500:500 /mnt/foobar
-# umount /mnt/foobar
-# rmdir /mnt/foobar
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h5&gt;暗号化仮想ドライブの開放&lt;/h5&gt;
-
-&lt;p&gt;LUKSの開放、ループデバイスの割り当て解除の順番で行う：&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# cryptsetup luksClose foobar
-# losetup -d /dev/loop0
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h4&gt;日常使い&lt;/h4&gt;
-
-&lt;p&gt;ループデバイスへの割り当てはコマンドラインで行う必要がある：&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# losetup /dev/loop0 /path/to/foobar.img
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;こうした時点で各種 gtk アプリ (厳密には GIO サブシステム) からはドライブと
-認識されているので、
-USB メモリのような操作感でマウントして使える。
-すなわちNautilusといったファイラーやファイルダイアログ(!)から
-（rootパスワードと暗号化仮想ドライブのパスフレーズの入力を除いて）
-マウス操作でマウントアンマウントできる。&lt;/p&gt;
-
-&lt;p&gt;なおコマンドラインでマウントするには下記のとおりとなる。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# losetup /dev/loop0 /path/to/foobar.img
-# cryptsetup luksOpen /dev/loop0 foobar
-# mkdir /mnt/foobar
-# mount /dev/mapper/foobar /mnt/foobar
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;アンマウントは下記のとおりとなる。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;# umount /mnt/foobar
-# rmdir /mnt/foobar
-# cryptsetup luksClose foobar
-# losetup -d /dev/loop0
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h4&gt;ドライブ拡張&lt;/h4&gt;
-
-&lt;p&gt;ファイルシステムがリサイズに拡張しているならば、
-簡単に拡張することができる。
-よって、仮想ドライブファイルの容量が足りなくなった場合に
-そのときに増やすことが可能である。&lt;/p&gt;
-
-&lt;p&gt;以下は2G byteに増量する例。&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot; style=&quot;background-color: #000; color: #fff; padding: 2px;&quot;&gt;&lt;samp&gt;% truncate -s 2G /path/to/foobar.img
-% su
-# losetup /dev/loop0 /path/to/foobar.img
-# cryptsetup luksOpen /dev/loop0 foobar
-# resize2fs /dev/mapper/foobar
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;h4&gt;参考文献&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://goohackle.com/how-to-create-a-portable-encrypted-file_system-on-a-loop-file/&quot;&gt;How to create a portable encrypted file system on a loop file&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://help.ubuntu.com/community/EncryptedFilesystemsOnRemovableStorage&quot;&gt;EncryptedFilesystemsOnRemovableStorage&lt;/a&gt;, Ubuntsu Community Help Wiki&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.nminoru.jp/~nminoru/programming/sparse_file.html&quot;&gt;Linux で疎なファイル(sparse file)を使う&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://sourceforge.jp/magazine/03/10/16/1431223&quot;&gt;Linuxファイルシステムのサイズ変更とデフラグ&lt;/a&gt;, SourceForge.JP Magazine (2003-10-13)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 29 Jun 2014 23:48:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/06/lukstruecrypt.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/06/lukstruecrypt.html</guid>
-        
-        <category>luks</category>
-        
-        <category>encrypt</category>
-        
-        <category>linux</category>
-        
-        <category>howto</category>
-        
-        <category>security</category>
         
         
       </item>
