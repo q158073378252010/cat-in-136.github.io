@@ -5,9 +5,235 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 28 Dec 2014 20:08:59 +0900</pubDate>
-    <lastBuildDate>Sun, 28 Dec 2014 20:08:59 +0900</lastBuildDate>
+    <pubDate>Mon, 29 Dec 2014 01:15:44 +0900</pubDate>
+    <lastBuildDate>Mon, 29 Dec 2014 01:15:44 +0900</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>Light な weight な日本語フォントを android に投入</title>
+        <description>&lt;h3&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;昨今は&lt;span style=&quot;font-weight: 100;&quot;&gt;細い (light)&lt;/span&gt;フォントが流行っていて、
+android アプリの一部にも細いフォントを指定しているのがある。&lt;/p&gt;
+
+&lt;p&gt;一方で、日本語フォントは android デフォルトでは「モトヤLマルベリ3 (MotoyaLMaru W3)」である。
+丸ゴシック体な上に細いフォントは提供していない。
+「游ゴシック」みたいに light/medium/bold の 3 ウェイト提供してくれればいいのだが、
+そういうことなく “W3” のみの提供である。&lt;/p&gt;
+
+&lt;p&gt;よって最近のアプリで細い英字フォントに通常の太さの日本語フォントが混ざって表示されるという現象が見られる。&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen001.png&quot;&gt;
+&lt;img src=&quot;/images/201412_light_weight_font_screen001.png&quot; width=&quot;320&quot; height=&quot;78&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;Firefox location bar (using MotoyaLMaruW3)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen002.png&quot;&gt;
+&lt;img src=&quot;/images/201412_light_weight_font_screen002.png&quot; width=&quot;320&quot; height=&quot;154&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;An App Description on Google Play App (using MotoyaLMaruW3)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;これに関して、android の標準フォントとして Noto Sans JP を投入することを紹介する。(注：&lt;strong&gt;要 root&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;h3&gt;Fallback&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;/system/etc/fallback_fonts.xml&lt;/code&gt; というのがあって、ここでフォント指定の「フォールバック」をすることになっている。&lt;/p&gt;
+
+&lt;p&gt;ここには、下記のように &lt;code&gt;NotoSansJP-Regular.otf&lt;/code&gt; というのが書かれているため、
+Noto Sans JP が使われるように見える。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;&lt;code&gt;    &amp;lt;family&amp;gt;
+        &amp;lt;fileset&amp;gt;
+            &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansJP-Regular.otf&amp;lt;/file&amp;gt;
+        &amp;lt;/fileset&amp;gt;
+    &amp;lt;/family&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;が、標準で入っていた &lt;code&gt;/system/fonts/NotoSansJP-Regular.otf&lt;/code&gt; は、特殊な文字が入っているだけの168kB程度のファイルであった。
+なので、この記述よりも後ろの下記の内容が有効となるので日本語は特に断りがなければ、
+&lt;code&gt;/system/fonts/MTLmr3m.ttf&lt;/code&gt; (モトヤLマルベリ3) で表示されるのである。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-xml&quot;&gt;&lt;code&gt;    &amp;lt;family&amp;gt;
+        &amp;lt;fileset&amp;gt;
+            &amp;lt;file lang=&quot;ja&quot;&amp;gt;MTLmr3m.ttf&amp;lt;/file&amp;gt;
+        &amp;lt;/fileset&amp;gt;
+    &amp;lt;/family&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;よって、&lt;code&gt;NotoSansJP-*.otf&lt;/code&gt; として日本語フォントを送り込み、 
+&lt;code&gt;fallback_fonts.xml&lt;/code&gt; で追加した方のフォントにフォールバックするように設定すれば良い。&lt;/p&gt;
+
+&lt;h3&gt;Recipe&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;要 root 。&lt;/strong&gt;
+&lt;code&gt;/system/fonts&lt;/code&gt; を編集するので再マウントをするか、
+暗黙的に再マウントをしてくれるような CM File Manager などを使用する必要がある。
+（説明が煩雑化するので再マウントの方法はここには書かない。）&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code&gt;NotoSansJP-*.otf&lt;/code&gt; を取得する。
+例えば、&lt;a href=&quot;https://github.com/watiko/fonts-notosansjp&quot;&gt;github:watiko/fonts-notosansjp&lt;/a&gt;
+から &lt;code&gt;NotoSansJP-{Light,Regular,Bold,Black}.otf&lt;/code&gt; を取得する。&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;/system/fonts/&lt;/code&gt; に上記ファイルを入れる。パーミッションは owner=root(0), group=root(0) で &lt;samp&gt;-rw-r--r--&lt;/samp&gt; にすること。
+このとき既存の &lt;code&gt;/system/fonts/NotoSansJP-Regular.otf&lt;/code&gt; は上書きしてしまって良い。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;/system/etc/fallback_fonts.xml&lt;/code&gt; に上記で追加したフォントへの fallback を記述し、既存の日本語フォントへの fallback を削除する。
+例えば、下記のようにする。&lt;/p&gt;
+
+    &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;&lt;code&gt;&amp;lt;!-- 既存の日本語フォントへの fallback を削除 --&amp;gt;
+&amp;lt;!--family&amp;gt;
+    &amp;lt;fileset&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;MTLmr3m.ttf&amp;lt;/file&amp;gt;
+    &amp;lt;/fileset&amp;gt;
+&amp;lt;/family--&amp;gt;
+&amp;lt;!-- ここ以下を追加 --&amp;gt;
+&amp;lt;family&amp;gt;
+    &amp;lt;fileset&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Light.otf&amp;lt;/file&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Regular.otf&amp;lt;/file&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Bold.otf&amp;lt;/file&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Black.otf&amp;lt;/file&amp;gt;
+    &amp;lt;/fileset&amp;gt;
+&amp;lt;/family&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;/system/etc/fonts.xml&lt;/code&gt; に上記で追加したフォントの内容を登録する。
+ここで weight なども設定することとなる。
+例えば、下記を追加する。&lt;/p&gt;
+
+    &lt;pre class=&quot;prettyprint lang-xml&quot;&gt;&lt;code&gt;&amp;lt;family&amp;gt;
+    &amp;lt;fileset&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Light.otf&amp;lt;/file&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Regular.otf&amp;lt;/file&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Bold.otf&amp;lt;/file&amp;gt;
+        &amp;lt;file lang=&quot;ja&quot;&amp;gt;NotoSansCJKJP-Black.otf&amp;lt;/file&amp;gt;
+    &amp;lt;/fileset&amp;gt;
+&amp;lt;/family&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;最後に再起動をする。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Recipe (using TWRM Zip)&lt;/h3&gt;
+
+&lt;p&gt;TWRM などの ZIP インストールの場合は下記のような感じで：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;japanese-NotoSans-install.zip
+    &lt;ul&gt;
+      &lt;li&gt;META-INF/
+        &lt;ul&gt;
+          &lt;li&gt;com/
+            &lt;ul&gt;
+              &lt;li&gt;google/
+                &lt;ul&gt;
+                  &lt;li&gt;android/
+                    &lt;ul&gt;
+                      &lt;li&gt;update-binary&lt;/li&gt;
+                      &lt;li&gt;updates-script&lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;system/
+        &lt;ul&gt;
+          &lt;li&gt;etc/
+            &lt;ul&gt;
+              &lt;li&gt;fallback_fonts.xml&lt;/li&gt;
+              &lt;li&gt;fonts.xml&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;fonts/
+            &lt;ul&gt;
+              &lt;li&gt;NotoSansJP-Black.otf&lt;/li&gt;
+              &lt;li&gt;NotoSansJP-Bold.otf&lt;/li&gt;
+              &lt;li&gt;NotoSansJP-Regular.otf&lt;/li&gt;
+              &lt;li&gt;NotoSansJP-Light.otf&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;updates-script:&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;ui_print(&quot;=== Japanese-NotoSans-install ===&quot;);
+ui_print(&quot;Mounting file system...&quot;);
+run_program(&quot;/sbin/mount&quot;, &quot;/system&quot;);
+ui_print(&quot;Installing...&quot;);
+package_extract_dir(&quot;system&quot;, &quot;/system&quot;);
+set_perm(0, 0, 0644, &quot;/system/etc/fonts.xml&quot;);
+set_perm(0, 0, 0644, &quot;/system/etc/fallback_fonts.xml&quot;);
+set_perm(0, 0, 0644, &quot;/system/fonts/NotoSansJP-Black.otf&quot;);
+set_perm(0, 0, 0644, &quot;/system/fonts/NotoSansJP-Bold.otf&quot;);
+set_perm(0, 0, 0644, &quot;/system/fonts/NotoSansJP-Regular.otf&quot;);
+set_perm(0, 0, 0644, &quot;/system/fonts/NotoSansJP-Light.otf&quot;);
+ui_print(&quot;Unmounting...&quot;);
+run_program(&quot;/sbin/umount&quot;, &quot;/system&quot;);
+ui_print(&quot;all done!&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;うまく行けば下記のように、細い英字フォントにマッチした和文フォントが表示されるはずだ。&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen101.png&quot;&gt;
+&lt;img src=&quot;/images/201412_light_weight_font_screen101.png&quot; width=&quot;320&quot; height=&quot;78&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;Firefox location bar (using NotoSansJP-Light)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen102.png&quot;&gt;
+&lt;img src=&quot;/images/201412_light_weight_font_screen102.png&quot; width=&quot;320&quot; height=&quot;154&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;An App Description on Google Play App (using NotoSansJP-Light)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;そしてそして、この無駄に &lt;code&gt;font-weight: 300&lt;/code&gt; を設定している
+このページについても細い英字フォントにマッチした和文フォントが表示されるはずだ。&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen103.png&quot;&gt;
+&lt;img src=&quot;/images/201412_light_weight_font_screen103.png&quot; width=&quot;320&quot; height=&quot;238&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;This page apperance on Firefox using NotoSansJP-Light&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://forum.xda-developers.com/google-nexus-5/themes-apps/font-japanese-unicode-fallback-han-t2777478&quot;&gt;[FONT][MOD] [4.4/5.0] Japanese Unicode Fallback/Han Unification Default&lt;/a&gt;, XDA&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.flickscene.com/2014/12/09/entry-386&quot;&gt;Android 5.0 Lollipopのフォントを変更してみた&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pocketgames.jp/blog/?p=51372&quot;&gt;ノー、トウフ　Noto Sans CJK も入れてみた&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.google.com/get/noto/&quot;&gt;Google Noto Fonts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/watiko/fonts-notosansjp&quot;&gt;github:watiko/fonts-notosansjp&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 29 Dec 2014 01:12:49 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2014/12/light-weight-font-android.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2014/12/light-weight-font-android.html</guid>
+        
+        <category>font</category>
+        
+        <category>android</category>
+        
+        <category>howto</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 35.0 beta 5 default preference and firefox 34.0.5</title>
@@ -1032,58 +1258,6 @@ table.diff_firefox32_pref_diff tbody tr { transition: background 0.125s ease-in-
         <pubDate>Thu, 07 Aug 2014 23:13:00 +0900</pubDate>
         <link>http://cat-in-136.github.io/2014/08/diff-between-firefox-320-beta-4-default.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2014/08/diff-between-firefox-320-beta-4-default.html</guid>
-        
-        <category>pref diff</category>
-        
-        <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Diff between firefox 31.0 beta 6 default preference and firefox 30.0</title>
-        <description>&lt;p&gt;
-This is difference between the default preference of Firefox 31.0 beta 6 and one of 30.0.
-&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;Default pref Javascript files (Firefox 30.0 for Linux x86_64):&lt;/dt&gt;
-&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
-(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
-(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
-&lt;dt&gt;Default pref Javascript files (Firefox 31.0 beta 6 for Linux x86_64):&lt;/dt&gt;
-&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
-(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
-(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;table class=&quot;diff_firefox31_pref_diff&quot;&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 30.0&lt;/td&gt;&lt;td&gt;Firefox 31.0 beta 6&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;memory_&lt;wbr /&gt;limit&lt;/td&gt;&lt;td&gt;51200&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;slowStartup.&lt;wbr /&gt;timeThreshold&lt;/td&gt;&lt;td&gt;60000&lt;/td&gt;&lt;td&gt;50000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;closeButtons&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;browserconsole.&lt;wbr /&gt;filter.&lt;wbr /&gt;cssparser&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;browserconsole.&lt;wbr /&gt;filter.&lt;wbr /&gt;networkinfo&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;editor.&lt;wbr /&gt;tabsize&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;netmonitor.&lt;wbr /&gt;panes-&lt;wbr /&gt;network-&lt;wbr /&gt;details-&lt;wbr /&gt;width&lt;/td&gt;&lt;td&gt;450&lt;/td&gt;&lt;td&gt;550&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;toolbarSpec&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;]&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;filter.&lt;wbr /&gt;jslog&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;mozAlarms.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;network.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;network.&lt;wbr /&gt;metered&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;sysmsg.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;font.&lt;wbr /&gt;mathfont-&lt;wbr /&gt;family&lt;/td&gt;&lt;td&gt;MathJax_Main, STIXNonUnicode, STIXSizeOneSym, STIXSize1, STIXGeneral, Asana Math, Standard Symbols L, DejaVu Sans, Cambria Math&lt;/td&gt;&lt;td&gt;Latin Modern Math, XITS Math, STIX Math, Cambria Math, Asana Math, TeX Gyre Bonum Math, TeX Gyre Pagella Math, TeX Gyre Termes Math, Neo Euler, Lucida Bright Math, MathJax_Main, STIXNonUnicode, STIXSizeOneSym, STIXGeneral, Standard Symbols L, DejaVu Sans&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;geo.&lt;wbr /&gt;wifi.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td&gt;https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_API_KEY%&lt;/td&gt;&lt;td&gt;https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;typeinference&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;use-&lt;wbr /&gt;deprecated-&lt;wbr /&gt;textures&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;variables.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;video.&lt;wbr /&gt;default_&lt;wbr /&gt;height&lt;/td&gt;&lt;td&gt;480&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;video.&lt;wbr /&gt;default_&lt;wbr /&gt;width&lt;/td&gt;&lt;td&gt;640&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;aec&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;aec_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;agc&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;agc_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;identity.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;5000&lt;/td&gt;&lt;td&gt;10000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;noise&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;noise_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;webvtt.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;memory_&lt;wbr /&gt;info_&lt;wbr /&gt;dumper.&lt;wbr /&gt;watch_&lt;wbr /&gt;fifo&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;closeButtons&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;svg.&lt;wbr /&gt;paint-&lt;wbr /&gt;order.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox31_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox31_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox31_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox31_pref_diff td.json { word-break: break-all; }
-table.diff_firefox31_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox31_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox31_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox31_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-table.diff_firefox31_pref_diff td.json { word-break: break-all; }
-
-table.diff_firefox31_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox31_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
-</description>
-        <pubDate>Mon, 07 Jul 2014 23:58:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/07/diff-between-firefox-310-beta-6-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/07/diff-between-firefox-310-beta-6-default.html</guid>
         
         <category>pref diff</category>
         
