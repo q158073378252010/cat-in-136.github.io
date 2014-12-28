@@ -8,11 +8,11 @@ blockquote, q { quotes: none; }
 blockquote::before, blockquote::after, q::before, q::after { content: ''; content: none; }
 
 /* fontset */
-body { font-family: "Source Han Sans", "Noto Sans CJK JP", "Hiragino Kaku Gothic Std", "M+ 1p", "Roboto", "Arial", "HGPGothicE", "Yu Gothic", "Meiryo", sans-serif; font-weight: 300; font-size: 12px; }
+body { font-family: "M+1p", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK JP", "Noto Sans JP", "M+ 1p", "Hiragino Kaku Gothic Std", "Roboto", "Arial", "HGPGothicE", "Yu Gothic", "Meiryo", sans-serif; font-weight: 300; font-size: 12px; }
 @media (min-width: 480px) { body { font-size: 16px; } }
 @media (min-width: 48em) { body { font-size: 18px; } }
 
-h1, h2, h3, h4, h5, h6, .home .post-link { font-family: "Source Han Sans", "Noto Sans CJK JP", "Hiragino Kaku Gothic Std", "M+ 1p", "Roboto", "Arial Black", "Yu Gothic", "Meiryo", sans-serif; font-weight: 900; }
+h1, h2, h3, h4, h5, h6, .home .post-link { font-family: "M+1p", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK JP", "Noto Sans JP", "M+ 1p", "Hiragino Kaku Gothic Std", "Roboto", "Arial Black", "Yu Gothic", "Meiryo", sans-serif; font-weight: 900; }
 
 pre, code, .post-content pre, samp, kbd { font-family: "Source Code Pro", "M+ 1m", "Consolas", "Droid Sans Mono", monospace; }
 
