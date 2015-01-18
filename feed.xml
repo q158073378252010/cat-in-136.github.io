@@ -5,9 +5,242 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 29 Dec 2014 11:15:40 +0900</pubDate>
-    <lastBuildDate>Mon, 29 Dec 2014 11:15:40 +0900</lastBuildDate>
-    <generator>Jekyll v2.3.0</generator>
+    <pubDate>Mon, 19 Jan 2015 01:21:13 +0900</pubDate>
+    <lastBuildDate>Mon, 19 Jan 2015 01:21:13 +0900</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</title>
+        <description>&lt;p&gt;
+下記のようなクラス継承のコードは…
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;class Pet {
+    name: string;
+    age: number;
+    constructor(name: string) {
+        this.name = name;
+        this.age = 0;
+    }
+    countAge() {
+        this.age += 1;
+    }
+}
+
+class Cat extends Pet {
+    sleep() {
+        alert(this.name + &quot; is sleeping.&quot;);
+    }
+}
+
+var cat = new Cat(&quot;Cathy&quot;);
+cat.countAge();
+cat.sleep();
+alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+伝統的には&lt;code&gt;prototype&lt;/code&gt;をコピーして継承をするのが、
+JavaScript のやり方。
+流派はあるが大体下記のような感じじゃないだろうか：
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;function Pet(name) {
+    this.name = name;
+    this.age = 0;
+}
+Pet.prototype.countAge = function () {
+    this.age += 1;
+}
+
+function Cat(name) {
+    Pet.apply(this, arguments);
+}
+Cat.prototype = $.extend(Cat.prototype, Pet.prototype);
+Cat.prototype.constructor = Cat;
+Cat.prototype.sleep = function () {
+    alert(this.name + &quot; is sleeping.&quot;);
+}
+
+var cat = new Cat(&quot;Cathy&quot;);
+cat.countAge();
+cat.sleep();
+alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+最近の JavaScript (ECMA Script 5) では、&lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5&quot;&gt;&lt;code&gt;Object.create( O [, Properties] )&lt;/code&gt;&lt;/a&gt;というのがある。
+&lt;/p&gt;
+
+&lt;blockquote cite=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5&quot;&gt;
+        &lt;p&gt;The &lt;b&gt;create&lt;/b&gt; function creates a new object with a specified prototype. When the &lt;b&gt;create&lt;/b&gt; function is called,
+        the following steps are taken:&lt;/p&gt;
+
+        &lt;ol&gt;
+          &lt;li&gt;If &lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-8&quot;&gt;Type&lt;/a&gt;(&lt;i&gt;O&lt;/i&gt;) is not Object or Null throw a &lt;b&gt;TypeError&lt;/b&gt; exception.&lt;/li&gt;
+          &lt;li&gt;Let &lt;i&gt;obj&lt;/i&gt; be the result of creating a new object as if by the expression new Object() where Object is the
+              standard built-in constructor with that name&lt;/li&gt;
+          &lt;li&gt;Set the [[Prototype]] internal property of &lt;i&gt;obj&lt;/i&gt; to &lt;i&gt;O&lt;/i&gt;.&lt;/li&gt;
+          &lt;li&gt;If the argument &lt;i&gt;Properties&lt;/i&gt; is present and not &lt;b&gt;undefined&lt;/b&gt;, add own properties to &lt;i&gt;obj&lt;/i&gt; as if by
+              calling the standard built-in function &lt;code&gt;Object.defineProperties&lt;/code&gt; with arguments &lt;i&gt;obj&lt;/i&gt; and
+              &lt;i&gt;Properties&lt;/i&gt;.&lt;/li&gt;
+          &lt;li&gt;Return &lt;i&gt;obj&lt;/i&gt;.&lt;/li&gt;
+        &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+&lt;code&gt;new&lt;/code&gt;演算子に近いような用途を想定した関数である。
+一方で、引数としては &lt;code&gt;Object.defineProperties()&lt;/code&gt; と同じ形ということになっている。
+要するに下記のように使って欲しいらしい。
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;var Cat = {
+    age: 0,
+    countAge: function () {
+        this.age += 1;
+    },
+    sleep: function () {
+        alert(this.name + &quot; is sleeping.&quot;);
+    }
+}
+
+var cat = Object.create(Cat, {name: {value: &quot;Cathy&quot;}});
+cat.countAge();
+cat.sleep();
+alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+なお &lt;code&gt;cat.name = &quot;Cathy&quot;&lt;/code&gt;を改名可能なようにするためには、
+&lt;code&gt;{value: &quot;Cathy&quot;, &lt;em&gt;writable: true&lt;/em&gt;}&lt;/code&gt;としなければならない。
+&lt;/p&gt;
+
+&lt;p&gt;
+で、この流儀だと以下の問題がある。なんてこった。
+&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;継承はいままでの伝統的な方法しかない。(&lt;code&gt;extend()&lt;/code&gt;処理のループが必要)&lt;/li&gt;
+    &lt;li&gt;コンストラクタが&lt;code&gt;Object.create()&lt;/code&gt;に置き換わったせいでインスタンス生成時の処理を書く方法がなくなる。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+そしてMDNの&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited&quot;&gt;Inheritance Revisited&lt;/a&gt;というページに書かれた&quot;正解&quot;を基に書いた、
+&lt;code&gt;Object.create()&lt;/code&gt;を利用したクラス継承の方法は、下記だ。
+結構冗長。
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;function Pet(name) {
+    this.name = name;
+    this.age = 0;
+}
+Pet.prototype = Object.create(Object.prototype, {
+    name: {
+        writable: true
+    },
+    age: {
+        writable: true
+    },
+    constructor: {
+        value: Pet,
+        enumerable: false
+    },
+    countAge: {
+        value: function () {
+            this.age += 1;
+        }
+    }
+});
+
+function Cat(name) {
+    Pet.apply(this, arguments);
+}
+Cat.prototype = Object.create(Pet.prototype, {
+    constructor: {
+        value: Cat,
+        enumerable: false
+    },
+    sleep: {
+        value: function () {
+            alert(this.name + &quot; is sleeping.&quot;);
+        }
+    }
+});
+
+var cat = new Cat(&quot;Cathy&quot;);
+cat.countAge();
+cat.sleep();
+alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+prototype を&lt;code&gt;Object.create()&lt;/code&gt; するという業!
+また、メソッドが単なる関数オブジェクトとして扱うということで、
+&lt;code&gt;{value: function() {...} }&lt;/code&gt;を大量にタイプすることになるという
+ちょっと残念な感じだ。
+&lt;code&gt;$.extend()&lt;/code&gt;関数をネイティブ関数に置き換えたのにコードは
+かえって複雑になっているのではないか。
+&lt;/p&gt;
+&lt;p&gt;
+やはり複雑なクラス構文を書くには、ネイティブなJavaScriptではまだ物足りない。
+（物足りないからこそ private 変数などと組み合わせて記事にしなかった。）
+まだまだライブラリやら transcompiler (CoffeeScript, TypeScript, etc...)
+なしでは複雑なのはきつそうである。
+&lt;/p&gt;
+&lt;p&gt;
+ちなみに最初に書いた &lt;code&gt;class&lt;/code&gt; などと書いたコードは
+ECMA Script 6 ないし TypeScript となっていて、
+JavaScript に変換すると下のようになる。
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var Pet = (function () {
+    function Pet(name) {
+        this.name = name;
+        this.age = 0;
+    }
+    Pet.prototype.countAge = function () {
+        this.age += 1;
+    };
+    return Pet;
+})();
+var Cat = (function (_super) {
+    __extends(Cat, _super);
+    function Cat() {
+        _super.apply(this, arguments);
+    }
+    Cat.prototype.sleep = function () {
+        alert(this.name + &quot; is sleeping.&quot;);
+    };
+    return Cat;
+})(Pet);
+var cat = new Cat(&quot;Cathy&quot;);
+cat.countAge();
+cat.sleep();
+alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考文献&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/&quot;&gt;ECMA-262 ECMAScript Language Specification 5.1 Edition&lt;/a&gt;, June 2011. [ECMA-262/51]&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create&quot;&gt;Object.create() - JavaScript | MDN&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited&quot;&gt;Inheritance Revisited - JavaScript | MDN&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;LightSpeedC, &lt;a href=&quot;http://qiita.com/LightSpeedC/items/d307d809ecf2710bd957&quot;&gt;[JavaScript] そんな継承はイヤだ - クラス定義 - オブジェクト作成&lt;/a&gt;, Qiita, 2014-03-04&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 19 Jan 2015 00:53:10 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html</guid>
+        
+        <category>javascript</category>
+        
+        
+      </item>
     
       <item>
         <title>Light な weight な日本語フォントを android に投入</title>
@@ -24,16 +257,12 @@ android アプリの一部にも細いフォントを指定しているのがあ
 &lt;p&gt;よって最近のアプリで細い英字フォントに通常の太さの日本語フォントが混ざって表示されるという現象が見られる。&lt;/p&gt;
 
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201412_light_weight_font_screen001.png&quot;&gt;
-&lt;img src=&quot;/images/201412_light_weight_font_screen001.png&quot; width=&quot;320&quot; height=&quot;78&quot; /&gt;
-&lt;/a&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen001.png&quot;&gt;&lt;img src=&quot;/images/201412_light_weight_font_screen001.png&quot; width=&quot;320&quot; height=&quot;78&quot; /&gt;&lt;/a&gt;
 &lt;figcaption style=&quot;display: block;&quot;&gt;Firefox location bar (using MotoyaLMaruW3)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201412_light_weight_font_screen002.png&quot;&gt;
-&lt;img src=&quot;/images/201412_light_weight_font_screen002.png&quot; width=&quot;320&quot; height=&quot;154&quot; /&gt;
-&lt;/a&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen002.png&quot;&gt;&lt;img src=&quot;/images/201412_light_weight_font_screen002.png&quot; width=&quot;320&quot; height=&quot;154&quot; /&gt;&lt;/a&gt;
 &lt;figcaption style=&quot;display: block;&quot;&gt;An App Description on Google Play App (using MotoyaLMaruW3)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -193,16 +422,12 @@ ui_print(&quot;all done!&quot;);
 &lt;p&gt;うまく行けば下記のように、細い英字フォントにマッチした和文フォントが表示されるはずだ。&lt;/p&gt;
 
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201412_light_weight_font_screen101.png&quot;&gt;
-&lt;img src=&quot;/images/201412_light_weight_font_screen101.png&quot; width=&quot;320&quot; height=&quot;78&quot; /&gt;
-&lt;/a&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen101.png&quot;&gt;&lt;img src=&quot;/images/201412_light_weight_font_screen101.png&quot; width=&quot;320&quot; height=&quot;78&quot; /&gt;&lt;/a&gt;
 &lt;figcaption style=&quot;display: block;&quot;&gt;Firefox location bar (using NotoSansJP-Light)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201412_light_weight_font_screen102.png&quot;&gt;
-&lt;img src=&quot;/images/201412_light_weight_font_screen102.png&quot; width=&quot;320&quot; height=&quot;154&quot; /&gt;
-&lt;/a&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen102.png&quot;&gt;&lt;img src=&quot;/images/201412_light_weight_font_screen102.png&quot; width=&quot;320&quot; height=&quot;154&quot; /&gt;&lt;/a&gt;
 &lt;figcaption style=&quot;display: block;&quot;&gt;An App Description on Google Play App (using NotoSansJP-Light)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -210,9 +435,7 @@ ui_print(&quot;all done!&quot;);
 このページについても細い英字フォントにマッチした和文フォントが表示されるはずだ。&lt;/p&gt;
 
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201412_light_weight_font_screen103.png&quot;&gt;
-&lt;img src=&quot;/images/201412_light_weight_font_screen103.png&quot; width=&quot;320&quot; height=&quot;238&quot; /&gt;
-&lt;/a&gt;
+&lt;a href=&quot;/images/201412_light_weight_font_screen103.png&quot;&gt;&lt;img src=&quot;/images/201412_light_weight_font_screen103.png&quot; width=&quot;320&quot; height=&quot;238&quot; /&gt;&lt;/a&gt;
 &lt;figcaption style=&quot;display: block;&quot;&gt;This page apperance on Firefox using NotoSansJP-Light&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -1214,58 +1437,6 @@ Japanese(和文): cat_in_136.blog() は、github page (&lt;a href=&quot;http://c
         <category>blogger</category>
         
         <category>jekyll</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Diff between firefox 32.0 beta 4 default preference and firefox 31.0</title>
-        <description>&lt;p&gt;
-This is difference between the default preference of Firefox 32.0 beta 4 and one of 31.0.
-&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;Default pref Javascript files (Firefox 31.0 for Linux x86_64):&lt;/dt&gt;
-&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
-(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
-(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
-&lt;dt&gt;Default pref Javascript files (Firefox 32.0 beta 4 for Linux x86_64):&lt;/dt&gt;
-&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
-(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
-(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;table class=&quot;diff_firefox32_pref_diff&quot;&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 31.0&lt;/td&gt;&lt;td&gt;Firefox 32.0 beta 4&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;accessibility.&lt;wbr /&gt;typeaheadfind.&lt;wbr /&gt;matchesCountLimit&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;accessibility.&lt;wbr /&gt;typeaheadfind.&lt;wbr /&gt;matchesCountTimeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;250&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;test.&lt;wbr /&gt;logging_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;disk.&lt;wbr /&gt;preload_&lt;wbr /&gt;chunk_&lt;wbr /&gt;count&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;frecency_&lt;wbr /&gt;half_&lt;wbr /&gt;life_&lt;wbr /&gt;hours&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;use_&lt;wbr /&gt;new_&lt;wbr /&gt;backend_&lt;wbr /&gt;temp&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;frames.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;directory.&lt;wbr /&gt;source&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;chrome://global/content/directoryLinks.json&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;directorySource&lt;/td&gt;&lt;td&gt;data:application/json,{}&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;param.&lt;wbr /&gt;ms-&lt;wbr /&gt;pc&lt;/td&gt;&lt;td&gt;MOZI&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;param.&lt;wbr /&gt;yahoo-&lt;wbr /&gt;fr-&lt;wbr /&gt;cjkt&lt;/td&gt;&lt;td&gt;moz35&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;sessionstore.&lt;wbr /&gt;cleanup.&lt;wbr /&gt;forget_&lt;wbr /&gt;closed_&lt;wbr /&gt;after&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1209600000&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;slowStartup.&lt;wbr /&gt;timeThreshold&lt;/td&gt;&lt;td&gt;50000&lt;/td&gt;&lt;td&gt;45000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;translation.&lt;wbr /&gt;neverForLanguages&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;translation.&lt;wbr /&gt;ui.&lt;wbr /&gt;show&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;uitour.&lt;wbr /&gt;whitelist.&lt;wbr /&gt;add.&lt;wbr /&gt;340&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;about:home&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;camera.&lt;wbr /&gt;control.&lt;wbr /&gt;autofocus_&lt;wbr /&gt;moving_&lt;wbr /&gt;callback.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;camera.&lt;wbr /&gt;control.&lt;wbr /&gt;face_&lt;wbr /&gt;detection.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;canvas.&lt;wbr /&gt;focusring.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;command-&lt;wbr /&gt;button-&lt;wbr /&gt;screenshot.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;showUserAgentStyles&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;enableAutocompletion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;selfxss.&lt;wbr /&gt;count&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;styleeditor.&lt;wbr /&gt;showMediaSidebar&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;toolbarSpec&lt;/td&gt;&lt;td&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;]&lt;/td&gt;&lt;td&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;,&quot;screenshot --fullpage&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;animations-&lt;wbr /&gt;api.&lt;wbr /&gt;core.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;event.&lt;wbr /&gt;highrestimestamp.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;forms.&lt;wbr /&gt;autocomplete.&lt;wbr /&gt;experimental&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;forms.&lt;wbr /&gt;requestAutocomplete&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;image.&lt;wbr /&gt;srcset.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;unloadTimeoutSecs&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;code.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;mms.&lt;wbr /&gt;sendRetryInterval&lt;/td&gt;&lt;td&gt;300000&lt;/td&gt;&lt;td&gt;10000,60000,180000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;webcrypto.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;window_&lt;wbr /&gt;experimental_&lt;wbr /&gt;bindings&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;draw-&lt;wbr /&gt;color-&lt;wbr /&gt;bars&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;cache&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;size&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;more1&lt;/td&gt;&lt;td&gt;ISO-8859-1, ISO-8859-15, IBM850, macintosh, windows-1252, ISO-8859-14, ISO-8859-7, x-mac-greek, windows-1253, x-mac-icelandic, ISO-8859-10, ISO-8859-3&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;more2&lt;/td&gt;&lt;td&gt;ISO-8859-4, ISO-8859-13, windows-1257, IBM852, ISO-8859-2, x-mac-ce, windows-1250, x-mac-croatian, IBM855, ISO-8859-5, ISO-IR-111, KOI8-R, x-mac-cyrillic, windows-1251, IBM866, KOI8-U, x-mac-ukrainian, ISO-8859-16, x-mac-romanian&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;more3&lt;/td&gt;&lt;td&gt;GB2312, gbk, gb18030, HZ-GB-2312, ISO-2022-CN, Big5, Big5-HKSCS, x-euc-tw, EUC-JP, ISO-2022-JP, Shift_JIS, EUC-KR, x-johab, ISO-2022-KR&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;more4&lt;/td&gt;&lt;td&gt;armscii-8, TIS-620, ISO-8859-11, windows-874, IBM857, ISO-8859-9, x-mac-turkish, windows-1254, x-viet-tcvn5712, VISCII, x-viet-vps, windows-1258, x-mac-devanagari, x-mac-gujarati, x-mac-gurmukhi&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;more5&lt;/td&gt;&lt;td&gt;ISO-8859-6, windows-1256, ISO-8859-8-I, windows-1255, ISO-8859-8, IBM862&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;browser.&lt;wbr /&gt;static&lt;/td&gt;&lt;td&gt;chrome://global/locale/intl.properties&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;composer.&lt;wbr /&gt;cache&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;mailedit&lt;/td&gt;&lt;td&gt;chrome://global/locale/intl.properties&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;charsetmenu.&lt;wbr /&gt;mailview.&lt;wbr /&gt;cache&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;native_&lt;wbr /&gt;regexp&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;async-&lt;wbr /&gt;pan-&lt;wbr /&gt;zoom.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;bench.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;low-&lt;wbr /&gt;precision-&lt;wbr /&gt;buffer&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;tile-&lt;wbr /&gt;height&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;tile-&lt;wbr /&gt;width&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;box-&lt;wbr /&gt;decoration-&lt;wbr /&gt;break.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;grid.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;mix-&lt;wbr /&gt;blend-&lt;wbr /&gt;mode.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scope-&lt;wbr /&gt;pseudo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;sticky.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;supports-&lt;wbr /&gt;rule.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;load_&lt;wbr /&gt;adapt&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;video.&lt;wbr /&gt;max_&lt;wbr /&gt;bitrate&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;video.&lt;wbr /&gt;min_&lt;wbr /&gt;bitrate&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;200&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;video.&lt;wbr /&gt;start_&lt;wbr /&gt;bitrate&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;webrtc.&lt;wbr /&gt;debug.&lt;wbr /&gt;aec_&lt;wbr /&gt;dump_&lt;wbr /&gt;max_&lt;wbr /&gt;size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;4194304&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;webrtc.&lt;wbr /&gt;debug.&lt;wbr /&gt;aec_&lt;wbr /&gt;log_&lt;wbr /&gt;dir&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;webrtc.&lt;wbr /&gt;debug.&lt;wbr /&gt;log_&lt;wbr /&gt;file&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;webrtc.&lt;wbr /&gt;debug.&lt;wbr /&gt;multi_&lt;wbr /&gt;log&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;webrtc.&lt;wbr /&gt;debug.&lt;wbr /&gt;trace_&lt;wbr /&gt;mask&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;webspeech.&lt;wbr /&gt;synth.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;enable-&lt;wbr /&gt;hover-&lt;wbr /&gt;on-&lt;wbr /&gt;ssl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;max-&lt;wbr /&gt;db-&lt;wbr /&gt;size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;157286400&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;max-&lt;wbr /&gt;queue-&lt;wbr /&gt;size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;day&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;max&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;month&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;week&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;year&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;25&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;preconnect-&lt;wbr /&gt;min-&lt;wbr /&gt;confidence&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;90&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;preresolve-&lt;wbr /&gt;min-&lt;wbr /&gt;confidence&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;preserve&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;redirect-&lt;wbr /&gt;likely-&lt;wbr /&gt;confidence&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;75&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;day&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;max&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;month&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;25&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;week&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;year&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;proxy.&lt;wbr /&gt;proxy_&lt;wbr /&gt;over_&lt;wbr /&gt;tls&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;enable-&lt;wbr /&gt;hover-&lt;wbr /&gt;on-&lt;wbr /&gt;ssl&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;max-&lt;wbr /&gt;db-&lt;wbr /&gt;size&lt;/td&gt;&lt;td&gt;157286400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;max-&lt;wbr /&gt;queue-&lt;wbr /&gt;size&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;day&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;max&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;month&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;week&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;page-&lt;wbr /&gt;degradation.&lt;wbr /&gt;year&lt;/td&gt;&lt;td&gt;25&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;preconnect-&lt;wbr /&gt;min-&lt;wbr /&gt;confidence&lt;/td&gt;&lt;td&gt;90&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;preresolve-&lt;wbr /&gt;min-&lt;wbr /&gt;confidence&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;preserve&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;redirect-&lt;wbr /&gt;likely-&lt;wbr /&gt;confidence&lt;/td&gt;&lt;td&gt;75&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;day&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;max&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;month&lt;/td&gt;&lt;td&gt;25&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;week&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;seer.&lt;wbr /&gt;subresource-&lt;wbr /&gt;degradation.&lt;wbr /&gt;year&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;plugins.&lt;wbr /&gt;update.&lt;wbr /&gt;url&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/%LOCALE%/plugincheck/&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/%LOCALE%/plugincheck/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=plugincheck-update&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;cert_&lt;wbr /&gt;pinning.&lt;wbr /&gt;enforcement_&lt;wbr /&gt;level&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;csp.&lt;wbr /&gt;newbackend.&lt;wbr /&gt;enable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;inflatesize.&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;svg.&lt;wbr /&gt;new-&lt;wbr /&gt;getBBox.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;svg.&lt;wbr /&gt;svg-&lt;wbr /&gt;iframe.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr /&gt;distance.&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1500&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr /&gt;expiration.&lt;wbr /&gt;time&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;3000&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox32_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox32_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox32_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox32_pref_diff td.json { word-break: break-all; }
-table.diff_firefox32_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox32_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox32_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox32_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-table.diff_firefox32_pref_diff td.json { word-break: break-all; }
-
-table.diff_firefox32_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox32_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
-</description>
-        <pubDate>Thu, 07 Aug 2014 23:13:00 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/08/diff-between-firefox-320-beta-4-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/08/diff-between-firefox-320-beta-4-default.html</guid>
-        
-        <category>pref diff</category>
-        
-        <category>mozilla</category>
         
         
       </item>
