@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Diff between firefox 36.0 beta 2 default preference and firefox 35.0 cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io/2015/01/diff-between-firefox-360-beta-2-default.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="Diff between firefox 36.0 beta 2 default preference and firefox 35.0" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <link rel="stylesheet" href="/css/main.css" />
+  
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags.html">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <div class="post">
+  <header class="post-header">
+    <h1><a href="/2015/01/diff-between-firefox-360-beta-2-default.html" rel="bookmark">Diff between firefox 36.0 beta 2 default preference and firefox 35.0</a></h1>
+    
+    <div class="meta">
+      Text by: cat_in_136
+    </div>
+    
+    <div class="meta">
+      Date: <time>2015-01-24T11:01:28+09:00</time>
+      (Modified: <time>2015-01-24T11:01:28+09:00</time>)
+    </div>
+    <div class="meta">
+      Tags:
+      
+      <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+      
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
+    </div>
+  </header>
+
+  <article class="post-content">
+  <p>
+This is difference between the default preference of Firefox 36.0 beta 2 and one of 35.0.
+</p>
+
+<dl>
+<dt>Default pref Javascript files (Firefox 35.0 for Linux x86_64):</dt>
+<dd>(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js</dd>
+<dt>Default pref Javascript files (Firefox 36.0 beta 2 for Linux x86_64):</dt>
+<dd>(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js</dd>
+</dl>
+
+<table class="diff_firefox36_pref_diff">
+<thead>
+<tr><td>Pref</td><td>Firefox 35.0</td><td>Firefox 36.0 beta 2</td></tr>
+</thead>
+<tbody>
+<tr><td>app.<wbr />update.<wbr />certs.<wbr />1.<wbr />commonName</td><td>aus3.mozilla.org</td><td>aus4.mozilla.org</td></tr><tr><td>app.<wbr />update.<wbr />certs.<wbr />1.<wbr />issuerName</td><td>CN=Thawte SSL CA,O="Thawte, Inc.",C=US</td><td>CN=DigiCert Secure Server CA,O=DigiCert Inc,C=US</td></tr><tr><td>app.<wbr />update.<wbr />certs.<wbr />2.<wbr />commonName</td><td>aus3.mozilla.org</td><td>aus4.mozilla.org</td></tr><tr><td>app.<wbr />update.<wbr />certs.<wbr />2.<wbr />issuerName</td><td>CN=DigiCert Secure Server CA,O=DigiCert Inc,C=US</td><td>CN=Thawte SSL CA,O="Thawte, Inc.",C=US</td></tr><tr><td>app.<wbr />update.<wbr />url</td><td>https://aus3.mozilla.org/update/3/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml</td><td>https://aus4.mozilla.org/update/3/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml</td></tr><tr class="newkey"><td>apz.<wbr />fling_<wbr />curve_<wbr />function_<wbr />x1</td><td class="undefined">undefined</td><td>0.0</td></tr><tr class="newkey"><td>apz.<wbr />fling_<wbr />curve_<wbr />function_<wbr />x2</td><td class="undefined">undefined</td><td>1.0</td></tr><tr class="newkey"><td>apz.<wbr />fling_<wbr />curve_<wbr />function_<wbr />y1</td><td class="undefined">undefined</td><td>0.0</td></tr><tr class="newkey"><td>apz.<wbr />fling_<wbr />curve_<wbr />function_<wbr />y2</td><td class="undefined">undefined</td><td>1.0</td></tr><tr class="newkey"><td>apz.<wbr />fling_<wbr />curve_<wbr />threshold_<wbr />inches_<wbr />per_<wbr />ms</td><td class="undefined">undefined</td><td>-1.0</td></tr><tr class="oldkey"><td>apz.<wbr />overscroll.<wbr />fling_<wbr />friction</td><td>0.02</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>apz.<wbr />overscroll.<wbr />fling_<wbr />stopped_<wbr />threshold</td><td>0.4</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>apz.<wbr />overscroll.<wbr />snap_<wbr />back.<wbr />mass</td><td>1000.0</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>apz.<wbr />overscroll.<wbr />snap_<wbr />back.<wbr />spring_<wbr />friction</td><td>0.1</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>apz.<wbr />overscroll.<wbr />snap_<wbr />back.<wbr />spring_<wbr />stiffness</td><td>0.6</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>apz.<wbr />overscroll.<wbr />spring_<wbr />friction</td><td class="undefined">undefined</td><td>0.015</td></tr><tr class="newkey"><td>apz.<wbr />overscroll.<wbr />spring_<wbr />stiffness</td><td class="undefined">undefined</td><td>0.001</td></tr><tr class="newkey"><td>apz.<wbr />overscroll.<wbr />stop_<wbr />distance_<wbr />threshold</td><td class="undefined">undefined</td><td>5.0</td></tr><tr class="newkey"><td>apz.<wbr />overscroll.<wbr />stop_<wbr />velocity_<wbr />threshold</td><td class="undefined">undefined</td><td>0.01</td></tr><tr class="newkey"><td>browser.<wbr />defaultbrowser.<wbr />notificationbar</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>browser.<wbr />preferences.<wbr />inContent</td><td>false</td><td>true</td></tr><tr class="newkey"><td>browser.<wbr />search.<wbr />geoip.<wbr />timeout</td><td class="undefined">undefined</td><td>2000</td></tr><tr class="newkey"><td>browser.<wbr />search.<wbr />geoip.<wbr />url</td><td class="undefined">undefined</td><td>https://location.services.mozilla.com/v1/country?key=%MOZILLA_API_KEY%</td></tr><tr class="oldkey"><td>browser.<wbr />urlbar.<wbr />default.<wbr />behavior</td><td>0</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>browser.<wbr />urlbar.<wbr />suggest.<wbr />bookmark</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>browser.<wbr />urlbar.<wbr />suggest.<wbr />history</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>browser.<wbr />urlbar.<wbr />suggest.<wbr />history.<wbr />onlyTyped</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>browser.<wbr />urlbar.<wbr />suggest.<wbr />openpage</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>datareporting.<wbr />healthreport.<wbr />service.<wbr />providerCategories</td><td>healthreport-js-provider-default</td><td>healthreport-js-provider-default,healthreport-js-provider-beta</td></tr><tr class="newkey"><td>devtools.<wbr />apps.<wbr />forbidden-<wbr />permissions</td><td class="undefined">undefined</td><td>embed-apps,engineering-mode,embed-widgets</td></tr><tr><td>devtools.<wbr />devedition.<wbr />promo.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />performance.<wbr />ui.<wbr />show-<wbr />timeline-<wbr />memory</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />performance_<wbr />dev.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>dns.<wbr />ttl-<wbr />experiment.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>dns.<wbr />ttl-<wbr />experiment.<wbr />variant</td><td>0</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>dom.<wbr />beforeAfterKeyboardEvent.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>dom.<wbr />meta-<wbr />viewport.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>dom.<wbr />vr.<wbr />add-<wbr />test-<wbr />devices</td><td class="undefined">undefined</td><td>1</td></tr><tr class="newkey"><td>dom.<wbr />vr.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>font.<wbr />alias-<wbr />list</td><td>sans,sans-serif,serif,monospace</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>image.<wbr />mem.<wbr />hard_<wbr />limit_<wbr />decoded_<wbr />image_<wbr />kb</td><td>0</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>image.<wbr />mem.<wbr />min_<wbr />discard_<wbr />timeout_<wbr />ms</td><td>10000</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>image.<wbr />mem.<wbr />surfacecache.<wbr />discard_<wbr />factor</td><td class="undefined">undefined</td><td>1</td></tr><tr><td>image.<wbr />mem.<wbr />surfacecache.<wbr />max_<wbr />size_<wbr />kb</td><td>102400</td><td>1048576</td></tr><tr><td>image.<wbr />mem.<wbr />surfacecache.<wbr />size_<wbr />factor</td><td>64</td><td>4</td></tr><tr><td>javascript.<wbr />options.<wbr />mem.<wbr />gc_<wbr />min_<wbr />empty_<wbr />chunk_<wbr />count</td><td>1</td><td>0</td></tr><tr class="newkey"><td>layers.<wbr />gralloc.<wbr />disable</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layers.<wbr />progressive-<wbr />paint</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layers.<wbr />tiles.<wbr />adjust</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />display-<wbr />contents.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />isolation.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>layout.<wbr />css.<wbr />object-<wbr />fit-<wbr />and-<wbr />position.<wbr />enabled</td><td>false</td><td>true</td></tr><tr><td>layout.<wbr />css.<wbr />scroll-<wbr />behavior.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />scroll-<wbr />behavior.<wbr />property-<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />unicode-<wbr />range.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>layout.<wbr />css.<wbr />will-<wbr />change.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>loop.<wbr />ping.<wbr />interval</td><td class="undefined">undefined</td><td>1800000</td></tr><tr class="newkey"><td>loop.<wbr />ping.<wbr />timeout</td><td class="undefined">undefined</td><td>10000</td></tr><tr class="oldkey"><td>loop.<wbr />soft_<wbr />start_<wbr />hostname</td><td>soft-start.loop.services.mozilla.com</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>loop.<wbr />soft_<wbr />start_<wbr />ticket_<wbr />number</td><td>-1</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>loop.<wbr />throttled2</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>media.<wbr />cache_<wbr />readahead_<wbr />limit</td><td class="undefined">undefined</td><td>999999</td></tr><tr class="newkey"><td>media.<wbr />cache_<wbr />resume_<wbr />threshold</td><td class="undefined">undefined</td><td>999999</td></tr><tr><td>media.<wbr />getusermedia.<wbr />screensharing.<wbr />allowed_<wbr />domains</td><td>webex.com,<wbr />*.webex.com,<wbr />collaborate.com,<wbr />*.collaborate.com,<wbr />projectsquared.com,<wbr />*.projectsquared.com,<wbr />*.room.co,<wbr />room.co,<wbr />beta.talky.io,<wbr />talky.io</td><td>webex.com,<wbr />*.webex.com,<wbr />collaborate.com,<wbr />*.collaborate.com,<wbr />projectsquared.com,<wbr />*.projectsquared.com,<wbr />*.room.co,<wbr />room.co,<wbr />beta.talky.io,<wbr />talky.io,<wbr />*.clearslide.com,<wbr />example.com</td></tr><tr class="newkey"><td>media.<wbr />mediasource.<wbr />mp4.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>media.<wbr />mediasource.<wbr />webm.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>media.<wbr />mediasource.<wbr />youtubeonly</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>network.<wbr />IDN.<wbr />blacklist_<wbr />chars</td><td>&#x20;&#xa0;&#xbc;&#xbd;&#xbe;&#x1c3;&#x2d0;&#x337;&#x338;&#x589;&#x5c3;&#x5f4;&#x609;&#x60a;&#x66a;&#x6d4;&#x701;&#x702;&#x703;&#x704;&#x115f;&#x1160;&#x1735;&#x2000;&#x2001;&#x2002;&#x2003;&#x2004;&#x2005;&#x2006;&#x2007;&#x2008;&#x2009;&#x200a;&#x200b;&#x2024;&#x2027;&#x2028;&#x2029;&#x202f;&#x2039;&#x203a;&#x2041;&#x2044;&#x2052;&#x205f;&#x2153;&#x2154;&#x2155;&#x2156;&#x2157;&#x2158;&#x2159;&#x215a;&#x215b;&#x215c;&#x215d;&#x215e;&#x215f;&#x2215;&#x2236;&#x23ae;&#x2571;&#x29f6;&#x29f8;&#x2afb;&#x2afd;&#x2ff0;&#x2ff1;&#x2ff2;&#x2ff3;&#x2ff4;&#x2ff5;&#x2ff6;&#x2ff7;&#x2ff8;&#x2ff9;&#x2ffa;&#x2ffb;&#x3000;&#x3002;&#x3014;&#x3015;&#x3033;&#x3164;&#x321d;&#x321e;&#x33ae;&#x33af;&#x33c6;&#x33df;&#xa789;&#xfe14;&#xfe15;&#xfe3f;&#xfe5d;&#xfe5e;&#xfeff;&#xff0e;&#xff0f;&#xff61;&#xffa0;&#xfff9;&#xfffa;&#xfffb;&#xfffc;&#xfffd;</td><td>&#x20;&#xa0;&#xbc;&#xbd;&#xbe;&#x1c3;&#x2d0;&#x337;&#x338;&#x589;&#x5c3;&#x5f4;&#x609;&#x60a;&#x66a;&#x6d4;&#x701;&#x702;&#x703;&#x704;&#x115f;&#x1160;&#x1735;&#x2000;&#x2001;&#x2002;&#x2003;&#x2004;&#x2005;&#x2006;&#x2007;&#x2008;&#x2009;&#x200a;&#x200b;&#x200e;&#x200f;&#x2024;&#x2027;&#x2028;&#x2029;&#x202a;&#x202b;&#x202c;&#x202d;&#x202e;&#x202f;&#x2039;&#x203a;&#x2041;&#x2044;&#x2052;&#x205f;&#x2153;&#x2154;&#x2155;&#x2156;&#x2157;&#x2158;&#x2159;&#x215a;&#x215b;&#x215c;&#x215d;&#x215e;&#x215f;&#x2215;&#x2236;&#x23ae;&#x2571;&#x29f6;&#x29f8;&#x2afb;&#x2afd;&#x2ff0;&#x2ff1;&#x2ff2;&#x2ff3;&#x2ff4;&#x2ff5;&#x2ff6;&#x2ff7;&#x2ff8;&#x2ff9;&#x2ffa;&#x2ffb;&#x3000;&#x3002;&#x3014;&#x3015;&#x3033;&#x3164;&#x321d;&#x321e;&#x33ae;&#x33af;&#x33c6;&#x33df;&#xa789;&#xfe14;&#xfe15;&#xfe3f;&#xfe5d;&#xfe5e;&#xfeff;&#xff0e;&#xff0f;&#xff61;&#xffa0;&#xfff9;&#xfffa;&#xfffb;&#xfffc;&#xfffd;</td></tr><tr class="newkey"><td>network.<wbr />dns.<wbr />get-<wbr />ttl</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>network.<wbr />http.<wbr />spdy.<wbr />enabled.<wbr />http2</td><td>false</td><td>true</td></tr><tr class="oldkey"><td>network.<wbr />http.<wbr />spdy.<wbr />enabled.<wbr />v3</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>print.<wbr />enable_<wbr />e10s_<wbr />testing</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>privacy.<wbr />donottrackheader.<wbr />value</td><td>1</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>security.<wbr />ssl.<wbr />errorReporting.<wbr />automatic</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>security.<wbr />ssl.<wbr />errorReporting.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>security.<wbr />ssl.<wbr />errorReporting.<wbr />url</td><td class="undefined">undefined</td><td>https://data.mozilla.com/submit/sslreports</td></tr><tr class="newkey"><td>selectioncaret.<wbr />noneditable</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />browser.<wbr />newtabpage.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />browser.<wbr />newtabpage.<wbr />enhanced</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />browser.<wbr />newtabpage.<wbr />pinned</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />browser.<wbr />urlbar.<wbr />default.<wbr />behavior</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />privacy.<wbr />donottrackheader.<wbr />value</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>social.<wbr />share.<wbr />activationPanelEnabled</td><td>false</td><td>true</td></tr><tr class="oldkey"><td>webgl.<wbr />lose-<wbr />context-<wbr />on-<wbr />memory-<wbr />preasure</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>webgl.<wbr />lose-<wbr />context-<wbr />on-<wbr />memory-<wbr />pressure</td><td class="undefined">undefined</td><td>false</td></tr>
+</tbody>
+</table>
+
+<style type="text/css"><!-- /* --><![CDATA[ /* */
+table.diff_firefox36_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox36_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox36_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox36_pref_diff td.json { word-break: break-all; }
+table.diff_firefox36_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox36_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox36_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox36_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox36_pref_diff td.json { word-break: break-all; }
+
+table.diff_firefox36_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox36_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]><!-- */ --></style>
+
+  </article>
+
+  <footer class="post-footer">
+    <div class="meta share">
+      
+      Share:
+      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2015/01/diff-between-firefox-360-beta-2-default.html&amp;text=Diff%20between%20firefox%2036.0%20beta%202%20default%20preference%20and%20firefox%2035.0+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2015/01/diff-between-firefox-360-beta-2-default.html">Facebook</a>
+      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2015/01/diff-between-firefox-360-beta-2-default.html">Hatena Bookmark</a>
+      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2015/01/diff-between-firefox-360-beta-2-default.html&amp;linkname=Diff%20between%20firefox%2036.0%20beta%202%20default%20preference%20and%20firefox%2035.0+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2015-01-24-diff-between-firefox-360-beta-2-default.html" class="source-path">_posts/2015-01-24-diff-between-firefox-360-beta-2-default.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2015-01-24-diff-between-firefox-360-beta-2-default.html">History</a>)
+    </div>
+    
+  </footer>
+
+</div>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" title="Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?" rel="prev">&#x2190;Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
+    
+  </div>
+  <div class="next-post">
+    
+  </div>
+</nav>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li class="post-item">
+      <span class="post-date">2010-12-12</span>
+      <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-10-26</span>
+      <a class="post-link" href="/2014/10/diff-between-firefox-340-beta-3-default.html">Diff between firefox 34.0 beta 3 default preference and firefox 33.0</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-03-30</span>
+      <a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-08-07</span>
+      <a class="post-link" href="/2014/08/diff-between-firefox-320-beta-4-default.html">Diff between firefox 32.0 beta 4 default preference and firefox 31.0</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-09-15</span>
+      <a class="post-link" href="/2014/09/diff-between-firefox-330-beta-3-default.html">Diff between firefox 33.0 beta 3 default preference and firefox 32.0</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="footer-col-3 column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <nav class="footer-col-3 column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
