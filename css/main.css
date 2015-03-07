@@ -82,8 +82,9 @@ a:visited { color: #8f4889; }
 .home nav.pagination { display: block; text-align: center; }
 
 .archive h1, .tag-list h1 { margin-bottom: 25px; font-size: xx-large; }
-.archive li li, .tag-list li li { padding-left: 1em; }
-@media screen and (min-width: 480px) { .archive li li, .tag-list li li { padding-left: 2em; } }
+.archive ul li, .tag-list ul li { display: block; }
+.archive ul li li, .tag-list ul li li { padding-left: 1em; }
+@media screen and (min-width: 480px) { .archive ul li li, .tag-list ul li li { padding-left: 2em; } }
 .archive .post-item, .tag-list .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
 .archive > *, .tag-list > * { -webkit-flex: 0 0 auto; flex: 0 0 auto; }
 .archive .post-date, .tag-list .post-date { margin-right: 1ex; -webkit-flex: 1 0 auto; flex: 0 0 auto; }
@@ -132,6 +133,8 @@ a:visited { color: #8f4889; }
 .post-content table:not([class]):not([style]) tr > td:first-child, .post-content table:not([class]):not([style]) tr > th:first-child { border-left: none 0px; padding-left: 4px; }
 .post-content table:not([class]):not([style]) tr > td:last-child, .post-content table:not([class]):not([style]) tr > th:last-child { border-right: none 0px; padding-right: 4px; }
 .post-content table:not([class]):not([style]) caption { text-align: center; }
+
+.post-summary:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 
 .post-content:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) > p { text-indent: 1em; }

@@ -5,9 +5,61 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 24 Jan 2015 11:26:57 +0900</pubDate>
-    <lastBuildDate>Sat, 24 Jan 2015 11:26:57 +0900</lastBuildDate>
+    <pubDate>Sat, 07 Mar 2015 13:58:26 +0900</pubDate>
+    <lastBuildDate>Sat, 07 Mar 2015 13:58:26 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Diff between firefox 37.0 beta 3 default preference and firefox 36.0.1</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 37.0 beta 3 and one of 36.0.1.
+&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 36.0.1 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 37.0 beta 3 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;table class=&quot;diff_firefox37_pref_diff&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 36.0.1&lt;/td&gt;&lt;td&gt;Firefox 37.0 beta 3&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;display.&lt;wbr /&gt;use_&lt;wbr /&gt;document_&lt;wbr /&gt;colors&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;preferences.&lt;wbr /&gt;inContent&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;highlightCount&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;camera.&lt;wbr /&gt;control.&lt;wbr /&gt;autofocus_&lt;wbr /&gt;moving_&lt;wbr /&gt;callback.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;url&lt;/td&gt;&lt;td&gt;https://mozilla.org/firefox/developer&lt;/td&gt;&lt;td&gt;https://www.mozilla.org/firefox/developer/?utm_source=firefox-dev-tools&amp;amp;utm_medium=firefox-browser&amp;amp;utm_content=betadoorhanger&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gcli.&lt;wbr /&gt;jquerySrc&lt;/td&gt;&lt;td&gt;http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&lt;/td&gt;&lt;td&gt;https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gcli.&lt;wbr /&gt;lodashSrc&lt;/td&gt;&lt;td&gt;http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js&lt;/td&gt;&lt;td&gt;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gcli.&lt;wbr /&gt;underscoreSrc&lt;/td&gt;&lt;td&gt;http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js&lt;/td&gt;&lt;td&gt;https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;workers.&lt;wbr /&gt;websocket.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;decodeondraw&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;max_&lt;wbr /&gt;ms_&lt;wbr /&gt;before_&lt;wbr /&gt;yield&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;multithreaded_&lt;wbr /&gt;decoding.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;mem.&lt;wbr /&gt;gc_&lt;wbr /&gt;min_&lt;wbr /&gt;empty_&lt;wbr /&gt;chunk_&lt;wbr /&gt;count&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;display-&lt;wbr /&gt;contents.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp-&lt;wbr /&gt;gmpopenh264.&lt;wbr /&gt;provider.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp-&lt;wbr /&gt;manager.&lt;wbr /&gt;log&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;video.&lt;wbr /&gt;max_&lt;wbr /&gt;fr&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;video.&lt;wbr /&gt;max_&lt;wbr /&gt;fs&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;12288&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;altsvc.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;altsvc.&lt;wbr /&gt;oe&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;negotiate-&lt;wbr /&gt;auth.&lt;wbr /&gt;allow-&lt;wbr /&gt;insecure-&lt;wbr /&gt;ntlm-&lt;wbr /&gt;v1&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;negotiate-&lt;wbr /&gt;auth.&lt;wbr /&gt;allow-&lt;wbr /&gt;insecure-&lt;wbr /&gt;ntlm-&lt;wbr /&gt;v1-&lt;wbr /&gt;https&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;ntlm.&lt;wbr /&gt;send-&lt;wbr /&gt;lm-&lt;wbr /&gt;response&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;websocket.&lt;wbr /&gt;extensions.&lt;wbr /&gt;stream-&lt;wbr /&gt;deflate&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;profiler.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;profiler.&lt;wbr /&gt;entries&lt;/td&gt;&lt;td&gt;100000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;profiler.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;false_&lt;wbr /&gt;start.&lt;wbr /&gt;require-&lt;wbr /&gt;forward-&lt;wbr /&gt;secrecy&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;false_&lt;wbr /&gt;start.&lt;wbr /&gt;require-&lt;wbr /&gt;npn&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;dhe_&lt;wbr /&gt;dss_&lt;wbr /&gt;aes_&lt;wbr /&gt;128_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;dhe_&lt;wbr /&gt;dss_&lt;wbr /&gt;aes_&lt;wbr /&gt;256_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;dhe_&lt;wbr /&gt;rsa_&lt;wbr /&gt;camellia_&lt;wbr /&gt;128_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;dhe_&lt;wbr /&gt;rsa_&lt;wbr /&gt;camellia_&lt;wbr /&gt;256_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;dhe_&lt;wbr /&gt;rsa_&lt;wbr /&gt;des_&lt;wbr /&gt;ede3_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;ecdhe_&lt;wbr /&gt;rsa_&lt;wbr /&gt;des_&lt;wbr /&gt;ede3_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;rsa_&lt;wbr /&gt;camellia_&lt;wbr /&gt;128_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;rsa_&lt;wbr /&gt;camellia_&lt;wbr /&gt;256_&lt;wbr /&gt;sha&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;version.&lt;wbr /&gt;fallback-&lt;wbr /&gt;limit&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;noneditable&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;social.&lt;wbr /&gt;share.&lt;wbr /&gt;activationPanelEnabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;svg.&lt;wbr /&gt;marker-&lt;wbr /&gt;improvements.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox37_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox37_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox37_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox37_pref_diff td.json { word-break: break-all; }
+table.diff_firefox37_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox37_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox37_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox37_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox37_pref_diff td.json { word-break: break-all; }
+
+table.diff_firefox37_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox37_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Sat, 07 Mar 2015 13:56:26 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/03/diff-between-firefox-370-beta-3-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/03/diff-between-firefox-370-beta-3-default.html</guid>
+        
+        <category>pref diff</category>
+        
+        <category>mozilla</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 36.0 beta 2 default preference and firefox 35.0</title>
@@ -1340,130 +1392,6 @@ table.diff_firefox33_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Jekyll移行メモ</title>
-        <description>&lt;p&gt;Blogger から Jekyll (Github pages) に移行したときのメモ。&lt;/p&gt;
-
-&lt;h3&gt;Bloggerからの取り込み&lt;/h3&gt;
-
-&lt;p&gt;Blogger からは設定→その他→ブログツール→ブログをエクスポート
-Atom 形式で&lt;a href=&quot;https://support.google.com/blogger/answer/97416?hl=ja&quot; title=&quot;ブログをエクスポートまたはインポートする - Blogger ヘルプ&quot;&gt;ブログのデータが取り出せる&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;あとは jekyll-import を使って &lt;code&gt;./_posts/&lt;/code&gt; フォルダへインポートできる&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;% jekyll-import blogger --source path/to/blog-08-31-2014.xml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;と思ったが、そもそも jekyll-import が blogger 対応していなかったので
-それに対応させるため &lt;a href=&quot;https://github.com/jekyll/jekyll-import/pull/162&quot; title=&quot;Add Blogger (blogspot.com) importer by cat-in-136 · Pull Request #162 · jekyll/jekyll-import&quot;&gt;blogger importer の開発&lt;/a&gt;が必要になってしまった。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll-import/pull/162&quot; title=&quot;Add Blogger (blogspot.com) importer by cat-in-136 · Pull Request #162 · jekyll/jekyll-import&quot;&gt;Blogger importer&lt;/a&gt;のプルリクエストがマージされたならば、
-上に示したようなコマンドを叩くだけでインポートできるようになるはずだ。
-（それまでは gem を自分でビルドしてインストールするなどすること。）&lt;/p&gt;
-
-&lt;h3&gt;転居元の施策&lt;/h3&gt;
-
-&lt;p&gt;Blogger には、独自ドメインを取っているときは打開策がいくつかありそうだが、
-そうじゃない場合は下記のふたつのいずれかで転居先を示すしかないようだ。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;meta redirect&lt;/li&gt;
-&lt;li&gt;転居先をページ内に表示&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&quot;/2013/12/blogger-cookie-javascript.html&quot;&gt;かつて auto redirect で失敗&lt;/a&gt;
-したことがあった経緯などを考えて、安直に後者とした。&lt;/p&gt;
-
-&lt;p&gt;具体的には HTML/JavaScript のウィジットで下記を表示するようにした。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;
-This blog has moved to github page (&amp;lt;a href=&quot;http://cat-in-136.github.io/&quot;&amp;gt;http://cat-in-136.github.io/&amp;lt;/a&amp;gt;).
-&amp;lt;script&amp;gt;
-(function (){
-  var oLink = document.querySelector(&quot;link[rel=canonical]&quot;);
-  if (oLink) {
-    var canoUrl = oLink.getAttribute(&quot;href&quot;);
-    if (canoUrl != &quot;http://cat-in-136.github.io/&quot;) {
-      document.writeln(&quot;&amp;lt;br /&amp;gt;&quot; + &quot;The content would be available at new blog site&quot;.link(canoUrl));
-    }
-  }
-})();
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;なお、&lt;code&gt;link[rel=canonical]&lt;/code&gt;は、下記のような JavaScript で生成するコードを入れている。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;script&amp;gt;
-document.writeln(&quot;&amp;lt;link href=&#39;&quot; + location.href.replace(location.host + &quot;/&quot;, &quot;cat-in-136.github.io/&quot;) +&quot;&#39; rel=&#39;canonical&#39;/&amp;gt;&quot;);
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;このようなことをするため記事のパーマリンクは Blogger と合わせた
-&lt;code&gt;/:year/:month/:title.html&lt;/code&gt; としている。
-そうすることで、上に示したように、ドメインを記事ページのURLに対してドメイン名を変えるだけの処理で済む。&lt;/p&gt;
-
-&lt;p&gt;コンテンツのコピーが共存すると Google によってコピーサイトペナルティを
-移転先が喰らいやすいというリスクはあるが、
-ここは幸いにも過疎ブログなので失うものは極めて少ないので
-細かいことは考えない。&lt;/p&gt;
-
-&lt;ins date=&quot;2014-09-10T22:00:00+09:00&quot;&gt;
-&lt;p&gt;
-と書いたものの2014-09-10現在、うまくいっているようである。
-すなわち JavaScript で生成された link[rel=canonical] を Google のクローラはうまくフォローしている模様。
-&lt;/p&gt;
-
-&lt;p&gt;
-より link[rel=canonical] をうまく追跡するために、Blogger に入れているテンプレートを
-下記の通りとし、記事ページ以外についてもそれなりに対応するページヘの
-link[rel=canonical] を入れるようにした。
-&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;b:if cond=&#39;data:blog.pageType == &amp;amp;quot;index&amp;amp;quot;&#39;&amp;gt;
-  &amp;lt;link href=&#39;http://cat-in-136.github.io/&#39; rel=&#39;canonical&#39;/&amp;gt;
-  &amp;lt;meta content=&#39;http://cat-in-136.github.io/&#39; property=&#39;og:url&#39;/&amp;gt;
-&amp;lt;/b:if&amp;gt;
-&amp;lt;b:if cond=&#39;data:blog.pageType == &amp;amp;quot;archive&amp;amp;quot;&#39;&amp;gt;
-  &amp;lt;link href=&#39;http://cat-in-136.github.io/archive.html&#39; rel=&#39;canonical&#39;/&amp;gt;
-  &amp;lt;meta content=&#39;http://cat-in-136.github.io/archive.html&#39; property=&#39;og:url&#39;/&amp;gt;
-&amp;lt;/b:if&amp;gt;
-&amp;lt;b:if cond=&#39;data:blog.pageType == &amp;amp;quot;item&amp;amp;quot;&#39;&amp;gt;
-  &amp;lt;script&amp;gt;
-    document.writeln(&amp;amp;quot;&amp;lt;link href=&#39;&amp;amp;quot; + location.href.replace(location.host + &amp;amp;quot;/&amp;amp;quot;, &amp;amp;quot;cat-in-136.github.io/&amp;amp;quot;) +&amp;amp;quot;&#39; rel=&#39;canonical&#39;/&amp;gt;&amp;amp;quot;);
-    document.writeln(&amp;amp;quot;&amp;lt;meta content=&#39;&amp;amp;quot; + location.href.replace(location.host + &amp;amp;quot;/&amp;amp;quot;, &amp;amp;quot;cat-in-136.github.io/&amp;amp;quot;) +&amp;amp;quot;&#39; property=&#39;og:url&#39;/&amp;gt;&amp;amp;quot;);
-  &amp;lt;/script&amp;gt;
-
-  &amp;lt;!-- snip --&amp;gt;
-&amp;lt;/b:if&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/ins&gt;
-
-&lt;h3&gt;DISQUS&lt;/h3&gt;
-
-&lt;p&gt;コメント欄の移行は &lt;a href=&quot;https://disqus.com/&quot;&gt;disqus&lt;/a&gt; に移行した。
-Blogger からのインポートした後にドメインを &lt;code&gt;cat-in-136.blogspot.com&lt;/code&gt; →
-&lt;code&gt;cat-in-136.github.io&lt;/code&gt; と変えただけ。&lt;/p&gt;
-
-&lt;p&gt;記事のパーマリンクを Blogger と合わせた
-&lt;code&gt;/:year/:month/:title.html&lt;/code&gt; としたお陰でこれだけでよい。&lt;/p&gt;
-
-&lt;p&gt;なお、本ブログのソースコードでパット見トラッキングコードの類はまったく
-ないように見えると思うが、
-disqus ウィジットの iframe 中からの読み込みで ssl.google-analysis.com への接続がある。
-（しかし disqus のトラッキングコードなので筆者はトラッキングの傾向は
-見れない）&lt;/p&gt;
-</description>
-        <pubDate>Sat, 06 Sep 2014 15:34:30 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/09/move-to-jekyll.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/09/move-to-jekyll.html</guid>
-        
-        <category>blogger</category>
-        
-        <category>jekyll</category>
         
         
       </item>
