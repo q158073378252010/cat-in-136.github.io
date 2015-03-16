@@ -37,6 +37,19 @@
   <ul class="posts">
     
       <li class="post-item">
+        <span class="post-date">2011-03-19</span>
+        <div>
+          <a class="post-link" href="/2011/03/javascript-typed-array-use-native.html">JavaScript Typed Array use native endian</a>
+          <div class="post-summary">
+var a = new Uint8Array([0x12, 0x34]);
+var b = new Uint16Array(a.buffer);
+alert("0x" + (b[0]).toString(16)); // #=> 0x3412 or 0x1234 ?
+
+R...</div>
+        </div>
+      </li>
+    
+      <li class="post-item">
         <span class="post-date">2011-02-23</span>
         <div>
           <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">Visual Guide : New pref of Configuration Mania v1.14.2011022201</a>
@@ -158,21 +171,6 @@ Tuning JIT compiler heuristics; Profile to decide usi...</div>
           <div class="post-summary">
 This is difference between the default preference of Firefox 3.6.13 and one of 4.0b7. 
 I found a huge of number of preferences are chang...</div>
-        </div>
-      </li>
-    
-      <li class="post-item">
-        <span class="post-date">2010-12-04</span>
-        <div>
-          <a class="post-link" href="/2010/12/aadecode-decode-encoded-as-aaencode.html">aadecode - Decode encoded-as-aaencode JavaScript program. [&#39;_&#39;]</a>
-          <div class="post-summary">
-aadecode - Decode encoded-as-aaencode JavaScript program. (&#xFF9F;&#x0414;&#xFF9F;) ['_']
-
-
-
-Enter encoded code:
-
-&#65439;&#969;&#65439...</div>
         </div>
       </li>
     
