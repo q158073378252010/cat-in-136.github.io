@@ -5,9 +5,61 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 17 Mar 2015 00:39:12 +0900</pubDate>
-    <lastBuildDate>Tue, 17 Mar 2015 00:39:12 +0900</lastBuildDate>
+    <pubDate>Wed, 08 Apr 2015 00:13:28 +0900</pubDate>
+    <lastBuildDate>Wed, 08 Apr 2015 00:13:28 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Diff between firefox 38.0 beta 1 default preference and firefox 37.0.1</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 38.0 beta 1 and one of 37.0.1.
+&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 37.0.1 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 38.0 beta 1 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;table class=&quot;diff_firefox38_pref_diff&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 37.0.1&lt;/td&gt;&lt;td&gt;Firefox 38.0 beta 1&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;accessibility.&lt;wbr /&gt;ipc_&lt;wbr /&gt;architecture.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;subframe.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;flash-&lt;wbr /&gt;protected-&lt;wbr /&gt;mode-&lt;wbr /&gt;flip.&lt;wbr /&gt;done&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;flash-&lt;wbr /&gt;protected-&lt;wbr /&gt;mode-&lt;wbr /&gt;flip.&lt;wbr /&gt;enable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;preferences.&lt;wbr /&gt;inContent&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;readinglist.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;readinglist.&lt;wbr /&gt;sidebarEverOpened&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;highlightCount&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;param.&lt;wbr /&gt;yahoo-&lt;wbr /&gt;fr&lt;/td&gt;&lt;td&gt;moz35&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;param.&lt;wbr /&gt;yahoo-&lt;wbr /&gt;fr-&lt;wbr /&gt;ja&lt;/td&gt;&lt;td&gt;mozff&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;browserconsole.&lt;wbr /&gt;filter.&lt;wbr /&gt;netxhr&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;log.&lt;wbr /&gt;verbose&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;showAllAnonymousContent&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;enable-&lt;wbr /&gt;framerate&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;enable-&lt;wbr /&gt;memory&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;flatten-&lt;wbr /&gt;tree-&lt;wbr /&gt;recursion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;invert-&lt;wbr /&gt;call-&lt;wbr /&gt;tree&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;invert-&lt;wbr /&gt;flame-&lt;wbr /&gt;graph&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;show-&lt;wbr /&gt;idle-&lt;wbr /&gt;blocks&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;show-&lt;wbr /&gt;platform-&lt;wbr /&gt;data&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;show-&lt;wbr /&gt;timeline-&lt;wbr /&gt;memory&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;profiler.&lt;wbr /&gt;ui.&lt;wbr /&gt;flatten-&lt;wbr /&gt;tree-&lt;wbr /&gt;recursion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;profiler.&lt;wbr /&gt;ui.&lt;wbr /&gt;show-&lt;wbr /&gt;idle-&lt;wbr /&gt;blocks&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webaudioeditor.&lt;wbr /&gt;inspectorWidth&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;filter.&lt;wbr /&gt;netxhr&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;broadcastChannel.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;enable_&lt;wbr /&gt;user_&lt;wbr /&gt;timing&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;image.&lt;wbr /&gt;picture.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;image.&lt;wbr /&gt;srcset.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;indexedDB.&lt;wbr /&gt;warningQuota&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;cpow.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;500&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;contentTimeoutSecs&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;45&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;processHangMonitor&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;reportProcessHangs&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;code.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;dispatch_&lt;wbr /&gt;during_&lt;wbr /&gt;composition&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;max_&lt;wbr /&gt;child_&lt;wbr /&gt;script_&lt;wbr /&gt;run_&lt;wbr /&gt;time&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;performance.&lt;wbr /&gt;enable_&lt;wbr /&gt;user_&lt;wbr /&gt;timing_&lt;wbr /&gt;logging&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;presentation.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;requestSync.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;secureelement.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;url.&lt;wbr /&gt;encode_&lt;wbr /&gt;decode_&lt;wbr /&gt;hash&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;workers.&lt;wbr /&gt;websocket.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;oauth.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://oauth.accounts.firefox.com/v1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;profile.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://profile.accounts.firefox.com/v1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;decodeondraw&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;mem.&lt;wbr /&gt;gc_&lt;wbr /&gt;compacting&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;ruby.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;scroll.&lt;wbr /&gt;root-&lt;wbr /&gt;frame-&lt;wbr /&gt;containers&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr /&gt;CSP&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src &#39;self&#39; data: http://www.gravatar.com/ about: file: chrome:; font-src &#39;none&#39;; connect-src wss://*.tokbox.com https://*.opentok.com https://*.tokbox.com wss://*.mozilla.com https://*.mozilla.org wss://*.mozaws.net; media-src blob:&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src &#39;self&#39; data: https://www.gravatar.com/ about: file: chrome:; font-src &#39;none&#39;; connect-src wss://*.tokbox.com https://*.opentok.com https://*.tokbox.com wss://*.mozilla.com https://*.mozilla.org wss://*.mozaws.net; media-src blob:&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;browserSharing.&lt;wbr /&gt;showInfoBar&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;contacts.&lt;wbr /&gt;gravatars.&lt;wbr /&gt;promo&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;contacts.&lt;wbr /&gt;gravatars.&lt;wbr /&gt;show&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;rooms.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;screenshare.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;apiVisible&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp-&lt;wbr /&gt;eme-&lt;wbr /&gt;adobe.&lt;wbr /&gt;hidden&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp.&lt;wbr /&gt;insecure.&lt;wbr /&gt;allow&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;mp4.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;webm.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;whitelist&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;youtubeonly&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;default_&lt;wbr /&gt;iceservers&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[{&quot;url&quot;: &quot;stun:stun.services.mozilla.com&quot;}]&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[{&quot;urls&quot;: [&quot;stun:stun.services.mozilla.com&quot;]}]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;altsvc.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;altsvc.&lt;wbr /&gt;oe&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;atsvc.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;atsvc.&lt;wbr /&gt;oe&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;spdy.&lt;wbr /&gt;default-&lt;wbr /&gt;concurrent&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;cleaned-&lt;wbr /&gt;up&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;max-&lt;wbr /&gt;db-&lt;wbr /&gt;size&lt;/td&gt;&lt;td&gt;157286400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;max-&lt;wbr /&gt;queue-&lt;wbr /&gt;size&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;max-&lt;wbr /&gt;resources-&lt;wbr /&gt;per-&lt;wbr /&gt;entry&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;preserve&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;permissions.&lt;wbr /&gt;manager.&lt;wbr /&gt;defaultsUrl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;resource://app/defaults/permissions&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;color_&lt;wbr /&gt;scheme&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;light&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;color_&lt;wbr /&gt;scheme.&lt;wbr /&gt;values&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;light&quot;,&quot;dark&quot;,&quot;sepia&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;font_&lt;wbr /&gt;size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;font_&lt;wbr /&gt;type&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;sans-serif&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;has_&lt;wbr /&gt;used_&lt;wbr /&gt;toolbar&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;parse-&lt;wbr /&gt;on-&lt;wbr /&gt;load.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;parse-&lt;wbr /&gt;on-&lt;wbr /&gt;load.&lt;wbr /&gt;force-&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;reader.&lt;wbr /&gt;toolbar.&lt;wbr /&gt;vertical&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;readinglist.&lt;wbr /&gt;scheduler.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;readinglist.&lt;wbr /&gt;server&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;https://readinglist.services.mozilla.com/v1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;allow_&lt;wbr /&gt;unrestricted_&lt;wbr /&gt;renego_&lt;wbr /&gt;everywhere_&lt;wbr /&gt;_&lt;wbr /&gt;temporarily_&lt;wbr /&gt;available_&lt;wbr /&gt;pref&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;renego_&lt;wbr /&gt;unrestricted_&lt;wbr /&gt;hosts&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;unrestricted_&lt;wbr /&gt;rc4_&lt;wbr /&gt;fallback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;social.&lt;wbr /&gt;share.&lt;wbr /&gt;activationPanelEnabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;svg.&lt;wbr /&gt;svg-&lt;wbr /&gt;iframe.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;ui.&lt;wbr /&gt;menu.&lt;wbr /&gt;incremental_&lt;wbr /&gt;search.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;bypass-&lt;wbr /&gt;shader-&lt;wbr /&gt;validation&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;enable-&lt;wbr /&gt;prototype-&lt;wbr /&gt;webgl2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;shader_&lt;wbr /&gt;validator&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox38_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox38_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox38_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox38_pref_diff td.json { word-break: break-all; }
+table.diff_firefox38_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox38_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox38_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox38_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox38_pref_diff td.json { word-break: break-all; }
+
+table.diff_firefox38_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox38_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Wed, 08 Apr 2015 00:11:11 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/04/diff-between-firefox-380-beta-1-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/04/diff-between-firefox-380-beta-1-default.html</guid>
+        
+        <category>pref diff</category>
+        
+        <category>mozilla</category>
+        
+        
+      </item>
     
       <item>
         <title>新型 MacBook によって示唆される 2021 年のモバイルコンピューティング環境</title>
@@ -1116,421 +1168,6 @@ table.diff_firefox34_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</title>
-        <description>&lt;p&gt;WiFi 内蔵 SD カードである &lt;a href=&quot;http://www.pqigroup.com/prod_in.aspx?mnuid=1286&amp;amp;modid=138&amp;amp;prodid=426&quot;&gt;PQI Air Card&lt;/a&gt;[1] には
-WiFi の子機として繋ぐモードで動かすことができる。
-WiFi AP が DHCP などで動的な IP 割り当てをしているときに、
-PQI Air Card がどの IP アドレスで繋がっているかわからない。
-しかしながら、PQI Air Card のほとんどの設定はブラウザからアクセスする必要があって、
-これには IP アドレスがわからないと繋ぐことができない[4]。
-そこで、PQI Air Card を探すために Yo と話しかけられたら Yo と返す
-極めて簡素なプロトコルを設計し、これで簡易なデバイス検出(device discovery)をすることを試みた。
-そのために PQI Air Card に乗っけるプログラムの作成と、
-簡易デバイス検出クライアントを作成し検証した。&lt;/p&gt;
-
-&lt;h3&gt;背景&lt;/h3&gt;
-
-&lt;p&gt;WiFi 内蔵 SD カードを親機(WiFi AP)とする使い方はネットワーク接続が簡単ではあるが、
-子機として繋げている機器からはインターネット接続ができなくなるなど不便である。
-インターネット接続を維持する場合は、SD カードを子機として共通の WiFi AP に繋げる必要がある[4]。
-PQI Air Card はどちらの方法でも使えることができる。
-本エントリでは前者をステーション動作、後者をホットスポット動作と呼ぶこととする。&lt;/p&gt;
-
-&lt;p&gt;ステーション動作のときは PQI Air Card の IP アドレスは明らかであり、
-子機のデフォルトゲートウェイとおなじになる。
-一方で、ホットスポット動作のときは IP アドレスは環境ごとに変わりうる。
-というのも親機(WiFi AP)によって IP アドレスが割り当てられるからである。&lt;/p&gt;
-
-&lt;p&gt;ホットスポット動作のときの IP アドレスを判断する方法はいくつか提案されている。
-もっとも根本的な解決策は PQI Air Card (の MAC アドレス) に対して、
-固定 IP を割り当てることである。
-これは親機(WiFi AP)における機能によって解決する方法である。
-これ以外の方法は公式的には PQI Air Card には存在しないと思われる。&lt;/p&gt;
-
-&lt;p&gt;他の WiFi 内蔵 SD カードでのこの問題の解決策としては、
-SD カード側が NetBIOS 名や Bonjour 名を広告して
-Windows 機（samba クライアント）や Mac から見れる
-ようにしている事例(Flash Air)[2]、
-外部サーバにそのままファイルを同期アップロードすることによって
-SD カード側の IP アドレスを知る必要性をほとんどなくしてしまった事例(Eye-Fi)[3]
-がみられる。&lt;/p&gt;
-
-&lt;p&gt;いっぽうで PQI Air Card の中では Linux が動いているが、
-SD カードのルートに &lt;code&gt;autorun.sh&lt;/code&gt; という名前のシェルスクリプトのファイルを置くと
-任意の動作をさせることができる[6]。
-これを利用して親機(WiFi AP)に繋がった時点で twitter の Mention で伝えるという
-解決策も提示されている[4]。&lt;/p&gt;
-
-&lt;p&gt;外部のネットワーク (e.g. twitter) を使わずに、
-WiFi AP を安っすい固定割り当てができないものでも使えるようにし、
-そして Flash Air などを使わずになんとかしたいと思ったので、
-簡易デバイス検出の仕組みを作成し検証した次第である。&lt;/p&gt;
-
-&lt;h3&gt;プロトコル Yo&lt;/h3&gt;
-
-&lt;p&gt;本目的で使えそうなプロトコルとしては下記が上げられる。
-これらのいくつかは “Simple” と謳っており、
-実際確かにシンプルなものもあるのだが、
-いずれも私が求めるシンプルさよりも遥かに複雑であった。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;NetBIOS Name service&lt;/li&gt;
-  &lt;li&gt;Simple Network Management Protocol (SNMP)&lt;/li&gt;
-  &lt;li&gt;Multicast DNS (mDNS), DNS-based service discovery (DNS-SD)&lt;/li&gt;
-  &lt;li&gt;Simple Service Discovery Protocol (SSDP), Universal Plug and Play (UPnP)&lt;/li&gt;
-  &lt;li&gt;Service Location Protocol (SLP)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;そこで、極めて実装が簡単なプロトコルを設計した。
-設計したといえない程の簡単なやりとりである。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;UDPを使い、機器（サービス）側のポート番号は既知とする。&lt;/li&gt;
-  &lt;li&gt;あるクライアントから機器（サービス）に UDP で &lt;code&gt;REQUEST-MESSAGE&lt;/code&gt; を送信したとき、
-機器（サービス）はそのクライアントに対して &lt;code&gt;RESPONSE-MESSAGE&lt;/code&gt; を送信する&lt;/li&gt;
-  &lt;li&gt;クライアント→機器（サービス）はユニキャスト・ブロードキャストのいずれでもよい&lt;/li&gt;
-  &lt;li&gt;機器（サービス）→クライアントはユニキャストである&lt;/li&gt;
-  &lt;li&gt;データ構造
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code&gt;REQUEST-MESSAGE: &quot;Yo&quot; CLIENT-ARBITARY-TEXT&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;RESPONSE-MESSAGE: REQUEST-MESSAGE CR-LF &quot;Yo&quot; SERVICE-ARBITARY-TEXT&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;CLIENT-ARBITARY-TEXT&lt;/code&gt;, &lt;code&gt;SERVICE-ARBITARY-TEXT&lt;/code&gt;: 改行を含まない任意のテキスト&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;CR-LF: &quot;\r\n&quot;&lt;/code&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;要するに、下記の通り “Yo” をやりとりしてるだけの話である。&lt;/p&gt;
-
-&lt;pre&gt;
-|Client side                   Service side|
-|                                          |
-|    &quot;Yo from laptop&quot;                      |
-|-----------------------------------------&amp;gt;|
-|                                          |
-| &quot;Yo from laptop\r\nYo from PQI_AIR_CARD&quot; |
-|&amp;lt;-----------------------------------------|
-|                                          |
-&lt;/pre&gt;
-
-&lt;p&gt;リクエストメッセージの送信をUDPブロードキャストにすることで、
-クライアントは所望の “Yo” が戻ってきたアドレスを確認することで
-PQI Air Card の IP アドレスがわかる。&lt;/p&gt;
-
-&lt;h3&gt;PQI Air Card への Yo サービスの導入&lt;/h3&gt;
-
-&lt;p&gt;下記のとおり C 言語で書いた：&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;/* yo_service.c
- * under MIT license
- * 
- * Copyright (c) 2014 @cat_in_136
- * 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the &quot;Software&quot;), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;stdlib.h&amp;gt;
-#include &amp;lt;string.h&amp;gt;
-#include &amp;lt;signal.h&amp;gt;
-#include &amp;lt;sys/types.h&amp;gt;
-#include &amp;lt;sys/socket.h&amp;gt;
-#include &amp;lt;netinet/in.h&amp;gt;
-#include &amp;lt;arpa/inet.h&amp;gt;
-#include &amp;lt;unistd.h&amp;gt;
-
-/** Have SIGTERM been received? */
-static int isTermReceived = 0;
-
-/** Open a UDP connection.
- *
- * @param[in] b_addr bind address, may be INADDR_ANY.
- * @param[in] port Port number.
- * @return a file descriptor for the socket on success, -1 on error.
- */
-static int open_udp_conn(in_addr_t b_addr, u_short port)
-{
-  int sock;
-  int ret;
-  struct sockaddr_in addr;
-
-  sock = socket(AF_INET, SOCK_DGRAM, 0);
-  if (sock == -1) {
-    perror(&quot;Socket open error.&quot;);
-    return sock;
-  }
-
-  memset(&amp;amp;addr, 0, sizeof(addr));
-  addr.sin_family = AF_INET;
-  addr.sin_port = htons(port);
-  addr.sin_addr.s_addr = b_addr;
-  ret = bind(sock, (struct sockaddr *) &amp;amp;addr, sizeof(addr));
-  if (ret == -1) {
-    perror(&quot;bind error.&quot;);
-    close(sock);
-    return -1;
-  }
-
-  return sock;
-}
-
-/** Listen a UDP packet and send a packet of the response.
- *
- * @param[in] sock the socket.
- * @param[in] msg the response message.
- * @param[in] msg_len length of the response message.
- */
-static void handle_udp_conn(int sock, const char *msg, size_t msg_len)
-{
-  static const char * CRLF = &quot;\r\n&quot;;
-  char buf[1024];
-  ssize_t s;
-  struct sockaddr src_addr;
-  socklen_t addrlen;
-
-  // receive a packet
-  memset(buf, 0, sizeof(buf));
-  s = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *) &amp;amp;src_addr, &amp;amp;addrlen);
-  if (s == 0) {
-    perror(&quot;empty message received&quot;);
-    return;
-  }
-
-  //puts(buf);
-  
-  // build response message
-  if ((s + strlen(CRLF) + msg_len) &amp;lt; sizeof(buf)) {
-    memcpy(&amp;amp;buf[s], CRLF, strlen(CRLF));
-    s += strlen(CRLF);
-
-    memcpy(&amp;amp;buf[s], msg, msg_len);
-    s += msg_len;
-
-    sendto(sock, buf, s, 0, (struct sockaddr *) &amp;amp;src_addr, addrlen);
-  }
-}
-
-/** Close the UDP connection.
- *
- * @param[in] sock the socket.
- * @return 0 on success, -1 on error.
- */
-static int close_udp_conn(int sock)
-{
-  close(sock);
-
-  return 0;
-}
-
-static void signal_handler(int signo)
-{
-  if (signo == SIGTERM) {
-    isTermReceived = 1;
-  }
-}
-
-int main(int argc, char *argv[]) {
-  int ret;
-  int sock;
-  in_addr_t b_addr;
-  u_short port;
-  char *response_msg;
-  size_t response_msg_len;
-
-  if(signal(SIGTERM, signal_handler) == SIG_ERR) {
-    perror(&quot;SIGTERM handler error&quot;);
-    //return EXIT_FAILURE;
-  }
-
-  if (argc != 4) {
-    printf(&quot;Usage: %s bind_address port response_msg\n&quot;, argv[0]);
-    printf(&quot;Example:\n&quot;);
-    printf(&quot;  %s 0.0.0.0 22222\n&quot;, argv[0]);
-    return EXIT_FAILURE;
-  }
-
-  ret = inet_aton(argv[1], (struct in_addr *) &amp;amp;b_addr);
-  if (ret == 0) {
-    perror(&quot;Invalid IP address&quot;);
-    return EXIT_FAILURE;
-  }
-  port = atoi(argv[2]);
-  if (port == 0) {
-    perror(&quot;Invalid IP port&quot;);
-    return EXIT_FAILURE;
-  }
-  response_msg = argv[3];
-  response_msg_len = strlen(argv[3]);
-
-  sock = open_udp_conn(b_addr, port);
-  if (sock == -1) {
-    perror(&quot;Failed to open socket&quot;);
-    return EXIT_FAILURE;
-  }
-
-  while (isTermReceived == 0) {
-    handle_udp_conn(sock, response_msg, response_msg_len);
-  }
-
-  ret = close_udp_conn(sock);
-  if (ret == -1) {
-    perror(&quot;Failed to close socket&quot;);
-    return EXIT_FAILURE;
-  }
-
-  return EXIT_SUCCESS;
-}
-
-/* vim:set tabstop=2 expandtab shiftwidth=2 softtabstop=0: */
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これを PQI Air Card 向けにコンパイルをした。
-商用であるが無料で使える &lt;a href=&quot;http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/&quot; title=&quot;Sourcery CodeBench Lite Edition including ARM GCC IDE - Mentor Graphics&quot;&gt;Sourcery CodeBench Lite&lt;/a&gt; という
-のでコンパイルした（クロスコンパイル環境によるコンパイル）。
-なお、ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV) のバイナリを生成する
-コンパイラならどれをつかってもかまわないはずであるし、
-PC上でデバッグ検証をするのならば普通に x86_64 の gcc などでコンパイルして
-動作検証すればよい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;samp&gt;% arm-none-linux-gnueabi-gcc -o yo_service yo_service.c -O2 -Wall -static
-% arm-none-linux-gnueabi-strip -s yo_service
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;この &lt;code&gt;yo_service&lt;/code&gt; をSDカードの任意の場所に置く。
-（&lt;code&gt;/path/to/yo_service&lt;/code&gt;に置いたものとする）&lt;/p&gt;
-
-&lt;p&gt;そしてSDカードのルートの&lt;code&gt;autorun.sh&lt;/code&gt;には下記を記述する（または追記する）。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-sh&quot;&gt;&lt;code&gt;#!/bin/sh
-
-sleep 5
-
-ln -s /mnt/sd/path/to/yo_service /bin/yo_service
-chmod +x /bin/yo_service
-sync; sync; sync
-
-yo_service 0.0.0.0 10091 &quot;Yo from PQI_AIR_CARD&quot; &amp;amp;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;あとはカメラの電源を入れたときに &lt;code&gt;yo_service&lt;/code&gt; が起動し常駐するようになる。&lt;/p&gt;
-
-&lt;h3&gt;使用&lt;/h3&gt;
-
-&lt;p&gt;機器（サービス）側の実装とデプロイで疲れてしまったので、
-クライアント側は下記のような適当な ruby コードで確認した。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-ruby&quot;&gt;&lt;code&gt;#!/usr/bin/ruby
-require &quot;socket&quot;
-
-udp = nil
-begin
-  udp = UDPSocket.open
-  udp.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, 1)
-
-  udp.bind(&quot;0.0.0.0&quot;, 20091)
-
-  udp.send(&quot;Yo from laptop&quot;, 0, &quot;255.255.255.255&quot;, 10091)
-
-  res, res_addr = udp.recvfrom(2048)
-  p res
-  p res_addr
-ensure
-  udp.close unless udp.nil?
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;カメラに電源を入れた後しばらく待って (PQI Air Card の WiFi が確立する時間)
-下記実行したらきちんと “Yo” が帰ってきた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;samp&gt;% ruby yo_send_test.rb
-&quot;Yo from laptop\r\nYo from PQI_AIR_CARD&quot;
-[&quot;AF_INET&quot;, 10091, &quot;192.168.1.3&quot;, &quot;192.168.1.3&quot;]
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;なお、ファイアウォールを導入している場合は、
-UDPの受信ポートを開放しないと動作しないようだ。
-上に示した ruby コードの例では 20091 版ポートを開放する必要がある模様。&lt;/p&gt;
-
-&lt;p&gt;これで PQI Air Card は 192.168.1.3 であることがわかるので、
-PQI Air Card にブラウザなり FTP なり telnet なりで接続ができる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;samp&gt;% telnet 192.168.1.3
-Trying 192.168.1.3...
-Connected to 192.168.1.3.
-Escape character is &#39;^]&#39;.
-
-# 
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;ただしこの ruby コードはかなり雑であり、
-PQI Air Card の WiFi が確立する前だったりの原因で
-“Yo” が帰ってこなかった場合の考慮が抜けているので、
-その場合は Ctrl+C をするなど対策が必要だ。&lt;/p&gt;
-
-&lt;p&gt;UDP のパケット欠落や、その他複数の “Yo” を返す機器（サービス）がある場合については、
-クライアント側のアプリの改良は当然ながら必要である。
-UDP は TCP と違って再送などがないのでそれもプログラムとして組み込む必要があるが、
-実際に何回か試した所、1m 程度の範囲内ならばエラーなしで届いているので
-UDP の再送他はなくてもどうにかなってしまっている。&lt;/p&gt;
-
-&lt;h3&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;PQI Air Card を探すために Yo と話しかけられたら Yo と返す
-極めて簡素なプロトコルを設計、実装をし、検証をした。&lt;/p&gt;
-
-&lt;p&gt;その結果、200 行未満の機器（サービス）側のコードと
-やっつけなクライアント側のコードでそれなりに満足のできる結果がえられた。&lt;/p&gt;
-
-&lt;p&gt;今後の課題として、
-UDP のパケット欠落や、その他複数の “Yo” を返す機器（サービス）の検討が必要だが、
-これでそれなりに満足してしまったのと、
-NetBIOS 等が入っていない（or 導入が困難）かつ自作プログラムを送り込めるガジェット
-なんてそんなにないだろうから、
-クライアント側のアプリの改良はすることはないだろう。&lt;/p&gt;
-
-&lt;h3&gt;特記事項&lt;/h3&gt;
-
-&lt;p&gt;“Yo”というキーワードはSNSの&lt;a href=&quot;http://www.justyo.co/&quot; title=&quot;Yo - It&amp;apos;s that simple.&quot;&gt;Yo&lt;/a&gt;にインスパイヤされた。&lt;/p&gt;
-
-&lt;h3&gt;参考文献&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;[1] &lt;a href=&quot;http://www.pqigroup.com/prod_in.aspx?mnuid=1286&amp;amp;modid=138&amp;amp;prodid=426&quot;&gt;PQI Air Card&lt;/a&gt;, PQI Group&lt;/li&gt;
-  &lt;li&gt;[2] &lt;a href=&quot;https://www.flashair-developers.com/ja/documents/api/config/&quot;&gt;FlashAir Developers - ドキュメント - APIガイド - CONFIG&lt;/a&gt;, &lt;code&gt;APPNAME&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;[3] &lt;a href=&quot;http://jp.eyefi.com/products/cloud&quot;&gt;Eyefi （アイファイ）クラウド - 安全なクラウドで便利に同期&lt;/a&gt;, Eyefi Japan&lt;/li&gt;
-  &lt;li&gt;[4] 竹内義晴 「&lt;a href=&quot;http://blogs.itmedia.co.jp/takewave/2013/04/pqi-air-card2-1e41.html&quot;&gt;これはいい！PQI Air Cardの2つの不満を解決する方法&lt;/a&gt;」, 「竹内義晴の、しごとのみらい」, 2013-04-02&lt;/li&gt;
-  &lt;li&gt;[5] あきみち &lt;a href=&quot;http://www.geekpage.jp/programming/linux-network/&quot;&gt;Linuxネットワークプログラミング&lt;/a&gt;, Geekなぺーじ&lt;/li&gt;
-  &lt;li&gt;[6] moyashi, 「&lt;a href=&quot;http://hitoriblog.com/?p=12627&quot;&gt;デジカメ内部でRubyを動かす狂気！無線LAN内蔵SDカードアダプタPQI Air Cardの間違った使い方&lt;/a&gt;」, ひとりぶろぐ, 2012-11-02&lt;/li&gt;
-  &lt;li&gt;[7] とんすけ, 「&lt;a href=&quot;http://ameblo.jp/tonsuke-usagi/entry-11212317428.html&quot;&gt;FlucardでプログラムとかCGIとか&lt;/a&gt;」, とんすけぶろぐ, 2012-04-03&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 21 Sep 2014 19:55:07 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html</guid>
-        
-        <category>PQI Air Card</category>
-        
-        <category>linux</category>
         
         
       </item>
