@@ -33,7 +33,7 @@
 
   <div class="page-content">
     <div class="wrap">
-    <div class="post">
+    <article class="post">
   <header class="post-header">
     <h1><a href="/2010/08/diff-of-firefox4-default-preference.html" rel="bookmark">Diff of firefox4 default preference (grepref.js and so on)</a></h1>
     
@@ -56,7 +56,7 @@
     </div>
   </header>
 
-  <article class="post-content">
+  <div class="post-content">
   <p class="warning" style="border: double 5px red;">
 This article is old. See also "
 <a href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>."
@@ -90,16 +90,16 @@ This is difference between the default preference of Firefox 3.6.8 and one of 4.
 <h4>defaults/pref/firefox.js</h4>
 
 <table class="diff_firefox4_pref_diff"><tbody><tr><td>app<wbr />.update<wbr />.certs<wbr />.1<wbr />.commonName</td><td>N/A</td><td>"*.mozilla.org"</td></tr><tr><td>app<wbr />.update<wbr />.certs<wbr />.1<wbr />.issuerName</td><td>N/A</td><td>"OU=Equifax Secure Certificate Authority,O=Equifax,C=US"</td></tr><tr><td>app<wbr />.update<wbr />.log</td><td>N/A</td><td>false</td></tr><tr><td>browser<wbr />.bookmarks<wbr />.max<wbr />_backups</td><td>5</td><td>10</td></tr><tr><td>browser<wbr />.bookmarks<wbr />.sort<wbr />.direction</td><td>"descending"</td><td>N/A</td></tr><tr><td>browser<wbr />.bookmarks<wbr />.sort<wbr />.resource</td><td>"rdf:http://home.netscape.com/NC-rdf#Name"</td><td>N/A</td></tr><tr><td>browser<wbr />.history<wbr />.showSessions</td><td>false</td><td>N/A</td></tr><tr><td>browser<wbr />.history<wbr />_expire<wbr />_days</td><td>180</td><td>N/A</td></tr><tr><td>browser<wbr />.history<wbr />_expire<wbr />_days<wbr />_min</td><td>90</td><td>N/A</td></tr><tr><td>browser<wbr />.history<wbr />_expire<wbr />_sites</td><td>40000</td><td>N/A</td></tr><tr><td>browser<wbr />.safebrowsing<wbr />.provider<wbr />.0<wbr />.lookupURL</td><td>"http://safebrowsing.clients.google.com/safebrowsing/lookup?sourceid=firefox-antiphish&amp;features=TrustRank&amp;client={moz:client}&amp;appver={moz:version}&amp;"</td><td>N/A</td></tr><tr><td>browser<wbr />.search<wbr />.update<wbr />.interval</td><td>N/A</td><td>21600</td></tr><tr><td>browser<wbr />.search<wbr />.updateinterval</td><td>6</td><td>N/A</td></tr><tr><td>browser<wbr />.sessionstore<wbr />.interval</td><td>10000</td><td>15000</td></tr><tr><td>browser<wbr />.startup<wbr />.homepage</td><td>"resource:/browserconfig.properties"</td><td>"chrome://branding/locale/browserconfig.properties"</td></tr><tr><td>browser<wbr />.tabs<wbr />.loadFolderAndReplace</td><td>true</td><td>N/A</td></tr><tr><td>browser<wbr />.tabs<wbr />.tabMaxWidth</td><td>250</td><td>N/A</td></tr><tr><td>browser<wbr />.tabs<wbr />.tabMinWidth</td><td>100</td><td>N/A</td></tr><tr><td>browser<wbr />.taskbar<wbr />.lists<wbr />.enabled</td><td>N/A</td><td>true</td></tr><tr><td>browser<wbr />.taskbar<wbr />.lists<wbr />.frequent<wbr />.enabled</td><td>N/A</td><td>true</td></tr><tr><td>browser<wbr />.taskbar<wbr />.lists<wbr />.maxListItemCount</td><td>N/A</td><td>7</td></tr><tr><td>browser<wbr />.taskbar<wbr />.lists<wbr />.recent<wbr />.enabled</td><td>N/A</td><td>false</td></tr><tr><td>browser<wbr />.taskbar<wbr />.lists<wbr />.refreshInSeconds</td><td>N/A</td><td>30</td></tr><tr><td>browser<wbr />.taskbar<wbr />.lists<wbr />.tasks<wbr />.enabled</td><td>N/A</td><td>true</td></tr><tr><td>browser<wbr />.taskbar<wbr />.previews<wbr />.enable</td><td>false</td><td>true</td></tr><tr><td>browser<wbr />.urlbar<wbr />.restrict<wbr />.openpage</td><td>N/A</td><td>"%"</td></tr><tr><td>dom<wbr />.ipc<wbr />.plugins<wbr />.enabled</td><td>false</td><td>true</td></tr><tr><td>dom<wbr />.ipc<wbr />.plugins<wbr />.enabled<wbr />.npctrl<wbr />.dll</td><td>true</td><td>N/A</td></tr><tr><td>dom<wbr />.ipc<wbr />.plugins<wbr />.enabled<wbr />.npqtplugin<wbr />.dll</td><td>true</td><td>N/A</td></tr><tr><td>dom<wbr />.ipc<wbr />.plugins<wbr />.enabled<wbr />.npswf32<wbr />.dll</td><td>true</td><td>N/A</td></tr><tr><td>dom<wbr />.ipc<wbr />.plugins<wbr />.enabled<wbr />.nptest<wbr />.dll</td><td>true</td><td>N/A</td></tr><tr><td>editor<wbr />.singleLine<wbr />.pasteNewlines</td><td>2</td><td>N/A</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.browseAddons</td><td>"https://addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%"</td><td>N/A</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.maxResults</td><td>5</td><td>15</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.recommended<wbr />.browseURL</td><td>"https://addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%/recommended"</td><td>N/A</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.recommended<wbr />.url</td><td>"https://services.addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%/api/<wbr />%API_VERSION%/list/featured/all/10/<wbr />%OS%/<wbr />%VERSION%"</td><td>N/A</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.search<wbr />.browseURL</td><td>"https://addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%/search?q=%TERMS%"</td><td>N/A</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.search<wbr />.url</td><td>"https://services.addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%/api/<wbr />%API_VERSION%/search/<wbr />%TERMS%/all/10/<wbr />%OS%/<wbr />%VERSION%"</td><td>"https://services.addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%/api/<wbr />%API_VERSION%/search/<wbr />%TERMS%/all/<wbr />%MAX<wbr />_RESULTS%/<wbr />%OS%/<wbr />%VERSION%"</td></tr><tr><td>extensions<wbr />.getAddons<wbr />.showPane</td><td>true</td><td>N/A</td></tr><tr><td>extensions<wbr />.hideInstallButton</td><td>true</td><td>N/A</td></tr><tr><td>extensions<wbr />.ignoreMTimeChanges</td><td>false</td><td>N/A</td></tr><tr><td>extensions<wbr />.webservice<wbr />.discoverURL</td><td>N/A</td><td>"https://services.addons.mozilla.org/<wbr />%LOCALE%/<wbr />%APP%/discovery/<wbr />%VERSION%/<wbr />%OS%"</td></tr><tr><td>general<wbr />.useragent<wbr />.extra<wbr />.firefox</td><td>"Firefox/3.6.8"</td><td>"Firefox/4.0b3"</td></tr><tr><td>geo<wbr />.wifi<wbr />.protocol</td><td>N/A</td><td>0</td></tr><tr><td>network<wbr />.cookie<wbr />.cookieBehavior</td><td>0</td><td>N/A</td></tr><tr><td>places<wbr />.database<wbr />.cache<wbr />_to<wbr />_memory<wbr />_percentage</td><td>N/A</td><td>6</td></tr><tr><td>places<wbr />.frecency<wbr />.framedLinkVisitBonus</td><td>N/A</td><td>0</td></tr><tr><td>places<wbr />.history<wbr />.enabled</td><td>N/A</td><td>true</td></tr><tr><td>plugin<wbr />.default<wbr />_plugin<wbr />_disabled</td><td>true</td><td>N/A</td></tr><tr><td>xpinstall<wbr />.dialog<wbr />.confirm</td><td>"chrome://mozapps/content/xpinstall/xpinstallConfirm.xul"</td><td>N/A</td></tr><tr><td>xpinstall<wbr />.dialog<wbr />.progress<wbr />.chrome</td><td>"chrome://mozapps/content/extensions/extensions.xul"</td><td>N/A</td></tr><tr><td>xpinstall<wbr />.dialog<wbr />.progress<wbr />.skin</td><td>"chrome://mozapps/content/extensions/extensions.xul"</td><td>N/A</td></tr><tr><td>xpinstall<wbr />.dialog<wbr />.progress<wbr />.type<wbr />.chrome</td><td>"Extension:Manager"</td><td>N/A</td></tr><tr><td>xpinstall<wbr />.dialog<wbr />.progress<wbr />.type<wbr />.skin</td><td>"Extension:Manager"</td><td>N/A</td></tr></tbody></table>
-  </article>
+  </div><!-- post-content -->
 
   <footer class="post-footer">
     <div class="meta share">
       
       Share:
-      <a rel="noindex nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html&amp;text=Diff%20of%20firefox4%20default%20preference%20(grepref.js%20and%20so%20on)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="noindex nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html">Facebook</a>
-      <a rel="noindex nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html">Hatena Bookmark</a>
-      <a rel="noindex nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html&amp;linkname=Diff%20of%20firefox4%20default%20preference%20(grepref.js%20and%20so%20on)+cat_in_136.blog()">More via AddToAny...</a>
+      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html&amp;text=Diff%20of%20firefox4%20default%20preference%20(grepref.js%20and%20so%20on)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html">Facebook</a>
+      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html">Hatena Bookmark</a>
+      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/08/diff-of-firefox4-default-preference.html&amp;linkname=Diff%20of%20firefox4%20default%20preference%20(grepref.js%20and%20so%20on)+cat_in_136.blog()">More via AddToAny...</a>
     </div>
     
     <div class="meta">
@@ -109,7 +109,7 @@ This is difference between the default preference of Firefox 3.6.8 and one of 4.
     
   </footer>
 
-</div>
+</article>
 
 <nav class="post-nav wrap">
   <div class="previous-post">
