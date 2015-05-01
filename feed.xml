@@ -5,9 +5,262 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 30 Apr 2015 01:00:17 +0900</pubDate>
-    <lastBuildDate>Thu, 30 Apr 2015 01:00:17 +0900</lastBuildDate>
+    <pubDate>Fri, 01 May 2015 17:42:04 +0900</pubDate>
+    <lastBuildDate>Fri, 01 May 2015 17:42:04 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>C言語での static キーワード付き配列パラメータ宣言</title>
+        <description>&lt;h4&gt;&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の間に指定される&lt;code&gt;static&lt;/code&gt;&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In addition to optional type qualifiers and the keyword &lt;code&gt;static&lt;/code&gt;, the &lt;code&gt;[&lt;/code&gt; and &lt;code&gt;]&lt;/code&gt; may delimit
+an expression or &lt;code&gt;*&lt;/code&gt;. If they delimit an expression (which specifies the size of an array), the
+expression shall have an integer type. If the expression is a constant expression, it shall
+have a value greater than zero. The element type shall not be an incomplete or function
+type. The optional type qualifiers and the keyword &lt;code&gt;static&lt;/code&gt; shall appear only in a
+declaration of a function parameter with an array type, and then only in the outermost
+array type derivation.&lt;/p&gt;
+
+  &lt;footer&gt;- &lt;cite&gt;6.7.6.2 Array declarators - 1, &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; title=&quot;WG14/N1570&quot;&gt;N1570 C11 Commitee Draft&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;C99 でも 6.7.5.2 の 1 にかかれているが完全に同一の文となっている。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;任意の型修飾子とキーワード &lt;code&gt;static&lt;/code&gt; に加えて、式または &lt;code&gt;*&lt;/code&gt; を &lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt; の中に含める(MAY)。&lt;/li&gt;
+  &lt;li&gt;もし&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;が式（配列の長さを指定）を含むのならば、その式は整数(integer)型を持つ(SHALL)。&lt;/li&gt;
+  &lt;li&gt;もしその式が定数ならば、その式は0より大きな値を持つ(SHALL)。&lt;/li&gt;
+  &lt;li&gt;要素の型は不完全型または関数型であってはならない(SHALL NOT)。（訳注：要素の型は関数ポインタは可）&lt;/li&gt;
+  &lt;li&gt;任意の型修飾子とキーワード &lt;code&gt;static&lt;/code&gt; は、配列型の関数パラメータ宣言の中のみに記述され、
+最も外側のarray type derivationのみに記述される(SHALL)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ここで関数引数宣言の配列に限ってのみ&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の中に修飾子を書いて良いと書かれていて、
+たとえば &lt;code&gt;restrict&lt;/code&gt; キーワードがこれに該当する。
+ここにて型修飾子とは別枠で &lt;code&gt;static&lt;/code&gt; を書けると言っている。
+詳細は関数の方に書いていて、下記のとおりである：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A declaration of a parameter as ‘‘array of &lt;var&gt;type&lt;/var&gt;’’ shall be adjusted to ‘‘qualified pointer to
+&lt;var&gt;type&lt;/var&gt;’’, where the type qualifiers (if any) are those specified within the &lt;code&gt;[&lt;/code&gt; and &lt;code&gt;]&lt;/code&gt; of the
+array type derivation. If the keyword &lt;code&gt;static&lt;/code&gt; also appears within the &lt;code&gt;[&lt;/code&gt; and &lt;code&gt;]&lt;/code&gt; of the
+array type derivation, then for each call to the function, the value of the corresponding
+actual argument shall provide access to the first element of an array with at least as many
+elements as specified by the size expression.&lt;/p&gt;
+
+  &lt;footer&gt;- &lt;cite&gt;6.7.6.3 Function declarators (including prototypes) - 7, &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; title=&quot;WG14/N1570&quot;&gt;N1570 C11 Commitee Draft&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;こちらも C99 でも 6.7.5.3 の 7 にかかれているが完全に同一の文となっている。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;var&gt;type&lt;/var&gt;の配列としてパラメータ宣言は、&lt;var&gt;type&lt;/var&gt;へのqualified pointerに調整される(SHALL)。&lt;/li&gt;
+  &lt;li&gt;ここで型修飾子は(もしあれば) array type derivation の&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の間に指定される。&lt;/li&gt;
+  &lt;li&gt;もしキーワード &lt;code&gt;static&lt;/code&gt; が array type derivation の&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の間に指定されるならば、
+それぞれの関数呼び出しに対して、
+対応する実際の引数の値は配列の最初の要素についてサイズ指定の数以上参照できなければならない(SHALL)。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要するに下記のとおりということだ:&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void f(int a[static 3]);
+void g(void) {
+      int x2[2] = {0};
+      int x3[3] = {0};
+      int x4[4] = {0};
+      
+      f(x4); // OK
+      f(x3); // OK
+      f(x2); // NG
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;課題コード EXAMPLE 4&lt;/h4&gt;
+
+&lt;p&gt;課題コードとして、規格の下記コードスニペットで考える
+（&lt;code&gt;gcc&lt;/code&gt;でコンパイルするときは&lt;code&gt;--std=c11&lt;/code&gt;指定すること）。
+まずは &lt;code&gt;static&lt;/code&gt; キーワードのことはなしで考察する。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;EXAMPLE 4 The following prototype has a variably modified parameter.&lt;/p&gt;
+
+  &lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[n][n*m+300], double x);
+int main()
+{
+      double b[4][308];
+      addscalar(4, 2, b, 2.17);
+      return 0;
+}
+void addscalar(int n, int m,
+      double a[n][n*m+300], double x)
+{
+      for (int i = 0; i &amp;lt; n; i++)
+            for (int j = 0, k = n*m+300; j &amp;lt; k; j++)
+                  // a is a pointer to a VLA with n*m+300 elements
+                  a[i][j] += x;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;footer&gt;- &lt;cite&gt;6.7.6.3 Function declarators (including prototypes) - 20, &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; title=&quot;WG14/N1570&quot;&gt;N1570 C11 Commitee Draft&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ところで、このすぐ下にこんな例がある:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;EXAMPLE 5 The following are all compatible function prototype declarators.&lt;/p&gt;
+
+  &lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;double maximum(int n, int m, double a[n][m]);
+double maximum(int n, int m, double a[*][*]);
+double maximum(int n, int m, double a[ ][*]);
+double maximum(int n, int m, double a[ ][m]);
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;p&gt;as are:&lt;/p&gt;
+
+  &lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void f(double (* restrict a)[5]);
+void f(double a[restrict][5]);
+void f(double a[restrict 3][5]);
+void f(double a[restrict static 3][5]);
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;p&gt;(Note that the last declaration also specifies that the argument corresponding to &lt;code&gt;a&lt;/code&gt; in any call to &lt;code&gt;f&lt;/code&gt; must be a
+non-null pointer to the first of at least three arrays of 5 doubles, which the others do not.)&lt;/p&gt;
+
+  &lt;footer&gt;- &lt;cite&gt;6.7.6.3 Function declarators (including prototypes) - 21, &lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; title=&quot;WG14/N1570&quot;&gt;N1570 C11 Commitee Draft&lt;/a&gt;&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;よって、&lt;code&gt;addscalar&lt;/code&gt; のプロトタイプ宣言は下記のようにも変更可能。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[][*], double x);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ところで下記のようにすると、&lt;code&gt;a&lt;/code&gt; は不完全型ということでコンパイルが通らない。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[][], double x); // compile error!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;少なくともふたつ目の&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の間には数字を入れなくてはいけない。&lt;/p&gt;
+
+&lt;p&gt;単純に定数値を入れるとすると例えば下記のような感じになると思われる。
+（C言語規格解釈のためのコードであって使い物にならないコードスニペットになってしまっているが。）&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[][308], double x);
+// (snip)
+void addscalar(int n, int m,
+      double a[][308], double x)
+{
+      // assert(n*m+300 == 308);
+      for (int i = 0; i &amp;lt; n; i++)
+            for (int j = 0, k = 308; j &amp;lt; k; j++)
+                  a[i][j] += x;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここで308を&lt;code&gt;n*m+300&lt;/code&gt;に可変長配列化したものがExample 4のコードということみたいだ。&lt;/p&gt;
+
+&lt;p&gt;そもそもひとつ目は単なるqualified pointerに過ぎないのだから&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double (* const a)[n*m+300], double x);
+// (snip)
+void addscalar(int n, int m,
+      double (* const a)[n*m+300], double x)
+{
+      for (int i = 0; i &amp;lt; n; i++)
+            for (int j = 0, k = n*m+300; j &amp;lt; k; j++)
+                  // a is a pointer to a VLA with n*m+300 elements
+                  // i.e. *(a + i) is a VLA with n*m+300 elements
+                  (* (a + i))[j] += x;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;と書けば、”&lt;code&gt;a&lt;/code&gt; is a pointer to a VLA …” であって “&lt;code&gt;a&lt;/code&gt; is a VLA …” ではないことが明瞭にわかる。&lt;/p&gt;
+
+&lt;h4&gt;EXAMPLE 4 の &lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の間に&lt;code&gt;static&lt;/code&gt;を&lt;/h4&gt;
+
+&lt;p&gt;まず、本節のタイトル通りのことを何も考えずにやると&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[static n][static n*m+300], double x); // compile error!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;というコードになるが、コンパイルエラーになる。
+前節で書いたとおり &lt;code&gt;n*m+300&lt;/code&gt; は(可変長)配列長そのものだからである。&lt;/p&gt;
+
+&lt;p&gt;多次元配列の一番左の&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;以外は(可変長)配列の長さを指定しなければならないので、
+規格としては最初に挙げたものの&lt;cite&gt;only in the outermost array type derivation.&lt;/cite&gt;に
+あるように、&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;の間に &lt;code&gt;static&lt;/code&gt; を入れるとしても一番左の&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;だけである。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[static n][n*m+300], double x);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;さて、一番左の&lt;code&gt;[&lt;/code&gt;〜&lt;code&gt;]&lt;/code&gt;における &lt;code&gt;static&lt;/code&gt; のない配列長の指定は、
+特に意味のないものとして知られている。
+例えば、下記コード中の &lt;code&gt;sizeof()&lt;/code&gt; はすべて同じ値を返す。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[n][n*m+300], double x)
+{
+      sizeof(a);
+      sizeof(double (*)[n*m+300]);
+      sizeof(void*);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここで例え &lt;code&gt;a[static n][10]&lt;/code&gt; としても配列長が&lt;code&gt;n&lt;/code&gt;以上としか意味しない。
+よって、下記コード中の &lt;code&gt;sizeof()&lt;/code&gt; はやはりすべて同じ値を返す。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[static n][n*m+300], double x)
+{
+      sizeof(a);
+      sizeof(double (*)[n*m+300]);
+      sizeof(void*);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;であるならば &lt;code&gt;[static n]&lt;/code&gt; が意味がありそうなのは、
+呼び出し時の範囲確認ぐらいである。&lt;/p&gt;
+
+&lt;p&gt;試しに下記のようなコードにしてみた。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint lang-c&quot;&gt;&lt;code&gt;void addscalar(int n, int m,
+      double a[static n][n*m+300], double x);
+int main()
+{
+      double b[2][308];
+      addscalar(4, 2, b, 2.17); // NG
+      return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このとき、明らかに &lt;code&gt;addscalar()&lt;/code&gt; の呼び出し引数の配列サイズはオーバーしているので、
+なんとかしてほしいものであったが、LLVM Clang も GCC も何も警告はなかった。&lt;/p&gt;
+
+&lt;p&gt;もうしばらく&lt;code&gt;[static n]&lt;/code&gt;は何も意味のないので使わない時期が続きそうだ。&lt;/p&gt;
+
+&lt;h4&gt;参考文献&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf&quot; title=&quot;WG14/N1256&quot;&gt;WG14/N1256 Final version of the C99 standard with corrigenda TC1, TC2, and TC3 included, formatted as a draft&lt;/a&gt;, 7 Sep 2007.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; title=&quot;WG14/N1570&quot;&gt;WG14/N1570 Commitee Draft ISO/IEC 9899:2011 (C11)&lt;/a&gt;, 12 Apr 2011.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ezoeryou.github.io/blog/article/2014-11-12-C-array.html&quot; title=&quot;最近のC言語の配列&quot;&gt;本の虫: 最近のC言語の配列&lt;/a&gt;, 12 Nov 2014.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 01 May 2015 17:38:03 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html</guid>
+        
+        <category>C-language</category>
+        
+        
+      </item>
     
       <item>
         <title>Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ</title>
@@ -1090,128 +1343,6 @@ this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
         <guid isPermaLink="true">http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html</guid>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>ブログの画像の引っ越しとSVG化(Retina対応とも)</title>
-        <description>&lt;p&gt;
-&lt;a href=&quot;/2014/09/move-to-jekyll.html&quot;&gt;Jekyll移行メモ&lt;/a&gt;
-に沿った引っ越しを Blogger からしてきたのだが、
-この度画像も github page のレポジトリに移動してきた。
-&lt;/p&gt;
-&lt;p&gt;
-また、この際に合わせて一部の図絵を SVG に変換して、
-それを直接参照させるようにすることとした。
-理由としては以下がある。
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;現在のモダンなブラウザは、スマートデバイスも含めて SVG に対応している&lt;/li&gt;
-&lt;li&gt;Retina Display やスマートデバイスなどでの高DPI環境下での見栄え&lt;/li&gt;
-&lt;li&gt;例え容量が増えたとしてもインターネット回線は（特にモバイルで）スループットが上がっているので単純なものなら気にする必要はないのではなか&lt;/li&gt;
-&lt;li&gt;そもそも、レポジトリに入れるのならば準テキストな形式の方が気持ちいい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;面倒くさいので、色々はしょってみた&lt;/h4&gt;
-&lt;p&gt;
-なお、Android 2.x 以前や iOS 4.x 以下、そして IE8 以下といった非対応ブラウザを
-通常考慮しなければならないが、面倒くさいという理由で、
-これは&lt;em&gt;考えないこととした&lt;/em&gt;。
-また、一般のサイトで提供している&lt;em&gt;フォールバックも提供しない&lt;/em&gt;。
-&lt;/p&gt;
-&lt;p&gt;
-というか、そもそもサムネイルとかも面倒とかいうふざけた理由で提供していないので、
-縮小画像でも HTML &amp;lt;img&amp;gt; タグ的に縮小している。
-これによって、高 DPI 環境下でキレイに表示されるので、
-これまた結果オーライとみなしてあんま考えないこととした。
-&lt;/p&gt;
-
-&lt;h4&gt;予想外のユーザビリティ向上&lt;/h4&gt;
-
-&lt;p&gt;
-SVG 化したことで、図中のテキストが選択などができるようになったという、
-予想外にユーザビリティが上がることとなった。
-例えば、
-&lt;a href=&quot;/2012/02/v-highisdb-tmmmmbinottv.html&quot;&gt;メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた&lt;/a&gt;
-での&lt;a href=&quot;/images/mobacas-protocol-stack.svg&quot;&gt;プロトコル・スタックの図&lt;/a&gt;はかつてはPNGラスター画像であった。
-今回、文献元のPDFファイルをもとにinkscapeでSVG化したものに差し替えた。
-テキストがテキストデータとして扱えるので、
-多くのブラウザでは図中のテキストが選択や検索対象にできるようになっている。
-例えば、図中の&quot;ARIB STD-B31/B29&quot;を選択してコピペなどができるようになった。
-&lt;/p&gt;
-&lt;p&gt;
-ただ、テキスト部分が環境によって適用されるフォントが異なるので、
-意図したとおりの表示がなされないという問題がある。
-フォントデータを一部埋め込めばいいわけであるが、
-わざわざそこまでは対策していない。
-&lt;/p&gt;
-
-&lt;h4&gt;github側でgzip転送するので容量はそう増えない&lt;/h4&gt;
-
-&lt;p&gt;
-github page は CDN のようなものが導入されていて、
-&lt;samp&gt;Content-Encoding: &quot;gzip&quot;&lt;/samp&gt;でレスポンスが帰ってくるので、
-それの恩恵も得られる。
-SVG化すると&amp;lt;冗長な&amp;gt;&amp;lt;タグ&amp;gt;&amp;lt;/冗長な&amp;gt;が付加されるため
-ファイルはおおきくなっているケースも多い。
-が、gzipで軽くなっている例も結構あるようだ（詳細未調査）。
-&lt;/p&gt;
-
-&lt;p&gt;
-最後に極端に転送量が減っている例として、
-&lt;a href=&quot;/2012/02/v-highisdb-tmmmmbinottv.html&quot;&gt;メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた&lt;/a&gt;
-での&lt;a href=&quot;/images/mobacas-protocol-stack.svg&quot;&gt;プロトコル・スタックの図&lt;/a&gt;で比較をあげる：
-&lt;/p&gt;
-&lt;figure style=&quot;display: block; text-align: center;&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;td&gt;項目&lt;/td&gt;
-&lt;td&gt;容量(bytes)&lt;/td&gt;
-&lt;td&gt;削減率&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;PNG画像 688x355&lt;/td&gt;
-&lt;td&gt;22801&lt;/td&gt;
-&lt;td&gt;100%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;PNG画像サムネイル表示 400x206&lt;/td&gt;
-&lt;td&gt;40563&lt;/td&gt;
-&lt;td&gt;178%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;SVG画像&lt;/td&gt;
-&lt;td&gt;12180&lt;/td&gt;
-&lt;td&gt;53.4%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;SVG画像+gzip圧縮転送&lt;/td&gt;
-&lt;td&gt;2536&lt;/td&gt;
-&lt;td&gt;11.1%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/figure&gt;
-&lt;p&gt;
-これは blogger/Gdrive の自動生成しているサムネイルがかえって容量が増えているというひどい事例となった。
-この画像については実に 9割近くの転送量が削減されていることがわかる。
-（実際にはこれにHTTPヘッダなどが付いてくるが省略計算）
-&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 10 Nov 2014 01:09:50 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html</guid>
-        
-        <category>blogger</category>
-        
-        <category>jekyll</category>
-        
-        <category>svg</category>
         
         
       </item>
