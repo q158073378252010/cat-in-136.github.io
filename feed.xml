@@ -5,9 +5,60 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 30 May 2015 13:42:31 +0900</pubDate>
-    <lastBuildDate>Sat, 30 May 2015 13:42:31 +0900</lastBuildDate>
+    <pubDate>Sat, 06 Jun 2015 14:21:24 +0900</pubDate>
+    <lastBuildDate>Sat, 06 Jun 2015 14:21:24 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Diff between firefox 39.0 beta 3 default preference and firefox 38.0.5</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 39.0 beta 3 and one of 38.0.5.
+&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 38.0.5 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;dt&gt;Default pref Javascript files (Firefox 39.0 beta 3 for Linux x86_64):&lt;/dt&gt;
+&lt;dd&gt;(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
+(browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
+(webapprt/omni.ja)/defaults/preferences/prefs.js&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;table class=&quot;diff_firefox39_pref_diff&quot;&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 38.0.5&lt;/td&gt;&lt;td&gt;Firefox 39.0 beta 3&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;addon-watch.&lt;wbr /&gt;ignore&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;mochikit@mozilla.org&quot;,&quot;special-powers@mozilla.org&quot;,&quot;fxdevtools-adapters@mozilla.org&quot;,&quot;fx-devtools&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;addon-watch.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;-1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;addon-watch.&lt;wbr /&gt;percentage-limit&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;eme.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;directory.&lt;wbr /&gt;ping&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://tiles.services.mozilla.com/v2/links/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://tiles.services.mozilla.com/v3/links/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;directory.&lt;wbr /&gt;source&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://tiles.services.mozilla.com/v2/links/fetch/%LOCALE%&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://tiles.services.mozilla.com/v3/links/fetch/%LOCALE%/%CHANNEL%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;converter.&lt;wbr /&gt;html2txt.&lt;wbr /&gt;always_&lt;wbr /&gt;include_&lt;wbr /&gt;ruby&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,&lt;wbr /&gt;healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devices.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://code.cdn.mozilla.net/devices/devices.json&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;memory.&lt;wbr /&gt;max-log-length&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2147483647&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;memory.&lt;wbr /&gt;sample-probability&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;05&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;timeline.&lt;wbr /&gt;hidden-markers&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;remote.&lt;wbr /&gt;wifi.&lt;wbr /&gt;scan&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;remote.&lt;wbr /&gt;wifi.&lt;wbr /&gt;visible&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;testing.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;inputHistoryCount&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;caches.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;fetch.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;asyncInit&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;downloadable_&lt;wbr /&gt;fonts.&lt;wbr /&gt;disable_&lt;wbr /&gt;cache&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;gfx.&lt;wbr /&gt;downloadable_&lt;wbr /&gt;fonts.&lt;wbr /&gt;woff2.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;decode-immediately.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;decode-only-on-draw.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;decodeondraw&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;compact_&lt;wbr /&gt;on_&lt;wbr /&gt;user_&lt;wbr /&gt;inactive&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;async-containerless-scrolling.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;expensive-style-struct-assertions.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap.&lt;wbr /&gt;prediction-max-velocity&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap.&lt;wbr /&gt;prediction-sensitivity&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;750&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap.&lt;wbr /&gt;proximity-threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;200&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;unprefixing-service.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;float-fragments-inside-column.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr /&gt;CSP&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src &#39;self&#39; data: https://www.&lt;wbr /&gt;gravatar.&lt;wbr /&gt;com/ about: file: chrome:; font-src &#39;none&#39;; connect-src wss://*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;opentok.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com wss://*.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;org wss://*.&lt;wbr /&gt;mozaws.&lt;wbr /&gt;net; media-src blob:&lt;/td&gt;&lt;td&gt;default-src &#39;self&#39; about: file: chrome:; img-src * data:; font-src &#39;none&#39;; connect-src wss://*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;opentok.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com wss://*.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;org wss://*.&lt;wbr /&gt;mozaws.&lt;wbr /&gt;net; media-src blob:&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;context&lt;wbr /&gt;In&lt;wbr /&gt;Converations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;two&lt;wbr /&gt;Way&lt;wbr /&gt;Media&lt;wbr /&gt;Telemetry&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;screenshare.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;screensharing.&lt;wbr /&gt;allowed_&lt;wbr /&gt;domains&lt;/td&gt;&lt;td&gt;webex.&lt;wbr /&gt;com,*.&lt;wbr /&gt;webex.&lt;wbr /&gt;com,&lt;wbr /&gt;ciscospark.&lt;wbr /&gt;com,*.&lt;wbr /&gt;ciscospark.&lt;wbr /&gt;com,&lt;wbr /&gt;projectsquared.&lt;wbr /&gt;com,*.&lt;wbr /&gt;projectsquared.&lt;wbr /&gt;com,*.&lt;wbr /&gt;room.&lt;wbr /&gt;co,&lt;wbr /&gt;room.&lt;wbr /&gt;co,&lt;wbr /&gt;beta.&lt;wbr /&gt;talky.&lt;wbr /&gt;io,&lt;wbr /&gt;talky.&lt;wbr /&gt;io,*.&lt;wbr /&gt;clearslide.&lt;wbr /&gt;com,&lt;wbr /&gt;appear.&lt;wbr /&gt;in,*.&lt;wbr /&gt;appear.&lt;wbr /&gt;in,&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com,*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com,*.&lt;wbr /&gt;sso.&lt;wbr /&gt;francetelecom.&lt;wbr /&gt;fr,*.&lt;wbr /&gt;si.&lt;wbr /&gt;francetelecom.&lt;wbr /&gt;fr,*.&lt;wbr /&gt;sso.&lt;wbr /&gt;infra.&lt;wbr /&gt;ftgroup,*.&lt;wbr /&gt;multimedia-conference.&lt;wbr /&gt;orange-business.&lt;wbr /&gt;com,*.&lt;wbr /&gt;espacecollaboration.&lt;wbr /&gt;orange-business.&lt;wbr /&gt;com,&lt;wbr /&gt;free.&lt;wbr /&gt;gotomeeting.&lt;wbr /&gt;com,&lt;wbr /&gt;g2m.&lt;wbr /&gt;me,*.&lt;wbr /&gt;g2m.&lt;wbr /&gt;me,&lt;wbr /&gt;example.&lt;wbr /&gt;com&lt;/td&gt;&lt;td&gt;webex.&lt;wbr /&gt;com,*.&lt;wbr /&gt;webex.&lt;wbr /&gt;com,&lt;wbr /&gt;ciscospark.&lt;wbr /&gt;com,*.&lt;wbr /&gt;ciscospark.&lt;wbr /&gt;com,&lt;wbr /&gt;projectsquared.&lt;wbr /&gt;com,*.&lt;wbr /&gt;projectsquared.&lt;wbr /&gt;com,*.&lt;wbr /&gt;room.&lt;wbr /&gt;co,&lt;wbr /&gt;room.&lt;wbr /&gt;co,&lt;wbr /&gt;beta.&lt;wbr /&gt;talky.&lt;wbr /&gt;io,&lt;wbr /&gt;talky.&lt;wbr /&gt;io,*.&lt;wbr /&gt;clearslide.&lt;wbr /&gt;com,&lt;wbr /&gt;appear.&lt;wbr /&gt;in,*.&lt;wbr /&gt;appear.&lt;wbr /&gt;in,&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com,*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com,*.&lt;wbr /&gt;sso.&lt;wbr /&gt;francetelecom.&lt;wbr /&gt;fr,*.&lt;wbr /&gt;si.&lt;wbr /&gt;francetelecom.&lt;wbr /&gt;fr,*.&lt;wbr /&gt;sso.&lt;wbr /&gt;infra.&lt;wbr /&gt;ftgroup,*.&lt;wbr /&gt;multimedia-conference.&lt;wbr /&gt;orange-business.&lt;wbr /&gt;com,*.&lt;wbr /&gt;espacecollaboration.&lt;wbr /&gt;orange-business.&lt;wbr /&gt;com,&lt;wbr /&gt;free.&lt;wbr /&gt;gotomeeting.&lt;wbr /&gt;com,&lt;wbr /&gt;g2m.&lt;wbr /&gt;me,*.&lt;wbr /&gt;g2m.&lt;wbr /&gt;me,&lt;wbr /&gt;example.&lt;wbr /&gt;com,*.&lt;wbr /&gt;mypurecloud.&lt;wbr /&gt;com,*.&lt;wbr /&gt;mypurecloud.&lt;wbr /&gt;com.&lt;wbr /&gt;au&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;dns.&lt;wbr /&gt;offline-localhost&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;altsvc.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;altsvc.&lt;wbr /&gt;oe&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;atsvc.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;atsvc.&lt;wbr /&gt;oe&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;enforce-framing.&lt;wbr /&gt;soft&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;standard-url.&lt;wbr /&gt;max-length&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1048576&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;sts.&lt;wbr /&gt;max_&lt;wbr /&gt;time_&lt;wbr /&gt;for_&lt;wbr /&gt;events_&lt;wbr /&gt;between_&lt;wbr /&gt;two_&lt;wbr /&gt;polls&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;sts.&lt;wbr /&gt;serve_&lt;wbr /&gt;multiple_&lt;wbr /&gt;events_&lt;wbr /&gt;per_&lt;wbr /&gt;poll_&lt;wbr /&gt;iteration&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;print.&lt;wbr /&gt;enable_&lt;wbr /&gt;e10s_&lt;wbr /&gt;testing&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;trackingprotection.&lt;wbr /&gt;pbmode.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;lightweightThemes.&lt;wbr /&gt;isThemeSelected&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;lightweightThemes.&lt;wbr /&gt;selectedThemeID&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;xpinstall.&lt;wbr /&gt;custom&lt;wbr /&gt;Confirmation&lt;wbr /&gt;UI&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox39_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox39_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox39_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox39_pref_diff td.json, table.diff_firefox39_pref_diff td.url { word-break: break-all; }
+table.diff_firefox39_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox39_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox39_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox39_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
+table.diff_firefox39_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox39_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Sat, 06 Jun 2015 11:19:12 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/06/diff-between-firefox-390-beta-3-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/06/diff-between-firefox-390-beta-3-default.html</guid>
+        
+        <category>pref diff</category>
+        
+        <category>mozilla</category>
+        
+        
+      </item>
     
       <item>
         <title>C言語での static キーワード付き配列パラメータ宣言</title>
@@ -1204,143 +1255,6 @@ table.diff_firefox35_pref_diff tbody tr { transition: background 0.125s ease-in-
         <guid isPermaLink="true">http://cat-in-136.github.io/2014/12/diff-between-firefox-350-beta-5-default.html</guid>
         
         <category>pref diff</category>
-        
-        <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>How to create a JavaScript XPCOM component on bootstrapped addon</title>
-        <description>&lt;p&gt;This post describes how to create a JavaScript XPCOM component
-on bootstrapped (restartless) addon.&lt;/p&gt;
-
-&lt;h4&gt;On bootstrapped extension&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Define the component name such as &lt;code&gt;@mozilla.org/foo/bar;1&lt;/code&gt;;&lt;/li&gt;
-  &lt;li&gt;Generate GUID for the component.
-    &lt;ul&gt;
-      &lt;li&gt;If you have Visual Studio, you may use &lt;a href=&quot;http://msdn.microsoft.com/library/ms241442(v=vs.80).aspx&quot;&gt;&lt;code&gt;guidgen&lt;/code&gt;&lt;/a&gt;.&lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;On linux, you may use &lt;code&gt;uuidgen&lt;/code&gt;(1).&lt;/p&gt;
-
-	&lt;pre style=&quot;background-color: #000; color: #fff;&quot;&gt;&lt;code&gt;% uuidgen
-22e1de77-790a-4a78-9ed4-8a8fca8c9f0f
-% 
-&lt;/code&gt;&lt;/pre&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Create the component code (in the bootstrap.js).&lt;/p&gt;
-
-    &lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
-const Cr = Components.results;
-    
-Cu.import(&quot;resource://gre/modules/XPCOMUtils.jsm&quot;);
-    
-function ComponentFooBar() { }
-ComponentFooBar.prototype = {
-  classDescription: &quot;foobar class&quot;,
-  contractID: &quot;@mozilla.org/foo/bar;1&quot;,
-  classID: Components.ID(&quot;{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}&quot;),
-  QueryInterface: XPCOMUtils.generateQI([]),
-
-  // members to implement...
-};
-//
-const ComponentFooBarFactory = Object.freeze({
-  createInstance: function(aOuter, aIID) {
-    if (aOuter) { throw Cr.NS_ERROR_NO_AGGREGATION; }
-    return new ComponentFooBar();
-  },
-  loadFactory: function (aLock) { /* unused */ },
-  QueryInterface: XPCOMUtils.generateQI([Ci.nsIFactory])
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;You may specify base interface to &lt;code&gt;ComponentFooBar.prototype.QueryInterface&lt;/code&gt; and implement methods.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;To regist the component on startup, add the following codes to the &lt;code&gt;startup()&lt;/code&gt; in bootstrap.js:&lt;/p&gt;
-
-    &lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;function startup(params, aReason) {
-  const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
-  registrar.registerFactory(ComponentFooBar.prototype.classID,
-                            ComponentFooBar.prototype.classDescription,
-                            ComponentFooBar.prototype.contractID,
-                            ComponentFooBarFactory);
-}
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;To release the component on shutdown, add the following codes to the &lt;code&gt;shutdown()&lt;/code&gt; in bootstrap.js:&lt;/p&gt;
-
-    &lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;function shutdown(params, aReason) {
-  const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
-  registrar.unregisterFactory(ComponentFooBar.prototype.classID,
-                              ComponentFooBarFactory);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Note: bootstrapped add-ons &lt;em&gt;must&lt;/em&gt; take care to clean up any component registrations at shutdown. So you must not miss this clean-up code.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;NOTE: On non-bootstrap extension&lt;/h4&gt;
-
-&lt;p&gt;If not bootstrapped add-on, you can use &lt;code&gt;chrome.manifest&lt;/code&gt; and do same thing without using &lt;code&gt;nsIComponentRegistrar&lt;/code&gt;.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Add following lines to chrome.manifest:&lt;/p&gt;
-
-    &lt;pre&gt;&lt;code&gt;component {22e1de77-790a-4a78-9ed4-8a8fca8c9f0f} components/FooBar.js
-contract @mozilla.org/foo/var;1 {22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Create the component code in components/FooBar.js&lt;/p&gt;
-
-    &lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
-const Cr = Components.results;
-    
-Cu.import(&quot;resource://gre/modules/XPCOMUtils.jsm&quot;);
-    
-function ComponentFooBar() { }
-ComponentFooBar.prototype = {
-  classDescription: &quot;foobar class&quot;,
-  contractID: &quot;@mozilla.org/foo/bar;1&quot;,
-  classID: Components.ID(&quot;{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}&quot;),
-  QueryInterface: XPCOMUtils.generateQI([]),
-
-  // members to implement...
-};
-this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
-&lt;/code&gt;&lt;/pre&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4&gt;Reference&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://mxr.mozilla.org/mozilla-central/source/js/xpconnect/loader/XPCOMUtils.jsm&quot;&gt;resource://gre/modules/XPCOMUtils.jsm&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/18354668/how-to-implement-xpcom-component-nsicontentpolicy-in-bootstrapped-firefox-exte&quot;&gt;How to implement XPCOM component (nsIContentPolicy) in bootstrapped Firefox extension&lt;/a&gt; - Stack Overflow&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bitbucket.org/cat_in_136/configuration-mania/commits/fe98ca888a84&quot;&gt;https://bitbucket.org/cat_in_136/configuration-mania/commits/fe98ca888a84&lt;/a&gt; “use about:confmania for in-content configuration mania URL”&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 16 Nov 2014 23:04:54 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html</guid>
         
         <category>mozilla</category>
         
