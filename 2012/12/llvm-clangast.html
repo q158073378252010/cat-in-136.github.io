@@ -8,93 +8,63 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="LLVM-ClangのASTを解析するまっとうな方法について" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2012/12/llvm-clangast.html" rel="bookmark">LLVM-ClangのASTを解析するまっとうな方法について</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2012-12-11T06:00:00+09:00</time>
       (Modified: <time>2014-04-27T12:03:19+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      
       <a class="tag" href="/tags.html#tag_clang">Clang</a>
-      
       <a class="tag" href="/tags.html#tag_c-language">C-language</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content" lang="ja">
   <blockquote cite="http://llvm.org/devmtg/2010-11/Gregor-libclang.pdf" style="padding: 1em; background-color: #eee; box-shadow: 3px 3px 10px #888;">
   <p>Clang is not just a great compiler...</p>
   <p style="text-align: right;">-- <a href="http://llvm.org/devmtg/2010-11/Gregor-libclang.pdf" title="libclang: Thinking Beyond the Compiler">Doug Gregor, <em style="font-weight: light; font-style: italic;">Apple Inc.</em></a></p>
 </blockquote>
-
 <p><a href="http://clang.llvm.org/" title="clang: a C language family frontend for LLVM">clang</a>は、モダンなコンパイラとして有名であるが、
 中間形式である AST を使ったりして静的解析の基板として使えるようにもなっている。
 実際に、Apple の Xcode では、Clang を使ってコード補完を実現しているそうだ。</p>
-
 <p>そんな、Clang 使って AST を覗く方法の話。</p>
-
 <h4>昔は XML で構文木を吐き出す機能があったらしい</h4>
-
 <pre style="color: #fff; background-color: #000;"><code>% clang -cc1 -ast-print-xml source.c
-</code></pre>
-
-<p>今のバージョンは <code>-ast-print-xml</code> オプションはない。
+</code></pre><p>今のバージョンは <code>-ast-print-xml</code> オプションはない。
 <code>-emit-ast</code> で我慢しろ、らしい。</p>
-
 <pre style="color: #fff; background-color: #000;"><code>% clang -emit-ast source.c
-</code></pre>
-
-<p>これで生成される <code>source.ast</code> ファイルがバイナリ形式だから困ったものである。</p>
-
+</code></pre><p>これで生成される <code>source.ast</code> ファイルがバイナリ形式だから困ったものである。</p>
 <h4>AST を解析する方法</h4>
-
 <p>オープンソースなので、clang のソースに手を入れるとか
 手段はいくらでもあるのだろうけれど、
 正攻法は libclang を使ってアクセスするらしい。</p>
-
 <p>最も安直な構文のなぞり方は、下記のように
 <code>clang_visitChildren()</code> で各要素ごとにウォークスルーする。</p>
-
 <pre class="prettyprint"><code>#include &lt;stdio.h&gt;
 #include &lt;clang-c/Index.h&gt;
 
@@ -126,25 +96,15 @@ int main(int argc, char *argv[])
 
   clang_disposeIndex(index);
 }
-</code></pre>
-
-<p>なお、コンパイルは以下のように。
+</code></pre><p>なお、コンパイルは以下のように。
 (Clang でコンパイルしたかったが、なんかうまくリンクが通らなかったので GCC でやった。)</p>
-
 <pre style="color: #fff; background-color: #000;"><code>% g++ -o astana astana.cpp -L/usr/lib64/llvm -lclang
-</code></pre>
-
-<p>ちなみに使い方は、引数に ast ファイルを渡してやる。
+</code></pre><p>ちなみに使い方は、引数に ast ファイルを渡してやる。
 つまり、全体的な使い方としては以下のようになる。</p>
-
 <pre style="color: #fff; background-color: #000;"><code>% clang -emit-ast source.c
 % astana source.ast &gt; source.txt
-</code></pre>
-
-<h4>ちょっとした XML を吐こうとすると</h4>
-
+</code></pre><h4>ちょっとした XML を吐こうとすると</h4>
 <p>XML 出力には libxml2 使って</p>
-
 <pre class="prettyprint"><code>#include &lt;clang-c/Index.h&gt;
 #include &lt;libxml/encoding.h&gt;
 #include &lt;libxml/xmlwriter.h&gt;
@@ -242,10 +202,7 @@ int main(int argc, char *argv[])
 
   return 0;
 }
-</code></pre>
-
-<p>Makefile は、例えば、</p>
-
+</code></pre><p>Makefile は、例えば、</p>
 <pre class="prettyprint"><code>CXX             = g++
 CXXFLAGS        = -O2 -g
 CLANGFLAGS      = -L/usr/lib64/llvm -lclang
@@ -253,59 +210,40 @@ LIBXML2FLAGS    = `pkg-config --libs --cflags libxml-2.0`
 
 astana: astana.cpp
     $(CXX) $(CXXFLAGS) -o $@ $^ $(CLANGFLAGS) $(LIBXML2FLAGS)
-</code></pre>
-
-<p>使い方は、前のと同じく</p>
-
+</code></pre><p>使い方は、前のと同じく</p>
 <pre style="color: #fff; background-color: #000;"><code>% clang -emit-ast source.c
 % astana source.ast &gt; source.xml
-</code></pre>
-
-<p>しかし、さすがに自力で XML を吐こうとするとメンドイ。
+</code></pre><p>しかし、さすがに自力で XML を吐こうとするとメンドイ。
 これでも表示項目足りないくらいだし。</p>
-
 <h4>References</h4>
-
 <ul>
 <li>Doug Gregor, "<a href="http://llvm.org/devmtg/2010-11/Gregor-libclang.pdf" title="libclang: Thinking Beyond the Compiler">libclang: Thinking Beyond the Compiler</a>", 2010 LLVM Developers Meeting, Nov 4, 2010</li>
 <li><a href="http://stackoverflow.com/questions/5309405/can-i-get-an-xml-ast-dump-of-c-c-code-with-clang-without-using-the-compiler">Can I get an XML AST dump of C/C++ code with clang without using the compiler?</a> - Stack Overflow</li>
 <li><a href="https://github.com/llvm-mirror/clang/blob/master/include/clang-c/Index.h"><code>/usr/include/clang-c/Index.h</code></a> - Clang</li>
 </ul>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/12/llvm-clangast.html&amp;text=LLVM-Clang%E3%81%AEAST%E3%82%92%E8%A7%A3%E6%9E%90%E3%81%99%E3%82%8B%E3%81%BE%E3%81%A3%E3%81%A8%E3%81%86%E3%81%AA%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/12/llvm-clangast.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/12/llvm-clangast.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/12/llvm-clangast.html&amp;linkname=LLVM-Clang%E3%81%AEAST%E3%82%92%E8%A7%A3%E6%9E%90%E3%81%99%E3%82%8B%E3%81%BE%E3%81%A3%E3%81%A8%E3%81%86%E3%81%AA%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-12-11-llvm-clangast.html" class="source-path">_posts/2012-12-11-llvm-clangast.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-12-11-llvm-clangast.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2012/12/diff-between-firefox-18-beta-3-default.html" title="Diff between firefox 18 beta 3 default preference and firefox 17.0.1" rel="prev">&#x2190;Diff between firefox 18 beta 3 default preference and firefox 17.0.1</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2012/12/google-maps-api-v3-2.html" title="Google Maps API v3 で地下鉄路線図を表示する〜パート2〜" rel="next">Google Maps API v3 で地下鉄路線図を表示する〜パート2〜&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -317,42 +255,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2014-09-21</span>
       <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-05-02</span>
       <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-03-17</span>
       <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -392,6 +319,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

@@ -8,90 +8,65 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2014/01/illumination-smartphone-app-realization.html" rel="bookmark">「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2014-01-26T18:46:00+09:00</time>
       (Modified: <time>2014-01-26T18:51:17+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_video">Video</a>
-      
       <a class="tag" href="/tags.html#tag_led">Led</a>
-      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      
       <a class="tag" href="/tags.html#tag_light">Light</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content" lang="ja">
   <div>
 <blockquote class="twitter-tweet" lang="ja"><p>「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」「返事はOKかい？」な展開を技術者（可視光）が望むというのか RT <a href="https://twitter.com/cat_in_136">@cat_in_136</a> クリスマスイルミネーションのLEDに情報を重畳させる可視光通信がありそうでない件について</p>&mdash; diffshare (@diffshare) <a href="https://twitter.com/diffshare/statuses/279234091721822208">December 13, 2012</a></blockquote>
 <script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-
 <p>この tweet の内容について、LED を先程点滅させてみて気づいたことは、
 これは使い方によっては <strong>健康被害を及ぼす可能性がありそう</strong> であることがわかった。</p>
-
 <p>点滅の時間間隔を狭めれば狭めるほど多くの情報ビットを重畳することができる。
 符号化率=1という超理想環境下では、30 Hz で LED の点滅を切り替えれば、
 30 bps で通信できるということになる。
 つまり、点滅間隔の時間に反比例してスループットを上げることができる。</p>
-
 <p>一般的なスマホで撮影するというユースケースを考えると、
 現状高々 30 fps 程度まででしか録画できない。</p>
-
 <p>30 fps で動画撮影した時に識別できるのは高々 30 Hz での点滅である。
 そこで、 30 Hz (点滅間隔 33.3 ms) 程度で LED を実際に点滅をさせてみた結果、
 観ているのが<strong>気持ち悪くなった</strong>。
 どうやら LED の点滅が人間の視覚に晒されることで、
 いわゆる<a href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%82%AF" title="ポケモンショック">ポケモンショック</a>のような症状が起こりそうである。</p>
-
 <p>人間の視覚上点滅が気にならなくなるのは、60 Hz ぐらいらしいのだが、
 お手近の GR-Sakura (Arduino 互換ボード) で実際に試したら 100 Hz ぐらいまでは見ていて気持ち悪くなった。
 安全のため、120 Hz 程度で点滅をするようにするべきであろう。</p>
-
 <p>120 Hz 程度で点滅させるとなると、120 fps で撮影してくれないと困るわけだが、
 しばらくは出てこなさそうである。</p>
-
 <p><a href="http://dcimovies.com/specification/DCI_DCSS_v12_with_errata_2012-1010.pdf" title="Digital Cinema System Specification v.1.2">DCIのデジタルシネマの規格</a>でも下記の通り、高々48 fpsしか求められていない。</p>
-
 <blockquote>
   <ul>
   <li>The output of the decoder shall conform to Section 3.2 Image Specification. These images are
@@ -103,53 +78,38 @@
   </ul></li>
   </ul>
 </blockquote>
-
 <p>以上より、「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」…
 を実現するためには、単純に点滅させる方法しか思い浮かばない限り、当分の間は無理そうである。</p>
-
 <h4>参考文献</h4>
-
 <ul>
 <li><a href="http://ja.wikipedia.org/wiki/%E5%85%89%E9%81%8E%E6%95%8F%E6%80%A7%E7%99%BA%E4%BD%9C" title="光過敏性発作">光過敏性発作</a>, Wikipedia (ja)</li>
 <li><a href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%82%AF" title="ポケモンショック">ポケモンショック</a>, Wikipedia (ja)</li>
 <li><a href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%82%AB%E3%83%BC" title="フリッカー">フリッカー</a>, Wikipedia (ja)</li>
 <li>DCI, "<a href="http://dcimovies.com/specification/DCI_DCSS_v12_with_errata_2012-1010.pdf" title="Digital Cinema System Specification v.1.2">Digital Cinema System Specification Version 1.2 with Errata as of 30 August 2012 Incorporated</a>", sub-clause 4.3.2</li>
 </ul>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html&amp;text=%E3%80%8C%E3%81%82%E3%81%A3%E3%82%A4%E3%83%AB%E3%83%9F%E3%83%8D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8D%E3%80%8C%E3%81%86%E3%82%8F%E3%83%BC%E3%82%AD%E3%83%AC%E3%82%A4%EF%BD%9E%E3%80%8D%E3%80%8C%E3%82%A2%E3%83%97%E3%83%AA%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%8B%E3%81%96%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%EF%BC%81%E3%80%8D%E3%80%8C%E3%81%93%E3%82%8C%E3%81%A3%E3%81%A6///%E3%80%8D%E2%80%95%E2%80%95%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html&amp;linkname=%E3%80%8C%E3%81%82%E3%81%A3%E3%82%A4%E3%83%AB%E3%83%9F%E3%83%8D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8D%E3%80%8C%E3%81%86%E3%82%8F%E3%83%BC%E3%82%AD%E3%83%AC%E3%82%A4%EF%BD%9E%E3%80%8D%E3%80%8C%E3%82%A2%E3%83%97%E3%83%AA%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%8B%E3%81%96%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%EF%BC%81%E3%80%8D%E3%80%8C%E3%81%93%E3%82%8C%E3%81%A3%E3%81%A6///%E3%80%8D%E2%80%95%E2%80%95%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-01-26-illumination-smartphone-app-realization.html" class="source-path">_posts/2014-01-26-illumination-smartphone-app-realization.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-01-26-illumination-smartphone-app-realization.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2014/01/firefox-restartless-bootstrap-stylesheet-dynamic-insertion.html" title="Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法" rel="prev">&#x2190;Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2014/03/diff-between-firefox-280-beta-8-default.html" title="Diff between firefox 28.0 beta 8 default preference and firefox 27.0.1 " rel="next">Diff between firefox 28.0 beta 8 default preference and firefox 27.0.1 &#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -161,42 +121,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2014-04-06</span>
       <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2012-11-05</span>
       <a class="post-link" href="/2012/11/twitter-api.html">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-04-13</span>
       <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-03-05</span>
       <a class="post-link" href="/2014/03/bezier-1-kappa.html">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-03-07</span>
       <a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -236,6 +185,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

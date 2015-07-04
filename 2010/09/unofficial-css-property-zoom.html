@@ -8,71 +8,52 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Unofficial CSS property zoom implemented on WebKit" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/09/unofficial-css-property-zoom.html" rel="bookmark">Unofficial CSS property zoom implemented on WebKit</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2010-09-02T01:12:00+09:00</time>
       (Modified: <time>2010-09-02T01:12:00+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_html">Html</a>
-      
       <a class="tag" href="/tags.html#tag_css">Css</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <p>
 I found unofficial CSS property "<code>zoom</code>" is implemented on WebKit (Safari and Google Chrome.) And is not implemented on Gecko (Firefox.)
 </p>
-
 <div style="zoom: 2.0; background-color: #ff8;">
 Here is test of CSS <code>zoom</code>. (scale by 200%.)
 </div>
 <div>
 <pre class="prettyprint"><code>&lt;div style="zoom: 2.0; background-color: #ff8;"&gt;
 Here is test of CSS &lt;code&gt;zoom&lt;/code&gt;. (scale by 200%.)
-&lt;/div&gt;</code></pre>
-</div>
-
+&lt;/div&gt;</code></pre></div>
 <p>
 I think if you wanna scale you SHALL use CSS3 transform as follows:
 </p>
@@ -82,8 +63,7 @@ Here is test of CSS3 <code>transform</code>. (scale by 200%.)
 <pre class="prettyprint"><code>&lt;div style="transform: scale(2); -webkit-transform: scale(2); -webkit-transform-origin: 0 0; -moz-transform: scale(2); -moz-transform-origin: 0 0; -o-transform: scale(2); -o-transform-origin: 0 0; -ms-transform: scale(2); -ms-transform-origin: 0 0;"&gt;
 Here is test of CSS &lt;code&gt;transform&lt;/code&gt;. (scale by 200%.)
 &lt;/div&gt;
-</code></pre>
-<p>
+</code></pre><p>
 Note that...
 </p>
 <ul>
@@ -92,39 +72,28 @@ So vender prefix (e.g. <code>-webkit-</code>, <code>-moz-</code>, <code>-o-</cod
 <li>The default value of <code>transform-origin</code> is "<code>50% 50%</code>" (or <code>center center</code>) So I specified <code>transform-origin: 0 0</code> (or <code>top left</code>) to do the same thing with <code>zoom</code>.</li>
 </ul>
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html&amp;text=Unofficial%20CSS%20property%20zoom%20implemented%20on%20WebKit+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html&amp;linkname=Unofficial%20CSS%20property%20zoom%20implemented%20on%20WebKit+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-09-02-unofficial-css-property-zoom.html" class="source-path">_posts/2010-09-02-unofficial-css-property-zoom.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-09-02-unofficial-css-property-zoom.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2010/08/diff-of-firefox4-default-preference.html" title="Diff of firefox4 default preference (grepref.js and so on)" rel="prev">&#x2190;Diff of firefox4 default preference (grepref.js and so on)</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2010/09/study-for-adding-menuitem-to-firefox4s.html" title="Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)" rel="next">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -136,42 +105,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2010-09-15</span>
       <a class="post-link" href="/2010/09/nerinefirefox4.html">NerineをFirefox4で動くよう改造してみる</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-10-06</span>
       <a class="post-link" href="/2010/10/bmi.html">今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-10-29</span>
       <a class="post-link" href="/2010/10/handling-namespaceless-xml-file-with_29.html">Handling namespaceless XML file with SAX (2)</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-09-12</span>
       <a class="post-link" href="/2010/09/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -211,6 +169,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

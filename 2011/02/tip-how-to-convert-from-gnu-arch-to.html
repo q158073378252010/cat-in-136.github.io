@@ -8,110 +8,75 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Tip: How to convert from GNU-Arch to Mercurial repository" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2011/02/tip-how-to-convert-from-gnu-arch-to.html" rel="bookmark">Tip: How to convert from GNU-Arch to Mercurial repository</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2011-02-05T23:48:00+09:00</time>
       (Modified: <time>2011-02-05T23:48:00+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <h4>Step 1: Construct a GNU-Arch project tree.</h4>
-
 <p>Execute following commands.
 Note that you must register archive before getting the tree.</p>
-
 <pre style="background-color: #000; color: #eee;">% cd <var>working_directory</var>
 % tla register-archive http://url/to/archarchives/somebody@example.org--FOOBAR/
 % tla get -A somebody@example.org--FOOBAR FOOBAR--main
-</pre>
-
-<p>Above commands generate <code><var>working_directory</var>/FOOBAR--main--patch-XX</code> directory.</p>
-
+</pre><p>Above commands generate <code><var>working_directory</var>/FOOBAR--main--patch-XX</code> directory.</p>
 <h4>Step 2: Convert from the GNU-Arch's tree to Mercurial repository.</h4>
-
 <p>Remember to enable the Mercurial convert extension.
 To enable, add following lines to your .hgrc:</p>
-
 <pre style="border: solid 1px #888;"><code>[extensions]
 hgext.convert =
-</code></pre>
-
-<p>Run hg convert...</p>
-
+</code></pre><p>Run hg convert...</p>
 <pre style="background-color: #000; color: #eee;">% hg convert <var>working_directory</var>/FOOBAR--main--patch-XX
-</pre>
-  </div><!-- post-content -->
-
+</pre>  </div><!-- post-content -->
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2011/02/tip-how-to-convert-from-gnu-arch-to.html&amp;text=Tip:%20How%20to%20convert%20from%20GNU-Arch%20to%20Mercurial%20repository+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2011/02/tip-how-to-convert-from-gnu-arch-to.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2011/02/tip-how-to-convert-from-gnu-arch-to.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2011/02/tip-how-to-convert-from-gnu-arch-to.html&amp;linkname=Tip:%20How%20to%20convert%20from%20GNU-Arch%20to%20Mercurial%20repository+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-02-05-tip-how-to-convert-from-gnu-arch-to.html" class="source-path">_posts/2011-02-05-tip-how-to-convert-from-gnu-arch-to.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-02-05-tip-how-to-convert-from-gnu-arch-to.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2011/01/tip-javascript-operators-for.html" title="Tip: JavaScript Operators for Obfuscation" rel="prev">&#x2190;Tip: JavaScript Operators for Obfuscation</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2011/02/visual-guide-new-pref-of-configuration.html" title="Visual Guide : New pref of Configuration Mania v1.14.2011022201" rel="next">Visual Guide : New pref of Configuration Mania v1.14.2011022201&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -123,42 +88,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2013-03-04</span>
       <a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-06-29</span>
       <a class="post-link" href="/2014/06/lukstruecrypt.html">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-11-16</span>
       <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">How to create a JavaScript XPCOM component on bootstrapped addon</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-10-17</span>
       <a class="post-link" href="/2013/10/blog-post.html">デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -198,6 +152,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

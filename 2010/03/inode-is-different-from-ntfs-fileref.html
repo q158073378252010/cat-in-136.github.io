@@ -8,59 +8,42 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="inode# is different from NTFS FileRef#" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/03/inode-is-different-from-ntfs-fileref.html" rel="bookmark">inode# is different from NTFS FileRef#</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2010-03-20T11:16:00+09:00</time>
       (Modified: <time>2013-11-23T22:33:43+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_win32api">Win32api</a>
-      
       <a class="tag" href="/tags.html#tag_linux">Linux</a>
-      
       <a class="tag" href="/tags.html#tag_windows">Windows</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <p>
 Each file is identified by an unique ID in the file system. On linux, this ID "inode number" can be obtained with <code>ls</code> command. To obtain inode number of "foobar.txt" (that reside at NTFS storage), type as follows:
@@ -68,8 +51,7 @@ Each file is identified by an unique ID in the file system. On linux, this ID "i
 <pre>$ ls -i /media/32C0C7B1C0C77A1D/foobar.txt
 35 foobar.txt
 $ 
-</pre>
-<p>
+</pre><p>
 You can see "35" is this file's inode number.
 </p>
 <p>
@@ -88,8 +70,7 @@ File Attributes  : 0x20
 File Name Length : 0x14
 File Name Offset : 0x3c
 FileName         : foobar.txt
-</pre>
-<p>
+</pre><p>
 You can see "0x0001000000000023" is this file's FileRef#. Same FileRef# value was obtained by using <code>GetFileInformationByHandle()</code> function:
 </p>
 <pre class="prettyprint"><code>
@@ -105,15 +86,13 @@ hFile = CreateFile(TEXT("f:\\foobar.txt"),
                    NULL);
 GetFileInformationByHandle(hFile, &amp;fileInfo);
 fileID = (ULONGLONG)((fileInfo.nFileIndexLow) | (((ULONGLONG)fileInfo.nFileIndexHigh) << 32));
-</code></pre>
-<p>
+</code></pre><p>
 In addition, I obtained inode number with MSYS's ls command.
 </p>
 <pre>&gt; c:\msys\1.0\bin\ls.exe -i f:\foobar.txt
 65571 f:\foobar.txt
 &gt; 
-</pre>
-<p>
+</pre><p>
 I was surprised the inode number obtained by MSYS's ls is different from one obtained by Linux's ls. The above results were summarized as follows:
 </p>
 <table>
@@ -127,7 +106,6 @@ I was surprised the inode number obtained by MSYS's ls is different from one obt
 <tr><th>FileRef# obtained by fsutil command</th><td>281474976710691</td><td>0x0001000000000023</td></tr>
 </tbody>
 </table>
-
 <h4>See also</h4>
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Inode">inode</a> wikipedia</li>
@@ -135,39 +113,28 @@ I was surprised the inode number obtained by MSYS's ls is different from one obt
 <li><a href="http://msdn.microsoft.com/en-us/library/aa363788%28VS.85%29.aspx">BY_HANDLE_FILE_INFORMATION Structure</a> - MSDN</li>
 </ul>
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/03/inode-is-different-from-ntfs-fileref.html&amp;text=inode%23%20is%20different%20from%20NTFS%20FileRef%23+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/03/inode-is-different-from-ntfs-fileref.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/03/inode-is-different-from-ntfs-fileref.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/03/inode-is-different-from-ntfs-fileref.html&amp;linkname=inode%23%20is%20different%20from%20NTFS%20FileRef%23+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-03-20-inode-is-different-from-ntfs-fileref.html" class="source-path">_posts/2010-03-20-inode-is-different-from-ntfs-fileref.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-03-20-inode-is-different-from-ntfs-fileref.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2010/03/pitfall-of-unicode-in-mingw32.html" title="Pitfall of &quot;Unicode in Mingw32&quot;" rel="prev">&#x2190;Pitfall of &quot;Unicode in Mingw32&quot;</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2010/03/tweet-to-myself.html" title="Tweet to myself" rel="next">Tweet to myself&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -179,42 +146,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2015-01-19</span>
       <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-08-08</span>
       <a class="post-link" href="/2010/08/hack-micropolis-aka-simcity-and-get.html">Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-05-02</span>
       <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -254,6 +210,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

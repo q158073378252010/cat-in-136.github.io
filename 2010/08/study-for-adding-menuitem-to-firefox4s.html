@@ -12,79 +12,56 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/08/study-for-adding-menuitem-to-firefox4s.html" rel="bookmark">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2010-08-15T00:54:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:31+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_configuration%20mania">Configuration mania</a>
-      
       <a class="tag" href="/tags.html#tag_xul">Xul</a>
-      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <p>
 On Windows Vista/7, the menu bar is replaced with the new "Firefox button."
 The old(legacy?) menu bar is shown when ALT-key is pressed and/or when "Menu Bar" option is enabled [<a href="http://www.tothepc.com/archives/switch-to-classic-menu-bar-in-firefox-4/" title="Switch to classic menu bar in Firefox 4">TOTHEPC</a>].
 </p>
-
 <figure style="display: block; margin: 1em; font-size: smaller; text-align: center;">
 <img src="/images/fx_btn.png" />
 <figcaption style="display: block;">"Firefox Button"</figcaption>
 </figure>
-
 <h4>id of "Firefox button"</h4>
-
 <p>
 ID of "Firefox button" is "<code>appmenu-button</code>", and its <code>&lt;menupopup&gt;</code> is "<code>appmenu-popup</code>".
 </p>
-
 <figure style="display: block; margin: 1em; font-size: smaller; text-align: center;">
 <a href="/images/domtree.png" style="margin-left: 1em; margin-right: 1em;"><img src="/images/domtree.png" width="320" height="276" /></a>
 </figure>
-
-
 <h4>Sample of overlay</h4>
-
 <p>
 To add a menuitem "<code>appmenu-foobar</code>", write the following overlay:
 </p>
@@ -97,14 +74,10 @@ To add a menuitem "<code>appmenu-foobar</code>", write the following overlay:
                 label="Foobar"/&gt;
   &lt;/menupopup&gt;
 &lt;/overlay&gt;
-</code></pre>
-
-<p>
+</code></pre><p>
 Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current Firefox 4.0b3 build on Linux, etc...), this overlay is ignored and does not occur error.
 </p>
-
 <h4>Study for add "Configuration Mania" button to "Firefox Button"</h4>
-
 <ul>
 <li>Do not remove current menuitem code for menubar</li>
 <li>Add new menuitem code for "Firefox Button"
@@ -114,7 +87,6 @@ Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current
 </li>
 <li>Two menuitems share a same command "<code>ConfMania:Open</code>".</li>
 </ul>
-
 <pre class="prettyprint"><code>&lt;overlay id="confmania-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"&gt;
 
   &lt;script type="application/x-javascript" src="chrome://confmania/content/browser-Overlay.js"&gt;&lt;/script&gt;
@@ -133,65 +105,46 @@ Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current
 <ins>  &lt;/menupopup&gt;</ins>
 
 &lt;/overlay&gt;
-</code></pre>
-
-<ul>
+</code></pre><ul>
 <li>"<code>menu_ToolsPopup</code>" is the "Tools" menupopup of the menubar.</li>
 <li>"<code>menu_preferences</code>" is "Tools"-&gt;"Preferences&#8230;" menuitem.</li>
 <li>"<code>appmenu_preferences</code>" is "Preferences&#8230;" menuitem of the "Firefox button".<br />
-
 (Pitfall: Use hyphen for "<code>appbtn<strong style="color:red;">-</strong>popup</code>", Use underscore for "<code>appmenu<strong style="color:red;">_</strong>preferences</code>")
 </li>
 </ul>
-
 <p>Result</p>
-
 <figure style="display: block; margin: 1em; font-size: smaller; text-align: center;">
 <img src="/images/fx_btn_cm.png" />
 </figure>
-
 <h4>See also</h4>
-
 <ul>
 <li>[TOTHEPC]: <a href="http://www.tothepc.com/archives/switch-to-classic-menu-bar-in-firefox-4/">Switch to classic menu bar in Firefox 4</a>, tothepc, 2010-07-07.
 <li><a href="https://wiki.mozilla.org/Menu_cleanup">Menu cleanup - MozillaWiki</a></li>
 <li><a href="https://developer.mozilla.org/en/xul_overlays">XUL Overlays - MDC</a></li>
 </ul>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html&amp;text=Study%20for%20adding%20a%20menuitem%20to%20Firefox4's%20%22Firefox%20button%22+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html&amp;linkname=Study%20for%20adding%20a%20menuitem%20to%20Firefox4's%20%22Firefox%20button%22+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-08-15-study-for-adding-menuitem-to-firefox4s.html" class="source-path">_posts/2010-08-15-study-for-adding-menuitem-to-firefox4s.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-08-15-study-for-adding-menuitem-to-firefox4s.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html" title="&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4" rel="prev">&#x2190;&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2010/08/tip-calling-windowatob-and-btoa-from.html" title="Tip: Calling window.atob() and btoa() from Jetpack-SDK" rel="next">Tip: Calling window.atob() and btoa() from Jetpack-SDK&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -203,42 +156,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2014-05-12</span>
       <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-02-24</span>
       <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-12-28</span>
       <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-04-13</span>
       <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -278,6 +220,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

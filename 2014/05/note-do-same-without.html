@@ -12,61 +12,43 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2014/05/note-do-same-without.html" rel="bookmark">Note: do same without browser.tabs.closeButtons on Firefox 31+</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2014-05-12T23:31:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:39+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_firefox">Firefox</a>
-      
       <a class="tag" href="/tags.html#tag_howto">Howto</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <p>Unfortunately <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=865826" title="Bug 865826 - Remove the browser.tabs.closeButtons pref">Bug865826</a> remove <a href="http://kb.mozillazine.org/Browser.tabs.closeButtons"><code>browser.tabs.closeButtons</code></a> pref ("Browser" -&gt; "TabBrowsing" -&gt; "Display a close button ..." in Configuration Mania).
 This removal would be captured in upcoming Firefox 31.</p>
-
 <p>In this article, I describe how to do same without <code>browser.tabs.closeButtons</code> pref.</p>
-
 <h4>Use addons</h4>
-
 <ul>
 <li><a href="https://addons.mozilla.org/firefox/addon/no-close-buttons/">No Close Buttons</a>
 <ul>
@@ -77,64 +59,42 @@ This removal would be captured in upcoming Firefox 31.</p>
 <li>Only "Value=2: Display no close button" (as of version 1.1.8)</li>
 </ul></li>
 </ul>
-
 <p>As of May 2014, there is <em>no</em> addon providing a close button at the end of the tab strip (Value=3).</p>
-
 <h4>Use <code>userChrome.css</code></h4>
-
 <h5>Value=0: Display a close button on the Active tab Only</h5>
-
-
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value0.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
-
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   .tab-close-button:not([selected]) {
     display: none;
   }
 }
-</code></pre>
-
-<h5>Value=1: Display close buttons on All tabs</h5>
-
+</code></pre><h5>Value=1: Display close buttons on All tabs</h5>
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value1.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
-
 <p>Default. There is nothing to do.</p>
-
 <h5>Value=2: Display no close button</h5>
-
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value2.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
-
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   .tab-close-button {
     display: none;
   }
 }
-</code></pre>
-
-<h5>Value=3: Display a close button at the end of the tab strip (Firefox 1.x behavior)</h5>
-
-
+</code></pre><h5>Value=3: Display a close button at the end of the tab strip (Firefox 1.x behavior)</h5>
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value3.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
-
 <p>The close button at the end of the tab strip has been removed in <a href="https://hg.mozilla.org/integration/fx-team/rev/1c2ef0d3d997">1c2ef0d3d997</a>.
 Therefore, some sorta addon would be needed.</p>
-
 <p>For example, to get back the close button, add following user script using <a href="http://userchromejs.mozdev.org/">userChrome.js</a>.</p>
-
 <pre class="prettyprint"><code>// ==UserScript==
 // @name close_btn_end_tab_strip.uc.js
 // @include main
@@ -151,14 +111,9 @@ Therefore, some sorta addon would be needed.</p>
   var tabsToolbar = document.getElementById("TabsToolbar");
   tabsToolbar.appendChild(tabsCloseButton);
 })();
-</code></pre>
-
-<p>(Note: To hide close buttons on tabs, the user CSS rule described in value=2 is also required.)</p>
-
+</code></pre><p>(Note: To hide close buttons on tabs, the user CSS rule described in value=2 is also required.)</p>
 <h5>FYI: More customize!</h5>
-
 <p>Example 1. Display close button when the cursor hovers over the tab, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
-
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   tab:hover .tab-close-button {
     display: -moz-box ! important;
@@ -167,10 +122,7 @@ Therefore, some sorta addon would be needed.</p>
     display: none ! important;
   }
 }
-</code></pre>
-
-<p>Example 2. Display close button when the cursor hovers near the tabbar, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
-
+</code></pre><p>Example 2. Display close button when the cursor hovers near the tabbar, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   .tabbrowser-tabs[closebuttons="activetab"] .tab-close-button {
     display: -moz-box ! important;
@@ -179,48 +131,33 @@ Therefore, some sorta addon would be needed.</p>
     display: none ! important;
   }
 }
-</code></pre>
-
-<h4>Reference</h4>
-
+</code></pre><h4>Reference</h4>
 <ul>
 <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=865826" title="Bug 865826 - Remove the browser.tabs.closeButtons pref">Bug 865826 - Remove the browser.tabs.closeButtons pref</a> - Mozilla Bugzilla</li>
 </ul>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/05/note-do-same-without.html&amp;text=Note:%20do%20same%20without%20browser.tabs.closeButtons%20on%20Firefox%2031++cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/05/note-do-same-without.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/05/note-do-same-without.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/05/note-do-same-without.html&amp;linkname=Note:%20do%20same%20without%20browser.tabs.closeButtons%20on%20Firefox%2031++cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-05-12-note-do-same-without.html" class="source-path">_posts/2014-05-12-note-do-same-without.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-05-12-note-do-same-without.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2014/04/c-struct-with-doxygen-xml.html" title="C言語の構造体を構造分析したい〜静的解析としての doxygen" rel="prev">&#x2190;C言語の構造体を構造分析したい〜静的解析としての doxygen</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2014/05/diff-between-firefox-300-beta-5-default.html" title=" Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 " rel="next"> Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 &#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -232,42 +169,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2013-02-24</span>
       <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-04-06</span>
       <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-04-13</span>
       <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-08-15</span>
       <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -307,6 +233,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

@@ -8,64 +8,46 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Pitfall of &quot;Unicode in Mingw32&quot;" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/03/pitfall-of-unicode-in-mingw32.html" rel="bookmark">Pitfall of &quot;Unicode in Mingw32&quot;</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2010-03-17T23:30:00+09:00</time>
       (Modified: <time>2013-11-23T22:34:04+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_win32api">Win32api</a>
-      
       <a class="tag" href="/tags.html#tag_mingw">Mingw</a>
-      
       <a class="tag" href="/tags.html#tag_windows">Windows</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <p>
 Mingw32 (version 3.15) does not fully support Unicode. There are a few all-too-common pitfalls.
 </p>
-
 <h4><code>wWinMain</code> shall not be used</h4>
 <pre class="prettyprint"><code>// NG:
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
@@ -76,31 +58,23 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 int main(int argc, char** argv)
 {
 //...
-</code></pre>
-<p>
+</code></pre><p>
 On Mingw32, <code>wWinMain</code> function is not supported. <code>wmain</code> function is also not supported. So, the entry function must be <code>main</code> function in Unicode.
-
 </p>
 <p>
 In addition, <code>_tWinMain</code> and <code>_tmain</code> function are only available in Multibyte (not Unicode.) These are mapped to <code>WinMain</code> and <code>main</code> in Multibyte.
 </p>
-
 <h5>How to get <code>hInstance</code> from main function?</h5>
 <pre class="prettyprint"><code>HINSTANCE hInstance;
 
 hInstance = GetModuleHandle(NULL);
-</code></pre>
-<p>
+</code></pre><p>
 Note that <code>hPrevInstance</code> of <code>wWinMain</code> arguments is always <code>NULL</code> on Win32.
-
 </p>
-
 <h5>How to get <code>lpCmdLine</code> from main function?</h5>
 <p>
 Use <code>GetCommandLine()</code> function. Unlike <code>lpCmdLine</code>, the return value of <code>GetCommandLine()</code> is entire command line, including the program name.
-
 </p>
-
 <h4><code>__wargv</code> shall not be used</h4>
 <pre class="prettyprint"><code>// NG:
 for (i = 0; i &lt; __argc; i++) {
@@ -117,12 +91,9 @@ for (i = 0; i &lt; argc; i++) {
     //...
 }
 LocalFree(wargv);
-</code></pre>
-<p>
+</code></pre><p>
 <code>__wargv</code> is also not supported. To get argument list, use <code>CommandLineToArgvW</code> and <code>GetCommandLineW</code> function. Note that <code>CommandLineToArgv<strong>A</strong></code> is not defined on win32api.
-
 </p>
-
 <h4>My solution of above pitfalls</h4>
 <pre class="prettyprint"><code>int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
@@ -142,47 +113,34 @@ int main(int argc, char **argv)
 }
 #endif
 #endif /* _UNICODE */
-</code></pre>
-
-<h4>See also</h4>
+</code></pre><h4>See also</h4>
 <ul>
 <li><a href="http://demosten-eng.blogspot.com/2008/08/mingw-and-unicode-support.html">MinGW and Unicode support?</a></li>
 <li><a href="http://lists-archives.org/mingw-users/07124-link-error-when-using-_tmain.html"> Re: [Mingw-users] link error when using _tmain</a></li>
 </ul>
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/03/pitfall-of-unicode-in-mingw32.html&amp;text=Pitfall%20of%20%22Unicode%20in%20Mingw32%22+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/03/pitfall-of-unicode-in-mingw32.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/03/pitfall-of-unicode-in-mingw32.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/03/pitfall-of-unicode-in-mingw32.html&amp;linkname=Pitfall%20of%20%22Unicode%20in%20Mingw32%22+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-03-17-pitfall-of-unicode-in-mingw32.html" class="source-path">_posts/2010-03-17-pitfall-of-unicode-in-mingw32.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-03-17-pitfall-of-unicode-in-mingw32.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2010/03/webgl-options-on-configuration-mania.html" title="WebGL options on Configuration Mania" rel="prev">&#x2190;WebGL options on Configuration Mania</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2010/03/inode-is-different-from-ntfs-fileref.html" title="inode# is different from NTFS FileRef#" rel="next">inode# is different from NTFS FileRef#&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -194,42 +152,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2012-04-22</span>
       <a class="post-link" href="/2012/04/unicodemingw32twinmainwwinmain.html">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-03-06</span>
       <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16&#39;」</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-05-02</span>
       <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-09-21</span>
       <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -269,6 +216,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

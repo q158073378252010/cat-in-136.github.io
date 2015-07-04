@@ -8,72 +8,54 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Diff between firefox 27.0 beta 1 default preference and firefox 26.0 " />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/12/diff-between-firefox-270-beta-1-default.html" rel="bookmark">Diff between firefox 27.0 beta 1 default preference and firefox 26.0 </a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2013-12-16T23:55:00+09:00</time>
       (Modified: <time>2013-12-16T23:57:08+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
-      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <p>
 This is difference between the default preference of Firefox 27.0 beta 1 and one of 26.0.
 </p>
-
 <dl>
 <dt>Default pref Javascript files (Firefox 26.0 for Linux):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/pref/services-sync.js}, (browser/omni.ja)defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js}</dd>
 <dt>Default pref Javascript files (Firefox 27.0 beta 1 for Linux):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/pref/services-sync.js}, (browser/omni.ja)defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js}</dd>
 </dl>
-
 <table class="diff_firefox27_pref_diff">
 <thead>
 <tr><td>Pref</td><td>Firefox 26.0</td><td>Firefox 27.0 beta 1</td></tr>
 </thead>
 <tbody><tr class="newkey"><td>apz.<wbr />axis_<wbr />lock_<wbr />mode</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>browser.<wbr />cache.<wbr />memory_<wbr />limit</td><td class="undefined">undefined</td><td>51200</td></tr><tr class="newkey"><td>browser.<wbr />cache.<wbr />use_<wbr />new_<wbr />backend</td><td class="undefined">undefined</td><td>0</td></tr><tr class="oldkey"><td>browser.<wbr />safebrowsing.<wbr />warning.<wbr />infoURL</td><td>https://www.mozilla.org/%LOCALE%/firefox/phishing-protection/</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>browser.<wbr />sessionstore.<wbr />async</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>browser.<wbr />uitour.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>browser.<wbr />uitour.<wbr />pinnedTabUrl</td><td class="undefined">undefined</td><td>https://support.mozilla.org/%LOCALE%/kb/pinned-tabs-keep-favorite-websites-open</td></tr><tr class="newkey"><td>browser.<wbr />uitour.<wbr />themeOrigin</td><td class="undefined">undefined</td><td>https://addons.mozilla.org/%LOCALE%/firefox/themes/</td></tr><tr class="newkey"><td>browser.<wbr />uitour.<wbr />whitelist.<wbr />add.<wbr />260</td><td class="undefined">undefined</td><td>www.mozilla.org,support.mozilla.org</td></tr><tr><td>datareporting.<wbr />healthreport.<wbr />service.<wbr />providerCategories</td><td>healthreport-js-provider-default</td><td>healthreport-js-provider-default,healthreport-js-provider-beta</td></tr><tr class="newkey"><td>devtools.<wbr />appmanager.<wbr />manifestEditor.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />browserconsole.<wbr />filter.<wbr />csslog</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />pretty-<wbr />print-<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />defaultColorUnit</td><td class="undefined">undefined</td><td>hex</td></tr><tr class="oldkey"><td>devtools.<wbr />responsiveUI.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />scratchpad.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />shadereditor.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />webconsole.<wbr />filter.<wbr />csslog</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>dom.<wbr />datastore.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>dom.<wbr />mms.<wbr />defaultServiceId</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>dom.<wbr />sms.<wbr />defaultServiceId</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>dom.<wbr />telephony.<wbr />defaultServiceId</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>dom.<wbr />voicemail.<wbr />defaultServiceId</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>dom.<wbr />workers.<wbr />sharedWorkers.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>gfx.<wbr />content.<wbr />azure.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>image.<wbr />mem.<wbr />allow_<wbr />locking_<wbr />in_<wbr />content_<wbr />processes</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>image.<wbr />mem.<wbr />surfacecache.<wbr />max_<wbr />size_<wbr />kb</td><td class="undefined">undefined</td><td>102400</td></tr><tr class="newkey"><td>image.<wbr />mem.<wbr />surfacecache.<wbr />min_<wbr />expiration_<wbr />ms</td><td class="undefined">undefined</td><td>60000</td></tr><tr class="newkey"><td>image.<wbr />mem.<wbr />surfacecache.<wbr />size_<wbr />factor</td><td class="undefined">undefined</td><td>64</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />all-<wbr />shorthand.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />text-<wbr />align-<wbr />true-<wbr />value.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />unset-<wbr />value.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>layout.<wbr />enable_<wbr />japanese_<wbr />specific_<wbr />transform</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>layout.<wbr />imagevisibility.<wbr />enabled_<wbr />for_<wbr />browser_<wbr />elements_<wbr />only</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>media.<wbr />navigator.<wbr />video.<wbr />max_<wbr />fr</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>media.<wbr />navigator.<wbr />video.<wbr />max_<wbr />fs</td><td class="undefined">undefined</td><td>0</td></tr><tr><td>media.<wbr />peerconnection.<wbr />default_<wbr />iceservers</td><td>[{"url": "stun:23.21.150.121"}]</td><td>[{"url": "stun:stun.services.mozilla.com"}]</td></tr><tr class="newkey"><td>media.<wbr />peerconnection.<wbr />trickle_<wbr />ice</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>media.<wbr />tabstreaming.<wbr />height</td><td class="undefined">undefined</td><td>240</td></tr><tr class="newkey"><td>media.<wbr />tabstreaming.<wbr />time_<wbr />per_<wbr />frame</td><td class="undefined">undefined</td><td>40</td></tr><tr class="newkey"><td>media.<wbr />tabstreaming.<wbr />width</td><td class="undefined">undefined</td><td>320</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />spdy.<wbr />enabled.<wbr />v3-<wbr />1</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />enable-<wbr />hover-<wbr />on-<wbr />ssl</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />max-<wbr />queue-<wbr />size</td><td class="undefined">undefined</td><td>50</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />page-<wbr />degradation.<wbr />day</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />page-<wbr />degradation.<wbr />max</td><td class="undefined">undefined</td><td>50</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />page-<wbr />degradation.<wbr />month</td><td class="undefined">undefined</td><td>10</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />page-<wbr />degradation.<wbr />week</td><td class="undefined">undefined</td><td>5</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />page-<wbr />degradation.<wbr />year</td><td class="undefined">undefined</td><td>25</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />preconnect-<wbr />min-<wbr />confidence</td><td class="undefined">undefined</td><td>90</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />preresolve-<wbr />min-<wbr />confidence</td><td class="undefined">undefined</td><td>60</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />redirect-<wbr />likely-<wbr />confidence</td><td class="undefined">undefined</td><td>75</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />subresource-<wbr />degradation.<wbr />day</td><td class="undefined">undefined</td><td>1</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />subresource-<wbr />degradation.<wbr />max</td><td class="undefined">undefined</td><td>100</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />subresource-<wbr />degradation.<wbr />month</td><td class="undefined">undefined</td><td>25</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />subresource-<wbr />degradation.<wbr />week</td><td class="undefined">undefined</td><td>10</td></tr><tr class="newkey"><td>network.<wbr />seer.<wbr />subresource-<wbr />degradation.<wbr />year</td><td class="undefined">undefined</td><td>50</td></tr><tr><td>ril.<wbr />numRadioInterfaces</td><td>1</td><td>0</td></tr><tr class="newkey"><td>security.<wbr />OCSP.<wbr />GET.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>security.<wbr />enable_<wbr />tls_<wbr />session_<wbr />tickets</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>security.<wbr />ssl3.<wbr />dhe_<wbr />dss_<wbr />camellia_<wbr />128_<wbr />sha</td><td>true</td><td>false</td></tr><tr><td>security.<wbr />ssl3.<wbr />dhe_<wbr />dss_<wbr />camellia_<wbr />256_<wbr />sha</td><td>true</td><td>false</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />dhe_<wbr />dss_<wbr />des_<wbr />ede3_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />ecdsa_<wbr />aes_<wbr />128_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />ecdsa_<wbr />aes_<wbr />256_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />ecdsa_<wbr />des_<wbr />ede3_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />ecdsa_<wbr />rc4_<wbr />128_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />rsa_<wbr />aes_<wbr />128_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />rsa_<wbr />aes_<wbr />256_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />rsa_<wbr />des_<wbr />ede3_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />rsa_<wbr />rc4_<wbr />128_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>security.<wbr />ssl3.<wbr />ecdhe_<wbr />ecdsa_<wbr />aes_<wbr />128_<wbr />gcm_<wbr />sha256</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdhe_<wbr />ecdsa_<wbr />des_<wbr />ede3_<wbr />sha</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>security.<wbr />ssl3.<wbr />ecdhe_<wbr />rsa_<wbr />aes_<wbr />128_<wbr />gcm_<wbr />sha256</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>security.<wbr />ssl3.<wbr />rsa_<wbr />fips_<wbr />des_<wbr />ede3_<wbr />sha</td><td>true</td><td>false</td></tr><tr><td>security.<wbr />ssl3.<wbr />rsa_<wbr />seed_<wbr />sha</td><td>true</td><td>false</td></tr><tr><td>security.<wbr />tls.<wbr />version.<wbr />max</td><td>1</td><td>3</td></tr><tr class="oldkey"><td>signon.<wbr />SignonFileName</td><td>signons.txt</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>signon.<wbr />SignonFileName2</td><td>signons2.txt</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>signon.<wbr />SignonFileName3</td><td>signons3.txt</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>snav.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>social.<wbr />allowMultipleWorkers</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>toolkit.<wbr />asyncshutdown.<wbr />timeout.<wbr />crash</td><td class="undefined">undefined</td><td>60000</td></tr><tr class="newkey"><td>ui.<wbr />touch_<wbr />activation.<wbr />duration_<wbr />ms</td><td class="undefined">undefined</td><td>100</td></tr><tr class="newkey"><td>urlclassifier.<wbr />download_<wbr />allow_<wbr />table</td><td class="undefined">undefined</td><td>goog-downloadwhite-digest256</td></tr><tr class="newkey"><td>urlclassifier.<wbr />download_<wbr />block_<wbr />table</td><td class="undefined">undefined</td><td>goog-badbinurl-shavar</td></tr><tr class="oldkey"><td>urlclassifier.<wbr />gethashtables</td><td>goog-phish-shavar,goog-malware-shavar</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>urlclassifier.<wbr />malware_<wbr />table</td><td class="undefined">undefined</td><td>goog-malware-shavar</td></tr><tr class="newkey"><td>urlclassifier.<wbr />phish_<wbr />table</td><td class="undefined">undefined</td><td>goog-phish-shavar</td></tr></tbody></table>
-
 <style type="text/css"><!-- /* --><![CDATA[ /* */
 table.diff_firefox27_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox27_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -84,45 +66,32 @@ table.diff_firefox27_pref_diff tr.sameval td:first-child { color: #444; }
 table.diff_firefox27_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
 table.diff_firefox27_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
 table.diff_firefox27_pref_diff td.json { word-break: break-all; }
-
 table.diff_firefox27_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox27_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]><!-- */ --></style>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/12/diff-between-firefox-270-beta-1-default.html&amp;text=Diff%20between%20firefox%2027.0%20beta%201%20default%20preference%20and%20firefox%2026.0%20+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/12/diff-between-firefox-270-beta-1-default.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/12/diff-between-firefox-270-beta-1-default.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/12/diff-between-firefox-270-beta-1-default.html&amp;linkname=Diff%20between%20firefox%2027.0%20beta%201%20default%20preference%20and%20firefox%2026.0%20+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-12-16-diff-between-firefox-270-beta-1-default.html" class="source-path">_posts/2013-12-16-diff-between-firefox-270-beta-1-default.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-12-16-diff-between-firefox-270-beta-1-default.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2013/11/define.html" title="#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について" rel="prev">&#x2190;#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2013/12/why-cannot-upload-photo-to-blogger-and.html" title="Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?" rel="next">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -134,42 +103,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2010-12-12</span>
       <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-08-07</span>
       <a class="post-link" href="/2014/08/diff-between-firefox-320-beta-4-default.html">Diff between firefox 32.0 beta 4 default preference and firefox 31.0</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-03-30</span>
       <a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-09-15</span>
       <a class="post-link" href="/2014/09/diff-between-firefox-330-beta-3-default.html">Diff between firefox 33.0 beta 3 default preference and firefox 32.0</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-02-20</span>
       <a class="post-link" href="/2013/02/diff-between-firefox-19-default.html">Diff between firefox 19 default preference and firefox 18.0.2</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -209,6 +167,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

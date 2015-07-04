@@ -12,68 +12,50 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/08/hack-micropolis-aka-simcity-and-get.html" rel="bookmark">Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2010-08-08T00:35:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:31+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_simcity">Simcity</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content">
   <img src="/images/micropolis.png" />
-
 <p>
 Micropolis (The original SimCity) is old game (published in 1989) and newly freed game (released GPLv3 in 2008.)
 You can download the source code from <a href="http://www.donhopkins.com/home/micropolis/">Don Hopkins' Micropolis Downloads page</a>.
 <a href="http://git.zerfleddert.de/cgi-bin/gitweb.cgi/micropolis">Michael Gernoth's micropolis git repository</a> is also useful.
 </p>
-
 <h4>How To Get $2,147,483,647</h4>
-
 <p>
 The amount of funds is written in cty file at offset 0x0BA4.
 To get $2,147,483,647, follow these steps:
 </p>
 <ol>
-
 <li>Open the cty file with a hex editor.</li>
 <li>Jump to 0x0BA4, and</li>
 <li>Modify 0x7FFFFFFF (signed 4-bytes)</li>
@@ -83,15 +65,12 @@ To get $2,147,483,647, follow these steps:
 |
 v
 00000ba0: 0000 0000 <ins>7fff ffff</ins> 0001 0001 0000 0001  ................
-</pre>
-<div>
+</pre><div>
 <a href="/images/micropolis-2147483647.png">
 <img src="/images/micropolis-2147483647.png" />
 </a>
 </div>
-
 <h4>cty file format</h4>
-
 <p>
 Micropolis's cty file format is as following:
 </p>
@@ -110,8 +89,7 @@ typedef struct {
     short   MiscHis[MISCHISTLEN/2];
     short   Map[WORLD_X * WORLD_Y];
 } CTY_DATA;
-</code></pre>
-<p>
+</code></pre><p>
 Note: <code>short</code> is a Big-Endian (signed) 16-bits number.
 </p>
 <p>
@@ -134,49 +112,35 @@ This is written at micropolis's source code
    l = *(QUAD *)(MiscHis + 50);
    HALF_SWAP_LONGS(&l, 1);
    SetFunds(l);
-</code></pre>
-
-<h4>See also</h4>
+</code></pre><h4>See also</h4>
 <ul>
 <li><a href="http://www.donhopkins.com/home/micropolis/">Don Hopkins' Micropolis Downloads page</a></li>
 <li><a href="http://www.linux.com/archive/feature/125797">The original SimCity is now the open source Micropolis</a> - Linux.com 2008-01-31</li>
 <li><a href="http://jaysonking.com/micropolis.php">Microplis hack : Unlimited city funds at 0xBA4 in Micropolis *.cty files.</a> - jaysonking.com</li>
 </ul>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html&amp;text=Hack%20Micropolis%20(a.k.a.%20SimCity)%20and%20get%20$2,147,483,647!+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html&amp;linkname=Hack%20Micropolis%20(a.k.a.%20SimCity)%20and%20get%20$2,147,483,647!+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-08-08-hack-micropolis-aka-simcity-and-get.html" class="source-path">_posts/2010-08-08-hack-micropolis-aka-simcity-and-get.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-08-08-hack-micropolis-aka-simcity-and-get.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2010/08/platexdvipdfmxfedora13.html" title="（メモ）platex+dvipdfmxをfedora13で使う方法" rel="prev">&#x2190;（メモ）platex+dvipdfmxをfedora13で使う方法</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html" title="&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4" rel="next">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -188,42 +152,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-03-20</span>
       <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">inode# is different from NTFS FileRef#</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2011-05-20</span>
       <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-02-27</span>
       <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-06-22</span>
       <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">Study: multi-text vs single-text on XUL elements</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -263,6 +216,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

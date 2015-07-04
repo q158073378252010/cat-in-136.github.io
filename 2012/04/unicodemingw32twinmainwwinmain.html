@@ -8,69 +8,50 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜" />
   <meta property="og:type" content="article" />
-  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2012/04/unicodemingw32twinmainwwinmain.html" rel="bookmark">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2012-04-22T11:00:00+09:00</time>
       (Modified: <time>2013-11-23T22:33:05+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_win32api">Win32api</a>
-      
       <a class="tag" href="/tags.html#tag_mingw">Mingw</a>
-      
       <a class="tag" href="/tags.html#tag_windows">Windows</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content" lang="ja">
   <div style="font-size: smaller; font-weight: lighter; border: solid 1px #aaa;">
 本記事は<a href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of "Unicode in Mingw32"</a>の和訳+αです。
 あまりにも<a href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16'」</a>の日本からのアクセス数が多いので…
 </div>
-
 <p>
 Mingw32 は完全には Unicode に対応していない。いくつかよく知られている落とし穴がある。
 </p>
-
 <h4><code>wWinMain</code>が使えない</h4>
 <pre class="prettyprint"><code>// NG:
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
@@ -81,29 +62,24 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 int main(int argc, char** argv)
 {
 //...
-</code></pre>
-<p>
+</code></pre><p>
 Mingw32では、<code>wWinMain</code>関数は使えない<span style="font-size: smaller;">（→<a href="http://cat-in-136.blogspot.jp/2010/03/mingw32undefined-reference-to-winmain16.html" title="mingw32での「undefined reference to `WinMain@16'」" rel="nofollow">以前の記事</a>で述べたとおり）</span>。さらに<code>wmain</code>関数も同じく使えない。なので Unicode 環境においては、エントリー関数(entry function)として<code>main</code>関数を使うしかない。
 </p>
 <p>
 加えて<code>_tWinMain</code>と<code>_tmain</code>関数もマルチバイト環境のみ使えて Unicode 環境においては使えない。なお、マルチバイト環境では、これらは<code>WinMain</code>と<code>main</code>に変換される。
 </p>
-
 <h5><code>hInstance</code>を<code>main</code>関数でどうやって取得するのか?</h5>
 <pre class="prettyprint"><code>HINSTANCE hInstance;
 
 hInstance = GetModuleHandle(NULL);
-</code></pre>
-<p>
+</code></pre><p>
 なお、<code>wWinMain</code>の引数<code>hPrevInstance</code>は Win32 環境では常に<code>NULL</code>であることに留意すること。
 </p>
-
 <h5><code>lpCmdLine</code>を<code>main</code>関数でどうやって取得するのか?</h5>
 <p>
 <code>GetCommandLine()</code>を使う。
 ただ<code>lpCmdLine</code>と違って、<code>GetCommandLine()</code>の戻り値はコマンドライン全体であって、プログラム名も含む。
 </p>
-
 <h4><code>__wargv</code>も使えないがどうするのか?</h4>
 <pre class="prettyprint"><code>// NG:
 for (i = 0; i &lt; __argc; i++) {
@@ -120,12 +96,10 @@ for (i = 0; i &lt; argc; i++) {
     //...
 }
 LocalFree(wargv);
-</code></pre>
-<p>
+</code></pre><p>
 <code>__wargv</code>もMingw32では使えない。引数リストを取得するには<code>CommandLineToArgvW</code> 関数と<code>GetCommandLineW</code>関数を使う。
 なお、ここで<code>CommandLineToArgv<strong>A</strong></code>という名前の関数は Win32 API には定義されていないので注意すること。
 </p>
-
 <h4>例：_tMainWin問題の私なりの解決策</h4>
 <pre class="prettyprint"><code>int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
@@ -145,53 +119,38 @@ int main(int argc, char **argv)
 }
 #endif
 #endif /* _UNICODE */
-</code></pre>
-
-<p>
+</code></pre><p>
 なお、概述のように<code>lpCmdLine</code>と完全に同じものは簡単には得られないので<code>lpCmdLine</code>は使わない、という前提で使う。
 引数をどうしても使う場合には<code>GetCommandLine()</code>を使うことにする。
 </p>
-
 <h4>参考文献</h4>
 <ul>
 <li><a href="http://demosten-eng.blogspot.com/2008/08/mingw-and-unicode-support.html">MinGW and Unicode support?</a></li>
 <li><a href="http://lists-archives.org/mingw-users/07124-link-error-when-using-_tmain.html"> Re: [Mingw-users] link error when using _tmain</a></li>
 </ul>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html&amp;text=Unicode%E3%81%A7Mingw32%E3%81%AE%E8%90%BD%E3%81%A8%E3%81%97%E7%A9%B4%E3%80%9C_tWinMain/wWinMain%E5%95%8F%E9%A1%8C%E3%81%AA%E3%81%A9%E3%80%9C+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html&amp;linkname=Unicode%E3%81%A7Mingw32%E3%81%AE%E8%90%BD%E3%81%A8%E3%81%97%E7%A9%B4%E3%80%9C_tWinMain/wWinMain%E5%95%8F%E9%A1%8C%E3%81%AA%E3%81%A9%E3%80%9C+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-04-22-unicodemingw32twinmainwwinmain.html" class="source-path">_posts/2012-04-22-unicodemingw32twinmainwwinmain.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-04-22-unicodemingw32twinmainwwinmain.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2012/04/m-font-css-font-weight.html" title="見よ！これが M+ font と CSS font-weight の実力だ！" rel="prev">&#x2190;見よ！これが M+ font と CSS font-weight の実力だ！</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2012/04/diff-between-firefox-13beta1-default.html" title="Diff between firefox 13beta1 default preference and firefox 12" rel="next">Diff between firefox 13beta1 default preference and firefox 12&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -203,42 +162,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2010-03-17</span>
       <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-03-06</span>
       <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16&#39;」</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2010-05-02</span>
       <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -278,6 +226,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>

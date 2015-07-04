@@ -12,64 +12,47 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
-  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
 </head>
-
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      
       <a class="page-link" href="/archive.html">Archive</a>
-      
       <a class="page-link" href="/feed.xml">Feed</a>
-      
       <a class="page-link" href="/tags.html">Tags</a>
-      
     </nav>
   </div>
 </header>
-
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2011/01/pov-ray.html" rel="bookmark">水平線から上がった初日の出のアレをPOV-Rayで再現したい</a></h1>
-    
     <div class="meta">
       Text by: cat_in_136
     </div>
-    
     <div class="meta">
       Date: <time>2011-01-03T20:10:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:32+09:00</time>)
     </div>
     <div class="meta">
       Tags:
-      
       <a class="tag" href="/tags.html#tag_povray">Povray</a>
-      
       <a class="tag" href="/tags.html#tag_optics">Optics</a>
-      
-      
     </div>
   </header>
-
   <div class="post-content" lang="ja">
   <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <a href="http://www.flickr.com/photos/toyohara/3154885486/" title="初日の出 by toyohara, on Flickr"><img src="http://farm4.static.flickr.com/3121/3154885486_a20fd385a3_t.jpg" style="width:100px;height:75px" alt="初日の出" /></a>
 </figure>
-
 <p>
 新年といえば初日の出を観に行った人もいると思われるが、初日の出のイメージといえば
 やはり水平線から出る太陽だ。
 このとき、海面に反射して映る太陽は水平線からまっすぐとした線状となる。
 </p>
-
 <p>
 これについて<a href="http://www.hirax.net/dekirukana9/two_suns/">hirax.net::「海面に写る太陽」の不思議</a>にて、
 解説されている。そのページによると原因として以下のように3点挙げられている。
@@ -79,20 +62,14 @@
 「海面が波立っていること」「太陽に対する（微小）海面の向き」「海面でのフレネル反射率」が原因だということがわかってきた。 
 </p>
 </blockquote>
-
 <p>
 これらは古典的な幾何光学で説明されていて、海面の法線と反射だけをうまく設定してやれば
 コンピュータ上で再現できそうなことに気づいた。
 </p>
-
 <h4>CG実験</h4>
-
 <p>そこで、水面と照明からなる簡単なCGをつくってみた。レンダラーは<a href="http://www.povray.org/">POV-Ray</a> 3.7.0.beta.41を使用した。ソースコードは下に示してある。</p>
-
 <p>画面中央に光源（太陽）があるようにするため、カメラは太陽方向を向く設定にした。そして、光源はカメラの場所から十分離れた白色点光源で実現した。写真で水面に映る太陽の部分は飽和しており、このような写真を得るために光の強さはかなり強くした。それが光源の色の設定を使用して<code>White*10</code>と設定している箇所である。また、光源形状として球(sphere)を指定して太陽の形状を模した。</p>
-
 <p>水面は真っ平らな無限平面(plane)で実現した。水面の傾きを実現するためには法線ベクトルを設定する方法を使った。それが<code>#if Wavelet</code>〜<code>#end</code>で囲った部分である。その他肝心のフレネル反射をするようにも設定した(<code>fresnel on</code>の箇所)。</p>
-
 <pre class="prettyprint"><code>#include "colors.inc"
 
 global_settings {
@@ -156,70 +133,49 @@ plane {
     }
     interior { ior 1.33 }
 }
-</code></pre>
-
-<h4>結果</h4>
-
+</code></pre><h4>結果</h4>
 <p>
 以下がPOV-Rayにレンダリングをさせて得られた画像である。水面の法線ベクトルが実際の水面をうまく再現できていないらしくやや不自然なところもあるが、理論通り線状に太陽が映っていることがわかる。
 </p>
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <a href="/images/sun_reflect.png"><img src="/images/sun_reflect.png" width="320" height="240" /></a>
 </figure>
-
 <p>
 次に、ソースコードを<code>#declare Wavelet=no;</code>と変更し、水面のさざなみをなくした環境下での画像が以下である。教科書通りの上下逆さまの鏡面反射になった。
 </p>
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <a href="/images/sun_reflect_mirror.png"><img src="/images/sun_reflect_mirror.png" width="320" height="240" /></a>
 </figure>
-
 <h4>まとめ</h4>
-
 <p>
 以上より水平線から上がった太陽の反射像を工夫すればPOV-Rayで再現できることがわかった。加えて、水面の極小な傾きよって太陽の反射像が線状になることを確認できた。
 </p>
-
 <div>
 なお、最初の写真は<a href="http://www.flickr.com/photos/toyohara/3154885486/" rel="nofollow">toyohara氏による2009年の初日の出</a>の写真。
 </div>
-
   </div><!-- post-content -->
-
   <footer class="post-footer">
     <div class="meta share">
-      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2011/01/pov-ray.html&amp;text=%E6%B0%B4%E5%B9%B3%E7%B7%9A%E3%81%8B%E3%82%89%E4%B8%8A%E3%81%8C%E3%81%A3%E3%81%9F%E5%88%9D%E6%97%A5%E3%81%AE%E5%87%BA%E3%81%AE%E3%82%A2%E3%83%AC%E3%82%92POV-Ray%E3%81%A7%E5%86%8D%E7%8F%BE%E3%81%97%E3%81%9F%E3%81%84+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2011/01/pov-ray.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2011/01/pov-ray.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2011/01/pov-ray.html&amp;linkname=%E6%B0%B4%E5%B9%B3%E7%B7%9A%E3%81%8B%E3%82%89%E4%B8%8A%E3%81%8C%E3%81%A3%E3%81%9F%E5%88%9D%E6%97%A5%E3%81%AE%E5%87%BA%E3%81%AE%E3%82%A2%E3%83%AC%E3%82%92POV-Ray%E3%81%A7%E5%86%8D%E7%8F%BE%E3%81%97%E3%81%9F%E3%81%84+cat_in_136.blog()">More via AddToAny...</a>
     </div>
-    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-01-03-pov-ray.html" class="source-path">_posts/2011-01-03-pov-ray.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-01-03-pov-ray.html">History</a>)
     </div>
-    
   </footer>
-
 </article>
-
 <nav class="post-nav wrap">
   <div class="previous-post">
-    
     <a href="/2010/12/preferences-on-configuration-mania.html" title="Preferences on Configuration Mania which are not supported on Firefox 4." rel="prev">&#x2190;Preferences on Configuration Mania which are not supported on Firefox 4.</a>
-    
   </div>
   <div class="next-post">
-    
     <a href="/2011/01/xul-tip-scrolling-for-tabs-on-xul.html" title="XUL Tip: Scrolling for tabs on XUL tabbox" rel="next">XUL Tip: Scrolling for tabs on XUL tabbox&#x2192;</a>
-    
   </div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -231,42 +187,31 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    
     <li class="post-item">
       <span class="post-date">2013-02-24</span>
       <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-04-06</span>
       <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2013-04-13</span>
       <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
-    
     <li class="post-item">
       <span class="post-date">2012-05-19</span>
       <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
     </li>
-    
   </ul>
 </aside>
-
-
     </div>
   </div>
   <footer class="site-footer">
@@ -306,6 +251,5 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
-
 </body>
 </html>
