@@ -5,9 +5,643 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 26 Jul 2015 12:27:59 +0900</pubDate>
-    <lastBuildDate>Sun, 26 Jul 2015 12:27:59 +0900</lastBuildDate>
+    <pubDate>Sun, 26 Jul 2015 17:27:43 +0900</pubDate>
+    <lastBuildDate>Sun, 26 Jul 2015 17:27:43 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+      <item>
+        <title>白い部分の面積を求めなさい〜東京2020</title>
+        <description>&lt;h4&gt;問&lt;/h4&gt;
+&lt;p&gt;白い部分の面積を求めなさい。&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;583&quot; height=&quot;594&quot; data=&quot;/images/201507_Tokyo2020_emblem_area_calc_figure.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;Tokyo2020 Emblem Analysis&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;AE=EF=FB=BJ=JK=KC=CG=GH=HD=DL=LI=IA=1 とする。&lt;/li&gt;
+  &lt;li&gt;点Oを中心とした円と正方形ABCDは、点E,F,G,H,I,J,K,Lで交わっている。&lt;/li&gt;
+  &lt;li&gt;右上の赤丸は直径1の正円である。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;解&lt;/h4&gt;
+&lt;aside&gt;
+&lt;div style=&quot;background: #ffd; border: solid 3px #ff8&quot;&gt;
+この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
+必要です
+もし数式部分が読めない場合は
+&lt;a href=&quot;https://getfirefox.com/&quot;&gt;Firefoxをインストールする&lt;/a&gt;か
+&lt;button onclick=&quot;var a=document.createElement(&amp;quot;script&amp;quot;);a.setAttribute(&amp;quot;type&amp;quot;,&amp;quot;application/javascript&amp;quot;);a.setAttribute(&amp;quot;src&amp;quot;,&amp;quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;);document.body.appendChild(a);&quot;&gt;このボタンをクリックしてMathJaxを使って無理矢理表示する&lt;/button&gt;
+などしてください。
+&lt;/div&gt;
+&lt;/aside&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;358&quot; height=&quot;354&quot; data=&quot;/images/201507_Tokyo2020_emblem_area_calc_figure_prj.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;Top-left of the figure&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+点Oから線分EFに垂線を下ろし点Pとする。
+OP=2OE=3/2である。
+三平方の定理から
+&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;OE=\sqrt{OP^2+OE^2}\sqrt{\left(\frac{3}{2}\right)^2+\left(\frac{1}{2}\right)^2}=\frac{\sqrt{10}}{2} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mtext&gt;OE&lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;msqrt&gt;
+      &lt;mrow&gt;
+        &lt;msup&gt;
+          &lt;mtext&gt;OP&lt;/mtext&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+        &lt;mo&gt;+&lt;/mo&gt;
+        &lt;msup&gt;
+          &lt;mtext&gt;EP&lt;/mtext&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+      &lt;/mrow&gt;
+    &lt;/msqrt&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;msqrt&gt;
+      &lt;mrow&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+              &lt;mrow&gt;
+                &lt;mfrac&gt;
+                  &lt;mrow&gt;
+                    &lt;mn&gt;3&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                  &lt;mrow&gt;
+                    &lt;mn&gt;2&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                &lt;/mfrac&gt;
+              &lt;/mrow&gt;
+            &lt;/mfenced&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+        &lt;mo&gt;+&lt;/mo&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+              &lt;mrow&gt;
+                &lt;mfrac&gt;
+                  &lt;mrow&gt;
+                    &lt;mn&gt;1&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                  &lt;mrow&gt;
+                    &lt;mn&gt;2&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                &lt;/mfrac&gt;
+              &lt;/mrow&gt;
+            &lt;/mfenced&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+      &lt;/mrow&gt;
+    &lt;/msqrt&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;msqrt&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;10&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msqrt&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;
+余弦定理から
+&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\cos\angle\text{IOE}=\frac{\text{OI}^2+\text{OE}^2-\text{IE}^2}{2\text{OI}\cdot\text{OE}}=\frac{10/4+10/4-2}{2\cdot 10/4}=\frac{3}{5} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mo&gt;cos&lt;/mo&gt;
+    &lt;mo&gt;&amp;#8736;&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      IOE
+    &lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mtext mathvariant=&quot;normal&quot;&gt;
+              OI
+            &lt;/mtext&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+        &lt;mo&gt;+&lt;/mo&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mtext mathvariant=&quot;normal&quot;&gt;
+              OE
+            &lt;/mtext&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mtext mathvariant=&quot;normal&quot;&gt;
+              IE
+            &lt;/mtext&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mtext mathvariant=&quot;normal&quot;&gt;
+          OI
+        &lt;/mtext&gt;
+        &lt;mo&gt;&amp;#8901;&lt;/mo&gt;
+        &lt;mtext mathvariant=&quot;normal&quot;&gt;
+          OE
+        &lt;/mtext&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;10&lt;/mn&gt;
+        &lt;mo&gt;/&lt;/mo&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+        &lt;mo&gt;+&lt;/mo&gt;
+        &lt;mn&gt;10&lt;/mn&gt;
+        &lt;mo&gt;/&lt;/mo&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mo&gt;&amp;#8901;&lt;/mo&gt;
+        &lt;mn&gt;10&lt;/mn&gt;
+        &lt;mo&gt;/&lt;/mo&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;
+これより、
+&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\angle\text{IOE}=\frac{\pi}{2}-\cos^{-1}\frac{4}{5} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mo&gt;&amp;#8736;&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      IOE
+    &lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;cos&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;
+点Iから線分EHに下ろし点Qとする。
+ここで&amp;#9653;OQI=&amp;#9653;OQEの面積は、OP=3/2, EQ=1であることに注目して
+&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\triangle\text{OQI}=\frac{1\cdot 3/2}{2}=\frac{1}{4} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      OQI
+    &lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      OQE
+    &lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+        &lt;mo&gt;⋅&lt;/mo&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+        &lt;mo&gt;/&lt;/mo&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;
+であるから、白色部EMIは、 
+&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;2\left(\frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2}\right)+4-\pi\left(\frac{1}{2}\right)^2 = 3-\frac{\pi}{4}+\frac{5}{4} \cos^{-1}\frac{3}{5} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mn&gt;2&lt;/mn&gt;
+    &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+      &lt;mrow&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;5&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;4&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mo&gt;cos&lt;/mo&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;3&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;5&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+      &lt;/mrow&gt;
+    &lt;/mfenced&gt;
+    &lt;mo&gt;+&lt;/mo&gt;
+    &lt;mn&gt;4&lt;/mn&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mi&gt;&amp;#960;&lt;/mi&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+          &lt;mrow&gt;
+            &lt;mfrac&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;1&lt;/mn&gt;
+              &lt;/mrow&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;2&lt;/mn&gt;
+              &lt;/mrow&gt;
+            &lt;/mfrac&gt;
+          &lt;/mrow&gt;
+        &lt;/mfenced&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mn&gt;3&lt;/mn&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mi&gt;&amp;#960;&lt;/mi&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;+&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;cos&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\text{EMI}=\text{EOI}-\triangle\text{OQI}-\triangle\text{OQE} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      白色部EMI
+    &lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      部分円EOI
+    &lt;/mtext&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      OQI
+    &lt;/mtext&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      OQE
+    &lt;/mtext&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;を解いて&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\text{EMI}=\frac{1}{2}\cos^{-1}\frac{3}{5}\left(\frac{\sqrt{10}}{2}\right)^2-\frac{1}{4}-\frac{1}{4}= \frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mtext mathvariant=&quot;normal&quot;&gt;
+      白色部EMI
+    &lt;/mtext&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;cos&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+          &lt;mrow&gt;
+            &lt;mfrac&gt;
+              &lt;mrow&gt;
+                &lt;msqrt&gt;
+                  &lt;mrow&gt;
+                    &lt;mn&gt;10&lt;/mn&gt;
+                  &lt;/mrow&gt;
+                &lt;/msqrt&gt;
+              &lt;/mrow&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;2&lt;/mn&gt;
+              &lt;/mrow&gt;
+            &lt;/mfrac&gt;
+          &lt;/mrow&gt;
+        &lt;/mfenced&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;cos&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;
+右下も対称性から同様であって、また赤丸は半径1/2の円であることから
+求める白い部分の面積は
+&lt;/p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;2\left(\frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2}\right)+4-\pi\left(\frac{1}{2}\right)^2 = 3-\frac{\pi}{4}+\frac{5}{2} \cos^{-1}\frac{3}{5} &quot;&gt;
+  &lt;mrow&gt;
+    &lt;mn&gt;2&lt;/mn&gt;
+    &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+      &lt;mrow&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;5&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;4&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+        &lt;msup&gt;
+          &lt;mrow&gt;
+            &lt;mo&gt;cos&lt;/mo&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msup&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;3&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;5&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mrow&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfrac&gt;
+      &lt;/mrow&gt;
+    &lt;/mfenced&gt;
+    &lt;mo&gt;+&lt;/mo&gt;
+    &lt;mn&gt;4&lt;/mn&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mi&gt;&amp;#960;&lt;/mi&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+          &lt;mrow&gt;
+            &lt;mfrac&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;1&lt;/mn&gt;
+              &lt;/mrow&gt;
+              &lt;mrow&gt;
+                &lt;mn&gt;2&lt;/mn&gt;
+              &lt;/mrow&gt;
+            &lt;/mfrac&gt;
+          &lt;/mrow&gt;
+        &lt;/mfenced&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mn&gt;3&lt;/mn&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mi&gt;&amp;#960;&lt;/mi&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;+&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;cos&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;3&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;5&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+&lt;p&gt;解答おわり&lt;/p&gt;
+&lt;h4&gt;感想&lt;/h4&gt;
+&lt;p&gt;&amp;#8736;IOE が三角逆関数使わずに表せられなかったので残念。&lt;/p&gt;
+&lt;p&gt;なお、数値計算してみると&lt;a href=&quot;http://www.wolframalpha.com/input/?i=3-pi%2F4%2B5%2F2+cos^%28-1%29%283%2F5%29&quot;&gt;白色部はおおよそ4.53&lt;/a&gt;となる。&lt;/p&gt;
+&lt;h4&gt;Inspired by&lt;/h4&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;ja&quot;&gt;&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;オリンピックのエンブレム、なんとなく既視感がある &lt;a href=&quot;http://t.co/4FsLOnLfdY&quot;&gt;pic.twitter.com/4FsLOnLfdY&lt;/a&gt;&lt;/p&gt;&amp;mdash; Phi-san (@Phi_san) &lt;a href=&quot;https://twitter.com/Phi_san/status/624558370486247424&quot;&gt;July 24, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;async&quot; defer=&quot;defer&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;h4&gt;参考文献&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&quot;&lt;a href=&quot;https://tokyo2020.jp/en/emblem/&quot;&gt;The Tokyo 2020 Olympic and Paralympic Games Emblems&lt;/a&gt;&quot;, The Tokyo Organising Committee of the Olympic and Paralympic Games.&lt;/li&gt;
+&lt;li&gt;&quot;&lt;a href=&quot;https://tokyo2020.jp/en/news/index.php?mode=page&amp;amp;id=1410&quot;&gt;24 Jul. 2015 - Tokyo 2020 Unveils the Emblems of the 2020 Olympic and Paralympic Games Symbolising the Power of the World Coming Together as One&lt;/a&gt;&quot;, News release, The Tokyo Organising Committee of the Olympic and Paralympic Games.&lt;/li&gt;
+&lt;li&gt;&quot;&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:2020_Summer_Olympics_logo.svg&quot;&gt;Vectorized version of the Tokyo 2020 Summer Olympics Logo&lt;/a&gt;&quot;, Wikimedia Commons&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 26 Jul 2015 17:19:27 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/07/Tokyo2015-logo-calc-area.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/07/Tokyo2015-logo-calc-area.html</guid>
+        <category>math</category>
+        <category>logo</category>
+      </item>
       <item>
         <title>Diff between firefox 40.0 beta 3 default preference and firefox 39.0</title>
         <description>&lt;p&gt;
@@ -889,212 +1523,6 @@ table.diff_firefox36_pref_diff tbody tr { transition: background 0.125s ease-in-
         <guid isPermaLink="true">http://cat-in-136.github.io/2015/01/diff-between-firefox-360-beta-2-default.html</guid>
         <category>pref diff</category>
         <category>mozilla</category>
-      </item>
-      <item>
-        <title>Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</title>
-        <description>&lt;p&gt;
-下記のようなクラス継承のコードは…
-&lt;/p&gt;
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;class Pet {
-    name: string;
-    age: number;
-    constructor(name: string) {
-        this.name = name;
-        this.age = 0;
-    }
-    countAge() {
-        this.age += 1;
-    }
-}
-class Cat extends Pet {
-    sleep() {
-        alert(this.name + &quot; is sleeping.&quot;);
-    }
-}
-var cat = new Cat(&quot;Cathy&quot;);
-cat.countAge();
-cat.sleep();
-alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-伝統的には&lt;code&gt;prototype&lt;/code&gt;をコピーして継承をするのが、
-JavaScript のやり方。
-流派はあるが大体下記のような感じじゃないだろうか：
-&lt;/p&gt;
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;function Pet(name) {
-    this.name = name;
-    this.age = 0;
-}
-Pet.prototype.countAge = function () {
-    this.age += 1;
-}
-function Cat(name) {
-    Pet.apply(this, arguments);
-}
-Cat.prototype = $.extend(Cat.prototype, Pet.prototype);
-Cat.prototype.constructor = Cat;
-Cat.prototype.sleep = function () {
-    alert(this.name + &quot; is sleeping.&quot;);
-}
-var cat = new Cat(&quot;Cathy&quot;);
-cat.countAge();
-cat.sleep();
-alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-最近の JavaScript (ECMA Script 5) では、&lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5&quot;&gt;&lt;code&gt;Object.create( O [, Properties] )&lt;/code&gt;&lt;/a&gt;というのがある。
-&lt;/p&gt;
-&lt;blockquote cite=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5&quot;&gt;
-        &lt;p&gt;The &lt;b&gt;create&lt;/b&gt; function creates a new object with a specified prototype. When the &lt;b&gt;create&lt;/b&gt; function is called,
-        the following steps are taken:&lt;/p&gt;
-        &lt;ol&gt;
-          &lt;li&gt;If &lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/#sec-8&quot;&gt;Type&lt;/a&gt;(&lt;i&gt;O&lt;/i&gt;) is not Object or Null throw a &lt;b&gt;TypeError&lt;/b&gt; exception.&lt;/li&gt;
-          &lt;li&gt;Let &lt;i&gt;obj&lt;/i&gt; be the result of creating a new object as if by the expression new Object() where Object is the
-              standard built-in constructor with that name&lt;/li&gt;
-          &lt;li&gt;Set the [[Prototype]] internal property of &lt;i&gt;obj&lt;/i&gt; to &lt;i&gt;O&lt;/i&gt;.&lt;/li&gt;
-          &lt;li&gt;If the argument &lt;i&gt;Properties&lt;/i&gt; is present and not &lt;b&gt;undefined&lt;/b&gt;, add own properties to &lt;i&gt;obj&lt;/i&gt; as if by
-              calling the standard built-in function &lt;code&gt;Object.defineProperties&lt;/code&gt; with arguments &lt;i&gt;obj&lt;/i&gt; and
-              &lt;i&gt;Properties&lt;/i&gt;.&lt;/li&gt;
-          &lt;li&gt;Return &lt;i&gt;obj&lt;/i&gt;.&lt;/li&gt;
-        &lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;
-&lt;code&gt;new&lt;/code&gt;演算子に近いような用途を想定した関数である。
-一方で、引数としては &lt;code&gt;Object.defineProperties()&lt;/code&gt; と同じ形ということになっている。
-要するに下記のように使って欲しいらしい。
-&lt;/p&gt;
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;var Cat = {
-    age: 0,
-    countAge: function () {
-        this.age += 1;
-    },
-    sleep: function () {
-        alert(this.name + &quot; is sleeping.&quot;);
-    }
-}
-var cat = Object.create(Cat, {name: {value: &quot;Cathy&quot;}});
-cat.countAge();
-cat.sleep();
-alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-なお &lt;code&gt;cat.name = &quot;Cathy&quot;&lt;/code&gt;を改名可能なようにするためには、
-&lt;code&gt;{value: &quot;Cathy&quot;, &lt;em&gt;writable: true&lt;/em&gt;}&lt;/code&gt;としなければならない。
-&lt;/p&gt;
-&lt;p&gt;
-で、この流儀だと以下の問題がある。なんてこった。
-&lt;/p&gt;
-&lt;ul&gt;
-    &lt;li&gt;継承はいままでの伝統的な方法しかない。(&lt;code&gt;extend()&lt;/code&gt;処理のループが必要)&lt;/li&gt;
-    &lt;li&gt;コンストラクタが&lt;code&gt;Object.create()&lt;/code&gt;に置き換わったせいでインスタンス生成時の処理を書く方法がなくなる。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-そしてMDNの&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited&quot;&gt;Inheritance Revisited&lt;/a&gt;というページに書かれた&quot;正解&quot;を基に書いた、
-&lt;code&gt;Object.create()&lt;/code&gt;を利用したクラス継承の方法は、下記だ。
-結構冗長。
-&lt;/p&gt;
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;function Pet(name) {
-    this.name = name;
-    this.age = 0;
-}
-Pet.prototype = Object.create(Object.prototype, {
-    name: {
-        writable: true
-    },
-    age: {
-        writable: true
-    },
-    constructor: {
-        value: Pet,
-        enumerable: false
-    },
-    countAge: {
-        value: function () {
-            this.age += 1;
-        }
-    }
-});
-function Cat(name) {
-    Pet.apply(this, arguments);
-}
-Cat.prototype = Object.create(Pet.prototype, {
-    constructor: {
-        value: Cat,
-        enumerable: false
-    },
-    sleep: {
-        value: function () {
-            alert(this.name + &quot; is sleeping.&quot;);
-        }
-    }
-});
-var cat = new Cat(&quot;Cathy&quot;);
-cat.countAge();
-cat.sleep();
-alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-prototype を&lt;code&gt;Object.create()&lt;/code&gt; するという業!
-また、メソッドが単なる関数オブジェクトとして扱うということで、
-&lt;code&gt;{value: function() {...} }&lt;/code&gt;を大量にタイプすることになるという
-ちょっと残念な感じだ。
-&lt;code&gt;$.extend()&lt;/code&gt;関数をネイティブ関数に置き換えたのにコードは
-かえって複雑になっているのではないか。
-&lt;/p&gt;
-&lt;p&gt;
-やはり複雑なクラス構文を書くには、ネイティブなJavaScriptではまだ物足りない。
-（物足りないからこそ private 変数などと組み合わせて記事にしなかった。）
-まだまだライブラリやら transcompiler (CoffeeScript, TypeScript, etc...)
-なしでは複雑なのはきつそうである。
-&lt;/p&gt;
-&lt;p&gt;
-ちなみに最初に書いた &lt;code&gt;class&lt;/code&gt; などと書いたコードは
-ECMA Script 6 ないし TypeScript となっていて、
-JavaScript に変換すると下のようになる。
-&lt;/p&gt;
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
-var Pet = (function () {
-    function Pet(name) {
-        this.name = name;
-        this.age = 0;
-    }
-    Pet.prototype.countAge = function () {
-        this.age += 1;
-    };
-    return Pet;
-})();
-var Cat = (function (_super) {
-    __extends(Cat, _super);
-    function Cat() {
-        _super.apply(this, arguments);
-    }
-    Cat.prototype.sleep = function () {
-        alert(this.name + &quot; is sleeping.&quot;);
-    };
-    return Cat;
-})(Pet);
-var cat = new Cat(&quot;Cathy&quot;);
-cat.countAge();
-cat.sleep();
-alert(cat.name + &quot; is &quot; + cat.age + &quot; y.o.&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;参考文献&lt;/p&gt;
-&lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;http://www.ecma-international.org/ecma-262/5.1/&quot;&gt;ECMA-262 ECMAScript Language Specification 5.1 Edition&lt;/a&gt;, June 2011. [ECMA-262/51]&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create&quot;&gt;Object.create() - JavaScript | MDN&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited&quot;&gt;Inheritance Revisited - JavaScript | MDN&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;LightSpeedC, &lt;a href=&quot;http://qiita.com/LightSpeedC/items/d307d809ecf2710bd957&quot;&gt;[JavaScript] そんな継承はイヤだ - クラス定義 - オブジェクト作成&lt;/a&gt;, Qiita, 2014-03-04&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 19 Jan 2015 00:53:10 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html</guid>
-        <category>javascript</category>
       </item>
   </channel>
 </rss>
