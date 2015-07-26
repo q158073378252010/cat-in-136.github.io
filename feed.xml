@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 26 Jul 2015 17:27:43 +0900</pubDate>
-    <lastBuildDate>Sun, 26 Jul 2015 17:27:43 +0900</lastBuildDate>
+    <pubDate>Sun, 26 Jul 2015 17:36:18 +0900</pubDate>
+    <lastBuildDate>Sun, 26 Jul 2015 17:36:18 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
       <item>
         <title>白い部分の面積を求めなさい〜東京2020</title>
@@ -384,28 +384,7 @@ OP=2OE=3/2である。
     &lt;/mfrac&gt;
   &lt;/mrow&gt;
 &lt;/math&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\text{EMI}=\text{EOI}-\triangle\text{OQI}-\triangle\text{OQE} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      白色部EMI
-    &lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      部分円EOI
-    &lt;/mtext&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      OQI
-    &lt;/mtext&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      OQE
-    &lt;/mtext&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;を解いて&lt;/p&gt;
+&lt;p&gt;と表せられる。これを解いて&lt;/p&gt;
 &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\text{EMI}=\frac{1}{2}\cos^{-1}\frac{3}{5}\left(\frac{\sqrt{10}}{2}\right)^2-\frac{1}{4}-\frac{1}{4}= \frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2} &quot;&gt;
   &lt;mrow&gt;
     &lt;mtext mathvariant=&quot;normal&quot;&gt;
