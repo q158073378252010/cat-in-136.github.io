@@ -24,17 +24,17 @@ blockquote::before, blockquote::after, q::before, q::after { content: ''; conten
 @font-face { font-family: 'Fira Mono'; src: url("https://mozilla.github.io/Fira/eot/FiraMono-Regular.eot"); src: local("Fira Mono"), url("https://mozilla.github.io/Fira/eot/FiraMono-Regular.eot") format("embedded-opentype"), url("https://mozilla.github.io/Fira/woff/FiraMono-Regular.woff") format("woff"), url("https://mozilla.github.io/Fira/ttf/FiraMono-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
 @font-face { font-family: 'Fira Mono'; src: url("https://mozilla.github.io/Fira/eot/FiraMono-Bold.eot"); src: local("Fira Mono Bold"), url("https://mozilla.github.io/Fira/eot/FiraMono-Bold.eot") format("embedded-opentype"), url("https://mozilla.github.io/Fira/woff/FiraMono-Bold.woff") format("woff"), url("https://mozilla.github.io/Fira/ttf/FiraMono-Bold.ttf") format("truetype"); font-weight: 600; font-style: normal; }
 /* fontset */
-body { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "HGPGothicE", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: 300; font-size: 12px; }
+body { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "HGPGothicE", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: 300; font-size: 12px; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; }
 @media (min-width: 480px) { body { font-size: 16px; } }
 @media (min-width: 48em) { body { font-size: 18px; } }
 h1, h2, h3, h4, h5, h6, .home .post-link { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: bold; }
-pre, code, .post-content pre, samp, kbd { font-family: "Fira Mono", "Droid Sans Mono", monospace; }
+pre, code, .post-content pre, samp, kbd { font-family: "Fira Mono", "Droid Sans Mono", monospace; -webkit-font-feature-settings: "zero"; font-feature-settings: "zero"; }
 @media (min-width: 480px) { pre, figcaption, table caption { font-size: smaller; } }
 em { font-weight: normal; font-style: italic; }
 :lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
 strong { font-weight: bolder; font-style: normal; }
 :lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
-.post-date { font-size: small; font-family: "Fira Mono", "Droid Sans Mono", monospace; }
+.post-date { font-size: small; width: 9ex; text-align: end; }
 /* cat-in-136.blog() base */
 html, body { height: 100%; background-color: #fff; color: #000; line-height: 1.5; }
 a { color: #064583; text-decoration: none; transition: color 0.5s linear; }
