@@ -5,14 +5,18 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 06 Sep 2015 01:36:39 +0900</pubDate>
-    <lastBuildDate>Sun, 06 Sep 2015 01:36:39 +0900</lastBuildDate>
+    <pubDate>Sun, 06 Sep 2015 01:46:06 +0900</pubDate>
+    <lastBuildDate>Sun, 06 Sep 2015 01:46:06 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
       <item>
         <title>帝都高速度交通営団の団章の解析</title>
         <description>&lt;p&gt;
 かつて存在した&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E5%B8%9D%E9%83%BD%E9%AB%98%E9%80%9F%E5%BA%A6%E4%BA%A4%E9%80%9A%E5%96%B6%E5%9B%A3&quot;&gt;帝都高速度交通営団&lt;/a&gt;の団章はなかなか幾何学的様式美に優れている。
 &lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;256&quot; height=&quot;256&quot; data=&quot;/images/201509_trta_emblem_design_analysis.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;&lt;abbr title=&quot;Teito Rapid Transit Authority&quot;&gt;TRTA&lt;/abbr&gt; Emblem Design Analysis&lt;/figcaption&gt;
+&lt;/figure&gt;
 &lt;p&gt;
 &amp;#8895;ABCおよび直角二等辺三角形になっていて、
 &amp;#8736;CABが直角、その他が45度である。
@@ -39,12 +43,12 @@
 &lt;/form&gt;
 &lt;figure id=&quot;trta-emblem-figure&quot; style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;256px&quot; height=&quot;256px&quot; viewBox=&quot;0 0 256 256&quot;&gt;
-  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;256&quot; height=&quot;256&quot; style=&quot;fill: #fff;&quot; /&gt;
-  &lt;circle id=&quot;trta-emblem-outer-circle&quot; cx=&quot;128&quot; cy=&quot;128&quot; r=&quot;49&quot; style=&quot;fill: #e70012;&quot; /&gt;
-  &lt;circle id=&quot;trta-emblem-inner-circle&quot; cx=&quot;128&quot; cy=&quot;128&quot; r=&quot;35&quot; style=&quot;fill: #fff;&quot; /&gt;
-  &lt;polygon id=&quot;trta-emblem-polygon&quot; points=&quot;93.35176772185918,93.35176772185918 51.70353544371834,135 170.49747468305833,135 152.74873734152916,162.64823227814082 162.64823227814082,162.64823227814082 204.29646455628165,121 85.50252531694167,121 103.25126265847084,93.35176772185918&quot; style=&quot;fill: #e70012;&quot; /&gt;
-  &lt;rect id=&quot;trta-emblem-blank-topright&quot; x=&quot;128&quot; y=&quot;112&quot; width=&quot;128&quot; height=&quot;9&quot; style=&quot;fill: #fff;&quot; /&gt;
-  &lt;rect id=&quot;trta-emblem-blank-bottomleft&quot; x=&quot;0&quot; y=&quot;135&quot; width=&quot;128&quot; height=&quot;9&quot; style=&quot;fill: #fff;&quot; /&gt;
+  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;256&quot; height=&quot;256&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/rect&gt;
+  &lt;circle id=&quot;trta-emblem-outer-circle&quot; cx=&quot;128&quot; cy=&quot;128&quot; r=&quot;80&quot; style=&quot;fill: #e70012;&quot;&gt;&lt;/circle&gt;
+  &lt;circle id=&quot;trta-emblem-inner-circle&quot; cx=&quot;128&quot; cy=&quot;128&quot; r=&quot;50&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/circle&gt;
+  &lt;polygon id=&quot;trta-emblem-polygon&quot; points=&quot;71.4314575050762,71.4314575050762 -0.13708498984760809,143 183.71067811865476,143 163.35533905932738,184.5685424949238 184.5685424949238,184.5685424949238 256.1370849898476,113 72.28932188134524,113 92.64466094067262,71.4314575050762&quot; style=&quot;fill: #e70012;&quot;&gt;&lt;/polygon&gt;
+  &lt;rect id=&quot;trta-emblem-blank-topright&quot; x=&quot;128&quot; y=&quot;103&quot; width=&quot;128&quot; height=&quot;10&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/rect&gt;
+  &lt;rect id=&quot;trta-emblem-blank-bottomleft&quot; x=&quot;0&quot; y=&quot;143&quot; width=&quot;128&quot; height=&quot;10&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/rect&gt;
 &lt;/svg&gt;
 &lt;/figure&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
@@ -90,9 +94,11 @@
 注記：団章は、東京地下鉄株式会社の登録商標である。
 &lt;/p&gt;
 </description>
-        <pubDate>Sun, 06 Sep 2015 01:33:55 +0900</pubDate>
+        <pubDate>Sun, 06 Sep 2015 01:35:35 +0900</pubDate>
         <link>http://cat-in-136.github.io/2015/09/trta-emblem-design-analysis.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2015/09/trta-emblem-design-analysis.html</guid>
+        <category>logo</category>
+        <category>train and rails</category>
       </item>
       <item>
         <title>Diff between firefox 41.0 beta 3 default preference and firefox 40.0.2</title>
