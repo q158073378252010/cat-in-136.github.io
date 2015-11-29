@@ -8,54 +8,73 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2015/04/jekyll-travis-ci-github-pages-deployment.html" rel="bookmark">Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2015-04-30T00:42:49+09:00</time>
+      
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_jekyll">Jekyll</a>
+      
       <a class="tag" href="/tags.html#tag_travis-ci">Travis-ci</a>
+      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>まとめる気はない、単なる Travis CI のチラ裏メモ。</p>
+
 <h4 id="section">メモ</h4>
+
 <ul>
   <li>Travis-CI のビルド処理は<a href="http://docs.travis-ci.com/user/workers/container-based-infrastructure/" title="Travis CI: Using container-based infrastructure">コンテナ型仮想化で動いて</a>いる。
     <ul>
       <li>OS は ubuntu 。ただし、何か細工しているかもしれないが未調査。</li>
-      <li>よって <code>.travis.yml</code> は <code>Dockerfile</code> のノリで書く。</li>
-      <li><code>apt-get</code> も使える。また、<a href="http://docs.travis-ci.com/user/apt/" title="Travis CI: APT Sources and Packages">aptアドオン</a>?の形でも使える。</li>
+      <li>よって <code class="highlighter-rouge">.travis.yml</code> は <code class="highlighter-rouge">Dockerfile</code> のノリで書く。</li>
+      <li><code class="highlighter-rouge">apt-get</code> も使える。また、<a href="http://docs.travis-ci.com/user/apt/" title="Travis CI: APT Sources and Packages">aptアドオン</a>?の形でも使える。</li>
     </ul>
   </li>
   <li>ruby まわりの前提として rvm 、bundle 使用が無難
     <ul>
-      <li>bundle 使わないですべて Apt で管理することもできるが、<code>Gemfile</code> をコミットした運用がよいだろう。</li>
-      <li><code>rake</code> は <code>bundle exec rake</code> のように、ruby は <code>bundle</code> を介して使用しよう。</li>
+      <li>bundle 使わないですべて Apt で管理することもできるが、<code class="highlighter-rouge">Gemfile</code> をコミットした運用がよいだろう。</li>
+      <li><code class="highlighter-rouge">rake</code> は <code class="highlighter-rouge">bundle exec rake</code> のように、ruby は <code class="highlighter-rouge">bundle</code> を介して使用しよう。</li>
     </ul>
   </li>
   <li>Github のレポジトリに push したい場合は、何らかの秘密鍵を入れこむか、アクセストークンを使用する。
@@ -63,14 +82,14 @@
       <li>鍵・アクセストークンともに公開すべきではないので、レポジトリに平文で格納しないこと。
         <ul>
           <li><a href="https://www.npmjs.com/package/travis-encrypt">travis-encrypt</a> を使えば暗号化されたテキストでやりとりできるので、センシティブな情報をやりとりするのにつかえる。</li>
-          <li><code>travis encrypt -r ユーザ名/レポジトリ名 FOO=bar</code> とした上で <code>.travis.yml</code> に暗号化したテキストを書くのと、Travis の設定で環境変数 <code>FOO=bar</code> を非公開で設定するのは、動きに差はほどんどない。が、環境変数だったら後者の方がずっと楽。
+          <li><code class="highlighter-rouge">travis encrypt -r ユーザ名/レポジトリ名 FOO=bar</code> とした上で <code class="highlighter-rouge">.travis.yml</code> に暗号化したテキストを書くのと、Travis の設定で環境変数 <code class="highlighter-rouge">FOO=bar</code> を非公開で設定するのは、動きに差はほどんどない。が、環境変数だったら後者の方がずっと楽。
             <ul>
-              <li>設定箇所への直リンは <code>https://travis-ci.org/ユーザ名/レポジトリ名/settings/env_vars</code></li>
+              <li>設定箇所への直リンは <code class="highlighter-rouge">https://travis-ci.org/ユーザ名/レポジトリ名/settings/env_vars</code></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li>アクセストークンを使って git にアクセスするは、<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> から Personal access token を生成し、<code>https://$GH_TOKEN@github.com/ユーザ名/レポジトリ名.git</code> から git clone すればよい。というか、これだけなのでアクセストークンの方がずっと簡単。
+      <li>アクセストークンを使って git にアクセスするは、<a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> から Personal access token を生成し、<code class="highlighter-rouge">https://$GH_TOKEN@github.com/ユーザ名/レポジトリ名.git</code> から git clone すればよい。というか、これだけなのでアクセストークンの方がずっと簡単。
         <ul>
           <li>アクセストークンは環境変数としておいて上述の方法をつかってレポジトリに公開しないようにする。</li>
         </ul>
@@ -78,63 +97,83 @@
     </ul>
   </li>
 </ul>
+
 <h4 id="section-1">やったことのメモ</h4>
+
 <p>アウトプット:</p>
+
 <ul>
   <li><a href="https://github.com/cat-in-136/blog/blob/master/.travis.yml">.travis.yml</a></li>
   <li><a href="https://github.com/cat-in-136/blog/blob/master/Rakefile">Rakefile</a></li>
 </ul>
+
 <ol>
   <li>Travis を Jekyll ソースのレポジトリと紐付ける。</li>
-  <li>bundle を使用するように変更。<code>Gemfile</code> と <code>Gemfile.lock</code> を使用するように変更（厳密にはきちんと使っていなかったのできちんと書いた）。</li>
-  <li><code>Rakefile</code> に初期化コードも含めて本当にすべて動くようにした。(<code>setup</code> タスクの追加)</li>
-  <li><code>.travis.yml</code> を記載
+  <li>bundle を使用するように変更。<code class="highlighter-rouge">Gemfile</code> と <code class="highlighter-rouge">Gemfile.lock</code> を使用するように変更（厳密にはきちんと使っていなかったのできちんと書いた）。</li>
+  <li><code class="highlighter-rouge">Rakefile</code> に初期化コードも含めて本当にすべて動くようにした。(<code class="highlighter-rouge">setup</code> タスクの追加)</li>
+  <li><code class="highlighter-rouge">.travis.yml</code> を記載
     <ul>
       <li>LSI を使用するので、Apt で GSL ライブラリをインストールするようにした。</li>
-      <li><code>bundle install</code> は特に書かなくても <code>language: ruby</code> になっていれば動くみたい。</li>
-      <li><code>rake setup</code>、<code>rake generate</code> を呼び出す…のだが、<code>bundle exec rake setup</code> のように bundle を通して呼ぶようにする。</li>
+      <li><code class="highlighter-rouge">bundle install</code> は特に書かなくても <code class="highlighter-rouge">language: ruby</code> になっていれば動くみたい。</li>
+      <li><code class="highlighter-rouge">rake setup</code>、<code class="highlighter-rouge">rake generate</code> を呼び出す…のだが、<code class="highlighter-rouge">bundle exec rake setup</code> のように bundle を通して呼ぶようにする。</li>
       <li>環境変数のうちレポジトリに登録してしまってよいものを記載する。</li>
     </ul>
   </li>
-  <li>github アクセストークンを取得し、Travis CI の設定で環境変数 <code>GH_TOKEN</code> に設定する。 <code>.travis.yml</code> でそれを参照するべきところは <code>$GH_TOKEN</code> に置き換える。</li>
-  <li><code>git push</code> すると Travis が動いてくれるのでログを確認し、エラーがなくなるまで check &amp; try する。</li>
+  <li>github アクセストークンを取得し、Travis CI の設定で環境変数 <code class="highlighter-rouge">GH_TOKEN</code> に設定する。 <code class="highlighter-rouge">.travis.yml</code> でそれを参照するべきところは <code class="highlighter-rouge">$GH_TOKEN</code> に置き換える。</li>
+  <li><code class="highlighter-rouge">git push</code> すると Travis が動いてくれるのでログを確認し、エラーがなくなるまで check &amp; try する。</li>
 </ol>
+
 <p>アクセストークンの隠蔽には少し苦労した。
-ビルドログにて環境変数を設定する所はきちんと <code>$ export GH_TOKEN=[secure]</code> のように隠蔽してくれるのだが、
-<code>git push</code> のところでどうしても <code>To https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@github.com/cat-in-136/cat-in-136.github.io.git</code> のようなログが表示される。
-しかも標準出力ではなく標準 <em>エラー</em> 出力に吐かれているので <code>&gt; /dev/null</code> でも表示されてしまう。
-というわけで、<code>git push</code> を呼び出す所は強引だが <code>bundle exec rake -q deploy 2&gt;&amp;1 | sed "s/${GH_TOKEN}/\${GH_TOKEN}/g"</code> とした。
+ビルドログにて環境変数を設定する所はきちんと <code class="highlighter-rouge">$ export GH_TOKEN=[secure]</code> のように隠蔽してくれるのだが、
+<code class="highlighter-rouge">git push</code> のところでどうしても <code class="highlighter-rouge">To https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@github.com/cat-in-136/cat-in-136.github.io.git</code> のようなログが表示される。
+しかも標準出力ではなく標準 <em>エラー</em> 出力に吐かれているので <code class="highlighter-rouge">&gt; /dev/null</code> でも表示されてしまう。
+というわけで、<code class="highlighter-rouge">git push</code> を呼び出す所は強引だが <code class="highlighter-rouge">bundle exec rake -q deploy 2&gt;&amp;1 | sed "s/${GH_TOKEN}/\${GH_TOKEN}/g"</code> とした。
 （標準エラー出力を標準出力にぶちこんで、さらにそれを sed でテキスト置換）</p>
+
 <h4 id="section-2">参考文献</h4>
+
 <ul>
   <li><a href="http://blog.toshimaru.net/autodeploy-jekyll/" title="Jekyllでgit pushをフックしてGithubPageへ自動デプロイするようにした">Jekyllでgit pushをフックしてGithubPageへ自動デプロイするようにした</a>, Hack Your Design, 15 Nov 2013.</li>
   <li><a href="http://pchw.github.io/blog/2013/06/27/octopress-travis/" title="OctopressとTravis CIを連携させてBlog生成を自動にする">OctopressとTravis CIを連携させてBlog生成を自動にする</a>, ぽっちぽちにしてやんよ, 27 Jun 2013.</li>
   <li><a href="http://docs.travis-ci.com/user/workers/container-based-infrastructure/" title="Travis CI: Using container-based infrastructure">Travis CI: Using container-based infrastructure</a></li>
   <li><a href="http://docs.travis-ci.com/user/apt/" title="Travis CI: APT Sources and Packages">Travis CI: APT Sources and Packages</a></li>
 </ul>
+
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html&amp;text=Jekyll%20%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%20Travis%20CI%20%E4%BD%BF%E3%81%A3%E3%81%A6%20Github%20Page%20%E3%81%B8%E3%81%AE%E9%85%8D%E5%82%99%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%81%AE%E3%83%A1%E3%83%A2+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html&amp;linkname=Jekyll%20%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%20Travis%20CI%20%E4%BD%BF%E3%81%A3%E3%81%A6%20Github%20Page%20%E3%81%B8%E3%81%AE%E9%85%8D%E5%82%99%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%81%AE%E3%83%A1%E3%83%A2+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2015-04-30-jekyll-travis-ci-github-pages-deployment.md" class="source-path">_posts/2015-04-30-jekyll-travis-ci-github-pages-deployment.md</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2015-04-30-jekyll-travis-ci-github-pages-deployment.md">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2015/04/diff-between-firefox-380-beta-1-default.html" title="Diff between firefox 38.0 beta 1 default preference and firefox 37.0.1" rel="prev">&#x2190;Diff between firefox 38.0 beta 1 default preference and firefox 37.0.1</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html" title="C言語での static キーワード付き配列パラメータ宣言" rel="next">C言語での static キーワード付き配列パラメータ宣言&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -146,31 +185,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-07-31</span>
       <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">rpmbuild setting for multi core CPU (2)</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-02-27</span>
       <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-08-08</span>
       <a class="post-link" href="/2010/08/hack-micropolis-aka-simcity-and-get.html">Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2014-09-21</span>
-      <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</a>
+      <span class="post-date">2010-08-11</span>
+      <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -210,5 +260,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

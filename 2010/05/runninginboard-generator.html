@@ -12,37 +12,52 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/05/runninginboard-generator.html" rel="bookmark">Running_in_board Generator (駅名標ジェネレータ)</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-05-16T19:39:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:30+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
       <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      
       <a class="tag" href="/tags.html#tag_train%20and%20rails">Train and rails</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <canvas id="__rib_canvas" width="300" height="200">Get a modern browser (<a href="http://www.getfirefox.net/">Firefox</a>, <a href="http://www.google.com/chrome/">Google Chrome</a> and so on) to run this generator.</canvas>
 <div id="__rib_errormsg"></div>
@@ -57,11 +72,13 @@ try {
     update: function() {
       var ctx = Rib.getContext();
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
       Rib.currentRenderer = document.getElementById("__rib_type").value;
       var renderer = Rib.Renderer[Rib.currentRenderer];
       ctx.canvas.setAttribute("width", renderer.size[0]);
       ctx.canvas.setAttribute("height", renderer.size[1]);
       renderer.render();
+
       for (var i = 0; i < Rib.elemids.length; i++) {
         document.getElementById(Rib.elemids[i]).removeAttribute("disabled");
       }
@@ -77,12 +94,15 @@ try {
         size: [300, 200],
         render: function() {
           var ctx = Rib.getContext();
+         
           var w = ctx.canvas.width;
           var h = ctx.canvas.height;
           var hLine_h = ctx.canvas.height * 0.65;
+         
           ctx.lineWidth = 5.0;
           ctx.strokeStyle = "black";
           ctx.fillStyle = "black";
+         
           ctx.beginPath();
           ctx.moveTo(w, hLine_h);
           ctx.lineTo(0 + ctx.lineWidth    , hLine_h);
@@ -91,10 +111,12 @@ try {
           ctx.lineTo(0 + ctx.lineWidth / 2, hLine_h);
           ctx.lineTo(0 + ctx.lineWidth / 2 + 10, hLine_h + 10);
           ctx.stroke();
+         
           ctx.beginPath();
           ctx.moveTo(w / 2, hLine_h);
           ctx.lineTo(w / 2, h);
           ctx.stroke();
+         
           ctx.font = (h*0.25)+"px sans-serif";
           ctx.textAlign = "center";
           ctx.fillText(document.getElementById("__rib_hira").value, w/2, (h*0.25));
@@ -102,12 +124,14 @@ try {
           ctx.textAlign = "center";
           ctx.fillText(document.getElementById("__rib_kanji").value, w/2, (h*0.4));
           ctx.fillText(document.getElementById("__rib_romaji").value.toUpperCase(), w/2, (h*0.55));
+         
           ctx.font = (h*0.15)+"px sans-serif";
           ctx.textAlign = "center";
           ctx.fillText(document.getElementById("__rib_nhira").value, w*0.25, (h*0.85));
           ctx.font = (h*0.1)+"px sans-serif";
           ctx.textAlign = "center";
           ctx.fillText(document.getElementById("__rib_nromaji").value.toUpperCase(), w*0.25, h);
+         
           ctx.font = (h*0.15)+"px sans-serif";
           ctx.textAlign = "center";
           ctx.fillText(document.getElementById("__rib_phira").value, w*0.75, (h*0.85));
@@ -122,10 +146,12 @@ try {
         nouse: "__rib_nhira,__rib_phira".split(","),
         render: function() {
           var ctx = Rib.getContext();
+         
           var w = ctx.canvas.width;
           var h = ctx.canvas.height;
           var hLine_h = h * 0.5;
           var hLine_lw = h * 0.2;
+
           ctx.beginPath();
           ctx.fillStyle = "green";
           ctx.moveTo(w, hLine_h);
@@ -134,9 +160,11 @@ try {
           ctx.lineTo(hLine_lw, hLine_h + hLine_lw * 1.0);
           ctx.lineTo(w, hLine_h + hLine_lw);
           ctx.fill();
+
           ctx.beginPath();
           ctx.fillStyle = document.getElementById("__rib_color").value;
           ctx.fillRect(w/2 - hLine_lw / 2, hLine_h, hLine_lw, hLine_lw);
+
           ctx.font = (h*0.3)+"px sans-serif";
           ctx.fillStyle = "black";
           ctx.textAlign = "center";
@@ -147,6 +175,7 @@ try {
           ctx.font = (h*0.15)+"px sans-serif";
           ctx.textAlign = "center";
           ctx.fillText(document.getElementById("__rib_romaji").value, w/2, (h*0.85));
+
           ctx.font = (hLine_lw*0.75)+"px sans-serif";
           ctx.fillStyle = "white";
           ctx.textAlign = "left";
@@ -154,6 +183,7 @@ try {
           ctx.fillStyle = "black";
           ctx.font = (h*0.1)+"px sans-serif";
           ctx.fillText(document.getElementById("__rib_nromaji").value, hLine_lw + 5, h*0.8);
+
           ctx.font = (hLine_lw*0.75)+"px sans-serif";
           ctx.fillStyle = "white";
           ctx.textAlign = "right";
@@ -179,6 +209,7 @@ try {
 <a id="__rib_link_to_this_img" href="javascript:void(0);">Link to this image</a>
 <fieldset>
 <legend>This station</legend>
+
 <input type="text" id="__rib_hira" value="とうきょう" />
 <input type="text" id="__rib_kanji" value="東京" />
 <input type="text" id="__rib_romaji" value="Tōkyō" />
@@ -194,6 +225,7 @@ try {
 <input type="text" id="__rib_phira" value="ゆうらくちょう" />
 <input type="text" id="__rib_pkanji" value="有楽町" />
 <input type="text" id="__rib_promaji" value="Yurakuchō" />
+
 </fieldset>
 <label for="__rib_color">Color of this line:</label>
 <input type="text" id="__rib_color" value="#00b2e5" />
@@ -207,6 +239,7 @@ try {
 <noscript>
 Enable JavaScript to run this generator.
 </noscript>
+
 <p>
 Powered by HTML5 &lt;canvas&gt; Text.
 </p>
@@ -217,29 +250,41 @@ Unlike europian Running-in-board, Japanese (and/or east Asian) Running-in-board 
 <figure>
 <a href="http://commons.wikimedia.org/wiki/File:JR_Tokyo_Keihintouhoku_and_Yamanote_Line.jpg" style="margin-left: auto; margin-right: auto;"><img src="/images/120px-JR_Tokyo_Keihintouhoku_and_Yamanote_Line.jpg" /></a>
 </figure>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/05/runninginboard-generator.html&amp;text=Running_in_board%20Generator%20(%E9%A7%85%E5%90%8D%E6%A8%99%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/05/runninginboard-generator.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/05/runninginboard-generator.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/05/runninginboard-generator.html&amp;linkname=Running_in_board%20Generator%20(%E9%A7%85%E5%90%8D%E6%A8%99%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF)+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-05-16-runninginboard-generator.html" class="source-path">_posts/2010-05-16-runninginboard-generator.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-05-16-runninginboard-generator.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/05/oopp-setting-on-configuration-mania.html" title="OOPP Setting on Configuration Mania" rel="prev">&#x2190;OOPP Setting on Configuration Mania</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/05/comparison-of-adobe-flash-and-apple.html" title="Comparison of Adobe Flash and Apple Gianduia and Google Web Toolkit" rel="next">Comparison of Adobe Flash and Apple Gianduia and Google Web Toolkit&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -251,31 +296,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2012-10-08</span>
       <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2015-09-06</span>
       <a class="post-link" href="/2015/09/trta-emblem-design-analysis.html">帝都高速度交通営団の団章の解析</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2011-05-20</span>
       <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2015-01-19</span>
-      <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-12-04</span>
       <a class="post-link" href="/2010/12/aadecode-decode-encoded-as-aaencode.html">aadecode - Decode encoded-as-aaencode JavaScript program. [&#39;_&#39;]</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-05-20</span>
+      <a class="post-link" href="/2010/05/which-is-faster-eval-or-jsonparse.html">Which is faster eval() or JSON.parse()</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -315,5 +371,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

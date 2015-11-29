@@ -8,42 +8,59 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="mingw32での「undefined reference to `WinMain@16&#39;」" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/03/mingw32undefined-reference-to-winmain16.html" rel="bookmark">mingw32での「undefined reference to `WinMain@16&#39;」</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-03-06T01:01:00+09:00</time>
       (Modified: <time>2013-11-23T22:32:35+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_win32api">Win32api</a>
+      
       <a class="tag" href="/tags.html#tag_mingw">Mingw</a>
+      
       <a class="tag" href="/tags.html#tag_windows">Windows</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>Unicode有効（<code>-DUNICODE -D_UNICODE</code>）時に下記のコードをmingw32-gccでビルドしようとすると"WinMain"が未定義ですという旨のリンクエラーが出てしまう。</p>
 <pre class="prettyprint"><code>#include &lt;windows.h&gt;
@@ -53,9 +70,11 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 {
     return 0;
 }
-</code></pre><pre style="background-color: #000; color: #fff; overflow: auto; padding: 2px;"><code>$ gcc -o foobar.exe foobar.c -D_UNICODE -DUNICODE -mwindows -lmingw32 -lkernel32
+</code></pre>
+<pre style="background-color: #000; color: #fff; overflow: auto; padding: 2px;"><code>$ gcc -o foobar.exe foobar.c -D_UNICODE -DUNICODE -mwindows -lmingw32 -lkernel32
 /usr/i686-pc-mingw32/sys-root/mingw/lib/libmingw32.a(main.o):(.text+0xd2): undefined reference to `WinMain@16'
-$ </code></pre><p>
+$ </code></pre>
+<p>
 解決策は<strong><code>int main(int, char**)</code>を定義するべし</strong>。これはぐぐれば比較的容易に発見可能。では、なぜか?という点の解説は日本語のページにはあまりないようだ。
 </p>
 <h3>ANSI版WinMainの場合</h3>
@@ -63,7 +82,8 @@ $ </code></pre><p>
 コンパイルオプションから<code>-D_UNICODE -DUNICODE</code>を抜くとANSI版でコンパイルされる。このとき問題なくコンパイルされ、（Unicode対応していない点を除いて）正常に動作する。
 </p>
 <pre style="background-color: #000; color: #fff; overflow: auto; padding: 2px;"><code>$ gcc -o foobar.exe foobar.c -mwindows -lmingw32 -lkernel32
-$ </code></pre><p>
+$ </code></pre>
+<p>
 このコンパイルオプションとき、<code>TCHAR</code>は<code>CHAR</code>に、<code>_tWinMain</code>関数は<code>WinMain</code>関数とみなされる。これは<code>tchar.h</code>での単純な<code>#define</code>で実現されている。
 </p>
 <blockquote><pre class="prettyprint"><code>#define _tmain      main
@@ -92,37 +112,51 @@ $ </code></pre><p>
 <p>
 この面倒くさい説明を省いた結果、代替策の一つである<code>WinMain</code>の代わりに<code>main</code>関数の利用が解決策として提示されることになったようである。
 </p>
+
 <p style="font-size: smaller; font-weight: lighter; border: solid 1px #aaa;">
 解決策の事例は<a href="/2012/04/unicodemingw32twinmainwwinmain.html">UnicodeでMingw32の落とし穴&#12316;_tWinMain/wWinMain問題など&#12316;</a>に書きました。<br />
 </p>
+
 <h3>参考文献</h3>
 <ul>
 <li>mingw32-runtime 3.15.2 付属の<code>tchar.h</code></li>
 <li><a href="http://lists-archives.org/mingw-users/07124-link-error-when-using-_tmain.html"> Re: [Mingw-users] link error when using _tmain</a></li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html&amp;text=mingw32%E3%81%A7%E3%81%AE%E3%80%8Cundefined%20reference%20to%20%60WinMain@16'%E3%80%8D+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html&amp;linkname=mingw32%E3%81%A7%E3%81%AE%E3%80%8Cundefined%20reference%20to%20%60WinMain@16'%E3%80%8D+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-03-06-mingw32undefined-reference-to-winmain16.html" class="source-path">_posts/2010-03-06-mingw32undefined-reference-to-winmain16.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-03-06-mingw32undefined-reference-to-winmain16.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/03/m-ipam1mipag-circle.html" title="「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい" rel="prev">&#x2190;「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/03/uac-shield-icon-incompatibility-between.html" title="UAC shield icon incompatibility between Vista and 7" rel="next">UAC shield icon incompatibility between Vista and 7&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -134,31 +168,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2012-04-22</span>
       <a class="post-link" href="/2012/04/unicodemingw32twinmainwwinmain.html">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-03-17</span>
       <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-06-29</span>
       <a class="post-link" href="/2014/06/lukstruecrypt.html">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -198,5 +243,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

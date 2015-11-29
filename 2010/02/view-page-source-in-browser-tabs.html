@@ -8,40 +8,55 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="&quot;View Page Source&quot; in browser tabs without any addons" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/02/view-page-source-in-browser-tabs.html" rel="bookmark">&quot;View Page Source&quot; in browser tabs without any addons</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-02-27T22:52:00+09:00</time>
       (Modified: <time>2010-02-28T14:21:01+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>
 Drag following bookmarklet to your bookmarks toolbar, then click it.
@@ -53,6 +68,7 @@ Drag following bookmarklet to your bookmarks toolbar, then click it.
 <p>
 NOTE: If "Tabs"-&gt;"Open new windows in a new tab instead" on the Firefox Preference is not checked, the bookmarklet "View Page Source in a new tab" does not work (view page source in a new <em>window</em>.)
 </p>
+
 <h3>Supported browser</h3>
 <p>
 These bookmarklets work with not only Firefox but also Safari and Google Chrome.
@@ -61,16 +77,21 @@ These do not work with IE and Opera because they do not support "view-source:" U
 <p>
 "view-source:" URI scheme refer to source-code for a given URI. This bookmarklet generate and open "view-source:" URI.
 </p>
+
 <h3>Extra edition</h3>
+
 <p>
 On firefox, "view-source:" scheme is also applicable to "data:" scheme. Following bookmarklet is the demo to show source code of JavaScript-generated partial html code.
 </p>
+
 <ul>
+
 <li><a href="javascript:(function(){var a=window.getSelection();var b=location.href;if(a.rangeCount!=0){var c=a.getRangeAt(0);if(!c.collapsed){var d=document.createElement('div');d.appendChild(c.cloneContents());b='data:text/html;base64,'+btoa(d.innerHTML)}}window.open('view-source:'+b,'_blank')})();">View Page/Selection Source in a new tab</a> : If some text is selected, then view selection source. If no text is selected, then view page source.</li>
 </ul>
 <p>
 These bookmarklets work with only Firefox.
 </p>
+
 <p>
 Original code of this bookmarklet is as follows
 </p>
@@ -88,35 +109,49 @@ javascript:(function() {
   }
   window.open("view-source:" + url, "_blank");
 })();
-</code></pre><h3>See also</h3>
+</code></pre>
+
+<h3>See also</h3>
+
 <ul>
 <li><a href="https://wiki.mozilla.org/Firefox/Projects/View_Source_in_Tab">View Source in Tab</a> : a proposal of changing "View Page Source" behaviour</li>
 <li><a href="http://piro.sakura.ne.jp/xul/_viewsourceintab.html.en">Source Viewer Tab</a> : a famous addon for this purpose, but full of future is available</li>
 <li><a href="http://en.wikipedia.org/wiki/View-source_URI_scheme">View-source URI scheme</a> (wikipedia)</li>
 </ul>
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/02/view-page-source-in-browser-tabs.html&amp;text=%22View%20Page%20Source%22%20in%20browser%20tabs%20without%20any%20addons+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/02/view-page-source-in-browser-tabs.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/02/view-page-source-in-browser-tabs.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/02/view-page-source-in-browser-tabs.html&amp;linkname=%22View%20Page%20Source%22%20in%20browser%20tabs%20without%20any%20addons+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-02-27-view-page-source-in-browser-tabs.html" class="source-path">_posts/2010-02-27-view-page-source-in-browser-tabs.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-02-27-view-page-source-in-browser-tabs.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/02/fontforge-script-to-merge-and-replace.html" title="fontforge script to merge and replace font glyphs" rel="prev">&#x2190;fontforge script to merge and replace font glyphs</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/03/m-ipam1mipag-circle.html" title="「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい" rel="next">「M+ と IPAフォントの合成フォント」のM+1M+IPAG circleを自作したい&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -128,31 +163,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2011-05-20</span>
       <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2010-11-29</span>
-      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-08-11</span>
       <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-05-26</span>
       <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">nsIPref is deprecated and removed on Firefox 3.7</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-08-08</span>
       <a class="post-link" href="/2010/08/hack-micropolis-aka-simcity-and-get.html">Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -192,5 +238,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

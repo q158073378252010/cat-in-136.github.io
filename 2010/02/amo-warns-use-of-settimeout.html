@@ -8,41 +8,57 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="AMO warns use of &quot;setTimeout()&quot;" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/02/amo-warns-use-of-settimeout.html" rel="bookmark">AMO warns use of &quot;setTimeout()&quot;</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-02-04T00:20:00+09:00</time>
       (Modified: <time>2010-02-20T12:07:11+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <blockquote>
 Since these functions can be used in the same way as eval() to run code from a string, 
@@ -50,10 +66,12 @@ Since these functions can be used in the same way as eval() to run code from a s
 <p>
 An example of usage to "run code from a string" is:
 </p>
-<pre class="prettyprint"><code>setTimeout("alert('foobar')", 1000);</code></pre><p>
+<pre class="prettyprint"><code>setTimeout("alert('foobar')", 1000);</code></pre>
+<p>
 It is recommended and secure that the first argument of <code>window.setTimeout()</code> is a function, not a string. You can use following sample code:
 </p>
-<pre class="prettyprint"><code>setTimeout(function(){alert('foobar');}, 1000);</code></pre><p>
+<pre class="prettyprint"><code>setTimeout(function(){alert('foobar');}, 1000);</code></pre>
+<p>
 On <a href="https://addons.mozilla.org/firefox/pages/validation#help-21">Mozilla add-on site AMO's security test</a>, <code>window.setTimeout()</code> is <strong>always</strong> flagged as insecure, regardless type of the first argument.
 </p>
 <p>
@@ -63,29 +81,41 @@ So, for JavaScript codes on Firefox(and/or other Mozilla) extensions, <code>wind
  timer.initWithCallback({function(){
    alert('foobar');
  }}, 1000, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
-</code></pre>  </div><!-- post-content -->
+</code></pre>
+  </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html&amp;text=AMO%20warns%20use%20of%20%22setTimeout()%22+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html&amp;linkname=AMO%20warns%20use%20of%20%22setTimeout()%22+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-02-04-amo-warns-use-of-settimeout.html" class="source-path">_posts/2010-02-04-amo-warns-use-of-settimeout.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-02-04-amo-warns-use-of-settimeout.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/01/native-base64-encoderdecoder.html" title="Native base64 encoder/decoder" rel="prev">&#x2190;Native base64 encoder/decoder</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/02/phsspf.html" title="日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ" rel="next">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -97,31 +127,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2010-08-19</span>
-      <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">Tip: Calling window.atob() and btoa() from Jetpack-SDK</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-08-19</span>
+      <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">Tip: Calling window.atob() and btoa() from Jetpack-SDK</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2015-01-19</span>
       <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-11-16</span>
       <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">How to create a JavaScript XPCOM component on bootstrapped addon</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -161,5 +202,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

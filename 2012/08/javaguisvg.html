@@ -12,53 +12,75 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2012/08/javaguisvg.html" rel="bookmark">JavaのGUIをベクトルデータとしてスクリーンショットを撮る〜SVG編〜</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2012-08-30T23:47:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:37+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_java">Java</a>
+      
       <a class="tag" href="/tags.html#tag_svg">Svg</a>
+      
       <a class="tag" href="/tags.html#tag_swing">Swing</a>
+      
       <a class="tag" href="/tags.html#tag_gui">Gui</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>かつて<a href="/2012/01/javagui.html" title="JavaのGUIをベクトルデータとしてスクリーンショットを撮る">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</a>
 と題して、JavaといってもSwing GUI限定ではあるが、
 スクリーンショットを PostScript で出力するアイデアを紹介した。
 しかし、実際に実装するとテキストがパス化されていたりなど、
 細かい点で問題が残った。</p>
+
 <p>その結論で、<a href="http://xmlgraphics.apache.org/batik/">Batik</a>を使ってよりよい出力ができるのではないかと示唆した。</p>
+
 <blockquote cite="http://cat-in-136.blogspot.com/2012/01/javagui.html">
   <p>半透明などをベクトルデータとして出力できない問題を解決するには、グラフィックコンテクストの描画命令から SVG などの出力を行うものが必要となるだろう。[4]</p>
   <p>[4] <a href="http://xmlgraphics.apache.org/batik/using/svg-generator.html">SVG Generator: SVGGraphics2D</a>, The Apache Software Foundation</p>
 </blockquote>
+
 <p>というわけで、Batik の <a href="http://xmlgraphics.apache.org/batik/using/svg-generator.html#howToUse">How to use SVGGraphics2D</a> というページを参考にして作ってみた。</p>
+
 <p>つまり、前回のソースに対して、以下のような document に描画情報を出力した後ファイル出力するコードをねじ込んだ。</p>
+
 <pre class="prettyprint"><code>DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 DocumentBuilder builder = factory.newDocumentBuilder();
 Document document = builder.getDOMImplementation().createDocument("http://www.w3.org/2000/svg", "svg", null);
@@ -69,17 +91,24 @@ for (int i = 0; printable.print((Graphics)svgGenerator, pagefmt, i) == Printable
     // do nothing
 }
 svgGenerator.stream(filewriter, true);
-</code></pre><p>これはなかなか強力で、テキストがテキストのままで出力された。
+</code></pre>
+
+<p>これはなかなか強力で、テキストがテキストのままで出力された。
 テキスト描画がそのまま<text>要素でSVGに変換されていた。</p>
+
 <figure style="display: block; margin: 1em; font-size: smaller;">
 <a href="/images/foobar.png" imageanchor="1" style="margin-left:1em; margin-right:1em"><img src="/images/foobar.png" width="320" height="201" /></a>
+
 <figcaption style="display: block;">SwingSet2 のSVGスクリーンショットを inkscape で開いたところ。テキスト選択可能。</figcaption> </figure>
+
+
 <p>しかし、問題もかなりあって、Exception が出て出力できないことが
 しばしばある。
 しかも
 <code>org.apache.batik.ext.awt.image.codec.png.PNGImageEncoder.encode</code>
 で<code>RuntimeException</code>とか一筋縄で行かなさそう。
 （そして筆者はそれ以上の原因追求はおこなっていない）</p>
+
 <p>さらに、そもそもの問題であるが、Batik は 2008年 にリリースされた
 バージョン 1.7 から安定バージョンが出ていない。
 つまりメンテナンスが積極的に行われていない感が拭えない。
@@ -87,29 +116,41 @@ svgGenerator.stream(filewriter, true);
 のログを見るとまだ手を入れられているので、
 <code>trunk</code>から落としてきて最新trunkビルドで試したほうがよかったかもしれない。
 （が、ビルドが面倒なので確認していない。）</p>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/08/javaguisvg.html&amp;text=Java%E3%81%AEGUI%E3%82%92%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E3%81%97%E3%81%A6%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%82%92%E6%92%AE%E3%82%8B%E3%80%9CSVG%E7%B7%A8%E3%80%9C+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/08/javaguisvg.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/08/javaguisvg.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/08/javaguisvg.html&amp;linkname=Java%E3%81%AEGUI%E3%82%92%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E3%81%97%E3%81%A6%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%82%92%E6%92%AE%E3%82%8B%E3%80%9CSVG%E7%B7%A8%E3%80%9C+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-08-30-javaguisvg.html" class="source-path">_posts/2012-08-30-javaguisvg.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-08-30-javaguisvg.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2012/08/blog-post_12.html" title="デジタルサイネージ型次世代飲料自販機のカメラに顔を撮られないようにして、商品を購入する方法の一考察" rel="prev">&#x2190;デジタルサイネージ型次世代飲料自販機のカメラに顔を撮られないようにして、商品を購入する方法の一考察</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2012/09/diff-between-firefox-160beta3-default.html" title="Diff between firefox 16.0beta3 default preference and firefox 15.0.1" rel="next">Diff between firefox 16.0beta3 default preference and firefox 15.0.1&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -121,31 +162,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2012-01-15</span>
       <a class="post-link" href="/2012/01/javagui.html">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2012-05-19</span>
       <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2012-08-12</span>
       <a class="post-link" href="/2012/08/blog-post_12.html">デジタルサイネージ型次世代飲料自販機のカメラに顔を撮られないようにして、商品を購入する方法の一考察</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2013-02-24</span>
-      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
+      <span class="post-date">2011-01-03</span>
+      <a class="post-link" href="/2011/01/pov-ray.html">水平線から上がった初日の出のアレをPOV-Rayで再現したい</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -185,5 +237,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

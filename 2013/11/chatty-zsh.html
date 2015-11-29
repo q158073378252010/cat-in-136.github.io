@@ -12,71 +12,104 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/11/chatty-zsh.html" rel="bookmark">小うるさい端末 chatty ――を zsh で。</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2013-11-01T00:30:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:37+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_zsh">Zsh</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <h3>動機づけ</h3>
+
 <blockquote cite="http://0xcc.net/chatty/">
 <p>
 chatty はユーザが入力した文字列に応じて端末のタイトルバーに 小うるさいメッセージを表示するソフトウェアです。
 </p>
 </blockquote>
+
 <p>という<a href="http://0xcc.net/chatty/" title="chatty: 小うるさい端末">代物</a>があるのだが、<strong>zsh 単独でやってみたい</strong>。</p>
+
+
 <figure style="display: block; margin: 1em; text-align: center;">
 <img src="/images/zle-chatty.png" />
 <figcaption>zsh で chatty 動作イメージ</figcaption>
 </figure>
+
 <h3>表示領域</h3>
+
 <p><a href="http://0xcc.net/chatty/" title="chatty: 小うるさい端末">本家 chatty</a> は、複雑な処理となる端末エミュレーションを嫌った結果なのか、
 小うるさいメッセージはタイトルバーに表示される。</p>
+
 <p>しかし、端末エミュレータをいじっている時にタイトルバーを見ることは稀だと思う。
 小うるさい感を出すためには、ユーザが入力している近傍に小うるさいメッセージを出したほうが良いであろう。</p>
+
 <p><abbr title="Zsh Line Editor">zle</abbr>では、
 コマンド入力行のすぐ下にメッセージを表示するコマンド<code>zle -M "..."</code>が用意されているので、これを使うことにする。</p>
+
 <p>例えば、<a href="http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Special-Widgets" title="'The Z Shell Manual' sub-clause 18.5.1 Special Widgets">zsh のマニュアルのZLEの章</a>にあるように下記のようにすると、</p>
+
 <pre class="pretty-print"><code>zle-isearch-update() { zle -M "Line $HISTNO"; }
 zle -N zle-isearch-update
 zle-isearch-exit() { zle -M ""; }
 zle -N zle-isearch-exit
-</code></pre><p>インクリメンタルサーチ時に下に行数<code>"Line $HISTNO"</code>が表示される。</p>
+</code></pre>
+
+<p>インクリメンタルサーチ時に下に行数<code>"Line $HISTNO"</code>が表示される。</p>
+
 <pre style="padding: 2px; background-color: #000; color: #fff;"><code>[cat@localhost /tmp]$ <u>net</u>stat -altup
 bck-i-search: net_
 Line 284
-</code></pre><h3>辞書</h3>
+</code></pre>
+
+<h3>辞書</h3>
+
 <p>辞書化することも考えたが<strong>面倒くさくなったのでやめた</strong>。
 現状 <code>if</code>/<code>elif</code> の連なりというひどく固定的なコードになっている。</p>
+
 <h3>コード</h3>
+
 <p>で、<code>self-insert</code>, <code>magic-space</code>, <code>backward-delete-char</code>, <code>delete-char-or-list</code> をホックして、
 そのときの入力コマンド(<code>$BUFFER</code>)を毎度条件判定してメッセージを表示するという方法に至った。</p>
+
 <pre class="prettyprint"><code># chatty: 小うるさい端末 のzsh版 
 #
 # 元ネタ：http://0xcc.net/chatty/
@@ -177,40 +210,63 @@ chatty-info() {
 
 # Handle zsh autoloading conventions
 chatty-on "$@"
-</code></pre><p>使い方は <code>chatty-on</code> というファイル名で <code>/usr/share/zsh/site-functions</code> (などの<code>$fpath</code>が通っているフォルダ)に置いた上で、下記を実行する。</p>
+</code></pre>
+
+<p>使い方は <code>chatty-on</code> というファイル名で <code>/usr/share/zsh/site-functions</code> (などの<code>$fpath</code>が通っているフォルダ)に置いた上で、下記を実行する。</p>
+
 <pre style="padding: 2px; background-color: #000; color: #fff;"><code>% autoload chatty-on
 % chatty-on
-</code></pre><p>ただし、お試しとして使うために <code>$fpath</code>が通っているフォルダに置きたくない場合は、
+</code></pre>
+
+<p>ただし、お試しとして使うために <code>$fpath</code>が通っているフォルダに置きたくない場合は、
 下記でもよい。</p>
+
 <pre style="padding: 2px; background-color: #000; color: #fff;"><code>% source /path/to/chatty-on
 % chatty-on
-</code></pre><h3>参考文献</h3>
+</code></pre>
+
+<h3>参考文献</h3>
+
 <ul>
 <li><a href="http://0xcc.net/chatty/" title="chatty: 小うるさい端末">chatty: 小うるさい端末</a>, 0xcc.net</li>
 </ul>
+
+
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/11/chatty-zsh.html&amp;text=%E5%B0%8F%E3%81%86%E3%82%8B%E3%81%95%E3%81%84%E7%AB%AF%E6%9C%AB%20chatty%20%E2%80%95%E2%80%95%E3%82%92%20zsh%20%E3%81%A7%E3%80%82+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/11/chatty-zsh.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/11/chatty-zsh.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/11/chatty-zsh.html&amp;linkname=%E5%B0%8F%E3%81%86%E3%82%8B%E3%81%95%E3%81%84%E7%AB%AF%E6%9C%AB%20chatty%20%E2%80%95%E2%80%95%E3%82%92%20zsh%20%E3%81%A7%E3%80%82+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-11-01-chatty-zsh.html" class="source-path">_posts/2013-11-01-chatty-zsh.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-11-01-chatty-zsh.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2013/10/blog-post.html" title="デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト" rel="prev">&#x2190;デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2013/11/this-is-difference-between-default.html" title="Diff between firefox 26.0 beta 5 default preference and firefox 25.0" rel="next">Diff between firefox 26.0 beta 5 default preference and firefox 25.0&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -222,31 +278,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    <li class="post-item">
-      <span class="post-date">2014-04-06</span>
-      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
-    </li>
-    <li class="post-item">
-      <span class="post-date">2014-12-29</span>
-      <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2014-05-12</span>
       <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2013-04-13</span>
-      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-12-29</span>
+      <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-04-27</span>
+      <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">C言語の構造体を構造分析したい〜静的解析としての doxygen</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -286,5 +353,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

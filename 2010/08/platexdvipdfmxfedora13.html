@@ -8,76 +8,105 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="（メモ）platex+dvipdfmxをfedora13で使う方法" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/08/platexdvipdfmxfedora13.html" rel="bookmark">（メモ）platex+dvipdfmxをfedora13で使う方法</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-08-06T23:10:00+09:00</time>
       (Modified: <time>2010-08-06T23:10:00+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <h4>インストール</h4>
+
 <ol>
 <li>texlive-texmfやtexlive-texmf-east-asian、texlive-texmf-errata-east-asianなどをyum/PackageKitでインストールする。依存関係はyum/PackageKitが解決してくれる。
 </li>
 <li>pxdviを必要とする場合、xdvik, sazanami-gothic-fonts, sazanami-mincho-fontsをインストールする（pxdviでは日本語表示用フォントとしてさざなみフォントを使用するため）</li>
 <li>dvipdfmxを必要とする場合、dvipdfmx をインストールする</li>
 </ol>
+
 <h4>後工程</h4>
+
 <p>
 /usr/share/texmf/web2c/texmf.cnf のパラメータ CMAPFONTS の設定を下記の通り修正する。
 </p>
 <pre><code>CMAPFONTS = .;$TEXMF/fonts/cmap//;/usr/share/ghostscript/<em>8.70</em>/Resource/CMap/
 ↓
 CMAPFONTS = .;$TEXMF/fonts/cmap//;/usr/share/ghostscript/<em>8.71</em>/Resource/CMap/
-</code></pre>  </div><!-- post-content -->
+</code></pre>
+  </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/08/platexdvipdfmxfedora13.html&amp;text=%EF%BC%88%E3%83%A1%E3%83%A2%EF%BC%89platex+dvipdfmx%E3%82%92fedora13%E3%81%A7%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/08/platexdvipdfmxfedora13.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/08/platexdvipdfmxfedora13.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/08/platexdvipdfmxfedora13.html&amp;linkname=%EF%BC%88%E3%83%A1%E3%83%A2%EF%BC%89platex+dvipdfmx%E3%82%92fedora13%E3%81%A7%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-08-06-platexdvipdfmxfedora13.html" class="source-path">_posts/2010-08-06-platexdvipdfmxfedora13.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-08-06-platexdvipdfmxfedora13.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" title="rpmbuild setting for multi core CPU (2)" rel="prev">&#x2190;rpmbuild setting for multi core CPU (2)</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/08/hack-micropolis-aka-simcity-and-get.html" title="Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!" rel="next">Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -89,31 +118,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
-      <span class="post-date">2014-04-06</span>
-      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+      <span class="post-date">2010-11-29</span>
+      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2013-12-31</span>
-      <a class="post-link" href="/2013/12/cookie.html">Cookie のブロックを検出する方法：更新</a>
+      <span class="post-date">2013-11-26</span>
+      <a class="post-link" href="/2013/11/define.html">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-06-22</span>
+      <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">Study: multi-text vs single-text on XUL elements</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2015-05-01</span>
       <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2015-07-26</span>
-      <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
+      <span class="post-date">2013-03-18</span>
+      <a class="post-link" href="/2013/03/css.html">CSSの改行を含む属性値を含むセレクターについて</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2011-01-03</span>
-      <a class="post-link" href="/2011/01/pov-ray.html">水平線から上がった初日の出のアレをPOV-Rayで再現したい</a>
-    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -153,5 +193,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

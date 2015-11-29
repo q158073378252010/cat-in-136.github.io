@@ -12,36 +12,50 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2011/09/23.html" rel="bookmark">ポニーテールの揺れの定式化と考察 (2/3)</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2011-09-12T06:00:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:34+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
       <a class="tag" href="/tags.html#tag_ponytail">Ponytail</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <div style="background: #ffd; border: solid 3px #ff8">
 このPostを読むにはMathMLをレンダリングできるFirefoxといったブラウザが
@@ -50,24 +64,32 @@
 <a href="http://getfirefox.com/">Firefoxをインストールする</a>か
 <a href="javascript:(function%20hoge()%20%7Bvar%20lmath%20%3D%20document.body.getElementsByTagName(%22math%22)%3Bfor%20(var%20i%20%3D%200%3B%20i%20%3C%20lmath.length%3B%20i%2B%2B)%20%7Bif%20(lmath%5Bi%5D.getAttribute(%22title%22)%20!%3D%20%22%22%20%26%26%20!lmath%5Bi%5D.__converted)%20%7Bvar%20img%20%3D%20new%20Image%3Bimg.src%20%3D%20%22http%3A%2F%2Fchart.apis.google.com%2Fchart%3Fcht%3Dtx%26chl%3D%22%20%2B%20encodeURIComponent(lmath%5Bi%5D.getAttribute(%22title%22))%3Bimg.alt%20%3D%20lmath%5Bi%5D.getAttribute(%22title%22)%3Bimg.setAttribute(%22title%22%2C%20lmath%5Bi%5D.getAttribute(%22title%22))%3Bif%20(lmath%5Bi%5D.getAttribute(%22mode%22)%20%3D%3D%20%22display%22)%20%7Bimg.setAttribute(%22style%22%2C%20%22display%3A%20block%3B%20margin%3A%20auto%3B%20text-align%3A%20center%3B%22)%3B%7Dlmath%5Bi%5D.parentNode.insertBefore(img%2C%20lmath%5Bi%5D)%3Blmath%5Bi%5D.setAttribute(%22style%22%2C%20%22display%3A%20none%22)%3Blmath%5Bi%5D.__converted%20%3D%20true%3B%7D%7D%7D)();">MathMLの記述を画像に変換する</a>などをしてください。
 </div>
+
 <p>
 前回から引き続き、ポニーテール共振器の運動について考察していこう。
 </p>
+
 <h4>3. ポニーテール共振器の挙動</h4>
+
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/pony_tail_model.png" />
 </figure>
+
 <p>
 前回、ポニーテール共振器の運動方程式を解いて微分方程式を得た。
 式(2.6)であったが、再掲する。
 </p>
+
 <table style="width: 100%"><tbody>
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\frac{d^2\theta}{dt^2}=-\frac{g}{l}\theta -\frac{1}{l} \frac{d^2 X{(t)}}{dt^2}">
 <mrow><mfrac><mrow><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>&#x03b8;</mi></mrow></mrow><mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mrow><mrow><mi>g</mi></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>&#x03b8;</mi><mo>-</mo><mfrac><mrow><mrow><mn>1</mn></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac><mo>&#x2062;</mo><mfrac><mrow><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>X</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow></mrow><mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mfrac></mrow>
+
 </math>
 </td><td>(2.6)</td></tr>
 </tbody></table>
+
 <p>
 (2.6)式について、強制振動の部分を展開する。
 （なお、前回の(2.0)式で強制振動の式を定義済み）すなわち、
@@ -76,30 +98,36 @@
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\frac{d^2 X{(t)}}{dt^2} = X \frac{d^2}{dt^2} \cos{\omega t} = - X\omega^2 \cos{\omega t}">
 <mrow><mfrac><mrow><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>X</mi><mo>&#x2061;</mo><mrow><mo>(</mo><mi>t</mi><mo>)</mo></mrow></mrow></mrow><mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mfrac><mo>=</mo><mi>X</mi><mfrac><mrow><mrow><msup><mi>d</mi><mn>2</mn></msup></mrow></mrow><mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mfrac><mi>cos</mi><mo>&#x2061;</mo><mrow><mi>&#x03c9;</mi><mo>&#x2062;</mo><mi>t</mi></mrow><mo>=</mo><mo>-</mo><mi>X</mi><msup><mi>&#x03c9;</mi><mn>2</mn></msup><mi>cos</mi><mo>&#x2061;</mo><mrow><mi>&#x03c9;</mi><mo>&#x2062;</mo><mi>t</mi></mrow></mrow>
+
 </math>
 </td><td>(3.1)</td></tr>
 </tbody></table>
 <p>
 を式(2.6)に代入する。
 </p>
+
 <table style="width: 100%"><tbody>
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\frac{d^2 \theta}{dt^2}=-\frac{g}{l}\theta - \frac{X\omega^2}{l}\cos{\omega t}">
 <mrow><mfrac><mrow><mrow><msup><mi>d</mi><mn>2</mn></msup><mi>&#x03b8;</mi></mrow></mrow><mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow></mfrac><mo>=</mo><mo>-</mo><mfrac><mrow><mrow><mi>g</mi></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>&#x03b8;</mi><mo>-</mo><mfrac><mrow><mrow><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>cos</mi><mo>&#x2061;</mo><mrow><mi>&#x03c9;</mi><mi>t</mi></mrow></mrow>
+
 </math>
 </td><td>(3.2)</td></tr>
 </tbody></table>
+
 <p>
 さて、この式(3.2)の二階微分方程式を解けばいい訳だが、
 結構複雑で面倒なので計算機で算出させた。
 つまり Mathematica といったものに例えば以下のようにコマンドを打てばよい。
 </p>
 <pre><code>In[*]:= DSolve[x''[t]==-g/l x[t] + X omega^2/l cos[omega t], x[t], t]
-</code></pre><p>
+</code></pre>
+<p>
 もっとも、最近では
 <a href="http://www.wolframalpha.com/input/?i=DSolve%5Bx''%5Bt%5D%3D%3D-g%2Fl%20x%5Bt%5D%20%2B%20X%20omega%5E2%2Fl%20cos%5Bomega%20t%5D%2C%20x%5Bt%5D%2C%20t%5D">Wolfram|Alpha に式(3.2)を解かせる</a>
 こともできる。
 </p>
+
 <p>
 手段はともかくとして、式(3.2)の解は下記の式(3.3)のようになる。
 </p>
@@ -107,9 +135,11 @@
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\theta = C_1\cos{\sqrt{\frac{g}{l}}t} + C_2\sin{\sqrt{\frac{g}{l}}t} + \frac{X\omega^2 \cos{\omega t}}{g - l\omega^2}">
 <mrow><mi>&#x03b8;</mi><mo>=</mo><msub><mi>C</mi><mn>1</mn></msub><mo>&#x2062;</mo><mi>cos</mi><mo>&#x2061;</mo><mrow><msqrt><mrow><mrow><mfrac><mrow><mrow><mi>g</mi></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac></mrow></mrow></msqrt><mo>&#x2062;</mo><mi>t</mi></mrow><mo>+</mo><msub><mi>C</mi><mn>2</mn></msub><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><msqrt><mrow><mrow><mfrac><mrow><mrow><mi>g</mi></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac></mrow></mrow></msqrt><mo>&#x2062;</mo><mi>t</mi></mrow><mo>+</mo><mfrac><mrow><mrow><mi>X</mi><msup><mi>&#x03c9;</mi><mn>2</mn></msup><mi>cos</mi><mo>&#x2061;</mo><mrow><mi>&#x03c9;</mi><mo>&#x2062;</mo><mi>t</mi></mrow></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>l</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow></mfrac></mrow>
+
 </math>
 </td><td>(3.3)</td></tr>
 </tbody></table>
+
 <p>
 この振り子であるが、最初は静止していて歩いたりすると振れるということであった。
 初期状態(<var>t</var>=0)では静止していて、そこから振り子の支点の強制振動による
@@ -117,20 +147,26 @@
 静止している状態では、重力の影響によって、振り子は真下に向くのであることも考え、
 初期状態の<var>&#x03b8;</var>について、以下の条件が成立する。
 </p>
+
 <table style="width: 100%"><tbody>
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\left[\theta\right]_{t=0}=0,\!\left[\frac{d\theta}{dt}\right]_{t=0}=0">
 <mrow><mo>[</mo><mi>&#x03b8;</mi><msub><mo>]</mo><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="-1.67pt"/><mo>[</mo><mfrac><mrow><mrow><mi>d</mi><mi>&#x03b8;</mi></mrow></mrow><mrow><mrow><mi>d</mi><mi>t</mi></mrow></mrow></mfrac><msub><mo>]</mo><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow>
+
 </math>
 </td><td>(3.4)</td></tr>
 </tbody></table>
+
 <p>
 (3.3)式に(3.4)式を代入すると、<var>C</var><sub>1</sub>,<var>C</var><sub>2</sub>は以下のように求まる。
 </p>
+
 <table style="width: 100%"><tbody>
 <tr><td style="width: 100%">
+
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="C_1=\frac{-X\omega^2}{g-l\omega^2},\!C_2=0">
 <mrow><msub><mi>C</mi><mn>1</mn></msub><mo>=</mo><mfrac><mrow><mrow><mo>-</mo><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>l</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow></mfrac><mo>,</mo><mspace width="-1.67pt"/><msub><mi>C</mi><mn>2</mn></msub><mo>=</mo><mn>0</mn></mrow>
+
 </math>
 </td><td>(3.5)</td></tr>
 </tbody></table>
@@ -141,6 +177,7 @@
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\theta=\frac{X\omega^2}{g-l\omega^2}{\left(\cos{\omega t} - \cos{\sqrt{\frac{g}{l}}}\right)}">
 <mrow><mi>&#x03b8;</mi><mo>=</mo><mfrac><mrow><mrow><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>l</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow></mfrac><mo>&#x2062;</mo><mrow><mo>(</mo><mi>cos</mi><mo>&#x2061;</mo><mrow><mi>&#x03c9;</mi><mo>&#x2062;</mo><mi>t</mi></mrow><mo>-</mo><mi>cos</mi><mo>&#x2061;</mo><mrow><msqrt><mrow><mrow><mfrac><mrow><mrow><mi>g</mi></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac></mrow></mrow></msqrt><mi>t</mi></mrow><mo>)</mo></mrow></mrow>
+
 </math>
 </td><td>(3.6)</td></tr>
 </tbody></table>
@@ -152,9 +189,11 @@
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\theta=\frac{2X\omega^2}{g-l\omega^2}\sin{\frac{\sqrt{g/l}+\omega}{2}t}\sin{\frac{\sqrt{g/l}-\omega}{2}t}">
 <mrow><mi>&#x03b8;</mi><mo>=</mo><mfrac><mrow><mrow><mn>2</mn><mo>&#x2062;</mo><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>l</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>+</mo><mi>&#x03c9;</mi></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>-</mo><mi>&#x03c9;</mi></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow></mrow>
+
 </math>
 </td><td>(3.7)</td></tr>
 </tbody></table>
+
 <p>
 この(3.7)式をみると、振り子の支点の強制振動振幅<var>X</var>に比例する。
 これは激しく体が揺れれば、ポニーテール（振り子）がより揺れる感覚は一致する。
@@ -165,6 +204,7 @@
 振動項をみると
 <math xmlns="http://www.w3.org/1998/Math/MathML" title="\omega \rightarrow\sqrt{g/l}">
 <mrow><mi>&#x03c9;</mi><mo>&#x2192;</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt></mrow>
+
 </math>
 とすれば、振動項がゼロとなるので振動しなくなるように思える。
 しかし、振幅部分は無限大に発散するので、いわゆる∞×0の不定形となるので、
@@ -174,6 +214,7 @@
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\begin{array}{rcl}\frac{2X\omega^2}{g-l\omega^2}&amp;\rightarrow&amp;\frac{2Xg/l}{g-lg/l}=\frac{2Xg/l}{g-g}\rightarrow\infty \\ \sin{\frac{\sqrt{g/l}-\omega}{2}t}&amp;\rightarrow&amp;\sin{\frac{\sqrt{g/l}-\sqrt{g/l}}{2}t}=0\end{array}">
 <mrow><mtable><mtr><mtd columnalign="right"><mrow><mfrac><mrow><mrow><mn>2</mn><mo>&#x2062;</mo><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>l</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup></mrow></mrow></mfrac></mrow></mtd><mtd columnalign="center"><mrow><mo>&#x2192;</mo></mrow></mtd><mtd columnalign="left"><mrow><mfrac><mrow><mrow><mn>2</mn><mo>&#x2062;</mo><mi>X</mi><mo>&#x2062;</mo><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>l</mi><mo>&#x2062;</mo><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></mfrac><mo>=</mo><mfrac><mrow><mrow><mn>2</mn><mo>&#x2062;</mo><mi>X</mi><mo>&#x2062;</mo><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow><mrow><mrow><mi>g</mi><mo>-</mo><mi>g</mi></mrow></mrow></mfrac><mo>&#x2192;</mo><mo>&#x221e;</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"><mrow><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>-</mo><mi>&#x03c9;</mi></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow></mrow></mtd><mtd columnalign="center"><mrow><mo>&#x2192;</mo></mrow></mtd><mtd columnalign="left"><mrow><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>-</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow><mo>=</mo><mn>0</mn></mrow></mtd></mtr></mtable></mrow>
+
 </math>
 </td><td>(3.8)</td></tr>
 </tbody></table>
@@ -181,12 +222,14 @@
 この近傍は極限で求めなければならず、(3.7)式を<math xmlns="http://www.w3.org/1998/Math/MathML" title="\lim_{a\to 0}\frac{\sin a}{a}=1">
 <mrow><msub><mi>lim</mi><mrow><mi>a</mi><mo>&#x2192;</mo><mn>0</mn></mrow></msub><mfrac><mrow><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>a</mi></mrow></mrow><mrow><mrow><mi>a</mi></mrow></mrow></mfrac><mo>=</mo><mn>1</mn></mrow>
 </math>
+
 の式を使える形に変形した上で極限を取らなければならないのである。
 </p>
 <table style="width: 100%"><tbody>
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\theta=\cdots=\frac{2X\omega^2 t}{l{\left(\sqrt{g/l}+\omega\right)}{\left(\sqrt{g/l}-\omega\right)}t}\sin{\frac{\sqrt{g/l}+\omega}{2}t}\sin{\frac{\sqrt{g/l}-\omega}{2}t}">
 <mrow><mi>&#x03b8;</mi><mo>=</mo><mo>&#x00B7;&#x00B7;&#x00B7;</mo><mo>=</mo><mfrac><mrow><mrow><mn>2</mn><mo>&#x2062;</mo><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup><mo>&#x2062;</mo><mi>t</mi></mrow></mrow><mrow><mrow><mi>l</mi><mo>&#x2062;</mo><mrow><mo>(</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>+</mo><mi>&#x03c9;</mi><mo>)</mo></mrow><mo>&#x2062;</mo><mrow><mo>(</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>-</mo><mi>&#x03c9;</mi><mo>)</mo></mrow><mo>&#x2062;</mo><mi>t</mi></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>+</mo><mi>&#x03c9;</mi></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>-</mo><mi>&#x03c9;</mi></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow></mrow>
+
 </math>
 </td><td>(3.9)</td></tr>
 </tbody></table>
@@ -197,6 +240,7 @@
 </math>
 は0に漸近するので、例の
 <math xmlns="http://www.w3.org/1998/Math/MathML" title="\lim_{a\to 0}\frac{\sin a}{a}=1">
+
 <mrow><msub><mi>lim</mi><mrow><mi>a</mi><mo>&#x2192;</mo><mn>0</mn></mrow></msub><mfrac><mrow><mrow><mi>sin</mi><mo>&#x2061;</mo><mi>a</mi></mrow></mrow><mrow><mrow><mi>a</mi></mrow></mrow></mfrac><mo>=</mo><mn>1</mn></mrow>
 </math>
 の公式が使えて、
@@ -205,6 +249,7 @@
 <tr><td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" mode="display" title="\lim_{\omega\to \sqrt{g/l}}\theta=\lim_{\omega\to \sqrt{g/l}}\frac{X\omega^2 t}{l{\left(\sqrt{g/l}+\omega\right)}}\sin{\frac{\sqrt{g/l}+\omega}{2}t}=\frac{X\sqrt{g/l}}{2l}t\sin{\sqrt{\frac{g}{l}}t}">
 <mrow><munder><mi>lim</mi><mrow><mi>&#x03c9;</mi><mo>&#x2192;</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt></mrow></munder><mi>&#x03b8;</mi><mo>=</mo><munder><mi>lim</mi><mrow><mi>&#x03c9;</mi><mo>&#x2192;</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt></mrow></munder><mfrac><mrow><mrow><mi>X</mi><mo>&#x2062;</mo><msup><mi>&#x03c9;</mi><mn>2</mn></msup><mo>&#x2062;</mo><mi>t</mi></mrow></mrow><mrow><mrow><mi>l</mi><mo>&#x2062;</mo><mrow><mo>(</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt><mo>+</mo><mi>&#x03c9;</mi><mo>)</mo></mrow></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><mfrac><mrow><mrow><msqrt><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></msqrt><mo>+</mo><mi>&#x03c9;</mi></mrow></mrow><mrow><mrow><mn>2</mn></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi></mrow><mo>=</mo><mfrac><mrow><mrow><mi>X</mi><mo>&#x2062;</mo><msqrt><mrow><mrow><mi>g</mi><mo>/</mo><mi>l</mi></mrow></mrow></msqrt></mrow></mrow><mrow><mrow><mn>2</mn><mo>&#x2062;</mo><mi>l</mi></mrow></mrow></mfrac><mo>&#x2062;</mo><mi>t</mi><mo>&#x2062;</mo><mi>sin</mi><mo>&#x2061;</mo><mrow><msqrt><mrow><mrow><mfrac><mrow><mrow><mi>g</mi></mrow></mrow><mrow><mrow><mi>l</mi></mrow></mrow></mfrac></mrow></mrow></msqrt><mo>&#x2062;</mo><mi>t</mi></mrow></mrow>
+
 </math>
 </td><td>(3.10)</td></tr>
 </tbody></table>
@@ -217,32 +262,45 @@
 以上より、ポニーテール共振器の挙動について
 （特異な状態をあらわした(3.10)式も含めて）数式で表すことができた。
 </p>
+
 <p>
 <a href="/2011/09/33.html">次回</a>はこの式を元に考察する。
 </p>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2011/09/23.html&amp;text=%E3%83%9D%E3%83%8B%E3%83%BC%E3%83%86%E3%83%BC%E3%83%AB%E3%81%AE%E6%8F%BA%E3%82%8C%E3%81%AE%E5%AE%9A%E5%BC%8F%E5%8C%96%E3%81%A8%E8%80%83%E5%AF%9F%20(2/3)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2011/09/23.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2011/09/23.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2011/09/23.html&amp;linkname=%E3%83%9D%E3%83%8B%E3%83%BC%E3%83%86%E3%83%BC%E3%83%AB%E3%81%AE%E6%8F%BA%E3%82%8C%E3%81%AE%E5%AE%9A%E5%BC%8F%E5%8C%96%E3%81%A8%E8%80%83%E5%AF%9F%20(2/3)+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-09-12-23.html" class="source-path">_posts/2011-09-12-23.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-09-12-23.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2011/09/13.html" title="ポニーテールの揺れの定式化と考察 (1/3)" rel="prev">&#x2190;ポニーテールの揺れの定式化と考察 (1/3)</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2011/09/33.html" title="ポニーテールの揺れの定式化と考察 (3/3)" rel="next">ポニーテールの揺れの定式化と考察 (3/3)&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -254,31 +312,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2011-09-11</span>
       <a class="post-link" href="/2011/09/13.html">ポニーテールの揺れの定式化と考察 (1/3)</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2011-09-14</span>
       <a class="post-link" href="/2011/09/33.html">ポニーテールの揺れの定式化と考察 (3/3)</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-03-07</span>
       <a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-03-06</span>
       <a class="post-link" href="/2014/03/bezier-2-diff.html">ベジェ曲線で描く円と真円の差について</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-03-26</span>
       <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -318,5 +387,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

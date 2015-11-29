@@ -5,9 +5,9 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 18 Nov 2015 00:29:35 +0900</pubDate>
-    <lastBuildDate>Wed, 18 Nov 2015 00:29:35 +0900</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Sun, 29 Nov 2015 17:56:13 +0900</pubDate>
+    <lastBuildDate>Sun, 29 Nov 2015 17:56:13 +0900</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
       <item>
         <title>Diff between firefox 43.0 beta 3 default preference and firefox 42.0</title>
         <description>&lt;p&gt;
@@ -1376,14 +1376,14 @@ int main()
   &lt;li&gt;Travis-CI のビルド処理は&lt;a href=&quot;http://docs.travis-ci.com/user/workers/container-based-infrastructure/&quot; title=&quot;Travis CI: Using container-based infrastructure&quot;&gt;コンテナ型仮想化で動いて&lt;/a&gt;いる。
     &lt;ul&gt;
       &lt;li&gt;OS は ubuntu 。ただし、何か細工しているかもしれないが未調査。&lt;/li&gt;
-      &lt;li&gt;よって &lt;code&gt;.travis.yml&lt;/code&gt; は &lt;code&gt;Dockerfile&lt;/code&gt; のノリで書く。&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;apt-get&lt;/code&gt; も使える。また、&lt;a href=&quot;http://docs.travis-ci.com/user/apt/&quot; title=&quot;Travis CI: APT Sources and Packages&quot;&gt;aptアドオン&lt;/a&gt;?の形でも使える。&lt;/li&gt;
+      &lt;li&gt;よって &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; は &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; のノリで書く。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; も使える。また、&lt;a href=&quot;http://docs.travis-ci.com/user/apt/&quot; title=&quot;Travis CI: APT Sources and Packages&quot;&gt;aptアドオン&lt;/a&gt;?の形でも使える。&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;ruby まわりの前提として rvm 、bundle 使用が無難
     &lt;ul&gt;
-      &lt;li&gt;bundle 使わないですべて Apt で管理することもできるが、&lt;code&gt;Gemfile&lt;/code&gt; をコミットした運用がよいだろう。&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;rake&lt;/code&gt; は &lt;code&gt;bundle exec rake&lt;/code&gt; のように、ruby は &lt;code&gt;bundle&lt;/code&gt; を介して使用しよう。&lt;/li&gt;
+      &lt;li&gt;bundle 使わないですべて Apt で管理することもできるが、&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; をコミットした運用がよいだろう。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rake&lt;/code&gt; は &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake&lt;/code&gt; のように、ruby は &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; を介して使用しよう。&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Github のレポジトリに push したい場合は、何らかの秘密鍵を入れこむか、アクセストークンを使用する。
@@ -1391,14 +1391,14 @@ int main()
       &lt;li&gt;鍵・アクセストークンともに公開すべきではないので、レポジトリに平文で格納しないこと。
         &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/travis-encrypt&quot;&gt;travis-encrypt&lt;/a&gt; を使えば暗号化されたテキストでやりとりできるので、センシティブな情報をやりとりするのにつかえる。&lt;/li&gt;
-          &lt;li&gt;&lt;code&gt;travis encrypt -r ユーザ名/レポジトリ名 FOO=bar&lt;/code&gt; とした上で &lt;code&gt;.travis.yml&lt;/code&gt; に暗号化したテキストを書くのと、Travis の設定で環境変数 &lt;code&gt;FOO=bar&lt;/code&gt; を非公開で設定するのは、動きに差はほどんどない。が、環境変数だったら後者の方がずっと楽。
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;travis encrypt -r ユーザ名/レポジトリ名 FOO=bar&lt;/code&gt; とした上で &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; に暗号化したテキストを書くのと、Travis の設定で環境変数 &lt;code class=&quot;highlighter-rouge&quot;&gt;FOO=bar&lt;/code&gt; を非公開で設定するのは、動きに差はほどんどない。が、環境変数だったら後者の方がずっと楽。
             &lt;ul&gt;
-              &lt;li&gt;設定箇所への直リンは &lt;code&gt;https://travis-ci.org/ユーザ名/レポジトリ名/settings/env_vars&lt;/code&gt;&lt;/li&gt;
+              &lt;li&gt;設定箇所への直リンは &lt;code class=&quot;highlighter-rouge&quot;&gt;https://travis-ci.org/ユーザ名/レポジトリ名/settings/env_vars&lt;/code&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;アクセストークンを使って git にアクセスするは、&lt;a href=&quot;https://github.com/settings/tokens&quot;&gt;https://github.com/settings/tokens&lt;/a&gt; から Personal access token を生成し、&lt;code&gt;https://$GH_TOKEN@github.com/ユーザ名/レポジトリ名.git&lt;/code&gt; から git clone すればよい。というか、これだけなのでアクセストークンの方がずっと簡単。
+      &lt;li&gt;アクセストークンを使って git にアクセスするは、&lt;a href=&quot;https://github.com/settings/tokens&quot;&gt;https://github.com/settings/tokens&lt;/a&gt; から Personal access token を生成し、&lt;code class=&quot;highlighter-rouge&quot;&gt;https://$GH_TOKEN@github.com/ユーザ名/レポジトリ名.git&lt;/code&gt; から git clone すればよい。というか、これだけなのでアクセストークンの方がずっと簡単。
         &lt;ul&gt;
           &lt;li&gt;アクセストークンは環境変数としておいて上述の方法をつかってレポジトリに公開しないようにする。&lt;/li&gt;
         &lt;/ul&gt;
@@ -1414,24 +1414,24 @@ int main()
 &lt;/ul&gt;
 &lt;ol&gt;
   &lt;li&gt;Travis を Jekyll ソースのレポジトリと紐付ける。&lt;/li&gt;
-  &lt;li&gt;bundle を使用するように変更。&lt;code&gt;Gemfile&lt;/code&gt; と &lt;code&gt;Gemfile.lock&lt;/code&gt; を使用するように変更（厳密にはきちんと使っていなかったのできちんと書いた）。&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;Rakefile&lt;/code&gt; に初期化コードも含めて本当にすべて動くようにした。(&lt;code&gt;setup&lt;/code&gt; タスクの追加)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;.travis.yml&lt;/code&gt; を記載
+  &lt;li&gt;bundle を使用するように変更。&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; と &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; を使用するように変更（厳密にはきちんと使っていなかったのできちんと書いた）。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt; に初期化コードも含めて本当にすべて動くようにした。(&lt;code class=&quot;highlighter-rouge&quot;&gt;setup&lt;/code&gt; タスクの追加)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; を記載
     &lt;ul&gt;
       &lt;li&gt;LSI を使用するので、Apt で GSL ライブラリをインストールするようにした。&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;bundle install&lt;/code&gt; は特に書かなくても &lt;code&gt;language: ruby&lt;/code&gt; になっていれば動くみたい。&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;rake setup&lt;/code&gt;、&lt;code&gt;rake generate&lt;/code&gt; を呼び出す…のだが、&lt;code&gt;bundle exec rake setup&lt;/code&gt; のように bundle を通して呼ぶようにする。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; は特に書かなくても &lt;code class=&quot;highlighter-rouge&quot;&gt;language: ruby&lt;/code&gt; になっていれば動くみたい。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rake setup&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;rake generate&lt;/code&gt; を呼び出す…のだが、&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake setup&lt;/code&gt; のように bundle を通して呼ぶようにする。&lt;/li&gt;
       &lt;li&gt;環境変数のうちレポジトリに登録してしまってよいものを記載する。&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;github アクセストークンを取得し、Travis CI の設定で環境変数 &lt;code&gt;GH_TOKEN&lt;/code&gt; に設定する。 &lt;code&gt;.travis.yml&lt;/code&gt; でそれを参照するべきところは &lt;code&gt;$GH_TOKEN&lt;/code&gt; に置き換える。&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;git push&lt;/code&gt; すると Travis が動いてくれるのでログを確認し、エラーがなくなるまで check &amp;amp; try する。&lt;/li&gt;
+  &lt;li&gt;github アクセストークンを取得し、Travis CI の設定で環境変数 &lt;code class=&quot;highlighter-rouge&quot;&gt;GH_TOKEN&lt;/code&gt; に設定する。 &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; でそれを参照するべきところは &lt;code class=&quot;highlighter-rouge&quot;&gt;$GH_TOKEN&lt;/code&gt; に置き換える。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; すると Travis が動いてくれるのでログを確認し、エラーがなくなるまで check &amp;amp; try する。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;アクセストークンの隠蔽には少し苦労した。
-ビルドログにて環境変数を設定する所はきちんと &lt;code&gt;$ export GH_TOKEN=[secure]&lt;/code&gt; のように隠蔽してくれるのだが、
-&lt;code&gt;git push&lt;/code&gt; のところでどうしても &lt;code&gt;To https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@github.com/cat-in-136/cat-in-136.github.io.git&lt;/code&gt; のようなログが表示される。
-しかも標準出力ではなく標準 &lt;em&gt;エラー&lt;/em&gt; 出力に吐かれているので &lt;code&gt;&amp;gt; /dev/null&lt;/code&gt; でも表示されてしまう。
-というわけで、&lt;code&gt;git push&lt;/code&gt; を呼び出す所は強引だが &lt;code&gt;bundle exec rake -q deploy 2&amp;gt;&amp;amp;1 | sed &quot;s/${GH_TOKEN}/\${GH_TOKEN}/g&quot;&lt;/code&gt; とした。
+ビルドログにて環境変数を設定する所はきちんと &lt;code class=&quot;highlighter-rouge&quot;&gt;$ export GH_TOKEN=[secure]&lt;/code&gt; のように隠蔽してくれるのだが、
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; のところでどうしても &lt;code class=&quot;highlighter-rouge&quot;&gt;To https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@github.com/cat-in-136/cat-in-136.github.io.git&lt;/code&gt; のようなログが表示される。
+しかも標準出力ではなく標準 &lt;em&gt;エラー&lt;/em&gt; 出力に吐かれているので &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt; /dev/null&lt;/code&gt; でも表示されてしまう。
+というわけで、&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; を呼び出す所は強引だが &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake -q deploy 2&amp;gt;&amp;amp;1 | sed &quot;s/${GH_TOKEN}/\${GH_TOKEN}/g&quot;&lt;/code&gt; とした。
 （標準エラー出力を標準出力にぶちこんで、さらにそれを sed でテキスト置換）&lt;/p&gt;
 &lt;h4 id=&quot;section-2&quot;&gt;参考文献&lt;/h4&gt;
 &lt;ul&gt;

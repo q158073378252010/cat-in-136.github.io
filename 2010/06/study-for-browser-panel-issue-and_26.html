@@ -12,46 +12,66 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/06/study-for-browser-panel-issue-and_26.html" rel="bookmark">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-06-26T22:47:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:30+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_configuration%20mania">Configuration mania</a>
+      
       <a class="tag" href="/tags.html#tag_xul">Xul</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>I made an experimental release for this issue. You can download experimental release <code>confmania-experimental-mac_issue_9-1.13.2010062601.xpi</code> at <a href="http://bitbucket.org/cat_in_136/configuration-mania/downloads">bitbucket's download page</a></p>
+
 <h4>New "Browser" panel</h4>
+
 <figure class="separator" style="clear: both; text-align: center;">
 <img src="/images/conf-mania-mac-ng.png" />
 </figure>
+
 <h4>Solution for this issue</h4>
+
 <p>If <code>browser.preferences.animateFadeIn</code> is set <code>true</code>, "Browser" panel is <em>fixed</em> height.</p>
+
 <pre class="prettyprint"><code>prefwindow[animated="true"] #paneBrowserBoxContainer .subtabpanel {
     /* For animated or Mac, specify fixed height */
     max-height: 390px;
@@ -59,7 +79,9 @@
 
     /* *snip* */
 }
-</code></pre><ul>
+</code></pre>
+
+<ul>
 <li>Flexible panel height make the window too big or too small vertically.</li>
 <li>Preference window calculate height of the content. This procedure fails for flexible-height content.</li>
 <li>For Mac OS X, Preference window (incl. Configuration Mania window) is not resizable, <a href="http://bitbucket.org/cat_in_136/configuration-mania/issue/9/window-size-too-small">Anonymous issue#9 reporter</a> said.
@@ -67,38 +89,54 @@
 <li><code>browser.preferences.animateFadeIn</code> function well on Windows and Linux, but I think it is not count for much.</li></ul></li>
 <li>This is the reason of <a href="http://bitbucket.org/cat_in_136/configuration-mania/issue/9/window-size-too-small">issue#9 - Window size too small</a>.</li>
 </ul>
+
 <h4>Flexible height panel for non-Mac</h4>
+
 <p>If <code>browser.preferences.animateFadeIn</code> is set to <code>false</code>, "Browser" panel is flexible height.</p>
+
 <figure style="clear: both; text-align: center;">
 <img src="/images/cm_resizable.png" />
 </figure>
+
 <ul>
 <li>The "Browser" panel fit the Configuration Mania window.</li>
 <li>It is resizable.</li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/06/study-for-browser-panel-issue-and_26.html&amp;text=Study%20for%20%22Browser%22%20panel%20issue%20and%20%22Animate%20fade-in%22%20%232+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/06/study-for-browser-panel-issue-and_26.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/06/study-for-browser-panel-issue-and_26.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/06/study-for-browser-panel-issue-and_26.html&amp;linkname=Study%20for%20%22Browser%22%20panel%20issue%20and%20%22Animate%20fade-in%22%20%232+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-06-26-study-for-browser-panel-issue-and_26.html" class="source-path">_posts/2010-06-26-study-for-browser-panel-issue-and_26.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-06-26-study-for-browser-panel-issue-and_26.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/06/moz-resize-can-be-applied-to-any.html" title="-moz-resize can be applied to any elements!?" rel="prev">&#x2190;-moz-resize can be applied to any elements!?</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/06/no-xul-element-is-used-on-current.html" title="No XUL &lt;expander&gt; element is used on current mozilla." rel="next">No XUL &lt;expander&gt; element is used on current mozilla.&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -110,31 +148,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2011-02-23</span>
       <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">Visual Guide : New pref of Configuration Mania v1.14.2011022201</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-06-20</span>
       <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and.html">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot;</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2011-12-24</span>
       <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2013-02-24</span>
-      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-05-04</span>
       <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">OOPP Setting on Configuration Mania</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2013-12-28</span>
+      <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -174,5 +223,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

@@ -8,48 +8,66 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Google Maps API v3 で地下鉄路線図を表示する〜パート2〜" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2012/12/google-maps-api-v3-2.html" rel="bookmark">Google Maps API v3 で地下鉄路線図を表示する〜パート2〜</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2012-12-23T13:47:00+09:00</time>
       (Modified: <time>2015-01-20T01:13:12+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      
       <a class="tag" href="/tags.html#tag_train%20and%20rails">Train and rails</a>
+      
       <a class="tag" href="/tags.html#tag_google%20maps">Google maps</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>
 <a href="/2010/11/google-maps-api-v3_23.html">Google Maps API v3 で地下鉄路線図を表示する</a>
 で、地下鉄路線図だけを表示することを紹介したが、
 今回は他に地図を表示する方法(URL)を見つけたよ、という話。
 </p>
+
 <p>
 経路検索でアクセスしている画像ファイルなどを見た結果、
 以前記事を書いた時と違って下記のようなURLに変わっていることに気づいた。
@@ -57,6 +75,7 @@
 <div style="margin: 5px; border: solid 1px #aaa;">
 <code>https://mts?.google.com/mapslt?lyrs=transit:prev|fahu:1|pm:1|sr:なんかいろいろ|vm:1,m%40203000000&amp;x=?&amp;y=?&amp;z=?&amp;w=256&amp;h=256&amp;hl=x-local&amp;style=18</code>
 </div>
+
 <p>
 このURLには style なるものがあったり色々遊べそうである。
 で、不要そうなものを削り試行錯誤のうえ、以下のようなURLのアクセスで
@@ -65,9 +84,11 @@ ImageTileLayer で表示させればよいと判明。
 <div style="margin: 5px; border: solid 1px #aaa;">
 <code>https://mts?.google.com/mapslt?lyrs=transit:prev|pm:1|vm:1,m&amp;x=?&amp;y=?&amp;z=?&amp;w=256&amp;h=256&amp;style=?</code>
 </div>
+
 <p>
 オススメの style は以下の通り(style=21が個人的オススメ)：
 </p>
+
 <ul>
 <li>style=0: 地下鉄を含む経路検索結果と同じような地図表示</li>
 <li>style=1: 地名・駅名などのみ。オーバーレイして使うほうがいいだろう。</li>
@@ -80,6 +101,7 @@ ImageTileLayer で表示させればよいと判明。
 <li>style=22: モノクロの中から浮き上がる地下鉄網</li>
 <li>style=25: 闇の中から浮き上がる地下鉄網</li>
 </ul>
+
 <div id="google_rail_rail_rails" style="width: 100%; height: 480px; border: solid thin #000;"></div>
 <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 <script defer="defer" src="data:text/javascript;base64,
@@ -115,10 +137,12 @@ MV0KICB9OwogIHZhciBtYXAgPSBuZXcgZ29vZ2xlLm1hcHMuTWFwKG9NYXBDYW52YXMsIG1hcE9w
 dGlvbnMpOwogIGZvciAodmFyIGkgPSAwOyBpIDwgdG1hcHMubGVuZ3RoOyBpKyspIHsKICAgIG1h
 cC5tYXBUeXBlcy5zZXQodG1hcHNbaV0ubmFtZSwgdG1hcHNbaV0pOwogIH0KfSk7Cg==">
 </script>
+
 <p>
 ImageMapType クラスの作り方は下記の通り。
 あとは、この MapType を登録する（登録処理部のソース略）。
 </p>
+
 <pre class="prettyprint"><code>function createTransitMapType (styleId, name, alt) {
   if (name == undefined) name = "style="+styleId;
   return new google.maps.ImageMapType({
@@ -138,36 +162,51 @@ ImageMapType クラスの作り方は下記の通り。
     }
   });
 }
-</code></pre><p>
+</code></pre>
+
+<p>
 なお、これはドキュメント化されていない非公式なものなので、
 いつ使えなくなるかわからない代物なので注意するように。
 </p>
+
 <ins datetime="2015-01-20T01:13:12+09:00">
 <p>(2015-01-20加筆)今では Google Maps API の標準 API に<a href="https://developers.google.com/maps/documentation/javascript/3.exp/reference#TrafficLayer">google.maps.TrafficLayer</a>があるので、ただ単に鉄道網を強調表示した地図を作りたい場合はそれを使うべし。</p>
 </ins>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/12/google-maps-api-v3-2.html&amp;text=Google%20Maps%20API%20v3%20%E3%81%A7%E5%9C%B0%E4%B8%8B%E9%89%84%E8%B7%AF%E7%B7%9A%E5%9B%B3%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E3%80%9C%E3%83%91%E3%83%BC%E3%83%882%E3%80%9C+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/12/google-maps-api-v3-2.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/12/google-maps-api-v3-2.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/12/google-maps-api-v3-2.html&amp;linkname=Google%20Maps%20API%20v3%20%E3%81%A7%E5%9C%B0%E4%B8%8B%E9%89%84%E8%B7%AF%E7%B7%9A%E5%9B%B3%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E3%80%9C%E3%83%91%E3%83%BC%E3%83%882%E3%80%9C+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-12-23-google-maps-api-v3-2.html" class="source-path">_posts/2012-12-23-google-maps-api-v3-2.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-12-23-google-maps-api-v3-2.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2012/12/llvm-clangast.html" title="LLVM-ClangのASTを解析するまっとうな方法について" rel="prev">&#x2190;LLVM-ClangのASTを解析するまっとうな方法について</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2012/12/tip-how-to-run-new-firefox-instance-w.html" title="Tip: How to run a new Firefox instance w/ temporary profile" rel="next">Tip: How to run a new Firefox instance w/ temporary profile&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -179,31 +218,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-11-23</span>
       <a class="post-link" href="/2010/11/google-maps-api-v3_23.html">Google Maps API v3 で地下鉄路線図を表示する</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2013-03-04</span>
       <a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2015-07-04</span>
       <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">Study of the link tracking methods and the protection</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2014-03-26</span>
-      <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
+      <span class="post-date">2012-10-08</span>
+      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -243,5 +293,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

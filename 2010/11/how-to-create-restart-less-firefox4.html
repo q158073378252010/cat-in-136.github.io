@@ -12,37 +12,51 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/11/how-to-create-restart-less-firefox4.html" rel="bookmark">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-11-27T00:31:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:32+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>
 On Firefox 4, users can install and uninstall <em>Jetpack</em> extensions <strong>without a browser restart</strong>. The traditional extensions are needed for a browser restart.
@@ -51,6 +65,7 @@ On Firefox 4, users can install and uninstall <em>Jetpack</em> extensions <stron
 <a href="/images/traditional-addons-are-required-browser-restart.png"><img src="/images/traditional-addons-are-required-browser-restart.png" title="Screenshot: DOM Inspector will be disabled after you restart Firefox." alt="Screenshot: DOM Inspector will be disabled after you restart Firefox." /></a>
 <figcaption style="display: block;">Traditional extensions will be disabled after you restart Firefox.</figcaption>
 </figure>
+
 <h4>Jetpack is <em>not</em> required</h4>
 <p>
 Jetpack itself does not provide the restart-less feature.
@@ -64,8 +79,11 @@ To make a bootstrapped extension, you need:
 <li>add the <code>em:bootstrap="true"</code> in install.rdf; and</li>
 <li>add bootstrap.js</li>
 </ol>
+
 <h4>Hello world of bootstrapped extensions</h4>
+
 <h5>Step1. Write install.rdf with <code>em:bootstrap="true"</code></h5>
+
 <p>
 There is no difference from traditional extensions... Only one exception is to add <code>em:bootstrap="true"</code>.
 </p>
@@ -93,7 +111,10 @@ There is no difference from traditional extensions... Only one exception is to a
      &lt;em:iconURL/&gt;
      &lt;em:optionsURL/&gt;
   &lt;/Description&gt;
-&lt;/RDF&gt;</code></pre><h5>Step2. Write bootstrap.js</h5>
+&lt;/RDF&gt;</code></pre>
+
+<h5>Step2. Write bootstrap.js</h5>
+
 <p>
 This file shall contains entry point functions : <code>install(data,reason)</code>, <code>startup(data,reason)</code>, <code>shutdown(data,reason)</code> and <code>uninstall(data,reason)</code>.
 </p>
@@ -118,53 +139,71 @@ function shutdown(data, reason) {
 
 function uninstall(data, reason) {
 }
-</code></pre><p>
+</code></pre>
+<p>
 This extension says "Hello world." after it is installed and/or enabled, and "Good bye." after it is uninstalled and/or disabled.
 </p>
 <p>
 Above code is very very simple. bootstrap.js in the general bootstrapped extensions (for example Jetpack) are complexity.
 </p>
+
 <h5>Step3. Packaging</h5>
+
 <p>
 All you have to do is compress the files.
 </p>
 <pre style="background-color: #000; color: #fff">% zip -9r ../bootstraptest.xpi *
   adding: bootstrap.js (deflated 66%)
   adding: install.rdf (deflated 54%)
-% </pre><p>
+% </pre>
+<p>
 Open the XPI file to install. As soon as it is installed, a following dialog is displayed.
 </p>
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <a href="/images/Screenshot-Startup.png"><img src="/images/Screenshot-Startup.png" title="&quot;alert message : &#39;Hello world.&#39;&quot;" alt="&quot;alert message : &#39;Hello world.&#39;&quot;" /></a>
 </figure>
+
 <h4>See also</h4>
+
 <ul>
 <li><a href="https://developer.mozilla.org/en/Extensions/Bootstrapped_extensions">Bootstrapped extensions</a> - MDC</li>
 <li><a href="https://jetpack.mozillalabs.com/">Jetpack Official site</a></li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html&amp;text=How%20to%20create%20restart-less%20%23Firefox4%20extension%20*WITHOUT*%20Jetpack+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html&amp;linkname=How%20to%20create%20restart-less%20%23Firefox4%20extension%20*WITHOUT*%20Jetpack+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-11-27-how-to-create-restart-less-firefox4.html" class="source-path">_posts/2010-11-27-how-to-create-restart-less-firefox4.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-11-27-how-to-create-restart-less-firefox4.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/11/google-maps-api-v3_23.html" title="Google Maps API v3 で地下鉄路線図を表示する" rel="prev">&#x2190;Google Maps API v3 で地下鉄路線図を表示する</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/11/code-reading-aaencoded-javascript-code.html" title="code reading : javascript code encoded as aaencode" rel="next">code reading : javascript code encoded as aaencode&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -176,31 +215,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2011-12-24</span>
       <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-05-12</span>
       <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2013-02-24</span>
-      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-08-15</span>
       <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2013-02-24</span>
+      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -240,5 +290,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

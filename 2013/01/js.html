@@ -8,44 +8,61 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="「JSエンジンを公開日順に並べ直しなさい」について調べてみた。" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/01/js.html" rel="bookmark">「JSエンジンを公開日順に並べ直しなさい」について調べてみた。</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2013-01-12T10:00:00+09:00</time>
       (Modified: <time>2013-02-20T23:45:05+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <blockquote class="twitter-tweet"><p>Q: JSエンジンを公開日順に並べ直しなさい: IonMonkey, JägerMonkey, JavaScriptCore, SpiderMonkey, SquirrelFish, SquirrelFish Extreme, Tamarin, TraceMonkey, V8</p>&mdash; dynamis (でゅなみす) (@dynamitter) <a href="https://twitter.com/dynamitter/status/288872844677496832" data-datetime="2013-01-09T05:00:27+00:00">January 9, 2013</a></blockquote>
+
 <script async="async" defer="defer" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 <p>調べてみた。
 なお、実際には安定リリースのブラウザで一般的なユーザは恩恵を受けると思われる
 のでそのブラウザのリリース日も参考のため書いてある。</p>
+
 <table class="jsengine-sort-table">
 <col />
 <col />
@@ -115,18 +132,29 @@
 </tr>
 </tbody>
 </table>
+
 <div class="jsengine-sort-footnotes">
 <ol>
+
 <li id="jsengine-sort-fn:1"><a href="http://lists.kde.org/?l=kfm-devel&amp;m=104197092318639&amp;w=2">Greetings from the Safari team at Apple Computer</a> kfm-devel<a href="#jsengine-sort-fnref:1" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:2"><a href="http://www.mozilla.org/en-US/press/mozilla-2006-11-07.html">Adobe and Mozilla Foundation to Open Source Flash Player Scripting Engine</a> Mozilla press release<a href="#jsengine-sort-fnref:2" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:3"><a href="https://www.webkit.org/blog/189/announcing-squirrelfish/">Announcing SquirrelFish</a> Surfin Safari<a href="#jsengine-sort-fnref:3" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:4"><a href="http://andreasgal.com/2008/08/22/tracing-the-web/">Tracing the Web</a> Andreas Gal<a href="#jsengine-sort-fnref:4" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:5"><a href="http://googleblog.blogspot.com/2008/09/fresh-take-on-browser.html">A fresh take on the browser</a> Official Google Blog<a href="#jsengine-sort-fnref:5" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:6"><a href="https://www.webkit.org/blog/214/introducing-squirrelfish-extreme/">Introducing SquirrelFish Extreme</a> Surfin Safari<a href="#jsengine-sort-fnref:6" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:7"><a href="https://blog.mozilla.org/dmandelin/2010/02/26/starting-jagermonkey/">Starting JägerMonkey</a> David Mandelin blog<a href="#jsengine-sort-fnref:7" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 <li id="jsengine-sort-fn:8"><a href="https://blog.mozilla.org/javascript/2012/09/12/ionmonkey-in-firefox-18/">IonMonkey in Firefox 18</a> The Mozilla Blog<a href="#jsengine-sort-fnref:8" class="jsengine-sort-reversefootnote">&#160;&#8617;</a></li>
+
 </ol>
 </div>
+
 <ul>
 <li>発表時期より前に実装が始まっていることが多いので、発表時期はあまり意味はない。</li>
 <li>2008年は SquirrelFish(/Extreme),TraceMonkey,V8 はあまりにも発表時期が
@@ -140,6 +168,7 @@ V8→TraceMonkey→SquirrelFish Extremeとなる。
 なお、SquirrelFishはすぐにSquirrelFish Extreme (Nitro) に進化したので
 SquirrelFishだがSquirrelFish ExtremeではないSafari（正式版）はないものと思われる。</li>
 </ul>
+
 <p><style type="text/css">
 table.jsengine-sort-table { border: solid 1px #aaa; border-collapse: collapse; }
 table.jsengine-sort-table td, table.jsengine-sort-table th { border: solid 1px #aaa; }
@@ -148,29 +177,41 @@ table.jsengine-sort-table th { background-color: #eee; }
 .jsengine-sort-footnotes { font-size: smaller; border-left: solid 1px #aaa; margin-left: 2em; }
 .jsengine-sort-footnotes *:target { text-shadow: 0 0 10px #08f; }
 </style></p>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/01/js.html&amp;text=%E3%80%8CJS%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%82%92%E5%85%AC%E9%96%8B%E6%97%A5%E9%A0%86%E3%81%AB%E4%B8%A6%E3%81%B9%E7%9B%B4%E3%81%97%E3%81%AA%E3%81%95%E3%81%84%E3%80%8D%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%80%82+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/01/js.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/01/js.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/01/js.html&amp;linkname=%E3%80%8CJS%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3%E3%82%92%E5%85%AC%E9%96%8B%E6%97%A5%E9%A0%86%E3%81%AB%E4%B8%A6%E3%81%B9%E7%9B%B4%E3%81%97%E3%81%AA%E3%81%95%E3%81%84%E3%80%8D%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F%E3%80%82+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-01-12-js.html" class="source-path">_posts/2013-01-12-js.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-01-12-js.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2012/12/tip-how-to-run-new-firefox-instance-w.html" title="Tip: How to run a new Firefox instance w/ temporary profile" rel="prev">&#x2190;Tip: How to run a new Firefox instance w/ temporary profile</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2013/02/diff-between-firefox-19-default.html" title="Diff between firefox 19 default preference and firefox 18.0.2" rel="next">Diff between firefox 19 default preference and firefox 18.0.2&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -182,31 +223,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    <li class="post-item">
-      <span class="post-date">2012-08-05</span>
-      <a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2013-03-04</span>
       <a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2013-03-05</span>
       <a class="post-link" href="/2013/03/html-user-select.html">HTML でのコピペしやすさを user-select などで向上させる</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2013-04-13</span>
-      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+      <span class="post-date">2012-08-05</span>
+      <a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2011-09-14</span>
-      <a class="post-link" href="/2011/09/33.html">ポニーテールの揺れの定式化と考察 (3/3)</a>
+      <span class="post-date">2015-07-26</span>
+      <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-12-19</span>
+      <a class="post-link" href="/2014/12/diff-between-firefox-350-beta-5-default.html">Diff between firefox 35.0 beta 5 default preference and firefox 34.0.5</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -246,5 +298,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

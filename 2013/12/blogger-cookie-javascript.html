@@ -8,74 +8,104 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Blogger の国別ドメインリダイレクト対策コードを入れると、Cookie 無効 + JavaScript 有効なブラウザの環境下で無限リダイレクトする件" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/12/blogger-cookie-javascript.html" rel="bookmark">Blogger の国別ドメインリダイレクト対策コードを入れると、Cookie 無効 + JavaScript 有効なブラウザの環境下で無限リダイレクトする件</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2013-12-31T15:33:00+09:00</time>
       (Modified: <time>2013-12-31T15:34:22+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
       <a class="tag" href="/tags.html#tag_blogger">Blogger</a>
+      
       <a class="tag" href="/tags.html#tag_cookie">Cookie</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>
 言われて、たった今知りましたので首釣ってきます。
 （修正して、該当コードは削除しました）
 </p>
+
 <p>
 以下に言い訳を記す。
 （昔の話と思って再確認したら去年の話だったでござる）
 </p>
+
 <h4>いいわけ</h4>
+
 <p>Blogger って2012年から<strong>公式に</strong><a href="http://googleblog.blogspot.com/2012/03/our-approach-to-free-expression-and.html">特定国に対するコンテンツ非表示</a>
 が始まったわけだが、
 そのためにアクセス元に応じてドメイン名が変わるという施策が導入された。</p>
+
 <p>いまはガジェット類その他何も使っていないので関係ないが、
 当時確か何らかの問題が発生したので、
 下記コードを投入して、<code>.com</code> にドメイン名を強制するようにした。
 そういえば、暫定的な対処だった。</p>
+
 <pre class="prettyprint"><code>&lt;script type='text/javascript'&gt;
   if (location.host.indexOf('.com') == -1) location.href = location.href.replace(location.host + '/', 'cat-in-136.blogspot.com/ncr/');
 &lt;/script&gt;
-</code></pre><p>方法は簡単で <code>http://ほげほげ.blogspot.jp/</code> →<code>http://ほげほげ.blogspot.com/ncr/</code> にリダイレクトしてやると、
+</code></pre>
+
+<p>方法は簡単で <code>http://ほげほげ.blogspot.jp/</code> →<code>http://ほげほげ.blogspot.com/ncr/</code> にリダイレクトしてやると、
 その後 <code>http://ほげほげ.blogspot.com/</code> になるという作戦。</p>
+
 <p>だが、これは標題の通り</p>
+
 <ul>
 <li>JavaScript を有効</li>
 <li>Cookie 無効（またはドメイン名指定での拒否）</li>
 </ul>
+
 <p>で無限リダイレクトしてしまう。</p>
+
 <p>ブラウザには、セキュリティ上の理由から HTTP-Redirect の無限リダイレクト制限はあるが、
 JavaScript を介しているのでこれが効かない。</p>
+
 <p>具体的には下記の通り無限ループする。
 下記アクセスをした場合に攻撃者と見なされるかどうかは不明。</p>
+
 <ol>
 <li>まず <code>http://ほげほげ.blogspot.com/</code> にアクセス</li>
 <li>NCR クッキーがないならば、国別ドメインにリダイレクト。日本からの場合は、<code>http://ほげほげ.blogspot.jp/</code> にリダイレクト</li>
@@ -83,8 +113,10 @@ JavaScript を介しているのでこれが効かない。</p>
 <li>Cookie が無効なので、NCR クッキーが発行されない。</li>
 <li>2に戻る。</li>
 </ol>
+
 <p>たぶん上の施策をするとしてもクッキーの有無（<code>navigator.cookieEnabled</code>）を確認するべきであった。
 ただしが、これでも <code>blogspot.com</code> は許可していても国別ドメインの方は許可していないならば、やはり無限 redirect する。</p>
+
 <pre class="prettyprint"><code>if (navigator.cookieEnabled) {
   if (location.host.indexOf('.com') == -1) {
     location.href = location.href.replace(location.host + '/', 'ほげほげ.blogspot.com/ncr/');
@@ -93,34 +125,49 @@ JavaScript を介しているのでこれが効かない。</p>
   // この処理が呼ばれるときに cookieEnabled が無効だった場合は対策方法はない。
   // 独自ドメインを取得するか、Blogger から逃げるかのみ。
 }
-</code></pre><h4>参考文献</h4>
+</code></pre>
+
+<h4>参考文献</h4>
+
 <ul>
 <li><a href="https://support.google.com/blogger/answer/2402711">ブログが国別の URL にリダイレクトされる理由</a> - Blogger ヘルプ</li>
 <li><a href="http://wada811.blogspot.com/2012/03/bloggerblogspotjp.html">Bloggerでblogspot.jpにリダイレクトされるのを防ぐ方法</a></li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/12/blogger-cookie-javascript.html&amp;text=Blogger%20%E3%81%AE%E5%9B%BD%E5%88%A5%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%AF%BE%E7%AD%96%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E3%81%A8%E3%80%81Cookie%20%E7%84%A1%E5%8A%B9%20+%20JavaScript%20%E6%9C%89%E5%8A%B9%E3%81%AA%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E7%84%A1%E9%99%90%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B%E4%BB%B6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/12/blogger-cookie-javascript.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/12/blogger-cookie-javascript.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/12/blogger-cookie-javascript.html&amp;linkname=Blogger%20%E3%81%AE%E5%9B%BD%E5%88%A5%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E5%AF%BE%E7%AD%96%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B%E3%81%A8%E3%80%81Cookie%20%E7%84%A1%E5%8A%B9%20+%20JavaScript%20%E6%9C%89%E5%8A%B9%E3%81%AA%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%AE%E7%92%B0%E5%A2%83%E4%B8%8B%E3%81%A7%E7%84%A1%E9%99%90%E3%83%AA%E3%83%80%E3%82%A4%E3%83%AC%E3%82%AF%E3%83%88%E3%81%99%E3%82%8B%E4%BB%B6+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-12-31-blogger-cookie-javascript.html" class="source-path">_posts/2013-12-31-blogger-cookie-javascript.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-12-31-blogger-cookie-javascript.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2013/12/cookie.html" title="Cookie のブロックを検出する方法：更新" rel="prev">&#x2190;Cookie のブロックを検出する方法：更新</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2014/01/firefox-restartless-bootstrap-stylesheet-dynamic-insertion.html" title="Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法" rel="next">Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -132,31 +179,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2014-09-06</span>
       <a class="post-link" href="/2014/09/move-to-jekyll.html">Jekyll移行メモ</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2013-12-31</span>
-      <a class="post-link" href="/2013/12/cookie.html">Cookie のブロックを検出する方法：更新</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2015-07-04</span>
       <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">Study of the link tracking methods and the protection</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2015-05-01</span>
-      <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
+      <span class="post-date">2013-12-31</span>
+      <a class="post-link" href="/2013/12/cookie.html">Cookie のブロックを検出する方法：更新</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-05-26</span>
+      <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">nsIPref is deprecated and removed on Firefox 3.7</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -196,5 +254,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

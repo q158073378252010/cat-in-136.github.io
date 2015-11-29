@@ -8,40 +8,55 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="rpmbuild setting for multi core CPU (2)" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" rel="bookmark">rpmbuild setting for multi core CPU (2)</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-07-31T01:03:00+09:00</time>
       (Modified: <time>2010-07-31T01:04:07+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_make">Make</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>
 According to <a href="http://fedoraproject.org/wiki/Packaging/Guidelines">Fedora Project's Package Guideline</a>, <code>%{?_smp_mflags}</code> seems to be the recommended way.
@@ -50,39 +65,54 @@ According to <a href="http://fedoraproject.org/wiki/Packaging/Guidelines">Fedora
 <p>Whenever possible, invocations of <code>make</code> should be done as
 </p>
 <pre class="prettyprint">make&nbsp;%{?_smp_mflags}
-</pre><p>This generally speeds up builds and especially on SMP machines.
+</pre>
+<p>This generally speeds up builds and especially on SMP machines.
 </p><p>Do make sure, however, that the package builds cleanly this way as some make files do not support parallel building. Therefore you should consider adding
 </p>
+
 <pre class="prettyprint">%_smp_mflags -j3
-</pre><p>to your <code>~/.rpmmacros</code> file -- even on UP machines -- as this will expose most of these errors.
+</pre>
+<p>to your <code>~/.rpmmacros</code> file -- even on UP machines -- as this will expose most of these errors.
 </p>
 </blockquote>
+
 <p>
 Today, however, most of packages do not use <code>make&nbsp;%{?_smp_mflags}</code>.<a href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html"> The <code>%__make /usr/bin/make -j 6</code> hack I wrote in this blog</a> is tentative.
 </p
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html&amp;text=rpmbuild%20setting%20for%20multi%20core%20CPU%20(2)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html&amp;linkname=rpmbuild%20setting%20for%20multi%20core%20CPU%20(2)+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-07-31-rpmbuild-setting-for-multi-core-cpu-2.html" class="source-path">_posts/2010-07-31-rpmbuild-setting-for-multi-core-cpu-2.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-07-31-rpmbuild-setting-for-multi-core-cpu-2.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html" title="[Updated] rpmbuild setting for multi core CPU" rel="prev">&#x2190;[Updated] rpmbuild setting for multi core CPU</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/08/platexdvipdfmxfedora13.html" title="（メモ）platex+dvipdfmxをfedora13で使う方法" rel="next">（メモ）platex+dvipdfmxをfedora13で使う方法&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -94,31 +124,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-07-25</span>
       <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html">[Updated] rpmbuild setting for multi core CPU</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2010-02-13</span>
-      <a class="post-link" href="/2010/02/babelzilla-doesnt-support-installrdf.html">Babelzilla doesn&#39;t support &quot;install.rdf&quot; localization.</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-02-04</span>
       <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">AMO warns use of &quot;setTimeout()&quot;</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-02-13</span>
+      <a class="post-link" href="/2010/02/babelzilla-doesnt-support-installrdf.html">Babelzilla doesn&#39;t support &quot;install.rdf&quot; localization.</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2014-03-26</span>
       <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-06-22</span>
       <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">Study: multi-text vs single-text on XUL elements</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -158,5 +199,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

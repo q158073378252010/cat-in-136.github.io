@@ -12,53 +12,73 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/12/cookie.html" rel="bookmark">Cookie のブロックを検出する方法：更新</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2013-12-31T00:00:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:38+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
       <a class="tag" href="/tags.html#tag_cookie">Cookie</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>Cookie を検出してブロックする、のではなくて
 あるサイトに訪れたユーザの
 ブラウザが Cookie をブロックする設定となっているのを検出できるかどうか、
 のおはなし。</p>
+
 <figure style="display: block; margin: 1em; text-align: center;">
 <a href="/images/device-2013-12-31-111917.png" style="margin-left: 1em; margin-right: 1em;"><img src="/images/device-2013-12-31-111917.png" width="192" height="320" title="プライバシーとセキュリティ→Cookie→Cookieを受け入れる" alt="プライバシーとセキュリティ→Cookie→Cookieを受け入れる" /></a>
 <figcaption>Android のブラウザだと「Cookieを受け入れる」で Cookie のブロックを指定できる</figcaption>
 </figure>
+
 <ins datetime="2013-12-31T13:04:19">
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.cookieEnabled"><code>navigator.cookieEnabled</code></a>を見ればいいだけの簡単なお仕事だった(ドメイン指定の設定も反映される)。
 なので、この記事の内容は忘れるように。
 </ins>
+
 <del datetime="2013-12-31T13:04:19">
+
 <h4>Solution</h4>
+
 <pre class="prettyprint"><code>document.cookie = "cookie-block-check=a;max-age=1;domain=%DOMAIN%;path=%PATH%%SECURE%"
                   .replace("%DOMAIN%", location.host)
                   .replace("%PATH%", location.pathname)
@@ -68,12 +88,19 @@ if (document.cookie == "") {
 } else {
     alert("Cookie is allowed");
 }
-</code></pre><p>Cookie の受け入れをON/OFFするなり、ドメイン指定で拒否/許可を切り替えるなりして、
+</code></pre>
+
+<p>Cookie の受け入れをON/OFFするなり、ドメイン指定で拒否/許可を切り替えるなりして、
 下記ボタンを押すと動作が変わると思う。</p>
+
 <p><button onclick="document.cookie='cookie-block-check=1;max-age=1;domain=%DOMAIN%;path=%PATH%%SECURE%'.replace('%DOMAIN%',location.hostname).replace('%PATH%',location.pathname).replace('%SECURE%','https:'==location.protocol?';secure':'');(''==document.cookie)?alert('Cookie is blocked'):alert('Cookie is allowed');">検証用ボタン</button><noscript>※実行にあたっては、JavaScript を有効にすること</noscript></p>
+
 <h4>仕組み</h4>
+
 <p>話は単純で、<strong>Cookie を実際に JavaScript でつくってして、それが登録されているかを見えればよい</strong>。</p>
+
 <p>なお、この Cookie の扱いは下記の通り慎重を期している。</p>
+
 <ul>
 <li><code>max-age=1</code> とすることで<del>賞味</del>期限を1秒としている。
 <ul>
@@ -84,15 +111,20 @@ if (document.cookie == "") {
 <li>すぐに消えるとはいえ、念の為 <code>domain</code> <code>path</code> <code>secure</code> attribute を付けるなど
 安全性には気をつけた</li>
 </ul>
+
 <h4>「一時的に許可」の判定はできないし、意味はない</h4>
+
 <p>JavaScript の <code>document.cookie</code> で cookie を取得するときには、
 key=value ペアしか取得できないので、
 「一時的に許可（ブラウザ閉じたら削除）」になっているかは判定できない。</p>
+
 <p>もっとも、cookie はユーザによって後で削除されるかもしれないし、
 ブラウザによって（cookie の格納個数などの原因によって）削除されるかもしれない。
 これは原理的に判断できるわけがないので、
 一時的に許可されているか=後で削除されるかどうかを判定するのはできないし、無意味だ。</p>
+
 <h4>参考文献</h4>
+
 <ul>
 <li>"HTTP State Management Mechanism", <a href="http://tools.ietf.org/html/rfc6265" title="RFC 6265 - HTTP State Management Mechanism">RFC 6265</a>, April 2011
 <ul>
@@ -100,30 +132,43 @@ key=value ペアしか取得できないので、
 </ul></li>
 <li>"<a href="https://developer.mozilla.org/docs/DOM/document.cookie" title="document.cookie - DOM | MDN"><code>document.cookie</code> - DOM</a>", MDN</li>
 </ul>
+
 </del>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/12/cookie.html&amp;text=Cookie%20%E3%81%AE%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%82%92%E6%A4%9C%E5%87%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%EF%BC%9A%E6%9B%B4%E6%96%B0+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/12/cookie.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/12/cookie.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/12/cookie.html&amp;linkname=Cookie%20%E3%81%AE%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF%E3%82%92%E6%A4%9C%E5%87%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%EF%BC%9A%E6%9B%B4%E6%96%B0+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-12-31-cookie.html" class="source-path">_posts/2013-12-31-cookie.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-12-31-cookie.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2013/12/why-cannot-upload-photo-to-blogger-and.html" title="Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?" rel="prev">&#x2190;Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2013/12/blogger-cookie-javascript.html" title="Blogger の国別ドメインリダイレクト対策コードを入れると、Cookie 無効 + JavaScript 有効なブラウザの環境下で無限リダイレクトする件" rel="next">Blogger の国別ドメインリダイレクト対策コードを入れると、Cookie 無効 + JavaScript 有効なブラウザの環境下で無限リダイレクトする件&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -135,31 +180,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    <li class="post-item">
-      <span class="post-date">2014-04-06</span>
-      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
-    </li>
-    <li class="post-item">
-      <span class="post-date">2012-05-19</span>
-      <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
-    </li>
-    <li class="post-item">
-      <span class="post-date">2013-04-13</span>
-      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2013-12-28</span>
       <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2012-05-19</span>
+      <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-04-06</span>
+      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2010-08-15</span>
+      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -199,5 +255,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

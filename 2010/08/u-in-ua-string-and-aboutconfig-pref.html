@@ -8,43 +8,60 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html" rel="bookmark">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-08-11T23:20:00+09:00</time>
       (Modified: <time>2010-08-11T23:20:00+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_configuration%20mania">Configuration mania</a>
+      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   "U; " in UA-string and about:config pref "general.useragent.security" are removed #firefox4
+
 <p>
 On Firefox 4.0 beta 2, User-agent is shortened as following:
 </p>
@@ -74,6 +91,7 @@ of Netscape offered circa 1995.</td></tr>
 Do you know <cite>what the "international" builds
 of Netscape offered circa 1995</cite>?
 </p>
+
 <h4>relation to about:config pref</h4>
 <p>
 You can change User-Agent token with about:config.
@@ -97,15 +115,18 @@ You can change User-Agent token with about:config.
 <p>
 Note that pref "<code>general.useragent.security</code>" was also removed at <a href="http://hg.mozilla.org/mozilla-central/rev/22e19fe61752">Jul 02</a>.
 </p>
+
 <h4>Why Configuration Mania's User-Agent setting does not work on Firefox 4.0b2 even if "Addons"-&gt;"Do Not check add-on compatibility" is checked?</h4>
 <p>
 An error was occurs whenever the dialog initialized.
 Following code on Configuration Mania (version 1.12.2010071001) throws <code>NS_ERROR_UNEXPECTED</code> since <code>"general.useragent.security"</code> does not exist on Firefox 4.0b2.
 </p>
 <pre class="prettyprint"><code>     var mSecurity = prefBranch.getCharPref("general.useragent.security");
-</code></pre><p>
+</code></pre>
+<p>
 Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configuration-mania/changesets">bitbucket's repository</a>.
 </p>
+
 <h4>See also</h4>
 <ul>
 <li><a href="https://developer.mozilla.org/en/User_Agent_Strings_Reference">User Agent Strings Reference - MDC</a></li>
@@ -119,28 +140,39 @@ Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configur
 <li>IE9 blog, <a href="http://blogs.msdn.com/b/ie/archive/2010/03/23/introducing-ie9-s-user-agent-string.aspx">Introducing IE9’s User Agent String</a>, 2010-03-23</li>
 </ul>
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html&amp;text=%22U;%20%22%20in%20UA-string%20and%20about:config%20pref%20%22general.useragent.security%22%20are%20removed%20%23firefox4+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html&amp;linkname=%22U;%20%22%20in%20UA-string%20and%20about:config%20pref%20%22general.useragent.security%22%20are%20removed%20%23firefox4+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-08-11-u-in-ua-string-and-aboutconfig-pref.html" class="source-path">_posts/2010-08-11-u-in-ua-string-and-aboutconfig-pref.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-08-11-u-in-ua-string-and-aboutconfig-pref.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/08/hack-micropolis-aka-simcity-and-get.html" title="Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!" rel="prev">&#x2190;Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/08/study-for-adding-menuitem-to-firefox4s.html" title="Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;" rel="next">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -152,31 +184,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-05-26</span>
       <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">nsIPref is deprecated and removed on Firefox 3.7</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-08-15</span>
       <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2011-12-24</span>
       <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-05-12</span>
       <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-02-27</span>
       <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -216,5 +259,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

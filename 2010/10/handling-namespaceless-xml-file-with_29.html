@@ -8,41 +8,57 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Handling namespaceless XML file with SAX (2)" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/10/handling-namespaceless-xml-file-with_29.html" rel="bookmark">Handling namespaceless XML file with SAX (2)</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-10-29T23:44:00+09:00</time>
       (Modified: <time>2010-10-29T23:44:00+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_java">Java</a>
+      
       <a class="tag" href="/tags.html#tag_xml">Xml</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>
 After last post, I found SAX namespace handling method can be changed with <a href="http://download.oracle.com/javase/6/docs/api/javax/xml/parsers/SAXParserFactory.html#setNamespaceAware%28boolean%29"><code>SAXParserFactory#setNamespaceAware()</code> function</a>.
@@ -50,7 +66,8 @@ After last post, I found SAX namespace handling method can be changed with <a hr
 <pre class="prettyprint"><code>    SAXParserFactory factory = SAXParserFactory.newInstance();
 <em style="font-style:normal; background-color: #ff0;">    factory.setNamespaceAware(true);</em>
     SAXParser parser = factory.newSAXParser();
-</code></pre><p>
+</code></pre>
+<p>
 This setting specify whether the parser supports XML namespaces or not and default value is <code>false</code>.
 </p>
 <p>
@@ -76,6 +93,7 @@ Following table is the result of namespace-less <code>"&lt;test&gt;"</code> tag.
 <td><code>""</code></td>
 <td><code>"test"</code></td>
 </tr>
+
 <tr>
 <th>qName</th>
 <td><code>"test"</code></td>
@@ -84,32 +102,44 @@ Following table is the result of namespace-less <code>"&lt;test&gt;"</code> tag.
 </tbody>
 </table>
 </div>
+
 <p>
 Note that: On Android <em>1.5</em>, calling <code>SAXParserFactory#setNamespaceAware()</code> throws <code>SAXNotSupportedException</code> "The 'namespace-prefix' feature is not supported while the 'namespaces' feature is enabled.". We SHOULD USE newer Android OS.
 </p>
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html&amp;text=Handling%20namespaceless%20XML%20file%20with%20SAX%20(2)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html&amp;linkname=Handling%20namespaceless%20XML%20file%20with%20SAX%20(2)+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-10-29-handling-namespaceless-xml-file-with_29.html" class="source-path">_posts/2010-10-29-handling-namespaceless-xml-file-with_29.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-10-29-handling-namespaceless-xml-file-with_29.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/10/handling-namespaceless-xml-file-with.html" title="Handling namespaceless XML file with SAX" rel="prev">&#x2190;Handling namespaceless XML file with SAX</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/11/bloggers-stats-is-flash-free-but-looks.html" title="Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics" rel="next">Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -121,31 +151,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-10-27</span>
       <a class="post-link" href="/2010/10/handling-namespaceless-xml-file-with.html">Handling namespaceless XML file with SAX</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-03-20</span>
       <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">inode# is different from NTFS FileRef#</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2013-04-13</span>
-      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+      <span class="post-date">2010-04-15</span>
+      <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">Components.utils.reportError() is easy to use for debugging</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-04-11</span>
       <a class="post-link" href="/2010/04/stats-flash-vs-java.html">[stats] Flash vs Java</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2010-09-02</span>
       <a class="post-link" href="/2010/09/unofficial-css-property-zoom.html">Unofficial CSS property zoom implemented on WebKit</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -185,5 +226,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

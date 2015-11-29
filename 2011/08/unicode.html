@@ -12,38 +12,53 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2011/08/unicode.html" rel="bookmark">サンマルクカフェのアキュート付きの&quot;ェ&quot;をUnicodeで再現しようとしたが失敗した</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2011-08-20T11:50:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:33+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
       <a class="tag" href="/tags.html#tag_unicode">Unicode</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>
 最近、<a href="http://www.saint-marc-hd.com/cafe/">サンマルクカフェ</a>
@@ -69,7 +84,8 @@ U+30A7 KATAKANA LETTER SMALL E + U+0301 COMBINING ACUTE ACCENT
 の形にすれば、Unicode 的に理にかなった方法で
 サンマルクカフェをエンコードできるとおもいやってみた。
 </p>
-<pre class="prettyprint"><code>サンマルクカフェ&amp;#x0301; Saint Marc Cafe&amp;#x0301;</code></pre><div style="background-color: #FBF1DC; color: #5D310B; border: solid 2px #EBDEC4;">
+<pre class="prettyprint"><code>サンマルクカフェ&amp;#x0301; Saint Marc Cafe&amp;#x0301;</code></pre>
+<div style="background-color: #FBF1DC; color: #5D310B; border: solid 2px #EBDEC4;">
 サンマルクカフェ&#x0301; Saint Marc Cafe&#x0301;
 </div>
 <p>
@@ -78,7 +94,8 @@ U+30A7 KATAKANA LETTER SMALL E + U+0301 COMBINING ACUTE ACCENT
 さらに英語部分についても然り。
 どうやら言語を日本語以外にしないといけないらしい。
 </p>
-<pre class="prettyprint"><code>サンマルクカフ&lt;span lang="en"&gt;ェ&amp;#x0301;&lt;/span&gt; &lt;span lang="en"&gt;Saint Marc Cafe&amp;#x0301;&lt;/span&gt;</code></pre><div style="background-color: #FBF1DC; color: #5D310B; border: solid 2px #EBDEC4;">
+<pre class="prettyprint"><code>サンマルクカフ&lt;span lang="en"&gt;ェ&amp;#x0301;&lt;/span&gt; &lt;span lang="en"&gt;Saint Marc Cafe&amp;#x0301;&lt;/span&gt;</code></pre>
+<div style="background-color: #FBF1DC; color: #5D310B; border: solid 2px #EBDEC4;">
 サンマルクカフ<span lang="en">ェ&#x0301;</span> <span lang="en">Saint Marc Cafe&#x0301;</span>
 </div>
 <p>
@@ -93,29 +110,41 @@ U+30A7 KATAKANA LETTER SMALL E + U+0301 COMBINING ACUTE ACCENT
 <img src="/images/accute_on_katakana_e.png" />
 <figcaption style="display: block;">筆者環境のレンダリング結果。（"ェ"の右上にアキュートがある。）</figcaption>
 </figure>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2011/08/unicode.html&amp;text=%E3%82%B5%E3%83%B3%E3%83%9E%E3%83%AB%E3%82%AF%E3%82%AB%E3%83%95%E3%82%A7%E3%81%AE%E3%82%A2%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%88%E4%BB%98%E3%81%8D%E3%81%AE%22%E3%82%A7%22%E3%82%92Unicode%E3%81%A7%E5%86%8D%E7%8F%BE%E3%81%97%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%9F%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%97%E3%81%9F+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2011/08/unicode.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2011/08/unicode.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2011/08/unicode.html&amp;linkname=%E3%82%B5%E3%83%B3%E3%83%9E%E3%83%AB%E3%82%AF%E3%82%AB%E3%83%95%E3%82%A7%E3%81%AE%E3%82%A2%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%88%E4%BB%98%E3%81%8D%E3%81%AE%22%E3%82%A7%22%E3%82%92Unicode%E3%81%A7%E5%86%8D%E7%8F%BE%E3%81%97%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%9F%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%97%E3%81%9F+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-08-20-unicode.html" class="source-path">_posts/2011-08-20-unicode.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-08-20-unicode.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2011/07/tips-webrick-proxy-server-with-digest.html" title="[TIPS] WEBrick proxy server with Digest Auth" rel="prev">&#x2190;[TIPS] WEBrick proxy server with Digest Auth</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2011/08/diff-of-firefox70-default-preference.html" title="Diff of firefox7.0 default preference and firefox6.0" rel="next">Diff of firefox7.0 default preference and firefox6.0&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -127,31 +156,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2013-02-24</span>
       <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2013-04-13</span>
       <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-12-29</span>
       <a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-04-06</span>
       <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2012-05-19</span>
-      <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -191,5 +231,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

@@ -8,53 +8,71 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Diff between firefox 19 default preference and firefox 18.0.2" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/02/diff-between-firefox-19-default.html" rel="bookmark">Diff between firefox 19 default preference and firefox 18.0.2</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2013-02-20T23:29:00+09:00</time>
       (Modified: <time>2013-02-20T23:29:57+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>This is difference between the default preference of Firefox 18 beta3 and one of 17.0.1.</p>
+
 <dl>
 <dt>Default pref Javascript files (Firefox 18.0.2 for linux):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js,services-sync.js,services-aitc.js}}</dd>
 <dt>Default pref Javascript files (Firefox 19 for linux):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js,services-sync.js,services-aitc.js}}</dd>
 </dl>
+
 <table class="diff_firefox19_pref_diff">
 <thead>
 <tr><td>Pref</td><td>Firefox 18.0.2</td><td>Firefox 19</td></tr>
 </thead>
 <tbody><tr class="newkey"><td>browser.<wbr />download.<wbr />panel.<wbr />firstSessionCompleted</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>browser.<wbr />download.<wbr />panel.<wbr />shown</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>devtools.<wbr />debugger.<wbr />chrome-<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />panes-<wbr />visible-<wbr />on-<wbr />startup</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />remote-<wbr />win.<wbr />height</td><td>400</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />remote-<wbr />win.<wbr />width</td><td>900</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />stackframes-<wbr />pane-<wbr />visible</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />variables-<wbr />non-<wbr />enum-<wbr />visible</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />variables-<wbr />pane-<wbr />visible</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />variables-<wbr />searchbox-<wbr />visible</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />variables-<wbr />sorting-<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />win-<wbr />height</td><td class="undefined">undefined</td><td>400</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />win-<wbr />width</td><td class="undefined">undefined</td><td>900</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />win-<wbr />x</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />win-<wbr />y</td><td class="undefined">undefined</td><td>0</td></tr><tr class="oldkey"><td>dom.<wbr />new_<wbr />bindings</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>dom.<wbr />placeholder.<wbr />show_<wbr />on_<wbr />focus</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>font.<wbr />size.<wbr />inflation.<wbr />maxRatio</td><td class="undefined">undefined</td><td>0</td></tr><tr class="oldkey"><td>gfx.<wbr />canvas.<wbr />azure.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>gfx.<wbr />content.<wbr />azure.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>gfx.<wbr />font_<wbr />rendering.<wbr />harfbuzz.<wbr />scripts</td><td>7</td><td>-1</td></tr><tr><td>image.<wbr />high_<wbr />quality_<wbr />downscaling.<wbr />enabled</td><td>false</td><td>true</td></tr><tr><td>image.<wbr />mem.<wbr />decode_<wbr />bytes_<wbr />at_<wbr />a_<wbr />time</td><td>4096</td><td>16384</td></tr><tr><td>intl.<wbr />charsetmenu.<wbr />browser.<wbr />more1</td><td>ISO-8859-1, ISO-8859-15, IBM850, x-mac-roman, windows-1252, ISO-8859-14, ISO-8859-7, x-mac-greek, windows-1253, x-mac-icelandic, ISO-8859-10, ISO-8859-3</td><td>ISO-8859-1, ISO-8859-15, IBM850, macintosh, windows-1252, ISO-8859-14, ISO-8859-7, x-mac-greek, windows-1253, x-mac-icelandic, ISO-8859-10, ISO-8859-3</td></tr><tr><td>intl.<wbr />charsetmenu.<wbr />browser.<wbr />more3</td><td>GB2312, gbk, gb18030, HZ-GB-2312, ISO-2022-CN, Big5, Big5-HKSCS, x-euc-tw, EUC-JP, ISO-2022-JP, Shift_JIS, EUC-KR, x-windows-949, x-johab, ISO-2022-KR</td><td>GB2312, gbk, gb18030, HZ-GB-2312, ISO-2022-CN, Big5, Big5-HKSCS, x-euc-tw, EUC-JP, ISO-2022-JP, Shift_JIS, EUC-KR, x-johab, ISO-2022-KR</td></tr><tr><td>intl.<wbr />charsetmenu.<wbr />browser.<wbr />more5</td><td>ISO-8859-6, windows-1256, IBM864, ISO-8859-8-I, windows-1255, ISO-8859-8, IBM862</td><td>ISO-8859-6, windows-1256, ISO-8859-8-I, windows-1255, ISO-8859-8, IBM862</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />relimit</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />prefixes.<wbr />animations</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />prefixes.<wbr />border-<wbr />image</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />prefixes.<wbr />transforms</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />prefixes.<wbr />transitions</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />disable.<wbr />ipc.<wbr />security</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>network.<wbr />http.<wbr />spdy.<wbr />ping-<wbr />threshold</td><td>44</td><td>58</td></tr><tr class="newkey"><td>network.<wbr />stricttransportsecurity.<wbr />preloadlist</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>pdfjs.<wbr />disabled</td><td>true</td><td>false</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />dhe_<wbr />dss_<wbr />des_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />dhe_<wbr />rsa_<wbr />des_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />ecdsa_<wbr />null_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdh_<wbr />rsa_<wbr />null_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdhe_<wbr />ecdsa_<wbr />null_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />ecdhe_<wbr />rsa_<wbr />null_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />1024_<wbr />des_<wbr />cbc_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />1024_<wbr />rc4_<wbr />56_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />des_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />fips_<wbr />des_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />null_<wbr />md5</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />null_<wbr />sha</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />rc2_<wbr />40_<wbr />md5</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />ssl3.<wbr />rsa_<wbr />rc4_<wbr />40_<wbr />md5</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />entering_<wbr />secure</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />entering_<wbr />secure.<wbr />show_<wbr />once</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />entering_<wbr />weak</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />entering_<wbr />weak.<wbr />show_<wbr />once</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />leaving_<wbr />secure</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />leaving_<wbr />secure.<wbr />show_<wbr />once</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />submit_<wbr />insecure</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />submit_<wbr />insecure.<wbr />show_<wbr />once</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />viewing_<wbr />mixed</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>security.<wbr />warn_<wbr />viewing_<wbr />mixed.<wbr />show_<wbr />once</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>services.<wbr />sync.<wbr />log.<wbr />logger.<wbr />userapi</td><td class="undefined">undefined</td><td>Debug</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />security.<wbr />warn_<wbr />entering_<wbr />secure</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />security.<wbr />warn_<wbr />entering_<wbr />weak</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />security.<wbr />warn_<wbr />leaving_<wbr />secure</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />security.<wbr />warn_<wbr />submit_<wbr />insecure</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>services.<wbr />sync.<wbr />prefs.<wbr />sync.<wbr />security.<wbr />warn_<wbr />viewing_<wbr />mixed</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>toolkit.<wbr />scrollbox.<wbr />horizontalScrollDistance</td><td class="undefined">undefined</td><td>5</td></tr><tr class="newkey"><td>ui.<wbr />touch_<wbr />activation.<wbr />delay_<wbr />ms</td><td class="undefined">undefined</td><td>50</td></tr><tr class="newkey"><td>webgl.<wbr />can-<wbr />lose-<wbr />context-<wbr />in-<wbr />foreground</td><td class="undefined">undefined</td><td>true</td></tr></tbody>
 </table>
+
 <style type="text/css"><!-- /* --><![CDATA[ /* */
 table.diff_firefox19_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox19_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -63,32 +81,45 @@ table.diff_firefox19_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox19_pref_diff tr.sameval td:first-child { color: #444; }
 table.diff_firefox19_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
 table.diff_firefox19_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
 table.diff_firefox19_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox19_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]><!-- */ --></style>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/02/diff-between-firefox-19-default.html&amp;text=Diff%20between%20firefox%2019%20default%20preference%20and%20firefox%2018.0.2+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/02/diff-between-firefox-19-default.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/02/diff-between-firefox-19-default.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/02/diff-between-firefox-19-default.html&amp;linkname=Diff%20between%20firefox%2019%20default%20preference%20and%20firefox%2018.0.2+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-02-20-diff-between-firefox-19-default.html" class="source-path">_posts/2013-02-20-diff-between-firefox-19-default.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-02-20-diff-between-firefox-19-default.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2013/01/js.html" title="「JSエンジンを公開日順に並べ直しなさい」について調べてみた。" rel="prev">&#x2190;「JSエンジンを公開日順に並べ直しなさい」について調べてみた。</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2013/02/netscape-communicator-4-beta-2-throbber.html" title="#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;" rel="next">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -100,31 +131,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-12-12</span>
       <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2013-12-16</span>
       <a class="post-link" href="/2013/12/diff-between-firefox-270-beta-1-default.html">Diff between firefox 27.0 beta 1 default preference and firefox 26.0 </a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-03-30</span>
       <a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2012-10-13</span>
       <a class="post-link" href="/2012/10/diff-between-firefox-170beta1-default.html">Diff between firefox 17.0beta1 default preference and firefox 16.0.1</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2013-08-30</span>
       <a class="post-link" href="/2013/08/diff-between-firefox-240-beta-6-default.html">Diff between firefox 24.0 beta 6 default preference and firefox 23.0.1</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -164,5 +206,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

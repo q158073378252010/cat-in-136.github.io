@@ -12,104 +12,138 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2012/02/v-highisdb-tmmmmbinottv.html" rel="bookmark">メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2012-02-18T16:55:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:35+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p style="font-size: x-large; padding: 1em;">ケータイ向け放送と呼ぶには、複雑すぎる。</p>
+
 <p>あまりにも複雑なので間違っているかもしれない。
 いや、<strong>どこかしら間違っているに違いない</strong>。
 きちんと理解したい方は、いろいろ資料をあたって欲しい。</p>
+
 <dl>
 <dt>V-High帯</dt>
 <dd>
 日本における、旧アナログテレビ(VHS)帯域のうち4〜12chの周波数帯域。
 </dd>
+
 <dt>モバキャス</dt>
 <dd>
 V-High帯域での携帯端末向けマルチメディア放送の総称。
 株式会社ジャパン・モバイルキャスティングの商標。
 </dd>
+
 <dt>ISDB-Tmm</dt>
 <dd>
 モバイルマルチメディア放送方式の一つ。モバキャスに使用される。
 </dd>
+
 <dt>mmbi</dt>
 <dd>
 株式会社mmbi。委託放送事業会社。（委託先が株式会社ジャパン・モバイルキャスティング）
 かつては、株式会社マルチメディア放送、マルチメディア放送企画LLC合同会社と呼んでいた。
 </dd>
+
 <dt>NOTTV</dt>
 <dd>
 mmbiの放送局の名称。
 株式会社mmbiの登録商標。
 </dd>
+
 </dl>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="688" height="355" data="/images/mobacas-protocol-stack.svg"></object>
 <figcaption style="display: block;">ISDB-Tmm におけるプロトコルスタック （文献「携帯端末向けマルチメディア放送システム ISDB-Tmm の概要」から）</figcaption>
 </figure>
+
 <h4>100%双方向のソーシャルなTV</h4>
+
 <ul>
 <li>ISDB-Tmm 物理層は下り方向の通信しか提供しない。</li>
 <li>双方向性機能にはHTTP(S)を用いて通信を行う。</li>
 </ul>
+
 <p>ISDB-TmmはISDBファミリの一種である。
 つまり地デジやワンセグの仲間の規格。
 だから当たり前ながら上り方向の通信路を提供しない。</p>
+
 <p>これを解決するのが「放送と通信のイイトコどり」。
 上りにはHTTP網を使う。
 「スマホ向け放送局」であるNOTTVの場合、視聴者はスマホから3G/4G網（もしくはWiFi経由のインターネット網）を介して、
 NOTTVのHTTPサーバにつながるものと思われる。
 乱暴に言えば、NOTTVは物理レイヤにISDB-Tmm以外に携帯電話網やWiFiを使用する。</p>
+
 <h4>スマホを使った新しい放送の仕組み</h4>
+
 <p>ISDB-Tmmは地デジ等と同じくセグメントと呼ばれる単位で伝送路符号化される。
 207.5-222MHzの間の14.5MHzの帯域幅を33セグメントに分割して送信することになる。
 セグメントが映像を送信するとき、地デジないしワンセグと互換性を持つ。
 （しかし周波数帯域が異なるため既存の受信機器ではNOTTVが視聴できない。）</p>
+
 <p>ISDB-Tと最も異なるところは、データパケットも載せられるようになっている。
 （<abbr title="File Delivery over Unidirectional Transport">FLUTE</abbr>/UDP/IP/<abbr title="Unidirectional Lightweight Encapsulation">ULE</abbr>/MPEG-2 TS
 といったプロトコルスタックになっている。）
 よってデジタルコンテンツ（DIME電子版・東京ウォーカー電子版）の配信が
 技術的な意味で「新しい放送の仕組み」を使っていることになる。</p>
+
 <p>もっともこれは技術に注目した場合での話である。
 サービスとしての差は4月以降にお手並み拝見ということになる。</p>
+
 <h4>ジャパン・モバイルキャスティングとmmbi</h4>
+
 <p>いろいろな意味で、
 株式会社mmbiの会社の下に株式会社ジャパン・モバイルキャスティングがある。</p>
+
 <ul>
 <li>株式会社ジャパン・モバイルキャスティングは株式会社mmbiの子会社である。</li>
 <li>株式会社ジャパン・モバイルキャスティングが放送免許などを持っていて、株式会社mmbiはコンテンツやサービスの会社。
 株式会社mmbiが上位レイヤで株式会社ジャパン・モバイルキャスティングが下位レイヤ。</li>
 <li>両方ともミッドタウンタワーに入居しているが、株式会社mmbiが38階、そこから1階下りた37階に株式会社ジャパン・モバイルキャスティングがある。</li>
 </ul>
+
 <h4>参考文献</h4>
+
 <ul>
 <li><a href="http://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/housou_system/pdf/081128_1_si16-3-1.pdf">携帯端末向けマルチメディア放送システム ISDB-Tmm の概要</a> - 情報通信審議会放送システム委員会マルチメディア放送システム作業班アドホックグループ1 (総務省)</li>
 <li><a href="http://mmbi.co.jp/news/">スマートフォン向け放送局「ＮＯＴＴＶ」開局</a> - 株式会社mmbiニュースリリース 2012.02.16</li>
@@ -119,29 +153,41 @@ NOTTVのHTTPサーバにつながるものと思われる。
 <li><a href="http://www.j-mobilecasting.com/company/outline.html">株式会社ジャパン・モバイルキャスティング 会社概要</a></li>
 <li><a href="http://mmbi.co.jp/company_info/outline/">株式会社mmbi 会社概要</a></li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/02/v-highisdb-tmmmmbinottv.html&amp;text=%E3%83%A1%E3%83%A2%EF%BC%9AV-high/%E3%83%A2%E3%83%90%E3%82%AD%E3%83%A3%E3%82%B9/ISDB-Tmm/mmbi/nottv%20%E3%81%AE%E8%A8%80%E8%91%89%E3%81%8C%E6%84%8F%E5%91%B3%E4%B8%8D%E6%98%8E%E3%81%A0%E3%81%A3%E3%81%9F%E3%81%8B%E3%82%89%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/02/v-highisdb-tmmmmbinottv.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/02/v-highisdb-tmmmmbinottv.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/02/v-highisdb-tmmmmbinottv.html&amp;linkname=%E3%83%A1%E3%83%A2%EF%BC%9AV-high/%E3%83%A2%E3%83%90%E3%82%AD%E3%83%A3%E3%82%B9/ISDB-Tmm/mmbi/nottv%20%E3%81%AE%E8%A8%80%E8%91%89%E3%81%8C%E6%84%8F%E5%91%B3%E4%B8%8D%E6%98%8E%E3%81%A0%E3%81%A3%E3%81%9F%E3%81%8B%E3%82%89%E8%AA%BF%E3%81%B9%E3%81%A6%E3%81%BF%E3%81%9F+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-02-18-v-highisdb-tmmmmbinottv.html" class="source-path">_posts/2012-02-18-v-highisdb-tmmmmbinottv.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-02-18-v-highisdb-tmmmmbinottv.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2012/02/blog-post.html" title="バレンタインデーのチョコレートとグラフ理論" rel="prev">&#x2190;バレンタインデーのチョコレートとグラフ理論</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2012/03/blog-post.html" title="東京の地下鉄の駅名称をむりやり英訳してみた" rel="next">東京の地下鉄の駅名称をむりやり英訳してみた&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -153,31 +199,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2012-05-19</span>
       <a class="post-link" href="/2012/05/blog-post.html">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2013-04-13</span>
-      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
-    </li>
-    <li class="post-item">
-      <span class="post-date">2013-02-24</span>
-      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2012-06-27</span>
       <a class="post-link" href="/2012/06/m1.html">M+1フォントの「あ」について</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2015-07-26</span>
-      <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
+      <span class="post-date">2013-02-24</span>
+      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2012-03-24</span>
+      <a class="post-link" href="/2012/03/0f.html">零階(0F)の必要性について</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -217,5 +274,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

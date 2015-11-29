@@ -8,41 +8,59 @@
   <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
   <meta property="og:title" content="Study of the link tracking methods and the protection" />
   <meta property="og:type" content="article" />
+  
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2015/07/study-of-link-tracking-methods-and-protection.html" rel="bookmark">Study of the link tracking methods and the protection</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2015-07-04T20:27:27+09:00</time>
+      
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_tracking">Tracking</a>
+      
       <a class="tag" href="/tags.html#tag_html">Html</a>
+      
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <h3>Scenario</h3>
 <ol>
@@ -53,6 +71,7 @@
 <p>In demo, I use “http://www.example.com/” for the destination URL and
 “https://bit.ly/1h0ceQI” for tracking URL,
 where “https://bit.ly/1h0ceQI” redirects to “http://www.example.com/”.</p>
+
 <h3>Classical method</h3>
 <p>The link with tracking url:</p>
 <pre class="prettyprint lang-html"><code>&lt;a href="https://tracking-URL/of/destination-URL"&gt;click here&lt;/a&gt;
@@ -76,6 +95,7 @@ where “https://bit.ly/1h0ceQI” redirects to “http://www.example.com/”.</
 <ul>
   <li>Replace the tracking link <code>href</code> with the destination link.</li>
 </ul>
+
 <h3>Classical method with status bar replacement</h3>
 <p>The link with tracking url:</p>
 <pre class="prettyprint lang-js"><code>&lt;a href="https://tracking-URL/of/destination-URL"
@@ -105,6 +125,7 @@ click here
 <ul>
   <li>Replace the tracking link <code>href</code> with the destination link.</li>
 </ul>
+
 <h3>Google-search method</h3>
 <p>The link with tracking url:</p>
 <pre class="prettyprint lang-html"><code>&lt;a href="http://destination-URL"
@@ -159,6 +180,7 @@ mutationObserver.observe(document, {
     <p>… or disable javascript.</p>
   </li>
 </ul>
+
 <h3>Replace-location-on-click method</h3>
 <p>The link with tracking url:</p>
 <pre class="prettyprint lang-html"><code>&lt;a href="http://destination-URL"
@@ -204,6 +226,7 @@ oLink.outerHTML = oLink.outerHTML; // To disable DOM2 event listeners.
     <p>… or disable javascript.</p>
   </li>
 </ul>
+
 <h3>Google-Analytics method</h3>
 <p>The link with tracking url:</p>
 <pre class="prettyprint lang-html"><code>&lt;a href="http://destination-URL"
@@ -241,6 +264,7 @@ oLink.outerHTML = oLink.outerHTML; // To disable DOM2 event listeners.
     <p>… or disable javascript.</p>
   </li>
 </ul>
+
 <h3>HTML ping attribute (Note)</h3>
 <p>The link with tracking url:</p>
 <pre class="prettyprint lang-html"><code>&lt;a href="http://destination-URL"
@@ -272,6 +296,7 @@ click here
   <li>Remove ping attribute</li>
   <li>Disable ping feature</li>
 </ul>
+
 <h3>References</h3>
 <ul>
   <li><a href="https://www.google.com/">Google search result pages</a></li>
@@ -281,30 +306,43 @@ click here
   <li>“<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/watch">Object.prototype.watch() - JavaScript</a>”, MDN.</li>
   <li><a href="https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix-for-/">Google Search Link Fix for Mobile and Desktop :: Add-ons for Firefox</a> – Output of this study.</li>
 </ul>
+
 <style type="text/css" scoped="scoped">.link-tracking-demo { margin: 0.5rem; padding: 0.5rem; border: solid 1px #000; box-shadow: 0.5rem 0.5rem 0 #000; }</style>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2015/07/study-of-link-tracking-methods-and-protection.html&amp;text=Study%20of%20the%20link%20tracking%20methods%20and%20the%20protection+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2015/07/study-of-link-tracking-methods-and-protection.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2015/07/study-of-link-tracking-methods-and-protection.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2015/07/study-of-link-tracking-methods-and-protection.html&amp;linkname=Study%20of%20the%20link%20tracking%20methods%20and%20the%20protection+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2015-07-04-study-of-link-tracking-methods-and-protection.html" class="source-path">_posts/2015-07-04-study-of-link-tracking-methods-and-protection.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2015-07-04-study-of-link-tracking-methods-and-protection.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2015/06/diff-between-firefox-390-beta-3-default.html" title="Diff between firefox 39.0 beta 3 default preference and firefox 38.0.5" rel="prev">&#x2190;Diff between firefox 39.0 beta 3 default preference and firefox 38.0.5</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2015/07/diff-between-firefox-400-beta-3-default.html" title="Diff between firefox 40.0 beta 3 default preference and firefox 39.0" rel="next">Diff between firefox 40.0 beta 3 default preference and firefox 39.0&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -316,31 +354,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2010-11-29</span>
       <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2014-05-12</span>
       <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2015-05-01</span>
-      <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2012-10-08</span>
       <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2015-05-01</span>
+      <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2011-05-20</span>
       <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -380,5 +429,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

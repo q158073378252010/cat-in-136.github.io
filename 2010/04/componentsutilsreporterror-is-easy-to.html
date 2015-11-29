@@ -12,37 +12,51 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
   <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2010/04/componentsutilsreporterror-is-easy-to.html" rel="bookmark">Components.utils.reportError() is easy to use for debugging</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2010-04-15T00:29:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:29+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content">
   <p>
 Firefox 3.0+ supports <code>Components.utils.reportError()</code>. This function send a debugging message to the Error Console.
@@ -58,7 +72,8 @@ If you don't hope debugging message displayed as a error, <a href="https://devel
 <pre class="prettyprint"><code>Components.classes["@mozilla.org/consoleservice;1"]
  .getService(Components.interfaces.nsIConsoleService)
  .logStringMessage("a debugging message");
-</code></pre><p>
+</code></pre>
+<p>
 yields following message to the Error Console:
 </p>
 <img src="/images/componentsutilsreporterror-screenshot2.png" />
@@ -68,7 +83,9 @@ This way is too long to write!
 <p>
 Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</code></a> is shortest, but you need to run firefox <em>with terminal (command prompt)</em>.
 </p>
+
 <h4>Conclusion</h4>
+
 <table>
 <thead>
 <tr>
@@ -93,33 +110,47 @@ Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</
 </tr>
 </tbody>
 </table>
+
 <h4>See also</h4>
+
 <ul>
 <li><a href="https://developer.mozilla.org/en/Components.utils.reportError">Components.utils.reportError - MDC</a></li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html&amp;text=Components.utils.reportError()%20is%20easy%20to%20use%20for%20debugging+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html&amp;linkname=Components.utils.reportError()%20is%20easy%20to%20use%20for%20debugging+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html" class="source-path">_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2010/04/stats-flash-vs-java.html" title="[stats] Flash vs Java" rel="prev">&#x2190;[stats] Flash vs Java</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2010/04/which-do-you-like-modal-option-dialog.html" title="Which do you like modal option dialog or instant apply?" rel="next">Which do you like modal option dialog or instant apply?&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -131,31 +162,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
-    <li class="post-item">
-      <span class="post-date">2012-12-31</span>
-      <a class="post-link" href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">Tip: How to run a new Firefox instance w/ temporary profile</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-05-02</span>
       <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2012-08-05</span>
-      <a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
+      <span class="post-date">2010-08-11</span>
+      <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2011-09-14</span>
-      <a class="post-link" href="/2011/09/33.html">ポニーテールの揺れの定式化と考察 (3/3)</a>
+      <span class="post-date">2010-03-17</span>
+      <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2012-12-31</span>
+      <a class="post-link" href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">Tip: How to run a new Firefox instance w/ temporary profile</a>
+    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-03-24</span>
       <a class="post-link" href="/2010/03/tweet-to-myself.html">Tweet to myself</a>
     </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -195,5 +237,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>

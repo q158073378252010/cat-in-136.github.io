@@ -12,50 +12,70 @@
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <link rel="stylesheet" href="/css/main.css" />
+  
 </head>
+
 <body>
   <header class="site-header">
   <div class="wrap">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
-      <a class="page-link" href="/archive.html">Archive</a>
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
       <a class="page-link" href="/feed.xml">Feed</a>
-      <a class="page-link" href="/tags.html">Tags</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
     </nav>
   </div>
 </header>
+
   <div class="page-content">
     <div class="wrap">
     <article class="post">
   <header class="post-header">
     <h1><a href="/2013/03/svg.html" rel="bookmark">SVGフィルターで雲を描くことに関して</a></h1>
+    
     <div class="meta">
       Text by: cat_in_136
     </div>
+    
     <div class="meta">
       Date: <time>2013-03-30T23:16:00+09:00</time>
       (Modified: <time>2014-11-10T00:02:37+09:00</time>)
     </div>
     <div class="meta">
       Tags:
+      
       <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      
       <a class="tag" href="/tags.html#tag_svg">Svg</a>
+      
       <a class="tag" href="/tags.html#tag_%E3%81%8A%E7%A9%BA">お空</a>
+      
       <a class="tag" href="/tags.html#tag_html">Html</a>
+      
+      
     </div>
   </header>
+
   <div class="post-content" lang="ja">
   <p>
 <a href="/2012/11/saaspaasiaas.html" rel="nofollow">SaaSとかのクラウドコンピューティング</a>じゃない、Misty Sky のほうの雲のお話し。
 </p>
+
+
 <div style="text-align: center; margin: auto;">
 <img src="/images/cloud.png" />
 </div>
+
 <ul>
 <li>SVGには高機能なフィルタがついているので、写実的な絵も描ける</li>
 <li>inkscapeのフィルタ編集機能をつかって雲を描く方法を紹介する</li>
 <li>Firefox でもこのフィルタ機能を使うことができる</li>
 </ul>
+
 <p>
 SVGにはベクトル画像を編集するためのツールである。ラスタ画像と違って線や面を組み合わせて描くので輪郭が曖昧なモノを描くのは困難なように思える。しかし、SVG編集ソフトのinkscapeにはフィルタ機能があって、簡単にラスタ画像的なフィルタ効果を得ることができる。
 </p>
@@ -65,7 +85,9 @@ SVGにはベクトル画像を編集するためのツールである。ラス�
 <p>
 ここに示した絵はその機能を使った雲である。本節ではこの雲の描き方を説明する。
 </p>
+
 <h4>雲の描画方法</h4>
+
 <p>
 CGの世界で、雲はPerlinの乱流関数（Perlin turbulence）を使って、いい感じに表現できることが知られている。この乱流関数の出力を透明度（アルファ値）に、色を白とすればよい。これをまとめると以下のように描画すればよいことになる。
 </p>
@@ -74,16 +96,20 @@ CGの世界で、雲はPerlinの乱流関数（Perlin turbulence）を使って�
 <li>色を白として、turbulenceの値を透明度に対応付ける。</li>
 <li>雲を付けたい図形にオーバーレイさせる。</li>
 </ol>
+
 <h4>inkscapeでの雲の描画の実際</h4>
+
 <p>
 とはいえ、SVGのコードを描くのは骨の折れる作業のため、inkscapeを用いて作成する。もちろんテキストエディタでSVGのコードを書いても等しい結果を得られる。
 </p>
 <p>
 フィルタエディタはメニューのフィルタ→フィルタエディタから開く。適当な図形を作ってそれをあらかじめ選択しておくとよい。新規ボタンでフィルタを作成し、その中にまず乱流（Turbulence）とカラーマトリクス（ColorMatrix）のエフェクトを追加する。
 </p>
+
 <div>
 <img src="/images/Filter_Effects.png" />
 </div>
+
 <p>
 これらのエフェクトについて下記のように設定する。
 </p>
@@ -108,16 +134,21 @@ ColorMatrixのValue(s)は<a href="http://www.w3.org/TR/SVG11/filters.html#feColo
 | A' |     | a30 a31 a32 a33 a34 |   | A |
 | 1  |     |  0   0   0   0   1  |   | 1 |
 </pre></blockquote>
+
 <p>
 この時点で雲は描けているが、対象図形にオーバーレイするのが残っている。これは合成（Composite）をエフェクトに追加し、その入力ソースをカラーマトリクスとソースグラフィックに接続することで実現できる。
 </p>
+
 <div>
 <img src="/images/Filter_Effects_Composite.png" />
 </div>
+
 <p>
 こうして作成したフィルタを青い四角形に反映させたのが冒頭の雲の絵である。
 </p>
+
 <h4>Firefox での利用</h4>
+
 <p>
 一度フィルタを作ってしまえばあとはSVGはXMLという所詮テキストに過ぎないのだから該当部分をコピペして利用したりできる。だが、もっとも斬新な利用法はFirefoxだとそのままブチ込めることであろう。
 </p>
@@ -176,36 +207,50 @@ cG9ydGVkTmF0aXZlU1ZHKCkpIHsKICAgICAgcmVuZGVyQ2xvdWQoZG9jdW1lbnQuZ2V0RWxlbWVu
 dEJ5SWQoImlua3NjYXBlX2Nsb3VkX2FwcF91cmwiKS52YWx1ZSk7CiAgICB9CiAgfSwgZmFsc2Up
 OwoKfSkuY2FsbCh7fSk7Cg==" defer="defer"></script>
 </div>
+
 <h4>参考文献</h4>
+
 <ul>
 <li>"<a href="http://www.w3.org/TR/2011/REC-SVG11-20110816/">Scalable Vector Graphics (SVG) 1.1 (Second Edition)</a>", eds World Wide Web Consortium, Aug 2011, <a href="http://www.w3.org/TR/2011/REC-SVG11-20110816/filters.html">chapter 15. Filter Effects</a></li>
 <li>Paul Bourke, "<a href="http://ozviz.wasp.uwa.edu.au/~pbourke/texture_colour/perlin/">Perlin Noise and Turbulence</a>," Jan. 2000</li>
 <li><a href="http://inkscape.svn.sourceforge.net/viewvc/inkscape/inkscape/tags/RELEASE_0_46_0/share/examples/turbulence_effects.svg">share/examples/turbulence_effects.svg</a>, <a href="http://www.inkscape.org/">inkscape</a>0.46</li>
 <li>"<a href="https://developer.mozilla.org/ja/SVG_improvements_in_Firefox_3">SVG improvements in Firefox 3</a>," Mozilla Developer Network</li>
 </ul>
+
   </div><!-- post-content -->
+
   <footer class="post-footer">
     <div class="meta share">
+      
       Share:
       <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/03/svg.html&amp;text=SVG%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC%E3%81%A7%E9%9B%B2%E3%82%92%E6%8F%8F%E3%81%8F%E3%81%93%E3%81%A8%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
       <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/03/svg.html">Facebook</a>
       <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/03/svg.html">Hatena Bookmark</a>
       <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/03/svg.html&amp;linkname=SVG%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC%E3%81%A7%E9%9B%B2%E3%82%92%E6%8F%8F%E3%81%8F%E3%81%93%E3%81%A8%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6+cat_in_136.blog()">More via AddToAny...</a>
     </div>
+    
     <div class="meta">
       Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-03-30-svg.html" class="source-path">_posts/2013-03-30-svg.html</a>
       (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-03-30-svg.html">History</a>)
     </div>
+    
   </footer>
+
 </article>
+
 <nav class="post-nav wrap">
   <div class="previous-post">
+    
     <a href="/2013/03/css.html" title="CSSの改行を含む属性値を含むセレクターについて" rel="prev">&#x2190;CSSの改行を含む属性値を含むセレクターについて</a>
+    
   </div>
   <div class="next-post">
+    
     <a href="/2013/04/two-element-barchart-designing.html" title="２本の（省略付き）棒グラフを思いのまま描く方法" rel="next">２本の（省略付き）棒グラフを思いのまま描く方法&#x2192;</a>
+    
   </div>
 </nav>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -217,31 +262,42 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
 <aside class="post-related">
   <h2>Related Posts</h2>
   <ul>
+    
     <li class="post-item">
       <span class="post-date">2013-04-13</span>
       <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
     </li>
+    
     <li class="post-item">
       <span class="post-date">2013-02-24</span>
       <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
     </li>
-    <li class="post-item">
-      <span class="post-date">2014-04-06</span>
-      <a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
-    </li>
+    
     <li class="post-item">
       <span class="post-date">2010-10-06</span>
       <a class="post-link" href="/2010/10/bmi.html">今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる</a>
     </li>
+    
     <li class="post-item">
-      <span class="post-date">2015-07-26</span>
-      <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
+      <span class="post-date">2012-10-08</span>
+      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
     </li>
+    
+    <li class="post-item">
+      <span class="post-date">2013-12-28</span>
+      <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a>
+    </li>
+    
   </ul>
 </aside>
+
+
     </div>
   </div>
   <footer class="site-footer">
@@ -281,5 +337,6 @@ var disqus_shortname = 'catin136blog';
     </nav>
   </div>
 </footer>
+
 </body>
 </html>
