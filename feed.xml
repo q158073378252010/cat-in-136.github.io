@@ -5,9 +5,179 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 29 Nov 2015 17:56:13 +0900</pubDate>
-    <lastBuildDate>Sun, 29 Nov 2015 17:56:13 +0900</lastBuildDate>
+    <pubDate>Sun, 29 Nov 2015 22:15:58 +0900</pubDate>
+    <lastBuildDate>Sun, 29 Nov 2015 22:15:58 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+      <item>
+        <title>Android v6 (Mashmallow) に Noto Sans JP が導入された</title>
+        <description>&lt;p&gt;
+&lt;a href=&quot;https://developers.google.com/android/nexus/images&quot;&gt;Factory Images&lt;/a&gt;から、
+Nexus 5 (hammerhead) の 5.1.1 (Lolipop) と 6.0.0 (Mashmallow) のイメージを落としてきて &lt;code&gt;/system/fonts&lt;/code&gt;
+の差分を調べてみたのが下記。
+&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-AndroidEmoji.ttf
++CarroisGothicSC-Regular.ttf
+-DroidNaskh-Regular.ttf
+-DroidNaskhUI-Regular.ttf
++ComingSoon.ttf
++CutiveMono.ttf
++DancingScript-Bold.ttf
++DancingScript-Regular.ttf
+-DroidSansArmenian.ttf
+-DroidSansEthiopic-Regular.ttf
+-DroidSansFallback.ttf
+-DroidSansGeorgian.ttf
+-DroidSansHebrew-Bold.ttf
+-DroidSansHebrew-Regular.ttf
+-DroidSerif-Bold.ttf
+-DroidSerif-BoldItalic.ttf
+-DroidSerif-Italic.ttf
+-DroidSerif-Regular.ttf
+-MTLmr3m.ttf
+-NanumGothic.ttf
++NotoNaskhArabic-Bold.ttf
++NotoNaskhArabic-Regular.ttf
++NotoNaskhArabicUI-Bold.ttf
++NotoNaskhArabicUI-Regular.ttf
++NotoSansArmenian-Bold.ttf
++NotoSansArmenian-Regular.ttf
++NotoSansBalinese-Regular.ttf
++NotoSansBamum-Regular.ttf
++NotoSansBatak-Regular.ttf
++NotoSansBuginese-Regular.ttf
++NotoSansBuhid-Regular.ttf
++NotoSansCanadianAboriginal-Regular.ttf
++NotoSansCham-Bold.ttf
++NotoSansCham-Regular.ttf
++NotoSansCherokee-Regular.ttf
++NotoSansCoptic-Regular.ttf
++NotoSansEthiopic-Bold.ttf
++NotoSansEthiopic-Regular.ttf
++NotoSansGeorgian-Bold.ttf
++NotoSansGeorgian-Regular.ttf
++NotoSansGlagolitic-Regular.ttf
++NotoSansGujarati-Bold.ttf
++NotoSansGujarati-Regular.ttf
++NotoSansGujaratiUI-Bold.ttf
++NotoSansGujaratiUI-Regular.ttf
++NotoSansGurmukhi-Bold.ttf
++NotoSansGurmukhi-Regular.ttf
++NotoSansGurmukhiUI-Bold.ttf
++NotoSansGurmukhiUI-Regular.ttf
++NotoSansHanunoo-Regular.ttf
++NotoSansHebrew-Bold.ttf
++NotoSansHebrew-Regular.ttf
++NotoSansJP-Regular.otf
++NotoSansJavanese-Regular.ttf
++NotoSansKR-Regular.otf
++NotoSansKayahLi-Regular.ttf
++NotoSansLepcha-Regular.ttf
++NotoSansLimbu-Regular.ttf
++NotoSansLisu-Regular.ttf
+-NotoSansSymbols-Regular.ttf
++NotoSansMandaic-Regular.ttf
++NotoSansMeeteiMayek-Regular.ttf
++NotoSansMongolian-Regular.ttf
++NotoSansMyanmar-Bold.ttf
++NotoSansMyanmar-Regular.ttf
++NotoSansMyanmarUI-Bold.ttf
++NotoSansMyanmarUI-Regular.ttf
++NotoSansNKo-Regular.ttf
++NotoSansNewTaiLue-Regular.ttf
++NotoSansOlChiki-Regular.ttf
++NotoSansOriya-Bold.ttf
++NotoSansOriya-Regular.ttf
++NotoSansOriyaUI-Bold.ttf
++NotoSansOriyaUI-Regular.ttf
++NotoSansRejang-Regular.ttf
++NotoSansSC-Regular.otf
++NotoSansSaurashtra-Regular.ttf
++NotoSansSinhala-Bold.ttf
++NotoSansSinhala-Regular.ttf
++NotoSansSundanese-Regular.ttf
++NotoSansSylotiNagri-Regular.ttf
++NotoSansSymbols-Regular-Subsetted.ttf
++NotoSansSyriacEstrangela-Regular.ttf
++NotoSansTC-Regular.otf
++NotoSansTagbanwa-Regular.ttf
++NotoSansTaiLe-Regular.ttf
++NotoSansTaiTham-Regular.ttf
++NotoSansTaiViet-Regular.ttf
++NotoSansThaana-Bold.ttf
++NotoSansThaana-Regular.ttf
+-Padauk-book.ttf
+-Padauk-bookbold.ttf
++NotoSansTibetan-Regular.ttf
++NotoSansTifinagh-Regular.ttf
++NotoSansVai-Regular.ttf
++NotoSansYi-Regular.ttf
++NotoSerif-Bold.ttf
++NotoSerif-BoldItalic.ttf
++NotoSerif-Italic.ttf
++NotoSerif-Regular.ttf
++Roboto-Black.ttf
++Roboto-BlackItalic.ttf
++Roboto-Medium.ttf
++Roboto-MediumItalic.ttf
++RobotoCondensed-Light.ttf
++RobotoCondensed-LightItalic.ttf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+全体をかい摘んでいうと、
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Droid Font Family は全体的に削除がなされていている（まだ DroidSans, DroidSans-Bold, DroidSansMono が残っているが）&lt;/li&gt;
+&lt;li&gt;Noto Font Family が拡充されている。これには CJK も含む。&lt;/li&gt;
+&lt;li&gt;AndroidEmoji が削除された。NotoColorEmoji があるので絵文字自体が削除されてわけではない。&lt;/li&gt;
+&lt;li&gt;MTLmr3m (MotoyaLMaru W3 Mono) がひっそりと削除された。&lt;/li&gt;
+&lt;li&gt;NanumGothic (&lt;span xml:lang=&quot;kr&quot;&gt;고딕체&lt;/span&gt; Gothic) がひっそりと削除された。&lt;/li&gt;
+&lt;li&gt;Padauk-book, Padauk-bookbold がひっそりと削除された。これはタイ語フォントである。&lt;/li&gt;
+&lt;li&gt;NotoSansSC, NotoSansTC, NotoSansJP, NotoSansKR のみ拡張子が OTF!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+日本語フォントとして Android 6 (Mashmallow) で、
+ようやく Noto Sans が導入されたわけであるが、
+太字用のフォントが用意されていない。
+それ故、太字は依然微妙なレンダリングで表示されるため区別が難しい。
+（ウェブページ上では text-shadow を使うバッドノウハウが依然使うことになりそうだ。）
+&lt;/p&gt;
+&lt;p&gt;
+また、当然のことながら細字フォントの表示はなされない。
+（ただしフォントを差し替えた場合を除く）
+&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201511_android5-motoya.png&quot;&gt;&lt;img src=&quot;/images/201511_android5-motoya.png&quot; width=&quot;320&quot; height=&quot;150&quot; /&gt;&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;Android 5 (MotoyaLMaru W3 Mono)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201511_android6-notosans-jp.png&quot;&gt;&lt;img src=&quot;/images/201511_android6-notosans-jp.png&quot; width=&quot;320&quot; height=&quot;152&quot; /&gt;&lt;/a&gt;
+&lt;figcaption style=&quot;display: block;&quot;&gt;Android 6 (NotoSansJP)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;あなたの環境での表示&lt;/p&gt;
+&lt;div style=&quot;font-family: sans-serif; font-size: 14pt; border: solid thin #aaa;&quot;&gt;
+&lt;span style=&quot;font-weight: 100;&quot;&gt;font-weight: 100; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 200;&quot;&gt;font-weight: 200; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 300;&quot;&gt;font-weight: 300; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 400;&quot;&gt;font-weight: 400; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 500;&quot;&gt;font-weight: 500; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 600;&quot;&gt;font-weight: 600; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 700;&quot;&gt;font-weight: 700; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 800;&quot;&gt;font-weight: 800; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;span style=&quot;font-weight: 900;&quot;&gt;font-weight: 900; 新しい朝が来た希望の朝。&lt;/span&gt;&lt;br /&gt;
+&lt;/div&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developers.google.com/android/nexus/images&quot;&gt;Factory Images for Nexus Devices&lt;/a&gt; | Nexus Files for Developers | Google Developers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/anestisb/android-simg2img&quot;&gt;anestisb/android-simg2img&lt;/a&gt; - Tool to convert Android sparse images to raw images&lt;/li&gt;
+&lt;li&gt;&quot;&lt;a href=&quot;http://androidlover.net/android-os/android-m/android-m-change-japanese-font-from-motoya-to-noto-sans-cjk.html&quot;&gt;Android 6.0 Marshmallowでは日本語フォントがモトヤフォントからNoto Sans CJKに変更される。&lt;/a&gt;&quot;, Android(アンドロイド)おすすめアプリ/格安SIM/SIMフリースマホ情報|アンドロイドラバー&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 29 Nov 2015 22:13:38 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2015/11/android6-introduces-notosans-jp.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2015/11/android6-introduces-notosans-jp.html</guid>
+        <category>font</category>
+        <category>android</category>
+      </item>
       <item>
         <title>Diff between firefox 43.0 beta 3 default preference and firefox 42.0</title>
         <description>&lt;p&gt;
@@ -1367,86 +1537,6 @@ int main()
         <link>http://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html</guid>
         <category>C-language</category>
-      </item>
-      <item>
-        <title>Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ</title>
-        <description>&lt;p&gt;まとめる気はない、単なる Travis CI のチラ裏メモ。&lt;/p&gt;
-&lt;h4 id=&quot;section&quot;&gt;メモ&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;Travis-CI のビルド処理は&lt;a href=&quot;http://docs.travis-ci.com/user/workers/container-based-infrastructure/&quot; title=&quot;Travis CI: Using container-based infrastructure&quot;&gt;コンテナ型仮想化で動いて&lt;/a&gt;いる。
-    &lt;ul&gt;
-      &lt;li&gt;OS は ubuntu 。ただし、何か細工しているかもしれないが未調査。&lt;/li&gt;
-      &lt;li&gt;よって &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; は &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; のノリで書く。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-get&lt;/code&gt; も使える。また、&lt;a href=&quot;http://docs.travis-ci.com/user/apt/&quot; title=&quot;Travis CI: APT Sources and Packages&quot;&gt;aptアドオン&lt;/a&gt;?の形でも使える。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ruby まわりの前提として rvm 、bundle 使用が無難
-    &lt;ul&gt;
-      &lt;li&gt;bundle 使わないですべて Apt で管理することもできるが、&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; をコミットした運用がよいだろう。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rake&lt;/code&gt; は &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake&lt;/code&gt; のように、ruby は &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; を介して使用しよう。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Github のレポジトリに push したい場合は、何らかの秘密鍵を入れこむか、アクセストークンを使用する。
-    &lt;ul&gt;
-      &lt;li&gt;鍵・アクセストークンともに公開すべきではないので、レポジトリに平文で格納しないこと。
-        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;https://www.npmjs.com/package/travis-encrypt&quot;&gt;travis-encrypt&lt;/a&gt; を使えば暗号化されたテキストでやりとりできるので、センシティブな情報をやりとりするのにつかえる。&lt;/li&gt;
-          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;travis encrypt -r ユーザ名/レポジトリ名 FOO=bar&lt;/code&gt; とした上で &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; に暗号化したテキストを書くのと、Travis の設定で環境変数 &lt;code class=&quot;highlighter-rouge&quot;&gt;FOO=bar&lt;/code&gt; を非公開で設定するのは、動きに差はほどんどない。が、環境変数だったら後者の方がずっと楽。
-            &lt;ul&gt;
-              &lt;li&gt;設定箇所への直リンは &lt;code class=&quot;highlighter-rouge&quot;&gt;https://travis-ci.org/ユーザ名/レポジトリ名/settings/env_vars&lt;/code&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;アクセストークンを使って git にアクセスするは、&lt;a href=&quot;https://github.com/settings/tokens&quot;&gt;https://github.com/settings/tokens&lt;/a&gt; から Personal access token を生成し、&lt;code class=&quot;highlighter-rouge&quot;&gt;https://$GH_TOKEN@github.com/ユーザ名/レポジトリ名.git&lt;/code&gt; から git clone すればよい。というか、これだけなのでアクセストークンの方がずっと簡単。
-        &lt;ul&gt;
-          &lt;li&gt;アクセストークンは環境変数としておいて上述の方法をつかってレポジトリに公開しないようにする。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;section-1&quot;&gt;やったことのメモ&lt;/h4&gt;
-&lt;p&gt;アウトプット:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/cat-in-136/blog/blob/master/.travis.yml&quot;&gt;.travis.yml&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/cat-in-136/blog/blob/master/Rakefile&quot;&gt;Rakefile&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-  &lt;li&gt;Travis を Jekyll ソースのレポジトリと紐付ける。&lt;/li&gt;
-  &lt;li&gt;bundle を使用するように変更。&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; と &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; を使用するように変更（厳密にはきちんと使っていなかったのできちんと書いた）。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt; に初期化コードも含めて本当にすべて動くようにした。(&lt;code class=&quot;highlighter-rouge&quot;&gt;setup&lt;/code&gt; タスクの追加)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; を記載
-    &lt;ul&gt;
-      &lt;li&gt;LSI を使用するので、Apt で GSL ライブラリをインストールするようにした。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; は特に書かなくても &lt;code class=&quot;highlighter-rouge&quot;&gt;language: ruby&lt;/code&gt; になっていれば動くみたい。&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rake setup&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;rake generate&lt;/code&gt; を呼び出す…のだが、&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake setup&lt;/code&gt; のように bundle を通して呼ぶようにする。&lt;/li&gt;
-      &lt;li&gt;環境変数のうちレポジトリに登録してしまってよいものを記載する。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;github アクセストークンを取得し、Travis CI の設定で環境変数 &lt;code class=&quot;highlighter-rouge&quot;&gt;GH_TOKEN&lt;/code&gt; に設定する。 &lt;code class=&quot;highlighter-rouge&quot;&gt;.travis.yml&lt;/code&gt; でそれを参照するべきところは &lt;code class=&quot;highlighter-rouge&quot;&gt;$GH_TOKEN&lt;/code&gt; に置き換える。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; すると Travis が動いてくれるのでログを確認し、エラーがなくなるまで check &amp;amp; try する。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;アクセストークンの隠蔽には少し苦労した。
-ビルドログにて環境変数を設定する所はきちんと &lt;code class=&quot;highlighter-rouge&quot;&gt;$ export GH_TOKEN=[secure]&lt;/code&gt; のように隠蔽してくれるのだが、
-&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; のところでどうしても &lt;code class=&quot;highlighter-rouge&quot;&gt;To https://XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX@github.com/cat-in-136/cat-in-136.github.io.git&lt;/code&gt; のようなログが表示される。
-しかも標準出力ではなく標準 &lt;em&gt;エラー&lt;/em&gt; 出力に吐かれているので &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt; /dev/null&lt;/code&gt; でも表示されてしまう。
-というわけで、&lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; を呼び出す所は強引だが &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rake -q deploy 2&amp;gt;&amp;amp;1 | sed &quot;s/${GH_TOKEN}/\${GH_TOKEN}/g&quot;&lt;/code&gt; とした。
-（標準エラー出力を標準出力にぶちこんで、さらにそれを sed でテキスト置換）&lt;/p&gt;
-&lt;h4 id=&quot;section-2&quot;&gt;参考文献&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://blog.toshimaru.net/autodeploy-jekyll/&quot; title=&quot;Jekyllでgit pushをフックしてGithubPageへ自動デプロイするようにした&quot;&gt;Jekyllでgit pushをフックしてGithubPageへ自動デプロイするようにした&lt;/a&gt;, Hack Your Design, 15 Nov 2013.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://pchw.github.io/blog/2013/06/27/octopress-travis/&quot; title=&quot;OctopressとTravis CIを連携させてBlog生成を自動にする&quot;&gt;OctopressとTravis CIを連携させてBlog生成を自動にする&lt;/a&gt;, ぽっちぽちにしてやんよ, 27 Jun 2013.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://docs.travis-ci.com/user/workers/container-based-infrastructure/&quot; title=&quot;Travis CI: Using container-based infrastructure&quot;&gt;Travis CI: Using container-based infrastructure&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://docs.travis-ci.com/user/apt/&quot; title=&quot;Travis CI: APT Sources and Packages&quot;&gt;Travis CI: APT Sources and Packages&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Thu, 30 Apr 2015 00:42:49 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html</guid>
-        <category>jekyll</category>
-        <category>travis-ci</category>
-        <category>チラシの裏</category>
       </item>
   </channel>
 </rss>
