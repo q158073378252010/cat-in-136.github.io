@@ -46,7 +46,7 @@
     
     <div class="meta">
       Date: <time>2012-12-31T22:43:00+09:00</time>
-      (Modified: <time>2012-12-31T23:02:15+09:00</time>)
+      (Modified: <time>2015-12-29T09:45:14+09:00</time>)
     </div>
     <div class="meta">
       Tags:
@@ -78,6 +78,18 @@ mkdir $PROFILEDIR
 firefox -profile $PROFILEDIR -no-remote -new-instance
 rm -rf $PROFILEDIR
 </code></pre>
+
+<ins datetime="2015-12-29T09:45:14+09:00">
+<p>
+According to the Sangye's comment,
+using <a href="http://www.gnu.org/software/autogen/mktemp.html">mktemp(1)</a> is more better:
+</p>
+<pre class="prettyprint"><code class="lang-sh">#!/bin/sh
+PROFILEDIR=`mktemp -p /tmp -d tmp-fx-profile.XXXXXX.d`
+firefox -profile $PROFILEDIR -no-remote -new-instance
+rm -rf $PROFILEDIR
+</code></pre>
+</ins>
 
   </div><!-- post-content -->
 
@@ -132,6 +144,11 @@ var disqus_shortname = 'catin136blog';
   <ul>
     
     <li class="post-item">
+      <span class="post-date">2010-03-06</span>
+      <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16&#39;」</a>
+    </li>
+    
+    <li class="post-item">
       <span class="post-date">2014-06-29</span>
       <a class="post-link" href="/2014/06/lukstruecrypt.html">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</a>
     </li>
@@ -142,18 +159,13 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li class="post-item">
-      <span class="post-date">2010-03-06</span>
-      <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16&#39;」</a>
+      <span class="post-date">2010-04-15</span>
+      <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">Components.utils.reportError() is easy to use for debugging</a>
     </li>
     
     <li class="post-item">
       <span class="post-date">2014-05-12</span>
       <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-11-27</span>
-      <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</a>
     </li>
     
   </ul>
