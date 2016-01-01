@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 01 Jan 2016 19:22:03 +0900</pubDate>
-    <lastBuildDate>Fri, 01 Jan 2016 19:22:03 +0900</lastBuildDate>
+    <pubDate>Fri, 01 Jan 2016 20:02:34 +0900</pubDate>
+    <lastBuildDate>Fri, 01 Jan 2016 20:02:34 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
       <item>
         <title>Diff between firefox 44.0 beta 4 default preference and firefox 43.0.3</title>
@@ -186,10 +186,10 @@ redmineのプラグイン「&lt;a href=&quot;https://github.com/cat-in-136/redmi
         <category>チラシの裏</category>
       </item>
       <item>
-        <title>Android v6 (Mashmallow) に Noto Sans JP が導入された</title>
+        <title>Android v6 (Marshmallow) に Noto Sans JP が導入された</title>
         <description>&lt;p&gt;
 &lt;a href=&quot;https://developers.google.com/android/nexus/images&quot;&gt;Factory Images&lt;/a&gt;から、
-Nexus 5 (hammerhead) の 5.1.1 (Lolipop) と 6.0.0 (Mashmallow) のイメージを落としてきて &lt;code&gt;/system/fonts&lt;/code&gt;
+Nexus 5 (hammerhead) の 5.1.1 (Lolipop) と 6.0.0 (Marshmallow) のイメージを落としてきて &lt;code&gt;/system/fonts&lt;/code&gt;
 の差分を調べてみたのが下記。
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-AndroidEmoji.ttf
@@ -312,7 +312,7 @@ Nexus 5 (hammerhead) の 5.1.1 (Lolipop) と 6.0.0 (Mashmallow) のイメージ�
 &lt;li&gt;NotoSansSC, NotoSansTC, NotoSansJP, NotoSansKR のみ拡張子が OTF!&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
-日本語フォントとして Android 6 (Mashmallow) で、
+日本語フォントとして Android 6 (Marshmallow) で、
 ようやく Noto Sans が導入されたわけであるが、
 太字用のフォントが用意されていない。
 それ故、太字は依然微妙なレンダリングで表示されるため区別が難しい。
