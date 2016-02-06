@@ -5,9 +5,130 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 01 Jan 2016 20:02:34 +0900</pubDate>
-    <lastBuildDate>Fri, 01 Jan 2016 20:02:34 +0900</lastBuildDate>
+    <pubDate>Sun, 07 Feb 2016 02:03:13 +0900</pubDate>
+    <lastBuildDate>Sun, 07 Feb 2016 02:03:13 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+      <item>
+        <title>Study for XULRunner as Prism, using Firefox</title>
+        <description>&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201602_prism_xulrunner_firefox.png&quot; width=&quot;640&quot; height=&quot;400&quot; /&gt;
+&lt;/figure&gt;
+&lt;p&gt;Mission: run a web application without the normal browser UI, as a XULRunner application but using Firefox (version 3 and above).&lt;/p&gt;
+&lt;p&gt;I am a Firefox funboy. So I want to use Gecko rather than WebKit (&lt;a href=&quot;http://electron.atom.io/&quot;&gt;Electron&lt;/a&gt;).&lt;/p&gt;
+&lt;h3&gt;Idea&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;XULRunner&lt;/em&gt; is a Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications that are as rich as Firefox and Thunderbird.&lt;/p&gt;
+  &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Firefox (from version 3) ships with a private XULRunner package, which can run any compatible XULRunner application using the &lt;code&gt;-app&lt;/code&gt; switch: &lt;code&gt;firefox -app application.ini&lt;/code&gt; is equivalent to &lt;code&gt;xulrunner -app application.ini&lt;/code&gt;&lt;/p&gt;
+  &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Prism is a simple XULRunner-based browser that hosts web applications without the normal web browser user interface.&lt;/p&gt;
+  &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Prism&quot;&gt;Prism - Archive of obsolete content&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Example: view &lt;code&gt;https://www.google.com/&lt;/code&gt; without the normal browser UI.&lt;/p&gt;
+&lt;p&gt;Souce code is available on github &lt;a href=&quot;https://github.com/cat-in-136/study-for-xulrunner-as-prism-using-firefox&quot;&gt;cat-in-136/study-for-xulrunner-as-prism-using-firefox&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Normal approach&lt;/h4&gt;
+&lt;p&gt;Open &lt;code&gt;app.xul&lt;/code&gt; when the XULRunner_as_prism application is lanched.
+And then &lt;code&gt;app.xul&lt;/code&gt; load the web page – &lt;code&gt;https://www.google.com/&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;application.ini&lt;/p&gt;
+    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;[App]
+Vendor=cat_in_136
+Name=XULRunner_as_prism
+Version=0.0
+BuildID=20160206
+Copyright=Copyright (c) 2016 @cat_in_136
+ID=xulrunner_as_prism@cat-in-136.github.io
+[Gecko]
+MinVersion=38
+MaxVersion=*
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;defaults/preferences/prefs.js&lt;/p&gt;
+    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;pref(&quot;toolkit.defaultChromeURI&quot;, &quot;chrome://xrap/content/app.xul&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;chrome.manifest&lt;/p&gt;
+    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;content xrap content/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;content/app.xul&lt;/p&gt;
+    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;
+&amp;lt;?xml-stylesheet href=&quot;chrome://global/skin/&quot; type=&quot;text/css&quot;?&amp;gt;
+&amp;lt;window id=&quot;main&quot; width=&quot;400&quot; height=&quot;300&quot; xmlns=&quot;http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul&quot;&amp;gt;
+&amp;lt;browser id=&quot;browser&quot; flex=&quot;1&quot; type=&quot;content-primary&quot; src=&quot;https://www.google.co.jp/&quot;/&amp;gt;
+&amp;lt;findbar id=&quot;findbar&quot; hidden=&quot;false&quot; browserid=&quot;browser&quot;/&amp;gt;
+&amp;lt;/window&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How to run: &lt;code&gt;firefox -app application.ini&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;Minimum code solution&lt;/h4&gt;
+&lt;p&gt;XULRunner FAQ says:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;dl&gt;
+ &lt;dt&gt;
+  If I use XULRunner do I have to write my application in XUL?&lt;/dt&gt;
+ &lt;dd&gt;
+  No! You can write your application in any language supported by the Mozilla web platform, including HTML, XHTML, SVG, or XUL.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner/FAQ&quot;&gt;XULRunner FAQ - Mozilla&lt;/a&gt;, MDN&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Wow!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;application.ini (No Change)&lt;/p&gt;
+    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;[App]
+Vendor=cat_in_136
+Name=XULRunner_as_prism
+Version=0.0
+BuildID=20160206
+Copyright=Copyright (c) 2016 @cat_in_136
+ID=xulrunner_as_prism@cat-in-136.github.io
+[Gecko]
+MinVersion=38
+MaxVersion=*
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;defaults/preferences/prefs.js&lt;/p&gt;
+    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;pref(&quot;toolkit.defaultChromeURI&quot;, &quot;https://www.google.com/&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How to run: &lt;code&gt;firefox -app application.ini&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Note: profile folder location&lt;/h3&gt;
+&lt;p&gt;The profile folder is placed in &lt;code&gt;%APPDATA%\cat_in_136&lt;/code&gt; (for windows) or &lt;code&gt;~/.cat_in_136&lt;/code&gt; (for unix).
+You may remove this folder after you close this XULRunner_as_prism application.&lt;/p&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Prism&quot;&gt;Prism - Archive of obsolete content&lt;/a&gt;, MDN&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mozillalabs.com/en-US/chromeless/&quot;&gt;Chromeless Browser&lt;/a&gt;, Mozilla Labs&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner/FAQ&quot;&gt;XULRunner FAQ - Mozilla&lt;/a&gt;, MDN&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 07 Feb 2016 00:14:09 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</guid>
+        <category>mozilla</category>
+        <category>xulrunner</category>
+        <category>html</category>
+      </item>
       <item>
         <title>Diff between firefox 44.0 beta 4 default preference and firefox 43.0.3</title>
         <description>&lt;p&gt;
@@ -1227,254 +1348,6 @@ table.diff_firefox40_pref_diff tbody tr { transition: background 0.125s ease-in-
         <guid isPermaLink="true">http://cat-in-136.github.io/2015/07/diff-between-firefox-400-beta-3-default.html</guid>
         <category>pref diff</category>
         <category>mozilla</category>
-      </item>
-      <item>
-        <title>Study of the link tracking methods and the protection</title>
-        <description>&lt;h3&gt;Scenario&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;Visitor clicks a link to the “destination URL”&lt;/li&gt;
-  &lt;li&gt;The browser connects to the “tracking URL”&lt;/li&gt;
-  &lt;li&gt;The browser redirects to the destination “destination URL”&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;In demo, I use “http://www.example.com/” for the destination URL and
-“https://bit.ly/1h0ceQI” for tracking URL,
-where “https://bit.ly/1h0ceQI” redirects to “http://www.example.com/”.&lt;/p&gt;
-&lt;h3&gt;Classical method&lt;/h3&gt;
-&lt;p&gt;The link with tracking url:&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;https://tracking-URL/of/destination-URL&quot;&amp;gt;click here&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Demo:&lt;/p&gt;
-&lt;div class=&quot;link-tracking-demo&quot;&gt;
-  &lt;a href=&quot;https://bit.ly/1h0ceQI&quot; rel=&quot;noindex nofollow&quot;&gt;click here&lt;/a&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;pros
-    &lt;ul&gt;
-      &lt;li&gt;Static, javascript no use.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cons
-    &lt;ul&gt;
-      &lt;li&gt;Mouse overing displays the tracking url, not destination url.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Protection technique to this tracking method:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Replace the tracking link &lt;code&gt;href&lt;/code&gt; with the destination link.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Classical method with status bar replacement&lt;/h3&gt;
-&lt;p&gt;The link with tracking url:&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;https://tracking-URL/of/destination-URL&quot;
-   onmouseover=&quot;window.status = &#39;http://destination-URL&#39;;&quot;
-   onmouseout=&quot;window.status = undefined;&quot;&amp;gt;
-click here
-&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Demo:&lt;/p&gt;
-&lt;div class=&quot;link-tracking-demo&quot;&gt;
-  &lt;a href=&quot;https://bit.ly/1h0ceQI&quot; onmouseover=&quot;window.status = &#39;http://www.example.com/&#39;;&quot; onmouseout=&quot;window.status = undefined;&quot; rel=&quot;noindex nofollow&quot;&gt;
-    click here
-  &lt;/a&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;pros
-    &lt;ul&gt;
-      &lt;li&gt;The destination link is displayed on the status bar.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cons
-    &lt;ul&gt;
-      &lt;li&gt;The &lt;code&gt;window.status&lt;/code&gt; is &lt;em&gt;no longer used&lt;/em&gt; today!&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Protection technique to this tracking method:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Replace the tracking link &lt;code&gt;href&lt;/code&gt; with the destination link.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Google-search method&lt;/h3&gt;
-&lt;p&gt;The link with tracking url:&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;http://destination-URL&quot;
-   onmousedown=&quot;this.href = &#39;https://tracking-URL/of/destination-URL&#39;;&quot;&amp;gt;
-click here
-&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Demo:&lt;/p&gt;
-&lt;div class=&quot;link-tracking-demo&quot;&gt;
-  &lt;a href=&quot;http://www.example.com/&quot; onmousedown=&quot;this.href = &#39;https://bit.ly/1h0ceQI&#39;;&quot; rel=&quot;noindex nofollow&quot;&gt;
-    click here
-  &lt;/a&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;pros
-    &lt;ul&gt;
-      &lt;li&gt;The tracking url is intentionally hidden
-since the destination link is displayed on the status bar.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cons
-    &lt;ul&gt;
-      &lt;li&gt;Once the user click the link, the tracking link is displayed on the status bar.&lt;/li&gt;
-      &lt;li&gt;The tracking is disabled when the user disables javascript.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Protection technique to this tracking method:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Disable the event handler&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;oLink.onmousedown = null;          // To disable a DOM0 event listener.
-oLink.outerHTML = oLink.outerHTML; // To disable DOM2 event listeners.
-&lt;/code&gt;&lt;/pre&gt;  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Discard &lt;code&gt;href&lt;/code&gt; attribute change&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;var mutationObserver = new MutationObserver(function (aRecordList) {
-    for (var i = 0; i &amp;lt; aRecordList.length; i++) {
-        var record = aRecordList[i];
-        if (record.target.href.startsWith(&quot;https://tracking-URL/&quot;)) {
-            record.target.href = record.oldValue; 
-        }
-    }
-});
-mutationObserver.observe(document, {
-    attributes: true,
-    subtree: true,
-    attributeOldValue: true,
-    attributeFilter: [&quot;href&quot;]
-});
-&lt;/code&gt;&lt;/pre&gt;  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;… or disable javascript.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Replace-location-on-click method&lt;/h3&gt;
-&lt;p&gt;The link with tracking url:&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;http://destination-URL&quot;
-   onclick=&quot;if (event.button == 0) { window.location = &#39;https://tracking-URL/of/destination-URL&#39;; }&quot;&amp;gt;
-click here
-&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Demo:&lt;/p&gt;
-&lt;div class=&quot;link-tracking-demo&quot;&gt;
-  &lt;a href=&quot;http://www.example.com/&quot; onclick=&quot;if (event.button == 0) { window.location = &#39;https://bit.ly/1h0ceQI&#39;; }&quot; rel=&quot;noindex nofollow&quot;&gt;
-    click here
-  &lt;/a&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;pros
-    &lt;ul&gt;
-      &lt;li&gt;The tracking url is intentionally hidden
-since the destination link is displayed on the status bar.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cons
-    &lt;ul&gt;
-      &lt;li&gt;The tracking is disabled when the user disables javascript.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Protection technique to this tracking method:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Disable the event handler&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;oLink.onclick = null;              // To disable a DOM0 event listener.
-oLink.outerHTML = oLink.outerHTML; // To disable DOM2 event listeners.
-&lt;/code&gt;&lt;/pre&gt;  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Discard &lt;code&gt;location&lt;/code&gt; field modification using &lt;code&gt;Object.watch()&lt;/code&gt;&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;window.watch(&quot;location&quot;, function (aProp, aOldVal, aNewVal) {
-    if (aNewVal.startsWith(&quot;https://tracking-URL/&quot;)) {
-        throw new Error(&quot;tracking is blocked&quot;);
-    }
-    return aNewVal;
-});
-&lt;/code&gt;&lt;/pre&gt;  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;… or disable javascript.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Google-Analytics method&lt;/h3&gt;
-&lt;p&gt;The link with tracking url:&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;http://destination-URL&quot;
-   onclick=&quot;if (event.button == 0) { var img = new Image(); img.src = &#39;https://tracking-URL/of/destination-URL&#39;; }&quot;&amp;gt;
-click here
-&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Demo:&lt;/p&gt;
-&lt;div class=&quot;link-tracking-demo&quot;&gt;
-  &lt;a href=&quot;http://www.example.com/&quot; onclick=&quot;if (event.button == 0) { var img = new Image(); img.src = &#39;https://bit.ly/1h0ceQI&#39;; }&quot; rel=&quot;noindex nofollow&quot;&gt;
-    click here
-  &lt;/a&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;pros
-    &lt;ul&gt;
-      &lt;li&gt;The tracking url is intentionally hidden
-since the destination link is displayed on the status bar.&lt;/li&gt;
-      &lt;li&gt;No redirection.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cons
-    &lt;ul&gt;
-      &lt;li&gt;The tracking is disabled when the user disables javascript.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Protection technique to this tracking method:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Disable the event handler&lt;/p&gt;
-    &lt;pre class=&quot;prettyprint lang-js&quot;&gt;&lt;code&gt;oLink.onclick = null;              // To disable a DOM0 event listener.
-oLink.outerHTML = oLink.outerHTML; // To disable DOM2 event listeners.
-&lt;/code&gt;&lt;/pre&gt;  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;… or disable javascript.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;HTML ping attribute (Note)&lt;/h3&gt;
-&lt;p&gt;The link with tracking url:&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;http://destination-URL&quot;
-   ping=&quot;https://tracking-URL/of/destination-URL&quot;&amp;gt;
-click here
-&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Demo:&lt;/p&gt;
-&lt;div class=&quot;link-tracking-demo&quot;&gt;
-  &lt;a href=&quot;http://www.example.com/&quot; ping=&quot;https://bit.ly/1h0ceQI&quot; rel=&quot;noindex nofollow&quot;&gt;
-    click here
-  &lt;/a&gt;
-&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;pros
-    &lt;ul&gt;
-      &lt;li&gt;The tracking url is hidden.&lt;/li&gt;
-      &lt;li&gt;No redirection.&lt;/li&gt;
-      &lt;li&gt;Static, javascript no use.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;cons
-    &lt;ul&gt;
-      &lt;li&gt;&lt;em&gt;Almost all browser&lt;/em&gt; disable this ping feature.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Protection technique to this tracking method:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Remove ping attribute&lt;/li&gt;
-  &lt;li&gt;Disable ping feature&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;References&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.google.com/&quot;&gt;Google search result pages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.google.com/analytics/&quot;&gt;Google Analytics&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;“&lt;a href=&quot;http://www.axllent.org/docs/view/track-outbound-links-with-analytics-js/&quot;&gt;Track outbound links with Google Universal Analytics.js&lt;/a&gt;”, Axllent.org, 27 Feb 2015.&lt;/li&gt;
-  &lt;li&gt;“&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver&quot;&gt;MutationObserver - Web API Interfaces&lt;/a&gt;”, MDN.&lt;/li&gt;
-  &lt;li&gt;“&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/watch&quot;&gt;Object.prototype.watch() - JavaScript&lt;/a&gt;”, MDN.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://addons.mozilla.org/en-US/firefox/addon/google-search-link-fix-for-/&quot;&gt;Google Search Link Fix for Mobile and Desktop :: Add-ons for Firefox&lt;/a&gt; – Output of this study.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;style type=&quot;text/css&quot; scoped=&quot;scoped&quot;&gt;.link-tracking-demo { margin: 0.5rem; padding: 0.5rem; border: solid 1px #000; box-shadow: 0.5rem 0.5rem 0 #000; }&lt;/style&gt;
-</description>
-        <pubDate>Sat, 04 Jul 2015 20:27:27 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2015/07/study-of-link-tracking-methods-and-protection.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2015/07/study-of-link-tracking-methods-and-protection.html</guid>
-        <category>tracking</category>
-        <category>html</category>
-        <category>javascript</category>
       </item>
   </channel>
 </rss>

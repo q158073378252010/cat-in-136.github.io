@@ -113,6 +113,7 @@ a:visited { color: #8f4889; }
 .post-content pre code, .post-content pre pre { border: none; }
 .post-content pre.terminal { background-color: #333; color: #fff; }
 .post-content figure { display: block; margin: 1.25em; padding: 1.25em; border: dashed 3px #d8cee3; text-align: center; }
+@media screen and (max-width: 480px) { .post-content .fitcontain { object-fit: scale-down; width: -webkit-available; width: -moz-available; width: available; height: auto; } }
 .post-content table:not([class]):not([style]) { border-collapse: collapse; margin: auto; }
 .post-content table:not([class]):not([style]) td, .post-content table:not([class]):not([style]) th { border: 1px solid #d8cee3; padding: 2px; }
 .post-content table:not([class]):not([style]) thead > tr:last-child td, .post-content table:not([class]):not([style]) thead > tr:last-child th { border-bottom: 3px solid #d8cee3; }
