@@ -47,7 +47,7 @@
     
     <div class="meta">
       Date: <time>2012-04-22T11:00:00+09:00</time>
-      (Modified: <time>2013-11-23T22:33:05+09:00</time>)
+      (Modified: <time>2016-02-13T20:35:01+09:00</time>)
     </div>
     <div class="meta">
       Tags:
@@ -115,7 +115,7 @@ for (i = 0; i &lt; __argc; i++) {
 // OK:
 INT argc;
 WCHAR **argv;
-wargv = CommandLineToArgvW(GetCommandLineW(), &argc);
+wargv = CommandLineToArgvW(GetCommandLineW(), &amp;argc);
 for (i = 0; i &lt; argc; i++) {
     arg = wargv[i];
     //...

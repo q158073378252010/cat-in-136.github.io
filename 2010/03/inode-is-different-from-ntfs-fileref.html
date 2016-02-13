@@ -47,7 +47,7 @@
     
     <div class="meta">
       Date: <time>2010-03-20T11:16:00+09:00</time>
-      (Modified: <time>2013-11-23T22:33:43+09:00</time>)
+      (Modified: <time>2016-02-13T20:35:01+09:00</time>)
     </div>
     <div class="meta">
       Tags:
@@ -75,6 +75,7 @@ You can see "35" is this file's inode number.
 </p>
 <p>
 On NTFS, the ID is called File reference number (FileRef#). To obtain FileRef# of "foobar.txt", type as follows:
+</p>
 <pre>&gt; fsutil usn readdata f:\foobar.txt
 Major Version    : 0x2
 Minor Version    : 0x0
@@ -105,7 +106,7 @@ hFile = CreateFile(TEXT("f:\\foobar.txt"),
                    FILE_FLAG_BACKUP_SEMANTICS | FILE_ATTRIBUTE_READONLY,
                    NULL);
 GetFileInformationByHandle(hFile, &amp;fileInfo);
-fileID = (ULONGLONG)((fileInfo.nFileIndexLow) | (((ULONGLONG)fileInfo.nFileIndexHigh) << 32));
+fileID = (ULONGLONG)((fileInfo.nFileIndexLow) | (((ULONGLONG)fileInfo.nFileIndexHigh) &lt;&lt; 32));
 </code></pre>
 <p>
 In addition, I obtained inode number with MSYS's ls command.
@@ -135,6 +136,7 @@ I was surprised the inode number obtained by MSYS's ls is different from one obt
 <li><a href="http://technet.microsoft.com/ja-jp/library/cc788042%28WS.10%29.aspx">Fsutil usn</a></li>
 <li><a href="http://msdn.microsoft.com/en-us/library/aa363788%28VS.85%29.aspx">BY_HANDLE_FILE_INFORMATION Structure</a> - MSDN</li>
 </ul>
+
   </div><!-- post-content -->
 
   <footer class="post-footer">
@@ -208,8 +210,8 @@ var disqus_shortname = 'catin136blog';
     </li>
     
     <li class="post-item">
-      <span class="post-date">2010-05-02</span>
-      <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
+      <span class="post-date">2010-03-17</span>
+      <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
     </li>
     
   </ul>

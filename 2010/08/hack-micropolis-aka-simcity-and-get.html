@@ -47,7 +47,7 @@
     
     <div class="meta">
       Date: <time>2010-08-08T00:35:00+09:00</time>
-      (Modified: <time>2014-11-10T00:02:31+09:00</time>)
+      (Modified: <time>2016-02-13T20:35:01+09:00</time>)
     </div>
     <div class="meta">
       Tags:
@@ -133,7 +133,7 @@ This is written at micropolis's source code
    /* find the address, cast the ptr to a lontPtr, take contents */
  
    l = *(QUAD *)(MiscHis + 50);
-   HALF_SWAP_LONGS(&l, 1);
+   HALF_SWAP_LONGS(&amp;l, 1);
    SetFunds(l);
 </code></pre>
 
