@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 13 Feb 2016 20:53:45 +0900</pubDate>
-    <lastBuildDate>Sat, 13 Feb 2016 20:53:45 +0900</lastBuildDate>
+    <pubDate>Sat, 13 Feb 2016 21:02:07 +0900</pubDate>
+    <lastBuildDate>Sat, 13 Feb 2016 21:02:07 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
       <item>
         <title>算道の解析</title>
@@ -109,9 +109,9 @@ _ k&lt;/code&gt;&lt;/pre&gt;
 &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;` ` ` s i i
 ` ` s i i&lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;「完全ニ分木配置」&lt;/h4&gt;
+&lt;h4&gt;「完全二分木配置」&lt;/h4&gt;
 &lt;p&gt;
-「完全ニ分木配置(complete binary-tree alignment)」は、&lt;code&gt;`@1@2&lt;/code&gt;の入れ子構造を
+「完全二分木配置(complete binary-tree alignment)」は、&lt;code&gt;`@1@2&lt;/code&gt;の入れ子構造を
 完全な形で表現した配置形式である。
 &lt;/p&gt;
 &lt;p&gt;
@@ -132,10 +132,10 @@ _ @2&lt;/code&gt;&lt;/pre&gt;
 _ _ @4
 _ ` @5
 _ _ @6&lt;/code&gt;&lt;/pre&gt;
-&lt;h4&gt;「ニ分木配置」&lt;/h4&gt;
+&lt;h4&gt;「二分木配置」&lt;/h4&gt;
 &lt;p&gt;
-完全ニ分木配置では、紙面も盤面も大きさを要する。
-そこで完全ニ分木配置のうち一部の&lt;code&gt;`@1@2&lt;/code&gt;構造をまとめて積み上げることを考える。
+完全二分木配置では、紙面も盤面も大きさを要する。
+そこで完全二分木配置のうち一部の&lt;code&gt;`@1@2&lt;/code&gt;構造をまとめて積み上げることを考える。
 &lt;/p&gt;
 &lt;p&gt;
 ここでは積み上げた珠は括弧を用いて表現する。
@@ -160,7 +160,7 @@ _ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
 青珠の規則において、2回現れているがこれは&lt;code&gt;@2&lt;/code&gt;を複製して同じものを2つ用意するということである。
 &lt;/p&gt;
 &lt;p&gt;
-それぞれの規則を、以下にニ分木配置で表す。
+それぞれの規則を、以下に二分木配置で表す。
 &lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
