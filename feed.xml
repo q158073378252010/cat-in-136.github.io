@@ -5,9 +5,67 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 20 Feb 2016 15:13:51 +0900</pubDate>
-    <lastBuildDate>Sat, 20 Feb 2016 15:13:51 +0900</lastBuildDate>
+    <pubDate>Mon, 22 Feb 2016 00:48:23 +0900</pubDate>
+    <lastBuildDate>Mon, 22 Feb 2016 00:48:23 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+      <item>
+        <title>Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 45.0 beta 5 and one of 44.0.2.
+&lt;/p&gt;
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox45_pref_diff&quot;&gt;
+&lt;caption&gt;Preference difference&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 44.0.2&lt;/td&gt;&lt;td&gt;Firefox 45.0 beta 5&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;accessibility.&lt;wbr /&gt;loadedInLastSession&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;asyncscroll.&lt;wbr /&gt;throttle&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;asyncscroll.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;cross_&lt;wbr /&gt;slide.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;snap_&lt;wbr /&gt;friction&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;015&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;spring_&lt;wbr /&gt;stiffness&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;001&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0018&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;stretch_&lt;wbr /&gt;factor&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;5&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;35&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;touch_&lt;wbr /&gt;move_&lt;wbr /&gt;tolerance&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;03&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;touch_&lt;wbr /&gt;start_&lt;wbr /&gt;tolerance&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;2222222&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;x_&lt;wbr /&gt;skate_&lt;wbr /&gt;highmem_&lt;wbr /&gt;adjust&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;y_&lt;wbr /&gt;skate_&lt;wbr /&gt;highmem_&lt;wbr /&gt;adjust&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;max_&lt;wbr /&gt;shutdown_&lt;wbr /&gt;io_&lt;wbr /&gt;lag&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;esedbreader.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;Error&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;allowOverride&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;forbiddenURIs.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;sessionstore.&lt;wbr /&gt;debug.&lt;wbr /&gt;no_&lt;wbr /&gt;auto_&lt;wbr /&gt;updates&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;sessionstore.&lt;wbr /&gt;privacy_&lt;wbr /&gt;level_&lt;wbr /&gt;deferred&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;caret.&lt;wbr /&gt;manages-android-actionbar&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,&lt;wbr /&gt;healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;appmanager.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;appmanager.&lt;wbr /&gt;lastTab&lt;/td&gt;&lt;td&gt;help&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;appmanager.&lt;wbr /&gt;manifestEditor.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;markup.&lt;wbr /&gt;collapseAttributeLength&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;compartment_&lt;wbr /&gt;per_&lt;wbr /&gt;addon&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;asyncdrawing.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;push.&lt;wbr /&gt;debug&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;push.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;off&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;w3c_&lt;wbr /&gt;touch_&lt;wbr /&gt;events.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;interposition.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;interposition.&lt;wbr /&gt;prefetching&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;webExtensions&lt;wbr /&gt;Min&lt;wbr /&gt;Platform&lt;wbr /&gt;Version&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;42.&lt;wbr /&gt;0a1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;force_&lt;wbr /&gt;auth.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/force_auth?service=sync&amp;amp;context=fx_desktop_v1&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/force_auth?service=sync&amp;amp;context=fx_desktop_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;signin.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signin?service=sync&amp;amp;context=fx_desktop_v1&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signin?service=sync&amp;amp;context=fx_desktop_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;signup.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signup?service=sync&amp;amp;context=fx_desktop_v1&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signup?service=sync&amp;amp;context=fx_desktop_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr /&gt;mobilepromo.&lt;wbr /&gt;android&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/android/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr /&gt;mobilepromo.&lt;wbr /&gt;ios&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/ios/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;onload.&lt;wbr /&gt;decode.&lt;wbr /&gt;limit&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;offmainthreadcomposition.&lt;wbr /&gt;force-basic&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;extendedvisibility&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;hapticfeedback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;float-logical-values.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;grid-template-subgrid-value.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;ruby.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-emphasis.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;CSP&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;default-src &#39;self&#39; about: file: chrome:; img-src * data:; font-src &#39;none&#39;; connect-src wss://*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;opentok.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;tokbox.&lt;wbr /&gt;com wss://*.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;com https://*.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;org wss://*.&lt;wbr /&gt;mozaws.&lt;wbr /&gt;net; media-src blob:&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;browserSharing.&lt;wbr /&gt;showInfoBar&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;contextInConversations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;dispatcher&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td&gt;Error&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;sdk&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;twoWayMediaTelemetry&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;do_&lt;wbr /&gt;not_&lt;wbr /&gt;disturb&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;baseUrl&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://input.mozilla.org/api/v1/feedback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;dateLastSeenSec&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;formURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/hello/npssurvey/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;manualFormURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/hello/feedbacksurvey/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;periodSec&lt;/td&gt;&lt;td&gt;15770000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;product&lt;/td&gt;&lt;td&gt;Loop&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;fxa_&lt;wbr /&gt;oauth.&lt;wbr /&gt;profile&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;fxa_&lt;wbr /&gt;oauth.&lt;wbr /&gt;tokendata&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;gettingStarted.&lt;wbr /&gt;resumeOnFirstJoin&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;gettingStarted.&lt;wbr /&gt;seen&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;gettingStarted.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/hello/start/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;learnMoreUrl&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.firefox.com/hello/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;legal.&lt;wbr /&gt;ToS_&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/about/legal/terms/firefox-hello/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;legal.&lt;wbr /&gt;privacy_&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/privacy/firefox-hello/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;linkClicker.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://hello.firefox.com/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;oauth.&lt;wbr /&gt;google.&lt;wbr /&gt;redirect_&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;urn:ietf:wg:oauth:2.0:oob:auto&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;oauth.&lt;wbr /&gt;google.&lt;wbr /&gt;scope&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.google.com/m8/feeds&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;ping.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;1800000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;ping.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;10000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;retry_&lt;wbr /&gt;delay.&lt;wbr /&gt;limit&lt;/td&gt;&lt;td&gt;300000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;retry_&lt;wbr /&gt;delay.&lt;wbr /&gt;start&lt;/td&gt;&lt;td&gt;60000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;ringtone&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;chrome://browser/content/loop/shared/sounds/ringtone.ogg&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;server&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://loop.services.mozilla.com/v0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;support_&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://support.mozilla.org/kb/group-conversations-firefox-hello-webrtc&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;textChat.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;aec_&lt;wbr /&gt;delay_&lt;wbr /&gt;agnostic&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;aec_&lt;wbr /&gt;extended_&lt;wbr /&gt;filter&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;webm.&lt;wbr /&gt;audio.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;dns.&lt;wbr /&gt;blockDotOnion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;dns.&lt;wbr /&gt;localDomains&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;jar.&lt;wbr /&gt;block-remote-files&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;offline-mirrors-connectivity&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;pki.&lt;wbr /&gt;cert_&lt;wbr /&gt;short_&lt;wbr /&gt;lifetime_&lt;wbr /&gt;in_&lt;wbr /&gt;days&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;enable_&lt;wbr /&gt;ocsp_&lt;wbr /&gt;must_&lt;wbr /&gt;staple&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;detects.&lt;wbr /&gt;longtap&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;observes.&lt;wbr /&gt;compositions&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;visibility.&lt;wbr /&gt;affectscaret&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;network.&lt;wbr /&gt;cookie.&lt;wbr /&gt;lifetime.&lt;wbr /&gt;days&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;network.&lt;wbr /&gt;cookie.&lt;wbr /&gt;thirdparty.&lt;wbr /&gt;sessionOnly&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncedTabsUIRefresh&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr /&gt;extendedvisibility&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;disallow_&lt;wbr /&gt;completions&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-malware-simple,&lt;wbr /&gt;test-phish-simple,&lt;wbr /&gt;test-unwanted-simple,&lt;wbr /&gt;test-track-simple,&lt;wbr /&gt;test-trackwhite-simple,&lt;wbr /&gt;goog-downloadwhite-digest256,&lt;wbr /&gt;mozstd-track-digest256,&lt;wbr /&gt;mozstd-trackwhite-digest256,&lt;wbr /&gt;mozfull-track-digest256&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-malware-simple,&lt;wbr /&gt;test-phish-simple,&lt;wbr /&gt;test-unwanted-simple,&lt;wbr /&gt;test-track-simple,&lt;wbr /&gt;test-trackwhite-simple,&lt;wbr /&gt;test-forbid-simple,&lt;wbr /&gt;goog-downloadwhite-digest256,&lt;wbr /&gt;mozstd-track-digest256,&lt;wbr /&gt;mozstd-trackwhite-digest256,&lt;wbr /&gt;mozfull-track-digest256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;forbiddenTable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;test-forbid-simple&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;disable-DOM-blit-uploads&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;webgl2-compat-mode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox45_pref_diff&quot;&gt;
+&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;File&lt;/td&gt;&lt;td&gt;Firefox 44.0.4&lt;/td&gt;&lt;td&gt;Firefox 45.0 beta 5&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/devtools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/webide-prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;omni.ja!/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;omni.ja!/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;webapprt/omni.ja!/defaults/preferences/prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser/features/loop@mozilla.org.xpi!/chrome/content/preferences/prefs.js&lt;/td&gt;&lt;td&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Note: Firefox Hello (a.k.a. Loop) has been moved to a system add-on since Firefox 45.
+(ref &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1223573&quot;&gt;Bug 1223573&lt;/a&gt;)
+&lt;/p&gt;
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox45_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox45_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox45_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox45_pref_diff td.json, table.diff_firefox40_pref_diff td.uri, table.diff_firefox40_pref_diff td.dump { word-break: break-all; }
+table.diff_firefox45_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox45_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox45_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox45_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox45_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Mon, 22 Feb 2016 00:43:52 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</guid>
+        <category>pref diff</category>
+        <category>mozilla</category>
+      </item>
       <item>
         <title>算道の解析</title>
         <description>&lt;p&gt;
@@ -966,619 +1024,6 @@ table.diff_firefox41_pref_diff tbody tr { transition: background 0.125s ease-in-
         <guid isPermaLink="true">http://cat-in-136.github.io/2015/08/diff-between-firefox-410-beta-3-default.html</guid>
         <category>pref diff</category>
         <category>mozilla</category>
-      </item>
-      <item>
-        <title>白い部分の面積を求めなさい〜東京2020</title>
-        <description>&lt;h4&gt;問&lt;/h4&gt;
-&lt;p&gt;白い部分の面積を求めなさい。&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;583&quot; height=&quot;594&quot; data=&quot;/images/201507_Tokyo2020_emblem_area_calc_figure.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption style=&quot;display: block;&quot;&gt;Tokyo2020 Emblem Analysis&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;ul&gt;
-  &lt;li&gt;AE=EF=FB=BJ=JK=KC=CG=GH=HD=DL=LI=IA=1 とする。&lt;/li&gt;
-  &lt;li&gt;点Oを中心とした円と正方形ABCDは、点E,F,G,H,I,J,K,Lで交わっている。&lt;/li&gt;
-  &lt;li&gt;右上の赤丸は直径1の正円である。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;解&lt;/h4&gt;
-&lt;aside&gt;
-&lt;div style=&quot;background: #ffd; border: solid 3px #ff8&quot;&gt;
-この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
-必要です
-もし数式部分が読めない場合は
-&lt;a href=&quot;https://getfirefox.com/&quot;&gt;Firefoxをインストールする&lt;/a&gt;か
-&lt;button onclick=&quot;var a=document.createElement(&amp;quot;script&amp;quot;);a.setAttribute(&amp;quot;type&amp;quot;,&amp;quot;application/javascript&amp;quot;);a.setAttribute(&amp;quot;src&amp;quot;,&amp;quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;);document.body.appendChild(a);&quot;&gt;このボタンをクリックしてMathJaxを使って無理矢理表示する&lt;/button&gt;
-などしてください。
-&lt;/div&gt;
-&lt;/aside&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;358&quot; height=&quot;354&quot; data=&quot;/images/201507_Tokyo2020_emblem_area_calc_figure_prj.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption style=&quot;display: block;&quot;&gt;Top-left of the figure&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;
-点Oから線分EFに垂線を下ろし点Pとする。
-OP=2OE=3/2である。
-三平方の定理から
-&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;OE=\sqrt{OP^2+OE^2}\sqrt{\left(\frac{3}{2}\right)^2+\left(\frac{1}{2}\right)^2}=\frac{\sqrt{10}}{2} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mtext&gt;OE&lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;msqrt&gt;
-      &lt;mrow&gt;
-        &lt;msup&gt;
-          &lt;mtext&gt;OP&lt;/mtext&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-        &lt;mo&gt;+&lt;/mo&gt;
-        &lt;msup&gt;
-          &lt;mtext&gt;EP&lt;/mtext&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-      &lt;/mrow&gt;
-    &lt;/msqrt&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;msqrt&gt;
-      &lt;mrow&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-              &lt;mrow&gt;
-                &lt;mfrac&gt;
-                  &lt;mrow&gt;
-                    &lt;mn&gt;3&lt;/mn&gt;
-                  &lt;/mrow&gt;
-                  &lt;mrow&gt;
-                    &lt;mn&gt;2&lt;/mn&gt;
-                  &lt;/mrow&gt;
-                &lt;/mfrac&gt;
-              &lt;/mrow&gt;
-            &lt;/mfenced&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-        &lt;mo&gt;+&lt;/mo&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-              &lt;mrow&gt;
-                &lt;mfrac&gt;
-                  &lt;mrow&gt;
-                    &lt;mn&gt;1&lt;/mn&gt;
-                  &lt;/mrow&gt;
-                  &lt;mrow&gt;
-                    &lt;mn&gt;2&lt;/mn&gt;
-                  &lt;/mrow&gt;
-                &lt;/mfrac&gt;
-              &lt;/mrow&gt;
-            &lt;/mfenced&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-      &lt;/mrow&gt;
-    &lt;/msqrt&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;msqrt&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;10&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msqrt&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;
-余弦定理から
-&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\cos\angle\text{IOE}=\frac{\text{OI}^2+\text{OE}^2-\text{IE}^2}{2\text{OI}\cdot\text{OE}}=\frac{10/4+10/4-2}{2\cdot 10/4}=\frac{3}{5} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mo&gt;cos&lt;/mo&gt;
-    &lt;mo&gt;&amp;#8736;&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      IOE
-    &lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mtext mathvariant=&quot;normal&quot;&gt;
-              OI
-            &lt;/mtext&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-        &lt;mo&gt;+&lt;/mo&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mtext mathvariant=&quot;normal&quot;&gt;
-              OE
-            &lt;/mtext&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mtext mathvariant=&quot;normal&quot;&gt;
-              IE
-            &lt;/mtext&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-        &lt;mtext mathvariant=&quot;normal&quot;&gt;
-          OI
-        &lt;/mtext&gt;
-        &lt;mo&gt;&amp;#8901;&lt;/mo&gt;
-        &lt;mtext mathvariant=&quot;normal&quot;&gt;
-          OE
-        &lt;/mtext&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;10&lt;/mn&gt;
-        &lt;mo&gt;/&lt;/mo&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-        &lt;mo&gt;+&lt;/mo&gt;
-        &lt;mn&gt;10&lt;/mn&gt;
-        &lt;mo&gt;/&lt;/mo&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-        &lt;mo&gt;&amp;#8901;&lt;/mo&gt;
-        &lt;mn&gt;10&lt;/mn&gt;
-        &lt;mo&gt;/&lt;/mo&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;
-これより、
-&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\angle\text{IOE}=\frac{\pi}{2}-\cos^{-1}\frac{4}{5} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mo&gt;&amp;#8736;&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      IOE
-    &lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;cos&lt;/mo&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;
-点Iから線分EHに下ろし点Qとする。
-ここで&amp;#9653;OQI=&amp;#9653;OQEの面積は、OP=3/2, EQ=1であることに注目して
-&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\triangle\text{OQI}=\frac{1\cdot 3/2}{2}=\frac{1}{4} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      OQI
-    &lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mo&gt;&amp;#9653;&lt;/mo&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      OQE
-    &lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-        &lt;mo&gt;⋅&lt;/mo&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-        &lt;mo&gt;/&lt;/mo&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;
-であるから、白色部EMIは、 
-&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;2\left(\frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2}\right)+4-\pi\left(\frac{1}{2}\right)^2 = 3-\frac{\pi}{4}+\frac{5}{4} \cos^{-1}\frac{3}{5} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mn&gt;2&lt;/mn&gt;
-    &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-      &lt;mrow&gt;
-        &lt;mfrac&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;5&lt;/mn&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;4&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mo&gt;cos&lt;/mo&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mo&gt;-&lt;/mo&gt;
-            &lt;mn&gt;1&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-        &lt;mfrac&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;3&lt;/mn&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;5&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mfrac&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;1&lt;/mn&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-      &lt;/mrow&gt;
-    &lt;/mfenced&gt;
-    &lt;mo&gt;+&lt;/mo&gt;
-    &lt;mn&gt;4&lt;/mn&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mi&gt;&amp;#960;&lt;/mi&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-          &lt;mrow&gt;
-            &lt;mfrac&gt;
-              &lt;mrow&gt;
-                &lt;mn&gt;1&lt;/mn&gt;
-              &lt;/mrow&gt;
-              &lt;mrow&gt;
-                &lt;mn&gt;2&lt;/mn&gt;
-              &lt;/mrow&gt;
-            &lt;/mfrac&gt;
-          &lt;/mrow&gt;
-        &lt;/mfenced&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mn&gt;3&lt;/mn&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mi&gt;&amp;#960;&lt;/mi&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;+&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;cos&lt;/mo&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;と表せられる。これを解いて&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\text{EMI}=\frac{1}{2}\cos^{-1}\frac{3}{5}\left(\frac{\sqrt{10}}{2}\right)^2-\frac{1}{4}-\frac{1}{4}= \frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mtext mathvariant=&quot;normal&quot;&gt;
-      白色部EMI
-    &lt;/mtext&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;cos&lt;/mo&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-          &lt;mrow&gt;
-            &lt;mfrac&gt;
-              &lt;mrow&gt;
-                &lt;msqrt&gt;
-                  &lt;mrow&gt;
-                    &lt;mn&gt;10&lt;/mn&gt;
-                  &lt;/mrow&gt;
-                &lt;/msqrt&gt;
-              &lt;/mrow&gt;
-              &lt;mrow&gt;
-                &lt;mn&gt;2&lt;/mn&gt;
-              &lt;/mrow&gt;
-            &lt;/mfrac&gt;
-          &lt;/mrow&gt;
-        &lt;/mfenced&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;cos&lt;/mo&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;
-右下も対称性から同様であって、また赤丸は半径1/2の円であることから
-求める白い部分の面積は
-&lt;/p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;2\left(\frac{5}{4} \cos^{-1}\frac{3}{5}-\frac{1}{2}\right)+4-\pi\left(\frac{1}{2}\right)^2 = 3-\frac{\pi}{4}+\frac{5}{2} \cos^{-1}\frac{3}{5} &quot;&gt;
-  &lt;mrow&gt;
-    &lt;mn&gt;2&lt;/mn&gt;
-    &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-      &lt;mrow&gt;
-        &lt;mfrac&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;5&lt;/mn&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;4&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-        &lt;msup&gt;
-          &lt;mrow&gt;
-            &lt;mo&gt;cos&lt;/mo&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mo&gt;-&lt;/mo&gt;
-            &lt;mn&gt;1&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/msup&gt;
-        &lt;mfrac&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;3&lt;/mn&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;5&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mfrac&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;1&lt;/mn&gt;
-          &lt;/mrow&gt;
-          &lt;mrow&gt;
-            &lt;mn&gt;2&lt;/mn&gt;
-          &lt;/mrow&gt;
-        &lt;/mfrac&gt;
-      &lt;/mrow&gt;
-    &lt;/mfenced&gt;
-    &lt;mo&gt;+&lt;/mo&gt;
-    &lt;mn&gt;4&lt;/mn&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mi&gt;&amp;#960;&lt;/mi&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
-          &lt;mrow&gt;
-            &lt;mfrac&gt;
-              &lt;mrow&gt;
-                &lt;mn&gt;1&lt;/mn&gt;
-              &lt;/mrow&gt;
-              &lt;mrow&gt;
-                &lt;mn&gt;2&lt;/mn&gt;
-              &lt;/mrow&gt;
-            &lt;/mfrac&gt;
-          &lt;/mrow&gt;
-        &lt;/mfenced&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mo&gt;=&lt;/mo&gt;
-    &lt;mn&gt;3&lt;/mn&gt;
-    &lt;mo&gt;-&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mi&gt;&amp;#960;&lt;/mi&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;4&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;mo&gt;+&lt;/mo&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;2&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-    &lt;msup&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;cos&lt;/mo&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mo&gt;-&lt;/mo&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/msup&gt;
-    &lt;mfrac&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;3&lt;/mn&gt;
-      &lt;/mrow&gt;
-      &lt;mrow&gt;
-        &lt;mn&gt;5&lt;/mn&gt;
-      &lt;/mrow&gt;
-    &lt;/mfrac&gt;
-  &lt;/mrow&gt;
-&lt;/math&gt;
-&lt;p&gt;解答おわり&lt;/p&gt;
-&lt;h4&gt;感想&lt;/h4&gt;
-&lt;p&gt;&amp;#8736;IOE が三角逆関数使わずに表せられなかったので残念。&lt;/p&gt;
-&lt;p&gt;なお、数値計算してみると&lt;a href=&quot;http://www.wolframalpha.com/input/?i=3-pi%2F4%2B5%2F2+cos^%28-1%29%283%2F5%29&quot;&gt;白色部はおおよそ4.53&lt;/a&gt;となる。&lt;/p&gt;
-&lt;h4&gt;Inspired by&lt;/h4&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;ja&quot;&gt;&lt;p lang=&quot;ja&quot; dir=&quot;ltr&quot;&gt;オリンピックのエンブレム、なんとなく既視感がある &lt;a href=&quot;http://t.co/4FsLOnLfdY&quot;&gt;pic.twitter.com/4FsLOnLfdY&lt;/a&gt;&lt;/p&gt;&amp;mdash; Phi-san (@Phi_san) &lt;a href=&quot;https://twitter.com/Phi_san/status/624558370486247424&quot;&gt;July 24, 2015&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;async&quot; defer=&quot;defer&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-&lt;h4&gt;参考文献&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;&quot;&lt;a href=&quot;https://tokyo2020.jp/en/emblem/&quot;&gt;The Tokyo 2020 Olympic and Paralympic Games Emblems&lt;/a&gt;&quot;, The Tokyo Organising Committee of the Olympic and Paralympic Games.&lt;/li&gt;
-&lt;li&gt;&quot;&lt;a href=&quot;https://tokyo2020.jp/en/news/index.php?mode=page&amp;amp;id=1410&quot;&gt;24 Jul. 2015 - Tokyo 2020 Unveils the Emblems of the 2020 Olympic and Paralympic Games Symbolising the Power of the World Coming Together as One&lt;/a&gt;&quot;, News release, The Tokyo Organising Committee of the Olympic and Paralympic Games.&lt;/li&gt;
-&lt;li&gt;&quot;&lt;a href=&quot;https://commons.wikimedia.org/wiki/File:2020_Summer_Olympics_logo.svg&quot;&gt;Vectorized version of the Tokyo 2020 Summer Olympics Logo&lt;/a&gt;&quot;, Wikimedia Commons&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 26 Jul 2015 17:19:27 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2015/07/Tokyo2015-logo-calc-area.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2015/07/Tokyo2015-logo-calc-area.html</guid>
-        <category>math</category>
-        <category>logo</category>
       </item>
   </channel>
 </rss>
