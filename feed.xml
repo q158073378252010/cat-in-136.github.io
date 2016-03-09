@@ -5,13 +5,13 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Mar 2016 00:48:37 +0900</pubDate>
-    <lastBuildDate>Thu, 10 Mar 2016 00:48:37 +0900</lastBuildDate>
+    <pubDate>Thu, 10 Mar 2016 01:11:53 +0900</pubDate>
+    <lastBuildDate>Thu, 10 Mar 2016 01:11:53 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
       <item>
         <title>CSS gradient で高DPI(所謂Retina Display等)を体感する</title>
         <description>&lt;p&gt;
-CSS3 グラデーションで色の間隔を 1px 未満にすると、グラデーション表示されない。
+CSS3 グラデーションで色の間隔を 1px 未満にすると、Firefox だとグラデーション表示されない。
 が、高DPI環境(所謂Retina Display等)だと表示されるらしい。
 &lt;/p&gt;
 &lt;table style=&quot;width: 100%&quot;&gt;
@@ -50,8 +50,13 @@ CSS3 グラデーションで色の間隔を 1px 未満にすると、グラデ�
 高DPI環境(所謂Retina Display等)でなかったとしても、ブラウザの拡大縮小によってグラデーションが表示されるようになったりするようだ。
 &lt;/p&gt;
 &lt;p&gt;
-HTML5の規格としてもそのような記述されている。
-でも、色の混合までやっているブラウザはあるのかなぁ。
+一方で Google Chrome はそんなのおかまいなしにグラデーション表示を試みているようである。が、当然デバイスの限界を超えているので表示は何かしら化けて表示されていることになる。普通キニシナイが。
+&lt;/p&gt;
+&lt;p&gt;
+HTML5の規格としてFirefoxのような挙動は許可されているような記述されている。
+(SHALLではなくwouldなので明記されていない?
+Google Chromeのような挙動がいいのかわるいのかも言及していていない?)
+でも、色の混合をやっているブラウザはあるのかなぁ。
 &lt;/p&gt;
 &lt;blockquote cite=&quot;https://drafts.csswg.org/css-images-3/#example-c6222b45&quot;&gt;
 &lt;div&gt;
