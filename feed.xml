@@ -5,9 +5,143 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 10 Mar 2016 01:11:53 +0900</pubDate>
-    <lastBuildDate>Thu, 10 Mar 2016 01:11:53 +0900</lastBuildDate>
+    <pubDate>Wed, 23 Mar 2016 00:29:56 +0900</pubDate>
+    <lastBuildDate>Wed, 23 Mar 2016 00:29:56 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+      <item>
+        <title>CSS で縦書きと段組を組み合わせる試み</title>
+        <description>&lt;p&gt;
+今時の CSS では、次の通り縦書きと段組ができるが、これを組合せられるのだろうかという試み。
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;writing-mode: vertical-rl;&lt;/code&gt;で和文の縦書き&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;column-width: &amp;lt;length&amp;gt;;&lt;/code&gt;で段組&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;動機&lt;/h3&gt;
+&lt;p&gt;
+日本語は&lt;em&gt;伝統的には&lt;/em&gt;漢文に習って縦書きであって、
+文字を天から地へ、行を右から左へ進めて書きしるす。
+舶来の技術であるHTMLの世界では、元来縦書きはできなかった。
+けれども、W3CのCSS&lt;ruby&gt;作業部会&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;Working Group&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;の中の人達が、
+&lt;a href=&quot;https://www.w3.org/TR/css-writing-modes-3/&quot;&gt;CSS Writing Modes Level 3&lt;/a&gt;をこしらえ、
+またブラウザもまたこれをこしらえたお陰でHTMLの世界でも
+縦書きができるようになったのである。
+&lt;/p&gt;
+&lt;p&gt;
+いまだ問題となるのは、組方向（縦書きと横書き）が混在する場合である。
+そんな組み方をするのが間違っている、という指摘はここでは棚に上げる。
+すると横書きに準じて縦スクロールするべきか
+縦書きに準じて横スクロールするべきかという問題が生じる。
+スクロールの向きが混在するのは流石に読みづらいことこの上ないので避けるとして、
+&lt;em&gt;縦書きだが縦スクロール&lt;/em&gt;というのは日本の新聞の紙面などにおける段組と
+同じなのだからそれが組めればいいのではないかと思ったのである。
+&lt;/p&gt;
+&lt;h3&gt;要求仕様&lt;/h3&gt;
+&lt;p&gt;
+文書全体としては横書きの縦スクロールであるが、
+縦書きの文章を内部に挿入するにあたり次に示すような要求を満たすものとしたい。
+&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;縦書き部の前には横書きのコンテンツがあり、また縦書き部の後には横書きのコンテンツがある。これらの横書きのコンテンツの表示に影響を及ぼさないこと。&lt;/li&gt;
+&lt;li&gt;縦書き部に独立のスクロールバーは持たず、あくまで縦スクロールで読者は読むものとする。&lt;/li&gt;
+&lt;li&gt;縦書き部の&lt;ruby&gt;横幅&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;width&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;は、100%、すなわち親の要素に合わせた横幅とする。&lt;/li&gt;
+&lt;li&gt;縦書き部の文章は段組とし、行長（段組の高さ）は100vh以下、すなわち&lt;ruby&gt;画面&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;view port&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;の高さより小さくする。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;235&quot; height=&quot;276&quot; data=&quot;/images/2016_03_css_vertical_with_multicolumn_render_expection.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;期待される表示の図&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h3&gt;ソースコード&lt;/h3&gt;
+&lt;p&gt;
+単純に横書き→縦書き→横書きの順番で文章が並んだHTMLファイルを用意した。
+&lt;/p&gt;
+&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;(横書きのコンテンツ)...&amp;lt;/p&amp;gt;
+&amp;lt;p class=&quot;vertical-writing&quot;&amp;gt;(縦書きのコンテンツ)...&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;(横書きのコンテンツ)...&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+これに対して、適切なCSSルールを定義した。
+&lt;/p&gt;
+&lt;pre class=&quot;prettyprint lang-css&quot;&gt;&lt;code&gt;.vertical-writing {
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  width: 100%; /* 縦書き部の横幅 */
+  -moz-column-width: calc(100vh - 20px);
+  -moz-column-gap: 20px;
+  -moz-column-rule: 2px dashed #000;
+  column-width: calc(100vh - 20px);
+  column-gap: 20px;
+  column-rule: 2px dashed #000;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+段組の指定には、段数 (&lt;code&gt;column-count&lt;/code&gt;) を使うこともできるが、
+段組の高さを指定するのを当初の目的としたのでそうした。
+&lt;/p&gt;
+&lt;p&gt;
+なお、縦書き部の段組の高さは&lt;code&gt;100vh - 20px&lt;/code&gt;、
+すなわち画面の高さより20px減じたものとした。
+&lt;/p&gt;
+&lt;h3&gt;表示結果&lt;/h3&gt;
+&lt;h4&gt;Edge&lt;/h4&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_edge13.png&quot;&gt;
+&lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_edge13.png&quot; width=&quot;184&quot; height=&quot;356&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption&gt;Edge 13&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+縦書き部の後ろに続く横書き部と、縦書き部の段組二段目移行が重なってしまっている。
+これは縦書きと段組を組み合わせた時にボックスの高さが、一段分しか計算されないかららしい。
+高さを明示しても良いが、それではリキッドレイアウトではないので却下。
+それ以外は良好で、縦書き部の後ろに横書きのコンテンツが一切存在しない場合は、
+使い物になるのではないか。
+&lt;/p&gt;
+&lt;h4&gt;Chrome&lt;/h4&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_chrome48.png&quot;&gt;
+&lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_chrome48.png&quot; width=&quot;184&quot; height=&quot;356&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption&gt;Chrome 48&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+一瞬正しくレンダリングしているようにみえるが、
+段組が一切動いていないため、文章の続きが左端の画面外にはみ出ている。
+スクロールバーも表示されないため、これは一番困る動作。
+&lt;/p&gt;
+&lt;h4&gt;Firefox&lt;/h4&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_firefox45.png&quot;&gt;
+&lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_firefox45.png&quot; width=&quot;92&quot; height=&quot;255&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption&gt;Firefox 45&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+最も縦書き対応の遅かった Firefox がご覧の通りまともなレンダリングをした。
+しかし、少しでも CSS パラメータを変えるとレンダリングが崩れたりと
+まだ怪しい部分がアリそうだ。
+&lt;/p&gt;
+&lt;h3&gt;まとめ&lt;/h3&gt;
+&lt;p&gt;
+縦書きと段組のそれぞれは、各ブラウザで良好に動作するようになってきているが、
+まだその組合せは動作は不安定であることがわかった。
+&lt;/p&gt;
+&lt;h3&gt;参考文献&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E7%B8%A6%E6%9B%B8%E3%81%8D%E3%81%A8%E6%A8%AA%E6%9B%B8%E3%81%8D&quot;&gt;縦書きと横書き&lt;/a&gt;、ウィキペディア&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/CSS/writing-mode&quot;&gt;writing-mode - CSS&lt;/a&gt;, MDN&lt;/li&gt;
+&lt;li&gt;S. Murakami, P. Nelson, M. Suignard, &quot;&lt;a href=&quot;https://www.w3.org/TR/css-writing-modes-3/&quot;&gt;CSS Writing Modes Level 3&lt;/a&gt;&quot;, W3C Candidate Recommendation&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/CSS/columns&quot;&gt;columns - CSS&lt;/a&gt;, MDN&lt;/li&gt;
+&lt;li&gt;H. W. Lie, &quot;&lt;a href=&quot;https://www.w3.org/TR/css3-multicol/&quot;&gt;CSS Multi-column Layout Module Level 1&lt;/a&gt;&quot;, W3C Editor’s Draft&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 23 Mar 2016 00:20:22 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</guid>
+        <category>css</category>
+        <category>html</category>
+        <category>和</category>
+      </item>
       <item>
         <title>CSS gradient で高DPI(所謂Retina Display等)を体感する</title>
         <description>&lt;p&gt;
@@ -962,98 +1096,6 @@ table.diff_firefox42_pref_diff tbody tr { transition: background 0.125s ease-in-
         <guid isPermaLink="true">http://cat-in-136.github.io/2015/09/diff-between-firefox-420-beta-1-default.html</guid>
         <category>pref diff</category>
         <category>mozilla</category>
-      </item>
-      <item>
-        <title>帝都高速度交通営団の団章の解析</title>
-        <description>&lt;p&gt;
-かつて存在した&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E5%B8%9D%E9%83%BD%E9%AB%98%E9%80%9F%E5%BA%A6%E4%BA%A4%E9%80%9A%E5%96%B6%E5%9B%A3&quot;&gt;帝都高速度交通営団&lt;/a&gt;の団章はなかなか幾何学的様式美に優れている。
-&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;256&quot; height=&quot;256&quot; data=&quot;/images/201509_trta_emblem_design_analysis.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption style=&quot;display: block;&quot;&gt;&lt;abbr title=&quot;Teito Rapid Transit Authority&quot;&gt;TRTA&lt;/abbr&gt; Emblem Design Analysis&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;
-&amp;#8895;ABCおよび直角二等辺三角形になっていて、
-&amp;#8736;CABが直角、その他が45度である。
-このため、さらに線分ABが円の接線となるようになっている。
-&amp;#8895;A&amp;#8242;B&amp;#8242;C&amp;#8242;も同様である。
-&lt;/p&gt;
-&lt;p&gt;
-なので容易に作図できるはずなのだが、円のサイズ比率などがいろいろと不明なので、
-けっきょく正しい団章を描くことはかなわなかった。
-&lt;/p&gt;
-&lt;form id=&quot;trta-emblem-control&quot; onsubmit=&quot;return false;&quot; style=&quot;display: block; margin: auto; text-align: center;&quot;&gt;
-  &lt;div&gt;
-  &lt;label for=&quot;trta-emblem-control-outer-circle&quot;&gt;外円半径&lt;/label&gt;
-  &lt;input id=&quot;trta-emblem-control-outer-circle&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;80&quot; /&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-  &lt;label for=&quot;trta-emblem-control-inner-circle&quot;&gt;内円半径&lt;/label&gt;
-  &lt;input id=&quot;trta-emblem-control-inner-circle&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;50&quot; /&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-  &lt;label for=&quot;trta-emblem-control-blank&quot;&gt;切込幅&lt;/label&gt;
-  &lt;input id=&quot;trta-emblem-control-blank&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; /&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
-&lt;figure id=&quot;trta-emblem-figure&quot; style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;256px&quot; height=&quot;256px&quot; viewBox=&quot;0 0 256 256&quot;&gt;
-  &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;256&quot; height=&quot;256&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/rect&gt;
-  &lt;circle id=&quot;trta-emblem-outer-circle&quot; cx=&quot;128&quot; cy=&quot;128&quot; r=&quot;80&quot; style=&quot;fill: #e70012;&quot;&gt;&lt;/circle&gt;
-  &lt;circle id=&quot;trta-emblem-inner-circle&quot; cx=&quot;128&quot; cy=&quot;128&quot; r=&quot;50&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/circle&gt;
-  &lt;polygon id=&quot;trta-emblem-polygon&quot; points=&quot;71.4314575050762,71.4314575050762 -0.13708498984760809,143 183.71067811865476,143 163.35533905932738,184.5685424949238 184.5685424949238,184.5685424949238 256.1370849898476,113 72.28932188134524,113 92.64466094067262,71.4314575050762&quot; style=&quot;fill: #e70012;&quot;&gt;&lt;/polygon&gt;
-  &lt;rect id=&quot;trta-emblem-blank-topright&quot; x=&quot;128&quot; y=&quot;103&quot; width=&quot;128&quot; height=&quot;10&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/rect&gt;
-  &lt;rect id=&quot;trta-emblem-blank-bottomleft&quot; x=&quot;0&quot; y=&quot;143&quot; width=&quot;128&quot; height=&quot;10&quot; style=&quot;fill: #fff;&quot;&gt;&lt;/rect&gt;
-&lt;/svg&gt;
-&lt;/figure&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-(function () {
-  var oForm = document.getElementById(&quot;trta-emblem-control&quot;);
-  var oOuterCircle = document.getElementById(&quot;trta-emblem-control-outer-circle&quot;);
-  var oInnerCircle = document.getElementById(&quot;trta-emblem-control-inner-circle&quot;);
-  var oBlank = document.getElementById(&quot;trta-emblem-control-blank&quot;);
-  var oSVGOuterCircle = document.getElementById(&quot;trta-emblem-outer-circle&quot;);
-  var oSVGInnerCircle = document.getElementById(&quot;trta-emblem-inner-circle&quot;);
-  var oSVGPolygon = document.getElementById(&quot;trta-emblem-polygon&quot;);
-  var oSVGBlankTR = document.getElementById(&quot;trta-emblem-blank-topright&quot;);
-  var oSVGBlankBL = document.getElementById(&quot;trta-emblem-blank-bottomleft&quot;);
-  function updateTRTAEmblem(event) {
-    var ro = parseFloat(oOuterCircle.value);
-    var ri = Math.min(parseFloat(oInnerCircle.value), ro);
-    var w = ro - ri;
-    var d = Math.min(parseFloat(oBlank.value), ri - w/2);
-    var cx = 128;
-    var cy = 128;
-    oSVGOuterCircle.setAttribute(&quot;r&quot;, ro);
-    oSVGInnerCircle.setAttribute(&quot;r&quot;, ri);
-    oSVGPolygon.setAttribute(&quot;points&quot;, [
-      [cx         - ro * Math.SQRT1_2, cy - ro * Math.SQRT1_2],
-      [cx - w / 2 - ro * Math.SQRT2,   cy + w / 2],
-      [cx - w / 2 + ri * Math.SQRT2,   cy + w / 2],
-      [cx         + ri * Math.SQRT1_2, cy + ro * Math.SQRT1_2],
-      [cx         + ro * Math.SQRT1_2, cy + ro * Math.SQRT1_2],
-      [cx + w / 2 + ro * Math.SQRT2,   cy - w / 2],
-      [cx + w / 2 - ri * Math.SQRT2,   cy - w / 2],
-      [cx         - ri * Math.SQRT1_2, cy - ro * Math.SQRT1_2]
-    ].map(function (v) { return v[0] + &quot;,&quot; + v[1]; }).join(&quot; &quot;));
-    oSVGBlankTR.setAttribute(&quot;y&quot;, cy - w/2 - d);
-    oSVGBlankTR.setAttribute(&quot;height&quot;, d);
-    oSVGBlankBL.setAttribute(&quot;y&quot;, cy + w/2);
-    oSVGBlankBL.setAttribute(&quot;height&quot;, d);
-  }
-  oForm.addEventListener(&quot;input&quot;, updateTRTAEmblem, false);
-  oForm.addEventListener(&quot;change&quot;, updateTRTAEmblem, false);
-})();
-&lt;/script&gt;
-&lt;p&gt;
-注記：団章は、東京地下鉄株式会社の登録商標である。
-&lt;/p&gt;
-</description>
-        <pubDate>Sun, 06 Sep 2015 01:35:35 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2015/09/trta-emblem-design-analysis.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2015/09/trta-emblem-design-analysis.html</guid>
-        <category>logo</category>
-        <category>train and rails</category>
       </item>
   </channel>
 </rss>
