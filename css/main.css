@@ -107,7 +107,7 @@ a:visited { color: #8f4889; }
 .post-content:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) > p { text-indent: 1em; }
 .post-content:lang(ja) > pre + p, .post-content:lang(ja) > math + p, .post-content:lang(ja) > ul + p, .post-content:lang(ja) > ol + p { text-indent: inherit !important; }
-@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended { writing-mode: vertical-rl; text-combine-upright: none; -ms-text-combine-horizontal: none; }
+@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended { writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; text-combine-upright: none; -ms-text-combine-horizontal: none; }
   html.vertical-writing-recommended time { /* As of Mar 2016, Edge *always* render <time> elements as horizontal-in-vertical. No idea. */ }
   html.vertical-writing-recommended .wrap { padding: 2px; }
   @media (min-height: 480px) { html.vertical-writing-recommended .wrap { padding: 10vh 1ex; } }
@@ -116,7 +116,7 @@ a:visited { color: #8f4889; }
   html.vertical-writing-recommended .fitcontain { /* As of firefox 46, vertical-rl may conflict with object-fit. */ object-fit: unset; width: auto; height: auto; }
   html.vertical-writing-recommended .page-content { padding: 2px 30px; }
   html.vertical-writing-recommended .site-header { border-width: 0 0 0 3px; }
-  html.vertical-writing-recommended .site-header .site-nav { writing-mode: horizontal-tb; text-align: right; }
+  html.vertical-writing-recommended .site-header .site-nav { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; text-align: right; }
   html.vertical-writing-recommended .site-header .site-nav > a { display: block; }
   html.vertical-writing-recommended .post-header, html.vertical-writing-recommended .post-footer { margin: 0 30px 0 30px; }
   html.vertical-writing-recommended .post-header { border-width: 0 0 0 0.5ex; }
@@ -130,12 +130,12 @@ a:visited { color: #8f4889; }
   @media screen and (min-width: 480px) { html.vertical-writing-recommended .post-content ul, html.vertical-writing-recommended .post-content ol { padding: 2em 0 0 0; } }
   html.vertical-writing-recommended .post-content dl > dd { padding: 1em auto auto auto; }
   html.vertical-writing-recommended .post-content pre { margin: 0 1em; padding: auto; }
-  html.vertical-writing-recommended .post-content figure { writing-mode: horizontal-tb; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 100vh; }
-  html.vertical-writing-recommended #disqus_thread { writing-mode: horizontal-tb; width: 90vh; }
+  html.vertical-writing-recommended .post-content figure { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 100vh; }
+  html.vertical-writing-recommended #disqus_thread { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; width: 90vh; }
   html.vertical-writing-recommended .post-footer { border-width: 0 0.5ex 0 0; }
   html.vertical-writing-recommended .post-related { margin: 0 1em 0 0; }
   html.vertical-writing-recommended .site-footer { border-width: 0 3px 0 0; margin: 0 1em 0 0; }
-  html.vertical-writing-recommended .site-footer .wrap { writing-mode: horizontal-tb; text-align: right; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 16em; }
+  html.vertical-writing-recommended .site-footer .wrap { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; text-align: right; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 16em; }
   html.vertical-writing-recommended .site-footer .column { float: none; width: auto; margin: 1em 0 1em 1em; } }
 @media print { aside, nav { display: none; } }
 .prettyprinted { /* Pretty printing styles. Used with prettify.js. */ /* SPAN elements with the classes below are added by prettyprint. */ /* plain text */ /* Use higher contrast and text-weight for printable form. */ /* Put a border around prettyprinted code snippets. */ /* Specify class=linenums on a pre to get line numbering */ /* IE indents via margin-left */ /* Alternate shading for lines */ }
