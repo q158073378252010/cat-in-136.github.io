@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 23 Mar 2016 00:29:56 +0900</pubDate>
-    <lastBuildDate>Wed, 23 Mar 2016 00:29:56 +0900</lastBuildDate>
+    <pubDate>Sat, 26 Mar 2016 12:17:38 +0900</pubDate>
+    <lastBuildDate>Sat, 26 Mar 2016 12:17:38 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
       <item>
         <title>CSS で縦書きと段組を組み合わせる試み</title>
@@ -140,7 +140,7 @@
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</guid>
         <category>css</category>
         <category>html</category>
-        <category>和</category>
+        <category>縦書き</category>
       </item>
       <item>
         <title>CSS gradient で高DPI(所謂Retina Display等)を体感する</title>

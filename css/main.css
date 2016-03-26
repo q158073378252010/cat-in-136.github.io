@@ -5,15 +5,23 @@ blockquote, q { quotes: none; }
 blockquote::before, blockquote::after, q::before, q::after { content: ''; content: none; }
 /* fontset */
 body { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "HGPGothicE", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: 300; font-size: 12px; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; }
-@media (min-width: 480px) { body { font-size: 16px; } }
-@media (min-width: 48em) { body { font-size: 18px; } }
+@media (min-width: 480px) { html:not(.vertical-writing-recommended) body { font-size: 16px; } }
+@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { @media (min-height: 480px) { html.vertical-writing-recommended body { font-size: 16px; } } }
+@media (min-width: 48em) { html:not(.vertical-writing-recommended) body { font-size: 18px; } }
+@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { @media (min-height: 48em) { html.vertical-writing-recommended body { font-size: 18px; } } }
 h1, h2, h3, h4, h5, h6, .home .post-link { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: bold; }
 pre, code, .post-content pre, samp, kbd { font-family: "Fira Mono", "Droid Sans Mono", monospace; -webkit-font-feature-settings: "zero"; font-feature-settings: "zero"; }
-@media (min-width: 480px) { pre, figcaption, table caption { font-size: smaller; } }
+@media (min-width: 480px) { html:not(.vertical-writing-recommended) pre, html:not(.vertical-writing-recommended) figcaption, html:not(.vertical-writing-recommended) table caption { font-size: smaller; } }
+@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { @media (min-height: 480px) { html.vertical-writing-recommended pre, html.vertical-writing-recommended figcaption, html.vertical-writing-recommended table caption { font-size: smaller; } } }
 em { font-weight: normal; font-style: italic; }
 :lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
 strong { font-weight: bolder; font-style: normal; }
-:lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+:lang(ja) em, :lang(ja) strong { -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+:lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; }
+:lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; }
+@supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { :lang(ja) em, :lang(ja) strong { text-decoration: none; text-shadow: none; }
+  :lang(ja) em { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
+  :lang(ja) strong { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; } }
 .post-date { font-size: small; width: 9ex; text-align: end; }
 /* cat-in-136.blog() base */
 html, body { height: 100%; background-color: #fff; color: #000; line-height: 1.5; }
@@ -28,27 +36,24 @@ a:visited { color: #8f4889; }
 @media screen and (min-width: 1024px) { .wrap { padding: 0 15%; } }
 .post-date { color: #8f4889; }
 /* Layout */
-.site-header { border-bottom: solid 3px #8f4889; min-height: 56px; font-weight: 800; }
+.site-header { border: solid #8f4889; border-width: 0 0 3px 0; min-height: 56px; font-weight: 800; }
 .site-title, .site-title:hover, .site-title:visited { display: block; font-size: xx-large; text-decoration: none; float: left; }
 @media screen { .site-title, .site-title:hover, .site-title:visited { color: #d8cee3; text-shadow: 0 0 1px #000, -1px -1px 0px #000, 0 0 1px #000, -1px 0px 0px #000, 0 0 1px #000, -1px 1px 0px #000, 0 0 1px #000, 0px -1px 0px #000, 0 0 1px #000, 0px 0px 0px #000, 0 0 1px #000, 0px 1px 0px #000, 0 0 1px #000, 1px -1px 0px #000, 0 0 1px #000, 1px 0px 0px #000, 0 0 1px #000, 1px 1px 0px #000; } }
 .site-nav { float: right; font-size: larger; }
 .site-nav .menu-icon { display: none; }
-.site-footer { border-top: solid 3px #8f4889; margin: 1em 0 0 0; padding: 1ex 0 1em 0; font-size: smaller; }
+.site-footer { border: solid #8f4889; border-width: 3px 0 0 0; margin: 1em 0 0 0; padding: 1ex 0 1em 0; font-size: smaller; }
 .site-footer .wrap { max-width: 800px; }
 .site-footer .footer-heading { font-size: larger; margin: 0 auto 15px auto; }
-.site-footer .column { float: left; }
-.site-footer .footer-col-1 { width: 270px; width: -webkit--calc(35% - 10px); width: -moz--calc(35% - 10px); width: -calc(35% - 10px); }
-.site-footer .footer-col-2 { width: 175px; width: -webkit--calc(23.125% - 10px); width: -moz--calc(23.125% - 10px); width: -calc(23.125% - 10px); }
-.site-footer .footer-col-3 { width: 335px; width: -webkit--calc(41.875%); width: -moz--calc(41.875%); width: -calc(41.875%); }
+.site-footer .column { float: left; width: 50%; }
 .site-footer li, .site-footer p { font-size: smaller; list-style: none; color: #000; }
 .site-header, .site-footer { background-image: linear-gradient(90deg, rgba(216, 206, 227, 0.25), rgba(216, 206, 227, 0.25) 50%, transparent 50%, transparent); background-size: 12px 12px; }
 .page-content { padding: 30px 0; }
-.page-content .post-related { margin: 1em 0 0 0; }
-.page-content .post-related h2 { font-size: normal; }
-.page-content .post-related li { list-style-type: none; }
-.page-content .post-related .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
-.page-content .post-related > * { -webkit-flex: 0 0 auto; flex: 0 0 auto; }
-.page-content .post-related .post-date { margin-right: 1ex; -webkit-flex: 1 0 auto; flex: 0 0 auto; }
+.post-related { margin: 1em 0 0 0; }
+.post-related h2 { font-size: normal; }
+.post-related li { list-style-type: none; }
+.post-related .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
+.post-related > * { -webkit-flex: 0 0 auto; flex: 0 0 auto; }
+.post-related .post-date { margin-right: 1ex; -webkit-flex: 1 0 auto; flex: 0 0 auto; }
 .home h1 { margin-bottom: 25px; font-size: xx-large; }
 .home .posts { list-style-type: none; }
 .home .posts .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
@@ -64,10 +69,10 @@ a:visited { color: #8f4889; }
 .archive .post-item, .tag-list .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
 .archive > *, .tag-list > * { -webkit-flex: 0 0 auto; flex: 0 0 auto; }
 .archive .post-date, .tag-list .post-date { margin-right: 1ex; -webkit-flex: 1 0 auto; flex: 0 0 auto; }
-.tag-list .tag-cloud { margin: 1em 0; border-bottom: solid 0.5ex #8f4889; }
-.post-header { margin: 10px 0 30px; border-bottom: solid 0.5ex #8f4889; }
+.tag-list .tag-cloud { margin: 1em 0; border: solid #8f4889; border-width: 0 0 0.5ex 0; }
+.post-header { margin: 10px 0 30px; border: solid #8f4889; border-width: 0 0 0.5ex 0; }
 .post-header h1 { font-size: 300%; line-height: 1.1; font-weight: bold; color: #8f4889; }
-.post-footer { border-bottom: solid 0.5ex #8f4889; margin-top: 8px; }
+.post-footer { border: solid #8f4889; border-width: 0 0 0.5ex 0; margin-top: 8px; }
 .post-header .meta, .post-footer .meta { font-size: small; text-transform: uppercase; }
 .post-footer .source-path { text-transform: none; }
 .post-header .tag::after, .post-header .category::after, .post-footer .share a::after { content: ','; padding: 0 1ex 0 0; }
@@ -82,7 +87,7 @@ a:visited { color: #8f4889; }
 .post-content h5 { font-size: large; }
 .post-content p { margin: 10px 0; }
 .post-content blockquote, .post-content math, .post-content > table, .post-content > ul, .post-content > ol, .post-content > figure { margin: 1ex auto; }
-.post-content blockquote { border-left: 1em solid #8f4889; padding-left: 1em; }
+.post-content blockquote { border: solid #8f4889; border-width: 0 0 0 1em; padding-left: 1em; }
 .post-content ul, .post-content ol { margin-left: 1ex; padding-left: 1ex; list-style-position: outside; }
 @media screen and (min-width: 480px) { .post-content ul, .post-content ol { padding-left: 2em; } }
 .post-content ul > li { list-style-type: disc; }
@@ -96,15 +101,42 @@ a:visited { color: #8f4889; }
 @media screen and (max-width: 480px) { .post-content .fitcontain { object-fit: scale-down; width: -webkit-available; width: -moz-available; width: available; height: auto; } }
 .post-content table:not([class]):not([style]) { border-collapse: collapse; margin: auto; }
 .post-content table:not([class]):not([style]) td, .post-content table:not([class]):not([style]) th { border: 1px solid #d8cee3; padding: 2px; }
-.post-content table:not([class]):not([style]) thead > tr:last-child td, .post-content table:not([class]):not([style]) thead > tr:last-child th { border-bottom: 3px solid #d8cee3; }
-.post-content table:not([class]):not([style]) tfoot > tr:first-child td, .post-content table:not([class]):not([style]) tfoot > tr:first-child th { border-top: 3px solid #d8cee3; }
-.post-content table:not([class]):not([style]) tr > td:first-child, .post-content table:not([class]):not([style]) tr > th:first-child { border-left: none 0px; padding-left: 4px; }
-.post-content table:not([class]):not([style]) tr > td:last-child, .post-content table:not([class]):not([style]) tr > th:last-child { border-right: none 0px; padding-right: 4px; }
+.post-content table:not([class]):not([style]) thead, .post-content table:not([class]):not([style]) tfoot { background-color: rgba(216, 206, 227, 0.25); }
 .post-content table:not([class]):not([style]) caption { text-align: center; }
 .post-summary:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) > p { text-indent: 1em; }
 .post-content:lang(ja) > pre + p, .post-content:lang(ja) > math + p, .post-content:lang(ja) > ul + p, .post-content:lang(ja) > ol + p { text-indent: inherit !important; }
+@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended { writing-mode: vertical-rl; text-combine-upright: none; -ms-text-combine-horizontal: none; }
+  html.vertical-writing-recommended time { /* As of Mar 2016, Edge *always* render <time> elements as horizontal-in-vertical. No idea. */ }
+  html.vertical-writing-recommended .wrap { padding: 2px; }
+  @media (min-height: 480px) { html.vertical-writing-recommended .wrap { padding: 10vh 1ex; } }
+  html.vertical-writing-recommended .post-related, html.vertical-writing-recommended .home .posts, html.vertical-writing-recommended .archive, html.vertical-writing-recommended .tag-list { /* As of firefox 46, vertical-rl conflicts with flex box. */ }
+  html.vertical-writing-recommended .post-related .post-item, html.vertical-writing-recommended .home .posts .post-item, html.vertical-writing-recommended .archive .post-item, html.vertical-writing-recommended .tag-list .post-item { display: block; }
+  html.vertical-writing-recommended .fitcontain { /* As of firefox 46, vertical-rl may conflict with object-fit. */ object-fit: unset; width: auto; height: auto; }
+  html.vertical-writing-recommended .page-content { padding: 2px 30px; }
+  html.vertical-writing-recommended .site-header { border-width: 0 0 0 3px; }
+  html.vertical-writing-recommended .site-header .site-nav { writing-mode: horizontal-tb; text-align: right; }
+  html.vertical-writing-recommended .site-header .site-nav > a { display: block; }
+  html.vertical-writing-recommended .post-header, html.vertical-writing-recommended .post-footer { margin: 0 30px 0 30px; }
+  html.vertical-writing-recommended .post-header { border-width: 0 0 0 0.5ex; }
+  html.vertical-writing-recommended .post-header .meta { text-align: right; }
+  html.vertical-writing-recommended .post-content ol > li { list-style-type: cjk-ideographic; }
+  html.vertical-writing-recommended .post-content h1, html.vertical-writing-recommended .post-content h2, html.vertical-writing-recommended .post-content h3, html.vertical-writing-recommended .post-content h4, html.vertical-writing-recommended .post-content h5, html.vertical-writing-recommended .post-content h6 { margin: 10px calc(10px + 1em) 0 10px; }
+  html.vertical-writing-recommended .post-content p { margin: auto; }
+  html.vertical-writing-recommended .post-content blockquote, html.vertical-writing-recommended .post-content math, html.vertical-writing-recommended .post-content > table, html.vertical-writing-recommended .post-content > ul, html.vertical-writing-recommended .post-content > ol, html.vertical-writing-recommended .post-content > figure { margin: auto 1px; }
+  html.vertical-writing-recommended .post-content blockquote { border-width: 1em 0 0 0; padding: 1em 0 0 0; }
+  html.vertical-writing-recommended .post-content ul, html.vertical-writing-recommended .post-content ol { padding: 1ex 0 0 0; }
+  @media screen and (min-width: 480px) { html.vertical-writing-recommended .post-content ul, html.vertical-writing-recommended .post-content ol { padding: 2em 0 0 0; } }
+  html.vertical-writing-recommended .post-content dl > dd { padding: 1em auto auto auto; }
+  html.vertical-writing-recommended .post-content pre { margin: 0 1em; padding: auto; }
+  html.vertical-writing-recommended .post-content figure { writing-mode: horizontal-tb; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 100vh; }
+  html.vertical-writing-recommended #disqus_thread { writing-mode: horizontal-tb; width: 90vh; }
+  html.vertical-writing-recommended .post-footer { border-width: 0 0.5ex 0 0; }
+  html.vertical-writing-recommended .post-related { margin: 0 1em 0 0; }
+  html.vertical-writing-recommended .site-footer { border-width: 0 3px 0 0; margin: 0 1em 0 0; }
+  html.vertical-writing-recommended .site-footer .wrap { writing-mode: horizontal-tb; text-align: right; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 16em; }
+  html.vertical-writing-recommended .site-footer .column { float: none; width: auto; margin: 1em 0 1em 1em; } }
 @media print { aside, nav { display: none; } }
 .prettyprinted { /* Pretty printing styles. Used with prettify.js. */ /* SPAN elements with the classes below are added by prettyprint. */ /* plain text */ /* Use higher contrast and text-weight for printable form. */ /* Put a border around prettyprinted code snippets. */ /* Specify class=linenums on a pre to get line numbering */ /* IE indents via margin-left */ /* Alternate shading for lines */ }
 .prettyprinted .pln { color: #000; }
