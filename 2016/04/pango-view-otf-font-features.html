@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>pango-view と OTF font features cat_in_136.blog()</title>
+  <link rel="canonical" href="http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html" />
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+  <meta property="og:title" content="pango-view と OTF font features" />
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  
+</head>
+
+<body>
+  <header class="site-header">
+  <div class="wrap">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      
+      <a class="page-link" href="/archive">Archive</a>
+      
+      <a class="page-link" href="/feed.xml">Feed</a>
+      
+      <a class="page-link" href="/tags">Tags</a>
+      
+    </nav>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="wrap">
+    <article class="post">
+  <header class="post-header">
+    <h1><a href="/2016/04/pango-view-otf-font-features.html" rel="bookmark">pango-view と OTF font features</a></h1>
+    
+    <div class="meta">
+      Text by: cat_in_136
+    </div>
+    
+    <div class="meta">
+      Date: <time>2016-04-09T12:32:37+09:00</time>
+      
+    </div>
+    <div class="meta">
+      Tags:
+      
+      <a class="tag" href="/tags.html#tag_font">Font</a>
+      
+      <a class="tag" href="/tags.html#tag_%E5%A4%89%E4%BD%93%E3%81%8B%E3%81%AA">変体かな</a>
+      
+      <a class="tag" href="/tags.html#tag_howto">Howto</a>
+      
+      
+    </div>
+  </header>
+
+  <div class="post-content" lang="ja">
+  <p>
+Pango の <code>pango-view(1)</code> で OTF font features を使う試み。
+</p>
+
+<pre class="prompt"><samp>% pango-view --output 出力ファイル --font 'フォント' --text "..."
+</samp></pre>
+
+<p>
+これで Pango でのレンダリング結果が保存される。
+（画面表示もされる。）
+</p>
+
+<pre class="prompt"><samp>% pango-view --output jis8903_render001.svg --font '機械彫刻用標準書体 24' --text '機械彫刻用標準書体'
+% pango-view --output jis8903_render002.svg --font '機械彫刻用 標準書体 24' --text 'きけんです。'
+</samp></pre>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<object width="236" height="44" data="/images/201604_pango_view_otf_font_features_jis8903_render001.svg"></object>
+<figcaption><code>'機械彫刻用標準書体'</code></figcaption>
+</figure>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<object width="164" height="44" data="/images/201604_pango_view_otf_font_features_jis8903_render002.svg"></object>
+<figcaption><code>'きけんです。'</code></figcaption>
+</figure>
+
+<p>
+出力ファイルは、png といったラスター画像の他、
+svg、pdf、ps といったベクタ画像でも出力可能。
+よって、Adobe Illustrator や inkscape などに取り込んで
+使うことも出来そう。
+</p>
+
+<p>
+ところで <code>--markup</code> オプションを使うことで、
+所謂 <a href="https://developer.gnome.org/pango/stable/PangoMarkupFormat.html">Pango Markup</a> が使える。
+</p>
+
+<pre class="prompt"><samp>% pango-view --output jis8903_render003.svg --font '機械彫刻用標準書体 24' --markup --text '&lt;span color="#ff0000"&gt;きけん&lt;/span&gt;です。'
+</samp></pre>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<object width="164" height="44" data="/images/201604_pango_view_otf_font_features_jis8903_render003.svg"></object>
+<figcaption><code>--markup --text '&lt;span color="#ff0000"&gt;きけん&lt;/span&gt;です。'</code></figcaption>
+</figure>
+
+<p>
+OTF には font feature があってタイポグラフィのオプション機能を持っている
+（ただし、フォントファイル自体が対応している場合に限る）。
+これは Pango Markup の <code>font_features</code> &lt;span&gt; attributes の指定で実現できる。
+書式は CSS3  と同様であるとあるが、CSS3 の当該規格が途中で変わっているとかいう
+歴史的事情があるので若干異なるところがあるかもしれない（詳細未調査）。
+</p>
+
+<p>
+機械彫刻用標準書体フォントは、いくつかのスタイルセットが用意されている。
+スタイルセット06 (<code>"ss06" on</code>) で
+<a href="https://ja.wikipedia.org/wiki/%E5%A4%89%E4%BD%93%E4%BB%AE%E5%90%8D">変体かな</a>
+「き（支）」および「す（春）」を表示してみる。
+</p>
+
+<pre class="prompt"><samp>% pango-view --output jis8903_render004.svg --font '機械彫刻用標準書体 24' --markup --text '&lt;span font_features="&amp;quot;ss06&amp;quot; on"&gt;きけんです。&lt;/span&gt;'
+</samp></pre>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<object width="164" height="44" data="/images/201604_pango_view_otf_font_features_jis8903_render004.svg"></object>
+<figcaption><code>'&lt;span font_features="&amp;quot;ss06&amp;quot; on"&gt;きけんです。&lt;/span&gt;'</code></figcaption>
+</figure>
+
+<p>
+その他文字の間隔を弄る font feature もあるがこれも、
+Pango は正しくレンダリングしている模様。すごい。
+</p>
+
+<pre class="prompt"><samp>% pango-view --output jis8903_render005.svg --font '機械彫刻用標準書体 24' --markup --text 'です。&lt;span font_features="ss11 on"&gt;です。&lt;/span&gt;&lt;span font_features="ss12 on"&gt;です。&lt;/span&gt;'
+</samp></pre>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<object width="240" height="44" data="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></object>
+<figcaption><code>'です。&lt;span font_features="ss11 on"&gt;です。&lt;/span&gt;&lt;span font_features="ss12 on"&gt;です。&lt;/span&gt;'</code></figcaption>
+</figure>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<table>
+  <caption>機械彫刻用標準書体のスタイルセット11,12</caption>
+  <thead>
+    <tr>
+      <th>スタイルセット</th><th>内容</th><th>収録字種</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11</th><td>JIS どおりの濁点・半濁点（仮想ボディ正方形）</td><td rowspan="2">濁音・半濁音の仮名</td>
+    </tr>
+    <tr>
+      <th>12</th><td>JIS どおりの濁点・半濁点（仮想ボディ拡大）</td>
+    </tr>
+  </tbody>
+</table>
+</figure>
+
+
+<h3>参考文献</h3>
+
+<ul>
+<li><a href="http://font.kim/">機械彫刻用標準書体フォント</a></li>
+<li><a href="https://developer.gnome.org/pango/stable/PangoMarkupFormat.html">Text Attribute Markup: Pango Reference Manual</a>, Pango Reference Manual</li>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/CSS/font-feature-settings">font-feature-settings - CSS</a>, MDN</li>
+<li><a href="http://www.clear-code.com/blog/2010/12/24.html">地獄のジェネレータ: Ruby Advent Calendar jp: 2010の24日目</a>, 株式会社クリアコード ククログ, 2010-12-24</li>
+</ul>
+
+  </div><!-- post-content -->
+
+  <footer class="post-footer">
+    <div class="meta share">
+      
+      Share:
+      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html&amp;text=pango-view%20%E3%81%A8%20OTF%20font%20features+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html">Facebook</a>
+      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/04/pango-view-otf-font-features.html">Hatena Bookmark</a>
+      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html&amp;linkname=pango-view%20%E3%81%A8%20OTF%20font%20features+cat_in_136.blog()">More via AddToAny...</a>
+    </div>
+    
+    <div class="meta">
+      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-04-09-pango-view-otf-font-features.html" class="source-path">_posts/2016-04-09-pango-view-otf-font-features.html</a>
+      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-04-09-pango-view-otf-font-features.html">History</a>)
+    </div>
+    
+  </footer>
+
+</article>
+
+<nav class="post-nav wrap">
+  <div class="previous-post">
+    
+    <a href="/2016/03/css-vertical-with-multicolumn.html" title="CSS で縦書きと段組を組み合わせる試み" rel="prev">&#x2190;CSS で縦書きと段組を組み合わせる試み</a>
+    
+  </div>
+  <div class="next-post">
+    
+  </div>
+</nav>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul>
+    
+    <li class="post-item">
+      <span class="post-date">2015-11-30</span>
+      <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2013-02-24</span>
+      <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 &amp;#127769;</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2013-04-13</span>
+      <a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-05-12</span>
+      <a class="post-link" href="/2014/05/note-do-same-without.html">Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+    </li>
+    
+    <li class="post-item">
+      <span class="post-date">2014-03-26</span>
+      <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
+    </li>
+    
+  </ul>
+</aside>
+
+
+    </div>
+  </div>
+  <footer class="site-footer">
+  <div class="wrap">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <div class="column">
+      <p>
+        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
+        Content is available under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+        unless otherwise noted.
+      </p>
+    </div>
+    <nav class="column">
+      <ul>
+        <li>
+          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+        </li>
+        <li>
+          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+        </li>
+        <li>
+          <a href="https://github.com/cat-in-136">Github</a>,
+          <a href="https://gist.github.com/cat-in-136">Gist</a>
+        </li>
+        <li>
+          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+        </li>
+        <li>
+          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
