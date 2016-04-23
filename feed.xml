@@ -5,8 +5,8 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 23 Apr 2016 03:03:38 +0900</pubDate>
-    <lastBuildDate>Sat, 23 Apr 2016 03:03:38 +0900</lastBuildDate>
+    <pubDate>Sat, 23 Apr 2016 10:16:43 +0900</pubDate>
+    <lastBuildDate>Sat, 23 Apr 2016 10:16:43 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
       <item>
         <title>pango で縦書きとその能力</title>
@@ -78,7 +78,7 @@ Pango の gravity 指定で縦書きが実現できる。
         <category>font</category>
         <category>縦書き</category>
         <category>howto</category>
-        <category>変態かな</category>
+        <category>変体かな</category>
       </item>
       <item>
         <title>pango-view と OTF font features</title>
