@@ -1,76 +1,59 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>算道の解析 cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2016/02/sando-study.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="算道の解析" />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>算道の解析 cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2016/02/sando-study.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="算道の解析" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2016/02/sando-study.html" rel="bookmark">算道の解析</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2016-02-12T01:07:50+09:00</time>
-      (Modified: <time>2016-02-13T20:59:55+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_art">Art</a>
-      
-      <a class="tag" href="/tags.html#tag_math">Math</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content" lang="ja">
-  <p>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2016/02/sando-study.html" itemprop="url">算道の解析</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2016-02-12T01:07:50+09:00</time>
+(Modified: <time item="dateModified">2016-02-13T20:59:55+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_art">Art</a>
+<a class="tag" href="/tags.html#tag_math">Math</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody" lang="ja">
+<p>
 <a href="http://sando.monophile.net/">算道</a>なる構成論的アートとは、
 論理珠算を用いた計算であるが、
 説明がかなり省かれていてよくわからんのでここにまとめる。
 </p>
-
 <h3>Unlambda記法</h3>
-
 <p>
 算道の表記で Unlambda記法 (Unlambda expression ?) は、
 下記のとおり珠を転写して表記したものである。
 </p>
-
 <table>
 <thead>
 <tr>
@@ -97,19 +80,15 @@
 </tr>
 </tbody>
 </table>
-
 <p>
 例えば、零を表す「白白赤黄青」は、<code>``iks</code>と表す。
 </p>
-
 <p>
 これは、つまるところ<a href="https://ja.wikipedia.org/wiki/SKI%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8D%E3%83%BC%E3%82%BF%E8%A8%88%E7%AE%97">SKIコンビネータ計算</a>
 の Unlambda 表記そのものであって、
 算道はSKIと等価である。
 </p>
-
 <h3>整珠</h3>
-
 <ul>
 <li><code>s</code>,<code>k</code>,<code>i</code>は、
 それぞれ単珠(single-ju?)と呼ばれるが、これはまた整珠(integal-ju?)でもある。</li>
@@ -117,9 +96,7 @@
 <code>`@1@2</code>もまた整珠である。</li>
 <li>複珠(multiple-ju?)とは複数の珠からなる整珠のことである。</li>
 </ul>
-
 <h4>整珠の構造</h4>
-
 <p>
 複珠は<code>`@1@2</code>からなるから、<code>`@1@2</code>が入れ子になって
 整珠ができている。
@@ -128,16 +105,14 @@
 整珠の入れ子の構造を括弧で表した例を以下に示す。
 </p>
 <dl>
-    <dt>零</dt>
-    <dd><code>``iks = `(`ik)s</code></dd>
-    <dt>一</dt>
-    <dd><code>`s`ki = `s(`ki)</code></dd>
-    <dt>ものまね鳥の番い</dt>
-    <dd><code>```sii``sii = `(`(`si)i)(`(`(si)i)</code></dd>
+<dt>零</dt>
+<dd><code>``iks = `(`ik)s</code></dd>
+<dt>一</dt>
+<dd><code>`s`ki = `s(`ki)</code></dd>
+<dt>ものまね鳥の番い</dt>
+<dd><code>```sii``sii = `(`(`si)i)(`(`(si)i)</code></dd>
 </dl>
-
 <h3>論理算盤への展開</h3>
-
 <p>
 論理珠算を行うにあたり論理算盤へ珠を展開する。
 展開する時、珠を左から右、上から下に置いていく。
@@ -148,9 +123,7 @@
 配置方法について言及していていないため、
 下記に出てくる記法・用語は本文書で提案するものである。
 </p>
-
 <h4>Unlambda形式に依る論理算盤の記述</h4>
-
 <p>
 本文書では、盤面上の配置を Unlambda形式に依ってそのまま記載するものとする。
 但し、珠が置かれていないことを <code>_</code> で示す。
@@ -158,39 +131,28 @@
 <p>
 <code>`sk</code> の盤面上の配置例を下記に示す。
 </p>
-
 <pre><code>` s
 _ k</code></pre>
-
 <h4>「直列配置」</h4>
-
 <p>
 「直列配置(Linear alignment)」は、そのまま盤面に左から右へ並べたものである。
 </p>
-
 <pre><code>` s k</code></pre>
-
 <p>
 なお、紙面の横幅の都合上途中で行を変えてもよい。
 </p>
-
 <pre><code>` ` ` s i i
 ` ` s i i</code></pre>
-
 <h4>「完全二分木配置」</h4>
-
 <p>
 「完全二分木配置(complete binary-tree alignment)」は、<code>`@1@2</code>の入れ子構造を
 完全な形で表現した配置形式である。
 </p>
-
 <p>
 <code>`@1@2</code>を下記の通り配置する。
 </p>
-
 <pre><code>` @1
 _ @2</code></pre>
-
 <p>
 ここで<code>@1</code>,<code>@2</code>が、複珠であるとき、
 さらに入れ子にする形で配置する。
@@ -200,33 +162,25 @@ _ @2</code></pre>
 <code>@1 = `@3@4</code>, <code>@2 = `@5@6</code> であるならば、
 先ほどのの盤面は下記のようになる。
 </p>
-
 <pre><code>` ` @3
 _ _ @4
 _ ` @5
 _ _ @6</code></pre>
-
 <h4>「二分木配置」</h4>
-
 <p>
 完全二分木配置では、紙面も盤面も大きさを要する。
 そこで完全二分木配置のうち一部の<code>`@1@2</code>構造をまとめて積み上げることを考える。
 </p>
-
 <p>
 ここでは積み上げた珠は括弧を用いて表現する。
 </p>
-
 <pre><code>` ` @3
 _ _ @4
 _ (`@5@6)</code></pre>
-
 <h3>規則</h3>
-
 <p>
 下記の規則に基づいて整珠を動かす=計算することができる。
 </p>
-
 <dl>
 <dt>青珠の規則 (s-rule?)</dt>
 <dd><code>```s@0@1@2 = ``@0@2`@1@2</code></dd>
@@ -235,16 +189,13 @@ _ (`@5@6)</code></pre>
 <dt>赤珠の規則 (i-rule?)</dt>
 <dd><code>`i@0 = @0</code></dd>
 </dl>
-
 <p>
 ここで<code>@0</code>,<code>@1</code>,...は整珠である。
 青珠の規則において、2回現れているがこれは<code>@2</code>を複製して同じものを2つ用意するということである。
 </p>
-
 <p>
 それぞれの規則を、以下に二分木配置で表す。
 </p>
-
 <dl>
 <dt>青珠の規則 (s-rule?)</dt>
 <dd>
@@ -278,16 +229,12 @@ _ (`@5@6)</code></pre>
 <pre><code>@0</code></pre>
 </dd>
 </dl>
-
 <p>
 それぞれの規則の前後は共に整珠である。
 規則に従って計算している限り、計算結果は整珠である。
 逆に整珠でなくなったときは計算に失敗（いわゆる計算ミス）しているのである。
 </p>
-
 <h4>算道の規則とSKI評価演算の関係</h4>
-
-
 <dl>
 <dt>青珠の規則 (s-rule?)</dt>
 <dd>Substitution combinator</dd>
@@ -296,30 +243,25 @@ _ (`@5@6)</code></pre>
 <dt>赤珠の規則 (i-rule?)</dt>
 <dd>Identity combinator</dd>
 </dl>
-
 <h3>計算手順</h3>
-
 <ol>
 <li>整珠であることを確認。
-    <ul><li>整珠ならば次に進む。</li><li>整珠ではない場合計算に失敗。</li></ul>
+<ul><li>整珠ならば次に進む。</li><li>整珠ではない場合計算に失敗。</li></ul>
 </li>
 <li>赤珠の規則(i-rule?)が適用可能ならば適用する
-    <ul><li>適用したら1からやり直す。</li><li>適用できない場合次に進む</li></ul>
+<ul><li>適用したら1からやり直す。</li><li>適用できない場合次に進む</li></ul>
 </li>
 <li>黄珠の規則(k-rule?)が適用可能ならば適用する
-    <ul><li>適用したら1からやり直す。</li><li>適用できない場合次に進む</li></ul>
+<ul><li>適用したら1からやり直す。</li><li>適用できない場合次に進む</li></ul>
 </li>
 <li>青珠の規則(s-rule?)が適用可能ならば適用する
-    <ul><li>適用したら1からやり直す。</li><li>適用できない場合計算終了</li></ul>
+<ul><li>適用したら1からやり直す。</li><li>適用できない場合計算終了</li></ul>
 </li>
 </ol>
-
 <h3>計算例：真かつ偽</h3>
-
 <p>
 『真かつ偽』を表す整珠は<code>````sskk`sk</code>である。
 </p>
-
 <ol start="0">
 <li><pre><code>` ` ` ` s
 _ _ _ _ s
@@ -355,56 +297,40 @@ _ (``kk`sk)
 計算終了。答えは「偽」である。
 </li>
 </ol>
-
 <h3>感想</h3>
-
 <p>
 青珠の規則の規則にて、<code>@2</code>を複製する必要があるが、
 珠に凹凸のパターンを付けるなどして複製が容易にするようにするとよいと思う。
 </p>
-
 <h3>参考文献</h3>
-
 <ul>
 <li>山本一彰, "<a href="http://sando.monophile.net/">算道</a>"</li>
 <li>"<a href="http://campusgenius.jp/2015/nominate/519/">算道</a>", 第21回学生CGコンテスト, 2015</li>
 <li>"<a href="http://festival.j-mediaarts.jp/award/art/sando">算道</a>", 第19回文化庁メディア芸術祭</li>
 </ul>
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2016/02/sando-study.html&amp;text=%E7%AE%97%E9%81%93%E3%81%AE%E8%A7%A3%E6%9E%90+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2016/02/sando-study.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/02/sando-study.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2016/02/sando-study.html&amp;linkname=%E7%AE%97%E9%81%93%E3%81%AE%E8%A7%A3%E6%9E%90+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-02-12-sando-study.html" class="source-path">_posts/2016-02-12-sando-study.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-02-12-sando-study.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2016/02/sando-study.html&amp;text=%E7%AE%97%E9%81%93%E3%81%AE%E8%A7%A3%E6%9E%90+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2016/02/sando-study.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/02/sando-study.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2016/02/sando-study.html&amp;linkname=%E7%AE%97%E9%81%93%E3%81%AE%E8%A7%A3%E6%9E%90+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-02-12-sando-study.html" class="source-path">_posts/2016-02-12-sando-study.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-02-12-sando-study.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2016/02/study-for-xulrunner-as-prism.html" title="Study for XULRunner as Prism, using Firefox" rel="prev">&#x2190;Study for XULRunner as Prism, using Firefox</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2016/02/diff-between-firefox-450-beta-5-default.html" title="Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2" rel="next">Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2016/02/study-for-xulrunner-as-prism.html" title="Study for XULRunner as Prism, using Firefox" rel="prev">&#x2190;Study for XULRunner as Prism, using Firefox</a>
+</div>
+<div class="next-post">
+<a href="/2016/02/diff-between-firefox-450-beta-5-default.html" title="Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2" rel="next">Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -416,81 +342,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2010-02-07</span>
-      <a class="post-link" href="/2010/02/phsspf.html">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2012-08-05</span>
-      <a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-03-24</span>
-      <a class="post-link" href="/2010/03/tweet-to-myself.html">Tweet to myself</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-11-29</span>
-      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-06</span>
-      <a class="post-link" href="/2014/03/bezier-2-diff.html">ベジェ曲線で描く円と真円の差について</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2010-02-07</span>
+<a class="post-link" href="/2010/02/phsspf.html">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ</a>
+</li>
+<li class="post-item">
+<span class="post-date">2012-08-05</span>
+<a class="post-link" href="/2012/08/blog-post.html">ポイントカードもしくはそれに類するシステムの分類を考えたほうがいいのではないか</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-03-24</span>
+<a class="post-link" href="/2010/03/tweet-to-myself.html">Tweet to myself</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-11-29</span>
+<a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-06</span>
+<a class="post-link" href="/2014/03/bezier-2-diff.html">ベジェ曲線で描く円と真円の差について</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

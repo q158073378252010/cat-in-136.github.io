@@ -1,127 +1,99 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Diff between firefox 20 beta 4 default preference and firefox 19.0.2 cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="Diff between firefox 20 beta 4 default preference and firefox 19.0.2" />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Diff between firefox 20 beta 4 default preference and firefox 19.0.2 cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="Diff between firefox 20 beta 4 default preference and firefox 19.0.2" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2013/03/diff-between-firefox-20-beta-4-default.html" rel="bookmark">Diff between firefox 20 beta 4 default preference and firefox 19.0.2</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2013-03-14T00:10:00+09:00</time>
-      (Modified: <time>2013-03-14T00:10:00+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
-      
-      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content">
-  <p>This is difference between the default preference of Firefox 20 beta4 and one of 19.0.2.</p>
-
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2013/03/diff-between-firefox-20-beta-4-default.html" itemprop="url">Diff between firefox 20 beta 4 default preference and firefox 19.0.2</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2013-03-14T00:10:00+09:00</time>
+(Modified: <time item="dateModified">2013-03-14T00:10:00+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+<a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<p>This is difference between the default preference of Firefox 20 beta4 and one of 19.0.2.</p>
 <dl>
 <dt>Default pref Javascript files (Firefox 19.0.2 for linux):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/<strong>preferences</strong>/{firefox.js,firefox-branding.js,firefox-l10n.js,services-sync.js,services-aitc.js}}</dd>
 <dt>Default pref Javascript files (Firefox 20 beta 4 for linux):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/<strong>pref</strong>/{firefox.js,firefox-branding.js,firefox-l10n.js,services-sync.js,services-aitc.js}}</dd>
 </dl>
-
 <table class="diff_firefox20_pref_diff">
 <thead>
 <tr><td>Pref</td><td>Firefox 19.0.2</td><td>Firefox 20 beta 4</td></tr>
 </thead>
 <tbody><tr class="oldkey"><td>browser.<wbr />download.<wbr />panel.<wbr />remove<wbr />Finished<wbr />Downloads</td><td>false</td><td class="undefined">undefined</td></tr><tr><td>browser.<wbr />download.<wbr />useToolkitUI</td><td>true</td><td>false</td></tr><tr class="oldkey"><td>browser.<wbr />privatebrowsing.<wbr />dont_<wbr />prompt_<wbr />on_<wbr />enter</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>browser.<wbr />warnOnRestart</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />dataSubmission<wbr />Enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />dataSubmission<wbr />PolicyAccepted</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />dataSubmission<wbr />Policy<wbr />Bypass<wbr />Acceptance</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />dataSubmission<wbr />Policy<wbr />Notified<wbr />Time</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />dataSubmission<wbr />Policy<wbr />Response<wbr />Time</td><td class="undefined">undefined</td><td>0</td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />dataSubmission<wbr />Policy<wbr />Response<wbr />Type</td><td class="undefined">undefined</td><td></td></tr><tr class="newkey"><td>datareporting.<wbr />policy.<wbr />firstRun<wbr />Time</td><td class="undefined">undefined</td><td>0</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />height</td><td>250</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />variables-<wbr />non-<wbr />enum-<wbr />visible</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />debugger.<wbr />ui.<wbr />variables-<wbr />only-<wbr />enum-<wbr />visible</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>devtools.<wbr />hud.<wbr />height</td><td>0</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />inspector.<wbr />htmlHeight</td><td>112</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />inspector.<wbr />htmlPanelOpen</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />inspector.<wbr />sidebarOpen</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />profiler.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>devtools.<wbr />ruleview.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>devtools.<wbr />styleinspector.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />toolbox.<wbr />footer.<wbr />height</td><td class="undefined">undefined</td><td>250</td></tr><tr class="newkey"><td>devtools.<wbr />toolbox.<wbr />host</td><td class="undefined">undefined</td><td>bottom</td></tr><tr class="newkey"><td>devtools.<wbr />toolbox.<wbr />selectedTool</td><td class="undefined">undefined</td><td>webconsole</td></tr><tr class="newkey"><td>devtools.<wbr />toolbox.<wbr />sideEnabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />toolbox.<wbr />sidebar.<wbr />width</td><td class="undefined">undefined</td><td>500</td></tr><tr class="newkey"><td>devtools.<wbr />toolbox.<wbr />toolbarSpec</td><td class="undefined">undefined</td><td>["tilt toggle","scratchpad","resize toggle"]</td></tr><tr class="oldkey"><td>devtools.<wbr />webconsole.<wbr />position</td><td>below</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>intl.<wbr />charsetmenu.<wbr />browser.<wbr />unicode</td><td>UTF-8, UTF-16LE, UTF-16BE</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>javascript.<wbr />options.<wbr />ion.<wbr />parallel_<wbr />compilation</td><td class="undefined">undefined</td><td>true</td></tr><tr><td>javascript.<wbr />options.<wbr />xml.<wbr />chrome</td><td>true</td><td>false</td></tr><tr class="newkey"><td>layers.<wbr />force-<wbr />active</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />masking.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />scope-<wbr />pseudo.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>media.<wbr />dash.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>media.<wbr />navigator.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>mousewheel.<wbr />default.<wbr />action.<wbr />override_<wbr />x</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>mousewheel.<wbr />with_<wbr />alt.<wbr />action.<wbr />override_<wbr />x</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>mousewheel.<wbr />with_<wbr />control.<wbr />action.<wbr />override_<wbr />x</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>mousewheel.<wbr />with_<wbr />meta.<wbr />action.<wbr />override_<wbr />x</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>mousewheel.<wbr />with_<wbr />shift.<wbr />action.<wbr />override_<wbr />x</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>mousewheel.<wbr />with_<wbr />win.<wbr />action.<wbr />override_<wbr />x</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />rendering-<wbr />critical-<wbr />requests-<wbr />prioritization</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />speculative-<wbr />parallel-<wbr />limit</td><td class="undefined">undefined</td><td>6</td></tr><tr class="oldkey"><td>social.<wbr />active</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>toolkit.<wbr />crashreporter.<wbr />infoURL</td><td class="undefined">undefined</td><td>http://www.mozilla.com/legal/privacy/firefox.html#crash-reporter</td></tr><tr class="newkey"><td>wap.<wbr />UAProf.<wbr />tagname</td><td class="undefined">undefined</td><td>x-wap-profile</td></tr><tr class="newkey"><td>wap.<wbr />UAProf.<wbr />url</td><td class="undefined">undefined</td><td></td></tr></tbody>
 </table>
-
-
 <style type="text/css"><!-- /* --><![CDATA[ /* */
 table.diff_firefox20_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox20_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
 table.diff_firefox20_pref_diff thead td { background-color: #ddd; font-weight: bold; }
 table.diff_firefox20_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox20_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox20_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox20_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-
+table.diff_firefox20_pref_diff tr.newkey
+td:first-child { text-decoration: underline;
+}
+table.diff_firefox20_pref_diff tr.oldkey
+td:first-child { text-decoration: line-through; }
 table.diff_firefox20_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox20_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]><!-- */ --></style>
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html&amp;text=Diff%20between%20firefox%2020%20beta%204%20default%20preference%20and%20firefox%2019.0.2+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html&amp;linkname=Diff%20between%20firefox%2020%20beta%204%20default%20preference%20and%20firefox%2019.0.2+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-03-14-diff-between-firefox-20-beta-4-default.html" class="source-path">_posts/2013-03-14-diff-between-firefox-20-beta-4-default.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-03-14-diff-between-firefox-20-beta-4-default.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html&amp;text=Diff%20between%20firefox%2020%20beta%204%20default%20preference%20and%20firefox%2019.0.2+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2013/03/diff-between-firefox-20-beta-4-default.html&amp;linkname=Diff%20between%20firefox%2020%20beta%204%20default%20preference%20and%20firefox%2019.0.2+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-03-14-diff-between-firefox-20-beta-4-default.html" class="source-path">_posts/2013-03-14-diff-between-firefox-20-beta-4-default.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-03-14-diff-between-firefox-20-beta-4-default.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2013/03/html-user-select.html" title="HTML でのコピペしやすさを user-select などで向上させる" rel="prev">&#x2190;HTML でのコピペしやすさを user-select などで向上させる</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2013/03/css.html" title="CSSの改行を含む属性値を含むセレクターについて" rel="next">CSSの改行を含む属性値を含むセレクターについて&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2013/03/html-user-select.html" title="HTML でのコピペしやすさを user-select などで向上させる" rel="prev">&#x2190;HTML でのコピペしやすさを user-select などで向上させる</a>
+</div>
+<div class="next-post">
+<a href="/2013/03/css.html" title="CSSの改行を含む属性値を含むセレクターについて" rel="next">CSSの改行を含む属性値を含むセレクターについて&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -133,81 +105,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-30</span>
-      <a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2012-10-13</span>
-      <a class="post-link" href="/2012/10/diff-between-firefox-170beta1-default.html">Diff between firefox 17.0beta1 default preference and firefox 16.0.1</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-12-12</span>
-      <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2015-08-22</span>
-      <a class="post-link" href="/2015/08/diff-between-firefox-410-beta-3-default.html">Diff between firefox 41.0 beta 3 default preference and firefox 40.0.2</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2013-02-20</span>
-      <a class="post-link" href="/2013/02/diff-between-firefox-19-default.html">Diff between firefox 19 default preference and firefox 18.0.2</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2014-03-30</span>
+<a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
+</li>
+<li class="post-item">
+<span class="post-date">2012-10-13</span>
+<a class="post-link" href="/2012/10/diff-between-firefox-170beta1-default.html">Diff between firefox 17.0beta1 default preference and firefox 16.0.1</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-12-12</span>
+<a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-08-22</span>
+<a class="post-link" href="/2015/08/diff-between-firefox-410-beta-3-default.html">Diff between firefox 41.0 beta 3 default preference and firefox 40.0.2</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-02-20</span>
+<a class="post-link" href="/2013/02/diff-between-firefox-19-default.html">Diff between firefox 19 default preference and firefox 18.0.2</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

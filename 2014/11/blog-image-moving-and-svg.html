@@ -1,66 +1,51 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>ブログの画像の引っ越しとSVG化(Retina対応とも) cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="ブログの画像の引っ越しとSVG化(Retina対応とも)" />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>ブログの画像の引っ越しとSVG化(Retina対応とも) cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="ブログの画像の引っ越しとSVG化(Retina対応とも)" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2014/11/blog-image-moving-and-svg.html" rel="bookmark">ブログの画像の引っ越しとSVG化(Retina対応とも)</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2014-11-10T01:09:50+09:00</time>
-      (Modified: <time>2014-11-10T01:09:50+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_blogger">Blogger</a>
-      
-      <a class="tag" href="/tags.html#tag_jekyll">Jekyll</a>
-      
-      <a class="tag" href="/tags.html#tag_svg">Svg</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content" lang="ja">
-  <p>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2014/11/blog-image-moving-and-svg.html" itemprop="url">ブログの画像の引っ越しとSVG化(Retina対応とも)</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2014-11-10T01:09:50+09:00</time>
+(Modified: <time item="dateModified">2014-11-10T01:09:50+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_blogger">Blogger</a>
+<a class="tag" href="/tags.html#tag_jekyll">Jekyll</a>
+<a class="tag" href="/tags.html#tag_svg">Svg</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody" lang="ja">
+<p>
 <a href="/2014/09/move-to-jekyll.html">Jekyll移行メモ</a>
 に沿った引っ越しを Blogger からしてきたのだが、
 この度画像も github page のレポジトリに移動してきた。
@@ -76,7 +61,6 @@
 <li>例え容量が増えたとしてもインターネット回線は（特にモバイルで）スループットが上がっているので単純なものなら気にする必要はないのではなか</li>
 <li>そもそも、レポジトリに入れるのならば準テキストな形式の方が気持ちいい</li>
 </ul>
-
 <h4>面倒くさいので、色々はしょってみた</h4>
 <p>
 なお、Android 2.x 以前や iOS 4.x 以下、そして IE8 以下といった非対応ブラウザを
@@ -90,9 +74,7 @@
 これによって、高 DPI 環境下でキレイに表示されるので、
 これまた結果オーライとみなしてあんま考えないこととした。
 </p>
-
 <h4>予想外のユーザビリティ向上</h4>
-
 <p>
 SVG 化したことで、図中のテキストが選択などができるようになったという、
 予想外にユーザビリティが上がることとなった。
@@ -110,9 +92,7 @@ SVG 化したことで、図中のテキストが選択などができるよう�
 フォントデータを一部埋め込めばいいわけであるが、
 わざわざそこまでは対策していない。
 </p>
-
 <h4>github側でgzip転送するので容量はそう増えない</h4>
-
 <p>
 github page は CDN のようなものが導入されていて、
 <samp>Content-Encoding: "gzip"</samp>でレスポンスが帰ってくるので、
@@ -121,7 +101,6 @@ SVG化すると&lt;冗長な&gt;&lt;タグ&gt;&lt;/冗長な&gt;が付加され�
 ファイルはおおきくなっているケースも多い。
 が、gzipで軽くなっている例も結構あるようだ（詳細未調査）。
 </p>
-
 <p>
 最後に極端に転送量が減っている例として、
 <a href="/2012/02/v-highisdb-tmmmmbinottv.html">メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた</a>
@@ -165,42 +144,29 @@ SVG化すると&lt;冗長な&gt;&lt;タグ&gt;&lt;/冗長な&gt;が付加され�
 この画像については実に 9割近くの転送量が削減されていることがわかる。
 （実際にはこれにHTTPヘッダなどが付いてくるが省略計算）
 </p>
-
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html&amp;text=%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E7%94%BB%E5%83%8F%E3%81%AE%E5%BC%95%E3%81%A3%E8%B6%8A%E3%81%97%E3%81%A8SVG%E5%8C%96(Retina%E5%AF%BE%E5%BF%9C%E3%81%A8%E3%82%82)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html&amp;linkname=%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E7%94%BB%E5%83%8F%E3%81%AE%E5%BC%95%E3%81%A3%E8%B6%8A%E3%81%97%E3%81%A8SVG%E5%8C%96(Retina%E5%AF%BE%E5%BF%9C%E3%81%A8%E3%82%82)+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-11-10-blog-image-moving-and-svg.html" class="source-path">_posts/2014-11-10-blog-image-moving-and-svg.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-11-10-blog-image-moving-and-svg.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html&amp;text=%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E7%94%BB%E5%83%8F%E3%81%AE%E5%BC%95%E3%81%A3%E8%B6%8A%E3%81%97%E3%81%A8SVG%E5%8C%96(Retina%E5%AF%BE%E5%BF%9C%E3%81%A8%E3%82%82)+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/11/blog-image-moving-and-svg.html&amp;linkname=%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E7%94%BB%E5%83%8F%E3%81%AE%E5%BC%95%E3%81%A3%E8%B6%8A%E3%81%97%E3%81%A8SVG%E5%8C%96(Retina%E5%AF%BE%E5%BF%9C%E3%81%A8%E3%82%82)+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-11-10-blog-image-moving-and-svg.html" class="source-path">_posts/2014-11-10-blog-image-moving-and-svg.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-11-10-blog-image-moving-and-svg.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2014/10/diff-between-firefox-340-beta-3-default.html" title="Diff between firefox 34.0 beta 3 default preference and firefox 33.0" rel="prev">&#x2190;Diff between firefox 34.0 beta 3 default preference and firefox 33.0</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" title="How to create a JavaScript XPCOM component on bootstrapped addon" rel="next">How to create a JavaScript XPCOM component on bootstrapped addon&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2014/10/diff-between-firefox-340-beta-3-default.html" title="Diff between firefox 34.0 beta 3 default preference and firefox 33.0" rel="prev">&#x2190;Diff between firefox 34.0 beta 3 default preference and firefox 33.0</a>
+</div>
+<div class="next-post">
+<a href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" title="How to create a JavaScript XPCOM component on bootstrapped addon" rel="next">How to create a JavaScript XPCOM component on bootstrapped addon&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -212,81 +178,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2011-09-28</span>
-      <a class="post-link" href="/2011/09/ui.html">商業施設の店舗案内的なUIについて意味もなく考えてみる</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-26</span>
-      <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2013-09-24</span>
-      <a class="post-link" href="/2013/09/blog-post.html">もしも英語の地名を漢字にしてみたら〜はわざわざ考えるまでもなかったの巻</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-07</span>
-      <a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2016-04-09</span>
-      <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">pango-view と OTF font features</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2011-09-28</span>
+<a class="post-link" href="/2011/09/ui.html">商業施設の店舗案内的なUIについて意味もなく考えてみる</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-26</span>
+<a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-09-24</span>
+<a class="post-link" href="/2013/09/blog-post.html">もしも英語の地名を漢字にしてみたら〜はわざわざ考えるまでもなかったの巻</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-07</span>
+<a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
+</li>
+<li class="post-item">
+<span class="post-date">2016-04-09</span>
+<a class="post-link" href="/2016/04/pango-view-otf-font-features.html">pango-view と OTF font features</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

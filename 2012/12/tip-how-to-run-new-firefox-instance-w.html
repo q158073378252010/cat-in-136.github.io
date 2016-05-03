@@ -1,77 +1,59 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Tip: How to run a new Firefox instance w/ temporary profile cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="Tip: How to run a new Firefox instance w/ temporary profile" />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
-  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Tip: How to run a new Firefox instance w/ temporary profile cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="Tip: How to run a new Firefox instance w/ temporary profile" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+<script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2012/12/tip-how-to-run-new-firefox-instance-w.html" rel="bookmark">Tip: How to run a new Firefox instance w/ temporary profile</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2012-12-31T22:43:00+09:00</time>
-      (Modified: <time>2015-12-29T09:45:14+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content">
-  <ol>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2012/12/tip-how-to-run-new-firefox-instance-w.html" itemprop="url">Tip: How to run a new Firefox instance w/ temporary profile</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2012-12-31T22:43:00+09:00</time>
+(Modified: <time item="dateModified">2015-12-29T09:45:14+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<ol>
 <li>Create a temporary folder for a temporary profile,</li>
 <li>Run Firefox with argument <code>-profile path/to/temporary-folder -no-remote -new-instance</code></li>
 <li>You may delete a temporary profile after you close the Firefox instance.</li>
 </ol>
-
 <p>For windows, To run firefox with the argument, at the command prompt, type the following:</p>
-
 <pre style="background-color: #000; color: #fff; padding: 2px;"><code>&gt; start firefox -profile c:\path\to\temporary-folder -no-remote -new-instance
 </code></pre>
-
 <p>Are you a linux/unix user? If so, you can easily do it with the following shell script:</p>
-
 <pre class="prettyprint"><code class="lang-sh">#!/bin/sh
 PROFILEDIR=/tmp/tmp-fx-profile.$$.d
 
@@ -79,7 +61,6 @@ mkdir $PROFILEDIR
 firefox -profile $PROFILEDIR -no-remote -new-instance
 rm -rf $PROFILEDIR
 </code></pre>
-
 <ins datetime="2015-12-29T09:45:14+09:00">
 <p>
 According to the Sangye's comment,
@@ -91,41 +72,29 @@ firefox -profile $PROFILEDIR -no-remote -new-instance
 rm -rf $PROFILEDIR
 </code></pre>
 </ins>
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html&amp;text=Tip:%20How%20to%20run%20a%20new%20Firefox%20instance%20w/%20temporary%20profile+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html&amp;linkname=Tip:%20How%20to%20run%20a%20new%20Firefox%20instance%20w/%20temporary%20profile+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-12-31-tip-how-to-run-new-firefox-instance-w.html" class="source-path">_posts/2012-12-31-tip-how-to-run-new-firefox-instance-w.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-12-31-tip-how-to-run-new-firefox-instance-w.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html&amp;text=Tip:%20How%20to%20run%20a%20new%20Firefox%20instance%20w/%20temporary%20profile+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html&amp;linkname=Tip:%20How%20to%20run%20a%20new%20Firefox%20instance%20w/%20temporary%20profile+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-12-31-tip-how-to-run-new-firefox-instance-w.html" class="source-path">_posts/2012-12-31-tip-how-to-run-new-firefox-instance-w.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-12-31-tip-how-to-run-new-firefox-instance-w.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2012/12/google-maps-api-v3-2.html" title="Google Maps API v3 で地下鉄路線図を表示する〜パート2〜" rel="prev">&#x2190;Google Maps API v3 で地下鉄路線図を表示する〜パート2〜</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2013/01/js.html" title="「JSエンジンを公開日順に並べ直しなさい」について調べてみた。" rel="next">「JSエンジンを公開日順に並べ直しなさい」について調べてみた。&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2012/12/google-maps-api-v3-2.html" title="Google Maps API v3 で地下鉄路線図を表示する〜パート2〜" rel="prev">&#x2190;Google Maps API v3 で地下鉄路線図を表示する〜パート2〜</a>
+</div>
+<div class="next-post">
+<a href="/2013/01/js.html" title="「JSエンジンを公開日順に並べ直しなさい」について調べてみた。" rel="next">「JSエンジンを公開日順に並べ直しなさい」について調べてみた。&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -137,81 +106,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2010-03-06</span>
-      <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16&#39;」</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-06-29</span>
-      <a class="post-link" href="/2014/06/lukstruecrypt.html">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-04-15</span>
-      <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">Components.utils.reportError() is easy to use for debugging</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-11-29</span>
-      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2016-02-07</span>
-      <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">Study for XULRunner as Prism, using Firefox</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2010-03-06</span>
+<a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">mingw32での「undefined reference to `WinMain@16&#39;」</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-06-29</span>
+<a class="post-link" href="/2014/06/lukstruecrypt.html">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-04-15</span>
+<a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">Components.utils.reportError() is easy to use for debugging</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-11-29</span>
+<a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+</li>
+<li class="post-item">
+<span class="post-date">2016-02-07</span>
+<a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">Study for XULRunner as Prism, using Firefox</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

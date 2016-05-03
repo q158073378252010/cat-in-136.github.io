@@ -1,64 +1,51 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>ベジェ曲線で描く円と真円の差について cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2014/03/bezier-2-diff.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="ベジェ曲線で描く円と真円の差について" />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="/images/kappa.svg" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>ベジェ曲線で描く円と真円の差について cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2014/03/bezier-2-diff.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="ベジェ曲線で描く円と真円の差について" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="/images/kappa.svg" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2014/03/bezier-2-diff.html" rel="bookmark">ベジェ曲線で描く円と真円の差について</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2014-03-06T07:00:00+09:00</time>
-      (Modified: <time>2016-02-13T20:35:01+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_math">Math</a>
-      
-      <a class="tag" href="/tags.html#tag_b%C3%A9zier">Bézier</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content" lang="ja">
-  <aside>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2014/03/bezier-2-diff.html" itemprop="url">ベジェ曲線で描く円と真円の差について</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2014-03-06T07:00:00+09:00</time>
+(Modified: <time item="dateModified">2016-02-13T20:35:01+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_math">Math</a>
+<a class="tag" href="/tags.html#tag_b%C3%A9zier">Bézier</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody" lang="ja">
+<aside>
 <div style="background: #ffd; border: solid 3px #ff8">
 この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
 必要です
@@ -68,9 +55,7 @@
 などしてください。
 </div>
 </aside>
-
 <p><a href="/2014/03/bezier-1-kappa.html">前回の記事</a>で、</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -81,58 +66,51 @@
 </tr>
 </tbody>
 </table>
-
 <p>のとして、下記の頂点A,Bおよび制御点A',B'で中心角90度の円弧を
 近似したベジェ曲線を描いていることを紹介した。</p>
-
 <ul>
 <li>A: (0, 1)</li>
 <li>B: (1, 0)</li>
 <li>A': (<var>&#x03BA;</var>, 1)</li>
 <li>B': (1, <var>&#x03BA;</var>)</li>
 </ul>
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="260" height="260" data="/images/kappa.svg"></object>
 <figcaption>90degree arc using Bézier</figcaption>
 </figure>
-
 <p>このとき、本物と円とどのような差があるのか考察したい。</p>
-
 <h4>ベジェ曲線の近似円弧の解析</h4>
-
 <p>ベジェ曲線の定義より、ベジェ曲線上の任意の点はパラメータ<math xmlns="http://www.w3.org/1998/Math/MathML" title="u (0\leq u \leq 1)" display="inline">
-  <semantics>
-    <mrow><mi>u</mi><mo stretchy="false">(</mo><mn>0</mn><mo>&#x2264;</mo><mi>u</mi><mo>&#x2264;</mo><mn>1</mn><mo stretchy="false">)</mo></mrow>
-    <annotation encoding="TeX">u(0\leq u \leq 1)</annotation>
-  </semantics>
+<semantics>
+<mrow><mi>u</mi><mo stretchy="false">(</mo><mn>0</mn><mo>&#x2264;</mo><mi>u</mi><mo>&#x2264;</mo><mn>1</mn><mo stretchy="false">)</mo></mrow>
+<annotation encoding="TeX">u(0\leq u \leq 1)</annotation>
+</semantics>
 </math>を使って、下記の通り表現できる。</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
 <td style="width: 100%">
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" title="\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3">
-  <semantics>
-    <mrow><mi mathvariant="bold">P</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="bold">A</mi><mo>&#x2062;</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>3</mn></msup><mo>+</mo><mi mathvariant="bold">A</mi><mo>′</mo><mo>&#x2062;</mo><mn>3</mn><mo>&#x2062;</mo><mi>u</mi><mo>&#x2062;</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi mathvariant="bold">B</mi><mo>′</mo><mo>&#x2062;</mo><mn>3</mn><mo>&#x2062;</mo><msup><mi>u</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="bold">B</mi><mo>&#x2062;</mo><msup><mi>u</mi><mn>3</mn></msup></mrow>
-    <annotation encoding="TeX">\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3</annotation>
-  </semantics>
+<semantics>
+<mrow><mi mathvariant="bold">P</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="bold">A</mi><mo>&#x2062;</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>3</mn></msup><mo>+</mo><mi mathvariant="bold">A</mi><mo>′</mo><mo>&#x2062;</mo><mn>3</mn><mo>&#x2062;</mo><mi>u</mi><mo>&#x2062;</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi mathvariant="bold">B</mi><mo>′</mo><mo>&#x2062;</mo><mn>3</mn><mo>&#x2062;</mo><msup><mi>u</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="bold">B</mi><mo>&#x2062;</mo><msup><mi>u</mi><mn>3</mn></msup></mrow>
+<annotation encoding="TeX">\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3</annotation>
+</semantics>
 </math>
 </td>
 <td>(2.2)</td>
 </tr>
 </tbody>
 </table>
-
 <p>(2.2)式に頂点座標を入れることで、ベジェ曲線による近似円弧のx座標、y座標が得られる：</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
 <td style="width: 100%">
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML" title="\begin{aligned}
-P_x(u)&amp;=&amp;3\kappa(1-u)  u^2 &amp;+&amp; 3 (1-u)^2 u&amp;+&amp; (1-u)^3\\
-P_y(u)&amp;=&amp;3\kappa u  (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
+P_x(u)&amp;=&amp;3\kappa(1-u)
+u^2 &amp;+&amp; 3 (1-u)^2 u&amp;+&amp; (1-u)^3\\
+P_y(u)&amp;=&amp;3\kappa u
+(1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 \end{aligned}"><semantics><mtable columnspacing="0em" columnalign="right left right left right left right left right left"><mtr><mtd><msub><mi>P</mi><mi>x</mi></msub><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo></mtd><mtd><mo>=</mo></mtd><mtd><mn>3</mn><mo>&#x2062;</mo><mi>&#x03BA;</mi><mo>&#x2062;</mo><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo><mo>&#x2062;</mo><msup><mi>u</mi><mn>2</mn></msup></mtd><mtd><mo>+</mo></mtd><mtd><mn>3</mn><mo>&#x2062;</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>&#x2062;</mo><mi>u</mi></mtd><mtd><mo>+</mo></mtd><mtd><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>3</mn></msup></mtd></mtr><mtr><mtd><msub><mi>P</mi><mi>y</mi></msub><mo stretchy="false">(</mo><mi>u</mi><mo stretchy="false">)</mo></mtd><mtd><mo>=</mo></mtd><mtd><mn>3</mn><mo>&#x2062;</mo><mi>&#x03BA;</mi><mo>&#x2062;</mo><mi>u</mi><mo>&#x2062;</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mtd><mtd><mo>+</mo></mtd><mtd><mn>3</mn><mo>&#x2062;</mo><msup><mi>u</mi><mn>2</mn></msup><mo>&#x2062;</mo><mo stretchy="false">(</mo><mn>1</mn><mo>-</mo><mi>u</mi><mo stretchy="false">)</mo></mtd><mtd><mo>+</mo></mtd><mtd><msup><mi>u</mi><mn>3</mn></msup></mtd></mtr></mtable><annotation encoding="TeX">\begin{aligned}
 P_x(u)&amp;=&amp;3\kappa(1-u) u^2 &amp;+&amp; 3 (1-u)^2 u&amp;+&amp; (1-u)^3\\
 P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
@@ -142,9 +120,7 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p>ベジェ曲線の近似円弧の半径方向の大きさは、</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -167,10 +143,8 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p><var>u</var>=0,1/2,1のときにこの値が1になることに注目して、
 下式のように変形する。</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -181,19 +155,15 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p>(2.5)式から、
 <var>u</var>=0,1/2,1のときに最小値1を取る六次関数になることがわかる。
 グラフの概形を描くと、下の図のようになる。
 （六次関数らしさを出すためにあえて<var>u</var>の範囲外もプロットしてある）</p>
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object title="&amp;#34;下に凸の六次関数曲線&amp;#34;" width="474" height="237" data="/images/diff-bezier-curve-r.svg">&#34;下に凸の六次関数曲線&#34;</object>
 <figcaption style="display: block; text-align: center;">(2.5)式の図示</figcaption>
 </figure>
-
 <p>さて、最大値について調べるために微分=0を計算する。</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -213,9 +183,7 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p>この5つの解のうち、下の2つの解が最大値をとる<var>u</var>の値である。</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -226,9 +194,7 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p>この結果と(2.5)式より最大値がわかる。</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -239,10 +205,8 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p>また、このとき円弧上のどのあたりなのかを把握するために、
 角度をもとめると</p>
-
 <table style="width: 100%">
 <tbody>
 <tr>
@@ -255,86 +219,61 @@ P_y(u)&amp;=&amp;3\kappa u (1-u)^2 &amp;+&amp; 3 u^2 (1-u)&amp;+&amp; u^3
 </tr>
 </tbody>
 </table>
-
 <p>数値を求めると以下の角度である：</p>
-
 <ul>
 <li>70.561445…度</li>
 <li>19.438554…度</li>
 </ul>
-
 <p>もちろんこの2つは45度を軸に対称的な位置である。</p>
-
 <p>ちなみに、
 先程示したグラフの横軸を 0 →1 を 0 →90度と読みかえて
 見てしまってもよい近似だったりする。</p>
-
 <h4>まとめ</h4>
-
 <p>ベジェ曲線の近似円弧における真円との差異について、下記特徴があることがわかった。</p>
-
 <ul>
 <li>ベジェ曲線の近似円弧の方が、真円よりも若干大きい</li>
 <li>0度、45度、90度の部分は円と重なる</li>
 <li>19.44度、70.56度あたりが円と差があるところであり、半径の0.00027倍程度の誤差がある</li>
 </ul>
-
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/diff-error-illustrator.png" />
 <figcaption style="display: block; text-align: center;">円と誤差の関係。緑付近は正確、赤付近は若干真円よりも大きい</figcaption>
 </figure>
-
 <p>ベジェ曲線を使う限り円の精度は有効数字4桁程度といったところのようである。</p>
-
 <h4>補足：「時空の裂け目」</h4>
-
 <p><a href="http://d.hatena.ne.jp/n-yuji/20131017/p1">イラレの円は本当は円じゃない（もしくは時空の裂け目について）</a>
 にて45度回転させているが、
 以上で述べた結論からいうと19.44度ぐらいのほうが
 ふたつの円の差（時空の裂け目）が良く見える。</p>
-
 <h4>参考文献</h4>
-
 <ul>
 <li><a href="http://d.hatena.ne.jp/n-yuji/20131017/p1">イラレの円は本当は円じゃない（もしくは時空の裂け目について）</a></li>
 </ul>
 <!--
 -->
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/03/bezier-2-diff.html&amp;text=%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E3%81%A7%E6%8F%8F%E3%81%8F%E5%86%86%E3%81%A8%E7%9C%9F%E5%86%86%E3%81%AE%E5%B7%AE%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/03/bezier-2-diff.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/03/bezier-2-diff.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/03/bezier-2-diff.html&amp;linkname=%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E3%81%A7%E6%8F%8F%E3%81%8F%E5%86%86%E3%81%A8%E7%9C%9F%E5%86%86%E3%81%AE%E5%B7%AE%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-03-06-bezier-2-diff.html" class="source-path">_posts/2014-03-06-bezier-2-diff.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-03-06-bezier-2-diff.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/03/bezier-2-diff.html&amp;text=%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E3%81%A7%E6%8F%8F%E3%81%8F%E5%86%86%E3%81%A8%E7%9C%9F%E5%86%86%E3%81%AE%E5%B7%AE%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/03/bezier-2-diff.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/03/bezier-2-diff.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/03/bezier-2-diff.html&amp;linkname=%E3%83%99%E3%82%B8%E3%82%A7%E6%9B%B2%E7%B7%9A%E3%81%A7%E6%8F%8F%E3%81%8F%E5%86%86%E3%81%A8%E7%9C%9F%E5%86%86%E3%81%AE%E5%B7%AE%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-03-06-bezier-2-diff.html" class="source-path">_posts/2014-03-06-bezier-2-diff.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-03-06-bezier-2-diff.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2014/03/bezier-1-kappa.html" title="ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?" rel="prev">&#x2190;ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2014/03/bezier-3-general-theta.html" title="ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない" rel="next">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2014/03/bezier-1-kappa.html" title="ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?" rel="prev">&#x2190;ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
+</div>
+<div class="next-post">
+<a href="/2014/03/bezier-3-general-theta.html" title="ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない" rel="next">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -346,81 +285,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-07</span>
-      <a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-26</span>
-      <a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-05</span>
-      <a class="post-link" href="/2014/03/bezier-1-kappa.html">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2011-09-11</span>
-      <a class="post-link" href="/2011/09/13.html">ポニーテールの揺れの定式化と考察 (1/3)</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2015-07-26</span>
-      <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2014-03-07</span>
+<a class="post-link" href="/2014/03/bezier-3-general-theta.html">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-26</span>
+<a class="post-link" href="/2014/03/bezier-4-diff.html">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-05</span>
+<a class="post-link" href="/2014/03/bezier-1-kappa.html">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
+</li>
+<li class="post-item">
+<span class="post-date">2011-09-11</span>
+<a class="post-link" href="/2011/09/13.html">ポニーテールの揺れの定式化と考察 (1/3)</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-07-26</span>
+<a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

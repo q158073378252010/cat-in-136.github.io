@@ -1,67 +1,53 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1  cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content=" Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 " />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title> Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1
+cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content=" Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 " />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2014/05/diff-between-firefox-300-beta-5-default.html" rel="bookmark"> Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 </a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2014-05-18T11:01:00+09:00</time>
-      (Modified: <time>2014-05-18T11:03:08+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
-      
-      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content">
-  <p>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2014/05/diff-between-firefox-300-beta-5-default.html" itemprop="url"> Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 </a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2014-05-18T11:01:00+09:00</time>
+(Modified: <time item="dateModified">2014-05-18T11:03:08+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+<a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<p>
 This is difference between the default preference of Firefox 30.0 beta 5 and one of 29.0.1.
 </p>
-
 <dl>
 <dt>Default pref Javascript files (Firefox 29.0.1 for Linux x86_64):</dt>
 <dd>(omni.ja){/greprefs.js,/defaults/pref/services-sync.js},
@@ -72,7 +58,6 @@ This is difference between the default preference of Firefox 30.0 beta 5 and one
 (browser/omni.ja)/defaults/preferences/{firefox.js,firefox-branding.js,firefox-l10n.js},
 (webapprt/omni.ja)/defaults/preferences/prefs.js</dd>
 </dl>
-
 <table class="diff_firefox30_pref_diff">
 <thead>
 <tr><td>Pref</td><td>Firefox 29.0.1</td><td>Firefox 30.0 beta 5</td></tr>
@@ -81,7 +66,6 @@ This is difference between the default preference of Firefox 30.0 beta 5 and one
 <tr class="newkey"><td>app.<wbr />feedback.<wbr />baseURL</td><td class="undefined">undefined</td><td>https://input.mozilla.org/%LOCALE%/feedback/%APP%/%VERSION%/</td></tr><tr class="newkey"><td>apz.<wbr />printtree</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>browser.<wbr />cache.<wbr />auto_<wbr />delete_<wbr />cache_<wbr />version</td><td class="undefined">undefined</td><td>1</td></tr><tr class="oldkey"><td>browser.<wbr />ctrlTab.<wbr />recentlyUsedLimit</td><td>7</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>browser.<wbr />safebrowsing.<wbr />appRepURL</td><td class="undefined">undefined</td><td>https://sb-ssl.google.com/safebrowsing/clientreport/download?key=%GOOGLE_API_KEY%</td></tr><tr class="newkey"><td>browser.<wbr />sessionstore.<wbr />max_<wbr />serialize_<wbr />back</td><td class="undefined">undefined</td><td>10</td></tr><tr class="newkey"><td>browser.<wbr />sessionstore.<wbr />max_<wbr />serialize_<wbr />forward</td><td class="undefined">undefined</td><td>-1</td></tr><tr class="newkey"><td>browser.<wbr />tabs.<wbr />remote.<wbr />autostart</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>canvas.<wbr />hitregions.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>datareporting.<wbr />healthreport.<wbr />service.<wbr />providerCategories</td><td>healthreport-js-provider-default</td><td>healthreport-js-provider-default,healthreport-js-provider-beta</td></tr><tr class="newkey"><td>devtools.<wbr />command-<wbr />button-<wbr />paintflashing.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />command-<wbr />button-<wbr />pick.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />command-<wbr />button-<wbr />responsive.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />command-<wbr />button-<wbr />scratchpad.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>devtools.<wbr />command-<wbr />button-<wbr />splitconsole.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>devtools.<wbr />command-<wbr />button-<wbr />tilt.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>devtools.<wbr />debugger.<wbr />enable-<wbr />content-<wbr />actors</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />dump.<wbr />emit</td><td class="undefined">undefined</td><td>false</td></tr><tr class="oldkey"><td>devtools.<wbr />gcli.<wbr />allowSet</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>devtools.<wbr />inspector.<wbr />imagePreviewTooltipSize</td><td class="undefined">undefined</td><td>300</td></tr><tr class="newkey"><td>devtools.<wbr />netmonitor.<wbr />filters</td><td class="undefined">undefined</td><td class="json">["all"]</td></tr><tr><td>devtools.<wbr />webconsole.<wbr />filter.<wbr />networkinfo</td><td>true</td><td>false</td></tr><tr class="newkey"><td>dom.<wbr />undo_<wbr />manager.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>dom.<wbr />wakelock.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>image.<wbr />mozsamplesize.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>intl.<wbr />charset.<wbr />fallback.<wbr />tld</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>javascript.<wbr />options.<wbr />baselinejit</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />baselinejit.<wbr />chrome</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />baselinejit.<wbr />content</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>javascript.<wbr />options.<wbr />ion</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />ion.<wbr />chrome</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />ion.<wbr />content</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>javascript.<wbr />options.<wbr />typeinference</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />typeinference.<wbr />chrome</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />typeinference.<wbr />content</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>layers.<wbr />enable-<wbr />tiles</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>layers.<wbr />offmainthreadcomposition.<wbr />log-<wbr />animations</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>layers.<wbr />use-<wbr />deprecated-<wbr />textures</td><td>false</td><td>true</td></tr><tr><td>layout.<wbr />css.<wbr />background-<wbr />blend-<wbr />mode.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="newkey"><td>layout.<wbr />css.<wbr />prefixes.<wbr />box-<wbr />sizing</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>media.<wbr />navigator.<wbr />load_<wbr />adapt.<wbr />avg_<wbr />seconds</td><td class="undefined">undefined</td><td>3</td></tr><tr class="newkey"><td>media.<wbr />navigator.<wbr />load_<wbr />adapt.<wbr />high_<wbr />load</td><td class="undefined">undefined</td><td>0.90</td></tr><tr class="newkey"><td>media.<wbr />navigator.<wbr />load_<wbr />adapt.<wbr />low_<wbr />load</td><td class="undefined">undefined</td><td>0.40</td></tr><tr class="newkey"><td>media.<wbr />navigator.<wbr />load_<wbr />adapt.<wbr />measure_<wbr />interval</td><td class="undefined">undefined</td><td>1000</td></tr><tr class="newkey"><td>media.<wbr />peerconnection.<wbr />identity.<wbr />enabled</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>media.<wbr />peerconnection.<wbr />identity.<wbr />timeout</td><td class="undefined">undefined</td><td>5000</td></tr><tr class="oldkey"><td>media.<wbr />webaudio.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>memory.<wbr />dump_<wbr />reports_<wbr />on_<wbr />oom</td><td class="undefined">undefined</td><td>false</td></tr><tr><td>network.<wbr />http.<wbr />spdy.<wbr />chunk-<wbr />size</td><td>4096</td><td>16000</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />tcp_<wbr />keepalive.<wbr />long_<wbr />lived_<wbr />connections</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />tcp_<wbr />keepalive.<wbr />long_<wbr />lived_<wbr />idle_<wbr />time</td><td class="undefined">undefined</td><td>600</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />tcp_<wbr />keepalive.<wbr />short_<wbr />lived_<wbr />connections</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />tcp_<wbr />keepalive.<wbr />short_<wbr />lived_<wbr />idle_<wbr />time</td><td class="undefined">undefined</td><td>10</td></tr><tr class="newkey"><td>network.<wbr />http.<wbr />tcp_<wbr />keepalive.<wbr />short_<wbr />lived_<wbr />time</td><td class="undefined">undefined</td><td>60</td></tr><tr class="newkey"><td>network.<wbr />negotiate-<wbr />auth.<wbr />allow-<wbr />insecure-<wbr />ntlm-<wbr />v1</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>network.<wbr />tcp.<wbr />keepalive.<wbr />enabled</td><td class="undefined">undefined</td><td>true</td></tr><tr class="newkey"><td>network.<wbr />tcp.<wbr />keepalive.<wbr />idle_<wbr />time</td><td class="undefined">undefined</td><td>600</td></tr><tr class="newkey"><td>network.<wbr />tcp.<wbr />keepalive.<wbr />retry_<wbr />interval</td><td class="undefined">undefined</td><td>1</td></tr><tr><td>plugin.<wbr />default.<wbr />state</td><td>2</td><td>1</td></tr><tr class="newkey"><td>plugin.<wbr />defaultXpi.<wbr />state</td><td class="undefined">undefined</td><td>2</td></tr><tr class="newkey"><td>plugin.<wbr />java.<wbr />mime</td><td class="undefined">undefined</td><td>application/x-java-vm</td></tr><tr class="newkey"><td>plugin.<wbr />state.<wbr />npatgpc</td><td class="undefined">undefined</td><td>2</td></tr><tr class="newkey"><td>plugin.<wbr />state.<wbr />npbispbrowser</td><td class="undefined">undefined</td><td>2</td></tr><tr class="newkey"><td>plugin.<wbr />state.<wbr />npesteid-<wbr />firefox-<wbr />plugin</td><td class="undefined">undefined</td><td>2</td></tr><tr class="newkey"><td>plugins.<wbr />hideMissingPluginsNotification</td><td class="undefined">undefined</td><td>false</td></tr><tr class="newkey"><td>print.<wbr />shrink-<wbr />to-<wbr />fit.<wbr />scale-<wbr />limit-<wbr />percent</td><td class="undefined">undefined</td><td>20</td></tr><tr class="oldkey"><td>print.<wbr />whileInPrintPreview</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>signon.<wbr />overrideAutocomplete</td><td>false</td><td class="undefined">undefined</td></tr><tr class="newkey"><td>signon.<wbr />storeWhenAutocompleteOff</td><td class="undefined">undefined</td><td>true</td></tr><tr class="oldkey"><td>social.<wbr />enabled</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>social.<wbr />sidebar.<wbr />open</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>startup.<wbr />homepage_<wbr />override_<wbr />url</td><td>https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/whatsnew/?oldversion=%OLD_VERSION%</td><td></td></tr><tr class="newkey"><td>urlclassifier.<wbr />disallow_<wbr />completions</td><td class="undefined">undefined</td><td>test-malware-simple,test-phish-simple,goog-downloadwhite-digest256</td></tr><tr class="newkey"><td>urlclassifier.<wbr />downloadAllowTable</td><td class="undefined">undefined</td><td></td></tr><tr class="newkey"><td>urlclassifier.<wbr />downloadBlockTable</td><td class="undefined">undefined</td><td>goog-badbinurl-shavar</td></tr><tr class="oldkey"><td>urlclassifier.<wbr />download_<wbr />allow_<wbr />table</td><td></td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>urlclassifier.<wbr />download_<wbr />block_<wbr />table</td><td></td><td class="undefined">undefined</td></tr><tr><td>urlclassifier.<wbr />malware_<wbr />table</td><td>goog-malware-shavar</td><td>goog-malware-shavar,test-malware-simple</td></tr><tr><td>urlclassifier.<wbr />phish_<wbr />table</td><td>goog-phish-shavar</td><td>goog-phish-shavar,test-phish-simple</td></tr><tr class="newkey"><td>webgl.<wbr />enable-<wbr />privileged-<wbr />extensions</td><td class="undefined">undefined</td><td>false</td></tr>
 </tbody>
 </table>
-
 <style type="text/css"><!-- /* --><![CDATA[ /* */
 table.diff_firefox30_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox30_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -89,48 +73,38 @@ table.diff_firefox30_pref_diff thead td { background-color: #ddd; font-weight: b
 table.diff_firefox30_pref_diff td.json { word-break: break-all; }
 table.diff_firefox30_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox30_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox30_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox30_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox30_pref_diff tr.newkey
+td:first-child { text-decoration: underline;
+}
+table.diff_firefox30_pref_diff tr.oldkey
+td:first-child { text-decoration: line-through; }
 table.diff_firefox30_pref_diff td.json { word-break: break-all; }
-
 table.diff_firefox30_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox30_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]><!-- */ --></style>
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html&amp;text=%20Diff%20between%20firefox%2030.0%20beta%205%20default%20preference%20and%20firefox%2029.0.1%20+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html&amp;linkname=%20Diff%20between%20firefox%2030.0%20beta%205%20default%20preference%20and%20firefox%2029.0.1%20+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-05-18-diff-between-firefox-300-beta-5-default.html" class="source-path">_posts/2014-05-18-diff-between-firefox-300-beta-5-default.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-05-18-diff-between-firefox-300-beta-5-default.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html&amp;text=%20Diff%20between%20firefox%2030.0%20beta%205%20default%20preference%20and%20firefox%2029.0.1%20+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2014/05/diff-between-firefox-300-beta-5-default.html&amp;linkname=%20Diff%20between%20firefox%2030.0%20beta%205%20default%20preference%20and%20firefox%2029.0.1%20+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-05-18-diff-between-firefox-300-beta-5-default.html" class="source-path">_posts/2014-05-18-diff-between-firefox-300-beta-5-default.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-05-18-diff-between-firefox-300-beta-5-default.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2014/05/note-do-same-without.html" title="Note: do same without browser.tabs.closeButtons on Firefox 31+" rel="prev">&#x2190;Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2014/06/lukstruecrypt.html" title="LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには" rel="next">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2014/05/note-do-same-without.html" title="Note: do same without browser.tabs.closeButtons on Firefox 31+" rel="prev">&#x2190;Note: do same without browser.tabs.closeButtons on Firefox 31+</a>
+</div>
+<div class="next-post">
+<a href="/2014/06/lukstruecrypt.html" title="LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには" rel="next">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -142,81 +116,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2014-03-30</span>
-      <a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-12-12</span>
-      <a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2016-04-29</span>
-      <a class="post-link" href="/2016/04/diff-between-firefox-460-default.html">Diff between firefox 46.0 default preference and firefox 45.0.2</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2014-08-07</span>
-      <a class="post-link" href="/2014/08/diff-between-firefox-320-beta-4-default.html">Diff between firefox 32.0 beta 4 default preference and firefox 31.0</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2013-08-30</span>
-      <a class="post-link" href="/2013/08/diff-between-firefox-240-beta-6-default.html">Diff between firefox 24.0 beta 6 default preference and firefox 23.0.1</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2014-03-30</span>
+<a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-12-12</span>
+<a class="post-link" href="/2010/12/diff-of-firefox40b7-default-preference.html">Diff of firefox4.0b7 default preference and firefox3.6</a>
+</li>
+<li class="post-item">
+<span class="post-date">2016-04-29</span>
+<a class="post-link" href="/2016/04/diff-between-firefox-460-default.html">Diff between firefox 46.0 default preference and firefox 45.0.2</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-08-07</span>
+<a class="post-link" href="/2014/08/diff-between-firefox-320-beta-4-default.html">Diff between firefox 32.0 beta 4 default preference and firefox 31.0</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-08-30</span>
+<a class="post-link" href="/2013/08/diff-between-firefox-240-beta-6-default.html">Diff between firefox 24.0 beta 6 default preference and firefox 23.0.1</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

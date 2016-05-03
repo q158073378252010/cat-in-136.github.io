@@ -1,65 +1,52 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Components.utils.reportError() is easy to use for debugging cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="Components.utils.reportError() is easy to use for debugging" />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="/images/componentsutilsreporterror-screenshot1.png" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
-  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Components.utils.reportError() is easy to use for debugging cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="Components.utils.reportError() is easy to use for debugging" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="/images/componentsutilsreporterror-screenshot1.png" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+<script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2010/04/componentsutilsreporterror-is-easy-to.html" rel="bookmark">Components.utils.reportError() is easy to use for debugging</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2010-04-15T00:29:00+09:00</time>
-      (Modified: <time>2014-11-10T00:02:29+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content">
-  <p>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2010/04/componentsutilsreporterror-is-easy-to.html" itemprop="url">Components.utils.reportError() is easy to use for debugging</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2010-04-15T00:29:00+09:00</time>
+(Modified: <time item="dateModified">2014-11-10T00:02:29+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<p>
 Firefox 3.0+ supports <code>Components.utils.reportError()</code>. This function send a debugging message to the Error Console.
 </p>
 <p>
@@ -84,9 +71,7 @@ This way is too long to write!
 <p>
 Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</code></a> is shortest, but you need to run firefox <em>with terminal (command prompt)</em>.
 </p>
-
 <h4>Conclusion</h4>
-
 <table>
 <thead>
 <tr>
@@ -111,47 +96,33 @@ Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</
 </tr>
 </tbody>
 </table>
-
 <h4>See also</h4>
-
 <ul>
 <li><a href="https://developer.mozilla.org/en/Components.utils.reportError">Components.utils.reportError - MDC</a></li>
 </ul>
-
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html&amp;text=Components.utils.reportError()%20is%20easy%20to%20use%20for%20debugging+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html&amp;linkname=Components.utils.reportError()%20is%20easy%20to%20use%20for%20debugging+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html" class="source-path">_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html&amp;text=Components.utils.reportError()%20is%20easy%20to%20use%20for%20debugging+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html&amp;linkname=Components.utils.reportError()%20is%20easy%20to%20use%20for%20debugging+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html" class="source-path">_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-04-15-componentsutilsreporterror-is-easy-to.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2010/04/stats-flash-vs-java.html" title="[stats] Flash vs Java" rel="prev">&#x2190;[stats] Flash vs Java</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2010/04/which-do-you-like-modal-option-dialog.html" title="Which do you like modal option dialog or instant apply?" rel="next">Which do you like modal option dialog or instant apply?&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2010/04/stats-flash-vs-java.html" title="[stats] Flash vs Java" rel="prev">&#x2190;[stats] Flash vs Java</a>
+</div>
+<div class="next-post">
+<a href="/2010/04/which-do-you-like-modal-option-dialog.html" title="Which do you like modal option dialog or instant apply?" rel="next">Which do you like modal option dialog or instant apply?&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -163,81 +134,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2012-12-31</span>
-      <a class="post-link" href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">Tip: How to run a new Firefox instance w/ temporary profile</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-05-02</span>
-      <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-08-15</span>
-      <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-03-10</span>
-      <a class="post-link" href="/2010/03/ie6-died-but-ie-doesnt-yet-support.html">IE6 died, but IE doesn&#39;t yet support addEventListener...</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-03-24</span>
-      <a class="post-link" href="/2010/03/tweet-to-myself.html">Tweet to myself</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2012-12-31</span>
+<a class="post-link" href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">Tip: How to run a new Firefox instance w/ temporary profile</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-05-02</span>
+<a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-08-15</span>
+<a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-03-10</span>
+<a class="post-link" href="/2010/03/ie6-died-but-ie-doesnt-yet-support.html">IE6 died, but IE doesn&#39;t yet support addEventListener...</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-03-24</span>
+<a class="post-link" href="/2010/03/tweet-to-myself.html">Tweet to myself</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

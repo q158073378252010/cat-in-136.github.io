@@ -1,67 +1,52 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Lissajous curve in HTML5 cakejs cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="Lissajous curve in HTML5 cakejs" />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
-  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Lissajous curve in HTML5 cakejs cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="Lissajous curve in HTML5 cakejs" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+<script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2010/07/lissajous-curve-in-html5-cakejs.html" rel="bookmark">Lissajous curve in HTML5 cakejs</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2010-07-19T01:50:00+09:00</time>
-      (Modified: <time>2010-07-19T01:52:05+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
-      
-      <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content">
-  <p>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2010/07/lissajous-curve-in-html5-cakejs.html" itemprop="url">Lissajous curve in HTML5 cakejs</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2010-07-19T01:50:00+09:00</time>
+(Modified: <time item="dateModified">2010-07-19T01:52:05+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+<a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<p>
 Here, I show you a Lissajous curve with HTML 5 canvas. (No flash use!)
 </p>
 <div>
@@ -137,47 +122,35 @@ Source code is straightforward. A object with radial gradient moves along the cu
 <p>
 Cakejs's demo is very very cool. I like <a href="http://glimr.rubyforge.org/cake/missile_fleet.html">Missile Fleet</a> game demo.
 </p>
-
 <h4>See also</h4>
 <ul>
 <li><a href="http://code.google.com/p/cakejs/">cakejs project page</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Lissajous_curve">Lissajous curve</a> - wikipedia</li>
 <li>Japanese:<a href="http://www.ip.uec.ac.jp/ipo/archive/logo.html">電気通信大学校章(リサジュー図形)</a></li>
 </ul>
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html&amp;text=Lissajous%20curve%20in%20HTML5%20cakejs+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html&amp;linkname=Lissajous%20curve%20in%20HTML5%20cakejs+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-07-19-lissajous-curve-in-html5-cakejs.html" class="source-path">_posts/2010-07-19-lissajous-curve-in-html5-cakejs.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-07-19-lissajous-curve-in-html5-cakejs.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html&amp;text=Lissajous%20curve%20in%20HTML5%20cakejs+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html&amp;linkname=Lissajous%20curve%20in%20HTML5%20cakejs+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-07-19-lissajous-curve-in-html5-cakejs.html" class="source-path">_posts/2010-07-19-lissajous-curve-in-html5-cakejs.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-07-19-lissajous-curve-in-html5-cakejs.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2010/06/no-xul-element-is-used-on-current.html" title="No XUL &lt;expander&gt; element is used on current mozilla." rel="prev">&#x2190;No XUL &lt;expander&gt; element is used on current mozilla.</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html" title="[Updated] rpmbuild setting for multi core CPU" rel="next">[Updated] rpmbuild setting for multi core CPU&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2010/06/no-xul-element-is-used-on-current.html" title="No XUL &lt;expander&gt; element is used on current mozilla." rel="prev">&#x2190;No XUL &lt;expander&gt; element is used on current mozilla.</a>
+</div>
+<div class="next-post">
+<a href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html" title="[Updated] rpmbuild setting for multi core CPU" rel="next">[Updated] rpmbuild setting for multi core CPU&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -189,81 +162,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2012-10-08</span>
-      <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-05-16</span>
-      <a class="post-link" href="/2010/05/runninginboard-generator.html">Running_in_board Generator (駅名標ジェネレータ)</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-12-04</span>
-      <a class="post-link" href="/2010/12/aadecode-decode-encoded-as-aaencode.html">aadecode - Decode encoded-as-aaencode JavaScript program. [&#39;_&#39;]</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2015-09-06</span>
-      <a class="post-link" href="/2015/09/trta-emblem-design-analysis.html">帝都高速度交通営団の団章の解析</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2015-01-19</span>
-      <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2012-10-08</span>
+<a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-05-16</span>
+<a class="post-link" href="/2010/05/runninginboard-generator.html">Running_in_board Generator (駅名標ジェネレータ)</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-12-04</span>
+<a class="post-link" href="/2010/12/aadecode-decode-encoded-as-aaencode.html">aadecode - Decode encoded-as-aaencode JavaScript program. [&#39;_&#39;]</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-09-06</span>
+<a class="post-link" href="/2015/09/trta-emblem-design-analysis.html">帝都高速度交通営団の団章の解析</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-01-19</span>
+<a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

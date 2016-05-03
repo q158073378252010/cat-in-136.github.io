@@ -1,72 +1,57 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>JavaScript Typed Array use native endian cat_in_136.blog()</title>
-  <link rel="canonical" href="http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-  <meta property="og:title" content="JavaScript Typed Array use native endian" />
-  <meta property="og:type" content="article" />
-  
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
-  <script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
-  
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>JavaScript Typed Array use native endian cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="JavaScript Typed Array use native endian" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+<script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
 </head>
-
 <body>
-  <header class="site-header">
-  <div class="wrap">
-    <a class="site-title" href="/">cat_in_136.blog()</a>
-    <nav class="site-nav">
-      
-      <a class="page-link" href="/archive">Archive</a>
-      
-      <a class="page-link" href="/feed.xml">Feed</a>
-      
-      <a class="page-link" href="/tags">Tags</a>
-      
-    </nav>
-  </div>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
 </header>
-
-  <div class="page-content">
-    <div class="wrap">
-    <article class="post">
-  <header class="post-header">
-    <h1><a href="/2011/03/javascript-typed-array-use-native.html" rel="bookmark">JavaScript Typed Array use native endian</a></h1>
-    
-    <div class="meta">
-      Text by: cat_in_136
-    </div>
-    
-    <div class="meta">
-      Date: <time>2011-03-19T00:23:00+09:00</time>
-      (Modified: <time>2011-03-19T00:23:00+09:00</time>)
-    </div>
-    <div class="meta">
-      Tags:
-      
-      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
-      
-      
-    </div>
-  </header>
-
-  <div class="post-content">
-  <div>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2011/03/javascript-typed-array-use-native.html" itemprop="url">JavaScript Typed Array use native endian</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2011-03-19T00:23:00+09:00</time>
+(Modified: <time item="dateModified">2011-03-19T00:23:00+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<div>
 <pre class="prettyprint"><code id="js_uint8_array_test_code">var a = new Uint8Array([0x12, 0x34]);
 var b = new Uint16Array(a.buffer);
 alert("0x" + (b[0]).toString(16)); // #=> 0x3412 or 0x1234 ?
 </code></pre>
 <button onclick="eval(document.getElementById('js_uint8_array_test_code').textContent); void(0);">Run above code (for Modern browser : Firefox4, Chrome10...)</button>
 </div>
-
 <div>
 The following buffer is created:
 <table style="border: solid 1px #aaa; border-collapse: collapse;"><tbody>
@@ -75,53 +60,39 @@ The following buffer is created:
 <tr><td colspan="2" style="border: solid 1px #aaa"><code>b[0]</code></td></tr>
 </tbody></table>
 </div>
-
 <p>
 Uint16Array, Uint32Array, Int16Array, and Int32Array (JavaScript Typed Array) seem to use native endian.
 If you use little endian machine (e.g. x86, x64), <code>b[0]</code> is <code>0x3412</code>.
 If you use big endian machine (e.g. Sun SPARC, PowerPC), <code>b[0]</code> is <code>0x1234</code>. (But I did not check since I have <em>no</em> big endian machine.)
 </p>
-
 <h4>See also</h4>
-
 <ul>
 <li><a href="http://www.khronos.org/registry/typedarray/specs/latest/">Typed Array Specification</a></li>
 <li><a href="http://lists.w3.org/Archives/Public/public-script-coord/2010AprJun/0048.html">Re: Adoption of the Typed Array Specification</a> (public-script-coord at w3.org) </li>
 </ul>
-  </div><!-- post-content -->
-
-  <footer class="post-footer">
-    <div class="meta share">
-      
-      Share:
-      <a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html&amp;text=JavaScript%20Typed%20Array%20use%20native%20endian+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-      <a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html">Facebook</a>
-      <a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html">Hatena Bookmark</a>
-      <a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html&amp;linkname=JavaScript%20Typed%20Array%20use%20native%20endian+cat_in_136.blog()">More via AddToAny...</a>
-    </div>
-    
-    <div class="meta">
-      Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-03-19-javascript-typed-array-use-native.html" class="source-path">_posts/2011-03-19-javascript-typed-array-use-native.html</a>
-      (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-03-19-javascript-typed-array-use-native.html">History</a>)
-    </div>
-    
-  </footer>
-
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html&amp;text=JavaScript%20Typed%20Array%20use%20native%20endian+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html&amp;linkname=JavaScript%20Typed%20Array%20use%20native%20endian+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-03-19-javascript-typed-array-use-native.html" class="source-path">_posts/2011-03-19-javascript-typed-array-use-native.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-03-19-javascript-typed-array-use-native.html">History</a>)
+</div>
+</footer>
 </article>
-
 <nav class="post-nav wrap">
-  <div class="previous-post">
-    
-    <a href="/2011/02/visual-guide-new-pref-of-configuration.html" title="Visual Guide : New pref of Configuration Mania v1.14.2011022201" rel="prev">&#x2190;Visual Guide : New pref of Configuration Mania v1.14.2011022201</a>
-    
-  </div>
-  <div class="next-post">
-    
-    <a href="/2011/04/blank-space-of-configuration-mania-is.html" title="The blank space of Configuration Mania is removed to enlarge its content area..." rel="next">The blank space of Configuration Mania is removed to enlarge its content area...&#x2192;</a>
-    
-  </div>
+<div class="previous-post">
+<a href="/2011/02/visual-guide-new-pref-of-configuration.html" title="Visual Guide : New pref of Configuration Mania v1.14.2011022201" rel="prev">&#x2190;Visual Guide : New pref of Configuration Mania v1.14.2011022201</a>
+</div>
+<div class="next-post">
+<a href="/2011/04/blank-space-of-configuration-mania-is.html" title="The blank space of Configuration Mania is removed to enlarge its content area..." rel="next">The blank space of Configuration Mania is removed to enlarge its content area...&#x2192;</a>
+</div>
 </nav>
-
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 var disqus_shortname = 'catin136blog';
@@ -133,81 +104,73 @@ var disqus_shortname = 'catin136blog';
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
-
-
 <aside class="post-related">
-  <h2>Related Posts</h2>
-  <ul>
-    
-    <li class="post-item">
-      <span class="post-date">2010-11-29</span>
-      <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2013-03-04</span>
-      <a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2010-10-11</span>
-      <a class="post-link" href="/2010/10/firefox-supports-nested-jar-protocol.html">Firefox supports Nested jar: Protocol!</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2013-03-05</span>
-      <a class="post-link" href="/2013/03/html-user-select.html">HTML でのコピペしやすさを user-select などで向上させる</a>
-    </li>
-    
-    <li class="post-item">
-      <span class="post-date">2015-07-04</span>
-      <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">Study of the link tracking methods and the protection</a>
-    </li>
-    
-  </ul>
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2010-11-29</span>
+<a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-03-04</span>
+<a class="post-link" href="/2013/03/html-copy.html">HTML の COPY 禁止をするにはどうすればいいですか? </a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-10-11</span>
+<a class="post-link" href="/2010/10/firefox-supports-nested-jar-protocol.html">Firefox supports Nested jar: Protocol!</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-03-05</span>
+<a class="post-link" href="/2013/03/html-user-select.html">HTML でのコピペしやすさを user-select などで向上させる</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-07-04</span>
+<a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">Study of the link tracking methods and the protection</a>
+</li>
+</ul>
 </aside>
-
-
-    </div>
-  </div>
-  <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="footer-heading">cat_in_136.blog()</h2>
-    <div class="column">
-      <p>
-        Copyright (C) <a href="https://twitter.com/cat_in_136/">@cat_in_136</a><br />
-        Content is available under a
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-        unless otherwise noted.
-      </p>
-    </div>
-    <nav class="column">
-      <ul>
-        <li>
-          <a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-        </li>
-        <li>
-          <a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-          <a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-        </li>
-        <li>
-          <a href="https://github.com/cat-in-136">Github</a>,
-          <a href="https://gist.github.com/cat-in-136">Gist</a>
-        </li>
-        <li>
-          <a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-        </li>
-        <li>
-          <a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
-        </li>
-        <li>
-          <a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
 </footer>
-
 </body>
 </html>
+

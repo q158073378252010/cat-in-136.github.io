@@ -1,59 +1,87 @@
 /* reset css based on Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) */
 * { margin: 0; padding: 0; vertical-align: baseline; }
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
 blockquote, q { quotes: none; }
+
 blockquote::before, blockquote::after, q::before, q::after { content: ''; content: none; }
+
 /* fontset */
 body { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "HGPGothicE", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: 300; font-size: 12px; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; }
 @media (min-width: 480px) { html:not(.vertical-writing-recommended) body { font-size: 16px; } }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { @media (min-height: 480px) { html.vertical-writing-recommended body { font-size: 16px; } } }
 @media (min-width: 48em) { html:not(.vertical-writing-recommended) body { font-size: 18px; } }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { @media (min-height: 48em) { html.vertical-writing-recommended body { font-size: 18px; } } }
+
 h1, h2, h3, h4, h5, h6, .home .post-link { font-family: "Fira Sans", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", sans-serif; font-weight: bold; }
+
 pre, code, .post-content pre, samp, kbd { font-family: "Fira Mono", "Droid Sans Mono", monospace; -webkit-font-feature-settings: "zero"; font-feature-settings: "zero"; }
+
 @media (min-width: 480px) { html:not(.vertical-writing-recommended) pre, html:not(.vertical-writing-recommended) figcaption, html:not(.vertical-writing-recommended) table caption { font-size: smaller; } }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { @media (min-height: 480px) { html.vertical-writing-recommended pre, html.vertical-writing-recommended figcaption, html.vertical-writing-recommended table caption { font-size: smaller; } } }
+
 em { font-weight: normal; font-style: italic; }
+
 :lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+
 strong { font-weight: bolder; font-style: normal; }
+
 :lang(ja) em, :lang(ja) strong { -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
 :lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; }
 :lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; }
+
 @supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { :lang(ja) em, :lang(ja) strong { text-decoration: none; text-shadow: none; }
   :lang(ja) em { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
   :lang(ja) strong { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; } }
 .post-date { font-size: small; width: 9ex; text-align: end; }
+
 /* cat-in-136.blog() base */
 html, body { height: 100%; background-color: #fff; color: #000; line-height: 1.5; }
+
 a { color: #064583; text-decoration: none; transition: color 0.5s linear; }
+
 a:hover { color: #e54848 !important; text-decoration: underline; }
+
 a:visited { color: #8f4889; }
+
 /* Utility */
 .wrap:before, .wrap:after { content: ""; display: table; }
+
 .wrap:after { clear: both; }
+
 .wrap { padding: 0 0; margin: 0 auto; zoom: 1; }
 @media screen and (min-width: 480px) { .wrap { padding: 0 30px; } }
 @media screen and (min-width: 1024px) { .wrap { padding: 0 15%; } }
+
 .post-date { color: #8f4889; }
+
 /* Layout */
 .site-header { border: solid #8f4889; border-width: 0 0 3px 0; min-height: 56px; font-weight: 800; }
+
 .site-title, .site-title:hover, .site-title:visited { display: block; font-size: xx-large; text-decoration: none; float: left; }
 @media screen { .site-title, .site-title:hover, .site-title:visited { color: #d8cee3; text-shadow: 0 0 1px #000, -1px -1px 0px #000, 0 0 1px #000, -1px 0px 0px #000, 0 0 1px #000, -1px 1px 0px #000, 0 0 1px #000, 0px -1px 0px #000, 0 0 1px #000, 0px 0px 0px #000, 0 0 1px #000, 0px 1px 0px #000, 0 0 1px #000, 1px -1px 0px #000, 0 0 1px #000, 1px 0px 0px #000, 0 0 1px #000, 1px 1px 0px #000; } }
+
 .site-nav { float: right; font-size: larger; }
 .site-nav .menu-icon { display: none; }
+
 .site-footer { border: solid #8f4889; border-width: 3px 0 0 0; margin: 1em 0 0 0; padding: 1ex 0 1em 0; font-size: smaller; }
 .site-footer .wrap { max-width: 800px; }
 .site-footer .footer-heading { font-size: larger; margin: 0 auto 15px auto; }
 .site-footer .column { float: left; width: 50%; }
 .site-footer li, .site-footer p { font-size: smaller; list-style: none; color: #000; }
+
 .site-header, .site-footer { background-image: linear-gradient(90deg, rgba(216, 206, 227, 0.25), rgba(216, 206, 227, 0.25) 50%, transparent 50%, transparent); background-size: 12px 12px; }
+
 .page-content { padding: 30px 0; }
+
 .post-related { margin: 1em 0 0 0; }
 .post-related h2 { font-size: normal; }
 .post-related li { list-style-type: none; }
 .post-related .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
 .post-related > * { -webkit-flex: 0 0 auto; flex: 0 0 auto; }
 .post-related .post-date { margin-right: 1ex; -webkit-flex: 1 0 auto; flex: 0 0 auto; }
+
 .home h1 { margin-bottom: 25px; font-size: xx-large; }
 .home .posts { list-style-type: none; }
 .home .posts .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
@@ -62,6 +90,7 @@ a:visited { color: #8f4889; }
 .home .posts .post-item { margin-bottom: 1em; }
 .home .posts .post-link { font-size: x-large; line-height: 1; }
 .home nav.pagination { display: block; text-align: center; }
+
 .archive h1, .tag-list h1 { margin-bottom: 25px; font-size: xx-large; }
 .archive ul li, .tag-list ul li { display: block; }
 .archive ul li li, .tag-list ul li li { padding-left: 1em; }
@@ -69,17 +98,26 @@ a:visited { color: #8f4889; }
 .archive .post-item, .tag-list .post-item { display: -webkit-flex; display: flex; -webkit-align-items: baseline; align-items: baseline; }
 .archive > *, .tag-list > * { -webkit-flex: 0 0 auto; flex: 0 0 auto; }
 .archive .post-date, .tag-list .post-date { margin-right: 1ex; -webkit-flex: 1 0 auto; flex: 0 0 auto; }
+
 .tag-list .tag-cloud { margin: 1em 0; border: solid #8f4889; border-width: 0 0 0.5ex 0; }
+
 .post-header { margin: 10px 0 30px; border: solid #8f4889; border-width: 0 0 0.5ex 0; }
 .post-header h1 { font-size: 300%; line-height: 1.1; font-weight: bold; color: #8f4889; }
+
 .post-footer { border: solid #8f4889; border-width: 0 0 0.5ex 0; margin-top: 8px; }
+
 .post-header .meta, .post-footer .meta { font-size: small; text-transform: uppercase; }
+
 .post-footer .source-path { text-transform: none; }
+
 .post-header .tag::after, .post-header .category::after, .post-footer .share a::after { content: ','; padding: 0 1ex 0 0; }
+
 .post-header .tag:last-child::after, .post-header .category:last-child::after, .post-footer .share a:last-child::after { display: none; }
+
 .post-nav { margin: 2px; padding: 0; }
 .post-nav .previous-post { float: left; text-align: left; width: 50%; }
 .post-nav .next-post { float: right; text-align: right; width: 50%; }
+
 .post-content { margin: 0 0 30px; }
 .post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6 { margin: 40px 0 20px 0; }
 .post-content h2, .post-content h3 { font-size: xx-large; }
@@ -103,10 +141,13 @@ a:visited { color: #8f4889; }
 .post-content table:not([class]):not([style]) td, .post-content table:not([class]):not([style]) th { border: 1px solid #d8cee3; padding: 2px; }
 .post-content table:not([class]):not([style]) thead, .post-content table:not([class]):not([style]) tfoot { background-color: rgba(216, 206, 227, 0.25); }
 .post-content table:not([class]):not([style]) caption { text-align: center; }
+
 .post-summary:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
+
 .post-content:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) > p { text-indent: 1em; }
 .post-content:lang(ja) > pre + p, .post-content:lang(ja) > math + p, .post-content:lang(ja) > ul + p, .post-content:lang(ja) > ol + p { text-indent: inherit !important; }
+
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended { writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; text-combine-upright: none; -ms-text-combine-horizontal: none; }
   html.vertical-writing-recommended time { /* As of Mar 2016, Edge *always* render <time> elements as horizontal-in-vertical. No idea. */ }
   html.vertical-writing-recommended .wrap { padding: 2px; }

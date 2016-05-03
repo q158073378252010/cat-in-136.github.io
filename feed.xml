@@ -5,14 +5,16 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 29 Apr 2016 14:12:23 +0900</pubDate>
-    <lastBuildDate>Fri, 29 Apr 2016 14:12:23 +0900</lastBuildDate>
+    <pubDate>Wed, 04 May 2016 01:28:16 +0900</pubDate>
+    <lastBuildDate>Wed, 04 May 2016 01:28:16 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
       <item>
         <title>Diff between firefox 47.0 beta 1 default preference and firefox 46.0</title>
         <description>&lt;p&gt;
 This is difference between the default preference of Firefox 47.0 beta 1 and one of 45.0.
 &lt;/p&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox47_pref_diff&quot;&gt;
 &lt;caption&gt;Preference difference&lt;/caption&gt;
@@ -24,6 +26,7 @@ This is difference between the default preference of Firefox 47.0 beta 1 and one
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox47_pref_diff&quot;&gt;
 &lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
@@ -42,6 +45,7 @@ This is difference between the default preference of Firefox 47.0 beta 1 and one
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
 table.diff_firefox47_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox47_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -51,6 +55,7 @@ table.diff_firefox47_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox47_pref_diff tr.sameval td:first-child { color: #444; }
 table.diff_firefox47_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
 table.diff_firefox47_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
 table.diff_firefox47_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox47_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
@@ -58,14 +63,20 @@ table.diff_firefox47_pref_diff tbody tr { transition: background 0.125s ease-in-
         <pubDate>Fri, 29 Apr 2016 13:54:08 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</guid>
+        
         <category>pref diff</category>
+        
         <category>mozilla</category>
+        
+        
       </item>
+    
       <item>
         <title>Diff between firefox 46.0 default preference and firefox 45.0.2</title>
         <description>&lt;p&gt;
 This is difference between the default preference of Firefox 46.0 and one of 45.0.2.
 &lt;/p&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox46_pref_diff&quot;&gt;
 &lt;caption&gt;Preference difference&lt;/caption&gt;
@@ -78,6 +89,7 @@ This is difference between the default preference of Firefox 46.0 and one of 45.
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox46_pref_diff&quot;&gt;
 &lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
@@ -96,6 +108,7 @@ This is difference between the default preference of Firefox 46.0 and one of 45.
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
 table.diff_firefox46_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox46_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -105,6 +118,7 @@ table.diff_firefox46_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox46_pref_diff tr.sameval td:first-child { color: #444; }
 table.diff_firefox46_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
 table.diff_firefox46_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
 table.diff_firefox46_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox46_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
@@ -112,41 +126,56 @@ table.diff_firefox46_pref_diff tbody tr { transition: background 0.125s ease-in-
         <pubDate>Fri, 29 Apr 2016 13:54:01 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/04/diff-between-firefox-460-default.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/diff-between-firefox-460-default.html</guid>
+        
         <category>pref diff</category>
+        
         <category>mozilla</category>
+        
+        
       </item>
+    
       <item>
         <title>pango で縦書きとその能力</title>
         <description>&lt;h3&gt;pango での縦書き&lt;/h3&gt;
+
 &lt;p&gt;
 Pango の gravity 指定で縦書きが実現できる。
 &lt;code&gt;pango-view(1)&lt;/code&gt;だと、&lt;code&gt;--gravity east&lt;/code&gt; オプション設定を指定すれば良い。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output ipapgothic_render01.svg --font &#39;IPAPGothic 24&#39; --text &#39;pangoで縦書き&#39; --gravity east
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;183&quot; height=&quot;45&quot; data=&quot;/images/201604_pango_view_vertical_writing_ipapgothic_render01.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;--text &#39;pangoで縦書き&#39; --gravity east&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 このとき90度傾いてレンダリングされるので、&lt;code&gt;--rotate -90&lt;/code&gt;も付けて文字全体を
 90度回転させることで文字の進行方向を鉛直方向に変える。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output ipapgothic_render02.svg --font &#39;IPAPGothic 24&#39; --text &#39;pangoで縦書き&#39; --gravity east --rotate -90
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;46&quot; height=&quot;183&quot; data=&quot;/images/201604_pango_view_vertical_writing_ipapgothic_render02.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;--text &#39;pangoで縦書き&#39; --gravity east --rotate -90&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 余談だが &lt;code&gt;gravity east&lt;/code&gt; の east は東洋の東の意味ではなく&lt;em&gt;方向&lt;/em&gt;を意味する。
 よって東西南北(east/west/south/north)すべて指定できる。
 &lt;/p&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;137&quot; height=&quot;170&quot; data=&quot;/images/201604_pango_view_vertical_writing_ipapgothic_render03.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;pango gravity&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;h3&gt;縦書きと font feature&lt;/h3&gt;
+
 &lt;p&gt;
 縦書き専用フォントでもそれなりに OTF font feature が動作する。
 &lt;/p&gt;
@@ -155,24 +184,31 @@ Pango の gravity 指定で縦書きが実現できる。
 連綿が OTF font feature の合字としてレンダリングされる。
 なお、この連綿では、「と」および「か」が変体かな「と（登）」および「か（可）」となっている。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output sagabon_render001.pdf --font &#39;嵯峨本フォントプロトタイプ 24&#39; --markup --text &#39;&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39; --gravity east --rotate -90
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;45&quot; height=&quot;127&quot; data=&quot;/images/201604_pango_view_vertical_writing_sagabon_render001.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;&#39;&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 ただし、複雑なタグを使うと文字が崩れるようだ。(Pango 1.38現在)
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output sagabon_render002.pdf --font &#39;嵯峨本フォントプロトタイプ 24&#39; --markup --text &#39;いとおかし　&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39; --gravity east --rotate -90
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;46&quot; height=&quot;220&quot; data=&quot;/images/201604_pango_view_vertical_writing_sagabon_render002.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;&#39;いとおかし　&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 このバグがあるせいで pango の縦書き利用の利便性が大幅に下がって残念仕様。
 &lt;/p&gt;
+
 &lt;h3&gt;参考文献&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.clear-code.com/blog/2010/12/24.html&quot;&gt;地獄のジェネレータ: Ruby Advent Calendar jp: 2010の24日目&lt;/a&gt;, 株式会社クリアコード ククログ, 2010-12-24&lt;/li&gt;
@@ -182,49 +218,66 @@ Pango の gravity 指定で縦書きが実現できる。
         <pubDate>Sat, 23 Apr 2016 03:00:34 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</guid>
+        
         <category>font</category>
+        
         <category>縦書き</category>
+        
         <category>howto</category>
+        
         <category>変体かな</category>
+        
+        
       </item>
+    
       <item>
         <title>pango-view と OTF font features</title>
         <description>&lt;p&gt;
 Pango の &lt;code&gt;pango-view(1)&lt;/code&gt; で OTF font features を使う試み。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output 出力ファイル --font &#39;フォント&#39; --text &quot;...&quot;
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;p&gt;
 これで Pango でのレンダリング結果が保存される。
 （画面表示もされる。）
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output jis8903_render001.svg --font &#39;機械彫刻用標準書体 24&#39; --text &#39;機械彫刻用標準書体&#39;
 % pango-view --output jis8903_render002.svg --font &#39;機械彫刻用 標準書体 24&#39; --text &#39;きけんです。&#39;
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;236&quot; height=&quot;44&quot; data=&quot;/images/201604_pango_view_otf_font_features_jis8903_render001.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;&#39;機械彫刻用標準書体&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;164&quot; height=&quot;44&quot; data=&quot;/images/201604_pango_view_otf_font_features_jis8903_render002.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;&#39;きけんです。&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 出力ファイルは、png といったラスター画像の他、
 svg、pdf、ps といったベクタ画像でも出力可能。
 よって、Adobe Illustrator や inkscape などに取り込んで
 使うことも出来そう。
 &lt;/p&gt;
+
 &lt;p&gt;
 ところで &lt;code&gt;--markup&lt;/code&gt; オプションを使うことで、
 所謂 &lt;a href=&quot;https://developer.gnome.org/pango/stable/PangoMarkupFormat.html&quot;&gt;Pango Markup&lt;/a&gt; が使える。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output jis8903_render003.svg --font &#39;機械彫刻用標準書体 24&#39; --markup --text &#39;&amp;lt;span color=&quot;#ff0000&quot;&amp;gt;きけん&amp;lt;/span&amp;gt;です。&#39;
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;164&quot; height=&quot;44&quot; data=&quot;/images/201604_pango_view_otf_font_features_jis8903_render003.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;--markup --text &#39;&amp;lt;span color=&quot;#ff0000&quot;&amp;gt;きけん&amp;lt;/span&amp;gt;です。&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 OTF には font feature があってタイポグラフィのオプション機能を持っている
 （ただし、フォントファイル自体が対応している場合に限る）。
@@ -232,28 +285,35 @@ OTF には font feature があってタイポグラフィのオプション機�
 書式は CSS3  と同様であるとあるが、CSS3 の当該規格が途中で変わっているとかいう
 歴史的事情があるので若干異なるところがあるかもしれない（詳細未調査）。
 &lt;/p&gt;
+
 &lt;p&gt;
 機械彫刻用標準書体フォントは、いくつかのスタイルセットが用意されている。
 スタイルセット06 (&lt;code&gt;&quot;ss06&quot; on&lt;/code&gt;) で
 &lt;a href=&quot;https://ja.wikipedia.org/wiki/%E5%A4%89%E4%BD%93%E4%BB%AE%E5%90%8D&quot;&gt;変体かな&lt;/a&gt;
 「き（支）」および「す（春）」を表示してみる。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output jis8903_render004.svg --font &#39;機械彫刻用標準書体 24&#39; --markup --text &#39;&amp;lt;span font_features=&quot;&amp;amp;quot;ss06&amp;amp;quot; on&quot;&amp;gt;きけんです。&amp;lt;/span&amp;gt;&#39;
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;164&quot; height=&quot;44&quot; data=&quot;/images/201604_pango_view_otf_font_features_jis8903_render004.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;&#39;&amp;lt;span font_features=&quot;&amp;amp;quot;ss06&amp;amp;quot; on&quot;&amp;gt;きけんです。&amp;lt;/span&amp;gt;&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 その他文字の間隔を弄る font feature もあるがこれも、
 Pango は正しくレンダリングしている模様。すごい。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output jis8903_render005.svg --font &#39;機械彫刻用標準書体 24&#39; --markup --text &#39;です。&amp;lt;span font_features=&quot;ss11 on&quot;&amp;gt;です。&amp;lt;/span&amp;gt;&amp;lt;span font_features=&quot;ss12 on&quot;&amp;gt;です。&amp;lt;/span&amp;gt;&#39;
 &lt;/samp&gt;&lt;/pre&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;240&quot; height=&quot;44&quot; data=&quot;/images/201604_pango_view_otf_font_features_jis8903_render005.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;&lt;code&gt;&#39;です。&amp;lt;span font_features=&quot;ss11 on&quot;&amp;gt;です。&amp;lt;/span&amp;gt;&amp;lt;span font_features=&quot;ss12 on&quot;&amp;gt;です。&amp;lt;/span&amp;gt;&#39;&lt;/code&gt;&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;table&gt;
   &lt;caption&gt;機械彫刻用標準書体のスタイルセット11,12&lt;/caption&gt;
@@ -272,7 +332,10 @@ Pango は正しくレンダリングしている模様。すごい。
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/figure&gt;
+
+
 &lt;h3&gt;参考文献&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://font.kim/&quot;&gt;機械彫刻用標準書体フォント&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://developer.gnome.org/pango/stable/PangoMarkupFormat.html&quot;&gt;Text Attribute Markup: Pango Reference Manual&lt;/a&gt;, Pango Reference Manual&lt;/li&gt;
@@ -283,10 +346,16 @@ Pango は正しくレンダリングしている模様。すごい。
         <pubDate>Sat, 09 Apr 2016 12:32:37 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html</guid>
+        
         <category>font</category>
+        
         <category>変体かな</category>
+        
         <category>howto</category>
+        
+        
       </item>
+    
       <item>
         <title>CSS で縦書きと段組を組み合わせる試み</title>
         <description>&lt;p&gt;
@@ -296,7 +365,9 @@ Pango は正しくレンダリングしている模様。すごい。
   &lt;li&gt;&lt;code&gt;writing-mode: vertical-rl;&lt;/code&gt;で和文の縦書き&lt;/li&gt;
   &lt;li&gt;&lt;code&gt;column-width: &amp;lt;length&amp;gt;;&lt;/code&gt;で段組&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;h3&gt;動機&lt;/h3&gt;
+
 &lt;p&gt;
 日本語は&lt;em&gt;伝統的には&lt;/em&gt;漢文に習って縦書きであって、
 文字を天から地へ、行を右から左へ進めて書きしるす。
@@ -315,7 +386,9 @@ Pango は正しくレンダリングしている模様。すごい。
 &lt;em&gt;縦書きだが縦スクロール&lt;/em&gt;というのは日本の新聞の紙面などにおける段組と
 同じなのだからそれが組めればいいのではないかと思ったのである。
 &lt;/p&gt;
+
 &lt;h3&gt;要求仕様&lt;/h3&gt;
+
 &lt;p&gt;
 文書全体としては横書きの縦スクロールであるが、
 縦書きの文章を内部に挿入するにあたり次に示すような要求を満たすものとしたい。
@@ -326,18 +399,23 @@ Pango は正しくレンダリングしている模様。すごい。
 &lt;li&gt;縦書き部の&lt;ruby&gt;横幅&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;width&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;は、100%、すなわち親の要素に合わせた横幅とする。&lt;/li&gt;
 &lt;li&gt;縦書き部の文章は段組とし、行長（段組の高さ）は100vh以下、すなわち&lt;ruby&gt;画面&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;view port&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;の高さより小さくする。&lt;/li&gt;
 &lt;/ol&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;object width=&quot;235&quot; height=&quot;276&quot; data=&quot;/images/2016_03_css_vertical_with_multicolumn_render_expection.svg&quot;&gt;&lt;/object&gt;
 &lt;figcaption&gt;期待される表示の図&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;h3&gt;ソースコード&lt;/h3&gt;
+
 &lt;p&gt;
 単純に横書き→縦書き→横書きの順番で文章が並んだHTMLファイルを用意した。
 &lt;/p&gt;
+
 &lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;(横書きのコンテンツ)...&amp;lt;/p&amp;gt;
 &amp;lt;p class=&quot;vertical-writing&quot;&amp;gt;(縦書きのコンテンツ)...&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;(横書きのコンテンツ)...&amp;lt;/p&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;
 これに対して、適切なCSSルールを定義した。
 &lt;/p&gt;
@@ -353,6 +431,7 @@ Pango は正しくレンダリングしている模様。すごい。
   column-rule: 2px dashed #000;
 }
 &lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;
 段組の指定には、段数 (&lt;code&gt;column-count&lt;/code&gt;) を使うこともできるが、
 段組の高さを指定するのを当初の目的としたのでそうした。
@@ -361,14 +440,18 @@ Pango は正しくレンダリングしている模様。すごい。
 なお、縦書き部の段組の高さは&lt;code&gt;100vh - 20px&lt;/code&gt;、
 すなわち画面の高さより20px減じたものとした。
 &lt;/p&gt;
+
 &lt;h3&gt;表示結果&lt;/h3&gt;
+
 &lt;h4&gt;Edge&lt;/h4&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_edge13.png&quot;&gt;
 &lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_edge13.png&quot; width=&quot;184&quot; height=&quot;356&quot; /&gt;
 &lt;/a&gt;
 &lt;figcaption&gt;Edge 13&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 縦書き部の後ろに続く横書き部と、縦書き部の段組二段目移行が重なってしまっている。
 これは縦書きと段組を組み合わせた時にボックスの高さが、一段分しか計算されないかららしい。
@@ -376,36 +459,47 @@ Pango は正しくレンダリングしている模様。すごい。
 それ以外は良好で、縦書き部の後ろに横書きのコンテンツが一切存在しない場合は、
 使い物になるのではないか。
 &lt;/p&gt;
+
 &lt;h4&gt;Chrome&lt;/h4&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_chrome48.png&quot;&gt;
 &lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_chrome48.png&quot; width=&quot;184&quot; height=&quot;356&quot; /&gt;
 &lt;/a&gt;
 &lt;figcaption&gt;Chrome 48&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 一瞬正しくレンダリングしているようにみえるが、
 段組が一切動いていないため、文章の続きが左端の画面外にはみ出ている。
 スクロールバーも表示されないため、これは一番困る動作。
 &lt;/p&gt;
+
 &lt;h4&gt;Firefox&lt;/h4&gt;
+
 &lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_firefox45.png&quot;&gt;
 &lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_firefox45.png&quot; width=&quot;92&quot; height=&quot;255&quot; /&gt;
 &lt;/a&gt;
 &lt;figcaption&gt;Firefox 45&lt;/figcaption&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;
 最も縦書き対応の遅かった Firefox がご覧の通りまともなレンダリングをした。
 しかし、少しでも CSS パラメータを変えるとレンダリングが崩れたりと
 まだ怪しい部分がアリそうだ。
 &lt;/p&gt;
+
+
 &lt;h3&gt;まとめ&lt;/h3&gt;
+
 &lt;p&gt;
 縦書きと段組のそれぞれは、各ブラウザで良好に動作するようになってきているが、
 まだその組合せは動作は不安定であることがわかった。
 &lt;/p&gt;
+
 &lt;h3&gt;参考文献&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E7%B8%A6%E6%9B%B8%E3%81%8D%E3%81%A8%E6%A8%AA%E6%9B%B8%E3%81%8D&quot;&gt;縦書きと横書き&lt;/a&gt;、ウィキペディア&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/CSS/writing-mode&quot;&gt;writing-mode - CSS&lt;/a&gt;, MDN&lt;/li&gt;
@@ -417,16 +511,23 @@ Pango は正しくレンダリングしている模様。すごい。
         <pubDate>Wed, 23 Mar 2016 00:20:22 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</guid>
+        
         <category>css</category>
+        
         <category>html</category>
+        
         <category>縦書き</category>
+        
+        
       </item>
+    
       <item>
         <title>CSS gradient で高DPI(所謂Retina Display等)を体感する</title>
         <description>&lt;p&gt;
 CSS3 グラデーションで色の間隔を 1px 未満にすると、Firefox だとグラデーション表示されない。
 が、高DPI環境(所謂Retina Display等)だと表示されるらしい。
 &lt;/p&gt;
+
 &lt;table style=&quot;width: 100%&quot;&gt;
   &lt;colgroup&gt;
     &lt;col span=&quot;1&quot; style=&quot;width: 50%; padding: 2px;&quot; /&gt;
@@ -459,18 +560,21 @@ CSS3 グラデーションで色の間隔を 1px 未満にすると、Firefox �
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
 &lt;p&gt;
 高DPI環境(所謂Retina Display等)でなかったとしても、ブラウザの拡大縮小によってグラデーションが表示されるようになったりするようだ。
 &lt;/p&gt;
 &lt;p&gt;
 一方で Google Chrome はそんなのおかまいなしにグラデーション表示を試みているようである。が、当然デバイスの限界を超えているので表示は何かしら化けて表示されていることになる。普通キニシナイが。
 &lt;/p&gt;
+
 &lt;p&gt;
 HTML5の規格としてFirefoxのような挙動は許可されているような記述されている。
 (SHALLではなくwouldなので明記されていない?
 Google Chromeのような挙動がいいのかわるいのかも言及していていない?)
 でも、色の混合をやっているブラウザはあるのかなぁ。
 &lt;/p&gt;
+
 &lt;blockquote cite=&quot;https://drafts.csswg.org/css-images-3/#example-c6222b45&quot;&gt;
 &lt;div&gt;
     For example, the following gradient is rendered as a solid light-purple image (equal to &lt;code&gt;rgb(75%,50%,75%)&lt;/code&gt;): 
@@ -482,22 +586,31 @@ Google Chromeのような挙動がいいのかわるいのかも言及してい�
 &lt;pre&gt;repeating-linear-gradient(red 0px, white .1px, blue .2px);&lt;/pre&gt;
    &lt;/div&gt;
 &lt;/blockquote&gt;
+
 &lt;h3&gt;参考文献&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;Tab Atkins Jr., et al., &quot;&lt;a href=&quot;https://drafts.csswg.org/css-images-3/&quot;&gt;CSS Image Values and Replaced Content Module Level 3&lt;/a&gt;&quot;, W3C, Editor&#39;s Draft, 26 Feb 2016&lt;/li&gt;
 &lt;/ul&gt;
+
 </description>
         <pubDate>Thu, 10 Mar 2016 00:44:56 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/03/css-gradient-on-high-dpi-retina.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/03/css-gradient-on-high-dpi-retina.html</guid>
+        
         <category>チラシの裏</category>
+        
         <category>css</category>
+        
+        
       </item>
+    
       <item>
         <title>Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2</title>
         <description>&lt;p&gt;
 This is difference between the default preference of Firefox 45.0 beta 5 and one of 44.0.2.
 &lt;/p&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox45_pref_diff&quot;&gt;
 &lt;caption&gt;Preference difference&lt;/caption&gt;
@@ -509,6 +622,7 @@ This is difference between the default preference of Firefox 45.0 beta 5 and one
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox45_pref_diff&quot;&gt;
 &lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
@@ -528,10 +642,12 @@ This is difference between the default preference of Firefox 45.0 beta 5 and one
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;p&gt;
 Note: Firefox Hello (a.k.a. Loop) has been moved to a system add-on since Firefox 45.
 (ref &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1223573&quot;&gt;Bug 1223573&lt;/a&gt;)
 &lt;/p&gt;
+
 &lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
 table.diff_firefox45_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox45_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -541,6 +657,7 @@ table.diff_firefox45_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox45_pref_diff tr.sameval td:first-child { color: #444; }
 table.diff_firefox45_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
 table.diff_firefox45_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
 table.diff_firefox45_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
@@ -548,9 +665,14 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
         <pubDate>Mon, 22 Feb 2016 00:43:52 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</guid>
+        
         <category>pref diff</category>
+        
         <category>mozilla</category>
+        
+        
       </item>
+    
       <item>
         <title>算道の解析</title>
         <description>&lt;p&gt;
@@ -558,11 +680,14 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
 論理珠算を用いた計算であるが、
 説明がかなり省かれていてよくわからんのでここにまとめる。
 &lt;/p&gt;
+
 &lt;h3&gt;Unlambda記法&lt;/h3&gt;
+
 &lt;p&gt;
 算道の表記で Unlambda記法 (Unlambda expression ?) は、
 下記のとおり珠を転写して表記したものである。
 &lt;/p&gt;
+
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -589,15 +714,19 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
 &lt;p&gt;
 例えば、零を表す「白白赤黄青」は、&lt;code&gt;``iks&lt;/code&gt;と表す。
 &lt;/p&gt;
+
 &lt;p&gt;
 これは、つまるところ&lt;a href=&quot;https://ja.wikipedia.org/wiki/SKI%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8D%E3%83%BC%E3%82%BF%E8%A8%88%E7%AE%97&quot;&gt;SKIコンビネータ計算&lt;/a&gt;
 の Unlambda 表記そのものであって、
 算道はSKIと等価である。
 &lt;/p&gt;
+
 &lt;h3&gt;整珠&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;s&lt;/code&gt;,&lt;code&gt;k&lt;/code&gt;,&lt;code&gt;i&lt;/code&gt;は、
 それぞれ単珠(single-ju?)と呼ばれるが、これはまた整珠(integal-ju?)でもある。&lt;/li&gt;
@@ -605,7 +734,9 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
 &lt;code&gt;`@1@2&lt;/code&gt;もまた整珠である。&lt;/li&gt;
 &lt;li&gt;複珠(multiple-ju?)とは複数の珠からなる整珠のことである。&lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;h4&gt;整珠の構造&lt;/h4&gt;
+
 &lt;p&gt;
 複珠は&lt;code&gt;`@1@2&lt;/code&gt;からなるから、&lt;code&gt;`@1@2&lt;/code&gt;が入れ子になって
 整珠ができている。
@@ -621,7 +752,9 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
     &lt;dt&gt;ものまね鳥の番い&lt;/dt&gt;
     &lt;dd&gt;&lt;code&gt;```sii``sii = `(`(`si)i)(`(`(si)i)&lt;/code&gt;&lt;/dd&gt;
 &lt;/dl&gt;
+
 &lt;h3&gt;論理算盤への展開&lt;/h3&gt;
+
 &lt;p&gt;
 論理珠算を行うにあたり論理算盤へ珠を展開する。
 展開する時、珠を左から右、上から下に置いていく。
@@ -632,7 +765,9 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
 配置方法について言及していていないため、
 下記に出てくる記法・用語は本文書で提案するものである。
 &lt;/p&gt;
+
 &lt;h4&gt;Unlambda形式に依る論理算盤の記述&lt;/h4&gt;
+
 &lt;p&gt;
 本文書では、盤面上の配置を Unlambda形式に依ってそのまま記載するものとする。
 但し、珠が置かれていないことを &lt;code&gt;_&lt;/code&gt; で示す。
@@ -640,28 +775,39 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
 &lt;p&gt;
 &lt;code&gt;`sk&lt;/code&gt; の盤面上の配置例を下記に示す。
 &lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;` s
 _ k&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h4&gt;「直列配置」&lt;/h4&gt;
+
 &lt;p&gt;
 「直列配置(Linear alignment)」は、そのまま盤面に左から右へ並べたものである。
 &lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;` s k&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;
 なお、紙面の横幅の都合上途中で行を変えてもよい。
 &lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;` ` ` s i i
 ` ` s i i&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h4&gt;「完全二分木配置」&lt;/h4&gt;
+
 &lt;p&gt;
 「完全二分木配置(complete binary-tree alignment)」は、&lt;code&gt;`@1@2&lt;/code&gt;の入れ子構造を
 完全な形で表現した配置形式である。
 &lt;/p&gt;
+
 &lt;p&gt;
 &lt;code&gt;`@1@2&lt;/code&gt;を下記の通り配置する。
 &lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;` @1
 _ @2&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;
 ここで&lt;code&gt;@1&lt;/code&gt;,&lt;code&gt;@2&lt;/code&gt;が、複珠であるとき、
 さらに入れ子にする形で配置する。
@@ -671,25 +817,33 @@ _ @2&lt;/code&gt;&lt;/pre&gt;
 &lt;code&gt;@1 = `@3@4&lt;/code&gt;, &lt;code&gt;@2 = `@5@6&lt;/code&gt; であるならば、
 先ほどのの盤面は下記のようになる。
 &lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;` ` @3
 _ _ @4
 _ ` @5
 _ _ @6&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h4&gt;「二分木配置」&lt;/h4&gt;
+
 &lt;p&gt;
 完全二分木配置では、紙面も盤面も大きさを要する。
 そこで完全二分木配置のうち一部の&lt;code&gt;`@1@2&lt;/code&gt;構造をまとめて積み上げることを考える。
 &lt;/p&gt;
+
 &lt;p&gt;
 ここでは積み上げた珠は括弧を用いて表現する。
 &lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;` ` @3
 _ _ @4
 _ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3&gt;規則&lt;/h3&gt;
+
 &lt;p&gt;
 下記の規則に基づいて整珠を動かす=計算することができる。
 &lt;/p&gt;
+
 &lt;dl&gt;
 &lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
 &lt;dd&gt;&lt;code&gt;```s@0@1@2 = ``@0@2`@1@2&lt;/code&gt;&lt;/dd&gt;
@@ -698,13 +852,16 @@ _ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
 &lt;dt&gt;赤珠の規則 (i-rule?)&lt;/dt&gt;
 &lt;dd&gt;&lt;code&gt;`i@0 = @0&lt;/code&gt;&lt;/dd&gt;
 &lt;/dl&gt;
+
 &lt;p&gt;
 ここで&lt;code&gt;@0&lt;/code&gt;,&lt;code&gt;@1&lt;/code&gt;,...は整珠である。
 青珠の規則において、2回現れているがこれは&lt;code&gt;@2&lt;/code&gt;を複製して同じものを2つ用意するということである。
 &lt;/p&gt;
+
 &lt;p&gt;
 それぞれの規則を、以下に二分木配置で表す。
 &lt;/p&gt;
+
 &lt;dl&gt;
 &lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
 &lt;dd&gt;
@@ -738,12 +895,16 @@ _ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;@0&lt;/code&gt;&lt;/pre&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
+
 &lt;p&gt;
 それぞれの規則の前後は共に整珠である。
 規則に従って計算している限り、計算結果は整珠である。
 逆に整珠でなくなったときは計算に失敗（いわゆる計算ミス）しているのである。
 &lt;/p&gt;
+
 &lt;h4&gt;算道の規則とSKI評価演算の関係&lt;/h4&gt;
+
+
 &lt;dl&gt;
 &lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
 &lt;dd&gt;Substitution combinator&lt;/dd&gt;
@@ -752,7 +913,9 @@ _ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
 &lt;dt&gt;赤珠の規則 (i-rule?)&lt;/dt&gt;
 &lt;dd&gt;Identity combinator&lt;/dd&gt;
 &lt;/dl&gt;
+
 &lt;h3&gt;計算手順&lt;/h3&gt;
+
 &lt;ol&gt;
 &lt;li&gt;整珠であることを確認。
     &lt;ul&gt;&lt;li&gt;整珠ならば次に進む。&lt;/li&gt;&lt;li&gt;整珠ではない場合計算に失敗。&lt;/li&gt;&lt;/ul&gt;
@@ -767,10 +930,13 @@ _ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
     &lt;ul&gt;&lt;li&gt;適用したら1からやり直す。&lt;/li&gt;&lt;li&gt;適用できない場合計算終了&lt;/li&gt;&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+
 &lt;h3&gt;計算例：真かつ偽&lt;/h3&gt;
+
 &lt;p&gt;
 『真かつ偽』を表す整珠は&lt;code&gt;````sskk`sk&lt;/code&gt;である。
 &lt;/p&gt;
+
 &lt;ol start=&quot;0&quot;&gt;
 &lt;li&gt;&lt;pre&gt;&lt;code&gt;` ` ` ` s
 _ _ _ _ s
@@ -806,12 +972,16 @@ _ (``kk`sk)
 計算終了。答えは「偽」である。
 &lt;/li&gt;
 &lt;/ol&gt;
+
 &lt;h3&gt;感想&lt;/h3&gt;
+
 &lt;p&gt;
 青珠の規則の規則にて、&lt;code&gt;@2&lt;/code&gt;を複製する必要があるが、
 珠に凹凸のパターンを付けるなどして複製が容易にするようにするとよいと思う。
 &lt;/p&gt;
+
 &lt;h3&gt;参考文献&lt;/h3&gt;
+
 &lt;ul&gt;
 &lt;li&gt;山本一彰, &quot;&lt;a href=&quot;http://sando.monophile.net/&quot;&gt;算道&lt;/a&gt;&quot;&lt;/li&gt;
 &lt;li&gt;&quot;&lt;a href=&quot;http://campusgenius.jp/2015/nominate/519/&quot;&gt;算道&lt;/a&gt;&quot;, 第21回学生CGコンテスト, 2015&lt;/li&gt;
@@ -821,38 +991,55 @@ _ (``kk`sk)
         <pubDate>Fri, 12 Feb 2016 01:07:50 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/02/sando-study.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/sando-study.html</guid>
+        
         <category>art</category>
+        
         <category>math</category>
+        
+        
       </item>
+    
       <item>
         <title>Study for XULRunner as Prism, using Firefox</title>
         <description>&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
 &lt;img class=&quot;fitcontain&quot; src=&quot;/images/201602_prism_xulrunner_firefox.png&quot; width=&quot;640&quot; height=&quot;400&quot; /&gt;
 &lt;/figure&gt;
+
 &lt;p&gt;Mission: run a web application without the normal browser UI, as a XULRunner application but using Firefox (version 3 and above).&lt;/p&gt;
 &lt;p&gt;I am a Firefox funboy. So I want to use Gecko rather than WebKit (&lt;a href=&quot;http://electron.atom.io/&quot;&gt;Electron&lt;/a&gt;).&lt;/p&gt;
+
 &lt;h3&gt;Idea&lt;/h3&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;&lt;em&gt;XULRunner&lt;/em&gt; is a Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications that are as rich as Firefox and Thunderbird.&lt;/p&gt;
   &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;Firefox (from version 3) ships with a private XULRunner package, which can run any compatible XULRunner application using the &lt;code&gt;-app&lt;/code&gt; switch: &lt;code&gt;firefox -app application.ini&lt;/code&gt; is equivalent to &lt;code&gt;xulrunner -app application.ini&lt;/code&gt;&lt;/p&gt;
   &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
+
 &lt;blockquote&gt;
   &lt;p&gt;Prism is a simple XULRunner-based browser that hosts web applications without the normal web browser user interface.&lt;/p&gt;
   &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Prism&quot;&gt;Prism - Archive of obsolete content&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
+
 &lt;h3&gt;Solution&lt;/h3&gt;
+
 &lt;p&gt;Example: view &lt;code&gt;https://www.google.com/&lt;/code&gt; without the normal browser UI.&lt;/p&gt;
+
 &lt;p&gt;Souce code is available on github &lt;a href=&quot;https://github.com/cat-in-136/study-for-xulrunner-as-prism-using-firefox&quot;&gt;cat-in-136/study-for-xulrunner-as-prism-using-firefox&lt;/a&gt;.&lt;/p&gt;
+
 &lt;h4&gt;Normal approach&lt;/h4&gt;
+
 &lt;p&gt;Open &lt;code&gt;app.xul&lt;/code&gt; when the XULRunner_as_prism application is lanched.
 And then &lt;code&gt;app.xul&lt;/code&gt; load the web page – &lt;code&gt;https://www.google.com/&lt;/code&gt;&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;application.ini&lt;/p&gt;
+
     &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;[App]
 Vendor=cat_in_136
 Name=XULRunner_as_prism
@@ -860,6 +1047,7 @@ Version=0.0
 BuildID=20160206
 Copyright=Copyright (c) 2016 @cat_in_136
 ID=xulrunner_as_prism@cat-in-136.github.io
+   
 [Gecko]
 MinVersion=38
 MaxVersion=*
@@ -868,18 +1056,21 @@ MaxVersion=*
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;defaults/preferences/prefs.js&lt;/p&gt;
+
     &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;pref(&quot;toolkit.defaultChromeURI&quot;, &quot;chrome://xrap/content/app.xul&quot;);
 &lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;chrome.manifest&lt;/p&gt;
+
     &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;content xrap content/
 &lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;content/app.xul&lt;/p&gt;
+
     &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;
 &amp;lt;?xml-stylesheet href=&quot;chrome://global/skin/&quot; type=&quot;text/css&quot;?&amp;gt;
 &amp;lt;window id=&quot;main&quot; width=&quot;400&quot; height=&quot;300&quot; xmlns=&quot;http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul&quot;&amp;gt;
@@ -890,9 +1081,13 @@ MaxVersion=*
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;How to run: &lt;code&gt;firefox -app application.ini&lt;/code&gt;&lt;/p&gt;
+
 &lt;h4&gt;Minimum code solution&lt;/h4&gt;
+
 &lt;p&gt;XULRunner FAQ says:&lt;/p&gt;
+
 &lt;blockquote&gt;
 &lt;dl&gt;
  &lt;dt&gt;
@@ -902,10 +1097,13 @@ MaxVersion=*
 &lt;/dl&gt;
 &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner/FAQ&quot;&gt;XULRunner FAQ - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;Wow!&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;application.ini (No Change)&lt;/p&gt;
+
     &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;[App]
 Vendor=cat_in_136
 Name=XULRunner_as_prism
@@ -913,6 +1111,7 @@ Version=0.0
 BuildID=20160206
 Copyright=Copyright (c) 2016 @cat_in_136
 ID=xulrunner_as_prism@cat-in-136.github.io
+   
 [Gecko]
 MinVersion=38
 MaxVersion=*
@@ -921,16 +1120,22 @@ MaxVersion=*
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;defaults/preferences/prefs.js&lt;/p&gt;
+
     &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;pref(&quot;toolkit.defaultChromeURI&quot;, &quot;https://www.google.com/&quot;);
 &lt;/code&gt;&lt;/pre&gt;
     &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
 &lt;p&gt;How to run: &lt;code&gt;firefox -app application.ini&lt;/code&gt;&lt;/p&gt;
+
 &lt;h3&gt;Note: profile folder location&lt;/h3&gt;
+
 &lt;p&gt;The profile folder is placed in &lt;code&gt;%APPDATA%\cat_in_136&lt;/code&gt; (for windows) or &lt;code&gt;~/.cat_in_136&lt;/code&gt; (for unix).
 You may remove this folder after you close this XULRunner_as_prism application.&lt;/p&gt;
+
 &lt;h3&gt;References&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Prism&quot;&gt;Prism - Archive of obsolete content&lt;/a&gt;, MDN&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://mozillalabs.com/en-US/chromeless/&quot;&gt;Chromeless Browser&lt;/a&gt;, Mozilla Labs&lt;/li&gt;
@@ -941,15 +1146,22 @@ You may remove this folder after you close this XULRunner_as_prism application.&
         <pubDate>Sun, 07 Feb 2016 00:14:09 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</guid>
+        
         <category>mozilla</category>
+        
         <category>xulrunner</category>
+        
         <category>html</category>
+        
+        
       </item>
+    
       <item>
         <title>Diff between firefox 44.0 beta 4 default preference and firefox 43.0.3</title>
         <description>&lt;p&gt;
 This is difference between the default preference of Firefox 44.0 beta 4 and one of 43.0.3.
 &lt;/p&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox44_pref_diff&quot;&gt;
 &lt;caption&gt;Preference difference&lt;/caption&gt;
@@ -961,6 +1173,7 @@ This is difference between the default preference of Firefox 44.0 beta 4 and one
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;div&gt;
 &lt;table class=&quot;diff_firefox44_pref_diff&quot;&gt;
 &lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
@@ -979,6 +1192,7 @@ This is difference between the default preference of Firefox 44.0 beta 4 and one
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
+
 &lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
 table.diff_firefox44_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
 table.diff_firefox44_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
@@ -988,6 +1202,7 @@ table.diff_firefox44_pref_diff td.undefined { color: #888; font-style: italic; }
 table.diff_firefox44_pref_diff tr.sameval td:first-child { color: #444; }
 table.diff_firefox44_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
 table.diff_firefox44_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
 table.diff_firefox44_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox44_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
@@ -995,8 +1210,13 @@ table.diff_firefox44_pref_diff tbody tr { transition: background 0.125s ease-in-
         <pubDate>Fri, 01 Jan 2016 19:20:08 +0900</pubDate>
         <link>http://cat-in-136.github.io/2016/01/diff-between-firefox-440-beta-4-default.html</link>
         <guid isPermaLink="true">http://cat-in-136.github.io/2016/01/diff-between-firefox-440-beta-4-default.html</guid>
+        
         <category>pref diff</category>
+        
         <category>mozilla</category>
+        
+        
       </item>
+    
   </channel>
 </rss>
