@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>ビットシフトと割り算はどっちが良いか、とはいうけれど cat_in_136.blog()</title>
+<link rel="canonical" href="http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="ビットシフトと割り算はどっちが良いか、とはいうけれど" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+<script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+</head>
+<body>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
+</header>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2016/05/bit-shift-operator-vs-division-operator-but.html" itemprop="url">ビットシフトと割り算はどっちが良いか、とはいうけれど</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2016-05-06T23:18:26+09:00</time>
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_c-language">C-language</a>
+<a class="tag" href="/tags.html#tag_clang">Clang</a>
+<a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody" lang="ja">
+<p>
+2の累乗の積または商は、ビットシフトで容易に書換可能だが、
+どっちが良いか云々とかいう定番な話があるが…
+</p>
+<pre class="prettyprint"><code>unsigned int div2ui(unsigned int x) {
+  return x / 2;
+}
+int div2si(int x) {
+  return x / 2;
+}
+unsigned int shiftdiv2ui(unsigned int x) {
+  return x &gt;&gt; 1;
+}
+</code></pre>
+<p>
+なお、ここではC言語を前提としているため、
+符号付き整数での右シフトは書いていない
+（負数を与えた時の動作が規格上実装依存であるため）。
+</p>
+<blockquote cite="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" lang="en">
+<p>
+The result of <code>E1 &gt;&gt; E2</code> is <code>E1</code> right-shifted <code>E2</code> bit positions.
+...
+If <code>E1</code> has a signed type and a negative value, the resulting value is implementation-defined.
+</p>
+<footer>&#8213;&#8213; <cite>ISO/IEC 9899:201x (C11) Committee Draft &#167;6.5.7 Bitwise shift operators</cite></footer>
+</blockquote>
+<h3>LLIR</h3>
+<p>
+ひとまず clang が吐き出す中間言語―― LLIR をみてみる。
+</p>
+<pre class="console"><samp>% clang -c -S -emit-llvm hoge.c
+% </samp></pre>
+<pre class="prettyprint"><code>; Function Attrs: nounwind uwtable
+define i32 @div2ui(i32 %x) #0 {
+  %1 = alloca i32, align 4
+  store i32 %x, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = udiv i32 %2, 2
+  ret i32 %3
+}
+
+; Function Attrs: nounwind uwtable
+define i32 @div2si(i32 %x) #0 {
+  %1 = alloca i32, align 4
+  store i32 %x, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = sdiv i32 %2, 2
+  ret i32 %3
+}
+
+; Function Attrs: nounwind uwtable
+define i32 @shiftdiv2ui(i32 %x) #0 {
+  %1 = alloca i32, align 4
+  store i32 %x, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = lshr i32 %2, 1
+  ret i32 %3
+}
+</code></pre>
+<p>
+LLIR を見るまでもなく予見できたことではあるが、
+それぞれ <code>udiv</code>, <code>sdiv</code>, <code>lshr</code> に展開されていて、
+それ以外の差が存在しないことがわかる。
+言い換えると、以降はこのみっつの命令がそれぞれどのように
+アセンブリコードに展開するかを比較検討すればよい。
+</p>
+<h3>最適化</h3>
+<p>
+clang は LLVM IR によりプロセッサに独立したレベルでの最適化を実施する。
+これを行った結果どのように最適化されるか見てみよう。
+</p>
+<pre class="console"><samp>% clang -c -S -emit-llvm hoge.c -O
+% </samp></pre>
+<pre class="prettyprint"><code>; Function Attrs: nounwind optsize readnone uwtable
+define i32 @div2ui(i32 %x) #0 {
+  %1 = lshr i32 %x, 1
+  ret i32 %1
+}
+
+; Function Attrs: nounwind optsize readnone uwtable
+define i32 @div2si(i32 %x) #0 {
+  %1 = sdiv i32 %x, 2
+  ret i32 %1
+}
+
+; Function Attrs: nounwind optsize readnone uwtable
+define i32 @shiftdiv2ui(i32 %x) #0 {
+  %1 = lshr i32 %x, 1
+  ret i32 %1
+}
+</code></pre>
+<p>
+敢えて <code>-O</code> と最も最適化レベルが低いものを指定したが、
+注目するべきは <code>udiv</code> となっていた箇所が
+<code>lshr</code> を使った形に書き換えられていることである。
+すなわち <code>x / 2</code> が <code>x &gt;&gt; 1</code> に展開されているため、
+<code>@div2ui</code> の中身が <code>@shiftdiv2ui</code> と完全に同一となっている。
+</p>
+<h3>アセンブリ</h3>
+<p>
+もう前節で結論は出てしまっているが、一応アセンブリコードも見ておこう。
+なお、アーキテクチャは x86_64 である。
+</p>
+<pre class="console"><samp>% clang -c -S hoge.c -O
+% </samp></pre>
+<pre class="prettyprint"><code>
+	.globl	div2ui
+	.type	div2ui,@function
+div2ui:                                 # @div2ui
+	.cfi_startproc
+# BB#0:
+	shrl	%edi
+	movl	%edi, %eax
+	retq
+.Lfunc_end0:
+	.size	div2ui, .Lfunc_end0-div2ui
+	.cfi_endproc
+
+	.globl	div2si
+	.type	div2si,@function
+div2si:                                 # @div2si
+	.cfi_startproc
+# BB#0:
+	movl	%edi, %eax
+	shrl	$31, %eax
+	leal	(%rax,%rdi), %eax
+	sarl	%eax
+	retq
+.Lfunc_end1:
+	.size	div2si, .Lfunc_end1-div2si
+	.cfi_endproc
+
+	.globl	shiftdiv2ui
+	.type	shiftdiv2ui,@function
+shiftdiv2ui:                            # @shiftdiv2ui
+	.cfi_startproc
+# BB#0:
+	shrl	%edi
+	movl	%edi, %eax
+	retq
+.Lfunc_end2:
+	.size	shiftdiv2ui, .Lfunc_end2-shiftdiv2ui
+	.cfi_endproc
+</code></pre>
+<p>
+当然のことながら、<code>div2ui:</code> と <code>shiftdiv2ui:</code> とで
+同一のアセンブリコードになっている。
+</p>
+<p>
+それに比べて <code>div2si:</code> は複雑なコードとなっている。
+高級言語風（Java 言語風）に書くと、<code>&gt;&gt;</code>を論理シフト、
+<code>&gt;&gt;&gt;</code>を論理右シフトとして、
+<code>(x + (x &gt;&gt;&gt; 31)) &gt;&gt; 1</code>となる。
+これは負の数の考慮(<code>(x &gt;&gt;&gt; 31) == 1</code>)をしている
+ためである。
+</p>
+<h3>まとめ</h3>
+<ul>
+<li>2の累乗の積または商は、ビットシフトを使わずにソースを書いてもコンパイラがきちんと変換してくれる</li>
+<li>なのでこの話は、コンパイラが優秀な今日では、単なるコードの可読性等の問題</li>
+<li>どちらかというとシフト演算を使用するときは、負数が入るか、論理シフトなのか算術シフトなのかの考慮が重要という内容の話題になってしまった。</li>
+</ul>
+<p>
+なお LLVM IR を使えてわかりやすいため LLVM clang を使って説明したが、
+この最適化自体は古典的な gcc でも適用されている。
+</p>
+<h3>余談</h3>
+<p>
+2の累乗でない場合も同様にシフト演算などを駆使して書き直すことが
+考えられるが、これも同様にして解析することができる。
+</p>
+<pre class="prettyprint"><code>unsigned int mul10ui(unsigned int x) {
+  return x * 10;
+}
+</code></pre>
+<pre class="prettyprint"><code>; Function Attrs: nounwind readnone uwtable
+define i32 @mul10ui(i32 %x) #0 {
+  %1 = mul i32 %x, 10
+  ret i32 %1
+}
+</code></pre>
+<pre class="prettyprint"><code>
+	.globl	mul10ui
+	.align	16, 0x90
+	.type	mul10ui,@function
+mul10ui:                                # @mul10ui
+	.cfi_startproc
+# BB#0:
+	addl	%edi, %edi
+	leal	(%rdi,%rdi,4), %eax
+	retq
+.Lfunc_end0:
+	.size	mul10ui, .Lfunc_end0-mul10ui
+	.cfi_endproc
+</code></pre>
+<p>
+この場合、<code>x * 10</code>が<code>(x + x) + (x + x) * 4</code>と展開されていることがわかる。
+</p>
+<h3>参考文献</h3>
+<ul>
+<li>村井和夫「<a href="http://www.kumikomi.net/interface/sample/201503/if03_043.pdf" rel="nofollow">試しながらステップ・バイ・ステップ！Cortex-A時代の新コンパイラLLVM/Clangのしくみと使い方 (特集 高性能でフリー! 新時代コンパイラ入門 : 第2部　新時代コンパイラLLVMを定番ボードBeagleBone Blackで試す)</a>」, Interface 2015年3月号 pp43-52</li>
+<li><a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" rel="nofollow">N1570</a>, the final draft of ISO/IEC 9899:201x (C1X), 12 April 2011</li>
+</ul>
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html&amp;text=%E3%83%93%E3%83%83%E3%83%88%E3%82%B7%E3%83%95%E3%83%88%E3%81%A8%E5%89%B2%E3%82%8A%E7%AE%97%E3%81%AF%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%8C%E8%89%AF%E3%81%84%E3%81%8B%E3%80%81%E3%81%A8%E3%81%AF%E3%81%84%E3%81%86%E3%81%91%E3%82%8C%E3%81%A9+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html&amp;linkname=%E3%83%93%E3%83%83%E3%83%88%E3%82%B7%E3%83%95%E3%83%88%E3%81%A8%E5%89%B2%E3%82%8A%E7%AE%97%E3%81%AF%E3%81%A9%E3%81%A3%E3%81%A1%E3%81%8C%E8%89%AF%E3%81%84%E3%81%8B%E3%80%81%E3%81%A8%E3%81%AF%E3%81%84%E3%81%86%E3%81%91%E3%82%8C%E3%81%A9+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-05-06-bit-shift-operator-vs-division-operator-but.html" class="source-path">_posts/2016-05-06-bit-shift-operator-vs-division-operator-but.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-05-06-bit-shift-operator-vs-division-operator-but.html">History</a>)
+</div>
+</footer>
+</article>
+<nav class="post-nav wrap">
+<div class="previous-post">
+<a href="/2016/04/diff-between-firefox-470-beta-1-default.html" title="Diff between firefox 47.0 beta 1 default preference and firefox 46.0" rel="prev">&#x2190;Diff between firefox 47.0 beta 1 default preference and firefox 46.0</a>
+</div>
+<div class="next-post">
+</div>
+</nav>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<aside class="post-related">
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2015-05-01</span>
+<a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
+</li>
+<li class="post-item">
+<span class="post-date">2012-12-11</span>
+<a class="post-link" href="/2012/12/llvm-clangast.html">LLVM-ClangのASTを解析するまっとうな方法について</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-03-17</span>
+<a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">Pitfall of &quot;Unicode in Mingw32&quot;</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-11-29</span>
+<a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-01-19</span>
+<a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="http://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="http://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
+</footer>
+</body>
+</html>
+

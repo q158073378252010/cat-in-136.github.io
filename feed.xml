@@ -5,9 +5,255 @@
     <description></description>
     <link>http://cat-in-136.github.io/</link>
     <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 04 May 2016 01:28:16 +0900</pubDate>
-    <lastBuildDate>Wed, 04 May 2016 01:28:16 +0900</lastBuildDate>
+    <pubDate>Sat, 07 May 2016 01:40:21 +0900</pubDate>
+    <lastBuildDate>Sat, 07 May 2016 01:40:21 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>ビットシフトと割り算はどっちが良いか、とはいうけれど</title>
+        <description>&lt;p&gt;
+2の累乗の積または商は、ビットシフトで容易に書換可能だが、
+どっちが良いか云々とかいう定番な話があるが…
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;unsigned int div2ui(unsigned int x) {
+  return x / 2;
+}
+int div2si(int x) {
+  return x / 2;
+}
+unsigned int shiftdiv2ui(unsigned int x) {
+  return x &amp;gt;&amp;gt; 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+なお、ここではC言語を前提としているため、
+符号付き整数での右シフトは書いていない
+（負数を与えた時の動作が規格上実装依存であるため）。
+&lt;/p&gt;
+&lt;blockquote cite=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; lang=&quot;en&quot;&gt;
+&lt;p&gt;
+The result of &lt;code&gt;E1 &amp;gt;&amp;gt; E2&lt;/code&gt; is &lt;code&gt;E1&lt;/code&gt; right-shifted &lt;code&gt;E2&lt;/code&gt; bit positions.
+...
+If &lt;code&gt;E1&lt;/code&gt; has a signed type and a negative value, the resulting value is implementation-defined.
+&lt;/p&gt;
+&lt;footer&gt;&amp;#8213;&amp;#8213; &lt;cite&gt;ISO/IEC 9899:201x (C11) Committee Draft &amp;#167;6.5.7 Bitwise shift operators&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;LLIR&lt;/h3&gt;
+
+&lt;p&gt;
+ひとまず clang が吐き出す中間言語―― LLIR をみてみる。
+&lt;/p&gt;
+
+&lt;pre class=&quot;console&quot;&gt;&lt;samp&gt;% clang -c -S -emit-llvm hoge.c
+% &lt;/samp&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;; Function Attrs: nounwind uwtable
+define i32 @div2ui(i32 %x) #0 {
+  %1 = alloca i32, align 4
+  store i32 %x, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = udiv i32 %2, 2
+  ret i32 %3
+}
+
+; Function Attrs: nounwind uwtable
+define i32 @div2si(i32 %x) #0 {
+  %1 = alloca i32, align 4
+  store i32 %x, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = sdiv i32 %2, 2
+  ret i32 %3
+}
+
+; Function Attrs: nounwind uwtable
+define i32 @shiftdiv2ui(i32 %x) #0 {
+  %1 = alloca i32, align 4
+  store i32 %x, i32* %1, align 4
+  %2 = load i32, i32* %1, align 4
+  %3 = lshr i32 %2, 1
+  ret i32 %3
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+LLIR を見るまでもなく予見できたことではあるが、
+それぞれ &lt;code&gt;udiv&lt;/code&gt;, &lt;code&gt;sdiv&lt;/code&gt;, &lt;code&gt;lshr&lt;/code&gt; に展開されていて、
+それ以外の差が存在しないことがわかる。
+言い換えると、以降はこのみっつの命令がそれぞれどのように
+アセンブリコードに展開するかを比較検討すればよい。
+&lt;/p&gt;
+
+&lt;h3&gt;最適化&lt;/h3&gt;
+
+&lt;p&gt;
+clang は LLVM IR によりプロセッサに独立したレベルでの最適化を実施する。
+これを行った結果どのように最適化されるか見てみよう。
+&lt;/p&gt;
+
+&lt;pre class=&quot;console&quot;&gt;&lt;samp&gt;% clang -c -S -emit-llvm hoge.c -O
+% &lt;/samp&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;; Function Attrs: nounwind optsize readnone uwtable
+define i32 @div2ui(i32 %x) #0 {
+  %1 = lshr i32 %x, 1
+  ret i32 %1
+}
+
+; Function Attrs: nounwind optsize readnone uwtable
+define i32 @div2si(i32 %x) #0 {
+  %1 = sdiv i32 %x, 2
+  ret i32 %1
+}
+
+; Function Attrs: nounwind optsize readnone uwtable
+define i32 @shiftdiv2ui(i32 %x) #0 {
+  %1 = lshr i32 %x, 1
+  ret i32 %1
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+敢えて &lt;code&gt;-O&lt;/code&gt; と最も最適化レベルが低いものを指定したが、
+注目するべきは &lt;code&gt;udiv&lt;/code&gt; となっていた箇所が
+&lt;code&gt;lshr&lt;/code&gt; を使った形に書き換えられていることである。
+すなわち &lt;code&gt;x / 2&lt;/code&gt; が &lt;code&gt;x &amp;gt;&amp;gt; 1&lt;/code&gt; に展開されているため、
+&lt;code&gt;@div2ui&lt;/code&gt; の中身が &lt;code&gt;@shiftdiv2ui&lt;/code&gt; と完全に同一となっている。
+&lt;/p&gt;
+
+&lt;h3&gt;アセンブリ&lt;/h3&gt;
+
+&lt;p&gt;
+もう前節で結論は出てしまっているが、一応アセンブリコードも見ておこう。
+なお、アーキテクチャは x86_64 である。
+&lt;/p&gt;
+
+&lt;pre class=&quot;console&quot;&gt;&lt;samp&gt;% clang -c -S hoge.c -O
+% &lt;/samp&gt;&lt;/pre&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;
+	.globl	div2ui
+	.type	div2ui,@function
+div2ui:                                 # @div2ui
+	.cfi_startproc
+# BB#0:
+	shrl	%edi
+	movl	%edi, %eax
+	retq
+.Lfunc_end0:
+	.size	div2ui, .Lfunc_end0-div2ui
+	.cfi_endproc
+
+	.globl	div2si
+	.type	div2si,@function
+div2si:                                 # @div2si
+	.cfi_startproc
+# BB#0:
+	movl	%edi, %eax
+	shrl	$31, %eax
+	leal	(%rax,%rdi), %eax
+	sarl	%eax
+	retq
+.Lfunc_end1:
+	.size	div2si, .Lfunc_end1-div2si
+	.cfi_endproc
+
+	.globl	shiftdiv2ui
+	.type	shiftdiv2ui,@function
+shiftdiv2ui:                            # @shiftdiv2ui
+	.cfi_startproc
+# BB#0:
+	shrl	%edi
+	movl	%edi, %eax
+	retq
+.Lfunc_end2:
+	.size	shiftdiv2ui, .Lfunc_end2-shiftdiv2ui
+	.cfi_endproc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+当然のことながら、&lt;code&gt;div2ui:&lt;/code&gt; と &lt;code&gt;shiftdiv2ui:&lt;/code&gt; とで
+同一のアセンブリコードになっている。
+&lt;/p&gt;
+&lt;p&gt;
+それに比べて &lt;code&gt;div2si:&lt;/code&gt; は複雑なコードとなっている。
+高級言語風（Java 言語風）に書くと、&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;を論理シフト、
+&lt;code&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/code&gt;を論理右シフトとして、
+&lt;code&gt;(x + (x &amp;gt;&amp;gt;&amp;gt; 31)) &amp;gt;&amp;gt; 1&lt;/code&gt;となる。
+これは負の数の考慮(&lt;code&gt;(x &amp;gt;&amp;gt;&amp;gt; 31) == 1&lt;/code&gt;)をしている
+ためである。
+&lt;/p&gt;
+
+&lt;h3&gt;まとめ&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2の累乗の積または商は、ビットシフトを使わずにソースを書いてもコンパイラがきちんと変換してくれる&lt;/li&gt;
+&lt;li&gt;なのでこの話は、コンパイラが優秀な今日では、単なるコードの可読性等の問題&lt;/li&gt;
+&lt;li&gt;どちらかというとシフト演算を使用するときは、負数が入るか、論理シフトなのか算術シフトなのかの考慮が重要という内容の話題になってしまった。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+なお LLVM IR を使えてわかりやすいため LLVM clang を使って説明したが、
+この最適化自体は古典的な gcc でも適用されている。
+&lt;/p&gt;
+
+&lt;h3&gt;余談&lt;/h3&gt;
+
+&lt;p&gt;
+2の累乗でない場合も同様にシフト演算などを駆使して書き直すことが
+考えられるが、これも同様にして解析することができる。
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;unsigned int mul10ui(unsigned int x) {
+  return x * 10;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;; Function Attrs: nounwind readnone uwtable
+define i32 @mul10ui(i32 %x) #0 {
+  %1 = mul i32 %x, 10
+  ret i32 %1
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;
+	.globl	mul10ui
+	.align	16, 0x90
+	.type	mul10ui,@function
+mul10ui:                                # @mul10ui
+	.cfi_startproc
+# BB#0:
+	addl	%edi, %edi
+	leal	(%rdi,%rdi,4), %eax
+	retq
+.Lfunc_end0:
+	.size	mul10ui, .Lfunc_end0-mul10ui
+	.cfi_endproc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+この場合、&lt;code&gt;x * 10&lt;/code&gt;が&lt;code&gt;(x + x) + (x + x) * 4&lt;/code&gt;と展開されていることがわかる。
+&lt;/p&gt;
+
+&lt;h3&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;村井和夫「&lt;a href=&quot;http://www.kumikomi.net/interface/sample/201503/if03_043.pdf&quot; rel=&quot;nofollow&quot;&gt;試しながらステップ・バイ・ステップ！Cortex-A時代の新コンパイラLLVM/Clangのしくみと使い方 (特集 高性能でフリー! 新時代コンパイラ入門 : 第2部　新時代コンパイラLLVMを定番ボードBeagleBone Blackで試す)&lt;/a&gt;」, Interface 2015年3月号 pp43-52&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf&quot; rel=&quot;nofollow&quot;&gt;N1570&lt;/a&gt;, the final draft of ISO/IEC 9899:201x (C1X), 12 April 2011&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 06 May 2016 23:18:26 +0900</pubDate>
+        <link>http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html</link>
+        <guid isPermaLink="true">http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html</guid>
+        
+        <category>c-language</category>
+        
+        <category>clang</category>
+        
+        <category>チラシの裏</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 47.0 beta 1 default preference and firefox 46.0</title>
@@ -1152,68 +1398,6 @@ You may remove this folder after you close this XULRunner_as_prism application.&
         <category>xulrunner</category>
         
         <category>html</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Diff between firefox 44.0 beta 4 default preference and firefox 43.0.3</title>
-        <description>&lt;p&gt;
-This is difference between the default preference of Firefox 44.0 beta 4 and one of 43.0.3.
-&lt;/p&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox44_pref_diff&quot;&gt;
-&lt;caption&gt;Preference difference&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 43.0.3&lt;/td&gt;&lt;td&gt;Firefox 44.0 beta 4&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;drag.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;snap_&lt;wbr /&gt;friction&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;015&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;push.&lt;wbr /&gt;warning.&lt;wbr /&gt;infoURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/push/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;nextupdatetime&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;crashReporting.&lt;wbr /&gt;email&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;crashReporting.&lt;wbr /&gt;emailMe&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;crashReporting.&lt;wbr /&gt;includeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;crashReporting.&lt;wbr /&gt;sendReport&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;dontfocusfordialogs&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;clipboard.&lt;wbr /&gt;plainTextOnly&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td&gt;healthreport-js-provider-default,&lt;wbr /&gt;healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;command-button-measure.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;remote-enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;defaultColorUnit&lt;/td&gt;&lt;td&gt;hex&lt;/td&gt;&lt;td&gt;authored&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;markupPreview&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;jsonview.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-breakdowns&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;migration.&lt;wbr /&gt;warnings&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;toolbarSpec&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;,&quot;screenshot --fullpage&quot;, &quot;rulers&quot;]&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;,&quot;screenshot --fullpage&quot;, &quot;rulers&quot;, &quot;measure&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;filter.&lt;wbr /&gt;serviceworkers&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;autosaveFiles&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;sidebars&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;disable_&lt;wbr /&gt;image_&lt;wbr /&gt;src_&lt;wbr /&gt;set&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;mouseEvent.&lt;wbr /&gt;offsetXY.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;presentation.&lt;wbr /&gt;discovery.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;push.&lt;wbr /&gt;quotaUpdateDelay&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;3000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;require_&lt;wbr /&gt;user_&lt;wbr /&gt;interaction_&lt;wbr /&gt;for_&lt;wbr /&gt;beforeunload&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;idle_&lt;wbr /&gt;extended_&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;idle_&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;30000&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;interception.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;interception.&lt;wbr /&gt;opaque.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;openWindow.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;testUpdateOverOneDay&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;workers.&lt;wbr /&gt;sharedWorkers.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;systemAddon.&lt;wbr /&gt;update.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://aus5.mozilla.org/update/3/SystemAddons/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;gfx.&lt;wbr /&gt;font_&lt;wbr /&gt;rendering.&lt;wbr /&gt;fontconfig.&lt;wbr /&gt;fontlist.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;font_&lt;wbr /&gt;rendering.&lt;wbr /&gt;fontconfig.&lt;wbr /&gt;max_&lt;wbr /&gt;generic_&lt;wbr /&gt;substitutions&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;offscreencanvas.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;throw_&lt;wbr /&gt;on_&lt;wbr /&gt;asmjs_&lt;wbr /&gt;validation_&lt;wbr /&gt;failure&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;amd-switchable-gfx.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;height&lt;/td&gt;&lt;td&gt;47.&lt;wbr /&gt;0&lt;/td&gt;&lt;td&gt;36.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;margin-left&lt;/td&gt;&lt;td&gt;-23.&lt;wbr /&gt;5&lt;/td&gt;&lt;td&gt;-18.&lt;wbr /&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;use_&lt;wbr /&gt;long_&lt;wbr /&gt;tap_&lt;wbr /&gt;injector&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;width&lt;/td&gt;&lt;td&gt;44.&lt;wbr /&gt;0&lt;/td&gt;&lt;td&gt;34.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;prefixes.&lt;wbr /&gt;webkit&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;unicode-range.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;imagevisibility.&lt;wbr /&gt;enabled_&lt;wbr /&gt;for_&lt;wbr /&gt;browser_&lt;wbr /&gt;elements_&lt;wbr /&gt;only&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;contacts.&lt;wbr /&gt;gravatars.&lt;wbr /&gt;promo&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;contacts.&lt;wbr /&gt;gravatars.&lt;wbr /&gt;show&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;debug.&lt;wbr /&gt;websocket&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;ffmpeg.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;fragmented-mp4.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;fragmented-mp4.&lt;wbr /&gt;ffmpeg.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;fragmented-mp4.&lt;wbr /&gt;gmp.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;fragmented-mp4.&lt;wbr /&gt;use-blank-decoder&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp.&lt;wbr /&gt;decoder.&lt;wbr /&gt;aac&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp.&lt;wbr /&gt;decoder.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;gmp.&lt;wbr /&gt;decoder.&lt;wbr /&gt;h264&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;webm.&lt;wbr /&gt;audio.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;mp4.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;audio.&lt;wbr /&gt;fake_&lt;wbr /&gt;frequency&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;use-blank-decoder&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;youtube-ua.&lt;wbr /&gt;override&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;youtube-ua.&lt;wbr /&gt;override.&lt;wbr /&gt;from&lt;/td&gt;&lt;td&gt;43&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;youtube-ua.&lt;wbr /&gt;override.&lt;wbr /&gt;to&lt;/td&gt;&lt;td&gt;42&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;accept-encoding.&lt;wbr /&gt;secure&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;gzip, deflate, br&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pacing.&lt;wbr /&gt;requests.&lt;wbr /&gt;burst&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pacing.&lt;wbr /&gt;requests.&lt;wbr /&gt;hz&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;packaged-apps-developer-mode&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;signed-packages.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;spdy.&lt;wbr /&gt;pull-allowance&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;12582912&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;userContext.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;insecure_&lt;wbr /&gt;password.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;insecure_&lt;wbr /&gt;fallback_&lt;wbr /&gt;hosts.&lt;wbr /&gt;use_&lt;wbr /&gt;static_&lt;wbr /&gt;list&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;unrestricted_&lt;wbr /&gt;rc4_&lt;wbr /&gt;fallback&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;pageThumbs.&lt;wbr /&gt;minHeight&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;190&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;pageThumbs.&lt;wbr /&gt;minWidth&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;280&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;pageThumbs.&lt;wbr /&gt;screenSizeDivisor&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;7&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox44_pref_diff&quot;&gt;
-&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;File&lt;/td&gt;&lt;td&gt;Firefox 43.0.3&lt;/td&gt;&lt;td&gt;Firefox 44.0 beta 4&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/devtools.js&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-branding.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-l10n.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/webide-prefs.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;omni.ja!/defaults/pref/services-sync.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;omni.ja!/greprefs.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;webapprt/omni.ja!/defaults/preferences/prefs.jstools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox44_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox44_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox44_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox44_pref_diff td.json, table.diff_firefox40_pref_diff td.uri, table.diff_firefox40_pref_diff td.dump { word-break: break-all; }
-table.diff_firefox44_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox44_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox44_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox44_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-
-table.diff_firefox44_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox44_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
-</description>
-        <pubDate>Fri, 01 Jan 2016 19:20:08 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/01/diff-between-firefox-440-beta-4-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/01/diff-between-firefox-440-beta-4-default.html</guid>
-        
-        <category>pref diff</category>
-        
-        <category>mozilla</category>
         
         
       </item>
