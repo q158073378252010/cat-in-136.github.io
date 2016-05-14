@@ -34,7 +34,7 @@ strong { font-weight: bolder; font-style: normal; }
 @supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { :lang(ja) em, :lang(ja) strong { text-decoration: none; text-shadow: none; }
   :lang(ja) em { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
   :lang(ja) strong { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; } }
-.post-date { font-size: small; width: 9ex; text-align: end; }
+.post-date { -webkit-font-feature-settings: "tnum"; font-feature-settings: "tnum"; font-size: small; width: 10ex; text-align: end; }
 
 /* cat-in-136.blog() base */
 html, body { height: 100%; background-color: #fff; color: #000; line-height: 1.5; }
@@ -147,6 +147,7 @@ a:visited { color: #8f4889; }
 .post-content:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) > p { text-indent: 1em; }
 .post-content:lang(ja) > pre + p, .post-content:lang(ja) > math + p, .post-content:lang(ja) > ul + p, .post-content:lang(ja) > ol + p { text-indent: inherit !important; }
+.post-content:lang(ja) *:lang(en) { text-align: left; }
 
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended { writing-mode: vertical-rl; -webkit-writing-mode: vertical-rl; text-combine-upright: none; -ms-text-combine-horizontal: none; }
   html.vertical-writing-recommended time { /* As of Mar 2016, Edge *always* render <time> elements as horizontal-in-vertical. No idea. */ }
