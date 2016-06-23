@@ -3,10 +3,10 @@
   <channel>
     <title>cat_in_136.blog()</title>
     <description></description>
-    <link>http://cat-in-136.github.io/</link>
-    <atom:link href="http://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 15 May 2016 01:16:33 +0900</pubDate>
-    <lastBuildDate>Sun, 15 May 2016 01:16:33 +0900</lastBuildDate>
+    <link>https://cat-in-136.github.io/</link>
+    <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 24 Jun 2016 07:44:16 +0900</pubDate>
+    <lastBuildDate>Fri, 24 Jun 2016 07:44:16 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -243,8 +243,8 @@ mul10ui:                                # @mul10ui
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 06 May 2016 23:18:26 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html</guid>
+        <link>https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html</guid>
         
         <category>c-language</category>
         
@@ -307,8 +307,8 @@ table.diff_firefox47_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Fri, 29 Apr 2016 13:54:08 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</guid>
+        <link>https://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</guid>
         
         <category>pref diff</category>
         
@@ -370,8 +370,8 @@ table.diff_firefox46_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Fri, 29 Apr 2016 13:54:01 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/04/diff-between-firefox-460-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/diff-between-firefox-460-default.html</guid>
+        <link>https://cat-in-136.github.io/2016/04/diff-between-firefox-460-default.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/04/diff-between-firefox-460-default.html</guid>
         
         <category>pref diff</category>
         
@@ -462,8 +462,8 @@ Pango の gravity 指定で縦書きが実現できる。
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 23 Apr 2016 03:00:34 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</guid>
+        <link>https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</guid>
         
         <category>font</category>
         
@@ -590,8 +590,8 @@ Pango は正しくレンダリングしている模様。すごい。
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 09 Apr 2016 12:32:37 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html</guid>
+        <link>https://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/04/pango-view-otf-font-features.html</guid>
         
         <category>font</category>
         
@@ -755,8 +755,8 @@ Pango は正しくレンダリングしている模様。すごい。
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 23 Mar 2016 00:20:22 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</guid>
+        <link>https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</guid>
         
         <category>css</category>
         
@@ -841,8 +841,8 @@ Google Chromeのような挙動がいいのかわるいのかも言及してい�
 
 </description>
         <pubDate>Thu, 10 Mar 2016 00:44:56 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/03/css-gradient-on-high-dpi-retina.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/03/css-gradient-on-high-dpi-retina.html</guid>
+        <link>https://cat-in-136.github.io/2016/03/css-gradient-on-high-dpi-retina.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/03/css-gradient-on-high-dpi-retina.html</guid>
         
         <category>チラシの裏</category>
         
@@ -909,8 +909,8 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
         <pubDate>Mon, 22 Feb 2016 00:43:52 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</guid>
+        <link>https://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</guid>
         
         <category>pref diff</category>
         
@@ -1235,8 +1235,8 @@ _ (``kk`sk)
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 12 Feb 2016 01:07:50 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/02/sando-study.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/sando-study.html</guid>
+        <link>https://cat-in-136.github.io/2016/02/sando-study.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/02/sando-study.html</guid>
         
         <category>art</category>
         
@@ -1390,8 +1390,8 @@ You may remove this folder after you close this XULRunner_as_prism application.&
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 07 Feb 2016 00:14:09 +0900</pubDate>
-        <link>http://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</link>
-        <guid isPermaLink="true">http://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</guid>
+        <link>https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</guid>
         
         <category>mozilla</category>
         
