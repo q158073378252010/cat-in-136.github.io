@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと cat_in_136.blog()</title>
+<link rel="canonical" href="https://cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+</head>
+<body>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
+</header>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html" itemprop="url">Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2016-06-25T01:07:23+09:00</time>
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody" lang="ja">
+<h4 id="github-pages--jekyll--https--https-enforcement-">Github Pages 上 jekyll 使ったブログの HTTPS 強制 (HTTPS enforcement) への移行方法</h4>
+<ul>
+<li>Github Pages 移行方法自体は下記の通り至極簡単
+<ul>
+<li><a href="https://help.github.com/articles/securing-your-github-pages-site-with-https/">Securing your GitHub Pages site with HTTPS - User Documentation</a>, Github Help.</li>
+</ul>
+</li>
+<li>Jekyll の方も config.yml の url を変えるだけ：
+<ul>
+<li><code class="highlighter-rouge">url: "http://cat-in-136.github.io"</code>→<code class="highlighter-rouge">url: "https://cat-in-136.github.io"</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="http--https-">HTTP → HTTPS の変更によって、やらかした外部サーヴィスに関する案件</h4>
+<ul>
+<li>更新の配信をしている dlvr.it が、https への変更によって新記事と認識し、Twitter への投稿をした件
+<ul>
+<li>https://twitter.com/cat_in_136/status/746120930556928001 〜 https://twitter.com/cat_in_136/status/746120969731792896</li>
+<li>対策としては、一旦無効にしておくべきであった。</li>
+<li>もし、RSS Reader 経由でここの記事を読んでいる方も同様の現象が発生している恐れ</li>
+</ul>
+</li>
+<li>DISQUS の会話内容の消滅
+<ul>
+<li>URL の移行し忘れであった。</li>
+<li>
+<table>
+<tbody>
+<tr>
+<td>方法は [URL Mapper</td>
+<td>DISQUS](https://help.disqus.com/customer/portal/articles/912757-url-mapper) を使用する。</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html&amp;text=Github%20Page%20%E3%81%AE%E6%9C%AC%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%20HTTPS%20%E5%BC%B7%E5%88%B6%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E9%9A%9B%E3%81%AB%E3%82%84%E3%82%89%E3%81%8B%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html&amp;linkname=Github%20Page%20%E3%81%AE%E6%9C%AC%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%20HTTPS%20%E5%BC%B7%E5%88%B6%E3%81%AB%E7%A7%BB%E8%A1%8C%E3%81%97%E3%81%9F%E9%9A%9B%E3%81%AB%E3%82%84%E3%82%89%E3%81%8B%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-06-24-my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.md" class="source-path">_posts/2016-06-24-my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.md</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-06-24-my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.md">History</a>)
+</div>
+</footer>
+</article>
+<nav class="post-nav wrap">
+<div class="previous-post">
+<a href="/2016/05/bit-shift-operator-vs-division-operator-but.html" title="ビットシフトと割り算はどっちが良いか、とはいうけれど" rel="prev">&#x2190;ビットシフトと割り算はどっちが良いか、とはいうけれど</a>
+</div>
+<div class="next-post">
+</div>
+</nav>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<aside class="post-related">
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2014-11-10</span>
+<a class="post-link" href="/2014/11/blog-image-moving-and-svg.html">ブログの画像の引っ越しとSVG化(Retina対応とも)</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-12-31</span>
+<a class="post-link" href="/2013/12/cookie.html">Cookie のブロックを検出する方法：更新</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-09-06</span>
+<a class="post-link" href="/2014/09/move-to-jekyll.html">Jekyll移行メモ</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-03-05</span>
+<a class="post-link" href="/2013/03/html-user-select.html">HTML でのコピペしやすさを user-select などで向上させる</a>
+</li>
+<li class="post-item">
+<span class="post-date">2010-02-27</span>
+<a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
+</footer>
+</body>
+</html>
+

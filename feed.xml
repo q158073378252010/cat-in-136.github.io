@@ -5,9 +5,63 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 24 Jun 2016 07:44:16 +0900</pubDate>
-    <lastBuildDate>Fri, 24 Jun 2016 07:44:16 +0900</lastBuildDate>
+    <pubDate>Sat, 25 Jun 2016 01:13:17 +0900</pubDate>
+    <lastBuildDate>Sat, 25 Jun 2016 01:13:17 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと</title>
+        <description>&lt;h4 id=&quot;github-pages--jekyll--https--https-enforcement-&quot;&gt;Github Pages 上 jekyll 使ったブログの HTTPS 強制 (HTTPS enforcement) への移行方法&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Github Pages 移行方法自体は下記の通り至極簡単
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/securing-your-github-pages-site-with-https/&quot;&gt;Securing your GitHub Pages site with HTTPS - User Documentation&lt;/a&gt;, Github Help.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Jekyll の方も config.yml の url を変えるだけ：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;url: &quot;http://cat-in-136.github.io&quot;&lt;/code&gt;→&lt;code class=&quot;highlighter-rouge&quot;&gt;url: &quot;https://cat-in-136.github.io&quot;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;http--https-&quot;&gt;HTTP → HTTPS の変更によって、やらかした外部サーヴィスに関する案件&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;更新の配信をしている dlvr.it が、https への変更によって新記事と認識し、Twitter への投稿をした件
+    &lt;ul&gt;
+      &lt;li&gt;https://twitter.com/cat_in_136/status/746120930556928001 〜 https://twitter.com/cat_in_136/status/746120969731792896&lt;/li&gt;
+      &lt;li&gt;対策としては、一旦無効にしておくべきであった。&lt;/li&gt;
+      &lt;li&gt;もし、RSS Reader 経由でここの記事を読んでいる方も同様の現象が発生している恐れ&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;DISQUS の会話内容の消滅
+    &lt;ul&gt;
+      &lt;li&gt;URL の移行し忘れであった。&lt;/li&gt;
+      &lt;li&gt;
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;方法は [URL Mapper&lt;/td&gt;
+              &lt;td&gt;DISQUS](https://help.disqus.com/customer/portal/articles/912757-url-mapper) を使用する。&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 25 Jun 2016 01:07:23 +0900</pubDate>
+        <link>https://cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html</guid>
+        
+        <category>チラシの裏</category>
+        
+        
+      </item>
     
       <item>
         <title>ビットシフトと割り算はどっちが良いか、とはいうけれど</title>
@@ -1241,163 +1295,6 @@ _ (``kk`sk)
         <category>art</category>
         
         <category>math</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Study for XULRunner as Prism, using Firefox</title>
-        <description>&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201602_prism_xulrunner_firefox.png&quot; width=&quot;640&quot; height=&quot;400&quot; /&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Mission: run a web application without the normal browser UI, as a XULRunner application but using Firefox (version 3 and above).&lt;/p&gt;
-&lt;p&gt;I am a Firefox funboy. So I want to use Gecko rather than WebKit (&lt;a href=&quot;http://electron.atom.io/&quot;&gt;Electron&lt;/a&gt;).&lt;/p&gt;
-
-&lt;h3&gt;Idea&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;em&gt;XULRunner&lt;/em&gt; is a Mozilla runtime package that can be used to bootstrap XUL+XPCOM applications that are as rich as Firefox and Thunderbird.&lt;/p&gt;
-  &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Firefox (from version 3) ships with a private XULRunner package, which can run any compatible XULRunner application using the &lt;code&gt;-app&lt;/code&gt; switch: &lt;code&gt;firefox -app application.ini&lt;/code&gt; is equivalent to &lt;code&gt;xulrunner -app application.ini&lt;/code&gt;&lt;/p&gt;
-  &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Prism is a simple XULRunner-based browser that hosts web applications without the normal web browser user interface.&lt;/p&gt;
-  &lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Prism&quot;&gt;Prism - Archive of obsolete content&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;h3&gt;Solution&lt;/h3&gt;
-
-&lt;p&gt;Example: view &lt;code&gt;https://www.google.com/&lt;/code&gt; without the normal browser UI.&lt;/p&gt;
-
-&lt;p&gt;Souce code is available on github &lt;a href=&quot;https://github.com/cat-in-136/study-for-xulrunner-as-prism-using-firefox&quot;&gt;cat-in-136/study-for-xulrunner-as-prism-using-firefox&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4&gt;Normal approach&lt;/h4&gt;
-
-&lt;p&gt;Open &lt;code&gt;app.xul&lt;/code&gt; when the XULRunner_as_prism application is lanched.
-And then &lt;code&gt;app.xul&lt;/code&gt; load the web page – &lt;code&gt;https://www.google.com/&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;application.ini&lt;/p&gt;
-
-    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;[App]
-Vendor=cat_in_136
-Name=XULRunner_as_prism
-Version=0.0
-BuildID=20160206
-Copyright=Copyright (c) 2016 @cat_in_136
-ID=xulrunner_as_prism@cat-in-136.github.io
-   
-[Gecko]
-MinVersion=38
-MaxVersion=*
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;defaults/preferences/prefs.js&lt;/p&gt;
-
-    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;pref(&quot;toolkit.defaultChromeURI&quot;, &quot;chrome://xrap/content/app.xul&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;chrome.manifest&lt;/p&gt;
-
-    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;content xrap content/
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;content/app.xul&lt;/p&gt;
-
-    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;
-&amp;lt;?xml-stylesheet href=&quot;chrome://global/skin/&quot; type=&quot;text/css&quot;?&amp;gt;
-&amp;lt;window id=&quot;main&quot; width=&quot;400&quot; height=&quot;300&quot; xmlns=&quot;http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul&quot;&amp;gt;
-&amp;lt;browser id=&quot;browser&quot; flex=&quot;1&quot; type=&quot;content-primary&quot; src=&quot;https://www.google.co.jp/&quot;/&amp;gt;
-&amp;lt;findbar id=&quot;findbar&quot; hidden=&quot;false&quot; browserid=&quot;browser&quot;/&amp;gt;
-&amp;lt;/window&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;How to run: &lt;code&gt;firefox -app application.ini&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4&gt;Minimum code solution&lt;/h4&gt;
-
-&lt;p&gt;XULRunner FAQ says:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;dl&gt;
- &lt;dt&gt;
-  If I use XULRunner do I have to write my application in XUL?&lt;/dt&gt;
- &lt;dd&gt;
-  No! You can write your application in any language supported by the Mozilla web platform, including HTML, XHTML, SVG, or XUL.&lt;/dd&gt;
-&lt;/dl&gt;
-&lt;footer&gt;-- &lt;cite&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner/FAQ&quot;&gt;XULRunner FAQ - Mozilla&lt;/a&gt;, MDN&lt;/cite&gt;&lt;/footer&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Wow!&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;application.ini (No Change)&lt;/p&gt;
-
-    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;[App]
-Vendor=cat_in_136
-Name=XULRunner_as_prism
-Version=0.0
-BuildID=20160206
-Copyright=Copyright (c) 2016 @cat_in_136
-ID=xulrunner_as_prism@cat-in-136.github.io
-   
-[Gecko]
-MinVersion=38
-MaxVersion=*
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;defaults/preferences/prefs.js&lt;/p&gt;
-
-    &lt;div&gt;&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;pref(&quot;toolkit.defaultChromeURI&quot;, &quot;https://www.google.com/&quot;);
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;How to run: &lt;code&gt;firefox -app application.ini&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3&gt;Note: profile folder location&lt;/h3&gt;
-
-&lt;p&gt;The profile folder is placed in &lt;code&gt;%APPDATA%\cat_in_136&lt;/code&gt; (for windows) or &lt;code&gt;~/.cat_in_136&lt;/code&gt; (for unix).
-You may remove this folder after you close this XULRunner_as_prism application.&lt;/p&gt;
-
-&lt;h3&gt;References&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Mozilla/Prism&quot;&gt;Prism - Archive of obsolete content&lt;/a&gt;, MDN&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://mozillalabs.com/en-US/chromeless/&quot;&gt;Chromeless Browser&lt;/a&gt;, Mozilla Labs&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner&quot;&gt;XULRunner - Mozilla&lt;/a&gt;, MDN&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/Projects/XULRunner/FAQ&quot;&gt;XULRunner FAQ - Mozilla&lt;/a&gt;, MDN&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 07 Feb 2016 00:14:09 +0900</pubDate>
-        <link>https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</link>
-        <guid isPermaLink="true">https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html</guid>
-        
-        <category>mozilla</category>
-        
-        <category>xulrunner</category>
-        
-        <category>html</category>
         
         
       </item>
