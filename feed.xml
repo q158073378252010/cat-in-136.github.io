@@ -5,9 +5,71 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 25 Jun 2016 01:13:17 +0900</pubDate>
-    <lastBuildDate>Sat, 25 Jun 2016 01:13:17 +0900</lastBuildDate>
+    <pubDate>Sun, 03 Jul 2016 21:14:08 +0900</pubDate>
+    <lastBuildDate>Sun, 03 Jul 2016 21:14:08 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Diff between firefox 48.0 beta 5 default preference and firefox 47.0.1</title>
+        <description>&lt;p&gt;
+This is difference between the default preference of Firefox 48.0 beta 5 and one of 47.0.1.
+&lt;/p&gt;
+
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox48_pref_diff&quot;&gt;
+&lt;caption&gt;Preference difference&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 47.0.1&lt;/td&gt;&lt;td&gt;Firefox 48.0 beta 5&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://aus5.mozilla.org/update/3/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://aus5.mozilla.org/update/6/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%SYSTEM_CAPABILITIES%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;disable_&lt;wbr /&gt;for_&lt;wbr /&gt;scroll_&lt;wbr /&gt;linked_&lt;wbr /&gt;effects&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;min_&lt;wbr /&gt;velocity_&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;minimap.&lt;wbr /&gt;visibility.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;peek_&lt;wbr /&gt;messages.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;velocity_&lt;wbr /&gt;bias&lt;/td&gt;&lt;td&gt;1.&lt;wbr /&gt;0&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;chromeURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;chrome://webapprt/content/webapp.xul&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;chrome://browser/content/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;content-signing-test&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;keys&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;version&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;offline-apps.&lt;wbr /&gt;notify&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;block_&lt;wbr /&gt;potentially_&lt;wbr /&gt;unwanted&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;block_&lt;wbr /&gt;uncommon&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;daysBeforeHidingSuggestionsPrompt&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;lastSuggestionsPromptDate&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;20160601&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;maxRichResults&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;unifiedcomplete&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;dom.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;errorconsole.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-dominator-tree-displays&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-label-displays&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-tree-map-displays&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;max-individuals&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;max-retaining-paths&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;always_&lt;wbr /&gt;allow_&lt;wbr /&gt;move_&lt;wbr /&gt;resize_&lt;wbr /&gt;window&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;animations-api.&lt;wbr /&gt;element-animate.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;document.&lt;wbr /&gt;scrollingElement.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;max_&lt;wbr /&gt;chrome_&lt;wbr /&gt;script_&lt;wbr /&gt;run_&lt;wbr /&gt;time&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;max_&lt;wbr /&gt;script_&lt;wbr /&gt;run_&lt;wbr /&gt;time&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;mozAlarms.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;mozContacts.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;mozPay.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;mozTCPSocket.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;node.&lt;wbr /&gt;rootNode.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;presentation.&lt;wbr /&gt;session_&lt;wbr /&gt;transport.&lt;wbr /&gt;data_&lt;wbr /&gt;channel.&lt;wbr /&gt;enable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;requestcache.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;sysmsg.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;autoDisableScopes&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;detailsURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.com/%LOCALE%/blocklist/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/blocklist/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;suppressUI&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;enabledScopes&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;installDistroAddons&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;showMismatchUI&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;webextensions.&lt;wbr /&gt;base-content-security-policy&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;script-src &#39;self&#39; https://* moz-extension: blob: filesystem: &#39;unsafe-eval&#39; &#39;unsafe-inline&#39;; object-src &#39;self&#39; https://* moz-extension: blob: filesystem:;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;webextensions.&lt;wbr /&gt;default-content-security-policy&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;script-src &#39;self&#39;; object-src &#39;self&#39;;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;webservice.&lt;wbr /&gt;discoverURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.addons.mozilla.org/%LOCALE%/firefox/discovery/pane/%VERSION%/%OS%/%COMPATIBILITY_MODE%&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://discovery.addons.mozilla.org/%LOCALE%/firefox/discovery/pane/%VERSION%/%OS%/%COMPATIBILITY_MODE%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;full-screen-api.&lt;wbr /&gt;transition.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;500&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;geo.&lt;wbr /&gt;wifi.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_API_KEY%&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;gfx.&lt;wbr /&gt;canvas.&lt;wbr /&gt;azure.&lt;wbr /&gt;backends&lt;/td&gt;&lt;td&gt;cairo&lt;/td&gt;&lt;td&gt;skia&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;logging.&lt;wbr /&gt;painted-pixel-count.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;mem.&lt;wbr /&gt;gc_&lt;wbr /&gt;refresh_&lt;wbr /&gt;frame_&lt;wbr /&gt;slices_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;child-process-shutdown&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;offmainthreadcomposition.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;allow_&lt;wbr /&gt;dragging_&lt;wbr /&gt;across_&lt;wbr /&gt;other_&lt;wbr /&gt;caret&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;always_&lt;wbr /&gt;show_&lt;wbr /&gt;when_&lt;wbr /&gt;scrolling&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;bar.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;extendedvisibility&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;background-clip-text.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;color-adjust.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;prefixes.&lt;wbr /&gt;webkit&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;sticky.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-combine-upright-digits.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-combine-upright.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;display-list.&lt;wbr /&gt;dump-content&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;framevisibility.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;framevisibility.&lt;wbr /&gt;numscrollportheights&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;framevisibility.&lt;wbr /&gt;numscrollportwidths&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;imagevisibility.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;imagevisibility.&lt;wbr /&gt;numscrollportheights&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;imagevisibility.&lt;wbr /&gt;numscrollportwidths&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;decoder-doctor.&lt;wbr /&gt;notifications-allowed&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;MediaWidevineNoWMFNoSilverlight&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;decoder-doctor.&lt;wbr /&gt;verbose&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;screensharing.&lt;wbr /&gt;allowed_&lt;wbr /&gt;domains&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;webex.com,*.webex.com,ciscospark.com,*.ciscospark.com,projectsquared.com,*.projectsquared.com,*.room.co,room.co,beta.talky.io,talky.io,*.clearslide.com,appear.in,*.appear.in,tokbox.com,*.tokbox.com,*.sso.francetelecom.fr,*.si.francetelecom.fr,*.sso.infra.ftgroup,*.multimedia-conference.orange-business.com,*.espacecollaboration.orange-business.com,free.gotomeeting.com,g2m.me,*.g2m.me,example.com,*.mypurecloud.com,*.mypurecloud.com.au,spreed.me,*.spreed.me,*.spreed.com,air.mozilla.org,*.circuit.com,*.yourcircuit.com,circuit.siemens.com,yourcircuit.siemens.com,circuitsandbox.net,*.unify.com,tandi.circuitsandbox.net,*.ericsson.net,*.cct.ericsson.net,*.opentok.com,*.conf.meetecho.com,meet.jit.si,*.meet.jit.si,web.stage.speakeasyapp.net,web.speakeasyapp.net,*.hipchat.me,*.beta-wspbx.com,*.wspbx.com,*.unifiedcloudit.com,*.smartboxuc.com,*.smartbox-uc.com,*.panterranetworks.com,pexipdemo.com,*.pexipdemo.com,pex.me,*.pex.me,*.rd.pexip.com,1click.io,*.1click.io,*.fuze.com,*.fuzemeeting.com,*.thinkingphones.com,gotomeeting.com,*.gotomeeting.com,gotowebinar.com,*.gotowebinar.com,gototraining.com,*.gototraining.com,citrix.com,*.citrix.com,expertcity.com,*.expertcity.com,citrixonline.com,*.citrixonline.com,g2m.me,*.g2m.me,gotomeet.me,*.gotomeet.me,gotomeet.at,*.gotomeet.at&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;webex.com,*.webex.com,ciscospark.com,*.ciscospark.com,projectsquared.com,*.projectsquared.com,*.room.co,room.co,beta.talky.io,talky.io,*.clearslide.com,appear.in,*.appear.in,tokbox.com,*.tokbox.com,*.sso.francetelecom.fr,*.si.francetelecom.fr,*.sso.infra.ftgroup,*.multimedia-conference.orange-business.com,*.espacecollaboration.orange-business.com,free.gotomeeting.com,g2m.me,*.g2m.me,*.mypurecloud.com,*.mypurecloud.com.au,spreed.me,*.spreed.me,*.spreed.com,air.mozilla.org,*.circuit.com,*.yourcircuit.com,circuit.siemens.com,yourcircuit.siemens.com,circuitsandbox.net,*.unify.com,tandi.circuitsandbox.net,*.ericsson.net,*.cct.ericsson.net,*.opentok.com,*.conf.meetecho.com,meet.jit.si,*.meet.jit.si,web.stage.speakeasyapp.net,web.speakeasyapp.net,*.hipchat.me,*.beta-wspbx.com,*.wspbx.com,*.unifiedcloudit.com,*.smartboxuc.com,*.smartbox-uc.com,*.panterranetworks.com,pexipdemo.com,*.pexipdemo.com,pex.me,*.pex.me,*.rd.pexip.com,1click.io,*.1click.io,*.fuze.com,*.fuzemeeting.com,*.thinkingphones.com,gotomeeting.com,*.gotomeeting.com,gotowebinar.com,*.gotowebinar.com,gototraining.com,*.gototraining.com,citrix.com,*.citrix.com,expertcity.com,*.expertcity.com,citrixonline.com,*.citrixonline.com,g2m.me,*.g2m.me,gotomeet.me,*.gotomeet.me,gotomeet.at,*.gotomeet.at,miriadaxdes.miriadax.net,certificacion.miriadax.net,miriadax.net&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;audio.&lt;wbr /&gt;full_&lt;wbr /&gt;duplex&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;max-connections&lt;/td&gt;&lt;td&gt;256&lt;/td&gt;&lt;td&gt;900&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;notify.&lt;wbr /&gt;IPv6&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;enable-prefetch&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;prefetch-force-valid-for&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;prefetch-min-confidence&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;predictor.&lt;wbr /&gt;prefetch-rolling-load-count&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;places.&lt;wbr /&gt;database.&lt;wbr /&gt;growthIncrementKiB&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugin.&lt;wbr /&gt;allowed_&lt;wbr /&gt;types&lt;/td&gt;&lt;td&gt; &lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;content.&lt;wbr /&gt;signature.&lt;wbr /&gt;root_&lt;wbr /&gt;hash&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;97:E8:BA:9C:F1:2F:B3:DE:53:CC:42:A4:E6:57:7E:D6:4D:F4:93:C2:47:B4:14:FE:A0:36:81:8D:38:23:56:0E&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;csp.&lt;wbr /&gt;debug&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;onecrl.&lt;wbr /&gt;via.&lt;wbr /&gt;amo&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;pki.&lt;wbr /&gt;name_&lt;wbr /&gt;matching_&lt;wbr /&gt;mode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;pki.&lt;wbr /&gt;sha1_&lt;wbr /&gt;enforcement_&lt;wbr /&gt;level&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f.&lt;wbr /&gt;softtoken&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f.&lt;wbr /&gt;usbtoken&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f_&lt;wbr /&gt;enable_&lt;wbr /&gt;softtoken&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f_&lt;wbr /&gt;enable_&lt;wbr /&gt;usbtoken&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;addons.&lt;wbr /&gt;checked&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;addons.&lt;wbr /&gt;collection&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;addons&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;changes.&lt;wbr /&gt;path&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;/buckets/monitor/collections/changes/records&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;gfx.&lt;wbr /&gt;checked&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;gfx.&lt;wbr /&gt;collection&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;gfx&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;plugins.&lt;wbr /&gt;checked&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;plugins.&lt;wbr /&gt;collection&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;plugins&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;update_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;asyncshutdown.&lt;wbr /&gt;crash_&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;60000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;asyncshutdown.&lt;wbr /&gt;timeout.&lt;wbr /&gt;crash&lt;/td&gt;&lt;td&gt;60000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;webapprt.&lt;wbr /&gt;app_&lt;wbr /&gt;update_&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;xpinstall.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox48_pref_diff&quot;&gt;
+&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 47.0.1&lt;/td&gt;&lt;td&gt;Firefox 48.0 beta 5&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/devtools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/webide-prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;omni.ja!/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;omni.ja!/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;webapprt/omni.ja!/defaults/preferences/prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;not present&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox48_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox48_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox48_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox48_pref_diff td.json, table.diff_firefox48_pref_diff td.uri, table.diff_firefox48_pref_diff td.dump { word-break: break-all; }
+table.diff_firefox48_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox48_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox48_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox48_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+
+table.diff_firefox48_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox48_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+</description>
+        <pubDate>Sun, 03 Jul 2016 21:08:54 +0900</pubDate>
+        <link>https://cat-in-136.github.io/2016/07/diff-between-firefox-480-beta-5-default.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/07/diff-between-firefox-480-beta-5-default.html</guid>
+        
+        <category>pref diff</category>
+        
+        <category>mozilla</category>
+        
+        
+      </item>
     
       <item>
         <title>Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと</title>
@@ -969,332 +1031,6 @@ table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>算道の解析</title>
-        <description>&lt;p&gt;
-&lt;a href=&quot;http://sando.monophile.net/&quot;&gt;算道&lt;/a&gt;なる構成論的アートとは、
-論理珠算を用いた計算であるが、
-説明がかなり省かれていてよくわからんのでここにまとめる。
-&lt;/p&gt;
-
-&lt;h3&gt;Unlambda記法&lt;/h3&gt;
-
-&lt;p&gt;
-算道の表記で Unlambda記法 (Unlambda expression ?) は、
-下記のとおり珠を転写して表記したものである。
-&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;珠&lt;/th&gt;
-&lt;th&gt;文字&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;白珠&lt;/td&gt;
-&lt;td&gt;`&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;青珠&lt;/td&gt;
-&lt;td&gt;s&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;黄珠&lt;/td&gt;
-&lt;td&gt;k&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;赤珠&lt;/td&gt;
-&lt;td&gt;i&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;
-例えば、零を表す「白白赤黄青」は、&lt;code&gt;``iks&lt;/code&gt;と表す。
-&lt;/p&gt;
-
-&lt;p&gt;
-これは、つまるところ&lt;a href=&quot;https://ja.wikipedia.org/wiki/SKI%E3%82%B3%E3%83%B3%E3%83%93%E3%83%8D%E3%83%BC%E3%82%BF%E8%A8%88%E7%AE%97&quot;&gt;SKIコンビネータ計算&lt;/a&gt;
-の Unlambda 表記そのものであって、
-算道はSKIと等価である。
-&lt;/p&gt;
-
-&lt;h3&gt;整珠&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;s&lt;/code&gt;,&lt;code&gt;k&lt;/code&gt;,&lt;code&gt;i&lt;/code&gt;は、
-それぞれ単珠(single-ju?)と呼ばれるが、これはまた整珠(integal-ju?)でもある。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;@1&lt;/code&gt;,&lt;code&gt;@2&lt;/code&gt;が整珠のとき、
-&lt;code&gt;`@1@2&lt;/code&gt;もまた整珠である。&lt;/li&gt;
-&lt;li&gt;複珠(multiple-ju?)とは複数の珠からなる整珠のことである。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;整珠の構造&lt;/h4&gt;
-
-&lt;p&gt;
-複珠は&lt;code&gt;`@1@2&lt;/code&gt;からなるから、&lt;code&gt;`@1@2&lt;/code&gt;が入れ子になって
-整珠ができている。
-&lt;/p&gt;
-&lt;p&gt;
-整珠の入れ子の構造を括弧で表した例を以下に示す。
-&lt;/p&gt;
-&lt;dl&gt;
-    &lt;dt&gt;零&lt;/dt&gt;
-    &lt;dd&gt;&lt;code&gt;``iks = `(`ik)s&lt;/code&gt;&lt;/dd&gt;
-    &lt;dt&gt;一&lt;/dt&gt;
-    &lt;dd&gt;&lt;code&gt;`s`ki = `s(`ki)&lt;/code&gt;&lt;/dd&gt;
-    &lt;dt&gt;ものまね鳥の番い&lt;/dt&gt;
-    &lt;dd&gt;&lt;code&gt;```sii``sii = `(`(`si)i)(`(`(si)i)&lt;/code&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h3&gt;論理算盤への展開&lt;/h3&gt;
-
-&lt;p&gt;
-論理珠算を行うにあたり論理算盤へ珠を展開する。
-展開する時、珠を左から右、上から下に置いていく。
-珠を置かない場所を作ってもよいし、
-珠を右に置くか下の行に移動するかは自由である。
-&lt;/p&gt;
-&lt;p&gt;
-配置方法について言及していていないため、
-下記に出てくる記法・用語は本文書で提案するものである。
-&lt;/p&gt;
-
-&lt;h4&gt;Unlambda形式に依る論理算盤の記述&lt;/h4&gt;
-
-&lt;p&gt;
-本文書では、盤面上の配置を Unlambda形式に依ってそのまま記載するものとする。
-但し、珠が置かれていないことを &lt;code&gt;_&lt;/code&gt; で示す。
-&lt;/p&gt;
-&lt;p&gt;
-&lt;code&gt;`sk&lt;/code&gt; の盤面上の配置例を下記に示す。
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;` s
-_ k&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4&gt;「直列配置」&lt;/h4&gt;
-
-&lt;p&gt;
-「直列配置(Linear alignment)」は、そのまま盤面に左から右へ並べたものである。
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;` s k&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-なお、紙面の横幅の都合上途中で行を変えてもよい。
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;` ` ` s i i
-` ` s i i&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4&gt;「完全二分木配置」&lt;/h4&gt;
-
-&lt;p&gt;
-「完全二分木配置(complete binary-tree alignment)」は、&lt;code&gt;`@1@2&lt;/code&gt;の入れ子構造を
-完全な形で表現した配置形式である。
-&lt;/p&gt;
-
-&lt;p&gt;
-&lt;code&gt;`@1@2&lt;/code&gt;を下記の通り配置する。
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;` @1
-_ @2&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-ここで&lt;code&gt;@1&lt;/code&gt;,&lt;code&gt;@2&lt;/code&gt;が、複珠であるとき、
-さらに入れ子にする形で配置する。
-&lt;/p&gt;
-&lt;p&gt;
-たとえば
-&lt;code&gt;@1 = `@3@4&lt;/code&gt;, &lt;code&gt;@2 = `@5@6&lt;/code&gt; であるならば、
-先ほどのの盤面は下記のようになる。
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;` ` @3
-_ _ @4
-_ ` @5
-_ _ @6&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4&gt;「二分木配置」&lt;/h4&gt;
-
-&lt;p&gt;
-完全二分木配置では、紙面も盤面も大きさを要する。
-そこで完全二分木配置のうち一部の&lt;code&gt;`@1@2&lt;/code&gt;構造をまとめて積み上げることを考える。
-&lt;/p&gt;
-
-&lt;p&gt;
-ここでは積み上げた珠は括弧を用いて表現する。
-&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;` ` @3
-_ _ @4
-_ (`@5@6)&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3&gt;規則&lt;/h3&gt;
-
-&lt;p&gt;
-下記の規則に基づいて整珠を動かす=計算することができる。
-&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
-&lt;dd&gt;&lt;code&gt;```s@0@1@2 = ``@0@2`@1@2&lt;/code&gt;&lt;/dd&gt;
-&lt;dt&gt;黄珠の規則 (k-rule?)&lt;/dt&gt;
-&lt;dd&gt;&lt;code&gt;``k@0@1 = @0&lt;/code&gt;&lt;/dd&gt;
-&lt;dt&gt;赤珠の規則 (i-rule?)&lt;/dt&gt;
-&lt;dd&gt;&lt;code&gt;`i@0 = @0&lt;/code&gt;&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;
-ここで&lt;code&gt;@0&lt;/code&gt;,&lt;code&gt;@1&lt;/code&gt;,...は整珠である。
-青珠の規則において、2回現れているがこれは&lt;code&gt;@2&lt;/code&gt;を複製して同じものを2つ用意するということである。
-&lt;/p&gt;
-
-&lt;p&gt;
-それぞれの規則を、以下に二分木配置で表す。
-&lt;/p&gt;
-
-&lt;dl&gt;
-&lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
-&lt;dd&gt;
-&lt;pre&gt;&lt;code&gt;` ` ` s
-      @0
-    @1
-  @2
-&lt;/code&gt;&lt;/pre&gt;
-↓
-&lt;pre&gt;&lt;code&gt;` ` @0
-    @2
-  ` @1
-    @2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/dd&gt;
-&lt;dt&gt;黄珠の規則 (k-rule?)&lt;/dt&gt;
-&lt;dd&gt;
-&lt;pre&gt;&lt;code&gt;` ` k
-    @0
-  @1
-&lt;/code&gt;&lt;/pre&gt;
-↓
-&lt;pre&gt;&lt;code&gt;@1&lt;/code&gt;&lt;/pre&gt;
-&lt;/dd&gt;
-&lt;dt&gt;赤珠の規則 (i-rule?)&lt;/dt&gt;
-&lt;dd&gt;
-&lt;pre&gt;&lt;code&gt;` i
-  @0
-&lt;/code&gt;&lt;/pre&gt;
-↓
-&lt;pre&gt;&lt;code&gt;@0&lt;/code&gt;&lt;/pre&gt;
-&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;p&gt;
-それぞれの規則の前後は共に整珠である。
-規則に従って計算している限り、計算結果は整珠である。
-逆に整珠でなくなったときは計算に失敗（いわゆる計算ミス）しているのである。
-&lt;/p&gt;
-
-&lt;h4&gt;算道の規則とSKI評価演算の関係&lt;/h4&gt;
-
-
-&lt;dl&gt;
-&lt;dt&gt;青珠の規則 (s-rule?)&lt;/dt&gt;
-&lt;dd&gt;Substitution combinator&lt;/dd&gt;
-&lt;dt&gt;黄珠の規則 (k-rule?)&lt;/dt&gt;
-&lt;dd&gt;Constant combinator&lt;/dd&gt;
-&lt;dt&gt;赤珠の規則 (i-rule?)&lt;/dt&gt;
-&lt;dd&gt;Identity combinator&lt;/dd&gt;
-&lt;/dl&gt;
-
-&lt;h3&gt;計算手順&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;整珠であることを確認。
-    &lt;ul&gt;&lt;li&gt;整珠ならば次に進む。&lt;/li&gt;&lt;li&gt;整珠ではない場合計算に失敗。&lt;/li&gt;&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;赤珠の規則(i-rule?)が適用可能ならば適用する
-    &lt;ul&gt;&lt;li&gt;適用したら1からやり直す。&lt;/li&gt;&lt;li&gt;適用できない場合次に進む&lt;/li&gt;&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;黄珠の規則(k-rule?)が適用可能ならば適用する
-    &lt;ul&gt;&lt;li&gt;適用したら1からやり直す。&lt;/li&gt;&lt;li&gt;適用できない場合次に進む&lt;/li&gt;&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;青珠の規則(s-rule?)が適用可能ならば適用する
-    &lt;ul&gt;&lt;li&gt;適用したら1からやり直す。&lt;/li&gt;&lt;li&gt;適用できない場合計算終了&lt;/li&gt;&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;計算例：真かつ偽&lt;/h3&gt;
-
-&lt;p&gt;
-『真かつ偽』を表す整珠は&lt;code&gt;````sskk`sk&lt;/code&gt;である。
-&lt;/p&gt;
-
-&lt;ol start=&quot;0&quot;&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;` ` ` ` s
-_ _ _ _ s
-_ _ _ k
-_ _ k
-_ (`sk)
-&lt;/code&gt;&lt;/pre&gt;青珠の規則(s-rule?)を&lt;code&gt;```sskk&lt;/code&gt;に適用し、&lt;/li&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;` ` ` s
-_ _ _ k
-_ _ ` k
-_ _ _ k
-_ (`sk)
-&lt;/code&gt;&lt;/pre&gt;&lt;code&gt;`kk&lt;/code&gt;を積み上げて
-&lt;/li&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;` ` ` s
-_ _ _ k
-_ _ (`kk)
-_ (`sk)
-&lt;/code&gt;&lt;/pre&gt;青珠の規則(s-rule?)を全体に適用し、
-&lt;/li&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;` ` k
-_ _ (`sk)
-_ ` (`kk)
-_ _ (`sk)
-&lt;/code&gt;&lt;/pre&gt;&lt;code&gt;``kk`sk&lt;/code&gt;を積み上げて
-&lt;/li&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;` ` k
-_ _ (`sk)
-_ (``kk`sk)
-&lt;/code&gt;&lt;/pre&gt;黄珠の規則(k-rule?)を全体に適用し、
-&lt;/li&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;(`sk)&lt;/code&gt;&lt;/pre&gt;
-計算終了。答えは「偽」である。
-&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;感想&lt;/h3&gt;
-
-&lt;p&gt;
-青珠の規則の規則にて、&lt;code&gt;@2&lt;/code&gt;を複製する必要があるが、
-珠に凹凸のパターンを付けるなどして複製が容易にするようにするとよいと思う。
-&lt;/p&gt;
-
-&lt;h3&gt;参考文献&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;山本一彰, &quot;&lt;a href=&quot;http://sando.monophile.net/&quot;&gt;算道&lt;/a&gt;&quot;&lt;/li&gt;
-&lt;li&gt;&quot;&lt;a href=&quot;http://campusgenius.jp/2015/nominate/519/&quot;&gt;算道&lt;/a&gt;&quot;, 第21回学生CGコンテスト, 2015&lt;/li&gt;
-&lt;li&gt;&quot;&lt;a href=&quot;http://festival.j-mediaarts.jp/award/art/sando&quot;&gt;算道&lt;/a&gt;&quot;, 第19回文化庁メディア芸術祭&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 12 Feb 2016 01:07:50 +0900</pubDate>
-        <link>https://cat-in-136.github.io/2016/02/sando-study.html</link>
-        <guid isPermaLink="true">https://cat-in-136.github.io/2016/02/sando-study.html</guid>
-        
-        <category>art</category>
-        
-        <category>math</category>
         
         
       </item>
