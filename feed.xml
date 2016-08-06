@@ -5,9 +5,280 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 23 Jul 2016 12:46:42 +0900</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2016 12:46:42 +0900</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2016 18:16:10 +0900</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 18:16:10 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>HTML5 Complex Ruby 今日の実装状況</title>
+        <description>&lt;p&gt;
+HTML のルビには、古典的な &quot;Basic Ruby&quot; と新し目の文法の &quot;Complex Ruby&quot; があるが、
+&quot;Complex Ruby&quot; は色々できるがまだあまり実用的ではないっぽい。
+&lt;/p&gt;
+&lt;p&gt;
+&quot;Complex Ruby&quot; は、間に&amp;lt;rbc&amp;gt;要素と&amp;lt;rtc&amp;gt;要素をはさむ方の文法のこと。
+&lt;/p&gt;
+&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;!-- Basic Ruby --&amp;gt;
+&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;法華経&amp;lt;/rb&amp;gt;&amp;lt;rp&amp;gt;(&amp;lt;/rp&amp;gt;&amp;lt;rt&amp;gt;ほけきょう&amp;lt;/rt&amp;gt;&amp;lt;rp&amp;gt;)&amp;lt;/rp&amp;gt;&amp;lt;/ruby&amp;gt;
+
+&amp;lt;!-- Complex Ruby --&amp;gt;
+&amp;lt;ruby&amp;gt;&amp;lt;rbc&amp;gt;&amp;lt;rb&amp;gt;法華経&amp;lt;/rb&amp;gt;&amp;lt;/rbc&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rp&amp;gt;(&amp;lt;/rp&amp;gt;&amp;lt;rt&amp;gt;ほけきょう&amp;lt;/rt&amp;gt;&amp;lt;rp&amp;gt;)&amp;lt;/rp&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;figcaption&gt;Live sample&lt;/figcaption&gt;
+&lt;table id=&quot;html5-complex-ruby-table&quot; border=&quot;1&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Live&lt;/td&gt;
+      &lt;td&gt;Expected&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;ruby&gt;
+          &lt;rb&gt;新幹線&lt;/rb&gt;
+          &lt;rt&gt;しんかんせん&lt;/rt&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;しんかんせん&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;新幹線&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;ruby&gt;
+          &lt;rb&gt;新幹線&lt;/rb&gt;
+          &lt;rtc style=&quot;ruby-position: over&quot;&gt;
+            &lt;rt&gt;しんかんせん&lt;/rt&gt;
+          &lt;/rtc&gt;
+          &lt;rtc style=&quot;ruby-position: under&quot;&gt;
+            &lt;rt&gt;shinkansen&lt;/rt&gt;
+          &lt;/rtc&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;しんかんせん&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;新幹線&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;shinkansen&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;ruby&gt;
+          &lt;rb&gt;WWW&lt;/rb&gt;
+          &lt;rt&gt;World Wide Web&lt;/rt&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;World Wide Web&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;WWW&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;ruby&gt;
+          &lt;rbc&gt;
+            &lt;rb&gt;10&lt;/rb&gt;
+            &lt;rb&gt;31&lt;/rb&gt;
+            &lt;rb&gt;2002&lt;/rb&gt;
+          &lt;/rbc&gt;
+          &lt;rtc&gt;
+            &lt;rt&gt;Month&lt;/rt&gt;
+            &lt;rt&gt;Day&lt;/rt&gt;
+            &lt;rt&gt;Year&lt;/rt&gt;
+          &lt;/rtc&gt;
+          &lt;rtc style=&quot;ruby-position: under;&quot;&gt;
+            &lt;rt rbspan=&quot;3&quot;&gt;Expiration Date&lt;/rt&gt;
+          &lt;/rtc&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;Month&lt;/td&gt;
+              &lt;td&gt;Day&lt;/td&gt;
+              &lt;td&gt;Year&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td&gt;10&lt;/td&gt;
+              &lt;td&gt;31&lt;/td&gt;
+              &lt;td&gt;2002&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;
+              &lt;td colspan=&quot;3&quot;&gt;Expiration Date&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;writing-mode: tb&quot;&gt;
+        &lt;ruby&gt;
+          &lt;rb&gt;新幹線&lt;/rb&gt;
+          &lt;rt&gt;しんかんせん&lt;/rt&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;新&lt;br /&gt;幹&lt;br /&gt;線&lt;/td&gt;
+              &lt;td class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;し&lt;br /&gt;ん&lt;br /&gt;か&lt;br /&gt;ん&lt;br /&gt;せ&lt;br /&gt;ん&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;writing-mode: tb&quot;&gt;
+        &lt;ruby&gt;
+          &lt;rbc&gt;
+            &lt;rb&gt;新幹線&lt;/rb&gt;
+          &lt;/rbc&gt;
+          &lt;rtc style=&quot;ruby-position: under left;&quot;&gt;&lt;rt&gt;しんかんせん&lt;/rt&gt;&lt;/rtc&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;し&lt;br /&gt;ん&lt;br /&gt;か&lt;br /&gt;ん&lt;br /&gt;せ&lt;br /&gt;ん&lt;/td&gt;
+              &lt;td class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;新&lt;br /&gt;幹&lt;br /&gt;線&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;ruby style=&quot;ruby-position: inter-character&quot;&gt;
+          &lt;rbc&gt;
+            &lt;rb&gt;電&lt;/rb&gt;
+          &lt;/rbc&gt;
+          &lt;rtc&gt;
+            &lt;rt&gt;ㄉㄧㄢ&lt;/rt&gt;
+          &lt;/rtc&gt;
+          &lt;rbc&gt;
+            &lt;rb&gt;腦&lt;/rb&gt;
+          &lt;/rbc&gt;
+          &lt;rtc&gt;
+            &lt;rt&gt;ㄋㄠ&lt;/rt&gt;
+          &lt;/rtc&gt;
+        &lt;/ruby&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;table class=&quot;ruby&quot;&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;電&lt;/td&gt;
+              &lt;td class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;ㄉ&lt;br /&gt;ㄧ&lt;br /&gt;ㄢ&lt;/td&gt;
+              &lt;td class=&quot;rb&quot; style=&quot;text-align: center&quot;&gt;腦&lt;/td&gt;
+              &lt;td class=&quot;rt&quot; style=&quot;text-align: center&quot;&gt;ㄋ&lt;br /&gt;ㄠ&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+#html5-complex-ruby-table td,
+#html5-complex-ruby-table th {
+  margin: 5px;
+  padding: 5px;
+}
+
+#html5-complex-ruby-table .ruby td {
+  border: none 0;
+  margin: 0;
+  padding: 2px;
+}
+
+#html5-complex-ruby-table .ruby td {
+  margin: 0;
+  padding: 2px;
+}
+
+#html5-complex-ruby-table .ruby .rb {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 100%;
+}
+
+#html5-complex-ruby-table .ruby .rt {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50%;
+}
+&lt;/style&gt;
+&lt;/figure&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;figcaption&gt;Chronium&lt;/figcaption&gt;
+&lt;object width=&quot;317&quot; height=&quot;482&quot; data=&quot;/images/201608_html5_ruby_chronium.svg&quot;&gt;&lt;/object&gt;
+&lt;/figure&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;figcaption&gt;Edge&lt;/figcaption&gt;
+&lt;object width=&quot;229&quot; height=&quot;434&quot; data=&quot;/images/201608_html5_ruby_edge.svg&quot;&gt;&lt;/object&gt;
+&lt;/figure&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;figcaption&gt;Firefox&lt;/figcaption&gt;
+&lt;object width=&quot;176&quot; height=&quot;531&quot; data=&quot;/images/201608_html5_ruby_fx.svg&quot;&gt;&lt;/object&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;参考文献&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;E. J. Etemad and K. Ishii, &quot;&lt;a href=&quot;https://www.w3.org/TR/css-ruby-1/&quot;&gt;CSS Ruby Layout Module Level 1&lt;/a&gt;&quot;, W3C Working Draft&lt;/li&gt;
+  &lt;li&gt;R. Ishida, &quot;&lt;a href=&quot;https://www.w3.org/TR/ruby-use-cases/&quot;&gt;Use Cases &amp;amp; Exploratory Approaches for Ruby Markup&lt;/a&gt;&quot;, W3C Working Group Note&lt;/li&gt;
+  &lt;li&gt;W3C Internationalization tests &lt;a href=&quot;https://www.w3.org/International/tests/#css3-ruby&quot;&gt;CSS Ruby 1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 05 Aug 2016 01:41:10 +0900</pubDate>
+        <link>https://cat-in-136.github.io/2016/08/html-complex-ruby.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/08/html-complex-ruby.html</guid>
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+        <category>ruby-annotation</category>
+        
+        <category>チラシの裏</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 48.0 beta 5 default preference and firefox 47.0.1</title>
@@ -963,74 +1234,6 @@ Google Chromeのような挙動がいいのかわるいのかも言及してい�
         <category>チラシの裏</category>
         
         <category>css</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Diff between firefox 45.0 beta 5 default preference and firefox 44.0.2</title>
-        <description>&lt;p&gt;
-This is difference between the default preference of Firefox 45.0 beta 5 and one of 44.0.2.
-&lt;/p&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox45_pref_diff&quot;&gt;
-&lt;caption&gt;Preference difference&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 44.0.2&lt;/td&gt;&lt;td&gt;Firefox 45.0 beta 5&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;accessibility.&lt;wbr /&gt;loadedInLastSession&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;asyncscroll.&lt;wbr /&gt;throttle&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;asyncscroll.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;cross_&lt;wbr /&gt;slide.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;snap_&lt;wbr /&gt;friction&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;015&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;spring_&lt;wbr /&gt;stiffness&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;001&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0018&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;overscroll.&lt;wbr /&gt;stretch_&lt;wbr /&gt;factor&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;5&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;35&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;touch_&lt;wbr /&gt;move_&lt;wbr /&gt;tolerance&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;03&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;apz.&lt;wbr /&gt;touch_&lt;wbr /&gt;start_&lt;wbr /&gt;tolerance&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;2222222&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;x_&lt;wbr /&gt;skate_&lt;wbr /&gt;highmem_&lt;wbr /&gt;adjust&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;y_&lt;wbr /&gt;skate_&lt;wbr /&gt;highmem_&lt;wbr /&gt;adjust&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;max_&lt;wbr /&gt;shutdown_&lt;wbr /&gt;io_&lt;wbr /&gt;lag&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;esedbreader.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;Error&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;allowOverride&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;forbiddenURIs.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;sessionstore.&lt;wbr /&gt;debug.&lt;wbr /&gt;no_&lt;wbr /&gt;auto_&lt;wbr /&gt;updates&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;sessionstore.&lt;wbr /&gt;privacy_&lt;wbr /&gt;level_&lt;wbr /&gt;deferred&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;caret.&lt;wbr /&gt;manages-android-actionbar&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;service.&lt;wbr /&gt;providerCategories&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;healthreport-js-provider-default&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;healthreport-js-provider-default,&lt;wbr /&gt;healthreport-js-provider-beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;appmanager.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;appmanager.&lt;wbr /&gt;lastTab&lt;/td&gt;&lt;td&gt;help&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;appmanager.&lt;wbr /&gt;manifestEditor.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;markup.&lt;wbr /&gt;collapseAttributeLength&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;120&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;compartment_&lt;wbr /&gt;per_&lt;wbr /&gt;addon&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;asyncdrawing.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;push.&lt;wbr /&gt;debug&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;push.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;off&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;w3c_&lt;wbr /&gt;touch_&lt;wbr /&gt;events.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;interposition.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;interposition.&lt;wbr /&gt;prefetching&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;webExtensions&lt;wbr /&gt;Min&lt;wbr /&gt;Platform&lt;wbr /&gt;Version&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;42.&lt;wbr /&gt;0a1&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;force_&lt;wbr /&gt;auth.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/force_auth?service=sync&amp;amp;context=fx_desktop_v1&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/force_auth?service=sync&amp;amp;context=fx_desktop_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;signin.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signin?service=sync&amp;amp;context=fx_desktop_v1&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signin?service=sync&amp;amp;context=fx_desktop_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;remote.&lt;wbr /&gt;signup.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signup?service=sync&amp;amp;context=fx_desktop_v1&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/signup?service=sync&amp;amp;context=fx_desktop_v2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr /&gt;mobilepromo.&lt;wbr /&gt;android&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/android/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;identity.&lt;wbr /&gt;mobilepromo.&lt;wbr /&gt;ios&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/ios/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;onload.&lt;wbr /&gt;decode.&lt;wbr /&gt;limit&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;offmainthreadcomposition.&lt;wbr /&gt;force-basic&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;extendedvisibility&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;hapticfeedback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;float-logical-values.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;grid-template-subgrid-value.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;ruby.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-emphasis.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;contextInConversations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;facebook.&lt;wbr /&gt;shareUrl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.facebook.com/sharer/sharer.php?u=%ROOM_URL%&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;baseUrl&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://input.mozilla.org/api/v1/feedback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;feedback.&lt;wbr /&gt;product&lt;/td&gt;&lt;td&gt;Loop&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;gettingStarted.&lt;wbr /&gt;latestFTUVersion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;gettingStarted.&lt;wbr /&gt;seen&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;oauth.&lt;wbr /&gt;google.&lt;wbr /&gt;redirect_&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;urn:ietf:wg:oauth:2.0:oob:auto&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;oauth.&lt;wbr /&gt;google.&lt;wbr /&gt;scope&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.google.com/m8/feeds&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;loop.&lt;wbr /&gt;ringtone&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;chrome://browser/content/loop/shared/sounds/ringtone.ogg&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;loop.&lt;wbr /&gt;support_&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://support.mozilla.org/kb/group-conversations-firefox-hello-webrtc&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/cobrowsing&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;aec_&lt;wbr /&gt;delay_&lt;wbr /&gt;agnostic&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;aec_&lt;wbr /&gt;extended_&lt;wbr /&gt;filter&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;mediasource.&lt;wbr /&gt;webm.&lt;wbr /&gt;audio.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;dns.&lt;wbr /&gt;blockDotOnion&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;dns.&lt;wbr /&gt;localDomains&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;jar.&lt;wbr /&gt;block-remote-files&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;offline-mirrors-connectivity&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;pki.&lt;wbr /&gt;cert_&lt;wbr /&gt;short_&lt;wbr /&gt;lifetime_&lt;wbr /&gt;in_&lt;wbr /&gt;days&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;enable_&lt;wbr /&gt;ocsp_&lt;wbr /&gt;must_&lt;wbr /&gt;staple&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;detects.&lt;wbr /&gt;longtap&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;observes.&lt;wbr /&gt;compositions&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;selectioncaret.&lt;wbr /&gt;visibility.&lt;wbr /&gt;affectscaret&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;network.&lt;wbr /&gt;cookie.&lt;wbr /&gt;lifetime.&lt;wbr /&gt;days&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;network.&lt;wbr /&gt;cookie.&lt;wbr /&gt;thirdparty.&lt;wbr /&gt;sessionOnly&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncedTabsUIRefresh&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;touchcaret.&lt;wbr /&gt;extendedvisibility&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;disallow_&lt;wbr /&gt;completions&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-malware-simple,&lt;wbr /&gt;test-phish-simple,&lt;wbr /&gt;test-unwanted-simple,&lt;wbr /&gt;test-track-simple,&lt;wbr /&gt;test-trackwhite-simple,&lt;wbr /&gt;goog-downloadwhite-digest256,&lt;wbr /&gt;mozstd-track-digest256,&lt;wbr /&gt;mozstd-trackwhite-digest256,&lt;wbr /&gt;mozfull-track-digest256&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-malware-simple,&lt;wbr /&gt;test-phish-simple,&lt;wbr /&gt;test-unwanted-simple,&lt;wbr /&gt;test-track-simple,&lt;wbr /&gt;test-trackwhite-simple,&lt;wbr /&gt;test-forbid-simple,&lt;wbr /&gt;goog-downloadwhite-digest256,&lt;wbr /&gt;mozstd-track-digest256,&lt;wbr /&gt;mozstd-trackwhite-digest256,&lt;wbr /&gt;mozfull-track-digest256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;forbiddenTable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;test-forbid-simple&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;disable-DOM-blit-uploads&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;webgl.&lt;wbr /&gt;webgl2-compat-mode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox45_pref_diff&quot;&gt;
-&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;File&lt;/td&gt;&lt;td&gt;Firefox 44.0.4&lt;/td&gt;&lt;td&gt;Firefox 45.0 beta 5&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/devtools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/webide-prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;omni.ja!/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;omni.ja!/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;webapprt/omni.ja!/defaults/preferences/prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser/features/loop@mozilla.org.xpi!/chrome/content/preferences/prefs.js&lt;/td&gt;&lt;td&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;p&gt;
-Note: Firefox Hello (a.k.a. Loop) has been moved to a system add-on since Firefox 45.
-(ref &lt;a href=&quot;https://bugzilla.mozilla.org/show_bug.cgi?id=1223573&quot;&gt;Bug 1223573&lt;/a&gt;)
-&lt;/p&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox45_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox45_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox45_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox45_pref_diff td.json, table.diff_firefox40_pref_diff td.uri, table.diff_firefox40_pref_diff td.dump { word-break: break-all; }
-table.diff_firefox45_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox45_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox45_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox45_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-
-table.diff_firefox45_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox45_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
-</description>
-        <pubDate>Mon, 22 Feb 2016 00:43:52 +0900</pubDate>
-        <link>https://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</link>
-        <guid isPermaLink="true">https://cat-in-136.github.io/2016/02/diff-between-firefox-450-beta-5-default.html</guid>
-        
-        <category>pref diff</category>
-        
-        <category>mozilla</category>
         
         
       </item>

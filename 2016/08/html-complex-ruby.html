@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>HTML5 Complex Ruby 今日の実装状況 cat_in_136.blog()</title>
+<link rel="canonical" href="https://cat-in-136.github.io/2016/08/html-complex-ruby.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="HTML5 Complex Ruby 今日の実装状況" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js" defer="defer"></script>
+<script type="text/javascript" src="data:text/javascript;base64,d2luZG93LmFkZEV2ZW50TGlzdGVuZXIoIkRPTUNvbnRlbnRMb2FkZWQiLCBmdW5jdGlvbiAoZSkgeyBwcmV0dHlQcmludCgpOyB9LCBmYWxzZSk7Cg==" defer="defer"></script>
+</head>
+<body>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
+</header>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2016/08/html-complex-ruby.html" itemprop="url">HTML5 Complex Ruby 今日の実装状況</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2016-08-05T01:41:10+09:00</time>
+(Modified: <time item="dateModified">2016-08-06T18:14:19+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_html">Html</a>
+<a class="tag" href="/tags.html#tag_css">Css</a>
+<a class="tag" href="/tags.html#tag_ruby-annotation">Ruby-annotation</a>
+<a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody" lang="ja">
+<p>
+HTML のルビには、古典的な "Basic Ruby" と新し目の文法の "Complex Ruby" があるが、
+"Complex Ruby" は色々できるがまだあまり実用的ではないっぽい。
+</p>
+<p>
+"Complex Ruby" は、間に&lt;rbc&gt;要素と&lt;rtc&gt;要素をはさむ方の文法のこと。
+</p>
+<pre class="prettyprint lang-html"><code>&lt;!-- Basic Ruby --&gt;
+&lt;ruby&gt;&lt;rb&gt;法華経&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;ほけきょう&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;
+
+&lt;!-- Complex Ruby --&gt;
+&lt;ruby&gt;&lt;rbc&gt;&lt;rb&gt;法華経&lt;/rb&gt;&lt;/rbc&gt;&lt;rtc&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;ほけきょう&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/rtc&gt;&lt;/ruby&gt;
+</code></pre>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<figcaption>Live sample</figcaption>
+<table id="html5-complex-ruby-table" border="1">
+<thead>
+<tr>
+<td>Live</td>
+<td>Expected</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ruby>
+<rb>新幹線</rb>
+<rt>しんかんせん</rt>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr class="rt" style="text-align: center">
+<td>しんかんせん</td>
+</tr>
+<tr class="rb" style="text-align: center">
+<td>新幹線</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<ruby>
+<rb>新幹線</rb>
+<rtc style="ruby-position: over">
+<rt>しんかんせん</rt>
+</rtc>
+<rtc style="ruby-position: under">
+<rt>shinkansen</rt>
+</rtc>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr class="rt" style="text-align: center">
+<td>しんかんせん</td>
+</tr>
+<tr class="rb" style="text-align: center">
+<td>新幹線</td>
+</tr>
+<tr class="rt" style="text-align: center">
+<td>shinkansen</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<ruby>
+<rb>WWW</rb>
+<rt>World Wide Web</rt>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr class="rt" style="text-align: center">
+<td>World Wide Web</td>
+</tr>
+<tr class="rb" style="text-align: center">
+<td>WWW</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<ruby>
+<rbc>
+<rb>10</rb>
+<rb>31</rb>
+<rb>2002</rb>
+</rbc>
+<rtc>
+<rt>Month</rt>
+<rt>Day</rt>
+<rt>Year</rt>
+</rtc>
+<rtc style="ruby-position: under;">
+<rt rbspan="3">Expiration Date</rt>
+</rtc>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr class="rt" style="text-align: center">
+<td>Month</td>
+<td>Day</td>
+<td>Year</td>
+</tr>
+<tr class="rb" style="text-align: center">
+<td>10</td>
+<td>31</td>
+<td>2002</td>
+</tr>
+<tr class="rt" style="text-align: center">
+<td colspan="3">Expiration Date</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style="writing-mode: tb">
+<ruby>
+<rb>新幹線</rb>
+<rt>しんかんせん</rt>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr>
+<td class="rb" style="text-align: center">新<br />幹<br />線</td>
+<td class="rt" style="text-align: center">し<br />ん<br />か<br />ん<br />せ<br />ん</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style="writing-mode: tb">
+<ruby>
+<rbc>
+<rb>新幹線</rb>
+</rbc>
+<rtc style="ruby-position: under left;"><rt>しんかんせん</rt></rtc>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr>
+<td class="rt" style="text-align: center">し<br />ん<br />か<br />ん<br />せ<br />ん</td>
+<td class="rb" style="text-align: center">新<br />幹<br />線</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<ruby style="ruby-position: inter-character">
+<rbc>
+<rb>電</rb>
+</rbc>
+<rtc>
+<rt>ㄉㄧㄢ</rt>
+</rtc>
+<rbc>
+<rb>腦</rb>
+</rbc>
+<rtc>
+<rt>ㄋㄠ</rt>
+</rtc>
+</ruby>
+</td>
+<td>
+<table class="ruby">
+<tbody>
+<tr>
+<td class="rb" style="text-align: center">電</td>
+<td class="rt" style="text-align: center">ㄉ<br />ㄧ<br />ㄢ</td>
+<td class="rb" style="text-align: center">腦</td>
+<td class="rt" style="text-align: center">ㄋ<br />ㄠ</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<style type="text/css">
+#html5-complex-ruby-table td,
+#html5-complex-ruby-table th {
+margin: 5px;
+padding: 5px;
+}
+#html5-complex-ruby-table .ruby td {
+border: none 0;
+margin: 0;
+padding: 2px;
+}
+#html5-complex-ruby-table .ruby td {
+margin: 0;
+padding: 2px;
+}
+#html5-complex-ruby-table .ruby .rb {
+text-align: center;
+vertical-align: middle;
+font-size: 100%;
+}
+#html5-complex-ruby-table .ruby .rt {
+text-align: center;
+vertical-align: middle;
+font-size: 50%;
+}
+</style>
+</figure>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<figcaption>Chronium</figcaption>
+<object width="317" height="482" data="/images/201608_html5_ruby_chronium.svg"></object>
+</figure>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<figcaption>Edge</figcaption>
+<object width="229" height="434" data="/images/201608_html5_ruby_edge.svg"></object>
+</figure>
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<figcaption>Firefox</figcaption>
+<object width="176" height="531" data="/images/201608_html5_ruby_fx.svg"></object>
+</figure>
+<h3>参考文献</h3>
+<ul>
+<li>E. J. Etemad and K. Ishii, "<a href="https://www.w3.org/TR/css-ruby-1/">CSS Ruby Layout Module Level 1</a>", W3C Working Draft</li>
+<li>R. Ishida, "<a href="https://www.w3.org/TR/ruby-use-cases/">Use Cases &amp; Exploratory Approaches for Ruby Markup</a>", W3C Working Group Note</li>
+<li>W3C Internationalization tests <a href="https://www.w3.org/International/tests/#css3-ruby">CSS Ruby 1</a></li>
+</ul>
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2016/08/html-complex-ruby.html&amp;text=HTML5%20Complex%20Ruby%20%E4%BB%8A%E6%97%A5%E3%81%AE%E5%AE%9F%E8%A3%85%E7%8A%B6%E6%B3%81+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2016/08/html-complex-ruby.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/08/html-complex-ruby.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2016/08/html-complex-ruby.html&amp;linkname=HTML5%20Complex%20Ruby%20%E4%BB%8A%E6%97%A5%E3%81%AE%E5%AE%9F%E8%A3%85%E7%8A%B6%E6%B3%81+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-08-06-html-complex-ruby.html" class="source-path">_posts/2016-08-06-html-complex-ruby.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-08-06-html-complex-ruby.html">History</a>)
+</div>
+</footer>
+</article>
+<nav class="post-nav wrap">
+<div class="previous-post">
+<a href="/2016/07/diff-between-firefox-480-beta-5-default.html" title="Diff between firefox 48.0 beta 5 default preference and firefox 47.0.1" rel="prev">&#x2190;Diff between firefox 48.0 beta 5 default preference and firefox 47.0.1</a>
+</div>
+<div class="next-post">
+</div>
+</nav>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<aside class="post-related">
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2015-11-30</span>
+<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
+</li>
+<li class="post-item">
+<span class="post-date">2016-04-09</span>
+<a class="post-link" href="/2016/04/pango-view-otf-font-features.html">pango-view と OTF font features</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-04-13</span>
+<a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-06</span>
+<a class="post-link" href="/2014/03/bezier-2-diff.html">ベジェ曲線で描く円と真円の差について</a>
+</li>
+<li class="post-item">
+<span class="post-date">2013-02-24</span>
+<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
+</footer>
+</body>
+</html>
+
