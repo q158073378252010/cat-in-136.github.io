@@ -5,9 +5,135 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 13 Aug 2016 19:56:05 +0900</pubDate>
-    <lastBuildDate>Sat, 13 Aug 2016 19:56:05 +0900</lastBuildDate>
+    <pubDate>Mon, 15 Aug 2016 23:04:58 +0900</pubDate>
+    <lastBuildDate>Mon, 15 Aug 2016 23:04:58 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>connectivitycheck.gstatic.com への Android の接続を誤魔化してみるテスト</title>
+        <description>&lt;h3&gt;Android の「インターネットは利用できません」の検出&lt;/h3&gt;
+
+&lt;p&gt;
+Android に詳しい方はご存知の通り、Android は
+&lt;code&gt;http://connectivitycheck.gstatic.com/generate_204&lt;/code&gt;
+に定期的に接続をしてインターネット接続できるかどうかを確認している。
+ここへの接続が出来ない場合は「インターネットは利用できません」と表示される。
+&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201608_connectivitycheck_noinetwifi.png&quot; width=&quot;640&quot; height=&quot;277&quot; /&gt;
+&lt;figcaption&gt;connectivitycheck.gstatic.com へ接続できない時の WiFi アクセスポイントの警告表示&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;
+なお、この警告は celler 回線（3G/4G 回線）でも表示は異なるが、警告される。
+&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201608_connectivitycheck_noinetdocomo.png&quot; width=&quot;487&quot; height=&quot;487&quot; /&gt;
+&lt;figcaption&gt;connectivitycheck.gstatic.com へ接続できない時の docomo 回線の警告表示&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;
+なお、上の図はいずれも connectivitycheck.gstatic.com への接続を遮断して得られた動作結果であり、
+実際には他のドメインへの接続はできるといった挙動を確認している。
+&lt;/p&gt;
+
+&lt;h3&gt;connectivitycheck.gstatic.com の偽装と挙動&lt;/h3&gt;
+
+&lt;p&gt;
+&lt;code&gt;http://connectivitycheck.gstatic.com/generate_204&lt;/code&gt;
+へ接続すると常に &quot;204 No Content&quot; が帰ってくる。
+ここで、接続不能であったり &quot;404 Not Found&quot; であったりしたときに、
+「インターネットは利用できません」と判定がなされる。
+&lt;/p&gt;
+
+&lt;p&gt;
+そこで、connectivitycheck.gstatic.com を他の IP アドレスに解決させることで
+代替することを考えた。
+具体的には、
+&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;192.168.1.2 アドレスで起動している PC 上の port 80 で HTTP server を起動させる。
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code&gt;http://192.168.1.2/generate_204&lt;/code&gt; へのレスポンスは &quot;204 No Content&quot; とする。&lt;/li&gt;
+      &lt;li&gt;簡単のため &quot;Host: connectivitycheck.gstatic.com&quot; が要求ヘッダについていようがついていまいが、同一の動作をするものとする&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Android 機において、connectivitycheck.gstatic.com のドメイン名を 192.168.1.2 に解決させる環境を作る。&lt;/li&gt;
+  &lt;li&gt;Android 機において、WiFi アクセスポイントに接続させる。Android 機の IP アドレスは 192.168.1.1 とする。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;314&quot; height=&quot;308&quot; data=&quot;/images/201608_connectivitycheck_env_tporogy.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;確認環境のネットワーク。&quot;genuine connectivitycheck.gstatic.com&quot;には接続しには行かずに 192.168.1.2 に接続する&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;
+目的を実現するために簡素な HTTP server &lt;a href=&quot;https://gist.github.com/cat-in-136/624e53f4b9437c8eaee15066da654485&quot;&gt;&quot;Fake connectivitycheck.gstatic.com&quot;&lt;/a&gt; を作成した。
+これを linux マシン上で駆動させた（もちろん su 権限で実行し、また firewall で port 80 を許可した）。
+&lt;/p&gt;
+&lt;p&gt;
+そして Android 機を WiFi に接続させると下記の通り、 HTTP server 側のログが吐き出された。
+&lt;/p&gt;
+&lt;pre&gt;&lt;samp&gt;[2016-08-14 07:23:00] DEBUG accept: 192.168.1.1:51856
+[2016-08-14 07:23:00] DEBUG WEBrick::HTTPServlet::ProcHandler is invoked.
+192.168.1.1 - - [14/Aug/2016:07:23:00 EDT] &quot;GET /generate_204 HTTP/1.1&quot; 204 0
+- -&amp;gt; /generate_204
+Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29X)
+[2016-08-14 07:23:00] DEBUG close: 192.168.1.1:51856
+[2016-08-14 07:23:01] DEBUG accept: 192.168.1.1:56927
+[2016-08-14 07:23:01] DEBUG WEBrick::HTTPServlet::ProcHandler is invoked.
+192.168.1.1 - - [14/Aug/2016:07:23:01 EDT] &quot;GET /generate_204 HTTP/1.1&quot; 204 0
+- -&amp;gt; /generate_204
+Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29X)
+[2016-08-14 07:23:01] DEBUG close: 192.168.1.1:56927&lt;/samp&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+最初の部分しか取り出していないため時間を空けずに幾度も接続しているようにみえるが、
+しばらく経ったら間隔をあけて接続するようだ。
+また、重要なこととしてこれによって「インターネットは利用できません」が表示されないことを実現できた。
+&lt;/p&gt;
+
+&lt;h3&gt;connectivitycheck.gstatic.com の偽装効果&lt;/h3&gt;
+
+&lt;p&gt;
+&lt;a href=&quot;http://connectivitycheck.gstatic.com.ipaddress.com/&quot;&gt;&lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; というGoogle のサーバ&lt;/a&gt;への接続処理は、
+そもそも Android のコードに埋め込まれている。
+よって&lt;em&gt;世界中の&lt;/em&gt;オンラインとなっている Android 機から定期的に接続しているということだ。
+それは冷静に考えると興味深いことである。
+&lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; の接続を
+本稿で述べたようにゴニョゴニョすることでこの Google のサーバへの接続処理を止めて
+かつ「インターネットは利用できません」判定も Google のサーバなしで実現することが出来た。
+&lt;/p&gt;
+&lt;p&gt;
+さらに &lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; のドメイン名を 127.0.0.1 に解決させてかつ android 上でサーバを駆動させれば、
+「インターネットは利用できません」判定機能が実質無効化されることを引き換えに
+無線アクセスを抑えることも考えられるが、これはやっていない。
+&lt;/p&gt;
+
+&lt;h3&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://androidxref.com/6.0.1_r10/xref/frameworks/base/services/core/java/com/android/server/connectivity/NetworkMonitor.java#429&quot;&gt;com.android.server.connectivity.NetworkMonitor.EvaluatingState#processMessage()&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&quot;&lt;a href=&quot;http://android.stackexchange.com/questions/123129/how-does-wifi-in-android-detect-if-the-device-has-to-sign-in-or-not&quot;&gt;How does WiFi in android detect if the device has to sign in or not?&lt;/a&gt;&quot;, Android Enthusiasts Stack Exchange&lt;/li&gt;
+&lt;li&gt;amythical, &quot;&lt;a href=&quot;http://amythical.tumblr.com/post/146341363847/bypass-captive-portal-for-android&quot;&gt;Bypass captive portal for Android&lt;/a&gt;&quot;, Notes, Jun 23 2016&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+その他、&lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; のドメイン名解決を操作するための
+/etc/hosts のフロントエンドとして&lt;a href=&quot;https://adaway.org/&quot;&gt;AdAway&lt;/a&gt;を使用した。
+&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 15 Aug 2016 23:02:54 +0900</pubDate>
+        <link>https://cat-in-136.github.io/2016/08/connectivitycheck-gstatic-com-android.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/08/connectivitycheck-gstatic-com-android.html</guid>
+        
+        <category>android</category>
+        
+        <category>チラシの裏</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 49.0 beta 3 default preference and firefox 48.0</title>
@@ -1047,171 +1173,6 @@ Pango は正しくレンダリングしている模様。すごい。
         <category>変体かな</category>
         
         <category>howto</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>CSS で縦書きと段組を組み合わせる試み</title>
-        <description>&lt;p&gt;
-今時の CSS では、次の通り縦書きと段組ができるが、これを組合せられるのだろうかという試み。
-&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;writing-mode: vertical-rl;&lt;/code&gt;で和文の縦書き&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;column-width: &amp;lt;length&amp;gt;;&lt;/code&gt;で段組&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;動機&lt;/h3&gt;
-
-&lt;p&gt;
-日本語は&lt;em&gt;伝統的には&lt;/em&gt;漢文に習って縦書きであって、
-文字を天から地へ、行を右から左へ進めて書きしるす。
-舶来の技術であるHTMLの世界では、元来縦書きはできなかった。
-けれども、W3CのCSS&lt;ruby&gt;作業部会&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;Working Group&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;の中の人達が、
-&lt;a href=&quot;https://www.w3.org/TR/css-writing-modes-3/&quot;&gt;CSS Writing Modes Level 3&lt;/a&gt;をこしらえ、
-またブラウザもまたこれをこしらえたお陰でHTMLの世界でも
-縦書きができるようになったのである。
-&lt;/p&gt;
-&lt;p&gt;
-いまだ問題となるのは、組方向（縦書きと横書き）が混在する場合である。
-そんな組み方をするのが間違っている、という指摘はここでは棚に上げる。
-すると横書きに準じて縦スクロールするべきか
-縦書きに準じて横スクロールするべきかという問題が生じる。
-スクロールの向きが混在するのは流石に読みづらいことこの上ないので避けるとして、
-&lt;em&gt;縦書きだが縦スクロール&lt;/em&gt;というのは日本の新聞の紙面などにおける段組と
-同じなのだからそれが組めればいいのではないかと思ったのである。
-&lt;/p&gt;
-
-&lt;h3&gt;要求仕様&lt;/h3&gt;
-
-&lt;p&gt;
-文書全体としては横書きの縦スクロールであるが、
-縦書きの文章を内部に挿入するにあたり次に示すような要求を満たすものとしたい。
-&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;縦書き部の前には横書きのコンテンツがあり、また縦書き部の後には横書きのコンテンツがある。これらの横書きのコンテンツの表示に影響を及ぼさないこと。&lt;/li&gt;
-&lt;li&gt;縦書き部に独立のスクロールバーは持たず、あくまで縦スクロールで読者は読むものとする。&lt;/li&gt;
-&lt;li&gt;縦書き部の&lt;ruby&gt;横幅&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;width&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;は、100%、すなわち親の要素に合わせた横幅とする。&lt;/li&gt;
-&lt;li&gt;縦書き部の文章は段組とし、行長（段組の高さ）は100vh以下、すなわち&lt;ruby&gt;画面&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;view port&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;の高さより小さくする。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;235&quot; height=&quot;276&quot; data=&quot;/images/2016_03_css_vertical_with_multicolumn_render_expection.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;期待される表示の図&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;ソースコード&lt;/h3&gt;
-
-&lt;p&gt;
-単純に横書き→縦書き→横書きの順番で文章が並んだHTMLファイルを用意した。
-&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;p&amp;gt;(横書きのコンテンツ)...&amp;lt;/p&amp;gt;
-&amp;lt;p class=&quot;vertical-writing&quot;&amp;gt;(縦書きのコンテンツ)...&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;(横書きのコンテンツ)...&amp;lt;/p&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-これに対して、適切なCSSルールを定義した。
-&lt;/p&gt;
-&lt;pre class=&quot;prettyprint lang-css&quot;&gt;&lt;code&gt;.vertical-writing {
-  -webkit-writing-mode: vertical-rl;
-  writing-mode: vertical-rl;
-  width: 100%; /* 縦書き部の横幅 */
-  -moz-column-width: calc(100vh - 20px);
-  -moz-column-gap: 20px;
-  -moz-column-rule: 2px dashed #000;
-  column-width: calc(100vh - 20px);
-  column-gap: 20px;
-  column-rule: 2px dashed #000;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-段組の指定には、段数 (&lt;code&gt;column-count&lt;/code&gt;) を使うこともできるが、
-段組の高さを指定するのを当初の目的としたのでそうした。
-&lt;/p&gt;
-&lt;p&gt;
-なお、縦書き部の段組の高さは&lt;code&gt;100vh - 20px&lt;/code&gt;、
-すなわち画面の高さより20px減じたものとした。
-&lt;/p&gt;
-
-&lt;h3&gt;表示結果&lt;/h3&gt;
-
-&lt;h4&gt;Edge&lt;/h4&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_edge13.png&quot;&gt;
-&lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_edge13.png&quot; width=&quot;184&quot; height=&quot;356&quot; /&gt;
-&lt;/a&gt;
-&lt;figcaption&gt;Edge 13&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-縦書き部の後ろに続く横書き部と、縦書き部の段組二段目移行が重なってしまっている。
-これは縦書きと段組を組み合わせた時にボックスの高さが、一段分しか計算されないかららしい。
-高さを明示しても良いが、それではリキッドレイアウトではないので却下。
-それ以外は良好で、縦書き部の後ろに横書きのコンテンツが一切存在しない場合は、
-使い物になるのではないか。
-&lt;/p&gt;
-
-&lt;h4&gt;Chrome&lt;/h4&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_chrome48.png&quot;&gt;
-&lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_chrome48.png&quot; width=&quot;184&quot; height=&quot;356&quot; /&gt;
-&lt;/a&gt;
-&lt;figcaption&gt;Chrome 48&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-一瞬正しくレンダリングしているようにみえるが、
-段組が一切動いていないため、文章の続きが左端の画面外にはみ出ている。
-スクロールバーも表示されないため、これは一番困る動作。
-&lt;/p&gt;
-
-&lt;h4&gt;Firefox&lt;/h4&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_firefox45.png&quot;&gt;
-&lt;img src=&quot;/images/2016_03_css_vertical_with_multicolumn_render_sample_firefox45.png&quot; width=&quot;92&quot; height=&quot;255&quot; /&gt;
-&lt;/a&gt;
-&lt;figcaption&gt;Firefox 45&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-最も縦書き対応の遅かった Firefox がご覧の通りまともなレンダリングをした。
-しかし、少しでも CSS パラメータを変えるとレンダリングが崩れたりと
-まだ怪しい部分がアリそうだ。
-&lt;/p&gt;
-
-
-&lt;h3&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;
-縦書きと段組のそれぞれは、各ブラウザで良好に動作するようになってきているが、
-まだその組合せは動作は不安定であることがわかった。
-&lt;/p&gt;
-
-&lt;h3&gt;参考文献&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E7%B8%A6%E6%9B%B8%E3%81%8D%E3%81%A8%E6%A8%AA%E6%9B%B8%E3%81%8D&quot;&gt;縦書きと横書き&lt;/a&gt;、ウィキペディア&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/CSS/writing-mode&quot;&gt;writing-mode - CSS&lt;/a&gt;, MDN&lt;/li&gt;
-&lt;li&gt;S. Murakami, P. Nelson, M. Suignard, &quot;&lt;a href=&quot;https://www.w3.org/TR/css-writing-modes-3/&quot;&gt;CSS Writing Modes Level 3&lt;/a&gt;&quot;, W3C Candidate Recommendation&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/CSS/columns&quot;&gt;columns - CSS&lt;/a&gt;, MDN&lt;/li&gt;
-&lt;li&gt;H. W. Lie, &quot;&lt;a href=&quot;https://www.w3.org/TR/css3-multicol/&quot;&gt;CSS Multi-column Layout Module Level 1&lt;/a&gt;&quot;, W3C Editor’s Draft&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 23 Mar 2016 00:20:22 +0900</pubDate>
-        <link>https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</link>
-        <guid isPermaLink="true">https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html</guid>
-        
-        <category>css</category>
-        
-        <category>html</category>
-        
-        <category>縦書き</category>
         
         
       </item>
