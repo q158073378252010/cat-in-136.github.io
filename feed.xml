@@ -5,9 +5,120 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 01 Oct 2016 12:34:05 +0900</pubDate>
-    <lastBuildDate>Sat, 01 Oct 2016 12:34:05 +0900</lastBuildDate>
+    <pubDate>Sat, 08 Oct 2016 23:48:49 +0900</pubDate>
+    <lastBuildDate>Sat, 08 Oct 2016 23:48:49 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>アートアクアリウムの水盤における光学的解析のメモ</title>
+        <description>&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;https://www.flickr.com/photos/27992339@N00/30075992142/&quot; title=&quot;Black gold fishes in a water bowl&quot;&gt;&lt;img src=&quot;https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_z.jpg&quot; srcset=&quot;https://c7.staticflickr.com/9/8134/30075992142_100863d471_o.jpg 3x&quot; width=&quot;640&quot; height=&quot;360&quot; alt=&quot;Black gold fishes in a water bowl&quot; class=&quot;fitcontain&quot;/&gt;&lt;/a&gt;
+&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;均等に横面に溢れ出る水により水槽であることを感じさせず、まるで水の塊ごと水中から金魚を取り出して見ているかの様に感じさせる作品です。&lt;/p&gt;
+&lt;figcaption style=&quot;text-align: right;&quot;&gt;＜金魚品評＞&lt;/figcaption&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;水盆容器の構造&lt;/h3&gt;
+&lt;p&gt;＜金魚品評＞と呼称される作品では、水盆を使っている。
+均等に横面に水が溢れ出ることにより水盆内の水を排水していることは容易に理解できる。&lt;/p&gt;
+&lt;p&gt;一方で、給水系統は一目ではわからない。&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;https://www.flickr.com/photos/27992339@N00/30105714101/&quot; title=&quot;Black gold fishes in a water bowl, Top View&quot;&gt;&lt;img src=&quot;https://c6.staticflickr.com/6/5521/30105714101_58b05c2e45_z.jpg&quot; srcset=&quot;https://c6.staticflickr.com/6/5521/30105714101_fd7ec9ffcf_h.jpg 2.5x&quot; width=&quot;640&quot; height=&quot;427&quot; alt=&quot;Black gold fishes in a water bowl, Top View&quot; class=&quot;fitcontain&quot;/&gt;&lt;/a&gt;
+&lt;/figure&gt;
+&lt;p&gt;水盆の底に白色の台のようなものがあることがわかる。
+よく観察すると、その下にその台の支えている柱状のものがあってそこから水が出ていた。&lt;/p&gt;
+&lt;p&gt;すなわち下図のとおりになっている。上面図以外については、青矢印で水の流れを描いた。&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;296&quot; height=&quot;229&quot; data=&quot;/images/201610_opticalanlyartaquarium_bowl_diagram.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;＜金魚品評＞の水盆型水槽の図&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h3&gt;水盆容器の底の白い台に気づきにくい理由&lt;/h3&gt;
+&lt;p&gt;ところで、なぜこれに気づきにくいのであろうか?
+光の屈折によって気づきにくくなっている+展示上の細工という説を唱えたい。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;水盆容器の存在は光学的に無視できるものとする
+&lt;ul&gt;
+&lt;li&gt;水盆の方が水よりも屈折率が大きい（水：1.33、水盆=アクリル:1.49）ため、水盆の影響を考えたほうがより効果が大きくなると推測される&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;均等に横面に溢れ出る水の存在も光学的に無視できるものとする&lt;/li&gt;
+&lt;li&gt;水面のゆらぎや水中の空気の泡、汚れなども光学的に無視できるものとする&lt;/li&gt;
+&lt;li&gt;すなわち文字通り「水の塊ごと水中から金魚を取り出して見ている」状態とみなして解析する&lt;/li&gt;
+&lt;li&gt;水盆の大きさは、当然のことながら、光の波長よりじゅうぶん大きいものとする（幾何光学で説明できるものとする）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;水の屈折の効果については、鉛直方向と水平方向で分けて概説する。&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;220&quot; height=&quot;223&quot; data=&quot;/images/201610_opticalanlyartaquarium_refraction_vertical.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;水盆型水槽における光の屈折の効果（鉛直方向）&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;鉛直方向のうち水面を通る光線の場合、屈折によって光線は下向きに折れる。
+人間の目は屈折せずにそのまま直線に光線が伸びている（点線）と&lt;em&gt;視覚する&lt;/em&gt;ので、
+例えば金魚が実際より&lt;em&gt;沈んで&lt;/em&gt;見える。
+（さらに図に示したとおり特に手前が&lt;em&gt;沈み込む&lt;/em&gt;ような形で傾いて見える）&lt;/p&gt;
+&lt;p&gt;同様に、水盆容器側面を通る光線の場合、屈折によって光線は上向きに折れる。
+人間の目は屈折せずにそのまま直線に光線が伸びている（点線）と&lt;em&gt;視覚する&lt;/em&gt;ので、
+例えば金魚が実際より&lt;em&gt;浮き上がって&lt;/em&gt;見える。
+（さらに図に示したとおり特に手前が&lt;em&gt;浮き上がった&lt;/em&gt;ような形で傾いて見える）&lt;/p&gt;
+&lt;p&gt;ここで水盆容器の底の台について、特に水盆容器側面を通る光線であると底が実際より
+&lt;em&gt;上げ底&lt;/em&gt;に見えるので水盆容器の底に気づかれるリスクが大きくなると予測される。
+この理由で周辺にビー玉等を配して隠していたのではないか。&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;139&quot; height=&quot;193&quot; data=&quot;/images/201610_opticalanlyartaquarium_refraction_horizontal.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;水盆型水槽における光の屈折の効果（水平方向）&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;水平方向も同様に、金魚が実際より外側に&lt;em&gt;見える&lt;/em&gt;。
+（さらに像も結構歪むが、図にはそれを表現していない。）
+水流の都合上水盆容器の底の台の直径は水盆の内寸直径よりも明らかに小さいのであるが、
+金魚と同様に、台も実際より横に伸びて見える。
+水盆容器の底の台が水盆内寸直径とほぼ同じなように見えてしまう。&lt;/p&gt;
+&lt;p&gt;ただ、真上から覗き込むと、光の屈折が起こらなくなるのでこの効果は得られない。&lt;/p&gt;
+&lt;h3&gt;まとめ&lt;/h3&gt;
+&lt;p&gt;まとめると、水盆の給水口の仕組みに気づきにくい理由として下記があげられると思う。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;光の屈折により水盆容器の底の台は、
+&lt;ul&gt;
+&lt;li&gt;水盆容器の内寸とほぼ同じように見えてしまう&lt;/li&gt;
+&lt;li&gt;真上から覗かないと、水盆容器の底の台の直径が水盆容器の内寸より小さいのに気づかない&lt;/li&gt;
+&lt;li&gt;水盆容器の底の台が実際より上げ底に見える&lt;/li&gt;
+&lt;li&gt;上げ底に見えてしまうことに対してはビー玉を配することで隠している&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3D CG で視覚的に確認&lt;/h3&gt;
+&lt;p&gt;最後に、この仮説を視覚的に確認するために 3D CG で再現した画像を下に示す。&lt;/p&gt;
+&lt;p&gt;普通に見ると、ビー玉を配していないので、水盆容器の底の台が、
+水盆容器の内寸とほぼ同じように&lt;em&gt;上げ底&lt;/em&gt;で&lt;em&gt;見える&lt;/em&gt;と思うがいかがであろうか?&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201610_opticalanlyartaquarium_simulation_POV@3x.jpg&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201610_opticalanlyartaquarium_simulation_POV.jpg&quot; width=&quot;640&quot; srcset=&quot;/images/201610_opticalanlyartaquarium_simulation_POV@3x.jpg 3x&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption&gt;3D CGによる検証画像&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;a href=&quot;/images/201610_opticalanlyartaquarium_simulation_no_water@3x.jpg&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201610_opticalanlyartaquarium_simulation_wo_water.jpg&quot; width=&quot;640&quot; srcset=&quot;/images/201610_opticalanlyartaquarium_simulation_wo_water@3x.jpg 3x&quot; /&gt;
+&lt;/a&gt;
+&lt;figcaption&gt;3D CGによる検証画像（水盆のかわりに檻状のワイヤーフレームを置いた）&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h3&gt;参考文献、リソース&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;木村英智, Aquarium Creators Office Srl., “&lt;a href=&quot;http://artaquarium.jp/&quot;&gt;Art Aquarium&lt;/a&gt;”&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_refractive_indices&quot;&gt;List of refractive indices&lt;/a&gt;, Wikipedia (en)&lt;/li&gt;
+&lt;li&gt;(3D Model Data) birdie T., “&lt;a href=&quot;https://3dwarehouse.sketchup.com/social/model.html?id=uae4dedaf-6f79-4273-a6de-07beeef6c107&quot;&gt;golden japanese fish&lt;/a&gt;”&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 08 Oct 2016 23:46:49 +0900</pubDate>
+        <link>https://cat-in-136.github.io/2016/10/optical-analysis-of-art-aquarium-water-bowl.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/10/optical-analysis-of-art-aquarium-water-bowl.html</guid>
+        
+        <category>optics</category>
+        
+        <category>blender3d</category>
+        
+        <category>チラシの裏</category>
+        
+        
+      </item>
     
       <item>
         <title>Diff between firefox 50.0 beta 3 default preference and firefox 49.0.1</title>
@@ -1013,102 +1124,6 @@ table.diff_firefox46_pref_diff tbody tr { transition: background 0.125s ease-in-
         <category>pref diff</category>
         
         <category>mozilla</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>pango で縦書きとその能力</title>
-        <description>&lt;h3&gt;pango での縦書き&lt;/h3&gt;
-
-&lt;p&gt;
-Pango の gravity 指定で縦書きが実現できる。
-&lt;code&gt;pango-view(1)&lt;/code&gt;だと、&lt;code&gt;--gravity east&lt;/code&gt; オプション設定を指定すれば良い。
-&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output ipapgothic_render01.svg --font &#39;IPAPGothic 24&#39; --text &#39;pangoで縦書き&#39; --gravity east
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;183&quot; height=&quot;45&quot; data=&quot;/images/201604_pango_view_vertical_writing_ipapgothic_render01.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;&lt;code&gt;--text &#39;pangoで縦書き&#39; --gravity east&lt;/code&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-このとき90度傾いてレンダリングされるので、&lt;code&gt;--rotate -90&lt;/code&gt;も付けて文字全体を
-90度回転させることで文字の進行方向を鉛直方向に変える。
-&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output ipapgothic_render02.svg --font &#39;IPAPGothic 24&#39; --text &#39;pangoで縦書き&#39; --gravity east --rotate -90
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;46&quot; height=&quot;183&quot; data=&quot;/images/201604_pango_view_vertical_writing_ipapgothic_render02.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;&lt;code&gt;--text &#39;pangoで縦書き&#39; --gravity east --rotate -90&lt;/code&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-余談だが &lt;code&gt;gravity east&lt;/code&gt; の east は東洋の東の意味ではなく&lt;em&gt;方向&lt;/em&gt;を意味する。
-よって東西南北(east/west/south/north)すべて指定できる。
-&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;137&quot; height=&quot;170&quot; data=&quot;/images/201604_pango_view_vertical_writing_ipapgothic_render03.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;pango gravity&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;縦書きと font feature&lt;/h3&gt;
-
-&lt;p&gt;
-縦書き専用フォントでもそれなりに OTF font feature が動作する。
-&lt;/p&gt;
-&lt;p&gt;
-嵯峨本フォントプロトタイプの &lt;code&gt;&quot;liga&quot; on&lt;/code&gt; を設定すると、
-連綿が OTF font feature の合字としてレンダリングされる。
-なお、この連綿では、「と」および「か」が変体かな「と（登）」および「か（可）」となっている。
-&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output sagabon_render001.pdf --font &#39;嵯峨本フォントプロトタイプ 24&#39; --markup --text &#39;&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39; --gravity east --rotate -90
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;45&quot; height=&quot;127&quot; data=&quot;/images/201604_pango_view_vertical_writing_sagabon_render001.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;&lt;code&gt;&#39;&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39;&lt;/code&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-ただし、複雑なタグを使うと文字が崩れるようだ。(Pango 1.38現在)
-&lt;/p&gt;
-
-&lt;pre class=&quot;prompt&quot;&gt;&lt;samp&gt;% pango-view --output sagabon_render002.pdf --font &#39;嵯峨本フォントプロトタイプ 24&#39; --markup --text &#39;いとおかし　&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39; --gravity east --rotate -90
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;46&quot; height=&quot;220&quot; data=&quot;/images/201604_pango_view_vertical_writing_sagabon_render002.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;&lt;code&gt;&#39;いとおかし　&amp;lt;span font_features=&quot;&amp;amp;quot;liga&amp;amp;quot; on&quot;&amp;gt;いとおかし&amp;lt;/span&amp;gt;&#39;&lt;/code&gt;&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-このバグがあるせいで pango の縦書き利用の利便性が大幅に下がって残念仕様。
-&lt;/p&gt;
-
-&lt;h3&gt;参考文献&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.clear-code.com/blog/2010/12/24.html&quot;&gt;地獄のジェネレータ: Ruby Advent Calendar jp: 2010の24日目&lt;/a&gt;, 株式会社クリアコード ククログ, 2010-12-24&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://epublishing.jp/sagabon/&quot;&gt;嵯峨本フォントプロトタイプ&lt;/a&gt;, 嵯峨本フォントプロジェクト, 2012&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sat, 23 Apr 2016 03:00:34 +0900</pubDate>
-        <link>https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</link>
-        <guid isPermaLink="true">https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html</guid>
-        
-        <category>font</category>
-        
-        <category>縦書き</category>
-        
-        <category>howto</category>
-        
-        <category>変体かな</category>
         
         
       </item>
