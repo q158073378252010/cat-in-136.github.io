@@ -5,8 +5,8 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 08 Oct 2016 23:48:49 +0900</pubDate>
-    <lastBuildDate>Sat, 08 Oct 2016 23:48:49 +0900</lastBuildDate>
+    <pubDate>Thu, 20 Oct 2016 21:54:19 +0900</pubDate>
+    <lastBuildDate>Thu, 20 Oct 2016 21:54:19 +0900</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -733,16 +733,7 @@ table.diff_firefox48_pref_diff tbody tr { transition: background 0.125s ease-in-
   &lt;li&gt;DISQUS の会話内容の消滅
     &lt;ul&gt;
       &lt;li&gt;URL の移行し忘れであった。&lt;/li&gt;
-      &lt;li&gt;
-        &lt;table&gt;
-          &lt;tbody&gt;
-            &lt;tr&gt;
-              &lt;td&gt;方法は [URL Mapper&lt;/td&gt;
-              &lt;td&gt;DISQUS](https://help.disqus.com/customer/portal/articles/912757-url-mapper) を使用する。&lt;/td&gt;
-            &lt;/tr&gt;
-          &lt;/tbody&gt;
-        &lt;/table&gt;
-      &lt;/li&gt;
+      &lt;li&gt;方法は &lt;a href=&quot;https://help.disqus.com/customer/portal/articles/912757-url-mapper&quot;&gt;URL Mapper&lt;/a&gt; を使用する。&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
