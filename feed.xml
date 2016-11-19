@@ -5,9 +5,202 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 26 Oct 2016 00:16:22 +0900</pubDate>
-    <lastBuildDate>Wed, 26 Oct 2016 00:16:22 +0900</lastBuildDate>
+    <pubDate>Sun, 20 Nov 2016 02:08:59 +0900</pubDate>
+    <lastBuildDate>Sun, 20 Nov 2016 02:08:59 +0900</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?</title>
+        <description>&lt;p&gt;
+次のように画像 (raster image) 化した文字画像は、
+テキスト選択できないなど批判されることが多いが
+特殊なフォントを使いたい場合など使用されることが多い。
+&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;/images/201611_embedded_font_susanoo_demo_raster.png&quot; /&gt;
+&lt;figcaption&gt;ラスター画像化した文字画像の例&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;web font&lt;/h3&gt;
+
+&lt;p&gt;
+最も理想的な解決策は web font を用意することで、
+ソースも無駄がない。
+しかしフォントサイズが大きくなるという日本語特有の事情や、
+ライセンスの問題から一筋縄ではない。
+だがメジャーなフォントベンダーのフォントなら、その問題をまとめて
+&lt;a href=&quot;http://www.typesquare.com/&quot;&gt;TypeSquare&lt;/a&gt;や
+&lt;a href=&quot;http://typekit.com/&quot;&gt;TypeKit&lt;/a&gt;
+などのサービスで解決もらえるので、普通はこれが良い。
+&lt;/p&gt;
+&lt;figure&gt;
+&lt;div class=&quot;embeded-font-susanoo-typografy-test&quot;&gt;
+  やくもたつ&lt;br /&gt;
+  いづもやへがき&lt;br /&gt;
+  つまごみに&lt;br /&gt;
+  やへがきつくる&lt;br /&gt;
+  そのやへがきを
+&lt;/div&gt;
+&lt;figcaption&gt;Woffでの表示例（ライブビュー）&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;pdf.js で透明テキスト&lt;/h3&gt;
+
+&lt;p&gt;
+ところで PDF への埋め込みは許されているというのはありがち。
+そこで &lt;a href=&quot;https://github.com/mozilla/pdf.js&quot;&gt;pdf.js&lt;/a&gt;
+の威力を使ってレンダリングしてしまえば、
+フォントの字形は canvas 要素、テキスト選択できない問題は
+透明テキストで解決できる。
+しかし、無理矢理感が半端ないし、pdf.js 自体が結構重い。
+&lt;/p&gt;
+&lt;figure&gt;
+  &lt;div class=&quot;render-pdf-file&quot; data-pdf-file-path=&quot;/images/201611_embedded_font_susanoo_demo_pdf.pdf&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;application/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.6.329/pdf.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;application/javascript&quot;&gt;
+window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+  &quot;use strict&quot;;
+
+  var container = document.querySelector(&quot;.render-pdf-file[data-pdf-file-path]&quot;);
+  container.style.position = &quot;relative&quot;;
+
+  var PDFJS = pdfjsDistBuildPdf.PDFJS;
+  PDFJS.workerSrc = &quot;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.6.329/pdf.worker.min.js&quot;;
+  PDFJS.getDocument(container.getAttribute(&quot;data-pdf-file-path&quot;)).then(function (pdf) {
+    return pdf.getPage(1);
+  }).then(function(page) {
+    var canvas = container.appendChild(document.createElement(&quot;canvas&quot;));
+    var ratio = window.devicePixelRatio || 1;
+    var viewport = page.getViewport(1 * ratio);
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    container.style.width = canvas.style.width = canvas.width * 1.0 / ratio + &quot;px&quot;;
+    container.style.height = canvas.style.height = canvas.height * 1.0 / ratio + &quot;px&quot;;
+
+    page.render({
+      canvasContext: canvas.getContext(&quot;2d&quot;),
+      viewport: viewport
+    });
+
+    return Promise.all([page.getTextContent(), {viewport: viewport, canvas: canvas, ratio: ratio}]);
+  }).then(function (param) {
+    var textContent = param[0];
+    var viewport = param[1].viewport;
+    var canvas = param[1].canvas;
+    var ratio = param[1].ratio;
+
+    var SVG_NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('width', canvas.style.width);
+    svg.setAttribute('height',  canvas.style.height);
+    svg.setAttribute('font-size', 1);
+    svg.setAttribute('style', 'position: absolute; top: 0; left: 0;');
+
+    textContent.items.forEach(function (textItem) {
+      var tx = [
+        [1.0/ratio, 0, 0, 1.0/ratio, 0, 0],
+        viewport.transform,
+        textItem.transform,
+        [1, 0, 0, -1, 0, 0]
+      ].reduce(function(curr, v) { return PDFJS.Util.transform(curr, v); });
+
+      var style = textContent.styles[textItem.fontName];
+      var text = document.createElementNS(SVG_NS, 'text');
+      text.setAttribute('transform', 'matrix(' + tx.join(' ') + ')');
+      text.setAttribute('font-family', style.fontFamily);
+      text.setAttribute('fill-opacity', '0');
+      text.appendChild(document.createTextNode(textItem.str));
+      svg.appendChild(text);
+    });
+    container.appendChild(svg);
+
+    return Promise.resolve();
+  }).catch(function (ex) {
+    console.error(ex);
+  });
+}, false);
+&lt;/script&gt;
+&lt;figcaption&gt;pdf.js での表示例（ライブビュー）&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;透明テキストを含んだベクトル画像&lt;/h3&gt;
+
+&lt;p&gt;
+pdf.js のレンダリング結果を模擬するものの、
+レンダリング結果はラスターではなくベクトルとする。
+すなわちアウトライン化した svg 画像内に透明テキストを入れこむ。
+&lt;/p&gt;
+&lt;figure&gt;
+&lt;object width=&quot;121&quot; height=&quot;161&quot; data=&quot;/images/201611_embedded_font_susanoo_demo.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;svg化した文字画像の例&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;感想&lt;/h3&gt;
+
+&lt;p&gt;
+日本語のフォントは色々と大変だと思いました（小並感
+&lt;/p&gt;
+
+&lt;h3&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;github:&lt;a href=&quot;https://github.com/mozilla/pdf.js&quot;&gt;mozilla/pdf.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;使用している極太明朝は&lt;a href=&quot;http://www.pot.co.jp/font/&quot;&gt;MOJもじくみかなSH版&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;例文として使用した文は、最古の和歌と伝えられる「八雲立つ／出雲八重垣／妻籠みに／八重垣作る／その八重垣を」&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;style scoped=&quot;scoped&quot;&gt;
+@font-face {
+  /*
+     http://www.pot.co.jp/font/
+     で配布されている 2006/Mon/19 版の
+     MOJもじくみ仮名 OTF フォントからサブセットを生成し
+     WOFF に変換した。
+
+     バージョン履歴
+     [2001/Aug/25]
+     「もじくみ仮名」配布開始
+     日本語の文字と組版を考える会
+     [2001/Nov/12]
+     「MOJもじくみかなSH版」v1.0-sh配布開始
+     [2006/Mon/19]
+     「MOJもじくみかなSH版」OpenTypeフォーマットにて配布開始
+     沢辺均、萩野生政、企画・制作
+   */
+  font-family: &quot;MOJもじくみ仮名 OTF&quot;;
+  src: url(&quot;data:application/x-font-woff;base64,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&quot;) format(&quot;woff&quot;);
+}
+
+
+.embeded-font-susanoo-typografy-test {
+  font-family: &quot;MOJもじくみ仮名 OTF&quot;, serif;
+  padding: 2px;
+  margin: 2px;
+  text-align: left;
+  text-align: start;
+}
+@supports ((writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl)) {
+  .embeded-font-susanoo-typografy-test {
+    writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
+  }
+}
+&lt;/style&gt;
+</description>
+        <pubDate>Sun, 20 Nov 2016 02:03:18 +0900</pubDate>
+        <link>https://cat-in-136.github.io/2016/11/embeded-font.html</link>
+        <guid isPermaLink="true">https://cat-in-136.github.io/2016/11/embeded-font.html</guid>
+        
+        <category>縦書き</category>
+        
+        <category>html</category>
+        
+        <category>font</category>
+        
+        <category>webfont</category>
+        
+        
+      </item>
     
       <item>
         <title>如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか</title>
@@ -1284,68 +1477,6 @@ mul10ui:                                # @mul10ui
         <category>clang</category>
         
         <category>チラシの裏</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Diff between firefox 47.0 beta 1 default preference and firefox 46.0</title>
-        <description>&lt;p&gt;
-This is difference between the default preference of Firefox 47.0 beta 1 and one of 45.0.
-&lt;/p&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox47_pref_diff&quot;&gt;
-&lt;caption&gt;Preference difference&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 46.0&lt;/td&gt;&lt;td&gt;Firefox 47.0 beta 1&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;alerts.&lt;wbr /&gt;showFavicons&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;displayport_&lt;wbr /&gt;expiry_&lt;wbr /&gt;ms&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;15000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;repaint_&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;pan_&lt;wbr /&gt;repaint_&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;smooth_&lt;wbr /&gt;scroll_&lt;wbr /&gt;repaint_&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;history.&lt;wbr /&gt;allowPopState&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;history.&lt;wbr /&gt;allowPushState&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;history.&lt;wbr /&gt;allowReplaceState&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;meta_&lt;wbr /&gt;refresh_&lt;wbr /&gt;when_&lt;wbr /&gt;inactive.&lt;wbr /&gt;disabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;mode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;production&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;blockedURIs.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;block_&lt;wbr /&gt;dangerous&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;block_&lt;wbr /&gt;dangerous_&lt;wbr /&gt;host&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;block_&lt;wbr /&gt;potentially_&lt;wbr /&gt;unwanted&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;downloads.&lt;wbr /&gt;remote.&lt;wbr /&gt;block_&lt;wbr /&gt;uncommon&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;lists&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;mozstd-track-digest256,mozstd-trackwhite-digest256,mozfull-track-digest256&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;mozstd-track-digest256,mozstd-trackwhite-digest256,mozfull-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;param.&lt;wbr /&gt;yahoo-fr&lt;/td&gt;&lt;td&gt;moz35&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;param.&lt;wbr /&gt;yahoo-fr-ja&lt;/td&gt;&lt;td&gt;mozff&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;datareporting.&lt;wbr /&gt;healthreport.&lt;wbr /&gt;about.&lt;wbr /&gt;reportUrlUnified&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://fhr.cdn.mozilla.net/%LOCALE%/v4/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;command-button-noautohide.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;command-button-tilt.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;fontinspector.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gcli.&lt;wbr /&gt;jquerySrc&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gcli.&lt;wbr /&gt;lodashSrc&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.min.js&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gcli.&lt;wbr /&gt;underscoreSrc&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;loader.&lt;wbr /&gt;hotreload&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;markup.&lt;wbr /&gt;collapseAttributes&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-breakdowns&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-census-displays&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-dominator-tree-breakdowns&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;memory.&lt;wbr /&gt;custom-dominator-tree-displays&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;migration.&lt;wbr /&gt;warnings&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;enable-jit-optimizations&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;ui.&lt;wbr /&gt;show-jit-optimizations&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;responsive.&lt;wbr /&gt;html.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;tilt.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;tilt.&lt;wbr /&gt;intro_&lt;wbr /&gt;transition&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;tilt.&lt;wbr /&gt;outro_&lt;wbr /&gt;transition&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;toolbarSpec&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;tilt toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;,&quot;screenshot --fullpage&quot;, &quot;rulers&quot;, &quot;measure&quot;]&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;eyedropper&quot;,&quot;screenshot --fullpage&quot;, &quot;rulers&quot;, &quot;measure&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;autoMultiline&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;details_&lt;wbr /&gt;element.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;document.&lt;wbr /&gt;scrollingElement.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;identity.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;cpows.&lt;wbr /&gt;forbid-unsafe-from-browser&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;max_&lt;wbr /&gt;child_&lt;wbr /&gt;script_&lt;wbr /&gt;run_&lt;wbr /&gt;time&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;mozBrowserFramesEnabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;permissions.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;interception.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;serviceWorkers.&lt;wbr /&gt;interception.&lt;wbr /&gt;opaque.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;vr.&lt;wbr /&gt;poseprediction.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;workers.&lt;wbr /&gt;maxPerDomain&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;logging.&lt;wbr /&gt;peak-texture-usage.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;logging.&lt;wbr /&gt;texture-usage.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;gfx.&lt;wbr /&gt;xrender.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;identity.&lt;wbr /&gt;fxaccounts.&lt;wbr /&gt;settings.&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/settings&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/settings?service=sync&amp;amp;context=fx_desktop_v3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;image.&lt;wbr /&gt;http.&lt;wbr /&gt;accept&lt;/td&gt;&lt;td&gt;image/png,&lt;wbr /&gt;image/*;&lt;wbr /&gt;q=0.8,*/*;&lt;wbr /&gt;q=0.5&lt;/td&gt;&lt;td&gt;*/*&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;dump_&lt;wbr /&gt;stack_&lt;wbr /&gt;on_&lt;wbr /&gt;debuggee_&lt;wbr /&gt;would_&lt;wbr /&gt;run&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;throw_&lt;wbr /&gt;on_&lt;wbr /&gt;debuggee_&lt;wbr /&gt;would_&lt;wbr /&gt;run&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;wasm&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;offmainthreadcomposition.&lt;wbr /&gt;testing.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;allow_&lt;wbr /&gt;script_&lt;wbr /&gt;change_&lt;wbr /&gt;updates&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;always_&lt;wbr /&gt;tilt&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;caret_&lt;wbr /&gt;shown_&lt;wbr /&gt;when_&lt;wbr /&gt;long_&lt;wbr /&gt;tapping_&lt;wbr /&gt;on_&lt;wbr /&gt;empty_&lt;wbr /&gt;content&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-align-true-value.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-align-unsafe-value.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;benchmark.&lt;wbr /&gt;frames&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;benchmark.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;benchmark.&lt;wbr /&gt;vp9.&lt;wbr /&gt;threshold&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;150&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;hardware-video-decoding.&lt;wbr /&gt;force-enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;wave.&lt;wbr /&gt;decoder.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;narrate.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;narrate.&lt;wbr /&gt;rate&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;narrate.&lt;wbr /&gt;test&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;narrate.&lt;wbr /&gt;voice&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;automatic&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;cookie.&lt;wbr /&gt;alwaysAcceptSessionCookies&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;mdns.&lt;wbr /&gt;use_&lt;wbr /&gt;js_&lt;wbr /&gt;fallback&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugin.&lt;wbr /&gt;state.&lt;wbr /&gt;libplugins&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugin.&lt;wbr /&gt;state.&lt;wbr /&gt;npatgpc&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugin.&lt;wbr /&gt;state.&lt;wbr /&gt;npbispbrowser&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;plugin.&lt;wbr /&gt;state.&lt;wbr /&gt;npesteid-firefox-plugin&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;plugins.&lt;wbr /&gt;rewrite_&lt;wbr /&gt;youtube_&lt;wbr /&gt;embeds&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;sanitize.&lt;wbr /&gt;migrateClearSavedPwdsOnExit&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;ecdhe_&lt;wbr /&gt;ecdsa_&lt;wbr /&gt;chacha20_&lt;wbr /&gt;poly1305_&lt;wbr /&gt;sha256&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;ssl3.&lt;wbr /&gt;ecdhe_&lt;wbr /&gt;rsa_&lt;wbr /&gt;chacha20_&lt;wbr /&gt;poly1305_&lt;wbr /&gt;sha256&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;view-source.&lt;wbr /&gt;reachable-from-inner-protocol&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f.&lt;wbr /&gt;softtoken&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;webauth.&lt;wbr /&gt;u2f.&lt;wbr /&gt;usbtoken&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;base&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://firefox.settings.services.mozilla.com/v1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;bucket&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;blocklists&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;onecrl.&lt;wbr /&gt;checked&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;kinto.&lt;wbr /&gt;onecrl.&lt;wbr /&gt;collection&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;certificates&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncedTabs.&lt;wbr /&gt;showRemoteIcons&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncedTabs.&lt;wbr /&gt;showRemoteIcons&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncedTabsUIRefresh&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;optoutSample&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;ui.&lt;wbr /&gt;popup.&lt;wbr /&gt;disable_&lt;wbr /&gt;autohide&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;blockedTable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-block-simple,mozplugin-block-digest256&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;disallow_&lt;wbr /&gt;completions&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-malware-simple,test-phish-simple,test-unwanted-simple,test-track-simple,test-trackwhite-simple,test-forbid-simple,goog-downloadwhite-digest256,mozstd-track-digest256,mozstd-trackwhite-digest256,mozfull-track-digest256&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-malware-simple,test-phish-simple,test-unwanted-simple,test-track-simple,test-trackwhite-simple,test-forbid-simple,goog-downloadwhite-digest256,mozstd-track-digest256,mozstd-trackwhite-digest256,mozfull-track-digest256,test-block-simple,mozplugin-block-digest256,mozplugin2-block-digest256&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox47_pref_diff&quot;&gt;
-&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;File&lt;/td&gt;&lt;td&gt;Firefox 46.0&lt;/td&gt;&lt;td&gt;Firefox 47.0 beta 1&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/devtools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;browser/omni.ja!/defaults/preferences/webide-prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;omni.ja!/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;omni.ja!/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;webapprt/omni.ja!/defaults/preferences/prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox47_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox47_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox47_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox47_pref_diff td.json, table.diff_firefox40_pref_diff td.uri, table.diff_firefox40_pref_diff td.dump { word-break: break-all; }
-table.diff_firefox47_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox47_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox47_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox47_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-
-table.diff_firefox47_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox47_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
-</description>
-        <pubDate>Fri, 29 Apr 2016 13:54:08 +0900</pubDate>
-        <link>https://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</link>
-        <guid isPermaLink="true">https://cat-in-136.github.io/2016/04/diff-between-firefox-470-beta-1-default.html</guid>
-        
-        <category>pref diff</category>
-        
-        <category>mozilla</category>
         
         
       </item>
