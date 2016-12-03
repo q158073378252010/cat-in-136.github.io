@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Diff between firefox 51.0 beta 6 default preference and firefox 50.0.2 cat_in_136.blog()</title>
+<link rel="canonical" href="https://cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html" />
+<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
+<meta property="og:title" content="Diff between firefox 51.0 beta 6 default preference and firefox 50.0.2" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="cat_in_136.blog()" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+</head>
+<body>
+<header class="site-header">
+<div class="wrap">
+<a class="site-title" href="/">cat_in_136.blog()</a>
+<nav class="site-nav" role="navigation">
+<a class="page-link" href="/archive">Archive</a>
+<a class="page-link" href="/feed.xml">Feed</a>
+<a class="page-link" href="/tags">Tags</a>
+</nav>
+</div>
+</header>
+<div class="page-content" role="main">
+<div class="wrap">
+<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<header class="post-header">
+<h1 itemprop="name"><a href="/2016/12/diff-between-firefox-510-beta-6-default.html" itemprop="url">Diff between firefox 51.0 beta 6 default preference and firefox 50.0.2</a></h1>
+<div class="meta">
+Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
+</div>
+<div class="meta">
+Date: <time itemprop="datePublished">2016-12-03T00:00:00+09:00</time>
+(Modified: <time item="dateModified">2016-12-03T10:53:05+09:00</time>)
+</div>
+<div class="meta">
+Tags:
+<a class="tag" href="/tags.html#tag_pref%20diff">Pref diff</a>
+<a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+</div>
+</header>
+<div class="post-content" itemprop="articleBody">
+<p>
+This is difference between the default preference of Firefox 50.0 beta 3 and one of 49.0.1.
+</p>
+<div>
+<table class="diff_firefox51_pref_diff">
+<caption>Preference difference</caption>
+<thead>
+<tr><td>Pref</td><td>Firefox 50.0.2</td><td>Firefox 51.0 beta 6</td></tr>
+</thead>
+<tbody>
+<tr class="oldkey"><td>accessibility.<wbr />typeaheadfind.<wbr />matchesCountTimeout</td><td>100</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>app.<wbr />update.<wbr />cert.<wbr />checkAttributes</td><td>false</td><td class="undefined">undefined</td></tr><tr><td>browser.<wbr />migrate.<wbr />automigrate.<wbr />enabled</td><td>false</td><td>true</td></tr><tr><td>browser.<wbr />safebrowsing.<wbr />provider.<wbr />google4.<wbr />updateURL</td><td class="uri">https://safebrowsing.googleapis.com/v4/threatListUpdates:fetch?$req=%REQUEST_BASE64%&amp;$ct=application/x-protobuf&amp;key=%GOOGLE_API_KEY%</td><td class="uri">https://safebrowsing.googleapis.com/v4/threatListUpdates:fetch?$ct=application/x-protobuf&amp;key=%GOOGLE_API_KEY%</td></tr><tr><td>browser.<wbr />search.<wbr />reset.<wbr />enabled</td><td>false</td><td>true</td></tr><tr><td>devtools.<wbr />devedition.<wbr />promo.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="oldkey"><td>dom.<wbr />mozAlarms.<wbr />enabled</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>dom.<wbr />vr.<wbr />add-test-devices</td><td>0</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>dom.<wbr />vr.<wbr />cardboard.<wbr />enabled</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>dom.<wbr />vr.<wbr />oculus050.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>gfx.<wbr />content.<wbr />azure.<wbr />backends</td><td>cairo</td><td>skia</td></tr><tr class="oldkey"><td>gfx.<wbr />vr.<wbr />mirror-textures</td><td>false</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>image.<wbr />single-color-optimization.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>javascript.<wbr />options.<wbr />mem.<wbr />gc_<wbr />per_<wbr />compartment</td><td>true</td><td class="undefined">undefined</td></tr><tr><td>layers.<wbr />shared-buffer-provider.<wbr />enabled</td><td>false</td><td>true</td></tr><tr class="oldkey"><td>layout.<wbr />css.<wbr />vertical-text.<wbr />enabled</td><td>true</td><td class="undefined">undefined</td></tr><tr class="oldkey"><td>media.<wbr />block-play-until-visible</td><td>false</td><td class="undefined">undefined</td></tr><tr><td>media.<wbr />decoder.<wbr />heuristic.<wbr />dormant.<wbr />timeout</td><td>60000</td><td>10000</td></tr><tr><td>media.<wbr />getusermedia.<wbr />screensharing.<wbr />allowed_<wbr />domains</td><td class="dump">webex.com,*.webex.com,ciscospark.com,*.ciscospark.com,projectsquared.com,*.projectsquared.com,*.room.co,room.co,beta.talky.io,talky.io,*.clearslide.com,appear.in,*.appear.in,tokbox.com,*.tokbox.com,*.sso.francetelecom.fr,*.si.francetelecom.fr,*.sso.infra.ftgroup,*.multimedia-conference.orange-business.com,*.espacecollaboration.orange-business.com,free.gotomeeting.com,g2m.me,*.g2m.me,*.mypurecloud.com,*.mypurecloud.com.au,spreed.me,*.spreed.me,*.spreed.com,air.mozilla.org,*.circuit.com,*.yourcircuit.com,circuit.siemens.com,yourcircuit.siemens.com,circuitsandbox.net,*.unify.com,tandi.circuitsandbox.net,*.ericsson.net,*.cct.ericsson.net,*.opentok.com,*.conf.meetecho.com,meet.jit.si,*.meet.jit.si,web.stage.speakeasyapp.net,web.speakeasyapp.net,*.hipchat.me,*.beta-wspbx.com,*.wspbx.com,*.unifiedcloudit.com,*.smartboxuc.com,*.smartbox-uc.com,*.panterranetworks.com,pexipdemo.com,*.pexipdemo.com,pex.me,*.pex.me,*.rd.pexip.com,1click.io,*.1click.io,*.fuze.com,*.fuzemeeting.com,*.thinkingphones.com,gotomeeting.com,*.gotomeeting.com,gotowebinar.com,*.gotowebinar.com,gototraining.com,*.gototraining.com,citrix.com,*.citrix.com,expertcity.com,*.expertcity.com,citrixonline.com,*.citrixonline.com,g2m.me,*.g2m.me,gotomeet.me,*.gotomeet.me,gotomeet.at,*.gotomeet.at,miriadaxdes.miriadax.net,certificacion.miriadax.net,miriadax.net,*.wire.com,sylaps.com,*.sylaps.com,bluejeans.com,*.bluejeans.com,*.a.bluejeans.com</td><td class="dump">webex.com,*.webex.com,ciscospark.com,*.ciscospark.com,projectsquared.com,*.projectsquared.com,*.room.co,room.co,beta.talky.io,talky.io,*.clearslide.com,appear.in,*.appear.in,tokbox.com,*.tokbox.com,*.sso.francetelecom.fr,*.si.francetelecom.fr,*.sso.infra.ftgroup,*.multimedia-conference.orange-business.com,*.espacecollaboration.orange-business.com,free.gotomeeting.com,g2m.me,*.g2m.me,*.mypurecloud.com,*.mypurecloud.com.au,spreed.me,*.spreed.me,*.spreed.com,air.mozilla.org,*.circuit.com,*.yourcircuit.com,circuit.siemens.com,yourcircuit.siemens.com,circuitsandbox.net,*.unify.com,tandi.circuitsandbox.net,*.ericsson.net,*.cct.ericsson.net,*.opentok.com,*.conf.meetecho.com,meet.jit.si,*.meet.jit.si,web.stage.speakeasyapp.net,web.speakeasyapp.net,*.hipchat.me,*.beta-wspbx.com,*.wspbx.com,*.unifiedcloudit.com,*.smartboxuc.com,*.smartbox-uc.com,*.panterranetworks.com,pexipdemo.com,*.pexipdemo.com,pex.me,*.pex.me,*.rd.pexip.com,1click.io,*.1click.io,*.fuze.com,*.fuzemeeting.com,*.thinkingphones.com,gotomeeting.com,*.gotomeeting.com,gotowebinar.com,*.gotowebinar.com,gototraining.com,*.gototraining.com,citrix.com,*.citrix.com,expertcity.com,*.expertcity.com,citrixonline.com,*.citrixonline.com,g2m.me,*.g2m.me,gotomeet.me,*.gotomeet.me,gotomeet.at,*.gotomeet.at,miriadaxdes.miriadax.net,certificacion.miriadax.net,miriadax.net,*.wire.com,sylaps.com,*.sylaps.com,bluejeans.com,*.bluejeans.com,*.a.bluejeans.com,*.bbcollab.com</td></tr><tr class="oldkey"><td>network.<wbr />http.<wbr />spdy.<wbr />enabled.<wbr />v3-1</td><td>false</td><td class="undefined">undefined</td></tr><tr><td>security.<wbr />insecure_<wbr />password.<wbr />ui.<wbr />enabled</td><td>false</td><td>true</td></tr><tr><td>security.<wbr />pki.<wbr />sha1_<wbr />enforcement_<wbr />level</td><td>3</td><td>4</td></tr><tr><td>signon.<wbr />rememberSignons.<wbr />visibilityToggle</td><td>false</td><td>true</td></tr><tr class="oldkey"><td>signon.<wbr />ui.<wbr />experimental</td><td>false</td><td class="undefined">undefined</td></tr><tr><td>startup.<wbr />homepage_<wbr />welcome_<wbr />url</td><td class="uri">https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/firstrun/</td><td></td></tr><tr><td>webgl.<wbr />enable-webgl2</td><td>false</td><td>true</td></tr>
+</tbody>
+</table>
+</div>
+<div>
+<table class="diff_firefox51_pref_diff">
+<caption>Default pref Javascript files</caption>
+<thead>
+<tr><td>Pref</td><td>Firefox 50.0.2</td><td>Firefox 51.0 beta 6</td></tr>
+</thead>
+<tbody>
+<tr><td>browser/omni.ja.d/defaults/preferences/devtools.js</td><td>present</td><td>present</td></tr>
+<tr><td>browser/omni.ja.d/defaults/preferences/firefox-branding.js</td><td>present</td><td>present</td></tr>
+<tr><td>browser/omni.ja.d/defaults/preferences/firefox-l10n.js</td><td>present</td><td>present</td></tr>
+<tr><td>browser/omni.ja.d/defaults/preferences/firefox.js</td><td>present</td><td>present</td></tr>
+<tr><td>browser/omni.ja.d/defaults/preferences/webide-prefs.js</td><td>present</td><td>present</td></tr>
+<tr><td>omni.ja.d/defaults/pref/services-sync.js</td><td>present</td><td>present</td></tr>
+<tr><td>omni.ja.d/greprefs.js</td><td>present</td><td>present</td></tr>
+</tbody>
+</table>
+</div>
+<style type="text/css"><!-- /* --><![CDATA[ /* */
+table.diff_firefox51_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox51_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox51_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox51_pref_diff td.json,
+table.diff_firefox51_pref_diff td.uri,
+table.diff_firefox51_pref_diff td.dump { word-break: break-all; }
+table.diff_firefox51_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox51_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox51_pref_diff tr.newkey
+td:first-child { text-decoration: underline;
+}
+table.diff_firefox51_pref_diff tr.oldkey
+td:first-child { text-decoration: line-through; }
+table.diff_firefox51_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox51_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]><!-- */ --></style>
+</div><!-- post-content -->
+<footer class="post-footer">
+<div class="meta share">
+Share:
+<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html&amp;text=Diff%20between%20firefox%2051.0%20beta%206%20default%20preference%20and%20firefox%2050.0.2+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
+<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html">Facebook</a>
+<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html">Hatena Bookmark</a>
+<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html&amp;linkname=Diff%20between%20firefox%2051.0%20beta%206%20default%20preference%20and%20firefox%2050.0.2+cat_in_136.blog()">More via AddToAny...</a>
+</div>
+<div class="meta">
+Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-12-03-diff-between-firefox-510-beta-6-default.html" class="source-path">_posts/2016-12-03-diff-between-firefox-510-beta-6-default.html</a>
+(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-12-03-diff-between-firefox-510-beta-6-default.html">History</a>)
+</div>
+</footer>
+</article>
+<nav class="post-nav wrap">
+<div class="previous-post">
+<a href="/2016/11/howto-export-openshift-app.html" title="Note to self: how to export a simple openshift app and restore to another project" rel="prev">&#x2190;Note to self: how to export a simple openshift app and restore to another project</a>
+</div>
+<div class="next-post">
+</div>
+</nav>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'catin136blog';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  document.getElementsByTagName('head')[0].appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<aside class="post-related">
+<h2>Related Posts</h2>
+<ul>
+<li class="post-item">
+<span class="post-date">2016-10-01</span>
+<a class="post-link" href="/2016/10/diff-between-firefox-500-beta-3-default.html">Diff between firefox 50.0 beta 3 default preference and firefox 49.0.1</a>
+</li>
+<li class="post-item">
+<span class="post-date">2016-08-13</span>
+<a class="post-link" href="/2016/08/diff-between-firefox-490-beta-3-default.html">Diff between firefox 49.0 beta 3 default preference and firefox 48.0</a>
+</li>
+<li class="post-item">
+<span class="post-date">2016-07-03</span>
+<a class="post-link" href="/2016/07/diff-between-firefox-480-beta-5-default.html">Diff between firefox 48.0 beta 5 default preference and firefox 47.0.1</a>
+</li>
+<li class="post-item">
+<span class="post-date">2014-03-30</span>
+<a class="post-link" href="/2014/03/diff-between-firefox-290-beta-3-default.html">Diff between firefox 29.0 beta 3 default preference and firefox 28.0</a>
+</li>
+<li class="post-item">
+<span class="post-date">2015-11-18</span>
+<a class="post-link" href="/2015/11/diff-between-firefox-430-beta-3-default.html">Diff between firefox 43.0 beta 3 default preference and firefox 42.0</a>
+</li>
+</ul>
+</aside>
+</div>
+</div>
+<footer class="site-footer">
+<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
+<div class="column">
+<p>
+Copyright (C)
+<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
+</span><br />
+Content is available under a
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+unless otherwise noted.
+</p>
+</div>
+<nav class="column">
+<ul>
+<li>
+<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
+</li>
+<li>
+<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
+<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
+</li>
+<li>
+<a href="https://github.com/cat-in-136">Github</a>,
+<a href="https://gist.github.com/cat-in-136">Gist</a>
+</li>
+<li>
+<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
+</li>
+<li>
+<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
+</li>
+<li>
+<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
+</li>
+</ul>
+</nav>
+</div>
+</footer>
+</body>
+</html>
+
