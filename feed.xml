@@ -5,8 +5,8 @@
     <description></description>
     <link>https://cat-in-136.github.io/</link>
     <atom:link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 03 Dec 2016 11:01:23 +0900</pubDate>
-    <lastBuildDate>Sat, 03 Dec 2016 11:01:23 +0900</lastBuildDate>
+    <pubDate>Sat, 03 Dec 2016 12:44:55 +0900</pubDate>
+    <lastBuildDate>Sat, 03 Dec 2016 12:44:55 +0900</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -60,7 +60,7 @@ table.diff_firefox51_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox51_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
 /* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
 </description>
-        <pubDate>Sat, 03 Dec 2016 00:00:00 +0900</pubDate>
+        <pubDate>Sat, 03 Dec 2016 10:53:05 +0900</pubDate>
         <link>https://cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html</link>
         <guid isPermaLink="true">https://cat-in-136.github.io/2016/12/diff-between-firefox-510-beta-6-default.html</guid>
         
