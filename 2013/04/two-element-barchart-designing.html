@@ -1,105 +1,144 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>２本の（省略付き）棒グラフを思いのまま描く方法 cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2013/04/two-element-barchart-designing.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="２本の（省略付き）棒グラフを思いのまま描く方法" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="/images/bar.png" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>２本の（省略付き）棒グラフを思いのまま描く方法</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2013/04/two-element-barchart-designing.html" />
+  <meta property="og:title" content="２本の（省略付き）棒グラフを思いのまま描く方法" />
+  <meta property="og:description" content="例えば、こんなふたつの値があったとしましょう。 中国・日本のGDP (世界銀行発表の2011年のGDP) Country name GDP (US$) China 7,318,499,269,7..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/bar.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2013/04/two-element-barchart-designing.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2013/04/two-element-barchart-designing.html" itemprop="url">２本の（省略付き）棒グラフを思いのまま描く方法</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2013-04-13T20:29:00+09:00</time>
-(Modified: <time item="dateModified">2014-11-10T00:02:37+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-<a class="tag" href="/tags.html#tag_math">Math</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<p>例えば、こんなふたつの値があったとしましょう。</p>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2013/04/two-element-barchart-designing.html" itemprop="url">２本の（省略付き）棒グラフを思いのまま描く方法</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2013-04-13T20:29:00+09:00">2013-04-13T20:29:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:37+09:00">2014-11-10T00:02:37+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      <a class="tag" href="/tags.html#tag_math">Math</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-04-13-two-element-barchart-designing.html" class="source-path">_posts/2013-04-13-two-element-barchart-designing.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-04-13-two-element-barchart-designing.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>例えば、こんなふたつの値があったとしましょう。</p>
+
 <figure style="display: block; margin: 1em;">
 <figcaption style="display: block;">
 中国・日本のGDP (<a href="http://data.worldbank.org/indicator/NY.GDP.MKTP.CD" rel="nofollow">世界銀行発表の2011年のGDP</a>)
 </figcaption>
+
 <table>
 <col />
 <col />
 <thead>
 <tr>
-<th>Country name</th>
-<th>GDP (US$)</th>
+ <th>Country name</th>
+ <th>GDP (US$)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>China</td>
-<td>7,318,499,269,769</td>
+ <td>China</td>
+ <td>7,318,499,269,769</td>
 </tr>
 <tr>
-<td>Japan</td>
-<td>5,867,154,491,918</td>
+ <td>Japan</td>
+ <td>5,867,154,491,918</td>
 </tr>
 </tbody>
 </table>
+
 </figure>
+
 <p>そのままグラフを作ると <strong>差が少なくて見栄えが悪い</strong> の。</p>
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/bar.png" />
 <figcaption style="display: block;">中国・日本のGDP</figcaption>
 </figure>
+
 <h3>そんなときの簡単な省略棒グラフの描き方</h3>
+
 <p>まずは、枠の中に高さの違う棒（四角形）を２つ描きます。
 棒の高さは <strong>差をぐいっと付けて</strong> 描きます。
 どの程度、差を付けるかは <strong>お好みで調整してね</strong> 。</p>
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/step1.png" />
 </figure>
+
 <p>大きい方に合わせて線を引いて大きい方の数字を、
 小さい方に合わせて線を引いて小さい方の数字を書き入れます。
 値が大きいので billion で区切って、7318 と 5867 を書き入れました。
 また、棒の下にはラベルも書きましょう。
 もちろん、高い棒の方が China ですね。</p>
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/step2.png" />
 </figure>
+
 <p>最後に左下に省略線と数字のゼロを入れるだけ。</p>
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/step3.png" />
 </figure>
+
 <p>見栄えが気に入らないのなら、お好みで色なり線を工夫してみてね☆彡</p>
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/step4.png" />
 </figure>
+
 <h4>このやり方で省略棒グラフとして正しいことの数学的議論</h4>
+
 <p>2つのデータがあって、それぞれの値が
 <var>V<sub>1</sub></var>,
 <var>V<sub>2</sub></var>
@@ -111,15 +150,19 @@ Tags:
 省略グラフの波線によって
 <var>E</var>
 だけ省略されているとする。</p>
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/anly.png" />
 </figure>
+
 <p>このとき、</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>V<sub>2</sub></var>
 &lt;
 <var>h<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>
 </div>
+
 <p>が成り立つ任意の
 <var>V<sub>1</sub></var>,
 <var>V<sub>2</sub></var>,
@@ -128,6 +171,7 @@ Tags:
 (<var>V<sub>1</sub></var>&#x205f;&gt;&#x205f;<var>V<sub>2</sub></var>&#x205f;&gt;&#x205f;0,
 <var>h<sub>1</sub></var>&#x205f;&gt;&#x205f;<var>h<sub>2</sub></var>&#x205f;&gt;&#x205f;0)
 に対して<var>E</var>(&gt;&#x205f;0)が存在することを以下に示す。</p>
+
 <p>もし省略部のない単なる棒グラフの場合、
 <var>V<sub>1</sub></var>,
 <var>h<sub>1</sub></var>と
@@ -135,11 +179,13 @@ Tags:
 <var>h<sub>2</sub></var>
 の比は同じになるように、棒グラフを描く必要がある。
 よって、省略部のない単なる棒グラフの場合下式が成り立つ。</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>1</sub></var>
 =
 <var>V<sub>2</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>
 </div>
+
 <p>省略部のある棒グラフでは
 <var>h<sub>1</sub></var>,
 <var>h<sub>2</sub></var>
@@ -148,51 +194,69 @@ Tags:
 <var>h<sub>1</sub></var>&#x205f;&#x2192;&#x205f;(<var>h<sub>1</sub></var> + <var>E</var>),
 <var>h<sub>2</sub></var>&#x205f;&#x2192;&#x205f;(<var>h<sub>2</sub></var> + <var>E</var>)
 を書き換えた、下式が成り立たなければならない。</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;(<var>h<sub>1</sub> + E)</var>
 =
 <var>V<sub>2</sub></var>&#x205f;&#xf7;&#x205f;(<var>h<sub>2</sub> + E)</var>
 </div>
+
 <p>これを解くと <var>E</var> は下記の値となる。</p>
+
 <div style="text-align: center; margin: auto;">
 <var>E</var>
 =
 (<var>V<sub>2</sub></var>&#x2062;<var>h<sub>1</sub></var>&#x205f;-&#x205f;<var>V<sub>1</sub></var>&#x2062;<var>h<sub>2</sub></var>)&#x205f;&#xf7;&#x205f;(<var>V<sub>1</sub></var>&#x205f;-&#x205f;<var>V<sub>2</sub></var>)
 </div>
+
 <p>ここで</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>V<sub>2</sub></var>
 &lt;
 <var>h<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>
 </div>
+
 <p>から</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>2</sub></var>&#x2062;<var>h<sub>1</sub></var>&#x205f;-&#x205f;<var>V<sub>1</sub></var>&#x2062;<var>h<sub>2</sub></var>
 &gt;
 0
 </div>
+
 <p>が求まるので、今求めた<var>E</var>の値は正の数である。</p>
+
 <p><abbr title="Quod erat demonstrandum">QED</abbr>.</p>
+
 <h4>上の証明の考察</h4>
+
 <p>上の証明で最初に与えた条件式</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>V<sub>2</sub></var>
 &lt;
 <var>h<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>
 </div>
+
 <p>は、実際の値の比(<var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>V<sub>2</sub></var>)
 よりもグラフの上の棒の高さの比
 (<var>h<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>)
 が大きいということを表す。</p>
+
 <p>この前提下では、任意のデータ、任意の棒の高さで省略付き棒グラフが描ける。
 というのも、任意のデータ、任意の棒の高さに対して、省略線で省略された棒の高さ(<var>E</var>)が求められるからである。</p>
+
 <p style="background-color: rgba(255,192,192,0.5); font-size: larger;">結論1: このやり方は<ins datetime="2013-04-20">実際の値の比よりもグラフの上の棒の高さの比が大きいという前提下で</ins>任意のデータ、任意の棒の高さで省略付き棒グラフが描ける</p>
+
 <p>逆に</p>
+
 <div style="text-align: center; margin: auto;">
 <var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>V<sub>2</sub></var>
 &gt;
 <var>h<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>
 </div>
+
 <p>すなわち、実際の値の比(<var>V<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>V<sub>2</sub></var>)
 よりもグラフの上の棒の高さの比
 (<var>h<sub>1</sub></var>&#x205f;&#xf7;&#x205f;<var>h<sub>2</sub></var>)
@@ -200,43 +264,54 @@ Tags:
 これは具体的には下記のようなことであり、省略によって棒の高さを減じなければならないのに、
 棒の高さが水増し、という意味不明なことになっている。
 これは明らかにおかしい。</p>
+
 <figure style="display: block; margin: 1em;">
 <figcaption style="display: block;">
 中国・パラオのGDP (<a href="http://data.worldbank.org/indicator/NY.GDP.MKTP.CD" rel="nofollow">世界銀行発表の2011年のGDP</a>)
 </figcaption>
+
 <table>
 <col />
 <col />
 <thead>
 <tr>
-<th>Country name</th>
-<th>GDP (US$)</th>
+ <th>Country name</th>
+ <th>GDP (US$)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>China</td>
-<td>7,318,499,269,769</td>
+ <td>China</td>
+ <td>7,318,499,269,769</td>
 </tr>
 <tr>
-<td>Palau</td>
-<td>165,517,314</td>
+ <td>Palau</td>
+ <td>165,517,314</td>
 </tr>
 </tbody>
 </table>
+
 </figure>
+
+
 <figure style="display: block; margin: 1em;">
 <img src="/images/wrongscale.png" />
 <figcaption style="display: block;">中国・パラオのGDP（不正な省略棒グラフ表現）</figcaption>
 </figure>
+
 <p style="background-color: rgba(255,192,192,0.5); font-size: larger;">結論2: 省略棒グラフは、元のデータの変化の比を強調して表示できる。しかし、元のデータの変化の比を縮めて表示することはできない。</p>
+
 <h4>まとめ</h4>
+
 <p>以上の考察によって、<strong style="color: #f00;">2本の</strong> 省略棒グラフは、以下の特徴を持つことがわかった。</p>
+
 <ul>
 <li><ins datetime="2013-04-20">実際の値の比よりもグラフの上の棒の高さの比が大きいという前提下で</ins>任意のデータに対して、任意の棒の高さで描くことができる。すなわち、<strong style="color: #f00;">棒の高さや高さの差にまったく意味はない</strong>。</li>
 <li>2つの値の <strong style="color: #f00;"><del datetime="2013-04-20">差</del><ins datetime="2013-04-20">比</ins>がたいしたことがない</strong> ことがわかる。</li>
 </ul>
+
 <h4>補足</h4>
+
 <ul>
 <li>本稿では、3本以上の省略棒グラフについては言及はしていないし、善悪も言及していない。
 <ul>
@@ -246,112 +321,105 @@ Tags:
 </ul></li>
 <li>本稿は GDP を単なる手頃なデータとして使っただけであり、例えば中国の GDP について強調しようとしたわけではない。</li>
 </ul>
+
 <h4>参考文献</h4>
+
 <ul>
 <li><a href="http://data.worldbank.org/indicator/NY.GDP.MKTP.CD" rel="nofollow">GDP (current US$)</a>, The World Bank, 2011.</li>
 <li><a href="http://linux.slashdot.jp/comments.pl?sid=419181&amp;cid=1421914">Re: 悪いグラフの例|3D円グラフにご注意</a>, commented by x-rebuttal, スラッシュ・ドット・ジャパン, 2008.</li>
 </ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2013/04/two-element-barchart-designing.html&amp;text=%EF%BC%92%E6%9C%AC%E3%81%AE%EF%BC%88%E7%9C%81%E7%95%A5%E4%BB%98%E3%81%8D%EF%BC%89%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E6%80%9D%E3%81%84%E3%81%AE%E3%81%BE%E3%81%BE%E6%8F%8F%E3%81%8F%E6%96%B9%E6%B3%95+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2013/04/two-element-barchart-designing.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2013/04/two-element-barchart-designing.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2013/04/two-element-barchart-designing.html&amp;linkname=%EF%BC%92%E6%9C%AC%E3%81%AE%EF%BC%88%E7%9C%81%E7%95%A5%E4%BB%98%E3%81%8D%EF%BC%89%E6%A3%92%E3%82%B0%E3%83%A9%E3%83%95%E3%82%92%E6%80%9D%E3%81%84%E3%81%AE%E3%81%BE%E3%81%BE%E6%8F%8F%E3%81%8F%E6%96%B9%E6%B3%95+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2013-04-13-two-element-barchart-designing.html" class="source-path">_posts/2013-04-13-two-element-barchart-designing.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2013-04-13-two-element-barchart-designing.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2013/03/svg.html" title="SVGフィルターで雲を描くことに関して" rel="prev">&#x2190;SVGフィルターで雲を描くことに関して</a>
-</div>
-<div class="next-post">
-<a href="/2013/04/diff-between-firefox-21-beta-5-default.html" title="Diff between firefox 21 beta 5 default preference and firefox 20.0.1 " rel="next">Diff between firefox 21 beta 5 default preference and firefox 20.0.1 &#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2015-11-30</span>
-<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-02-24</span>
-<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
-</li>
-<li class="post-item">
-<span class="post-date">2016-08-05</span>
-<a class="post-link" href="/2016/08/html-complex-ruby.html">HTML5 Complex Ruby 今日の実装状況</a>
-</li>
-<li class="post-item">
-<span class="post-date">2012-06-27</span>
-<a class="post-link" href="/2012/06/m1.html">M+1フォントの「あ」について</a>
-</li>
-<li class="post-item">
-<span class="post-date">2016-10-08</span>
-<a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">アートアクアリウムの水盤における光学的解析のメモ</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/08/html-complex-ruby.html">
+      <span class="post-meta">2016-08-05</span>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2012/06/m1.html">
+      <span class="post-meta">2012-06-27</span>
+      <span class="post-title">M+1フォントの「あ」について</span>
+      <span class="post-thumb" data-image-path="/images/a_vs_a.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span>
+      <span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/03/bezier-2-diff.html">
+      <span class="post-meta">2014-03-06</span>
+      <span class="post-title">ベジェ曲線で描く円と真円の差について</span>
+      <span class="post-thumb" data-image-path="/images/kappa.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span>
+      <span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2012/05/blog-post.html">
+      <span class="post-meta">2012-05-19</span>
+      <span class="post-title">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</span>
+      <span class="post-thumb" data-image-path="/images/ksj_w15_52l_2k_chofu.png"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

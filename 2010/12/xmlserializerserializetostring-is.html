@@ -1,60 +1,85 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>XMLSerializer().serializeToString() is a simple useful HTML2XML Converter. cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="XMLSerializer().serializeToString() is a simple useful HTML2XML Converter." />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-<script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-<script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html" />
+  <meta property="og:title" content="XMLSerializer().serializeToString() is a simple useful HTML2XML Converter." />
+  <meta property="og:description" content="XMLSerializer().serializeToString() method converts DOM tree to text. (new XMLSerializer()).seria..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2010/12/xmlserializerserializetostring-is.html" itemprop="url">XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2010-12-23T00:08:00+09:00</time>
-(Modified: <time item="dateModified">2010-12-23T00:08:18+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_javascript">Javascript</a>
-<a class="tag" href="/tags.html#tag_xml">Xml</a>
-<a class="tag" href="/tags.html#tag_html">Html</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody">
-<p>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2010/12/xmlserializerserializetostring-is.html" itemprop="url">XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2010-12-23T00:08:00+09:00">2010-12-23T00:08:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2010-12-23T00:08:18+09:00">2010-12-23T00:08:18+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      <a class="tag" href="/tags.html#tag_xml">Xml</a>
+      <a class="tag" href="/tags.html#tag_html">Html</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-12-23-xmlserializerserializetostring-is.html" class="source-path">_posts/2010-12-23-xmlserializerserializetostring-is.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-12-23-xmlserializerserializetostring-is.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody">
+    <p>
 <code><a href="https://developer.mozilla.org/en/XMLSerializer">XMLSerializer</a>().serializeToString()</code> method converts DOM tree to text.
 </p>
+
 <div>
 <pre class="prettyprint"><code>(new XMLSerializer()).serializeToString(document.documentElement)
 </code></pre>
 <a href="javascript:(function(){prompt('', (new XMLSerializer()).serializeToString(document.documentElement))})();">bookmarklet</a>
 </div>
+
 <p>
 On <em>Firefox</em>, the output text is well-formed <em>XML</em> source code.
 The source DOM tree can be <em>HTML</em>.
@@ -62,107 +87,91 @@ If <code>XMLSerializer().serializeToString()</code> is applied to a HTML documen
 it returns a XML-converted source code.
 For example, <code>img</code> elements ("<code>&lt;img ...&gt;</code>") are converted to <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#NT-EmptyElemTag">the XML's empty-element tag form</a> : "<code>&lt;img ... <strong style="background-color: #ff0;">/</strong>&gt;</code>"
 </p>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html&amp;text=XMLSerializer().serializeToString()%20is%20a%20simple%20useful%20HTML2XML%20Converter.+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html&amp;linkname=XMLSerializer().serializeToString()%20is%20a%20simple%20useful%20HTML2XML%20Converter.+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-12-23-xmlserializerserializetostring-is.html" class="source-path">_posts/2010-12-23-xmlserializerserializetostring-is.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-12-23-xmlserializerserializetostring-is.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2010/12/three-jit-options-on-firefox4.html" title="Three JIT options on Firefox4 : jitprofiling, methodjit, and tracejit" rel="prev">&#x2190;Three JIT options on Firefox4 : jitprofiling, methodjit, and tracejit</a>
-</div>
-<div class="next-post">
-<a href="/2010/12/preferences-on-configuration-mania.html" title="Preferences on Configuration Mania which are not supported on Firefox 4." rel="next">Preferences on Configuration Mania which are not supported on Firefox 4.&#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2010-06-22</span>
-<a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">Study: multi-text vs single-text on XUL elements</a>
-</li>
-<li class="post-item">
-<span class="post-date">2010-02-27</span>
-<a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">&quot;View Page Source&quot; in browser tabs without any addons</a>
-</li>
-<li class="post-item">
-<span class="post-date">2011-05-20</span>
-<a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
-</li>
-<li class="post-item">
-<span class="post-date">2010-08-19</span>
-<a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">Tip: Calling window.atob() and btoa() from Jetpack-SDK</a>
-</li>
-<li class="post-item">
-<span class="post-date">2014-01-12</span>
-<a class="post-link" href="/2014/01/firefox-restartless-bootstrap-stylesheet-dynamic-insertion.html">Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
+  </div>
 
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">
+      <span class="post-meta">2010-06-22</span>
+      <span class="post-title">Study: multi-text vs single-text on XUL elements</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">
+      <span class="post-meta">2010-02-27</span>
+      <span class="post-title">&quot;View Page Source&quot; in browser tabs without any addons</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
+      <span class="post-meta">2011-05-20</span>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span>
+      <span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
+      <span class="post-meta">2010-08-19</span>
+      <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/01/firefox-restartless-bootstrap-stylesheet-dynamic-insertion.html">
+      <span class="post-meta">2014-01-12</span>
+      <span class="post-title">Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
+      <span class="post-meta">2014-04-27</span>
+      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/10/handling-namespaceless-xml-file-with.html">
+      <span class="post-meta">2010-10-27</span>
+      <span class="post-title">Handling namespaceless XML file with SAX</span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

@@ -1,195 +1,217 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について" />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html" />
+  <meta property="og:title" content="「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について" />
+  <meta property="og:description" content="「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」「返事はOKかい？」な展開を技術者（可視光）が望むというのか RT @cat_in_136 クリ..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2014/01/illumination-smartphone-app-realization.html" itemprop="url">「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2014-01-26T18:46:00+09:00</time>
-(Modified: <time item="dateModified">2014-01-26T18:51:17+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_video">Video</a>
-<a class="tag" href="/tags.html#tag_led">Led</a>
-<a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-<a class="tag" href="/tags.html#tag_light">Light</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2014/01/illumination-smartphone-app-realization.html" itemprop="url">「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」――の実現性について</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2014-01-26T18:46:00+09:00">2014-01-26T18:46:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-01-26T18:51:17+09:00">2014-01-26T18:51:17+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_video">Video</a>
+      <a class="tag" href="/tags.html#tag_led">Led</a>
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      <a class="tag" href="/tags.html#tag_light">Light</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-01-26-illumination-smartphone-app-realization.html" class="source-path">_posts/2014-01-26-illumination-smartphone-app-realization.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-01-26-illumination-smartphone-app-realization.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <div>
 <blockquote class="twitter-tweet" lang="ja"><p>「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」「返事はOKかい？」な展開を技術者（可視光）が望むというのか RT <a href="https://twitter.com/cat_in_136">@cat_in_136</a> クリスマスイルミネーションのLEDに情報を重畳させる可視光通信がありそうでない件について</p>&mdash; diffshare (@diffshare) <a href="https://twitter.com/diffshare/statuses/279234091721822208">December 13, 2012</a></blockquote>
 <script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
+
 <p>この tweet の内容について、LED を先程点滅させてみて気づいたことは、
 これは使い方によっては <strong>健康被害を及ぼす可能性がありそう</strong> であることがわかった。</p>
+
 <p>点滅の時間間隔を狭めれば狭めるほど多くの情報ビットを重畳することができる。
 符号化率=1という超理想環境下では、30 Hz で LED の点滅を切り替えれば、
 30 bps で通信できるということになる。
 つまり、点滅間隔の時間に反比例してスループットを上げることができる。</p>
+
 <p>一般的なスマホで撮影するというユースケースを考えると、
 現状高々 30 fps 程度まででしか録画できない。</p>
+
 <p>30 fps で動画撮影した時に識別できるのは高々 30 Hz での点滅である。
 そこで、 30 Hz (点滅間隔 33.3 ms) 程度で LED を実際に点滅をさせてみた結果、
 観ているのが<strong>気持ち悪くなった</strong>。
 どうやら LED の点滅が人間の視覚に晒されることで、
 いわゆる<a href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%82%AF" title="ポケモンショック">ポケモンショック</a>のような症状が起こりそうである。</p>
+
 <p>人間の視覚上点滅が気にならなくなるのは、60 Hz ぐらいらしいのだが、
 お手近の GR-Sakura (Arduino 互換ボード) で実際に試したら 100 Hz ぐらいまでは見ていて気持ち悪くなった。
 安全のため、120 Hz 程度で点滅をするようにするべきであろう。</p>
+
 <p>120 Hz 程度で点滅させるとなると、120 fps で撮影してくれないと困るわけだが、
 しばらくは出てこなさそうである。</p>
+
 <p><a href="http://dcimovies.com/specification/DCI_DCSS_v12_with_errata_2012-1010.pdf" title="Digital Cinema System Specification v.1.2">DCIのデジタルシネマの規格</a>でも下記の通り、高々48 fpsしか求められていない。</p>
+
 <blockquote>
-<ul>
-<li>The output of the decoder shall conform to Section 3.2 Image Specification. These images are
-basically:
-<ul>
-<li>4K = 4096x2160 at 24 FPS</li>
-<li>2K = 2048x1080 at 24 or 48 FPS</li>
-<li>...</li>
-</ul></li>
-</ul>
+  <ul>
+  <li>The output of the decoder shall conform to Section 3.2 Image Specification. These images are
+  basically:
+  <ul>
+  <li>4K = 4096x2160 at 24 FPS</li>
+  <li>2K = 2048x1080 at 24 or 48 FPS</li>
+  <li>...</li>
+  </ul></li>
+  </ul>
 </blockquote>
+
 <p>以上より、「あっイルミネーション」「うわーキレイ～」「アプリ起動してスマホかざしてみて！」「これって///」…
 を実現するためには、単純に点滅させる方法しか思い浮かばない限り、当分の間は無理そうである。</p>
+
 <h4>参考文献</h4>
+
 <ul>
 <li><a href="http://ja.wikipedia.org/wiki/%E5%85%89%E9%81%8E%E6%95%8F%E6%80%A7%E7%99%BA%E4%BD%9C" title="光過敏性発作">光過敏性発作</a>, Wikipedia (ja)</li>
 <li><a href="http://ja.wikipedia.org/wiki/%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%82%AF" title="ポケモンショック">ポケモンショック</a>, Wikipedia (ja)</li>
 <li><a href="http://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%82%AB%E3%83%BC" title="フリッカー">フリッカー</a>, Wikipedia (ja)</li>
 <li>DCI, "<a href="http://dcimovies.com/specification/DCI_DCSS_v12_with_errata_2012-1010.pdf" title="Digital Cinema System Specification v.1.2">Digital Cinema System Specification Version 1.2 with Errata as of 30 August 2012 Incorporated</a>", sub-clause 4.3.2</li>
 </ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html&amp;text=%E3%80%8C%E3%81%82%E3%81%A3%E3%82%A4%E3%83%AB%E3%83%9F%E3%83%8D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8D%E3%80%8C%E3%81%86%E3%82%8F%E3%83%BC%E3%82%AD%E3%83%AC%E3%82%A4%EF%BD%9E%E3%80%8D%E3%80%8C%E3%82%A2%E3%83%97%E3%83%AA%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%8B%E3%81%96%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%EF%BC%81%E3%80%8D%E3%80%8C%E3%81%93%E3%82%8C%E3%81%A3%E3%81%A6///%E3%80%8D%E2%80%95%E2%80%95%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2014/01/illumination-smartphone-app-realization.html&amp;linkname=%E3%80%8C%E3%81%82%E3%81%A3%E3%82%A4%E3%83%AB%E3%83%9F%E3%83%8D%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%80%8D%E3%80%8C%E3%81%86%E3%82%8F%E3%83%BC%E3%82%AD%E3%83%AC%E3%82%A4%EF%BD%9E%E3%80%8D%E3%80%8C%E3%82%A2%E3%83%97%E3%83%AA%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%82%B9%E3%83%9E%E3%83%9B%E3%81%8B%E3%81%96%E3%81%97%E3%81%A6%E3%81%BF%E3%81%A6%EF%BC%81%E3%80%8D%E3%80%8C%E3%81%93%E3%82%8C%E3%81%A3%E3%81%A6///%E3%80%8D%E2%80%95%E2%80%95%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-01-26-illumination-smartphone-app-realization.html" class="source-path">_posts/2014-01-26-illumination-smartphone-app-realization.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-01-26-illumination-smartphone-app-realization.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2014/01/firefox-restartless-bootstrap-stylesheet-dynamic-insertion.html" title="Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法" rel="prev">&#x2190;Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法</a>
-</div>
-<div class="next-post">
-<a href="/2014/03/diff-between-firefox-280-beta-8-default.html" title="Diff between firefox 28.0 beta 8 default preference and firefox 27.0.1 " rel="next">Diff between firefox 28.0 beta 8 default preference and firefox 27.0.1 &#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2015-07-26</span>
-<a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
-</li>
-<li class="post-item">
-<span class="post-date">2012-11-05</span>
-<a class="post-link" href="/2012/11/twitter-api.html">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</a>
-</li>
-<li class="post-item">
-<span class="post-date">2015-07-04</span>
-<a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">Study of the link tracking methods and the protection</a>
-</li>
-<li class="post-item">
-<span class="post-date">2014-03-05</span>
-<a class="post-link" href="/2014/03/bezier-1-kappa.html">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</a>
-</li>
-<li class="post-item">
-<span class="post-date">2010-02-07</span>
-<a class="post-link" href="/2010/02/phsspf.html">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">
+      <span class="post-meta">2015-07-26</span>
+      <span class="post-title">白い部分の面積を求めなさい〜東京2020</span>
+      <span class="post-thumb" data-image-path="/images/201507_Tokyo2020_emblem_area_calc_figure.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2012/11/twitter-api.html">
+      <span class="post-meta">2012-11-05</span>
+      <span class="post-title">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/03/bezier-1-kappa.html">
+      <span class="post-meta">2014-03-05</span>
+      <span class="post-title">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</span>
+      <span class="post-thumb" data-image-path="/images/kappa.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/02/phsspf.html">
+      <span class="post-meta">2010-02-07</span>
+      <span class="post-title">日本の携帯・PHSメールのSPF(送信ドメイン認証)対応状況のメモ</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/03/bezier-3-general-theta.html">
+      <span class="post-meta">2014-03-07</span>
+      <span class="post-title">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</span>
+      <span class="post-thumb" data-image-path="/images/generic-kappa.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span>
+      <span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

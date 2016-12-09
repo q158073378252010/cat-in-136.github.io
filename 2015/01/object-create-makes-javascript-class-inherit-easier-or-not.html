@@ -1,53 +1,77 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか? cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?" />
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-<script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-<script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" />
+  <meta property="og:title" content="Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?" />
+  <meta property="og:description" content="下記のようなクラス継承のコードは… class Pet { name: string; age: number; constructor(name: string) { this.name = ..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" itemprop="url">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2015-01-19T00:53:10+09:00</time>
-(Modified: <time item="dateModified">2015-01-19T00:53:10+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_javascript">Javascript</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<p>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" itemprop="url">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2015-01-19T00:53:10+09:00">2015-01-19T00:53:10+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2015-01-19T00:53:10+09:00">2015-01-19T00:53:10+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2015-01-19-object-create-makes-javascript-class-inherit-easier-or-not.html" class="source-path">_posts/2015-01-19-object-create-makes-javascript-class-inherit-easier-or-not.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2015-01-19-object-create-makes-javascript-class-inherit-easier-or-not.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>
 下記のようなクラス継承のコードは…
 </p>
+
 <pre class="prettyprint"><code>class Pet {
     name: string;
     age: number;
@@ -71,11 +95,13 @@ cat.countAge();
 cat.sleep();
 alert(cat.name + " is " + cat.age + " y.o.");
 </code></pre>
+
 <p>
 伝統的には<code>prototype</code>をコピーして継承をするのが、
 JavaScript のやり方。
 流派はあるが大体下記のような感じじゃないだろうか：
 </p>
+
 <pre class="prettyprint"><code>function Pet(name) {
     this.name = name;
     this.age = 0;
@@ -98,28 +124,33 @@ cat.countAge();
 cat.sleep();
 alert(cat.name + " is " + cat.age + " y.o.");
 </code></pre>
+
 <p>
 最近の JavaScript (ECMA Script 5) では、<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5"><code>Object.create( O [, Properties] )</code></a>というのがある。
 </p>
+
 <blockquote cite="http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5">
-<p>The <b>create</b> function creates a new object with a specified prototype. When the <b>create</b> function is called,
-the following steps are taken:</p>
-<ol>
-<li>If <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-8">Type</a>(<i>O</i>) is not Object or Null throw a <b>TypeError</b> exception.</li>
-<li>Let <i>obj</i> be the result of creating a new object as if by the expression new Object() where Object is the
-standard built-in constructor with that name</li>
-<li>Set the [[Prototype]] internal property of <i>obj</i> to <i>O</i>.</li>
-<li>If the argument <i>Properties</i> is present and not <b>undefined</b>, add own properties to <i>obj</i> as if by
-calling the standard built-in function <code>Object.defineProperties</code> with arguments <i>obj</i> and
-<i>Properties</i>.</li>
-<li>Return <i>obj</i>.</li>
-</ol>
+        <p>The <b>create</b> function creates a new object with a specified prototype. When the <b>create</b> function is called,
+        the following steps are taken:</p>
+
+        <ol>
+          <li>If <a href="http://www.ecma-international.org/ecma-262/5.1/#sec-8">Type</a>(<i>O</i>) is not Object or Null throw a <b>TypeError</b> exception.</li>
+          <li>Let <i>obj</i> be the result of creating a new object as if by the expression new Object() where Object is the
+              standard built-in constructor with that name</li>
+          <li>Set the [[Prototype]] internal property of <i>obj</i> to <i>O</i>.</li>
+          <li>If the argument <i>Properties</i> is present and not <b>undefined</b>, add own properties to <i>obj</i> as if by
+              calling the standard built-in function <code>Object.defineProperties</code> with arguments <i>obj</i> and
+              <i>Properties</i>.</li>
+          <li>Return <i>obj</i>.</li>
+        </ol>
 </blockquote>
+
 <p>
 <code>new</code>演算子に近いような用途を想定した関数である。
 一方で、引数としては <code>Object.defineProperties()</code> と同じ形ということになっている。
 要するに下記のように使って欲しいらしい。
 </p>
+
 <pre class="prettyprint"><code>var Cat = {
     age: 0,
     countAge: function () {
@@ -135,22 +166,26 @@ cat.countAge();
 cat.sleep();
 alert(cat.name + " is " + cat.age + " y.o.");
 </code></pre>
+
 <p>
 なお <code>cat.name = "Cathy"</code>を改名可能なようにするためには、
 <code>{value: "Cathy", <em>writable: true</em>}</code>としなければならない。
 </p>
+
 <p>
 で、この流儀だと以下の問題がある。なんてこった。
 </p>
 <ul>
-<li>継承はいままでの伝統的な方法しかない。(<code>extend()</code>処理のループが必要)</li>
-<li>コンストラクタが<code>Object.create()</code>に置き換わったせいでインスタンス生成時の処理を書く方法がなくなる。</li>
+    <li>継承はいままでの伝統的な方法しかない。(<code>extend()</code>処理のループが必要)</li>
+    <li>コンストラクタが<code>Object.create()</code>に置き換わったせいでインスタンス生成時の処理を書く方法がなくなる。</li>
 </ul>
+
 <p>
 そしてMDNの<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited">Inheritance Revisited</a>というページに書かれた"正解"を基に書いた、
 <code>Object.create()</code>を利用したクラス継承の方法は、下記だ。
 結構冗長。
 </p>
+
 <pre class="prettyprint"><code>function Pet(name) {
     this.name = name;
     this.age = 0;
@@ -193,6 +228,7 @@ cat.countAge();
 cat.sleep();
 alert(cat.name + " is " + cat.age + " y.o.");
 </code></pre>
+
 <p>
 prototype を<code>Object.create()</code> するという業!
 また、メソッドが単なる関数オブジェクトとして扱うということで、
@@ -212,6 +248,7 @@ prototype を<code>Object.create()</code> するという業!
 ECMA Script 6 ないし TypeScript となっていて、
 JavaScript に変換すると下のようになる。
 </p>
+
 <pre class="prettyprint"><code>var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -243,114 +280,102 @@ cat.countAge();
 cat.sleep();
 alert(cat.name + " is " + cat.age + " y.o.");
 </code></pre>
-<p>参考文献</p>
-<ul>
-<li><a href="http://www.ecma-international.org/ecma-262/5.1/">ECMA-262 ECMAScript Language Specification 5.1 Edition</a>, June 2011. [ECMA-262/51]</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create() - JavaScript | MDN</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited">Inheritance Revisited - JavaScript | MDN</a></li>
-<li>LightSpeedC, <a href="http://qiita.com/LightSpeedC/items/d307d809ecf2710bd957">[JavaScript] そんな継承はイヤだ - クラス定義 - オブジェクト作成</a>, Qiita, 2014-03-04</li>
-</ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html&amp;text=Object.create()%20%E3%81%AE%E3%81%8A%E9%99%B0%E3%81%A7%E3%83%94%E3%83%A5%E3%82%A2%E3%81%AA%20JavaScript%20%E3%81%A7%E3%82%AF%E3%83%A9%E3%82%B9%E7%B6%99%E6%89%BF%E3%81%AF%E6%A5%BD%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%8B?+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html&amp;linkname=Object.create()%20%E3%81%AE%E3%81%8A%E9%99%B0%E3%81%A7%E3%83%94%E3%83%A5%E3%82%A2%E3%81%AA%20JavaScript%20%E3%81%A7%E3%82%AF%E3%83%A9%E3%82%B9%E7%B6%99%E6%89%BF%E3%81%AF%E6%A5%BD%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%8B?+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2015-01-19-object-create-makes-javascript-class-inherit-easier-or-not.html" class="source-path">_posts/2015-01-19-object-create-makes-javascript-class-inherit-easier-or-not.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2015-01-19-object-create-makes-javascript-class-inherit-easier-or-not.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2014/12/light-weight-font-android.html" title="Light な weight な日本語フォントを android に投入" rel="prev">&#x2190;Light な weight な日本語フォントを android に投入</a>
-</div>
-<div class="next-post">
-<a href="/2015/01/diff-between-firefox-360-beta-2-default.html" title="Diff between firefox 36.0 beta 2 default preference and firefox 35.0" rel="next">Diff between firefox 36.0 beta 2 default preference and firefox 35.0&#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2015-05-01</span>
-<a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">C言語での static キーワード付き配列パラメータ宣言</a>
-</li>
-<li class="post-item">
-<span class="post-date">2010-11-29</span>
-<a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">code reading : javascript code encoded as aaencode</a>
-</li>
-<li class="post-item">
-<span class="post-date">2011-05-20</span>
-<a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">Angry Birds (Web ver.) Hacks: Modify the Level Data!</a>
-</li>
-<li class="post-item">
-<span class="post-date">2011-12-24</span>
-<a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</a>
-</li>
-<li class="post-item">
-<span class="post-date">2012-10-08</span>
-<a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">画面サイズ換算器 - Display Size Converter in meter unit</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+<p>参考文献</p>
+
+<ul>
+    <li><a href="http://www.ecma-international.org/ecma-262/5.1/">ECMA-262 ECMAScript Language Specification 5.1 Edition</a>, June 2011. [ECMA-262/51]</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create() - JavaScript | MDN</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_Revisited">Inheritance Revisited - JavaScript | MDN</a></li>
+    <li>LightSpeedC, <a href="http://qiita.com/LightSpeedC/items/d307d809ecf2710bd957">[JavaScript] そんな継承はイヤだ - クラス定義 - オブジェクト作成</a>, Qiita, 2014-03-04</li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
+      <span class="post-meta">2010-11-29</span>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
+      <span class="post-meta">2011-05-20</span>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span>
+      <span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span>
+      <span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">
+      <span class="post-meta">2012-10-08</span>
+      <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
+      <span class="post-meta">2014-11-16</span>
+      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
+      <span class="post-meta">2010-03-17</span>
+      <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

@@ -1,73 +1,102 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>NerineをFirefox4で動くよう改造してみる cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2010/09/nerinefirefox4.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="NerineをFirefox4で動くよう改造してみる" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="/images/nerinefirefox4-screenshot1.png" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-<script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-<script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>NerineをFirefox4で動くよう改造してみる</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2010/09/nerinefirefox4.html" />
+  <meta property="og:title" content="NerineをFirefox4で動くよう改造してみる" />
+  <meta property="og:description" content="NerineはHTML5/JavaScript製のプレゼンテーションソフトであるが、Webkitでしか動作しない構造となっている。Firefox4(Beta)でCSS3 transitionsに..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/nerinefirefox4-screenshot1.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/nerinefirefox4.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2010/09/nerinefirefox4.html" itemprop="url">NerineをFirefox4で動くよう改造してみる</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2010-09-15T22:51:00+09:00</time>
-(Modified: <time item="dateModified">2014-11-10T00:02:31+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_javascript">Javascript</a>
-<a class="tag" href="/tags.html#tag_web%20application">Web application</a>
-<a class="tag" href="/tags.html#tag_html">Html</a>
-<a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<p>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2010/09/nerinefirefox4.html" itemprop="url">NerineをFirefox4で動くよう改造してみる</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2010-09-15T22:51:00+09:00">2010-09-15T22:51:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:31+09:00">2014-11-10T00:02:31+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
+      <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      <a class="tag" href="/tags.html#tag_html">Html</a>
+      <a class="tag" href="/tags.html#tag_mozilla">Mozilla</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-09-15-nerinefirefox4.html" class="source-path">_posts/2010-09-15-nerinefirefox4.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-09-15-nerinefirefox4.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>
 <a href="http://www.aduca.org/nerine/">Nerine</a>はHTML5/JavaScript製のプレゼンテーションソフトであるが、Webkitでしか動作しない構造となっている。Firefox4(Beta)でCSS3 transitionsに対応する機会に、<a href="http://github.com/cat-in-136/Nerine">Firefox4対応用にgithub上でフォーク</a>した。
 基本的に行ったのは以下の2つの対策。
 </p>
+
 <h4>対策 : CSS zoom → CSS3 transform</h4>
 <p>
 Firefox(やOpera)はCSS zoom 対応していない。そのためindex表示（↑キーを押す）すると、縮小されずにクリッピングされた形になってしまう。
 </p>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <a href="/images/nerinefirefox4-screenshot1.png"><img src="/images/nerinefirefox4-screenshot1.png" width="400" height="130" /></a>
 <figcaption style="display: block">Firefox4.0b5による、オリジナルのNerineのindex表示</figcaption>
 </figure>
+
 <p>
 CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&amp;Webkit独自機能であるCSS zoomと違って、CSS3 transformはCSS3規格であるので、これに対応すれば現代のモダンなブラウザで正しく表示される。
 </p>
+
 <h4>対策 : CSS vender-specific extension</h4>
+
 <p>
 多くのCSS3は、まだ規格策定(Working)のため、正式ではない。そのため多くのウェブブラウザの実装では <a href="http://www.w3.org/TR/CSS21/syndata.html#vendor-keywords">vender-specific extension</a> (vender prefix) なる接頭辞をつけて使っている。オリジナルの Nerine では、<code>-webkit-</code>しか付けていない。
 </p>
+
 <div>
 <table>
 <caption>主な vender-specific extension</caption>
@@ -82,18 +111,22 @@ CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&am
 </tbody>
 </table>
 </div>
+
 <p>
 このようなものに他の各種ブラウザの vender prefix をつけた。なお、使用しているブラウザ以外の vender prefix は無視されるので、何も考えずに追記すればよい。
 </p>
+
 <pre class="prettyprint"><code>  -webkit-transition: opacity 0.5s linear;
 <ins>  -moz-transition: opacity 0.5s linear;</ins>
 <ins>  -ms-transition: opacity 0.5s linear;</ins>
 <ins>  -o-transition: opacity 0.5s linear;</ins>
 }
 </code></pre>
+
 <p>
 なお、JavaScriptでアクセスする場合はラクダ文字(camelCase)にしなければならないが、このときは<code>WebkitTransition</code>,<code>MozTransition</code>と書く。以上を踏まえるとCSS zoomをJavaScriptで設定しているコードは下記のようになった：
 </p>
+
 <pre class="prettyprint"><code><ins>    var transform = ["scale(", (scale-4)/100.0, ",", (scale-4)/100.0, ")"].join('');</ins>
     $('article > section').css({
 <del>      width: [scale-2, '%'].join(''),</del>
@@ -113,116 +146,109 @@ CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&am
       padding: 0
 });
 </code></pre>
+
 <h4>その他・課題</h4>
+
 <p>
 エフェクトを定義するPetalについては大幅に書き直したが、やはり上の対策を注意すればいいだけである。ただ、今のところ一部Firefox4.0b5でしか動かないエフェクトなどがあるため、今後対策が必要になってくると思われる。
 </p>
+
 <h4>参考文献</h4>
 <ul>
 <li><a href="http://www.aduca.org/nerine/">Nerine - Simple HTML5 Presentation Tool</a></li>
 <li><a href="https://developer.mozilla.org/en/CSS/CSS_transitions">CSS transitions</a> - MDC</li>
 </ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2010/09/nerinefirefox4.html&amp;text=Nerine%E3%82%92Firefox4%E3%81%A7%E5%8B%95%E3%81%8F%E3%82%88%E3%81%86%E6%94%B9%E9%80%A0%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2010/09/nerinefirefox4.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2010/09/nerinefirefox4.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2010/09/nerinefirefox4.html&amp;linkname=Nerine%E3%82%92Firefox4%E3%81%A7%E5%8B%95%E3%81%8F%E3%82%88%E3%81%86%E6%94%B9%E9%80%A0%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-09-15-nerinefirefox4.html" class="source-path">_posts/2010-09-15-nerinefirefox4.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-09-15-nerinefirefox4.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2010/09/study-for-adding-menuitem-to-firefox4s.html" title="Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)" rel="prev">&#x2190;Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</a>
-</div>
-<div class="next-post">
-<a href="/2010/10/mozilla-add-on-validation-system-says.html" title="Mozilla Add-on validation system says HTTP setting is generally not allowed." rel="next">Mozilla Add-on validation system says HTTP setting is generally not allowed.&#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2015-11-30</span>
-<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
-</li>
-<li class="post-item">
-<span class="post-date">2010-09-02</span>
-<a class="post-link" href="/2010/09/unofficial-css-property-zoom.html">Unofficial CSS property zoom implemented on WebKit</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-04-13</span>
-<a class="post-link" href="/2013/04/two-element-barchart-designing.html">２本の（省略付き）棒グラフを思いのまま描く方法</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-02-24</span>
-<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
-</li>
-<li class="post-item">
-<span class="post-date">2014-12-29</span>
-<a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/09/unofficial-css-property-zoom.html">
+      <span class="post-meta">2010-09-02</span>
+      <span class="post-title">Unofficial CSS property zoom implemented on WebKit</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
+      <span class="post-meta">2013-04-13</span>
+      <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span>
+      <span class="post-thumb" data-image-path="/images/bar.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
+      <span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/08/html-complex-ruby.html">
+      <span class="post-meta">2016-08-05</span>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span>
+      <span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span>
+      <span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

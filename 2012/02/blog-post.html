@@ -1,70 +1,103 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>バレンタインデーのチョコレートとグラフ理論 cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2012/02/blog-post.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="バレンタインデーのチョコレートとグラフ理論" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="/images/digraph-cjsvm.png" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>バレンタインデーのチョコレートとグラフ理論</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2012/02/blog-post.html" />
+  <meta property="og:title" content="バレンタインデーのチョコレートとグラフ理論" />
+  <meta property="og:description" content="メトロポリス（Metropolis）という英字フリーペーパー（オンラインでも見れる）に、日本のバレンタインデーのマーケティング戦略について、興味深い言及がなされているのを見つけた。 Japane..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/digraph-cjsvm.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/02/blog-post.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2012/02/blog-post.html" itemprop="url">バレンタインデーのチョコレートとグラフ理論</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2012-02-14T06:00:00+09:00</time>
-(Modified: <time item="dateModified">2014-11-10T00:02:35+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-<a class="tag" href="/tags.html#tag_math">Math</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<p><a href="http://metropolis.co.jp/" title="Metropolis Magazine | Japan's Number 1 English Magazine">メトロポリス（Metropolis）</a>という英字フリーペーパー（オンラインでも見れる）に、<em>日本の</em>バレンタインデーのマーケティング戦略について、興味深い言及がなされているのを見つけた。</p>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2012/02/blog-post.html" itemprop="url">バレンタインデーのチョコレートとグラフ理論</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2012-02-14T06:00:00+09:00">2012-02-14T06:00:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:35+09:00">2014-11-10T00:02:35+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      <a class="tag" href="/tags.html#tag_math">Math</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-02-14-blog-post.html" class="source-path">_posts/2012-02-14-blog-post.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-02-14-blog-post.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p><a href="http://metropolis.co.jp/" title="Metropolis Magazine | Japan's Number 1 English Magazine">メトロポリス（Metropolis）</a>という英字フリーペーパー（オンラインでも見れる）に、<em>日本の</em>バレンタインデーのマーケティング戦略について、興味深い言及がなされているのを見つけた。</p>
+
 <blockquote cite="http://metropolis.co.jp/features/advertorial/chocco-terminology/">
-<p>Japanese chocco companies' marketing technique can't be faulted, with every human relationship now requiring some kind of sugary gift on February 14.</p>
+  <p>Japanese chocco companies' marketing technique can't be faulted, with every human relationship now requiring some kind of sugary gift on February 14.</p>
 </blockquote>
+
 <p>和訳すると以下のような感じだろうか（もうちょっとマトモな和訳はできないものかのぅ）。</p>
+
 <blockquote>
-<p>日本のチョコレート菓子メーカのマーケティングとして、
-すべての人間関係について2/14になんらかの甘いお菓子の贈り物が必要ということにするのに失敗できない。</p>
+  <p>日本のチョコレート菓子メーカのマーケティングとして、
+  すべての人間関係について2/14になんらかの甘いお菓子の贈り物が必要ということにするのに失敗できない。</p>
 </blockquote>
+
 <p>2000年ごろから、 <em>愛する男の人</em>にチョコレートを贈るだったものから、贈る相手が広がっり昔と異なる様相になって来ているようだ。
 それをメトロポリス誌の記事では、人間関係（human relationship）に注目している。
 様々な人間関係があるが、それら全てにsome kind of sugary giftを関連付けようとしている、と。
 そのような点で「今年も女の子からチョコレートを貰えなかった」という台詞のは、もはやバレンタインデー市場のトレンドに即していないと言えるのではないか。</p>
+
 <p>普通市場規模というと単価×人数で計算するが、バレンタインデーの場合は人数じゃなくて人間関係なのだ、となると非常に興味深い。</p>
+
 <h4>古典的なチョコレートのプレゼントとグラフ理論</h4>
+
 <p>古典的な日本のバレンタインデーは「愛する男の人にチョコレートを贈る」ものである。
 男女それぞれ5人の閉じられたコミュニティがあるとき、古典的日本的バレンタインデーの市場規模は高々5人(×単価)である。</p>
+
 <p><em>高々</em>5人と高々という語を使ったのは、「愛する男の人がいない女の人」の存在や「バレンタインデーに参加する気がない女の人」の存在のためである。</p>
+
 <p>古典的日本的バレンタインデーのモデル(Classical Japanese St. Valentine day Model; CJSVMと以下略す)でチョコレートの受け渡し関係を図にすると、シンプルな有向グラフ(digraph; directed graph)になることがわかる。
 女の人の集合を<var>F</var>、男の人の集合を<var>M</var>と表すと、CJSVMの有向グラフは以下の特徴を持つ。</p>
+
 <ol>
 <li>頂点(vertex)集合<var>V</var>は、<var>F</var>と<var>M</var>の直和である。
 <var>V</var>=<var>F</var>+<var>M</var>.</li>
@@ -73,27 +106,38 @@ Tags:
 <li><var>F</var>のおのおのの要素について、出次数(outdegree)は0または1である。</li>
 <li><var>M</var>のおのおのの要素について、入次数(indegree)は0であること<strong>も</strong>ある。</li>
 </ol>
+
 <div class="separator" style="clear: both; text-align: center;">
 <img src="/images/digraph-cjsvm.png" title="#F=#M=5のCJSVMの例" alt="#F=#M=5のCJSVMの例" />
 </div>
+
 <p>上の図では1人の男の人にチョコレートが集中し、3人がチョコレートが貰えないという図を描いた。
 人間関係は次数分布がべき乗に従うスケールフリー性があると言われており、それに準じたためである。
 ただ、弧の本数の引き方（誰がチョコレートをもらうか、もらえないか）については複雑ネットワーク（complex network）の理論が必要であるため、本稿で細かく議論する気はない。</p>
+
 <p>CJSVMの枠組みで市場を広げるには、</p>
+
 <ul>
 <li>単価を増やす（チョコレートの高級化）</li>
 <li>チョコレートを渡す文化の普及（参加人数の割合を増やす）</li>
 </ul>
+
 <p>である。そしてこれは自ずと限界があるのが直感的にわかる。</p>
+
 <h4>義理チョコのグラフ理論</h4>
+
 <p>義理チョコ（Giri choco）というのは、本命チョコと対照的に説明される。
 シンプルに言えば、「愛する人」でない男の人にもチョコレートを渡そうということである。</p>
+
 <p>義理チョコを何も考えずに図に起こすと以下のような感じになる。</p>
+
 <div class="separator" style="clear: both; text-align: center;">
 <img src="/images/digraph-gcbm.png" title="#F=#M=5のGCBMの例" alt="#F=#M=5のGCBMの例" />
 </div>
+
 <p>義理チョコはコミュニティー内の男の人にとにかく渡すので、義理チョコブロードキャストだ。
 この義理チョコブロードキャストモデル（Giri-Choco Broadcasting Model; 以下GCBMと略す）は以下の特徴を持つ。</p>
+
 <ol>
 <li>頂点集合<var>V</var>は、<var>F</var>と<var>M</var>の直和である。
 <var>V</var>=<var>F</var>+<var>M</var>.</li>
@@ -101,147 +145,155 @@ Tags:
 <var>A</var>=<var>F</var>×<var>M</var> - <var>A</var><sub>CJSVM</sub>.</li>
 <li><var>F</var>のおのおのの要素について、出次数は#Mまたは(#M-1)である。</li>
 </ol>
+
 <p>ただ、義理チョコは単価が安いし、女の人の負担も大きい（<var>F</var>のおのおのの要素について出次数が大きい）ため今日では減少傾向であるらしい。</p>
+
 <h4>友チョコのグラフ理論</h4>
+
 <p>CJSVMやGCBMの中では、あくまで渡す人を増やす、渡される人を増やすという人の数という古典的なマーケティング手法がとられる。
 しかし、ある時からそれ異なるバレンタインデーのマーケティングが始まることになったと思う。
 それが友チョコ（Tomo choco）だ。</p>
+
 <p>友チョコというのは、主に女性たちの間で友人どうしで受け渡しするチョコレート。
 ここで注目するのは人の数に注目したのではなく、人間関係に注目したことである。</p>
+
 <div class="separator" style="clear: both; text-align: center;">
 <img src="/images/digraph-tcem.png" title="#T=5のTCEMの例" alt="#T=5のTCEMの例" />
 </div>
+
 <p>友チョコの交換のモデル（Tomo-Choco Exchange Model; 以下TCEMと略す）の特徴は以下の通り。</p>
+
 <ol>
 <li>頂点集合<var>V</var>は、友達クラスターの頂点集合<var>T</var>に等しい。また、大抵の場合<var>T</var>は<var>F</var>の部分集合である。
 <var>V</var>=<var>T</var>.</li>
 <li>弧集合<var>A</var>は、頂点集合<var>V</var>=<var>T</var>の完全グラフの弧集合に等しい。。</li>
 <li><var>T</var>のおのおのの要素について、出次数・入次数ともに(#T-1)である。</li>
 </ol>
+
 <p>これまでのCJSVMやGCBMのモデルと以下の点で根本的に異なっている。</p>
+
 <ul>
 <li>チョコレートをプレゼントする頂点部分集合とプレゼントされる頂点部分集合の2つに分けることができなくなった。（CJSVMやGCBMでは出次数が0か、または入次数が0であった）</li>
 <li>チョコレートを渡す人は受け取る人でもある。（弧について、始点と終点を逆にした弧もまた弧集合に含まれる）</li>
 </ul>
+
 <p>弧集合の数は#A=#T(#T-1)であり、
 友チョコ交換の参加人数(#T)が少なくても弧集合の数(#A)は大きい。
 これは消費者の数が増えなくとも、人間関係（弧集合の数）に注目すれば市場が飛躍的に拡大する潜在性があるということを示唆しており非常に面白い。</p>
+
 <h4>補足：自分用チョコのグラフ理論</h4>
+
 <p>自分用にチョコレートを買った場合は、グラフ理論的に説明できないだろうと思いきや、説明できる。
 自分へのご褒美（）というぐらいなので自己ループだ。</p>
+
 <div class="separator" style="clear: both; text-align: center;">
 <img src="/images/digraph-c4s.png" title="自分用チョコの例" alt="自分用チョコの例" />
 </div>
+
 <p>皮肉れた見方をすれば友チョコの自己完結版と言うべきかもしれない。
 自分自身がチョコレートを渡す人でも受け取る人でもあるから。</p>
+
 <h4>Reference</h4>
+
 <ul>
 <li><a href="http://metropolis.co.jp/features/advertorial/chocco-terminology/" title="Metropolis - News &amp; Features | Shot Through the Heart…">Shot Through the Heart… Choco terminology plus other Valentine treats</a>, <a href="http://metropolis.co.jp/files/2012/02/932-Web-issue-complete.pdf">Metropolis Magazine #932</a> p10</li>
 <li><a href="http://www.nikkeibp.co.jp/archives/228/228743.html" title="「本命」「義理」だけじゃないバレンタインチョコ - ニュース - nikkei BPnet">「本命」「義理」だけじゃないバレンタインチョコ</a>, nikkei BPnet, Feb 2 2003</li>
-<li>A.Barabasi, and E.Bonabeau, <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200305-01_SciAmer-ScaleFree/200305-01_SciAmer-ScaleFree.pdf" title="Scale-Free Networks">Scale-Free Networks</a>, Scientific American, May 2003, pp50-59
+<li>A.Barabasi, and E.Bonabeau, <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200305-01_SciAmer-ScaleFree/200305-01_SciAmer-ScaleFree.pdf" title="Scale-Free Networks">Scale-Free Networks</a>, Scientific American, May 2003, pp50-59 
 (和文：「<a href="https://nikkeibook.com/science/page/magazine/0309/network.html">世界の“なぜ”を読み解く　スケールフリーネットワーク</a>」日経サイエンス2003年9月号)</li>
 </ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2012/02/blog-post.html&amp;text=%E3%83%90%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%B3%E3%83%87%E3%83%BC%E3%81%AE%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88%E3%81%A8%E3%82%B0%E3%83%A9%E3%83%95%E7%90%86%E8%AB%96+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2012/02/blog-post.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/02/blog-post.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2012/02/blog-post.html&amp;linkname=%E3%83%90%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%B3%E3%83%87%E3%83%BC%E3%81%AE%E3%83%81%E3%83%A7%E3%82%B3%E3%83%AC%E3%83%BC%E3%83%88%E3%81%A8%E3%82%B0%E3%83%A9%E3%83%95%E7%90%86%E8%AB%96+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-02-14-blog-post.html" class="source-path">_posts/2012-02-14-blog-post.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-02-14-blog-post.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2012/02/diff-between-firefox-11-beta-default.html" title="Diff between firefox 11-beta default preference and firefox 10" rel="prev">&#x2190;Diff between firefox 11-beta default preference and firefox 10</a>
-</div>
-<div class="next-post">
-<a href="/2012/02/v-highisdb-tmmmmbinottv.html" title="メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた" rel="next">メモ：V-high/モバキャス/ISDB-Tmm/mmbi/nottv の言葉が意味不明だったから調べてみた&#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2011-02-23</span>
-<a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">Visual Guide : New pref of Configuration Mania v1.14.2011022201</a>
-</li>
-<li class="post-item">
-<span class="post-date">2015-11-30</span>
-<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
-</li>
-<li class="post-item">
-<span class="post-date">2011-09-28</span>
-<a class="post-link" href="/2011/09/ui.html">商業施設の店舗案内的なUIについて意味もなく考えてみる</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-02-24</span>
-<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-12-28</span>
-<a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">
+      <span class="post-meta">2011-02-23</span>
+      <span class="post-title">Visual Guide : New pref of Configuration Mania v1.14.2011022201</span>
+      <span class="post-thumb" data-image-path="/images/HWaccel.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/09/ui.html">
+      <span class="post-meta">2011-09-28</span>
+      <span class="post-title">商業施設の店舗案内的なUIについて意味もなく考えてみる</span>
+      <span class="post-thumb" data-image-path="/images/AkasakaSakasu_BizTower_Board.jpg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">
+      <span class="post-meta">2013-12-28</span>
+      <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span>
+      <span class="post-thumb" data-image-path="/images/error.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/10/bmi.html">
+      <span class="post-meta">2010-10-06</span>
+      <span class="post-title">今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる</span>
+      <span class="post-thumb" data-image-path="/images/healthy_body_weight.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2012/03/0f.html">
+      <span class="post-meta">2012-03-24</span>
+      <span class="post-title">零階(0F)の必要性について</span>
+      <span class="post-thumb" data-image-path="/images/groundfloor_fig1.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
+      <span class="post-meta">2013-04-13</span>
+      <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span>
+      <span class="post-thumb" data-image-path="/images/bar.png"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

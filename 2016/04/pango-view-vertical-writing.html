@@ -1,82 +1,115 @@
 <!DOCTYPE html>
-
-<html class="vertical-writing-recommended">
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>pango で縦書きとその能力 cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="pango で縦書きとその能力" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="/images/201604_pango_view_vertical_writing_sagabon_render002.svg" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+<html xmlns="http://www.w3.org/1999/xhtml" class="vertical-writing-recommended">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>pango で縦書きとその能力</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html" />
+  <meta property="og:title" content="pango で縦書きとその能力" />
+  <meta property="og:description" content="pango での縦書き Pango の gravity 指定で縦書きが実現できる。 pango-view(1)だと、--gravity east オプション設定を指定すれば良い。 % pango..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/201604_pango_view_vertical_writing_sagabon_render002.svg" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2016/04/pango-view-vertical-writing.html" itemprop="url">pango で縦書きとその能力</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2016-04-23T03:00:34+09:00</time>
-(Modified: <time item="dateModified">2016-11-18T15:10:12+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_font">Font</a>
-<a class="tag" href="/tags.html#tag_%E7%B8%A6%E6%9B%B8%E3%81%8D">縦書き</a>
-<a class="tag" href="/tags.html#tag_howto">Howto</a>
-<a class="tag" href="/tags.html#tag_%E5%A4%89%E4%BD%93%E3%81%8B%E3%81%AA">変体かな</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<h3>pango での縦書き</h3>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2016/04/pango-view-vertical-writing.html" itemprop="url">pango で縦書きとその能力</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2016-04-23T03:00:34+09:00">2016-04-23T03:00:34+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2016-11-18T15:10:12+09:00">2016-11-18T15:10:12+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_font">Font</a>
+      <a class="tag" href="/tags.html#tag_%E7%B8%A6%E6%9B%B8%E3%81%8D">縦書き</a>
+      <a class="tag" href="/tags.html#tag_howto">Howto</a>
+      <a class="tag" href="/tags.html#tag_%E5%A4%89%E4%BD%93%E3%81%8B%E3%81%AA">変体かな</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-04-23-pango-view-vertical-writing.html" class="source-path">_posts/2016-04-23-pango-view-vertical-writing.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-04-23-pango-view-vertical-writing.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <h3>pango での縦書き</h3>
+
 <p>
 Pango の gravity 指定で縦書きが実現できる。
 <code>pango-view(1)</code>だと、<code>--gravity east</code> オプション設定を指定すれば良い。
 </p>
+
 <pre class="prompt"><samp>% pango-view --output ipapgothic_render01.svg --font 'IPAPGothic 24' --text 'pangoで縦書き' --gravity east
 </samp></pre>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="183" height="45" data="/images/201604_pango_view_vertical_writing_ipapgothic_render01.svg"></object>
 <figcaption><code>--text 'pangoで縦書き' --gravity east</code></figcaption>
 </figure>
+
 <p>
 このとき90度傾いてレンダリングされるので、<code>--rotate -90</code>も付けて文字全体を
 90度回転させることで文字の進行方向を鉛直方向に変える。
 </p>
+
 <pre class="prompt"><samp>% pango-view --output ipapgothic_render02.svg --font 'IPAPGothic 24' --text 'pangoで縦書き' --gravity east --rotate -90
 </samp></pre>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="46" height="183" data="/images/201604_pango_view_vertical_writing_ipapgothic_render02.svg"></object>
 <figcaption><code>--text 'pangoで縦書き' --gravity east --rotate -90</code></figcaption>
 </figure>
+
 <p>
 余談だが <code>gravity east</code> の east は東洋の東の意味ではなく<em>方向</em>を意味する。
 よって東西南北(east/west/south/north)すべて指定できる。
 </p>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="137" height="170" data="/images/201604_pango_view_vertical_writing_ipapgothic_render03.svg"></object>
 <figcaption>pango gravity</figcaption>
 </figure>
+
 <h3>縦書きと font feature</h3>
+
 <p>
 縦書き専用フォントでもそれなりに OTF font feature が動作する。
 </p>
@@ -85,130 +118,121 @@ Pango の gravity 指定で縦書きが実現できる。
 連綿が OTF font feature の合字としてレンダリングされる。
 なお、この連綿では、「と」および「か」が変体かな「と（登）」および「か（可）」となっている。
 </p>
+
 <pre class="prompt"><samp>% pango-view --output sagabon_render001.pdf --font '嵯峨本フォントプロトタイプ 24' --markup --text '&lt;span font_features="&amp;quot;liga&amp;quot; on"&gt;いとおかし&lt;/span&gt;' --gravity east --rotate -90
 </samp></pre>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="45" height="127" data="/images/201604_pango_view_vertical_writing_sagabon_render001.svg"></object>
 <figcaption><code>'&lt;span font_features="&amp;quot;liga&amp;quot; on"&gt;いとおかし&lt;/span&gt;'</code></figcaption>
 </figure>
+
 <p>
 ただし、複雑なタグを使うと文字が崩れるようだ。(Pango 1.38現在)
 </p>
+
 <pre class="prompt"><samp>% pango-view --output sagabon_render002.pdf --font '嵯峨本フォントプロトタイプ 24' --markup --text 'いとおかし　&lt;span font_features="&amp;quot;liga&amp;quot; on"&gt;いとおかし&lt;/span&gt;' --gravity east --rotate -90
 </samp></pre>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <object width="46" height="220" data="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></object>
 <figcaption><code>'いとおかし　&lt;span font_features="&amp;quot;liga&amp;quot; on"&gt;いとおかし&lt;/span&gt;'</code></figcaption>
 </figure>
+
 <p>
 このバグがあるせいで pango の縦書き利用の利便性が大幅に下がって残念仕様。
 </p>
+
 <h3>参考文献</h3>
 <ul>
 <li><a href="http://www.clear-code.com/blog/2010/12/24.html">地獄のジェネレータ: Ruby Advent Calendar jp: 2010の24日目</a>, 株式会社クリアコード ククログ, 2010-12-24</li>
 <li><a href="http://epublishing.jp/sagabon/">嵯峨本フォントプロトタイプ</a>, 嵯峨本フォントプロジェクト, 2012</li>
 </ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html&amp;text=pango%20%E3%81%A7%E7%B8%A6%E6%9B%B8%E3%81%8D%E3%81%A8%E3%81%9D%E3%81%AE%E8%83%BD%E5%8A%9B+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2016/04/pango-view-vertical-writing.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2016/04/pango-view-vertical-writing.html&amp;linkname=pango%20%E3%81%A7%E7%B8%A6%E6%9B%B8%E3%81%8D%E3%81%A8%E3%81%9D%E3%81%AE%E8%83%BD%E5%8A%9B+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-04-23-pango-view-vertical-writing.html" class="source-path">_posts/2016-04-23-pango-view-vertical-writing.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-04-23-pango-view-vertical-writing.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2016/04/pango-view-otf-font-features.html" title="pango-view と OTF font features" rel="prev">&#x2190;pango-view と OTF font features</a>
-</div>
-<div class="next-post">
-<a href="/2016/04/diff-between-firefox-460-default.html" title="Diff between firefox 46.0 default preference and firefox 45.0.2" rel="next">Diff between firefox 46.0 default preference and firefox 45.0.2&#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2016-04-09</span>
-<a class="post-link" href="/2016/04/pango-view-otf-font-features.html">pango-view と OTF font features</a>
-</li>
-<li class="post-item">
-<span class="post-date">2015-11-30</span>
-<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
-</li>
-<li class="post-item">
-<span class="post-date">2016-08-05</span>
-<a class="post-link" href="/2016/08/html-complex-ruby.html">HTML5 Complex Ruby 今日の実装状況</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-02-24</span>
-<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
-</li>
-<li class="post-item">
-<span class="post-date">2016-10-08</span>
-<a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">アートアクアリウムの水盤における光学的解析のメモ</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/08/html-complex-ruby.html">
+      <span class="post-meta">2016-08-05</span>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

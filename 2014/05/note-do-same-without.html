@@ -1,56 +1,82 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Note: do same without browser.tabs.closeButtons on Firefox 31+ cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2014/05/note-do-same-without.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="Note: do same without browser.tabs.closeButtons on Firefox 31+" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="/images/note-do-same-without-value0.png" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-<script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-<script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Note: do same without browser.tabs.closeButtons on Firefox 31+</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2014/05/note-do-same-without.html" />
+  <meta property="og:title" content="Note: do same without browser.tabs.closeButtons on Firefox 31+" />
+  <meta property="og:description" content="Unfortunately Bug865826 remove browser.tabs.closeButtons pref (&quot;Browser&quot; -&gt; &quot;TabBrowsing&quot; -&amp;gt..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/note-do-same-without-value0.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/05/note-do-same-without.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2014/05/note-do-same-without.html" itemprop="url">Note: do same without browser.tabs.closeButtons on Firefox 31+</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2014-05-12T23:31:00+09:00</time>
-(Modified: <time item="dateModified">2014-11-10T00:02:39+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_firefox">Firefox</a>
-<a class="tag" href="/tags.html#tag_howto">Howto</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody">
-<p>Unfortunately <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=865826" title="Bug 865826 - Remove the browser.tabs.closeButtons pref">Bug865826</a> remove <a href="http://kb.mozillazine.org/Browser.tabs.closeButtons"><code>browser.tabs.closeButtons</code></a> pref ("Browser" -&gt; "TabBrowsing" -&gt; "Display a close button ..." in Configuration Mania).
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2014/05/note-do-same-without.html" itemprop="url">Note: do same without browser.tabs.closeButtons on Firefox 31+</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2014-05-12T23:31:00+09:00">2014-05-12T23:31:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:39+09:00">2014-11-10T00:02:39+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_firefox">Firefox</a>
+      <a class="tag" href="/tags.html#tag_howto">Howto</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-05-12-note-do-same-without.html" class="source-path">_posts/2014-05-12-note-do-same-without.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-05-12-note-do-same-without.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Unfortunately <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=865826" title="Bug 865826 - Remove the browser.tabs.closeButtons pref">Bug865826</a> remove <a href="http://kb.mozillazine.org/Browser.tabs.closeButtons"><code>browser.tabs.closeButtons</code></a> pref ("Browser" -&gt; "TabBrowsing" -&gt; "Display a close button ..." in Configuration Mania).
 This removal would be captured in upcoming Firefox 31.</p>
+
 <p>In this article, I describe how to do same without <code>browser.tabs.closeButtons</code> pref.</p>
+
 <h4>Use addons</h4>
+
 <ul>
 <li><a href="https://addons.mozilla.org/firefox/addon/no-close-buttons/">No Close Buttons</a>
 <ul>
@@ -61,44 +87,64 @@ This removal would be captured in upcoming Firefox 31.</p>
 <li>Only "Value=2: Display no close button" (as of version 1.1.8)</li>
 </ul></li>
 </ul>
+
 <p>As of May 2014, there is <em>no</em> addon providing a close button at the end of the tab strip (Value=3).</p>
+
 <h4>Use <code>userChrome.css</code></h4>
+
 <h5>Value=0: Display a close button on the Active tab Only</h5>
+
+
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value0.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
+
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   .tab-close-button:not([selected]) {
     display: none;
   }
 }
 </code></pre>
+
 <h5>Value=1: Display close buttons on All tabs</h5>
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value1.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
+
 <p>Default. There is nothing to do.</p>
+
 <h5>Value=2: Display no close button</h5>
+
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value2.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
+
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   .tab-close-button {
     display: none;
   }
 }
 </code></pre>
+
 <h5>Value=3: Display a close button at the end of the tab strip (Firefox 1.x behavior)</h5>
+
+
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/note-do-same-without-value3.png" />
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
+
 <p>The close button at the end of the tab strip has been removed in <a href="https://hg.mozilla.org/integration/fx-team/rev/1c2ef0d3d997">1c2ef0d3d997</a>.
 Therefore, some sorta addon would be needed.</p>
+
 <p>For example, to get back the close button, add following user script using <a href="http://userchromejs.mozdev.org/">userChrome.js</a>.</p>
+
 <pre class="prettyprint"><code>// ==UserScript==
 // @name close_btn_end_tab_strip.uc.js
 // @include main
@@ -116,9 +162,13 @@ Therefore, some sorta addon would be needed.</p>
   tabsToolbar.appendChild(tabsCloseButton);
 })();
 </code></pre>
+
 <p>(Note: To hide close buttons on tabs, the user CSS rule described in value=2 is also required.)</p>
+
 <h5>FYI: More customize!</h5>
+
 <p>Example 1. Display close button when the cursor hovers over the tab, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
+
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   tab:hover .tab-close-button {
     display: -moz-box ! important;
@@ -128,7 +178,9 @@ Therefore, some sorta addon would be needed.</p>
   }
 }
 </code></pre>
+
 <p>Example 2. Display close button when the cursor hovers near the tabbar, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
+
 <pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
   .tabbrowser-tabs[closebuttons="activetab"] .tab-close-button {
     display: -moz-box ! important;
@@ -138,111 +190,105 @@ Therefore, some sorta addon would be needed.</p>
   }
 }
 </code></pre>
+
 <h4>Reference</h4>
+
 <ul>
 <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=865826" title="Bug 865826 - Remove the browser.tabs.closeButtons pref">Bug 865826 - Remove the browser.tabs.closeButtons pref</a> - Mozilla Bugzilla</li>
 </ul>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2014/05/note-do-same-without.html&amp;text=Note:%20do%20same%20without%20browser.tabs.closeButtons%20on%20Firefox%2031++cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2014/05/note-do-same-without.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2014/05/note-do-same-without.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2014/05/note-do-same-without.html&amp;linkname=Note:%20do%20same%20without%20browser.tabs.closeButtons%20on%20Firefox%2031++cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-05-12-note-do-same-without.html" class="source-path">_posts/2014-05-12-note-do-same-without.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-05-12-note-do-same-without.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2014/04/c-struct-with-doxygen-xml.html" title="C言語の構造体を構造分析したい〜静的解析としての doxygen" rel="prev">&#x2190;C言語の構造体を構造分析したい〜静的解析としての doxygen</a>
-</div>
-<div class="next-post">
-<a href="/2014/05/diff-between-firefox-300-beta-5-default.html" title=" Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 " rel="next"> Diff between firefox 30.0 beta 5 default preference and firefox 29.0.1 &#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2015-11-30</span>
-<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-02-24</span>
-<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
-</li>
-<li class="post-item">
-<span class="post-date">2014-12-29</span>
-<a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
-</li>
-<li class="post-item">
-<span class="post-date">2015-07-26</span>
-<a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">白い部分の面積を求めなさい〜東京2020</a>
-</li>
-<li class="post-item">
-<span class="post-date">2010-08-15</span>
-<a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
+      <span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">
+      <span class="post-meta">2015-07-26</span>
+      <span class="post-title">白い部分の面積を求めなさい〜東京2020</span>
+      <span class="post-thumb" data-image-path="/images/201507_Tokyo2020_emblem_area_calc_figure.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-08-15</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span>
+      <span class="post-thumb" data-image-path="/images/fx_btn.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span>
+      <span class="post-thumb" data-image-path="/images/howto-github.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span>
+      <span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span>
+      <span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

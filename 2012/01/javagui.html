@@ -1,79 +1,111 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>JavaのGUIをベクトルデータとしてスクリーンショットを撮る cat_in_136.blog()</title>
-<link rel="canonical" href="https://cat-in-136.github.io/2012/01/javagui.html" />
-<link rel="alternate" type="application/atom+xml" href="/feed.xml" />
-<meta property="og:title" content="JavaのGUIをベクトルデータとしてスクリーンショットを撮る" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="/images/swingset_java_ocean_gv.png" />
-<meta property="og:site_name" content="cat_in_136.blog()" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
-<link rel="stylesheet" href="/css/main.css" />
-<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-<script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-<script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>JavaのGUIをベクトルデータとしてスクリーンショットを撮る</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2012/01/javagui.html" />
+  <meta property="og:title" content="JavaのGUIをベクトルデータとしてスクリーンショットを撮る" />
+  <meta property="og:description" content="Mac OS X には、スクリーンショットの形式として PDF を選べる。 さらに驚きなのは、Tiger より前の Mac では、それがデフォルトのファイル形式だったことだ。[1] 実際にその ..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/swingset_java_ocean_gv.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/01/javagui.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-<body>
+
+
+  <body>
+    
 <header class="site-header">
-<div class="wrap">
-<a class="site-title" href="/">cat_in_136.blog()</a>
-<nav class="site-nav" role="navigation">
-<a class="page-link" href="/archive">Archive</a>
-<a class="page-link" href="/feed.xml">Feed</a>
-<a class="page-link" href="/tags">Tags</a>
-</nav>
-</div>
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
 </header>
-<div class="page-content" role="main">
-<div class="wrap">
-<article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-<header class="post-header">
-<h1 itemprop="name"><a href="/2012/01/javagui.html" itemprop="url">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</a></h1>
-<div class="meta">
-Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span>
-</div>
-<div class="meta">
-Date: <time itemprop="datePublished">2012-01-15T19:59:00+09:00</time>
-(Modified: <time item="dateModified">2014-11-10T00:02:34+09:00</time>)
-</div>
-<div class="meta">
-Tags:
-<a class="tag" href="/tags.html#tag_java">Java</a>
-<a class="tag" href="/tags.html#tag_swing">Swing</a>
-<a class="tag" href="/tags.html#tag_gui">Gui</a>
-<a class="tag" href="/tags.html#tag_postscript">Postscript</a>
-</div>
-</header>
-<div class="post-content" itemprop="articleBody" lang="ja">
-<div id="javascreenshotps-ns">
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2012/01/javagui.html" itemprop="url">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2012-01-15T19:59:00+09:00">2012-01-15T19:59:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:34+09:00">2014-11-10T00:02:34+09:00</span></div>
+    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_java">Java</a>
+      <a class="tag" href="/tags.html#tag_swing">Swing</a>
+      <a class="tag" href="/tags.html#tag_gui">Gui</a>
+      <a class="tag" href="/tags.html#tag_postscript">Postscript</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-01-15-javagui.html" class="source-path">_posts/2012-01-15-javagui.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-01-15-javagui.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <div id="javascreenshotps-ns">
 <style><!-- /* --><![CDATA[ /* */
 #javascreenshotps-ns .footnoteref{font-size:smaller;vertical-align: super;}
-#javascreenshotps-ns
-.reversefootnote{padding-left: 1em; font-size: smaller;}
+#javascreenshotps-ns  .reversefootnote{padding-left: 1em; font-size: smaller;}
 /* ]]><!-- *//* --></style>
+
 <p>Mac OS X には、スクリーンショットの形式として PDF を選べる。
 さらに驚きなのは、Tiger より前の Mac では、それがデフォルトのファイル形式だったことだ。<span class="footnoteref">[<a href="#javascreenshotps-fn-javascreenshotps-mac-pdf" id="javascreenshotps-fnref-javascreenshotps-mac-pdf" class="footnote">1</a>]</span>
 実際にその PDF ファイルを見たことはないんだが、PDF とはいっても画像ファイルがあるだけでベクトルデータとしてスクリーンショットを撮っているという事はないと思う<span class="footnoteref">[要出典]</span>。</p>
+
 <p>それに発想を受けて、Java の API を見る限り、標準の機能のみで（=外部ライブラリを使わずに）、ベクトルデータとしてスクリーンショットを得られるんじゃないかと気づいたネタ。</p>
+
 <h4>Idea</h4>
+
 <ol>
+
 <li>Java の GUI 部品の基底となるクラス <code>java.awt.Component</code> には、
 部品を描画するメソッド<a href="http://java.sun.com/javase/ja/6/docs/ja/api/java/awt/Component.html#paint(java.awt.Graphics)"><code>paint()</code></a>
 があり、引数で任意のグラフィックコンテクストを渡すことができる。</li>
 <li>Java の印刷APIのひとつにグラフィックコンテクストを使ったものがある。</li>
 <li>Java の印刷APIではプリンタではなく、PostScriptファイル出力を選ぶこともできる。</li>
 </ol>
+
 <p>以上のAPIを組み合わせることで、Java の GUI 部品を PostScript としてベクトルデータとしてスクリーンショットをとれるのである。
 PDF へは直接出力する機能を Java の API は有していないため PDF として得られないのが残念であるが、acrobat または ghostscript を使って PostScript から PDF に変換すればよい。</p>
+
 <p>Java の印刷 API は歴史的事情でいくつか種類がある。
 今回使うのはJava 印刷サービス<span class="footnoteref">[<a href="#javascreenshotps-fn-java-print-service-api" id="javascreenshotps-fnref-java-print-service-api" class="footnote">2</a>]</span>であるが、詳細は「<a href="http://java.sun.com/javase/ja/6/docs/ja/technotes/guides/jps/spec/jpsOverview.fm.html" title="Java 印刷サービス API ユーザーガイド1 - 入門">ユーザズガイド</a>」を参照されたし。</p>
+
 <h4>Code</h4>
+
 <p>大枠は下記の通りで、
 <code>outputFile</code>に<code>createPrintable()</code>メソッド(後述)で得られた印刷ドキュメントをPostScript形式で書き込む。</p>
+
 <pre class="prettyprint"><code>final DocFlavor flavor = DocFlavor.SERVICE_FORMATTED.PRINTABLE;
 StreamPrintServiceFactory[] serviceFactories;
 PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
@@ -110,21 +142,27 @@ try {
     }
 }
 </code></pre>
+
 <p>流れをざっと説明すると</p>
+
 <ol>
 <li>出力のファイルストリームを開く</li>
 <li><a href="http://java.sun.com/javase/ja/6/docs/ja/api/javax/print/StreamPrintServiceFactory.html"><code>StreamPrintServiceFactory</code></a> に対して PostScript 対応のサービスを問い合わせてひとつ得る。</li>
+
 <li>サービス情報を元にダイアログを表示する。(<a href="http://java.sun.com/javase/ja/6/docs/ja/api/javax/print/ServiceUI.html"><code>ServiceUI</code></a>クラスの提供によって、印刷ダイアログが表示される。)</li>
 <li><code>createPrintable()</code>メソッド(後述)で得られた印刷ドキュメント<code>doc</code>を得る。</li>
 <li>印刷サービスからプリンタジョブのインスタンスを得る。</li>
 <li>プリンタジョブに対して印刷ドキュメント<code>doc</code>を印刷するよう要求する（印刷だが、実際には PostScript 出力）。</li>
 </ol>
+
 <p><code>StreamPrintServiceFactory</code>クラスで印刷サービスを問い合わせているところで、
 PostScript(<code>DocFlavor.BYTE_ARRAY.POSTSCRIPT.getMimeType()</code>)を指定している。
 手元の OpenJDK 1.6 ではここで必ずサービスが一つ入った配列が戻ってきた。
 ここを<code>DocFlavor.BYTE_ARRAY.PDF.getMimeType()</code>と変えたら、PDF で出力できそうだがサービスが見つからないとなってしまった。
 （もっとも将来、あるいは Java 処理系の実装によってはできる環境があるかもしれないが）</p>
+
 <p>次は、<code>createPrintJob()</code>の中身を記載する。</p>
+
 <pre class="prettyprint"><code>private Printable createPrintable() {
     Window[] windows = Window.getWindows();
     ArrayList&lt;Component&gt; list = new ArrayList&lt;Component&gt;();
@@ -138,11 +176,14 @@ PostScript(<code>DocFlavor.BYTE_ARRAY.POSTSCRIPT.getMimeType()</code>)を指定�
 }
 
 </code></pre>
+
 <p><a href="http://java.sun.com/javase/ja/6/docs/ja/api/java/awt/Window.html#getWindows()"><code>Window.getWindows()</code></a>で、Java プログラムから開いたすべてのウィンドウの配列が得られる。
 これらのうち可視、すなわち<code>isVisible()</code>が真となるウィンドウをリストアップしていく。
 不可視状態のウィンドウを列挙していないのは、見えていないウィンドウはレイアウト（特にサイズ）が決まっていないことが多いため、描画することがそもそもできない、という理由のためである。</p>
+
 <p>このウィンドウの配列をそのまま印刷サービスに流し込めればいいのだが、印刷用のインスタンス<a href="http://java.sun.com/javase/ja/6/docs/ja/api/java/awt/print/Printable.html"><code>Printable</code></a>の形にしなければならない。
 であるので、<code>ComponentPrintableWrapper</code>クラスという<del datetime="2013-03-04T20:37:59+09:00">ワッパー</del><ins datetime="2013-03-04T20:37:59+09:00">ラッパー</ins>を作った。</p>
+
 <pre class="prettyprint"><code>import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -181,153 +222,165 @@ class ComponentPrintableWrapper implements Printable {
 }
 
 </code></pre>
+
 <p>プリンタジョブへの印刷指示<code>job.print(doc, aset)</code>では、プリンタジョブから本クラスの<code>print()</code>メソッドが呼ばれる。
 ページ(<code>pageIndex</code>)が変わるごとに<code>print()</code>メソッドが呼ばれるので、このコードは1ページあたり1個のウィンドウが描き込まれる。</p>
+
 <p>ここで<code>RepaintManager.currentManager(paintComponent).setDoubleBufferingEnabled(false)</code>を呼んでいる箇所があるが、少し説明が必要であろう。
 これは Swing 部品の場合はダブルバッファをしているため、コンポーネントの描画をしても内部バッファのラスタ画像が描かれてしまう。
 そのため一旦ダブルバッファを無効にして直接描画してもらうようにしている。
 （パフォーマンスに影響が出るため、処理後に元に戻している。）
 逆に言うと、独自でダブルバッファ処理をしている場合は、そこのソースコードをいじることをしない限り、対処のしようがない。</p>
+
 <h4>Result</h4>
+
 <p>上のコードを実行している Java プログラムから SwingSet を呼び出してみるという芸当を使って、SwingSet の PostScript 出力をおこなってみた。</p>
+
+
+
+
 <figure style="display: block; 1em margin: auto; text-align: center; font-size: smaller;">
 <a href="/images/swingset_java_ocean_gv.png"><img src="/images/swingset_java_ocean_gv.png" width="320" height="244" /></a>
 <figcaption>SwingSet の PostScript 出力結果</figcaption>
 </figure>
+
 <p>注意する点は、グラデーション部などは画像となっているが、境界線(border)は線とベクトルデータのままになっている。
 テキストもベクトルデータのままだが、残念ながらアウトラインデータになっているのでテキスト改竄といったことを簡単にはできない。
 とはいえ、inkscape の PostScript 読み込み機能（内部的には一旦PDFに変換されている）を使って読み込んだ後、変形などをして編集することが可能だ。</p>
+
 <figure style="display: block; 1em margin: auto; text-align: center; font-size: smaller;">
 <a href="/images/swingset_java_ocean_inkscape.png"><img src="/images/swingset_java_ocean_inkscape.png" width="320" height="237" /></a>
 <figcaption>SwingSet の PostScript 出力結果を inkscape で開いた図</figcaption>
 </figure>
-<p>いくつか Look And Feel (いわゆるテーマのようなもの) を変えていくつかとってみたが、Nimbus といった半透明を使ったものや、GTK+ といった外部レンダリングエンジンを使ったものは画像として書き出されてしまう。
+
+<p>いくつか Look And Feel (いわゆるテーマのようなもの) を変えていくつかとってみたが、Nimbus といった半透明を使ったものや、GTK+ といった外部レンダリングエンジンを使ったものは画像として書き出されてしまう。 
 後者はしょうがないが、半透明などは PostScript で表現できないからそうなっているんだろうか。
 （ただし、Adobe Acrobat / Distiller および Ghostscript には拡張命令の形で PDF 化の際に半透明にできる。<span class="footnoteref">[<a href="#javascreenshotps-fn-ps-transparent" id="javascreenshotps-fnref-ps-transparent" class="footnote">3</a>]</span>。）
 あと、ここには載せないが、Swing ではない AWT の GUI 部品は本手法を使ってベクトルデータを抜き出すことは出来なかった。</p>
+
+
 <figure style="display: block; margin: 1em auto; text-align: center; font-size: smaller;">
 <a href="/images/swingset_motif_inkscape.png"><img src="/images/swingset_motif_inkscape.png" width="320" height="198" /></a>
 <figcaption>SwingSet MotifLookAndFeel の場合</figcaption>
 </figure>
+
 <figure style="display: block; margin: 1em auto; text-align: center; font-size: smaller;">
 <a href="/images/swingset_nimbus_gv.png"><img src="/images/swingset_nimbus_gv.png" width="320" height="262" /></a>
 <figcaption>SwingSet NimbusLookAndFeel の場合</figcaption>
 </figure>
+
 <h4>Conclusion</h4>
+
 <p>Java の GUI 部品を PostScript としてベクトルデータとしてスクリーンショットをとることは可能であった。
 しかし、AWT の GUI 部品ではないことと、半透明を含まない単純な描画であることなど条件は厳しい。
 また、ダブルバッファを有する場合それを無効にしなければならない。</p>
+
 <p>半透明などをベクトルデータとして出力できない問題を解決するには、グラフィックコンテクストの描画命令から SVG などの出力を行うものが必要となるだろう<span class="footnoteref">[<a href="#javascreenshotps-fn-apache-xml-transcoder" id="javascreenshotps-fnref-apache-xml-transcoder" class="footnote">4</a>]</span>。
 この技法によるベクトルデータ吸出しを防ぐ方法としてダブルバッファが有効であるだろう（とはいえ完全ではない）。</p>
+
 <h4>References</h4>
+
 <ol>
 <li id="javascreenshotps-fn-javascreenshotps-mac-pdf"><a href="http://docs.info.apple.com/article.html?artnum=61544-ja" title="Mac OS X: 画面を撮影するためのショートカット ">Mac OS X: 画面を撮影するためのショートカット </a><a href="#javascreenshotps-fnref-javascreenshotps-mac-pdf" class="reversefootnote">&#160;&#8617;</a></li>
 <li id="javascreenshotps-fn-java-print-service-api"><a href="http://java.sun.com/javase/ja/6/docs/ja/technotes/guides/jps/spec/jpsOverview.fm.html" title="Java 印刷サービス API ユーザーガイド1 - 入門">Java 印刷サービス API ユーザーガイド1 - 入門</a><a href="#javascreenshotps-fnref-java-print-service-api" class="reversefootnote">&#160;&#8617;</a></li>
 <li id="javascreenshotps-fn-ps-transparent">Adobe Solutions Network, <a href="http://kb2.adobe.com/jp/cps/511/511364/attachments/511364_pdfmarkReference.pdf" title="Adobe Acrobat 7.0 pdfmark Reference Manual">"Adobe Acrobat 7.0 pdfmark Reference Manual"(和文)</a>, 2004, pp.33-37<a href="#javascreenshotps-fnref-ps-transparent" class="reversefootnote">&#160;&#8617;</a></li>
 <li id="javascreenshotps-fn-apache-xml-transcoder"><a href="http://xmlgraphics.apache.org/batik/using/svg-generator.html" title="SVG Generator: SVGGraphics2D">SVG Generator: SVGGraphics2D</a>, The Apache Software Foundation<a href="#javascreenshotps-fnref-apache-xml-transcoder" class="reversefootnote">&#160;&#8617;</a></li>
 </ol>
-</div>
-</div><!-- post-content -->
-<footer class="post-footer">
-<div class="meta share">
-Share:
-<a rel="nofollow" href="https://twitter.com/intent/tweet?url=https://cat-in-136.github.io/2012/01/javagui.html&amp;text=Java%E3%81%AEGUI%E3%82%92%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E3%81%97%E3%81%A6%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%82%92%E6%92%AE%E3%82%8B+cat_in_136.blog()&amp;via=cat_in_136">Twitter</a>
-<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https://cat-in-136.github.io/2012/01/javagui.html">Facebook</a>
-<a rel="nofollow" href="http://b.hatena.ne.jp/entry/cat-in-136.github.io/2012/01/javagui.html">Hatena Bookmark</a>
-<a rel="nofollow" href="http://www.addtoany.com/share_save?linkurl=https://cat-in-136.github.io/2012/01/javagui.html&amp;linkname=Java%E3%81%AEGUI%E3%82%92%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%A8%E3%81%97%E3%81%A6%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%E3%82%92%E6%92%AE%E3%82%8B+cat_in_136.blog()">More via AddToAny...</a>
-</div>
-<div class="meta">
-Source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-01-15-javagui.html" class="source-path">_posts/2012-01-15-javagui.html</a>
-(<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-01-15-javagui.html">History</a>)
-</div>
-</footer>
-</article>
-<nav class="post-nav wrap">
-<div class="previous-post">
-<a href="/2012/01/diff-of-firefox-10-beta-default.html" title="Diff of firefox 10-beta default preference and firefox 9" rel="prev">&#x2190;Diff of firefox 10-beta default preference and firefox 9</a>
-</div>
-<div class="next-post">
-<a href="/2012/01/javaswinglookandfeel.html" title="JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード" rel="next">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード&#x2192;</a>
-</div>
-</nav>
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-var disqus_shortname = 'catin136blog';
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
-  document.getElementsByTagName('head')[0].appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-<aside class="post-related">
-<h2>Related Posts</h2>
-<ul>
-<li class="post-item">
-<span class="post-date">2015-11-30</span>
-<a class="post-link" href="/2015/11/redmine-scheduling-poll.html">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</a>
-</li>
-<li class="post-item">
-<span class="post-date">2013-02-24</span>
-<a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</a>
-</li>
-<li class="post-item">
-<span class="post-date">2012-01-28</span>
-<a class="post-link" href="/2012/01/javaswinglookandfeel.html">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</a>
-</li>
-<li class="post-item">
-<span class="post-date">2014-04-06</span>
-<a class="post-link" href="/2014/04/google-maps-javascript-api.html">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</a>
-</li>
-<li class="post-item">
-<span class="post-date">2014-12-29</span>
-<a class="post-link" href="/2014/12/light-weight-font-android.html">Light な weight な日本語フォントを android に投入</a>
-</li>
-</ul>
-</aside>
-</div>
-</div>
-<footer class="site-footer">
-<div class="wrap" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
-<h2 class="footer-heading" itemprop="name">cat_in_136.blog()</h2>
-<div class="column">
-<p>
-Copyright (C)
-<span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
-<a href="https://twitter.com/cat_in_136/" itemprop="url"><span itemprop="name">@cat_in_136</span></a>
-</span><br />
-Content is available under a
-<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
-unless otherwise noted.
-</p>
-</div>
-<nav class="column">
-<ul>
-<li>
-<a href="https://twitter.com/cat_in_136/">Twitter @cat_in_136</a>
-</li>
-<li>
-<a href="https://addons.mozilla.org/firefox/user/popoki-tom-cat_in_136/">Firefox Addons</a>,
-<a href="https://addons.mozilla.org/firefox/addon/4420">Configuration Mania</a>
-</li>
-<li>
-<a href="https://github.com/cat-in-136">Github</a>,
-<a href="https://gist.github.com/cat-in-136">Gist</a>
-</li>
-<li>
-<a href="https://bitbucket.org/cat_in_136/">Bitbucket</a>
-</li>
-<li>
-<a href="https://www.flickr.com/photos/27992339@N00/">Flickr</a>
-</li>
-<li>
-<a href="https://gnome-look.org/usermanager/search.php?username=catin136&amp;action=contents">GNOME-LOOK.org</a>
-</li>
-</ul>
-</nav>
-</div>
-</footer>
-</body>
-</html>
 
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2012/01/javaswinglookandfeel.html">
+      <span class="post-meta">2012-01-28</span>
+      <span class="post-title">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</span>
+      <span class="post-thumb" data-image-path="/images/VerySimpleLAFSwingSet2.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span>
+      <span class="post-thumb" data-image-path="/images/howto-github.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
+      <span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span>
+      <span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span>
+      <span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
+      <span class="post-meta">2013-04-13</span>
+      <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span>
+      <span class="post-thumb" data-image-path="/images/bar.png"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2016
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>
