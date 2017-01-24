@@ -71,7 +71,7 @@ pre, code { font-family: "Fira Mono", "Droid Sans Mono", monospace; font-variant
 code { padding: 1px; }
 
 pre { padding: 8px 12px; overflow: auto; }
-pre > code { border: 0; padding: 0; }
+pre > code { border: 0; padding: 0; background-color: inherit; color: inherit; }
 
 /** Wrapper */
 .wrapper { max-width: -webkit-calc(800px - (30px * 2)); max-width: calc(800px - (30px * 2)); margin: auto; padding: inherit 30px; }
