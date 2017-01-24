@@ -147,7 +147,7 @@ hr { border: solid thin #828282; margin: 30px; }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post-content h1, html.vertical-writing-recommended .post-content h2, html.vertical-writing-recommended .post-content h3, html.vertical-writing-recommended .post-content h4, html.vertical-writing-recommended .post-content h5, html.vertical-writing-recommended .post-content h6 { margin: 0 40px 0 20px; }
   .post-content p { margin: auto 10px; }
   .post-content .fitcontain { /* As of firefox 46, vertical-rl may conflict with object-fit. */ object-fit: unset; width: auto; height: auto; }
-  .post-content blockquote, .post-content math, .post-content > table, .post-content > ul, .post-content > ol, .post-content > figure { margin: auto 1px; }
+  .post-content blockquote, .post-content math, .post-content > table, .post-content > figure { margin: auto 1px; }
   .post-content figure { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 100vh; } }
 .post-content:lang(en) { text-align: left; }
 
