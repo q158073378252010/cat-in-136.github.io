@@ -1,4 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-03-20T09:57:33+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">日出と日没に関する考察メモ</title><link href="https://cat-in-136.github.io/2017/03/sunrise-sunset.html" rel="alternate" type="text/html" title="日出と日没に関する考察メモ" /><published>2017-03-07T12:37:38+09:00</published><updated>2017-03-07T12:37:38+09:00</updated><id>https://cat-in-136.github.io/2017/03/sunrise-sunset</id><content type="html" xml:base="https://cat-in-136.github.io/2017/03/sunrise-sunset.html">&lt;ul&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-03-24T22:15:58+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Look back 13 years ago of Configuration Mania</title><link href="https://cat-in-136.github.io/2017/03/look-back-13-year-ago-of-confmania.html" rel="alternate" type="text/html" title="Look back 13 years ago of Configuration Mania" /><published>2017-03-24T22:10:54+09:00</published><updated>2017-03-24T22:10:54+09:00</updated><id>https://cat-in-136.github.io/2017/03/look-back-13-year-ago-of-confmania</id><content type="html" xml:base="https://cat-in-136.github.io/2017/03/look-back-13-year-ago-of-confmania.html">&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201703-lookbackconfmania-ext.svg&quot; width=&quot;575&quot; height=&quot;189&quot; /&gt;
+&lt;figcaption&gt;The banner image of my old addon site.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p style=&quot;margin-bottom: 2cm;&quot;&gt;
+Look back to early era (2004) of Configuration Mania...
+&lt;/p&gt;
+
+&lt;aside&gt;
+&lt;p style=&quot;font-weight: bold;&quot;&gt;
+IMPORTANT: &lt;a href=&quot;https://addons.mozilla.org/en/firefox/addon/configuration-mania-4420/&quot;&gt;Configuration Mania&lt;/a&gt; will not receive any more updates and will stop working by next November with Firefox 57.
+&lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;h3&gt;version 1.00.0.0020&lt;/h3&gt;
+
+&lt;p&gt;
+First version '1.00.0.0020' was released on March 3, 2004.
+&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201703-lookbackconfmania-cm-1.01.0.0023-ss.png&quot; /&gt;
+&lt;figcaption&gt;Configuration Mania 1.01.0.0023 on Firefox 0.8&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;Chrome Uninstaller&lt;/h3&gt;
+
+&lt;p&gt;
+Mozilla Firefox pre-0.9 did not have &lt;code&gt;install.rdf&lt;/code&gt; packaging scheme.
+Old packaging system --
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Archive/Install.js&quot;&gt;XPInstall&lt;/a&gt;
+did not provide easy-to-use methods of uninstall extensions.
+So, most of extensions did not have uninstaller.
+&lt;/p&gt;
+&lt;p&gt;
+To resolve this problem,
+Old Configuration Mania had a panel to uninstall any other extensions.
+&lt;/p&gt;
+
+&lt;p&gt;
+Cite from &lt;a href=&quot;https://web.archive.org/web/20040921075102/http://members.lycos.co.uk/toolbarpalette/confmania/index_en.html&quot;&gt;my site at the time&lt;/a&gt;:
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+You can get various extensions on the web
+(e.g. &lt;a href=&quot;http://extensionroom.mozdev.org/&quot;&gt;Extension Room&lt;/a&gt;.)
+Most of them do not have uninstaller. Chrome Uninstaller allows you to
+uninstall them. You can also uninstall non-extension chrome. For
+example you can uninstall &amp;quot;XBL Marquee Emulation&amp;quot; so as to
+disable &amp;lt;marquee&amp;gt;.
+&lt;/p&gt;
+
+&lt;h4&gt;How to Use Chrome Uninstaller&lt;/h4&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201703-lookbackconfmania-chromeuninstaller.png&quot; /&gt;
+&lt;figcaption&gt;Screenshot of Chrome Uninstaller&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Select Chrome Uninstaller on &amp;quot;Configuration Mania&amp;quot; setting dialog.&lt;/li&gt;
+&lt;li&gt;Select a underlined extension to be uninstalled.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Uninstaller&amp;quot; tab, to show uninstall information.&lt;/li&gt;
+&lt;li&gt;Check or UnCheck files to be removed.&lt;/li&gt;
+&lt;li&gt;Click &amp;quot;Force Uninstall&amp;quot; button. Then &lt;strong&gt;immediately&lt;/strong&gt; uninstallation is done
+and the chrome is removed from the list.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;It is &lt;em&gt;not recommended to uninstall builtin chromes and new-system extensions&lt;/em&gt;.
+That usually cause troubles with Firefox.&lt;/li&gt;
+&lt;li&gt;&amp;quot;Remove prefs&amp;quot; does not work correctly on &lt;em&gt;a few&lt;/em&gt; extensions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+'Chrome Uninstaller' has been removed in version '1.06.2005030801'
+on March 8, 2005.
+&lt;/p&gt;
+
+&lt;h3&gt;The first review message&lt;/h3&gt;
+
+&lt;p&gt;
+Prior to AMO -- &lt;a href=&quot;https://addons.mozilla.org/&quot;&gt;addons.mozilla.org&lt;/a&gt;,
+&quot;&lt;a href=&quot;http://extensionroom.mozdev.org/&quot;&gt;Extension Room&lt;/a&gt;&quot; had served
+as the way to get firefox extensions.
+&lt;/p&gt;
+
+&lt;p&gt;
+The first review message to Configuration Mania was antics.
+Cite from &lt;a href=&quot;https://web.archive.org/web/20041028112448/http://extensionroom.mozdev.org/more-info/configmania&quot;&gt;the page at the time&lt;/a&gt;:
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;dl class=&quot;NOTES-list&quot;&gt;
+
+&lt;dt class=&quot;NOTE-header&quot;&gt;[1] Submitted by: &lt;strong&gt;Your mama&lt;/strong&gt; on Wednesday June 16th 2004&lt;/dt&gt;
+&lt;dd class=&quot;NOTE-body&quot;&gt;
+&lt;div&gt;
+&lt;p&gt;This SUCKS!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;NOTE-ua&quot;&gt;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.7) Gecko/20040615 Firefox/0.9&lt;/div&gt;
+&lt;/dd&gt;
+
+&lt;/dl&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Note:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The name of Configuration &quot;Mania&quot; is incorrect in grammar.&lt;/li&gt;
+  &lt;li&gt;&quot;Configuration Geek&quot; would be better, I think now.&lt;/li&gt;
+  &lt;li&gt;I think that the reviewer made a pun between &quot;Ma&lt;em&gt;m&lt;/em&gt;a&quot; and &quot;Ma&lt;em&gt;ni&lt;/em&gt;a&quot;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Inspiration&lt;/h3&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201703-lookbackconfmania-ttlo2.png&quot; /&gt;
+&lt;figcaption&gt;TTLO 0.1.4.2 on Firefox 0.8&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The name of Configuration Mania was inspired by sundry/bicycle shop &quot;&lt;a href=&quot;http://www.com-mania.com/&quot;&gt;Communication Mania&lt;/a&gt;&quot;&lt;/li&gt;
+  &lt;li&gt;The concept of Configuration Mania was inspired by another firefox(firebird) extension &lt;a href=&quot;https://web.archive.org/web/20060113073532/http://cdn.mozdev.org/ttlo/&quot;&gt;&quot;Things They Left Out&quot; (TTLO)&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="configuration mania" /><category term="firefox" /><category term="mozilla" /><category term="チラシの裏" /><summary type="html">The banner image of my old addon site.</summary></entry><entry><title type="html">日出と日没に関する考察メモ</title><link href="https://cat-in-136.github.io/2017/03/sunrise-sunset.html" rel="alternate" type="text/html" title="日出と日没に関する考察メモ" /><published>2017-03-07T12:37:38+09:00</published><updated>2017-03-07T12:37:38+09:00</updated><id>https://cat-in-136.github.io/2017/03/sunrise-sunset</id><content type="html" xml:base="https://cat-in-136.github.io/2017/03/sunrise-sunset.html">&lt;ul&gt;
 &lt;li&gt;日出や日没の最早・最遅は夏至・冬至と一致しない。&lt;/li&gt;
 &lt;li&gt;日出や日没の時刻変化量は日々変わる。&lt;/li&gt;
 &lt;li&gt;特に2〜5月の日出が早くなるのと、8〜11月の日没が早くなるのは特に日毎の変化量が多い。&lt;/li&gt;
@@ -1110,114 +1233,4 @@ table.diff_firefox50_pref_diff tr.newkey  td:first-child { text-decoration: unde
 table.diff_firefox50_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
 table.diff_firefox50_pref_diff tbody tr:hover { background-color: #eee; }
 table.diff_firefox50_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content><author><name>cat_in_136</name></author><category term="pref diff" /><category term="mozilla" /><summary type="html">This is difference between the default preference of Firefox 50.0 beta 3 and one of 49.0.1.</summary></entry><entry><title type="html">connectivitycheck.gstatic.com への Android の接続を誤魔化してみるテスト</title><link href="https://cat-in-136.github.io/2016/08/connectivitycheck-gstatic-com-android.html" rel="alternate" type="text/html" title="connectivitycheck.gstatic.com への Android の接続を誤魔化してみるテスト" /><published>2016-08-15T23:02:54+09:00</published><updated>2016-08-15T23:02:54+09:00</updated><id>https://cat-in-136.github.io/2016/08/connectivitycheck-gstatic-com-android</id><content type="html" xml:base="https://cat-in-136.github.io/2016/08/connectivitycheck-gstatic-com-android.html">&lt;h3&gt;Android の「インターネットは利用できません」の検出&lt;/h3&gt;
-
-&lt;p&gt;
-Android に詳しい方はご存知の通り、Android は
-&lt;code&gt;http://connectivitycheck.gstatic.com/generate_204&lt;/code&gt;
-に定期的に接続をしてインターネット接続できるかどうかを確認している。
-ここへの接続が出来ない場合は「インターネットは利用できません」と表示される。
-&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201608_connectivitycheck_noinetwifi.png&quot; width=&quot;640&quot; height=&quot;277&quot; /&gt;
-&lt;figcaption&gt;connectivitycheck.gstatic.com へ接続できない時の WiFi アクセスポイントの警告表示&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-なお、この警告は celler 回線（3G/4G 回線）でも表示は異なるが、警告される。
-&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201608_connectivitycheck_noinetdocomo.png&quot; width=&quot;487&quot; height=&quot;487&quot; /&gt;
-&lt;figcaption&gt;connectivitycheck.gstatic.com へ接続できない時の docomo 回線の警告表示&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-なお、上の図はいずれも connectivitycheck.gstatic.com への接続を遮断して得られた動作結果であり、
-実際には他のドメインへの接続はできるといった挙動を確認している。
-&lt;/p&gt;
-
-&lt;h3&gt;connectivitycheck.gstatic.com の偽装と挙動&lt;/h3&gt;
-
-&lt;p&gt;
-&lt;code&gt;http://connectivitycheck.gstatic.com/generate_204&lt;/code&gt;
-へ接続すると常に &quot;204 No Content&quot; が帰ってくる。
-ここで、接続不能であったり &quot;404 Not Found&quot; であったりしたときに、
-「インターネットは利用できません」と判定がなされる。
-&lt;/p&gt;
-
-&lt;p&gt;
-そこで、connectivitycheck.gstatic.com を他の IP アドレスに解決させることで
-代替することを考えた。
-具体的には、
-&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;192.168.1.2 アドレスで起動している PC 上の port 80 で HTTP server を起動させる。
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code&gt;http://192.168.1.2/generate_204&lt;/code&gt; へのレスポンスは &quot;204 No Content&quot; とする。&lt;/li&gt;
-      &lt;li&gt;簡単のため &quot;Host: connectivitycheck.gstatic.com&quot; が要求ヘッダについていようがついていまいが、同一の動作をするものとする&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Android 機において、connectivitycheck.gstatic.com のドメイン名を 192.168.1.2 に解決させる環境を作る。&lt;/li&gt;
-  &lt;li&gt;Android 機において、WiFi アクセスポイントに接続させる。Android 機の IP アドレスは 192.168.1.1 とする。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;314&quot; height=&quot;308&quot; data=&quot;/images/201608_connectivitycheck_env_tporogy.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;確認環境のネットワーク。&quot;genuine connectivitycheck.gstatic.com&quot;には接続しには行かずに 192.168.1.2 に接続する&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-目的を実現するために簡素な HTTP server &lt;a href=&quot;https://gist.github.com/cat-in-136/624e53f4b9437c8eaee15066da654485&quot;&gt;&quot;Fake connectivitycheck.gstatic.com&quot;&lt;/a&gt; を作成した。
-これを linux マシン上で駆動させた（もちろん su 権限で実行し、また firewall で port 80 を許可した）。
-&lt;/p&gt;
-&lt;p&gt;
-そして Android 機を WiFi に接続させると下記の通り、 HTTP server 側のログが吐き出された。
-&lt;/p&gt;
-&lt;pre&gt;&lt;samp&gt;[2016-08-14 07:23:00] DEBUG accept: 192.168.1.1:51856
-[2016-08-14 07:23:00] DEBUG WEBrick::HTTPServlet::ProcHandler is invoked.
-192.168.1.1 - - [14/Aug/2016:07:23:00 EDT] &quot;GET /generate_204 HTTP/1.1&quot; 204 0
-- -&amp;gt; /generate_204
-Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29X)
-[2016-08-14 07:23:00] DEBUG close: 192.168.1.1:51856
-[2016-08-14 07:23:01] DEBUG accept: 192.168.1.1:56927
-[2016-08-14 07:23:01] DEBUG WEBrick::HTTPServlet::ProcHandler is invoked.
-192.168.1.1 - - [14/Aug/2016:07:23:01 EDT] &quot;GET /generate_204 HTTP/1.1&quot; 204 0
-- -&amp;gt; /generate_204
-Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29X)
-[2016-08-14 07:23:01] DEBUG close: 192.168.1.1:56927&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-最初の部分しか取り出していないため時間を空けずに幾度も接続しているようにみえるが、
-しばらく経ったら間隔をあけて接続するようだ。
-また、重要なこととしてこれによって「インターネットは利用できません」が表示されないことを実現できた。
-&lt;/p&gt;
-
-&lt;h3&gt;connectivitycheck.gstatic.com の偽装効果&lt;/h3&gt;
-
-&lt;p&gt;
-&lt;a href=&quot;http://connectivitycheck.gstatic.com.ipaddress.com/&quot;&gt;&lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; というGoogle のサーバ&lt;/a&gt;への接続処理は、
-そもそも Android のコードに埋め込まれている。
-よって&lt;em&gt;世界中の&lt;/em&gt;オンラインとなっている Android 機から定期的に接続しているということだ。
-それは冷静に考えると興味深いことである。
-&lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; の接続を
-本稿で述べたようにゴニョゴニョすることでこの Google のサーバへの接続処理を止めて
-かつ「インターネットは利用できません」判定も Google のサーバなしで実現することが出来た。
-&lt;/p&gt;
-&lt;p&gt;
-さらに &lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; のドメイン名を 127.0.0.1 に解決させてかつ android 上でサーバを駆動させれば、
-「インターネットは利用できません」判定機能が実質無効化されることを引き換えに
-無線アクセスを抑えることも考えられるが、これはやっていない。
-&lt;/p&gt;
-
-&lt;h3&gt;Reference&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://androidxref.com/6.0.1_r10/xref/frameworks/base/services/core/java/com/android/server/connectivity/NetworkMonitor.java#429&quot;&gt;com.android.server.connectivity.NetworkMonitor.EvaluatingState#processMessage()&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&quot;&lt;a href=&quot;http://android.stackexchange.com/questions/123129/how-does-wifi-in-android-detect-if-the-device-has-to-sign-in-or-not&quot;&gt;How does WiFi in android detect if the device has to sign in or not?&lt;/a&gt;&quot;, Android Enthusiasts Stack Exchange&lt;/li&gt;
-&lt;li&gt;amythical, &quot;&lt;a href=&quot;http://amythical.tumblr.com/post/146341363847/bypass-captive-portal-for-android&quot;&gt;Bypass captive portal for Android&lt;/a&gt;&quot;, Notes, Jun 23 2016&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-その他、&lt;code&gt;connectivitycheck.gstatic.com&lt;/code&gt; のドメイン名解決を操作するための
-/etc/hosts のフロントエンドとして&lt;a href=&quot;https://adaway.org/&quot;&gt;AdAway&lt;/a&gt;を使用した。
-&lt;/p&gt;</content><author><name>cat_in_136</name></author><category term="android" /><category term="チラシの裏" /><summary type="html">Android の「インターネットは利用できません」の検出</summary></entry></feed>
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content><author><name>cat_in_136</name></author><category term="pref diff" /><category term="mozilla" /><summary type="html">This is difference between the default preference of Firefox 50.0 beta 3 and one of 49.0.1.</summary></entry></feed>
