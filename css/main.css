@@ -53,7 +53,7 @@ li > ul, li > ol { margin-bottom: 0; }
   html.vertical-writing-recommended ol > li { list-style-type: cjk-ideographic; } }
 /** Headings */
 h1, h2, h3, h4, h5, h6 { font-weight: 300; }
-html:not(.vertical-writing-recommended) h1, html:not(.vertical-writing-recommended) h2, html:not(.vertical-writing-recommended) h3, html:not(.vertical-writing-recommended) h4, html:not(.vertical-writing-recommended) h5, html:not(.vertical-writing-recommended) h6 { font-variant-east-asian: proportional-width; -moz-font-feature-settings: "pwid"; -webkit-font-feature-settings: "pwid"; font-feature-settings: "pwid"; }
+html:not(.vertical-writing-recommended) h1, html:not(.vertical-writing-recommended) h2, html:not(.vertical-writing-recommended) h3, html:not(.vertical-writing-recommended) h4, html:not(.vertical-writing-recommended) h5, html:not(.vertical-writing-recommended) h6 { font-variant-east-asian: proportional-width; font-variant-ligatures: common-ligatures; -webkit-font-feature-settings: "pwid", "palt", "liga", "clig"; font-feature-settings: "pwid", "palt", "liga", "clig"; text-align: initial; }
 
 /** Links */
 a { color: #b2243c; text-decoration: none; }
@@ -123,7 +123,7 @@ hr { border: solid thin #828282; margin: 30px; }
 /* Post Layout */
 .post .post-header { margin: 60px 0; line-height: 1.2; }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post .post-header { margin: 0 60px; } }
-.post .post-header .post-title { font-size: xx-large; font-weight: 800; letter-spacing: -1px; -webkit-font-feature-settings: "liga"; font-feature-settings: "liga"; }
+.post .post-header .post-title { font-size: xx-large; font-weight: 800; letter-spacing: -1px; }
 .post .post-header .post-meta { display: inline; font-size: 14px; color: #424242; }
 .post .post-header .post-meta > *[itemprop], .post .post-header .post-meta > .tag, .post .post-header .post-meta > .category { font-weight: bolder; }
 .post .post-header .post-meta:not(:last-child)::after { content: ' / '; }

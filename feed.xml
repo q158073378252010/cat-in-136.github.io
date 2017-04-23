@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-03-28T00:01:32+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Diff between firefox 53.0 beta 6 default preference and firefox 52.0.1</title><link href="https://cat-in-136.github.io/2017/03/diff-between-firefox-530-beta-6-default.html" rel="alternate" type="text/html" title="Diff between firefox 53.0 beta 6 default preference and firefox 52.0.1" /><published>2017-03-27T23:58:06+09:00</published><updated>2017-03-27T23:58:06+09:00</updated><id>https://cat-in-136.github.io/2017/03/diff-between-firefox-530-beta-6-default</id><content type="html" xml:base="https://cat-in-136.github.io/2017/03/diff-between-firefox-530-beta-6-default.html">&lt;p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-04-23T10:26:25+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">trad とかいう需要がよくわからん機能について</title><link href="https://cat-in-136.github.io/2017/04/font-feature-trad.html" rel="alternate" type="text/html" title="trad とかいう需要がよくわからん機能について" /><published>2017-04-23T10:19:20+09:00</published><updated>2017-04-23T10:19:20+09:00</updated><id>https://cat-in-136.github.io/2017/04/font-feature-trad</id><content type="html" xml:base="https://cat-in-136.github.io/2017/04/font-feature-trad.html">&lt;p&gt;
+いくつかのフォントでは、&lt;code&gt;trad&lt;/code&gt; feature tag を有効にすると、
+いわゆる旧字に置換してくれる。
+&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;div&gt;
+    &lt;p&gt;中国語簡体字または日本語の漢字を、対応する旧字体に置き換えます（&lt;a target=&quot;_blank&quot; href=&quot;https://www.microsoft.com/typography/otspec/features_pt.htm#trad&quot;&gt;出典&lt;/a&gt;）。&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;pre class=&quot;prettyprint lang-css&quot;&gt;.class {
+  font-variant-east-asian: traditional;
+  -moz-font-feature-settings: &amp;#34;trad&amp;#34;;
+  -webkit-font-feature-settings: &amp;#34;trad&amp;#34;;
+  font-feature-settings: &amp;#34;trad&amp;#34;;
+}&lt;/pre&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;旧字体の機能は&lt;strong&gt;デフォルトで無効&lt;/strong&gt;であり、Mac OS または iOS の Safari のどのバージョンでもサポートされていません。font-variant プロパティまたは font-variant-east-asian サブプロパティでこの機能を有効にするには、traditional 値を使用します。font-feature-settings で同じ効果を得るには、「trad」機能タグを使用します。&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;
+    ――引用元：Adobe Typekit ヘルプ「&lt;a href=&quot;https://helpx.adobe.com/jp/typekit/using/open-type-syntax.html&quot;&gt;CSS での OpenType 機能の構文&lt;/a&gt;」
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;
+&lt;code&gt;trad&lt;/code&gt;に対応しているフォントは、
+一般に使われていそうなフォントでいうと、游ゴシック/明朝、IPAexゴシック/明朝。
+&quot;ex&quot;が付かないIPAゴシック/明朝は対応していない。
+源ノ角ゴシック/明朝（Source Han Sans/Serif）も対応していない。
+他にも、小塚ゴシック/明朝など対応しているフォントがあるらしい。
+&lt;/p&gt;
+
+&lt;figure class=&quot;trad-font-feature-tag-live-preview&quot;&gt;
+  &lt;table&gt;
+    &lt;tr style=&quot;font-family: 'YuGothic', 'Yu Gothic', sans-serif;&quot;&gt;
+      &lt;td&gt;桜咲く&lt;/td&gt;
+      &lt;td&gt;游ゴシック&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style=&quot;font-family: 'YuMincho', 'Yu Mincho', serif;&quot;&gt;
+      &lt;td&gt;桜咲く&lt;/td&gt;
+      &lt;td&gt;游明朝&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style=&quot;font-family: 'IPAexGothic', sans-serif;&quot;&gt;
+      &lt;td&gt;桜咲く&lt;/td&gt;
+      &lt;td&gt;IPAexゴシック&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr style=&quot;font-family: 'IPAexMincho', serif;&quot;&gt;
+      &lt;td&gt;桜咲く&lt;/td&gt;
+      &lt;td&gt;IPAex明朝&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;figcaption&gt;「桜咲く」の&lt;code&gt;trad&lt;/code&gt; font feature tag のライブプレビュー&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;style scoped=&quot;scoped&quot;&gt;
+  .trad-font-feature-tag-live-preview {
+    -webkit-writing-mode: inherit;
+    writing-mode: inherit;
+
+    font-variant-east-asian: traditional;
+    -moz-font-feature-settings: &quot;trad&quot;;
+    -webkit-font-feature-settings: &quot;trad&quot;;
+    font-feature-settings: &quot;trad&quot;;
+  }
+  .trad-font-feature-tag-live-preview td {
+    font-size: larger;
+  }
+&lt;/style&gt;
+
+&lt;p&gt;
+「&amp;#x53f0;(&lt;a href=&quot;http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=53F0&amp;amp;useutf8=true&quot;&gt;U+53F0&lt;/a&gt;)」
+は「&amp;#x81fa;(&lt;a href=&quot;http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=81FA&amp;amp;useutf8=true&quot;&gt;U+81FA&lt;/a&gt;)」に
+置換されるようであるが、旧字としては他に、
+「&amp;#x98B1;(&lt;a href=&quot;http://www.unicode.org/cgi-bin/GetUnihanData.pl?codepoint=98B1&amp;amp;useutf8=true&quot;&gt;U+98B1&lt;/a&gt;)」
+がある。
+ゆえに、本当は文脈に即して「&lt;em&gt;臺&lt;/em&gt;灣」と「&lt;em&gt;颱&lt;/em&gt;風」と使い分ける必要がある。
+この&lt;code&gt;trad&lt;/code&gt; font feature tag が行っているのは、あくまで簡易的な置換である。
+素人考えとしては、漢字入力時に旧字にすればいいじゃん、と思うが…。
+この機能は実際どんなときに使うんだろうな。
+&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;
+特記事項：
+中華圏における中国語（中文）の簡体字→繁体字変換も
+&lt;a href=&quot;https://www.microsoft.com/typography/otspec/features_pt.htm#trad&quot;&gt;同じ &lt;code&gt;trad&lt;/code&gt; font feature tag が使われる&lt;/a&gt;。
+日本の旧字体使用者数よりも繁体字使用者数が多く、現在も常用しているため用途として価値はある。
+また、中国語の繁体字と日本語の旧字は一致しないものもあるので一概に
+&lt;code&gt;trad&lt;/code&gt; font feature tag を使うべきかは一考を要すが、未研究である。
+&lt;/p&gt;</content><author><name>cat_in_136</name></author><category term="font" /><category term="旧字" /><summary type="html">いくつかのフォントでは、trad feature tag を有効にすると、
+いわゆる旧字に置換してくれる。</summary></entry><entry><title type="html">Diff between firefox 53.0 beta 6 default preference and firefox 52.0.1</title><link href="https://cat-in-136.github.io/2017/03/diff-between-firefox-530-beta-6-default.html" rel="alternate" type="text/html" title="Diff between firefox 53.0 beta 6 default preference and firefox 52.0.1" /><published>2017-03-27T23:58:06+09:00</published><updated>2017-03-27T23:58:06+09:00</updated><id>https://cat-in-136.github.io/2017/03/diff-between-firefox-530-beta-6-default</id><content type="html" xml:base="https://cat-in-136.github.io/2017/03/diff-between-firefox-530-beta-6-default.html">&lt;p&gt;
 This is difference between the default preference of Firefox 53.0 beta 6 and one of 52.0.1.
 &lt;/p&gt;
 
@@ -1050,187 +1143,4 @@ figure.kanbun p.kanbun {
   &lt;li&gt;E. J. Etemad and K. Ishii, &quot;&lt;a href=&quot;https://www.w3.org/TR/css-ruby-1/&quot;&gt;CSS Ruby Layout Module Level 1&lt;/a&gt;&quot;, W3C Working Draft&lt;/li&gt;
   &lt;li&gt;R. Ishida, &quot;&lt;a href=&quot;https://www.w3.org/TR/ruby-use-cases/&quot;&gt;Use Cases &amp;amp; Exploratory Approaches for Ruby Markup&lt;/a&gt;&quot;, W3C Working Group Note&lt;/li&gt;
   &lt;li&gt;Y. Anan et al., &quot;&lt;a href=&quot;https://www.w3.org/TR/jlreq/&quot;&gt;Requirements for Japanese Text Layout&lt;/a&gt;&quot;, W3C Working Group Note&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="縦書き" /><category term="html" /><category term="css" /><category term="ruby-annotation" /><category term="漢文" /><summary type="html">@snsk @dagezi 漢文については、以前、W3C のワークショップで議題としたことがありました。 http://t.co/WaBNatYfvA このときに分かったのですが、CSS3 に最近は行ったRubyの新しい仕様と、OpenType の仕様を使えば漢文は表現できます— IKEUCHI Yasuki (@ikeyasu) February 7, 2014</summary></entry><entry><title type="html">アートアクアリウムの水盤における光学的解析のメモ</title><link href="https://cat-in-136.github.io/2016/10/optical-analysis-of-art-aquarium-water-bowl.html" rel="alternate" type="text/html" title="アートアクアリウムの水盤における光学的解析のメモ" /><published>2016-10-08T23:46:49+09:00</published><updated>2016-10-08T23:46:49+09:00</updated><id>https://cat-in-136.github.io/2016/10/optical-analysis-of-art-aquarium-water-bowl</id><content type="html" xml:base="https://cat-in-136.github.io/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;https://www.flickr.com/photos/27992339@N00/30075992142/&quot; title=&quot;Black gold fishes in a water bowl&quot;&gt;&lt;img src=&quot;https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_z.jpg&quot; srcset=&quot;https://c7.staticflickr.com/9/8134/30075992142_100863d471_o.jpg 3x&quot; width=&quot;640&quot; height=&quot;360&quot; alt=&quot;Black gold fishes in a water bowl&quot; class=&quot;fitcontain&quot;/&gt;&lt;/a&gt;
-&lt;/figure&gt;
-&lt;blockquote&gt;
-&lt;p&gt;均等に横面に溢れ出る水により水槽であることを感じさせず、まるで水の塊ごと水中から金魚を取り出して見ているかの様に感じさせる作品です。&lt;/p&gt;
-&lt;figcaption style=&quot;text-align: right;&quot;&gt;＜金魚品評＞&lt;/figcaption&gt;
-&lt;/blockquote&gt;
-&lt;h3&gt;水盆容器の構造&lt;/h3&gt;
-&lt;p&gt;＜金魚品評＞と呼称される作品では、水盆を使っている。
-均等に横面に水が溢れ出ることにより水盆内の水を排水していることは容易に理解できる。&lt;/p&gt;
-&lt;p&gt;一方で、給水系統は一目ではわからない。&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;https://www.flickr.com/photos/27992339@N00/30105714101/&quot; title=&quot;Black gold fishes in a water bowl, Top View&quot;&gt;&lt;img src=&quot;https://c6.staticflickr.com/6/5521/30105714101_58b05c2e45_z.jpg&quot; srcset=&quot;https://c6.staticflickr.com/6/5521/30105714101_fd7ec9ffcf_h.jpg 2.5x&quot; width=&quot;640&quot; height=&quot;427&quot; alt=&quot;Black gold fishes in a water bowl, Top View&quot; class=&quot;fitcontain&quot;/&gt;&lt;/a&gt;
-&lt;/figure&gt;
-&lt;p&gt;水盆の底に白色の台のようなものがあることがわかる。
-よく観察すると、その下にその台の支えている柱状のものがあってそこから水が出ていた。&lt;/p&gt;
-&lt;p&gt;すなわち下図のとおりになっている。上面図以外については、青矢印で水の流れを描いた。&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;296&quot; height=&quot;229&quot; data=&quot;/images/201610_opticalanlyartaquarium_bowl_diagram.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;＜金魚品評＞の水盆型水槽の図&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;h3&gt;水盆容器の底の白い台に気づきにくい理由&lt;/h3&gt;
-&lt;p&gt;ところで、なぜこれに気づきにくいのであろうか?
-光の屈折によって気づきにくくなっている+展示上の細工という説を唱えたい。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;水盆容器の存在は光学的に無視できるものとする
-&lt;ul&gt;
-&lt;li&gt;水盆の方が水よりも屈折率が大きい（水：1.33、水盆=アクリル:1.49）ため、水盆の影響を考えたほうがより効果が大きくなると推測される&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;均等に横面に溢れ出る水の存在も光学的に無視できるものとする&lt;/li&gt;
-&lt;li&gt;水面のゆらぎや水中の空気の泡、汚れなども光学的に無視できるものとする&lt;/li&gt;
-&lt;li&gt;すなわち文字通り「水の塊ごと水中から金魚を取り出して見ている」状態とみなして解析する&lt;/li&gt;
-&lt;li&gt;水盆の大きさは、当然のことながら、光の波長よりじゅうぶん大きいものとする（幾何光学で説明できるものとする）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;水の屈折の効果については、鉛直方向と水平方向で分けて概説する。&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;220&quot; height=&quot;223&quot; data=&quot;/images/201610_opticalanlyartaquarium_refraction_vertical.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;水盆型水槽における光の屈折の効果（鉛直方向）&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;鉛直方向のうち水面を通る光線の場合、屈折によって光線は下向きに折れる。
-人間の目は屈折せずにそのまま直線に光線が伸びている（点線）と&lt;em&gt;視覚する&lt;/em&gt;ので、
-例えば金魚が実際より&lt;em&gt;沈んで&lt;/em&gt;見える。
-（さらに図に示したとおり特に手前が&lt;em&gt;沈み込む&lt;/em&gt;ような形で傾いて見える）&lt;/p&gt;
-&lt;p&gt;同様に、水盆容器側面を通る光線の場合、屈折によって光線は上向きに折れる。
-人間の目は屈折せずにそのまま直線に光線が伸びている（点線）と&lt;em&gt;視覚する&lt;/em&gt;ので、
-例えば金魚が実際より&lt;em&gt;浮き上がって&lt;/em&gt;見える。
-（さらに図に示したとおり特に手前が&lt;em&gt;浮き上がった&lt;/em&gt;ような形で傾いて見える）&lt;/p&gt;
-&lt;p&gt;ここで水盆容器の底の台について、特に水盆容器側面を通る光線であると底が実際より
-&lt;em&gt;上げ底&lt;/em&gt;に見えるので水盆容器の底に気づかれるリスクが大きくなると予測される。
-この理由で周辺にビー玉等を配して隠していたのではないか。&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;139&quot; height=&quot;193&quot; data=&quot;/images/201610_opticalanlyartaquarium_refraction_horizontal.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;水盆型水槽における光の屈折の効果（水平方向）&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;水平方向も同様に、金魚が実際より外側に&lt;em&gt;見える&lt;/em&gt;。
-（さらに像も結構歪むが、図にはそれを表現していない。）
-水流の都合上水盆容器の底の台の直径は水盆の内寸直径よりも明らかに小さいのであるが、
-金魚と同様に、台も実際より横に伸びて見える。
-水盆容器の底の台が水盆内寸直径とほぼ同じなように見えてしまう。&lt;/p&gt;
-&lt;p&gt;ただ、真上から覗き込むと、光の屈折が起こらなくなるのでこの効果は得られない。&lt;/p&gt;
-&lt;h3&gt;まとめ&lt;/h3&gt;
-&lt;p&gt;まとめると、水盆の給水口の仕組みに気づきにくい理由として下記があげられると思う。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;光の屈折により水盆容器の底の台は、
-&lt;ul&gt;
-&lt;li&gt;水盆容器の内寸とほぼ同じように見えてしまう&lt;/li&gt;
-&lt;li&gt;真上から覗かないと、水盆容器の底の台の直径が水盆容器の内寸より小さいのに気づかない&lt;/li&gt;
-&lt;li&gt;水盆容器の底の台が実際より上げ底に見える&lt;/li&gt;
-&lt;li&gt;上げ底に見えてしまうことに対してはビー玉を配することで隠している&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;3D CG で視覚的に確認&lt;/h3&gt;
-&lt;p&gt;最後に、この仮説を視覚的に確認するために 3D CG で再現した画像を下に示す。&lt;/p&gt;
-&lt;p&gt;普通に見ると、ビー玉を配していないので、水盆容器の底の台が、
-水盆容器の内寸とほぼ同じように&lt;em&gt;上げ底&lt;/em&gt;で&lt;em&gt;見える&lt;/em&gt;と思うがいかがであろうか?&lt;/p&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201610_opticalanlyartaquarium_simulation_POV@3x.jpg&quot;&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201610_opticalanlyartaquarium_simulation_POV.jpg&quot; width=&quot;640&quot; srcset=&quot;/images/201610_opticalanlyartaquarium_simulation_POV@3x.jpg 3x&quot; /&gt;
-&lt;/a&gt;
-&lt;figcaption&gt;3D CGによる検証画像&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;a href=&quot;/images/201610_opticalanlyartaquarium_simulation_no_water@3x.jpg&quot;&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/201610_opticalanlyartaquarium_simulation_wo_water.jpg&quot; width=&quot;640&quot; srcset=&quot;/images/201610_opticalanlyartaquarium_simulation_wo_water@3x.jpg 3x&quot; /&gt;
-&lt;/a&gt;
-&lt;figcaption&gt;3D CGによる検証画像（水盆のかわりに檻状のワイヤーフレームを置いた）&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;h3&gt;参考文献、リソース&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;木村英智, Aquarium Creators Office Srl., “&lt;a href=&quot;http://artaquarium.jp/&quot;&gt;Art Aquarium&lt;/a&gt;”&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_refractive_indices&quot;&gt;List of refractive indices&lt;/a&gt;, Wikipedia (en)&lt;/li&gt;
-&lt;li&gt;(3D Model Data) birdie T., “&lt;a href=&quot;https://3dwarehouse.sketchup.com/social/model.html?id=uae4dedaf-6f79-4273-a6de-07beeef6c107&quot;&gt;golden japanese fish&lt;/a&gt;”&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="optics" /><category term="blender3d" /><category term="チラシの裏" /><summary type="html">均等に横面に溢れ出る水により水槽であることを感じさせず、まるで水の塊ごと水中から金魚を取り出して見ているかの様に感じさせる作品です。
-＜金魚品評＞
-
-水盆容器の構造
-＜金魚品評＞と呼称される作品では、水盆を使っている。
-均等に横面に水が溢れ出ることにより水盆内の水を排水していることは容易に理解できる。
-一方で、給水系統は一目ではわからない。
-
-
-
-水盆の底に白色の台のようなものがあることがわかる。
-よく観察すると、その下にその台の支えている柱状のものがあってそこから水が出ていた。
-すなわち下図のとおりになっている。上面図以外については、青矢印で水の流れを描いた。
-
-
-＜金魚品評＞の水盆型水槽の図
-
-水盆容器の底の白い台に気づきにくい理由
-ところで、なぜこれに気づきにくいのであろうか?
-光の屈折によって気づきにくくなっている+展示上の細工という説を唱えたい。
-
-水盆容器の存在は光学的に無視できるものとする
-
-水盆の方が水よりも屈折率が大きい（水：1.33、水盆=アクリル:1.49）ため、水盆の影響を考えたほうがより効果が大きくなると推測される
-
-
-均等に横面に溢れ出る水の存在も光学的に無視できるものとする
-水面のゆらぎや水中の空気の泡、汚れなども光学的に無視できるものとする
-すなわち文字通り「水の塊ごと水中から金魚を取り出して見ている」状態とみなして解析する
-水盆の大きさは、当然のことながら、光の波長よりじゅうぶん大きいものとする（幾何光学で説明できるものとする）
-
-水の屈折の効果については、鉛直方向と水平方向で分けて概説する。
-
-
-水盆型水槽における光の屈折の効果（鉛直方向）
-
-鉛直方向のうち水面を通る光線の場合、屈折によって光線は下向きに折れる。
-人間の目は屈折せずにそのまま直線に光線が伸びている（点線）と視覚するので、
-例えば金魚が実際より沈んで見える。
-（さらに図に示したとおり特に手前が沈み込むような形で傾いて見える）
-同様に、水盆容器側面を通る光線の場合、屈折によって光線は上向きに折れる。
-人間の目は屈折せずにそのまま直線に光線が伸びている（点線）と視覚するので、
-例えば金魚が実際より浮き上がって見える。
-（さらに図に示したとおり特に手前が浮き上がったような形で傾いて見える）
-ここで水盆容器の底の台について、特に水盆容器側面を通る光線であると底が実際より
-上げ底に見えるので水盆容器の底に気づかれるリスクが大きくなると予測される。
-この理由で周辺にビー玉等を配して隠していたのではないか。
-
-
-水盆型水槽における光の屈折の効果（水平方向）
-
-水平方向も同様に、金魚が実際より外側に見える。
-（さらに像も結構歪むが、図にはそれを表現していない。）
-水流の都合上水盆容器の底の台の直径は水盆の内寸直径よりも明らかに小さいのであるが、
-金魚と同様に、台も実際より横に伸びて見える。
-水盆容器の底の台が水盆内寸直径とほぼ同じなように見えてしまう。
-ただ、真上から覗き込むと、光の屈折が起こらなくなるのでこの効果は得られない。
-まとめ
-まとめると、水盆の給水口の仕組みに気づきにくい理由として下記があげられると思う。
-
-光の屈折により水盆容器の底の台は、
-
-水盆容器の内寸とほぼ同じように見えてしまう
-真上から覗かないと、水盆容器の底の台の直径が水盆容器の内寸より小さいのに気づかない
-水盆容器の底の台が実際より上げ底に見える
-上げ底に見えてしまうことに対してはビー玉を配することで隠している
-
-
-
-3D CG で視覚的に確認
-最後に、この仮説を視覚的に確認するために 3D CG で再現した画像を下に示す。
-普通に見ると、ビー玉を配していないので、水盆容器の底の台が、
-水盆容器の内寸とほぼ同じように上げ底で見えると思うがいかがであろうか?
-
-
-
-
-3D CGによる検証画像
-
-
-
-
-
-3D CGによる検証画像（水盆のかわりに檻状のワイヤーフレームを置いた）
-
-参考文献、リソース
-
-木村英智, Aquarium Creators Office Srl., “Art Aquarium”
-List of refractive indices, Wikipedia (en)
-(3D Model Data) birdie T., “golden japanese fish”</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="縦書き" /><category term="html" /><category term="css" /><category term="ruby-annotation" /><category term="漢文" /><summary type="html">@snsk @dagezi 漢文については、以前、W3C のワークショップで議題としたことがありました。 http://t.co/WaBNatYfvA このときに分かったのですが、CSS3 に最近は行ったRubyの新しい仕様と、OpenType の仕様を使えば漢文は表現できます— IKEUCHI Yasuki (@ikeyasu) February 7, 2014</summary></entry></feed>
