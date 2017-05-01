@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-04-23T10:26:25+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">trad とかいう需要がよくわからん機能について</title><link href="https://cat-in-136.github.io/2017/04/font-feature-trad.html" rel="alternate" type="text/html" title="trad とかいう需要がよくわからん機能について" /><published>2017-04-23T10:19:20+09:00</published><updated>2017-04-23T10:19:20+09:00</updated><id>https://cat-in-136.github.io/2017/04/font-feature-trad</id><content type="html" xml:base="https://cat-in-136.github.io/2017/04/font-feature-trad.html">&lt;p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-05-01T11:02:48+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Diff between firefox 54.0 beta 3 default preference and firefox 53.0</title><link href="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html" rel="alternate" type="text/html" title="Diff between firefox 54.0 beta 3 default preference and firefox 53.0" /><published>2017-05-01T10:54:16+09:00</published><updated>2017-05-01T10:54:16+09:00</updated><id>https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default</id><content type="html" xml:base="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html">&lt;p&gt;
+This is difference between the default preference of Firefox 54.0 beta 3 and one of 53.0.
+&lt;/p&gt;
+
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox54_pref_diff&quot;&gt;
+&lt;caption&gt;Preference difference&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 53.0&lt;/td&gt;&lt;td&gt;Firefox 54.0 beta 3&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;allow_&lt;wbr /&gt;with_&lt;wbr /&gt;webrender&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;crashReports.&lt;wbr /&gt;unsubmittedCheck.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;formautofill.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;formautofill.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;Warn&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;migrate.&lt;wbr /&gt;automigrate.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;content-signing-test&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;keys&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;mode&lt;/td&gt;&lt;td&gt;production&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;version&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google.&lt;wbr /&gt;reportMalwareMistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google.&lt;wbr /&gt;reportPhishMistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google4.&lt;wbr /&gt;lists&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;goog-phish-proto,&lt;wbr /&gt;googpub-phish-proto,&lt;wbr /&gt;goog-malware-proto,&lt;wbr /&gt;goog-unwanted-proto&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;goog-badbinurl-proto,&lt;wbr /&gt;goog-downloadwhite-proto,&lt;wbr /&gt;goog-phish-proto,&lt;wbr /&gt;googpub-phish-proto,&lt;wbr /&gt;goog-malware-proto,&lt;wbr /&gt;goog-unwanted-proto&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google4.&lt;wbr /&gt;report&lt;wbr /&gt;Malware&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google4.&lt;wbr /&gt;report&lt;wbr /&gt;Phish&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;report&lt;wbr /&gt;Malware&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;report&lt;wbr /&gt;Phish&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;storageManager.&lt;wbr /&gt;pressureNotification.&lt;wbr /&gt;minIntervalMS&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1200000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;storageManager.&lt;wbr /&gt;pressureNotification.&lt;wbr /&gt;usageThresholdGB&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;usepreloadedtopurls.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;usepreloadedtopurls.&lt;wbr /&gt;expire_&lt;wbr /&gt;days&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;14&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gridinspector.&lt;wbr /&gt;showGridOutline&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;source-map.&lt;wbr /&gt;locations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;sourcemap.&lt;wbr /&gt;locations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;toolbarSpec&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;screenshot --fullpage --file&quot;, &quot;rulers&quot;, &quot;measure&quot;]&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;archivereader.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;event.&lt;wbr /&gt;highrestimestamp.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;forms.&lt;wbr /&gt;select.&lt;wbr /&gt;customstyling&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;asyncdrawing.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;forcedirect.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;processCount.&lt;wbr /&gt;extension&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;moduleScripts.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;timeout.&lt;wbr /&gt;max_&lt;wbr /&gt;consecutive_&lt;wbr /&gt;callbacks&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;vr.&lt;wbr /&gt;puppet.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;vr.&lt;wbr /&gt;test.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;detailsURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.com/%LOCALE%/blocklist/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocked.cdn.mozilla.net/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;itemURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocklist.addons.mozilla.org/%LOCALE%/%APP%/blocked/%blockID%&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocked.cdn.mozilla.net/%blockID%.html&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocklist.addons.mozilla.org/blocklist/3/%APP_ID%/%APP_VERSION%/%PRODUCT%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/%PING_COUNT%/%TOTAL_PING_COUNT%/%DAYS_SINCE_LAST_PING%/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocklists.settings.services.mozilla.com/v1/blocklist/3/%APP_ID%/%APP_VERSION%/%PRODUCT%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/%PING_COUNT%/%TOTAL_PING_COUNT%/%DAYS_SINCE_LAST_PING%/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;e10sMultiBlocksEnabling&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;screenshots.&lt;wbr /&gt;system-disabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;geo.&lt;wbr /&gt;security.&lt;wbr /&gt;allowinsecure&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;downloadable_&lt;wbr /&gt;fonts.&lt;wbr /&gt;keep_&lt;wbr /&gt;variation_&lt;wbr /&gt;tables&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;downloadable_&lt;wbr /&gt;fonts.&lt;wbr /&gt;otl_&lt;wbr /&gt;validation&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;animated.&lt;wbr /&gt;discardable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;shared&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;-1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;ar&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;fa&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;he&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;ug&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;ur&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;shared_&lt;wbr /&gt;memory&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;advanced.&lt;wbr /&gt;border-layers&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;advanced.&lt;wbr /&gt;caret-layers&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;appearance.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;clip-path-shapes.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;moz-appearance.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;object-fit-and-position.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-justify.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;unprefixing-service.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;scrollbars.&lt;wbr /&gt;always-layerize-track&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;forcelocal&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;log.&lt;wbr /&gt;level&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;info&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;port&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2828&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;prefs.&lt;wbr /&gt;recommended&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;apiVisible&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;vp9-in-mp4.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;ffmpeg.&lt;wbr /&gt;low-latency.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;ice.&lt;wbr /&gt;tcp&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;abtest&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;aggressive&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;max-optimistic-requests&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;maxrequests&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;maxsize&lt;/td&gt;&lt;td&gt;300000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;read-timeout&lt;/td&gt;&lt;td&gt;30000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;reschedule-on-timeout&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;reschedule-timeout&lt;/td&gt;&lt;td&gt;1500&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;ssl&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;proxy.&lt;wbr /&gt;pipelining&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;referer.&lt;wbr /&gt;hideOnionSource&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;throttle.&lt;wbr /&gt;enable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;throttle.&lt;wbr /&gt;resume-for&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;throttle.&lt;wbr /&gt;suspend-for&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;pointer-lock-api.&lt;wbr /&gt;prefixed.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;firstparty.&lt;wbr /&gt;isolate.&lt;wbr /&gt;restrict_&lt;wbr /&gt;opener_&lt;wbr /&gt;access&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;data_&lt;wbr /&gt;uri.&lt;wbr /&gt;inherit_&lt;wbr /&gt;security_&lt;wbr /&gt;context&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;mixed_&lt;wbr /&gt;content.&lt;wbr /&gt;hsts_&lt;wbr /&gt;priming_&lt;wbr /&gt;cache_&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;10080&lt;/td&gt;&lt;td&gt;604800&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;content.&lt;wbr /&gt;level&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;content.&lt;wbr /&gt;syscall_&lt;wbr /&gt;whitelist&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;content.&lt;wbr /&gt;write_&lt;wbr /&gt;path_&lt;wbr /&gt;whitelist&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;logging.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;version.&lt;wbr /&gt;max&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;maxRecords&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;percentageChance&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;firstMsgMaxTries&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;lastMsgMaxTries&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;maxTries&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;pollInterval&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;serverURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://setup.services.mozilla.com/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;log.&lt;wbr /&gt;logger.&lt;wbr /&gt;service.&lt;wbr /&gt;jpakeclient&lt;/td&gt;&lt;td&gt;Debug&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;log.&lt;wbr /&gt;logger.&lt;wbr /&gt;userapi&lt;/td&gt;&lt;td&gt;Debug&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;miscURL&lt;/td&gt;&lt;td&gt;misc/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;privacyURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/privacy-policy/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;scheduler.&lt;wbr /&gt;sync11.&lt;wbr /&gt;singleDeviceInterval&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;serverURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://auth.services.mozilla.com/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;statusURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/status/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncKeyHelpURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/help/synckey&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;termsURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/tos/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;userURL&lt;/td&gt;&lt;td&gt;user/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;validation.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;validation.&lt;wbr /&gt;maxRecords&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;validation.&lt;wbr /&gt;percentageChance&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;identity.&lt;wbr /&gt;debug&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;identity.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox54_pref_diff&quot;&gt;
+&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 53.0&lt;/td&gt;&lt;td&gt;Firefox 54.0 beta 3&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/debugger.js&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/devtools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/webide-prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;omni.ja.d/defaults/pref/marionette.js&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;omni.ja.d/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;omni.ja.d/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox54_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox54_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox54_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox54_pref_diff td.json,
+table.diff_firefox54_pref_diff td.uri,
+table.diff_firefox54_pref_diff td.dump { word-break: break-all; }
+table.diff_firefox54_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox54_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox54_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox54_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox54_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox54_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content><author><name>cat_in_136</name></author><category term="pref diff" /><category term="mozilla" /><summary type="html">This is difference between the default preference of Firefox 54.0 beta 3 and one of 53.0.</summary></entry><entry><title type="html">trad とかいう需要がよくわからん機能について</title><link href="https://cat-in-136.github.io/2017/04/font-feature-trad.html" rel="alternate" type="text/html" title="trad とかいう需要がよくわからん機能について" /><published>2017-04-23T10:19:20+09:00</published><updated>2017-04-23T10:19:20+09:00</updated><id>https://cat-in-136.github.io/2017/04/font-feature-trad</id><content type="html" xml:base="https://cat-in-136.github.io/2017/04/font-feature-trad.html">&lt;p&gt;
 いくつかのフォントでは、&lt;code&gt;trad&lt;/code&gt; feature tag を有効にすると、
 いわゆる旧字に置換してくれる。
 &lt;/p&gt;
@@ -870,277 +919,4 @@ pdf.js のレンダリング結果を模擬するものの、
 
 
 
-ラスター画像化した文字画像の例</summary></entry><entry><title type="html">如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか</title><link href="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html" rel="alternate" type="text/html" title="如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか" /><published>2016-10-26T00:05:18+09:00</published><updated>2016-11-18T15:10:12+09:00</updated><id>https://cat-in-136.github.io/2016/10/writing-kanbun-in-html</id><content type="html" xml:base="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html">&lt;blockquote cite=&quot;https://twitter.com/ikeyasu/status/431696780506304512&quot;&gt;&lt;p lang=&quot;ja&quot;&gt;&lt;a href=&quot;https://twitter.com/snsk&quot;&gt;@snsk&lt;/a&gt; &lt;a href=&quot;https://twitter.com/dagezi&quot;&gt;@dagezi&lt;/a&gt; 漢文については、以前、W3C のワークショップで議題としたことがありました。 &lt;a href=&quot;http://t.co/WaBNatYfvA&quot; title=&quot;http://www.w3.org/2013/06/ebooks/report&quot;&gt;http://t.co/WaBNatYfvA&lt;/a&gt; このときに分かったのですが、CSS3 に最近は行ったRubyの新しい仕様と、OpenType の仕様を使えば漢文は表現できます&lt;/p&gt;— IKEUCHI Yasuki (@ikeyasu) &lt;a href=&quot;https://twitter.com/ikeyasu/status/431696780506304512&quot;&gt;February 7, 2014&lt;/a&gt;&lt;/blockquote&gt;
-
-&lt;p&gt;…という話を真に受けて、HTML5 で漢文を組版してみる。&lt;/p&gt;
-
-&lt;h3&gt;配置について&lt;/h3&gt;
-
-&lt;p&gt;
-漢文訓読文における、訓点（返り点・送り仮名）および振り仮名の配置はだいたいつぎのようになっている。
-&lt;/p&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;object width=&quot;47&quot; height=&quot;47&quot; data=&quot;/images/201610_kanbun_composition_layout_positioning.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;漢文訓読文レイアウト例&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;返り点は、漢字のすぐ下に左に寄せて表記される&lt;/li&gt;
-  &lt;li&gt;送り仮名と振り仮名は、配置は同一ブロック内であって、漢字の横に表記される&lt;/li&gt;
-  &lt;li&gt;送り仮名が漢字の右下ちょうど外に出る程度に上下方向の位置は調整する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-これを元に次の方針でタグ打ちをすることにした。
-&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;返り点は、サイズの小さな文字として扱う。返り点そのものは Unicode の U+3191〜 のを使用する。&lt;/li&gt;
-  &lt;li&gt;振り仮名は、標準的に HTML5 ruby を使用する&lt;/li&gt;
-  &lt;li&gt;送り仮名も HTML5 ruby を用いるが、漢字の後ろの空白あるいは返り点の ruby となる扱いで送り仮名を配置する&lt;/li&gt;
-  &lt;li&gt;送り仮名の上下方向の位置については諦める&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;具体的には下記の通りとなる&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;&amp;lt;ruby&amp;gt;
-  &amp;lt;rb&amp;gt;以&amp;lt;/rb&amp;gt;
-  &amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;#12696;&amp;lt;/rb&amp;gt;
-  &amp;lt;rtc&amp;gt;
-    &amp;lt;rt&amp;gt;もつ&amp;lt;/rt&amp;gt;
-    &amp;lt;rt&amp;gt;テ&amp;lt;/rt&amp;gt;
-  &amp;lt;/rtc&amp;gt;
-&amp;lt;/ruby&amp;gt;
-&amp;lt;style&amp;gt;
-.kaeriten {
-  font-size: xx-small;
-  vertical-align: sub;
-  ruby-align: start;
-}
-&amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-ここで&amp;lt;rb&amp;gt;要素を緑枠、&amp;lt;rt&amp;gt;要素を青枠で囲んで図に示すと次のようになる。
-&lt;/p&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;object width=&quot;46&quot; height=&quot;55&quot; data=&quot;/images/201610_kanbun_composition_layout_html5_ruby.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;HTML5 Complex Ruby による漢文レイアウト&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;もう少し複雑な例として、本記事の標題を例にあげる。&lt;/p&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;p class=&quot;kanbun&quot; style=&quot;margin: 1em;&quot;&gt;
-&lt;ruby&gt;&lt;rb&gt;如何&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ニシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;用&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヒテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;HTML5 Complex Ruby&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12690;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;寫&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;スカ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;漢文訓讀文&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12690;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;。
-&lt;/p&gt;
-&lt;figcaption&gt;「如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか」ライブビュー&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;object width=&quot;99&quot; height=&quot;426&quot; data=&quot;/images/201610_kanbun_fx_render_title.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;「如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか」Firefoxレンダリング&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;Complex Ruby を使わない場合&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;返り点は、&amp;lt;sub&amp;gt;として扱う。返り点そのものは Unicode の U+3191〜 のを使用する。&lt;/li&gt;
-  &lt;li&gt;振り仮名は、標準的に Basic HTML5 ruby を使用する&lt;/li&gt;
-  &lt;li&gt;送り仮名は、&amp;lt;sup&amp;gt;として扱う。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;
-如何&amp;lt;sup&amp;gt;ニシテ&amp;lt;/sup&amp;gt;
-用&amp;lt;sub class=&quot;kaeriten&quot;&amp;gt;&amp;#12691;&amp;lt;/sub&amp;gt;&amp;lt;sup&amp;gt;ヒテ&amp;lt;/sup&amp;gt;
-HTML5 Complex Ruby&amp;lt;sub class=&quot;kaeriten&quot;&amp;gt;&amp;#12690;&amp;lt;/sub&amp;gt;&amp;lt;sup&amp;gt;ヲ&amp;lt;/sup&amp;gt;
-寫&amp;lt;sub class=&quot;kaeriten&quot;&amp;gt;&amp;#12691;&amp;lt;/sub&amp;gt;&amp;lt;sup&amp;gt;スカ&amp;lt;/sup&amp;gt;
-漢文訓讀文&amp;lt;sub class=&quot;kaeriten&quot;&amp;gt;&amp;#12690;&amp;lt;/sub&amp;gt;&amp;lt;sup&amp;gt;ヲ&amp;lt;/sup&amp;gt;。
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;p class=&quot;kanbun&quot; style=&quot;margin: 1em;&quot;&gt;
-如何&lt;sup&gt;ニシテ&lt;/sup&gt;
-用&lt;sub class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/sub&gt;&lt;sup&gt;ヒテ&lt;/sup&gt;
-HTML5 Complex Ruby&lt;sub class=&quot;kaeriten&quot;&gt;&amp;#12690;&lt;/sub&gt;&lt;sup&gt;ヲ&lt;/sup&gt;
-寫&lt;sub class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/sub&gt;&lt;sup&gt;スカ&lt;/sup&gt;
-漢文訓讀文&lt;sub class=&quot;kaeriten&quot;&gt;&amp;#12690;&lt;/sub&gt;&lt;sup&gt;ヲ&lt;/sup&gt;。
-&lt;/p&gt;
-&lt;figcaption&gt;ruby不使用版「如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか」ライブビュー&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-Complex Ruby を使わない場合との差、おわかりいただけるであろうか。
-&lt;/p&gt;
-
-&lt;h3&gt;使用例&lt;/h3&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;blockquote&gt;
-&lt;p class=&quot;kanbun&quot; style=&quot;margin: 1em;&quot;&gt;
-&lt;ruby&gt;&lt;rb&gt;荷宇&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ハ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;生&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;マレテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;十月&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ニシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;而&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;喪&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;うしな&lt;/rt&gt;&lt;rt&gt;フ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;其&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ノ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12690;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;。
-&lt;ruby&gt;&lt;rb&gt;及&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ビ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;有&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ルニ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;知&lt;/rb&gt;&lt;/ruby&gt;、
-&lt;ruby&gt;&lt;rb&gt;即&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;チ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;時時&lt;/rb&gt;&lt;/ruby&gt;、
-&lt;ruby&gt;&lt;rb&gt;念&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;おも&lt;/rt&gt;&lt;rt&gt;ヒテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;不&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12689;&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;置&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;カ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;、
-&lt;ruby&gt;&lt;rb&gt;弥&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;いよいよ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;久&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;シクシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;弥&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;篤&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;あつ&lt;/rt&gt;&lt;rt&gt;シ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;。
-&lt;ruby&gt;&lt;rb&gt;哀&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;かな&lt;/rt&gt;&lt;rt&gt;シム&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;其&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ノ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;身&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ノ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;不&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12690;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;能&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12692;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ハ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;一日&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;トシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;事&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;フル&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;乎&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12690;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ニ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;也&lt;/rb&gt;&lt;/ruby&gt;。
-&lt;ruby&gt;&lt;rb&gt;哀&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;かな&lt;/rt&gt;&lt;rt&gt;シム&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母之言語動作&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;モ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;亦&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;ま&lt;/rt&gt;&lt;rt&gt;タ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;未&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12690;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ダ&lt;/rt&gt;&lt;/rtc&gt;&lt;rtc class=&quot;okurikana-2nd&quot;&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ルヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;能&lt;/rb&gt;&lt;rb class=&quot;kaeriten&quot;&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ハ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;識&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;し&lt;/rt&gt;&lt;rt&gt;ル&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;也&lt;/rb&gt;&lt;/ruby&gt;。
-&lt;/p&gt;
-&lt;caption&gt;&amp;#8213;&amp;#8213;平成二十八年度大学入試センター試験国語より（盧文弨『抱経堂文集』より）&lt;/caption&gt;
-&lt;/blockquote&gt;
-&lt;figcaption&gt;盧文弨『抱経堂文集』の一節、ライブビュー&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;figure class=&quot;kanbun&quot;&gt;
-&lt;object width=&quot;256&quot; height=&quot;490&quot; data=&quot;/images/201610_kanbun_fx_render_baojingtang.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;盧文弨『抱経堂文集』の一節、ライブビュー&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;これは次のソースから得られる。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&lt;code&gt;
-&amp;lt;p class=&quot;kanbun&quot; style=&quot;margin: 1em;&quot;&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;荷宇&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ハ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;生&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;マレテ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;十月&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ニシテ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;而&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;喪&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12691;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;うしな&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;フ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;其&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ノ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;母&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12690;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ヲ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;。
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;及&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ビ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;有&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ルニ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;知&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;、
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;即&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;チ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;時時&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;、
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;念&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;おも&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ヒテ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;母&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ヲ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;不&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;置&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;カ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;、
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;弥&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;いよいよ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;久&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;シクシテ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;弥&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;篤&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;あつ&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;シ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;。
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;哀&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12691;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;かな&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;シム&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;其&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ノ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;身&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ノ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;不&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12690;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ヲ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;能&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12692;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ハ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;一日&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;トシテ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;事&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12691;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;フル&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;乎&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;母&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12690;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ニ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;也&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;。
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;哀&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12691;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;かな&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;シム&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;母之言語動作&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;モ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;亦&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;ま&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;タ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;未&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12690;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ダ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;rtc class=&quot;okurikana-2nd&quot;&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ルヲ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;能&amp;lt;/rb&amp;gt;&amp;lt;rb class=&quot;kaeriten&quot;&amp;gt;&amp;amp;#12689;&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ハ&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;識&amp;lt;/rb&amp;gt;&amp;lt;rtc&amp;gt;&amp;lt;rt&amp;gt;し&amp;lt;/rt&amp;gt;&amp;lt;rt&amp;gt;ル&amp;lt;/rt&amp;gt;&amp;lt;/rtc&amp;gt;&amp;lt;/ruby&amp;gt;
-&amp;lt;ruby&amp;gt;&amp;lt;rb&amp;gt;也&amp;lt;/rb&amp;gt;&amp;lt;/ruby&amp;gt;。
-&amp;lt;/p&amp;gt;
-
-&amp;lt;style scope=&quot;scope&quot;&amp;gt;
-.kanbun {
-  line-height: 150%;
-}
-.kanbun rb.kaeriten {
-  font-size: xx-small;
-  vertical-align: sub;
-  ruby-align: start;
-}
-.kanbun .okurikana-2nd {
-  ruby-position: under;
-}
-&amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;style scope=&quot;scope&quot;&gt;
-figure.kanbun {
-  -webkit-writing-mode: vertical-rl ! important;
-  writing-mode: vertical-rl ! important;
-  font-size: smaller;
-}
-figure.kanbun p.kanbun {
-  font-size: large;
-}
-.kanbun sub {
-  vertical-align: sub;
-}
-.kanbun sup {
-  vertical-align: super;
-}
-.kanbun {
-  line-height: 150%;
-  -webkit-writing-mode: vertical-rl;
-  writing-mode: vertical-rl;
-}
-.kanbun .kaeriten {
-  font-size: xx-small;
-  vertical-align: sub;
-  ruby-align: start;
-}
-.kanbun .okurikana-2nd {
-  ruby-position: under;
-}
-&lt;/style&gt;
-
-&lt;h3&gt;所感&lt;/h3&gt;
-
-&lt;p&gt;
-確かに書けるが、あまりにも小手先な感じであってすっきりしない
-（特に返り点の配置）し、
-ソースコードは人が書くレベルではない長文になっている。
-したがって、あまり実用的ではない。
-&lt;/p&gt;
-&lt;p&gt;
-その他気になった点として、
-&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「一レ点」などが別々に表示されて、返り点の合字が対応したフォントが標準添付されると、
-「一レ点」などがいい感じになるであろう。&lt;/li&gt;
-&lt;li&gt;禁則処理が適切でない場所で行われることがあった。&amp;lt;nobr&amp;gt;を使えばいいものの、何らかの解決策が必要。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;参考文献&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Y. Ikeuchi, &quot;&lt;a href=&quot;https://www.w3.org/2013/06/ebooks/slides/Ikeuchi.ppt&quot;&gt;Japanese Typography issue for Novel and Textbook&lt;/a&gt;&quot;, W3C eBooks &amp;amp; i18n Workshop, Jun 2013&lt;/li&gt;
-  &lt;li&gt;E. J. Etemad and K. Ishii, &quot;&lt;a href=&quot;https://www.w3.org/TR/css-ruby-1/&quot;&gt;CSS Ruby Layout Module Level 1&lt;/a&gt;&quot;, W3C Working Draft&lt;/li&gt;
-  &lt;li&gt;R. Ishida, &quot;&lt;a href=&quot;https://www.w3.org/TR/ruby-use-cases/&quot;&gt;Use Cases &amp;amp; Exploratory Approaches for Ruby Markup&lt;/a&gt;&quot;, W3C Working Group Note&lt;/li&gt;
-  &lt;li&gt;Y. Anan et al., &quot;&lt;a href=&quot;https://www.w3.org/TR/jlreq/&quot;&gt;Requirements for Japanese Text Layout&lt;/a&gt;&quot;, W3C Working Group Note&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="縦書き" /><category term="html" /><category term="css" /><category term="ruby-annotation" /><category term="漢文" /><summary type="html">@snsk @dagezi 漢文については、以前、W3C のワークショップで議題としたことがありました。 http://t.co/WaBNatYfvA このときに分かったのですが、CSS3 に最近は行ったRubyの新しい仕様と、OpenType の仕様を使えば漢文は表現できます— IKEUCHI Yasuki (@ikeyasu) February 7, 2014</summary></entry></feed>
+ラスター画像化した文字画像の例</summary></entry></feed>
