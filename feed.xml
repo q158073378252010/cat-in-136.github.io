@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-05-01T11:02:48+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Diff between firefox 54.0 beta 3 default preference and firefox 53.0</title><link href="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html" rel="alternate" type="text/html" title="Diff between firefox 54.0 beta 3 default preference and firefox 53.0" /><published>2017-05-01T10:54:16+09:00</published><updated>2017-05-01T10:54:16+09:00</updated><id>https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default</id><content type="html" xml:base="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html">&lt;p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-06-10T23:44:12+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Lissajous curve in raymarching using GLSL over WebGL</title><link href="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" rel="alternate" type="text/html" title="Lissajous curve in raymarching using GLSL over WebGL" /><published>2017-06-10T23:30:18+09:00</published><updated>2017-06-10T23:30:18+09:00</updated><id>https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl</id><content type="html" xml:base="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html">&lt;div id=&quot;lissajous-curve-raymarching-container&quot;&gt;
+&lt;/div&gt;
+
+&lt;pre id=&quot;lissajous-curve-raymarching-shader&quot;&gt;&lt;code class=&quot;prettyprint&quot;&gt;uniform vec2 resolution;
+uniform float time;
+
+void main() {
+  vec2 pos = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+
+  float v = 0.0;
+  for (int i = 0; i &amp;lt; 500; i++) {
+    float s = time + float(i) * 0.0075;
+    vec2 mpos = 0.8 * vec2(sin(s * 5.0), - cos(s * 6.0));
+    float t = 0.01 / length(mpos - pos);
+    v += pow(t, 2.0) * float(i + 1) / 100.0;
+  }
+
+  gl_FragColor = 1.0 * vec4(vec3(v), 1.0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;script type=&quot;application/javascript&quot;&gt;
+window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+  &quot;use strict&quot;;
+
+  var container = document.getElementById(&quot;lissajous-curve-raymarching-container&quot;);
+  var shader = document.getElementById(&quot;lissajous-curve-raymarching-shader&quot;).textContent;
+
+  var rm = new RayMarcher();
+  rm.setFragmentShader(shader);
+  container.appendChild(rm.domElement);
+
+  function onResize(event) {
+    rm.setSize(container.clientWidth - 4, 320);
+  }
+  window.addEventListener(&quot;resize&quot;, onResize, false);
+  onResize();
+
+  function animate() {
+    requestAnimationFrame(animate);
+    rm.render();
+  }
+  animate();
+}, false);
+&lt;/script&gt;
+
+&lt;h3&gt;See also&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Lissajous_curve&quot;&gt;Lissajous curve&lt;/a&gt; - wikipedia&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ip.uec.ac.jp/ipo/archive/logo.html&quot;&gt;電気通信大学校章(リサジュー図形)&lt;/a&gt;(Japanese)&lt;/li&gt;
+&lt;li&gt;nico, &quot;&lt;a href=&quot;http://barradeau.com/blog/?p=575&quot;&gt;ray marching (with THREE.js)&lt;/a&gt;&quot;, Youpi!, Dec 8 2015.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;application/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;application/javascript&quot; src=&quot;https://cdn.rawgit.com/nicoptere/raymarching-for-THREE/953a55bee100c145686df9b1273de05eb2b5c0e9/raymarcher.js&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;</content><category term="javascript" /><category term="GLSL" /><category term="raymarching" /><summary type="html"></summary></entry><entry><title type="html">Diff between firefox 54.0 beta 3 default preference and firefox 53.0</title><link href="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html" rel="alternate" type="text/html" title="Diff between firefox 54.0 beta 3 default preference and firefox 53.0" /><published>2017-05-01T10:54:16+09:00</published><updated>2017-05-01T10:54:16+09:00</updated><id>https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default</id><content type="html" xml:base="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html">&lt;p&gt;
 This is difference between the default preference of Firefox 54.0 beta 3 and one of 53.0.
 &lt;/p&gt;
 
@@ -736,187 +790,4 @@ like described on “&lt;a href=&quot;https://blog.openshift.com/deploying-from-
   &lt;li&gt;Find a much more suitable method&lt;/li&gt;
   &lt;li&gt;Support for DB (postgresql, mysql, …)&lt;/li&gt;
   &lt;li&gt;Investigate why &lt;code class=&quot;highlighter-rouge&quot;&gt;oc export all -o yaml &amp;gt; project.yaml&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;oc create -f project.yaml&lt;/code&gt; does not work&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="howto" /><category term="openshift" /><category term="ruby" /><category term="チラシの裏" /><summary type="html">Mission</summary></entry><entry><title type="html">文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?</title><link href="https://cat-in-136.github.io/2016/11/embeded-font.html" rel="alternate" type="text/html" title="文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?" /><published>2016-11-20T02:03:18+09:00</published><updated>2016-11-20T10:35:00+09:00</updated><id>https://cat-in-136.github.io/2016/11/embeded-font</id><content type="html" xml:base="https://cat-in-136.github.io/2016/11/embeded-font.html">&lt;p&gt;
-次のように画像 (raster image) 化した文字画像は、
-テキスト選択できないなど批判されることが多いが
-特殊なフォントを使いたい場合など使用されることが多い。
-&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&quot;/images/201611_embedded_font_susanoo_demo_raster.png&quot; /&gt;
-&lt;figcaption&gt;ラスター画像化した文字画像の例&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;web font&lt;/h3&gt;
-
-&lt;p&gt;
-最も理想的な解決策は web font を用意することで、
-ソースも無駄がない。
-しかしフォントサイズが大きくなるという日本語特有の事情や、
-ライセンスの問題から一筋縄ではない。
-だがメジャーなフォントベンダーのフォントなら、その問題をまとめて
-&lt;a href=&quot;http://www.typesquare.com/&quot;&gt;TypeSquare&lt;/a&gt;や
-&lt;a href=&quot;http://typekit.com/&quot;&gt;TypeKit&lt;/a&gt;
-などのサービスで解決もらえるので、普通はこれが良い。
-&lt;/p&gt;
-&lt;figure&gt;
-&lt;div class=&quot;embeded-font-susanoo-typografy-test&quot;&gt;
-  やくもたつ&lt;br /&gt;
-  いづもやへがき&lt;br /&gt;
-  つまごみに&lt;br /&gt;
-  やへがきつくる&lt;br /&gt;
-  そのやへがきを
-&lt;/div&gt;
-&lt;figcaption&gt;Woffでの表示例（ライブビュー）&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;pdf.js で透明テキスト&lt;/h3&gt;
-
-&lt;p&gt;
-ところで PDF への埋め込みは許されているというのはありがち。
-そこで &lt;a href=&quot;https://github.com/mozilla/pdf.js&quot;&gt;pdf.js&lt;/a&gt;
-の威力を使ってレンダリングしてしまえば、
-フォントの字形は canvas 要素、テキスト選択できない問題は
-透明テキストで解決できる。
-しかし、無理矢理感が半端ないし、pdf.js 自体が結構重い。
-&lt;/p&gt;
-&lt;figure&gt;
-  &lt;div class=&quot;render-pdf-file&quot; data-pdf-file-path=&quot;/images/201611_embedded_font_susanoo_demo_pdf.pdf&quot;&gt;&lt;/div&gt;
-&lt;script type=&quot;application/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.6.329/pdf.min.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;application/javascript&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ *///
-window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
-  &quot;use strict&quot;;
-
-  var container = document.querySelector(&quot;.render-pdf-file[data-pdf-file-path]&quot;);
-  container.style.position = &quot;relative&quot;;
-
-  var PDFJS = pdfjsDistBuildPdf.PDFJS;
-  PDFJS.workerSrc = &quot;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.6.329/pdf.worker.min.js&quot;;
-  PDFJS.getDocument(container.getAttribute(&quot;data-pdf-file-path&quot;)).then(function (pdf) {
-    return pdf.getPage(1);
-  }).then(function(page) {
-    var canvas = container.appendChild(document.createElement(&quot;canvas&quot;));
-    var ratio = window.devicePixelRatio || 1;
-    var viewport = page.getViewport(1 * ratio);
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-    container.style.width = canvas.style.width = canvas.width * 1.0 / ratio + &quot;px&quot;;
-    container.style.height = canvas.style.height = canvas.height * 1.0 / ratio + &quot;px&quot;;
-
-    page.render({
-      canvasContext: canvas.getContext(&quot;2d&quot;),
-      viewport: viewport
-    });
-
-    return Promise.all([page.getTextContent(), {viewport: viewport, canvas: canvas, ratio: ratio}]);
-  }).then(function (param) {
-    var textContent = param[0];
-    var viewport = param[1].viewport;
-    var canvas = param[1].canvas;
-    var ratio = param[1].ratio;
-
-    var SVG_NS = 'http://www.w3.org/2000/svg';
-    var svg = document.createElementNS(SVG_NS, 'svg');
-    svg.setAttribute('width', canvas.style.width);
-    svg.setAttribute('height',  canvas.style.height);
-    svg.setAttribute('font-size', 1);
-    svg.setAttribute('style', 'position: absolute; top: 0; left: 0;');
-
-    textContent.items.forEach(function (textItem) {
-      var tx = [
-        [1.0/ratio, 0, 0, 1.0/ratio, 0, 0],
-        viewport.transform,
-        textItem.transform,
-        [1, 0, 0, -1, 0, 0]
-      ].reduce(function(curr, v) { return PDFJS.Util.transform(curr, v); });
-
-      var style = textContent.styles[textItem.fontName];
-      var text = document.createElementNS(SVG_NS, 'text');
-      text.setAttribute('transform', 'matrix(' + tx.join(' ') + ')');
-      text.setAttribute('font-family', style.fontFamily);
-      text.setAttribute('fill-opacity', '0');
-      text.appendChild(document.createTextNode(textItem.str));
-      svg.appendChild(text);
-    });
-    container.appendChild(svg);
-
-    return Promise.resolve();
-  }).catch(function (ex) {
-    console.error(ex);
-  });
-}, false);
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/script&gt;
-&lt;figcaption&gt;pdf.js での表示例（ライブビュー）&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;透明テキストを含んだベクトル画像&lt;/h3&gt;
-
-&lt;p&gt;
-pdf.js のレンダリング結果を模擬するものの、
-レンダリング結果はラスターではなくベクトルとする。
-すなわちアウトライン化した svg 画像内に透明テキストを入れこむ。
-&lt;/p&gt;
-&lt;figure&gt;
-&lt;object width=&quot;121&quot; height=&quot;161&quot; data=&quot;/images/201611_embedded_font_susanoo_demo.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;svg化した文字画像の例&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;h3&gt;感想&lt;/h3&gt;
-
-&lt;p&gt;
-日本語のフォントは色々と大変だと思いました（小並感
-&lt;/p&gt;
-
-&lt;h3&gt;参考文献&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;github:&lt;a href=&quot;https://github.com/mozilla/pdf.js&quot;&gt;mozilla/pdf.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;使用している極太明朝は&lt;a href=&quot;http://www.pot.co.jp/font/&quot;&gt;MOJもじくみかなSH版&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;例文として使用した文は、最古の和歌と伝えられる「八雲立つ／出雲八重垣／妻籠みに／八重垣作る／その八重垣を」&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;
-@font-face {
-  /*
-     http://www.pot.co.jp/font/
-     で配布されている 2006/Mon/19 版の
-     MOJもじくみ仮名 OTF フォントからサブセットを生成し
-     WOFF に変換した。
-
-     バージョン履歴
-     [2001/Aug/25]
-     「もじくみ仮名」配布開始
-     日本語の文字と組版を考える会
-     [2001/Nov/12]
-     「MOJもじくみかなSH版」v1.0-sh配布開始
-     [2006/Mon/19]
-     「MOJもじくみかなSH版」OpenTypeフォーマットにて配布開始
-     沢辺均、萩野生政、企画・制作
-   */
-  font-family: &quot;MOJもじくみ仮名 OTF WOFF&quot;;
-  unicode-range: U+3044, U+304C, U+304D, U+304F, U+3054, U+305D, U+305D, U+305F, U+3064, U+3065, U+306B, U+306E, U+3078, U+307E, U+307F, U+3082, U+3084, U+308B, U+3092;
-  src: url(&quot;data:application/x-font-woff;base64,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&quot;) format(&quot;woff&quot;);
-
-
-}
-&lt;/style&gt;
-&lt;style type=&quot;text/css&quot; scoped=&quot;scoped&quot;&gt;
-.embeded-font-susanoo-typografy-test {
-  font-family: &quot;MOJもじくみ仮名 OTF WOFF&quot;, serif;
-  padding: 2px;
-  margin: 2px;
-  text-align: left;
-  text-align: start;
-}
-@supports ((writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl)) {
-  .embeded-font-susanoo-typografy-test {
-    writing-mode: vertical-rl;
-    -webkit-writing-mode: vertical-rl;
-  }
-}
-&lt;/style&gt;</content><author><name>cat_in_136</name></author><category term="html" /><category term="font" /><category term="webfont" /><category term="svg" /><summary type="html">次のように画像 (raster image) 化した文字画像は、
-テキスト選択できないなど批判されることが多いが
-特殊なフォントを使いたい場合など使用されることが多い。
-
-
-
-ラスター画像化した文字画像の例</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>cat_in_136</name></author><category term="howto" /><category term="openshift" /><category term="ruby" /><category term="チラシの裏" /><summary type="html">Mission</summary></entry></feed>
