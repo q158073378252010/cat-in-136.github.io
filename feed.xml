@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-06-10T23:44:12+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Lissajous curve in raymarching using GLSL over WebGL</title><link href="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" rel="alternate" type="text/html" title="Lissajous curve in raymarching using GLSL over WebGL" /><published>2017-06-10T23:30:18+09:00</published><updated>2017-06-10T23:30:18+09:00</updated><id>https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl</id><content type="html" xml:base="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html">&lt;div id=&quot;lissajous-curve-raymarching-container&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="https://cat-in-136.github.io/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" /><updated>2017-06-11T10:59:45+09:00</updated><id>https://cat-in-136.github.io//</id><title type="html">cat_in_136.blog()</title><entry><title type="html">Lissajous curve in raymarching using GLSL over WebGL</title><link href="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" rel="alternate" type="text/html" title="Lissajous curve in raymarching using GLSL over WebGL" /><published>2017-06-10T23:30:18+09:00</published><updated>2017-06-11T10:56:00+09:00</updated><id>https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl</id><content type="html" xml:base="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html">&lt;div id=&quot;lissajous-curve-raymarching-container&quot;&gt;
 &lt;/div&gt;
 
 &lt;pre id=&quot;lissajous-curve-raymarching-shader&quot;&gt;&lt;code class=&quot;prettyprint&quot;&gt;uniform vec2 resolution;
@@ -18,6 +18,10 @@ void main() {
   gl_FragColor = 1.0 * vec4(vec3(v), 1.0);
 }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;div&gt;
+  This &quot;effect&quot; is also &lt;a href=&quot;http://glslsandbox.com/e#40894.0&quot;&gt;posted to glslsandbox&lt;/a&gt;.
+&lt;/div&gt;
 
 &lt;script type=&quot;application/javascript&quot;&gt;
 window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
