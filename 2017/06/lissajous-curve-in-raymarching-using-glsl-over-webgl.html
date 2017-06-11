@@ -9,7 +9,7 @@
   <title>Lissajous curve in raymarching using GLSL over WebGL</title>
   <meta property="og:url" content="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" />
   <meta property="og:title" content="Lissajous curve in raymarching using GLSL over WebGL" />
-  <meta property="og:description" content="uniform vec2 resolution; uniform float time; void main() { vec2 pos = (gl_FragCoord.xy * 2.0 - re..." />
+  <meta property="og:description" content="This &quot;effect&quot; is also posted to glslsandbox. After posting this article, I found that it is not a..." />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="cat_in_136.blog()" />
   <meta name="twitter:card" content="summary" />
@@ -49,12 +49,11 @@
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" itemprop="url">Lissajous curve in raymarching using GLSL over WebGL</a></h1>
     <div class="post-meta">Post date: <span itemprop="datePublished" content="2017-06-10T23:30:18+09:00">2017-06-10T23:30:18+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2017-06-11T10:56:00+09:00">2017-06-11T10:56:00+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2017-06-11T11:14:03+09:00">2017-06-11T11:14:03+09:00</span></div>
     <div class="post-meta">Tags:
       <span itemprop="keywords">
       <a class="tag" href="/tags.html#tag_javascript">Javascript</a>
       <a class="tag" href="/tags.html#tag_glsl">Glsl</a>
-      <a class="tag" href="/tags.html#tag_raymarching">Raymarching</a>
       </span>
     </div>
     <div class="post-meta">
@@ -69,7 +68,13 @@
   
 
   <div class="post-content" itemprop="articleBody">
-    <div id="lissajous-curve-raymarching-container">
+    <div>
+  This "effect" is also <a href="http://glslsandbox.com/e#40894.0">posted to glslsandbox</a>.
+  After posting this article, I found that it is not a raymarching (i.e. asort of ray tracing) but just only SLSL effect.
+  I took a mistake but I decided to leave this article title "as it is".
+</div>
+
+<div id="lissajous-curve-raymarching-container">
 </div>
 
 <pre id="lissajous-curve-raymarching-shader"><code class="prettyprint">uniform vec2 resolution;
@@ -89,10 +94,6 @@ void main() {
   gl_FragColor = 1.0 * vec4(vec3(v), 1.0);
 }
 </code></pre>
-
-<div>
-  This "effect" is also <a href="http://glslsandbox.com/e#40894.0">posted to glslsandbox</a>.
-</div>
 
 <script type="application/javascript">
 window.addEventListener("DOMContentLoaded", function () {
@@ -146,22 +147,15 @@ window.addEventListener("DOMContentLoaded", function () {
   <h2>Related Posts</h2>
   <ul class="post-list">
   <li class="post-item">
-    <a class="post-link" href="/2010/05/which-is-faster-eval-or-jsonparse.html">
-      <span class="post-meta">2010-05-20</span>
-      <span class="post-title">Which is faster eval() or JSON.parse()</span>
-    </a>
-  </li>
-  <li class="post-item">
     <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">
       <span class="post-meta">2012-10-08</span>
       <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span>
     </a>
   </li>
   <li class="post-item">
-    <a class="post-link" href="/2016/11/embeded-font.html">
-      <span class="post-meta">2016-11-20</span>
-      <span class="post-title">文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?</span>
-      <span class="post-thumb" data-image-path="/images/201611_embedded_font_susanoo_demo_raster.png"></span>
+    <a class="post-link" href="/2010/05/which-is-faster-eval-or-jsonparse.html">
+      <span class="post-meta">2010-05-20</span>
+      <span class="post-title">Which is faster eval() or JSON.parse()</span>
     </a>
   </li>
   <li class="post-item">
@@ -183,16 +177,23 @@ window.addEventListener("DOMContentLoaded", function () {
     </a>
   </li>
   <li class="post-item">
+    <a class="post-link" href="/2016/11/embeded-font.html">
+      <span class="post-meta">2016-11-20</span>
+      <span class="post-title">文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?</span>
+      <span class="post-thumb" data-image-path="/images/201611_embedded_font_susanoo_demo_raster.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
     <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
       <span class="post-meta">2015-05-01</span>
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span>
     </a>
   </li>
   <li class="post-item">
-    <a class="post-link" href="/2015/09/trta-emblem-design-analysis.html">
-      <span class="post-meta">2015-09-06</span>
-      <span class="post-title">帝都高速度交通営団の団章の解析</span>
-      <span class="post-thumb" data-image-path="/images/201509_trta_emblem_design_analysis.svg"></span>
+    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
+      <span class="post-meta">2011-05-20</span>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span>
+      <span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span>
     </a>
   </li>
   </ul>
