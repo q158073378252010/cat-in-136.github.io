@@ -81,13 +81,12 @@
 
 <p>app.rb, e.g.:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>require "sinatra"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>require "sinatra"
 
 get "/" do
   "Hello, world!"
 end
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Since config.ru and Gemfile are very very straight forward, they’re omitted.</p>
 
@@ -99,10 +98,9 @@ like described on “<a href="https://blog.openshift.com/deploying-from-private-
 
 <p>Export the <code class="highlighter-rouge">buildconfig</code> and the public key for the app: <code class="highlighter-rouge">helloworldapp</code>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>% oc export buildconfig helloworldapp -o yaml &gt; buildconfig-helloworldapp.yaml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% oc export buildconfig helloworldapp -o yaml &gt; buildconfig-helloworldapp.yaml
 % oc export secret sshsecret -o yaml &gt; sshsecret.yaml
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Note: I must do this work <em>before my account expires</em>.</p>
 
@@ -111,17 +109,15 @@ like described on “<a href="https://blog.openshift.com/deploying-from-private-
 <p>Create new app according to the method written on the Developer Guide:
 <a href="https://docs.openshift.org/latest/dev_guide/new_app.html">Creating New Applications</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>% oc new-project foobar-project
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% oc new-project foobar-project
 % oc new-app git@private:repository-of/helloworldapp.git
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The first build will fail because of lack of the public key and any other build configuration.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>% oc create -f sshsecret.yaml
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% oc create -f sshsecret.yaml
 % oc replace -f buildconfig-helloworldapp.yaml
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The second build would be successed.</p>
 
