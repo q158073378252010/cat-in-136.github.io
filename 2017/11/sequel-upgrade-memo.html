@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Sequel のバージョンアップデートに関するメモ</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2017/11/sequel-upgrade-memo.html" />
+  <meta property="og:title" content="Sequel のバージョンアップデートに関するメモ" />
+  <meta property="og:description" content="とある private 運用している padrino + sequel rubygem を使ったアプリのバージョンアップをようやくやった。 v4.29 → v5.2 へのアップデートだったのだが..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2017/11/sequel-upgrade-memo.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+</head>
+
+
+  <body>
+    
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2017/11/sequel-upgrade-memo.html" itemprop="url">Sequel のバージョンアップデートに関するメモ</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2017-11-08T00:27:30+09:00">2017-11-08T00:27:30+09:00</span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_sequel">Sequel</a>
+      <a class="tag" href="/tags.html#tag_ruby">Ruby</a>
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2017-11-08-sequel-upgrade-memo.md" class="source-path">_posts/2017-11-08-sequel-upgrade-memo.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2017-11-08-sequel-upgrade-memo.md">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>とある private 運用している <a href="http://padrinorb.com/">padrino</a> +
+<a href="http://sequel.jeremyevans.net/">sequel</a> rubygem を使ったアプリのバージョンアップをようやくやった。
+v4.29 → v5.2 へのアップデートだったのだが、
+一つ一つ<a href="http://sequel.jeremyevans.net/documentation.html">リリースノート</a>を見ていって確認していったのだが
+かなりの分量だった。
+特に、v4.45 の deprecated features が多すぎだった。</p>
+
+<hr />
+
+<p>ただ、実際に影響があったのは下記の2つの変更だけだった。</p>
+
+<ol>
+  <li>The schema plugin is now deprecated. Switch to defining the schema before creating the model class using the Database schema methods. (ref. <a href="http://sequel.jeremyevans.net/rdoc/files/doc/release_notes/4_45_0_txt.html">4.45.0txt</a>)
+    <ul>
+      <li>schema plugin が廃止されたが、代替が指示されておらず意味を理解するまで時間がかかったが、
+結論は plugin の読み込み (<code class="highlighter-rouge">Sequel::Model.plugin(:schema)</code>) を消すだけだった。</li>
+      <li>スキーマを定義した後にモデルクラスを呼び出すという暗黙的なことになった。</li>
+      <li>普通(?)、そういう使い方をすると思うので schema plugin は御役御免でよい。</li>
+    </ul>
+  </li>
+  <li>The <code class="highlighter-rouge">Dataset#and</code>, <code class="highlighter-rouge">exclude_where</code>, <code class="highlighter-rouge">interval</code>, and range methods are now deprecated. Undeprecated copies are now available in the new <code class="highlighter-rouge">sequel_4_dataset_methods</code> extension. (ref <a href="http://sequel.jeremyevans.net/rdoc/files/doc/release_notes/4_48_0_txt.html">4.48.0.txt</a>)
+    <ul>
+      <li>微妙な例で示すと <code class="highlighter-rouge">Foo.where(:bar =&gt; 1).and(:baz =&gt; 2)</code> のような呼び出しの <code class="highlighter-rouge">and</code> が使えなくなった。
+        <ul>
+          <li>単純な置き換えならば <code class="highlighter-rouge">Foo.where(:bar =&gt; 1).where(:baz =&gt; 2)</code> のように <code class="highlighter-rouge">where</code> をどんどんつなげていけば良い</li>
+          <li>なおこの例だと <code class="highlighter-rouge">Foo.where(:bar =&gt; 1, :baz =&gt; 2)</code> のようにも書けるのでリファクタした
+            <ul>
+              <li>ただ <code class="highlighter-rouge">:bar =&gt; 1</code> と <code class="highlighter-rouge">:baz =&gt; 2</code> の判定が別関数といった場合には、 <code class="highlighter-rouge">where</code> をつなげていくしかない</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>たぶんかなり古い?記述だったぽい</li>
+      <li><code class="highlighter-rouge">or</code> とかは引き続き使える</li>
+    </ul>
+  </li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2013/11/define.html">
+      <span class="post-meta">2013-11-26</span>
+      <span class="post-title">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</span>
+      <span class="post-thumb" data-image-path="/images/vc-tooltip.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">
+      <span class="post-meta">2010-05-04</span>
+      <span class="post-title">OOPP Setting on Configuration Mania</span>
+      <span class="post-thumb" data-image-path="/images/oop-setting-screenshot1.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/11/howto-export-openshift-app.html">
+      <span class="post-meta">2016-11-29</span>
+      <span class="post-title">Note to self: how to export a simple openshift app and restore to another project</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">
+      <span class="post-meta">2010-05-26</span>
+      <span class="post-title">nsIPref is deprecated and removed on Firefox 3.7</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/03/javascript-typed-array-use-native.html">
+      <span class="post-meta">2011-03-19</span>
+      <span class="post-title">JavaScript Typed Array use native endian</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/03/css.html">
+      <span class="post-meta">2013-03-18</span>
+      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/10/linuxbijo-bijolinux.html">
+      <span class="post-meta">2011-10-26</span>
+      <span class="post-title">美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux</span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2017
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>
