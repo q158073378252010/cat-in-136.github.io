@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2017-11-23T01:00:55+09:00</updated>
+  <updated>2017-11-24T00:56:44+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,353 @@
 
   
   
+  
+    <entry>
+      <title type="html">ベジェ曲線で描く円と真円の面積について</title>
+      <link href="https://cat-in-136.github.io/2017/11/bezier-arc-area.html" rel="alternate" type="text/html" title="ベジェ曲線で描く円と真円の面積について" />
+      <published>2017-11-24T00:28:20+09:00</published>
+      <updated>2017-11-24T00:28:20+09:00</updated>
+      <id>https://cat-in-136.github.io/2017/11/bezier-arc-area</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2017/11/bezier-arc-area.html">&lt;p&gt;
+しばしば話題に上がるベジェ曲線で描く円と正円の差の話題、
+円弧の差分に注目してきたけれど正円よりも大きい部分があるのは
+「&lt;a href=&quot;/2014/03/bezier-2-diff.html&quot;&gt;ベジェ曲線で描く円と真円の差について&lt;/a&gt;」で既述のとおりである。
+&lt;/p&gt;
+&lt;p&gt;
+すると、
+円を円として扱わずベジェ曲線として使うツールを使って円を描いたあとに、
+円を印刷すると真円よりもインク代がかかったり
+3Dプリントすると真円よりもフィラメントを消費するということが
+考えられるのだが、それはどのくらいになるのであろうか?
+そこで、面積を計算してみた。
+&lt;/p&gt;
+
+&lt;aside&gt;
+&lt;div style=&quot;background: #ffd; border: solid 3px #ff8&quot;&gt;
+この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
+必要です
+もし数式部分が読めない場合は
+&lt;a href=&quot;http://getfirefox.com/&quot;&gt;Firefoxをインストールする&lt;/a&gt;か
+&lt;button onclick=&quot;var a=document.createElement(&amp;quot;script&amp;quot;);a.setAttribute(&amp;quot;type&amp;quot;,&amp;quot;application/javascript&amp;quot;);a.setAttribute(&amp;quot;src&amp;quot;,&amp;quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;);document.body.appendChild(a);&quot;&gt;このボタンをクリックしてMathJaxを使って無理矢理表示する&lt;/button&gt;
+などしてください。
+&lt;/div&gt;
+&lt;/aside&gt;
+
+&lt;h4&gt;ベジェ曲線で描く円の面積求め方&lt;/h4&gt;
+
+&lt;p&gt;
+中心角&amp;#x03B8;の円弧は次の制御点A, A', B, B'で書き表せる。
+&lt;/p&gt;
+
+&lt;table style=&quot;width: 100%&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 100%&quot;&gt;
+&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\begin{aligned}
+\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
+\text{B:}&amp;amp;(1,0)\\
+\text{A':}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
+\text{B':}&amp;amp;(1,\kappa)\\
+\end{aligned}&quot;&gt;&lt;semantics&gt;&lt;mtable columnspacing=&quot;0em&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A':&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B':&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\begin{aligned}
+\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
+\text{B:}&amp;amp;(1,0)\\
+\text{A':}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
+\text{B':}&amp;amp;(1,\kappa)\\
+\end{aligned}
+&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
+&lt;/td&gt;
+&lt;td&gt;(5.1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+
+&lt;table style=&quot;width: 100%&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 100%&quot;&gt;
+&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B7;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;tan&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
+&lt;/td&gt;
+&lt;td&gt;(5.2)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;262&quot; height=&quot;302&quot; data=&quot;/images/generic-kappa.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;135degree arc using Bézier&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;ベジェ曲線の定義より、この曲線の任意の点はパラメータ&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;u (0\leq u \leq 1)&quot; display=&quot;inline&quot;&gt;
+  &lt;semantics&gt;
+    &lt;mrow&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;
+    &lt;annotation encoding=&quot;TeX&quot;&gt;u(0\leq u \leq 1)&lt;/annotation&gt;
+  &lt;/semantics&gt;
+&lt;/math&gt;を使って、下記の通り表現できる。&lt;/p&gt;
+
+&lt;table style=&quot;width: 100%&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 100%&quot;&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3&quot;&gt;
+  &lt;semantics&gt;
+    &lt;mrow&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;&lt;mo&gt;&amp;#x2061;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;
+    &lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3&lt;/annotation&gt;
+  &lt;/semantics&gt;
+&lt;/math&gt;
+&lt;/td&gt;
+&lt;td&gt;(5.3)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\bm{P}(u)=\left(P_x(u),P_y(u)\right)&quot; display=&quot;inline&quot;&gt;
+  &lt;semantics&gt;
+    &lt;mrow&gt;
+      &lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;
+      &lt;mo&gt;&amp;#x2061;&lt;/mo&gt;
+      &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
+      &lt;mi&gt;u&lt;/mi&gt;
+      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
+      &lt;mo&gt;=&lt;/mo&gt;
+      &lt;mo&gt;(&lt;/mo&gt;
+      &lt;mrow&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;P&lt;/mi&gt;
+          &lt;mi&gt;x&lt;/mi&gt;
+        &lt;/msub&gt;
+        &lt;mo&gt;&amp;#x2061;&lt;/mo&gt;
+        &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
+        &lt;mi&gt;u&lt;/mi&gt;
+        &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
+        &lt;mo separator=&quot;true&quot;&gt;,&lt;/mo&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;P&lt;/mi&gt;
+          &lt;mi&gt;y&lt;/mi&gt;
+        &lt;/msub&gt;
+        &lt;mo&gt;&amp;#x2061;&lt;/mo&gt;
+        &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
+        &lt;mi&gt;u&lt;/mi&gt;
+        &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mo&gt;)&lt;/mo&gt;
+    &lt;/mrow&gt;
+    &lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}(u)=\left(P_x(u),P_y(u)\right)&lt;/annotation&gt;
+  &lt;/semantics&gt;
+&lt;/math&gt;
+とすると、よく下記の式で面積が求められる：
+&lt;/p&gt;
+
+&lt;table style=&quot;width: 100%&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 100%&quot;&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;S = \int_{u=0}^{u=1} P_y(u)\,dx = \int_0^1 P_y(u)\cdot\frac{d P_x(u)}{du}\,du&quot; display=&quot;block&quot;&gt;
+  &lt;semantics&gt;
+    &lt;mrow&gt;
+      &lt;mi&gt;S&lt;/mi&gt;
+      &lt;mo&gt;=&lt;/mo&gt;
+      &lt;msubsup&gt;
+        &lt;mo&gt;&amp;#x222B;&lt;!-- ∫ --&gt;&lt;/mo&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;u&lt;/mi&gt;
+          &lt;mo&gt;=&lt;/mo&gt;
+          &lt;mn&gt;0&lt;/mn&gt;
+        &lt;/mrow&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;u&lt;/mi&gt;
+          &lt;mo&gt;=&lt;/mo&gt;
+          &lt;mn&gt;1&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/msubsup&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;P&lt;/mi&gt;
+        &lt;mi&gt;y&lt;/mi&gt;
+      &lt;/msub&gt;
+      &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
+      &lt;mi&gt;u&lt;/mi&gt;
+      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
+      &lt;mspace width=&quot;thinmathspace&quot; /&gt;
+      &lt;mi&gt;d&lt;/mi&gt;
+      &lt;mi&gt;x&lt;/mi&gt;
+      &lt;mo&gt;=&lt;/mo&gt;
+      &lt;msubsup&gt;
+        &lt;mo&gt;&amp;#x222B;&lt;!-- ∫ --&gt;&lt;/mo&gt;
+        &lt;mn&gt;0&lt;/mn&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/msubsup&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;P&lt;/mi&gt;
+        &lt;mi&gt;y&lt;/mi&gt;
+      &lt;/msub&gt;
+      &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
+      &lt;mi&gt;u&lt;/mi&gt;
+      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
+      &lt;mo&gt;&amp;#x22C5;&lt;!-- ⋅ --&gt;&lt;/mo&gt;
+      &lt;mfrac&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;d&lt;/mi&gt;
+          &lt;msub&gt;
+            &lt;mi&gt;P&lt;/mi&gt;
+            &lt;mi&gt;x&lt;/mi&gt;
+          &lt;/msub&gt;
+          &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
+          &lt;mi&gt;u&lt;/mi&gt;
+          &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
+        &lt;/mrow&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;d&lt;/mi&gt;
+          &lt;mi&gt;u&lt;/mi&gt;
+        &lt;/mrow&gt;
+      &lt;/mfrac&gt;
+      &lt;mspace width=&quot;thinmathspace&quot; /&gt;
+      &lt;mi&gt;d&lt;/mi&gt;
+      &lt;mi&gt;u&lt;/mi&gt;
+    &lt;/mrow&gt;
+    &lt;annotation encoding=&quot;TeX&quot;&gt;S = \int_{u=0}^{u=1} P_y(u)\,dx = \int_0^1 P_y(u)\cdot\frac{d P_x(u)}{du}\,du&lt;/annotation&gt;
+  &lt;/semantics&gt;
+&lt;/math&gt;
+&lt;/td&gt;
+&lt;td&gt;(5.4)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+(5.1),(5.2),(5.3)式を(5.4)式に適用することで面積を求めることができる。
+&lt;/p&gt;
+
+&lt;h4&gt;ベジェ曲線で描く円の面積&lt;/h4&gt;
+
+&lt;p&gt;
+(5.4)式を計算すればいいのだが、手計算を早速諦めて
+&lt;a href=&quot;http://maxima.sourceforge.net/&quot; title=&quot;Maxima, a Computer Algebra System&quot;&gt;maxima&lt;/a&gt;使って解いてみる。
+&lt;/p&gt;
+&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i1) &lt;kbd&gt;P(u):=A*(1-u)^3+Ac*3*u*(1-u)^2+Bc*3*u^2*(1-u)+B*u^3;&lt;/kbd&gt;
+                          3                 2         2              3
+(%o1)    P(u) := A (1 - u)  + Ac 3 u (1 - u)  + Bc 3 u  (1 - u) + B u
+(%i2) &lt;kbd&gt;Px(u):=sublis([A = cos(theta),B = 1,Ac = cos(theta)+k*sin(theta),Bc = 1],P(u));&lt;/kbd&gt;
+(%o2) Px(u) := sublis([A = cos(theta), B = 1, Ac = cos(theta) + k sin(theta), 
+                                                                 Bc = 1], P(u))
+(%i3) &lt;kbd&gt;Py(u):=sublis([A = sin(theta),B = 0,Ac = sin(theta)-k*cos(theta),Bc = k],P(u));&lt;/kbd&gt;
+(%o3) Py(u) := sublis([A = sin(theta), B = 0, Ac = sin(theta) - k cos(theta), 
+                                                                 Bc = k], P(u))
+(%i4) &lt;kbd&gt;integrate(Py(u)*diff(Px(u), u), u, 0, 1);&lt;/kbd&gt;
+              2                                  2
+(%o4) (6 k sin (theta) + ((- 10 cos(theta)) - 3 k  + 10) sin(theta)
+                                           2
+                                  + 6 k cos (theta) - 12 k cos(theta) + 6 k)/20
+&lt;/samp&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+中心角が一般なときであっても一応は解析的に解けるようであり、面積は
+&lt;/p&gt;
+
+&lt;table style=&quot;width: 100%&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;width: 100%&quot;&gt;
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;S=6\kappa\sin ^2\theta+\left(-10\cos \theta-3\kappa^2+10\right)\sin \theta+6\kappa\cos ^2\theta-12\kappa\cos \theta+6\kappa&quot; display=&quot;block&quot;&gt;
+  &lt;semantics&gt;
+  &lt;mrow&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mspace width=&quot;thinmathspace&quot; /&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mi&gt;sin&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfenced separators=&quot;&quot;&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;cos&lt;/mi&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;/mfenced&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;sin&lt;/mi&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mi&gt;cos&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;12&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;cos&lt;/mi&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/mrow&gt;
+    &lt;annotation encoding=&quot;TeX&quot;&gt;S=6\kappa\sin ^2\theta+\left(-10\cos \theta-3\kappa^2+10\right)\sin \theta+6\kappa\cos ^2\theta-12\kappa\cos \theta+6\kappa&lt;/annotation&gt;
+  &lt;/semantics&gt;
+&lt;/math&gt;
+&lt;/td&gt;
+&lt;td&gt;(5.5)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;
+ところで典型的なベクトル画像ソフトは下図のように中心角90度で分割している。
+&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;222&quot; height=&quot;222&quot; data=&quot;/images/circle-in-bezeir.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;A circle using Bézier generated by typical vector graphic editor&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;
+(5.5)式に&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\theta=\pi/2&quot; display=&quot;inline&quot;&gt;
+  &lt;semantics&gt;
+    &lt;mrow&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;&amp;#x03C0;&lt;/mn&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;
+    &lt;annotation encoding=&quot;TeX&quot;&gt;\theta=\pi/2&lt;/annotation&gt;
+  &lt;/semantics&gt;
+&lt;/math&gt;を代入して4倍にすればベジェ曲線で描く円の面積がわかって
+&lt;/p&gt;
+
+&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i5) &lt;kbd&gt;sublis([k = 4/3*(sqrt(2)-1), theta=%pi/2], %o4) * 4;&lt;/kbd&gt;
+                                                      2
+                                      16 (sqrt(2) - 1)
+                   16 (sqrt(2) - 1) - ----------------- + 10
+                                              3
+(%o5)              -----------------------------------------
+                                       5
+(%i6) &lt;kbd&gt;float(%o5);&lt;/kbd&gt;
+(%o6)                          3.142472332656507
+&lt;/samp&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+半径1の円の面積は当然円周率であって、3.141592653589793...であるから、
+0.00028%ぐらい真円よりも面積が大きいということになる。
+&lt;/p&gt;
+
+&lt;h4&gt;結論&lt;/h4&gt;
+
+&lt;p&gt;
+ベジェ曲線で描かれた円は、真円よりも0.00028%ぐらい余計に大きい。
+円を円として扱わずベジェ曲線として使うツールを使って円を描いたあとに、
+プリントしたらそれだけ余計にインク代も消費するし、
+3Dプリントすると真円よりもそれだけフィラメントを消費するらしい。
+&lt;/p&gt;
+
+&lt;style type=&quot;text/css&quot; scoped=&quot;scoped&quot;&gt;&lt;!--
+.maxima-output {
+  background-color: #fff;
+  color: #000;
+  font-size: smaller;
+  border: solid 1px #888;
+}
+.maxima-output kbd {
+  color: #008;
+}
+--&gt;&lt;/style&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="Math" />
+      
+        <category term="Bézier" />
+      
+
+      
+        <summary type="html">しばしば話題に上がるベジェ曲線で描く円と正円の差の話題、 円弧の差分に注目してきたけれど正円よりも大きい部分があるのは 「ベジェ曲線で描く円と真円の差について」で既述のとおりである。 すると、 円を円として扱わずベジェ曲線として使うツールを使って円を描いたあとに、 円を印刷すると真円よりもインク代がかかったり 3Dプリントすると真円よりもフィラメントを消費するということが 考えられるのだが、それはどのくらいになるのであろうか? そこで、面積を計算してみた。</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 58.0 beta 5 default preference and firefox 57.0</title>
@@ -1112,95 +1459,6 @@ window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
 
       
         <summary type="html">This &quot;effect&quot; is also posted to glslsandbox. After posting this article, I found that it is not a raymarching (i.e. asort of ray tracing) but just only SLSL effect. I took a mistake but I decided to leave this article title &quot;as it is&quot;.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Diff between firefox 54.0 beta 3 default preference and firefox 53.0</title>
-      <link href="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html" rel="alternate" type="text/html" title="Diff between firefox 54.0 beta 3 default preference and firefox 53.0" />
-      <published>2017-05-01T10:54:16+09:00</published>
-      <updated>2017-05-01T10:54:16+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2017/05/diff-between-firefox-540-beta-3-default.html">&lt;p&gt;
-This is difference between the default preference of Firefox 54.0 beta 3 and one of 53.0.
-&lt;/p&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox54_pref_diff&quot;&gt;
-&lt;caption&gt;Preference difference&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 53.0&lt;/td&gt;&lt;td&gt;Firefox 54.0 beta 3&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;allow_&lt;wbr /&gt;with_&lt;wbr /&gt;webrender&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;crashReports.&lt;wbr /&gt;unsubmittedCheck.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;formautofill.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;formautofill.&lt;wbr /&gt;loglevel&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;Warn&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;migrate.&lt;wbr /&gt;automigrate.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;content-signing-test&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;keys&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;mode&lt;/td&gt;&lt;td&gt;production&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;remote.&lt;wbr /&gt;version&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google.&lt;wbr /&gt;reportMalwareMistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google.&lt;wbr /&gt;reportPhishMistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google4.&lt;wbr /&gt;lists&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;goog-phish-proto,&lt;wbr /&gt;googpub-phish-proto,&lt;wbr /&gt;goog-malware-proto,&lt;wbr /&gt;goog-unwanted-proto&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;goog-badbinurl-proto,&lt;wbr /&gt;goog-downloadwhite-proto,&lt;wbr /&gt;goog-phish-proto,&lt;wbr /&gt;googpub-phish-proto,&lt;wbr /&gt;goog-malware-proto,&lt;wbr /&gt;goog-unwanted-proto&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google4.&lt;wbr /&gt;report&lt;wbr /&gt;Malware&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;google4.&lt;wbr /&gt;report&lt;wbr /&gt;Phish&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;report&lt;wbr /&gt;Malware&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.malware-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;report&lt;wbr /&gt;Phish&lt;wbr /&gt;MistakeURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://%LOCALE%.phish-error.mozilla.com/?hl=%LOCALE%&amp;amp;url=&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;storageManager.&lt;wbr /&gt;pressureNotification.&lt;wbr /&gt;minIntervalMS&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1200000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;storageManager.&lt;wbr /&gt;pressureNotification.&lt;wbr /&gt;usageThresholdGB&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;usepreloadedtopurls.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;usepreloadedtopurls.&lt;wbr /&gt;expire_&lt;wbr /&gt;days&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;14&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;devedition.&lt;wbr /&gt;promo.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;gridinspector.&lt;wbr /&gt;showGridOutline&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;source-map.&lt;wbr /&gt;locations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;sourcemap.&lt;wbr /&gt;locations.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;toolbox.&lt;wbr /&gt;toolbarSpec&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;splitconsole&quot;, &quot;paintflashing toggle&quot;,&quot;scratchpad&quot;,&quot;resize toggle&quot;,&quot;screenshot --fullpage --file&quot;, &quot;rulers&quot;, &quot;measure&quot;]&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;archivereader.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;event.&lt;wbr /&gt;highrestimestamp.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;forms.&lt;wbr /&gt;select.&lt;wbr /&gt;customstyling&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;asyncdrawing.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;forcedirect.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;processCount.&lt;wbr /&gt;extension&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;moduleScripts.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;timeout.&lt;wbr /&gt;max_&lt;wbr /&gt;consecutive_&lt;wbr /&gt;callbacks&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;vr.&lt;wbr /&gt;puppet.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;vr.&lt;wbr /&gt;test.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;detailsURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.com/%LOCALE%/blocklist/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocked.cdn.mozilla.net/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;itemURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocklist.addons.mozilla.org/%LOCALE%/%APP%/blocked/%blockID%&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocked.cdn.mozilla.net/%blockID%.html&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocklist.addons.mozilla.org/blocklist/3/%APP_ID%/%APP_VERSION%/%PRODUCT%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/%PING_COUNT%/%TOTAL_PING_COUNT%/%DAYS_SINCE_LAST_PING%/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://blocklists.settings.services.mozilla.com/v1/blocklist/3/%APP_ID%/%APP_VERSION%/%PRODUCT%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/%PING_COUNT%/%TOTAL_PING_COUNT%/%DAYS_SINCE_LAST_PING%/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;e10sMultiBlocksEnabling&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;screenshots.&lt;wbr /&gt;system-disabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;geo.&lt;wbr /&gt;security.&lt;wbr /&gt;allowinsecure&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;downloadable_&lt;wbr /&gt;fonts.&lt;wbr /&gt;keep_&lt;wbr /&gt;variation_&lt;wbr /&gt;tables&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;downloadable_&lt;wbr /&gt;fonts.&lt;wbr /&gt;otl_&lt;wbr /&gt;validation&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;animated.&lt;wbr /&gt;discardable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;shared&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;-1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;ar&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;fa&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;he&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;ug&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;intl.&lt;wbr /&gt;uidirection.&lt;wbr /&gt;ur&lt;/td&gt;&lt;td&gt;rtl&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;shared_&lt;wbr /&gt;memory&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;advanced.&lt;wbr /&gt;border-layers&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layers.&lt;wbr /&gt;advanced.&lt;wbr /&gt;caret-layers&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;appearance.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;clip-path-shapes.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;moz-appearance.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;object-fit-and-position.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-justify.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;unprefixing-service.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;scrollbars.&lt;wbr /&gt;always-layerize-track&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;forcelocal&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;log.&lt;wbr /&gt;level&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;info&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;port&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2828&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;marionette.&lt;wbr /&gt;prefs.&lt;wbr /&gt;recommended&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;apiVisible&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;eme.&lt;wbr /&gt;vp9-in-mp4.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;ffmpeg.&lt;wbr /&gt;low-latency.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;ice.&lt;wbr /&gt;tcp&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;abtest&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;aggressive&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;max-optimistic-requests&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;maxrequests&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;maxsize&lt;/td&gt;&lt;td&gt;300000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;read-timeout&lt;/td&gt;&lt;td&gt;30000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;reschedule-on-timeout&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;reschedule-timeout&lt;/td&gt;&lt;td&gt;1500&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;pipelining.&lt;wbr /&gt;ssl&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;proxy.&lt;wbr /&gt;pipelining&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;referer.&lt;wbr /&gt;hideOnionSource&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;throttle.&lt;wbr /&gt;enable&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;throttle.&lt;wbr /&gt;resume-for&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;throttle.&lt;wbr /&gt;suspend-for&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;pointer-lock-api.&lt;wbr /&gt;prefixed.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;firstparty.&lt;wbr /&gt;isolate.&lt;wbr /&gt;restrict_&lt;wbr /&gt;opener_&lt;wbr /&gt;access&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;data_&lt;wbr /&gt;uri.&lt;wbr /&gt;inherit_&lt;wbr /&gt;security_&lt;wbr /&gt;context&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;mixed_&lt;wbr /&gt;content.&lt;wbr /&gt;hsts_&lt;wbr /&gt;priming_&lt;wbr /&gt;cache_&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;10080&lt;/td&gt;&lt;td&gt;604800&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;content.&lt;wbr /&gt;level&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;content.&lt;wbr /&gt;syscall_&lt;wbr /&gt;whitelist&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;content.&lt;wbr /&gt;write_&lt;wbr /&gt;path_&lt;wbr /&gt;whitelist&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;sandbox.&lt;wbr /&gt;logging.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;version.&lt;wbr /&gt;max&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;maxRecords&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;percentageChance&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;firstMsgMaxTries&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;lastMsgMaxTries&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;maxTries&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;pollInterval&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;jpake.&lt;wbr /&gt;serverURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://setup.services.mozilla.com/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;log.&lt;wbr /&gt;logger.&lt;wbr /&gt;service.&lt;wbr /&gt;jpakeclient&lt;/td&gt;&lt;td&gt;Debug&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;log.&lt;wbr /&gt;logger.&lt;wbr /&gt;userapi&lt;/td&gt;&lt;td&gt;Debug&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;miscURL&lt;/td&gt;&lt;td&gt;misc/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;privacyURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/privacy-policy/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;scheduler.&lt;wbr /&gt;sync11.&lt;wbr /&gt;singleDeviceInterval&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;serverURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://auth.services.mozilla.com/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;statusURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/status/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;syncKeyHelpURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/help/synckey&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;termsURL&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://services.mozilla.com/tos/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;userURL&lt;/td&gt;&lt;td&gt;user/&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;validation.&lt;wbr /&gt;interval&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;validation.&lt;wbr /&gt;maxRecords&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;validation.&lt;wbr /&gt;percentageChance&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;identity.&lt;wbr /&gt;debug&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;toolkit.&lt;wbr /&gt;identity.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox54_pref_diff&quot;&gt;
-&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 53.0&lt;/td&gt;&lt;td&gt;Firefox 54.0 beta 3&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/debugger.js&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/devtools.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/webide-prefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;omni.ja.d/defaults/pref/marionette.js&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;N/A&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;omni.ja.d/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;omni.ja.d/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox54_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox54_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox54_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox54_pref_diff td.json,
-table.diff_firefox54_pref_diff td.uri,
-table.diff_firefox54_pref_diff td.dump { word-break: break-all; }
-table.diff_firefox54_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox54_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox54_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox54_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-table.diff_firefox54_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox54_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>cat_in_136</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="pref diff" />
-      
-        <category term="mozilla" />
-      
-
-      
-        <summary type="html">This is difference between the default preference of Firefox 54.0 beta 3 and one of 53.0.</summary>
       
 
       
