@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2017-12-03T12:45:43+09:00</updated>
+  <updated>2018-01-01T01:47:31+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,248 @@
 
   
   
+  
+    <entry>
+      <title type="html">新年の挨拶（とウェブフォント）</title>
+      <link href="https://cat-in-136.github.io/2018/01/new-year-message-2018.html" rel="alternate" type="text/html" title="新年の挨拶（とウェブフォント）" />
+      <published>2018-01-01T01:41:08+09:00</published>
+      <updated>2018-01-01T01:41:08+09:00</updated>
+      <id>https://cat-in-136.github.io/2018/01/new-year-message-2018</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2018/01/new-year-message-2018.html">&lt;style type=&quot;text/css&quot; scoped=&quot;scoped&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+@font-face {
+  font-family: &quot;Gantan2018catin136&quot;;
+  src: url(&quot;/images/201801_newyearmessage2018_gantan2018catin136.woff2&quot;) format(&quot;woff2&quot;),
+       url(&quot;/images/201801_newyearmessage2018_gantan2018catin136.woff&quot;) format(&quot;woff&quot;);
+}
+
+@supports ((writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl)) {
+  .newyearmessage2018_message div {
+    font-family: &quot;Gantan2018catin136&quot;;
+    font-size: xx-large;
+    margin: 10px;
+  
+    font-variant-ligatures: contextual;
+    font-feature-settings: &quot;liga&quot;, &quot;dlig&quot;;
+    text-rendering: optimizeLegibility;
+  }
+  .newyearmessage2018_message div:last-child {
+    direction: rtl;
+  }
+
+  @supports (-ms-ime-align: auto) {
+    /* Disable ligature for MS Edge. It is too buggy. */
+    .newyearmessage2018_message div {
+      font-feature-settings: normal ! important;
+    }
+  }
+
+  .newyearmessage2018_preview {
+    font-family: &quot;Gantan2018catin136&quot;;
+    text-rendering: optimizeLegibility;
+  }
+}
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;
+
+&lt;div class=&quot;newyearmessage2018_message&quot;&gt;
+  &lt;div&gt;あけましておめでとうございます&lt;/div&gt;
+  &lt;br /&gt;
+  &lt;div&gt;平成三十年元旦&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;あらまし&lt;/h3&gt;
+
+&lt;p&gt;
+年始の挨拶を電子化された&lt;ruby&gt;媒体&lt;rp&gt;（&lt;/rp&gt;&lt;rt&gt;メディア&lt;/rt&gt;&lt;rp&gt;）&lt;/rp&gt;&lt;/ruby&gt;で行うようになって久しい。
+伝統的には、手書きで挨拶の文（賀詞も含む）を紙に書くのだが、手書きという&lt;em&gt;工程&lt;/em&gt;はそのままに電子化したい。
+単に電子化するだけならば画像でいいのだが、文字列データは保持したほうがより電子化されたデータとの相性が良く有意義である。
+しかるに、手書きをしてフォントを作成することとした。
+&lt;/p&gt;
+
+&lt;h3&gt;要求&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;挨拶が行う者自身の直筆をスキャンして作ったフォントであること&lt;/li&gt;
+&lt;li&gt;文字は汚くて良い&amp;#x2e3a;きれいな美文字が欲しければ市販のフォントを使えば良いだけである&lt;/li&gt;
+&lt;li&gt;フォントに含まれるグリフは、挨拶の文に含まれる文字だけでよい&lt;/li&gt;
+&lt;li&gt;伝統に基づき、縦書きとする&lt;/li&gt;
+&lt;li&gt;伝統に基づき、それぞれの字の大きさは同一ではなくともよい&lt;/li&gt;
+&lt;li&gt;挨拶の文の文字列そのもの自体はありのまま使用し特殊記号などは極力避ける&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;工程&lt;/h3&gt;
+
+&lt;p&gt;
+適当に書いた文字をベースとしたので筆順や崩しが間違っているかもしれない。
+技術力・デザイン力不足のためカーニングなどの微調整は&lt;em&gt;一切&lt;/em&gt;やっていない。
+欲が出て仮名連綿に手を出したが、後述のとおり一部環境ではうまく再現できないまま作業を終えている。
+&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;紙に筆ペン（毛筆の代替）で、挨拶の文を書く&lt;/li&gt;
+&lt;li&gt;前項の紙をスキャンする&lt;/li&gt;
+&lt;li&gt;画像から文字ごとに切り出す&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://inkscape.org/&quot;&gt;inkscape&lt;/a&gt; のベクトル化ツール（potrace）でベクトル化。必要あれば、この時点でグリフの形状を編集する&lt;/li&gt;
+&lt;li&gt;前項で作成したベクトルデータを &lt;a href=&quot;https://fontforge.github.io/&quot;&gt;fontforge&lt;/a&gt; で読み込み、フォント化&lt;/li&gt;
+&lt;li&gt;…しようと思ったが正しいフォントが生成されなかったので ttx (&lt;a href=&quot;https://github.com/fonttools/fonttools&quot;&gt;fonttools&lt;/a&gt;) を用いて TTX ファイルを生成した後、改造を施して、TTX ファイルから ttx で WOFF/WOFF2 フォントを作成した&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;
+ベクトル化するところまでは、手作業ですべて行ったため特段技術的高度なことをやったわけではないため省略する。
+&lt;/p&gt;
+
+&lt;p&gt;
+もととなった ttx ファイルは &lt;a href=&quot;https://gist.github.com/cat-in-136/d3561c7a30982d2b20825223e6fcf8b2&quot;&gt;gist:cat-in-136/d3561c7a30982d2b20825223e6fcf8b2&lt;/a&gt;に置いた。
+&lt;/p&gt;
+
+&lt;h3&gt;GSUB&lt;/h3&gt;
+
+&lt;p&gt;
+欲を出て連綿を導入するために GSUB の &lt;ruby&gt;Ligature&lt;rp&gt;（&lt;/rp&gt;&lt;rt&gt;合字&lt;/rt&gt;&lt;rp&gt;）&lt;/rp&gt;&lt;/ruby&gt;をいじることとした。
+ただこれをするために Adobe-Identity-0 を使ったりする羽目になった。
+&lt;/p&gt;
+&lt;p&gt;
+用意した四つの仮名連綿を、下記の通り U+E900〜3 という私用領域に割り当てた：
+&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;td&gt;仮名連綿&lt;/td&gt;&lt;td&gt;割り当てたコード&lt;/td&gt;&lt;td&gt;仮名&lt;/td&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td class=&quot;newyearmessage2018_preview&quot;&gt;&amp;#xe900;&lt;/td&gt;&lt;td&gt;U+E900&lt;/td&gt;&lt;td&gt;まして&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td class=&quot;newyearmessage2018_preview&quot;&gt;&amp;#xe901;&lt;/td&gt;&lt;td&gt;U+E901&lt;/td&gt;&lt;td&gt;めで&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td class=&quot;newyearmessage2018_preview&quot;&gt;&amp;#xe902;&lt;/td&gt;&lt;td&gt;U+E902&lt;/td&gt;&lt;td&gt;とう&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td class=&quot;newyearmessage2018_preview&quot;&gt;&amp;#xe903;&lt;/td&gt;&lt;td&gt;U+E903&lt;/td&gt;&lt;td&gt;ます&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;
+これを「まして」→「U+E900」という風に置換する Lookup Table を定義することで実現している。
+なお、&lt;code&gt;cid12358&lt;/code&gt; のように unicode charcode の十進の名前をそのまま CID の番号として割り当てているがこうする必要はない。
+単に作業の簡便のためこのように振っただけである。
+&lt;/p&gt;
+&lt;p&gt;
+OpenType の仕様上「まして」「ます」のように最初の字を共用するものはまとめて管理される（&lt;code&gt;LigatureSet[glyph=&amp;quot;cid12414&amp;quot;]&lt;/code&gt;）。
+これをバラして別要素とすると、片方の ligature は無視されてしまう。
+&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;Lookup index=&amp;quot;0&amp;quot;&amp;gt;
+  &amp;lt;LookupType value=&amp;quot;4&amp;quot;/&amp;gt;
+  &amp;lt;LookupFlag value=&amp;quot;0&amp;quot;/&amp;gt;
+  &amp;lt;!-- SubTableCount=1 --&amp;gt;
+  &amp;lt;LigatureSubst index=&amp;quot;0&amp;quot; Format=&amp;quot;1&amp;quot;&amp;gt;
+    &amp;lt;LigatureSet glyph=&amp;quot;cid12392&amp;quot;&amp;gt;
+      &amp;lt;Ligature components=&amp;quot;cid12358&amp;quot; glyph=&amp;quot;cid59650&amp;quot;/&amp;gt;
+    &amp;lt;/LigatureSet&amp;gt;
+    &amp;lt;LigatureSet glyph=&amp;quot;cid12414&amp;quot;&amp;gt;
+      &amp;lt;Ligature components=&amp;quot;cid12375,cid12390&amp;quot; glyph=&amp;quot;cid59648&amp;quot;/&amp;gt;
+      &amp;lt;Ligature components=&amp;quot;cid12377&amp;quot; glyph=&amp;quot;cid59651&amp;quot;/&amp;gt;
+    &amp;lt;/LigatureSet&amp;gt;
+    &amp;lt;LigatureSet glyph=&amp;quot;cid12417&amp;quot;&amp;gt;
+      &amp;lt;Ligature components=&amp;quot;cid12391&amp;quot; glyph=&amp;quot;cid59649&amp;quot;/&amp;gt;
+    &amp;lt;/LigatureSet&amp;gt;
+  &amp;lt;/LigatureSubst&amp;gt;
+&amp;lt;/Lookup&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;
+Edge は仮名連綿を正しくレンダリングできず、文字がひどく崩れるようであった。
+次善策として、Edge 向けには liga を無効にするように CSS で工夫をこらしておいてある。
+&lt;/p&gt;
+&lt;p&gt;
+Google Chrome も私が作成したフォントでは GSUB がうまく働かなかった。
+&amp;quot;&lt;a href=&quot;https://tategaki.github.io/awards2016/&quot;&gt;たてよこWebアワード(2016)&lt;/a&gt;&amp;quot;だったり、
+嵯峨本フォントプロトタイプは正しく仮名連綿がレンダリングできるのでフォントの問題と思われる。
+&lt;/p&gt;
+
+&lt;p&gt;
+ブラウザではないが pango-view で試したところ、仮名連綿は正しくレンダリングされた。
+環境依存つらみある。
+&lt;/p&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;object width=&quot;234&quot; height=&quot;344&quot; data=&quot;/images/201801_newyearmessage2018_pangorender.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;pango-view レンダリングから構成した図&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3&gt;WOFF&lt;/h3&gt;
+
+&lt;p&gt;
+OpenType をそのままだと容量上非効率なのでウェブフォントに特化した WOFF あるいは WOFF2 が推奨される。
+ttx だと必要な python パッケージさえ入っていればそのまま出力できた。
+&lt;/p&gt;
+&lt;pre class=&quot;console&quot;&gt;&lt;samp&gt;% ttx -q --flavor woff2 Gantan2018CatIn136.ttx
+% ttx -q --flavor woff --with-zopfli Gantan2018CatIn136.ttx
+&lt;/samp&gt;&lt;/pre&gt;
+&lt;p&gt;
+WOFF2 の方がサイズ的に有利なのでそちらの方を使うのが好ましい。
+だが &lt;a href=&quot;https://caniuse.com/#search=woff2&quot;&gt;WOFF2 に対応していないブラウザ&lt;/a&gt;もいまだ生き残っているため WOFF も作成した。
+WOFF さえ対応していないブラウザは縦書きをろくに対応していると言い難いとおもうので、ばっざりと切っている。
+&lt;/p&gt;
+
+&lt;h3&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;
+手書きという工程を通じて、画面上に現れ、またそれがテキスト選択できるというのは、興味深い製作体験であった。
+&lt;/p&gt;
+&lt;p&gt;
+横書きの手書きフォントのノウハウは数多あるが、縦書きのフォントや特に連綿は時代が浅いこともあり情報収集は大変な上に、完全なものは結局つくることはできなかった。
+嵯峨本フォントプロトタイプの実装は、大いに参考になった。
+&lt;/p&gt;
+
+&lt;h3&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Microsoft, &amp;quot;&lt;a href=&quot;https://www.microsoft.com/en-us/Typography/OpenTypeSpecification.aspx&quot;&gt;OpenType specification&lt;/a&gt;&amp;quot;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/typography/otspec/chapter2.htm&quot;&gt;Chapter2 OpenType Layout Common Table Formats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.microsoft.com/typography/otspec/GSUB.htm&quot;&gt;GSUB - Glyph Substitution Table&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Adobe, &amp;quot;&lt;a href=&quot;https://helpx.adobe.com/jp/typekit/using/open-type-syntax.html&quot;&gt;CSS での OpenType 機能の構文&lt;/a&gt;&amp;quot;&lt;/li&gt;
+&lt;li&gt;漢字データベース, &amp;quot;&lt;a href=&quot;http://kanji-database.sourceforge.net/fonts/opentype.html&quot;&gt;OpenType&lt;/a&gt;&amp;quot;&lt;/li&gt;
+&lt;li&gt;mashabow, &amp;quot;&lt;a href=&quot;http://shiromoji.net/tegaki/tktf.html&quot;&gt;てきとうに書いて作ったフォント&lt;/a&gt;&amp;quot;, しろもじ作業室, 2008&lt;/li&gt;
+&lt;li&gt;縦書きWeb普及委員会, &amp;quot;&lt;a href=&quot;https://tategaki.github.io/awards2016/&quot;&gt;たてよこWebアワード&lt;/a&gt;&amp;quot;, 2016&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/tategaki/tategaki.github.io/tree/master/awards2016&quot;&gt;https://github.com/tategaki/tategaki.github.io/tree/master/awards2016&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;嵯峨本フォントプロジェクト, &amp;quot;&lt;a href=&quot;http://epublishing.jp/sagabon/&quot;&gt;嵯峨本フォントプロトタイプ&lt;/a&gt;&amp;quot;, 2012&lt;/li&gt;
+&lt;/ul&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="font" />
+      
+        <category term="webfont" />
+      
+        <category term="html" />
+      
+        <category term="縦書き" />
+      
+
+      
+        <summary type="html">&lt;![CDATA[ /* */ @font-face { font-family: &quot;Gantan2018catin136&quot;; src: url(&quot;/images/201801_newyearmessage2018_gantan2018catin136.woff2&quot;) format(&quot;woff2&quot;), url(&quot;/images/201801_newyearmessage2018_gantan2018catin136.woff&quot;) format(&quot;woff&quot;); }</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">ベジェ曲線で描く円と真円の面積について</title>
@@ -1359,106 +1601,6 @@ digraph G {
 
       
         <summary type="html">This is difference between the default preference of Firefox 55.0 beta 2 and one of 54.0.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Lissajous curve in raymarching using GLSL over WebGL</title>
-      <link href="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" rel="alternate" type="text/html" title="Lissajous curve in raymarching using GLSL over WebGL" />
-      <published>2017-06-10T23:30:18+09:00</published>
-      <updated>2017-06-19T00:05:45+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html">&lt;div&gt;
-  This &quot;effect&quot; is also &lt;a href=&quot;http://glslsandbox.com/e#40894.0&quot;&gt;posted to glslsandbox&lt;/a&gt;.
-  After posting this article, I found that it is not a raymarching (i.e. asort of ray tracing) but just only SLSL effect.
-  I took a mistake but I decided to leave this article title &quot;as it is&quot;.
-&lt;/div&gt;
-
-&lt;div id=&quot;lissajous-curve-raymarching-container&quot;&gt;
-&lt;/div&gt;
-
-&lt;pre id=&quot;lissajous-curve-raymarching-shader&quot;&gt;&lt;code class=&quot;prettyprint&quot;&gt;uniform vec2 resolution;
-uniform float time;
-
-void main() {
-  vec2 pos = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
-
-  float v = 0.0;
-  for (int i = 0; i &amp;lt; 500; i++) {
-    float s = time + float(i) * 0.0075;
-    vec2 mpos = 0.8 * vec2(sin(s * 5.0), - cos(s * 6.0));
-    float t = 0.01 / length(mpos - pos);
-    v += pow(t, 2.0) * float(i + 1) / 100.0;
-  }
-
-  gl_FragColor = 1.0 * vec4(vec3(v), 1.0);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;script type=&quot;application/javascript&quot;&gt;
-window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
-  &quot;use strict&quot;;
-
-  var container = document.getElementById(&quot;lissajous-curve-raymarching-container&quot;);
-  var shader = document.getElementById(&quot;lissajous-curve-raymarching-shader&quot;).textContent;
-
-  var rm = new RayMarcher();
-  rm.setFragmentShader(shader);
-  container.appendChild(rm.domElement);
-
-  function onResize(event) {
-    rm.setSize(container.clientWidth - 4, 320);
-  }
-  window.addEventListener(&quot;resize&quot;, onResize, false);
-  onResize();
-
-  function animate() {
-    requestAnimationFrame(animate);
-    rm.render();
-  }
-  animate();
-}, false);
-&lt;/script&gt;
-
-&lt;h3&gt;See also&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Lissajous_curve&quot;&gt;Lissajous curve&lt;/a&gt; - wikipedia&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.ip.uec.ac.jp/ipo/archive/logo.html&quot;&gt;電気通信大学校章(リサジュー図形)&lt;/a&gt;(Japanese)&lt;/li&gt;
-&lt;li&gt;nico, &quot;&lt;a href=&quot;http://barradeau.com/blog/?p=575&quot;&gt;ray marching (with THREE.js)&lt;/a&gt;&quot;, Youpi!, Dec 8 2015.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;application/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;application/javascript&quot; src=&quot;https://cdn.rawgit.com/nicoptere/raymarching-for-THREE/953a55bee100c145686df9b1273de05eb2b5c0e9/raymarcher.js&quot; defer=&quot;defer&quot;&gt;&lt;/script&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="javascript" />
-      
-        <category term="GLSL" />
-      
-
-      
-        <summary type="html">This &quot;effect&quot; is also posted to glslsandbox. After posting this article, I found that it is not a raymarching (i.e. asort of ray tracing) but just only SLSL effect. I took a mistake but I decided to leave this article title &quot;as it is&quot;.</summary>
       
 
       
