@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2018-01-01T01:47:31+09:00</updated>
+  <updated>2018-02-02T01:09:51+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,103 @@
 
   
   
+  
+    <entry>
+      <title type="html">年の進捗</title>
+      <link href="https://cat-in-136.github.io/2018/02/progress-of-year.html" rel="alternate" type="text/html" title="年の進捗" />
+      <published>2018-02-02T01:05:22+09:00</published>
+      <updated>2018-02-02T01:05:22+09:00</updated>
+      <id>https://cat-in-136.github.io/2018/02/progress-of-year</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2018/02/progress-of-year.html">&lt;p&gt;
+今年がはじまって一年のうち何パーセントおわったかを円グラフを確認して見るために作ってみた。
+&lt;/p&gt;
+&lt;p&gt;
+が、作ってからアナログ時計が12等分だからそれで概算をかんたんに把握できるじゃんと気づいた。
+&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;noscript&gt;このコンテテンツを見るのはJavaScriptを有効にしてください&lt;/noscript&gt;
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller; max-width: 100vh;&quot;&gt;
+  &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;&gt;
+    &lt;circle fill=&quot;#eee&quot; stroke=&quot;none&quot; cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; /&gt;
+    &lt;path id=&quot;201802_progress_cal_piechart&quot; fill=&quot;#f88&quot; stroke=&quot;none&quot; d=&quot;M 50 50 L 50 10 A 40 40 0 1 1 50 10 Z&quot; /&gt;
+    &lt;text id=&quot;201802_progress_cal_label&quot; fill=&quot;#000&quot; stroke=&quot;none&quot; x=&quot;50&quot; y=&quot;50&quot; text-anchor=&quot;middle&quot;&gt;&lt;/text&gt;
+  &lt;/svg&gt;
+&lt;/figure&gt;
+
+&lt;script type=&quot;application/javascript&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ *///
+window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+  &quot;use strict&quot;;
+
+  function getPathForPieChart(percent, cw, ch) {
+    const r = cw / 2 * 0.8;
+    const cx = cw / 2;
+    const cy = ch / 2;
+    const sx = cx + r * Math.sin(0 * 2 * Math.PI / 100);
+    const sy = cy - r * Math.cos(0 * 2 * Math.PI / 100);
+    const ex = cx + r * Math.sin(percent * 2 * Math.PI / 100);
+    const ey = cy - r * Math.cos(percent * 2 * Math.PI / 100);
+    const arcFlag = (percent &lt; 50)? 0 : 1;
+
+    return `M ${cx} ${cy} L ${sx} ${sy} A ${r} ${r} 0 ${arcFlag} 1 ${ex} ${ey} Z`;
+  }
+
+  function getPercentOfThisYear(now) {
+    const firstDayOfThisYear = new Date(now.getFullYear(), 0, 1);
+    const firstDayOfNextYear = new Date(now.getFullYear() + 1, 0, 1);
+
+    return 100.0 * (now.getTime() - firstDayOfThisYear.getTime()) / (firstDayOfNextYear.getTime() - firstDayOfThisYear.getTime());
+  }
+
+  function updatePieChart() {
+    const now = new Date();
+    const percent = getPercentOfThisYear(now);
+    const path = getPathForPieChart(percent, 100, 100);
+
+    document.getElementById(&quot;201802_progress_cal_piechart&quot;).setAttribute(&quot;d&quot;, path);
+    const oText = document.getElementById(&quot;201802_progress_cal_label&quot;);
+    while (oText.firstChild) { oText.removeChild(oText.firstChild); }
+    oText.appendChild(document.createTextNode(`${parseInt(percent)}%`));
+  }
+
+  updatePieChart();
+
+}, false);
+/* ]]&gt;&lt;!-- */// --&gt;&lt;/script&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="web application" />
+      
+        <category term="svg" />
+      
+        <category term="チラシの裏" />
+      
+
+      
+        <summary type="html">今年がはじまって一年のうち何パーセントおわったかを円グラフを確認して見るために作ってみた。 が、作ってからアナログ時計が12等分だからそれで概算をかんたんに把握できるじゃんと気づいた。</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">新年の挨拶（とウェブフォント）</title>
@@ -1563,44 +1660,6 @@ digraph G {
 
       
         <summary type="html">Inkscape includes a lot of preset filters (in the &quot;Filters&quot; menu). This page is a demo showing the use of the SVG filters to HTML elements. Some filters may not be rendered correctly with your browser.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Diff between firefox 55.0 beta 2 default preference and firefox 54.0</title>
-      <link href="https://cat-in-136.github.io/2017/06/diff-between-firefox-550-beta-2-default.html" rel="alternate" type="text/html" title="Diff between firefox 55.0 beta 2 default preference and firefox 54.0" />
-      <published>2017-06-18T22:17:27+09:00</published>
-      <updated>2017-06-18T22:17:27+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/06/diff-between-firefox-550-beta-2-default</id>
-      
-      
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>cat_in_136</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="pref diff" />
-      
-        <category term="mozilla" />
-      
-
-      
-        <summary type="html">This is difference between the default preference of Firefox 55.0 beta 2 and one of 54.0.</summary>
       
 
       
