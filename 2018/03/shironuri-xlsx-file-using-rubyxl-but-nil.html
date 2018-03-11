@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" />
+  <meta property="og:title" content="白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る" />
+  <meta property="og:description" content="Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。 これを個人的に 白塗り と呼んでいる。 白塗りの例 罫線を非表示にする設定をすればいいだけなのだが、 あまり方法..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="/images/201803_shironurixlsx_nil_viewer_ss.png" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+</head>
+
+
+  <body>
+    
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" itemprop="url">白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2018-03-11T22:27:27+09:00">2018-03-11T22:27:27+09:00</span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_excel">Excel</a>
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2018-03-11-shironuri-xlsx-file-using-rubyxl-but-nil.html" class="source-path">_posts/2018-03-11-shironuri-xlsx-file-using-rubyxl-but-nil.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2018-03-11-shironuri-xlsx-file-using-rubyxl-but-nil.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。
+これを個人的に <em>白塗り</em> と呼んでいる。</p>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<img src="/images/201803_shironurixlsx_shironuri_example_ss.svg" width="472" height="173" />
+<figcaption><em>白塗り</em>の例</figcaption>
+</figure>
+
+<p>罫線を非表示にする設定をすればいいだけなのだが、
+あまり方法が周知されていないため
+<span style="vertical-align: super !important;font-size: smaller;">[要出典]</span>、
+ブック間をまたいだコピペでも自然に使用できる
+この白塗りをいまーだ使ってしまっている。</p>
+
+<p><em>白塗り</em> Excel ファイル (xlsx) を作るにあたり、
+簡単のため何もデータを含まないファイルをベースとして考える。
+作成したライブラリは <a href="https://rubygems.org/gems/rubyXL">rubyXL</a> である。</p>
+
+<pre class="prettyprint"><code>require "rubyXL"
+
+workbook = RubyXL::Workbook.new
+workbook.write("/path/to/blank_nonshironuri.xlsx")
+</code></pre>
+<div>Output file: <a href="https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_nonshironuri.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">blank_nonshironuri.xlsx</a></div>
+ 
+<p>xlsx ファイルは所詮 xml ファイルを zip で固めたものなので、
+Excel（など）で出力した xlsx ファイルを展開して xml ファイルを比較することで
+どういう風に編集すればいいかがわかる。</p>
+
+<p>確認してみたところ <code class="highlighter-rouge">xl\worksheets\sheet1.xml</code> に下記のような
+col 要素を投入すればよいことが分かった。</p>
+
+<pre class="prettyprint"><code>&lt;worksheet&gt;&lt;!-- worksheet 要素の属性値略 --&gt;
+  &lt;!-- 略 --&gt;
+  &lt;cols&gt;&lt;col min="1" max="16384" style="1"/&gt;&lt;/cols&gt;
+  &lt;sheetData&gt;&lt;!-- 略 --&gt;&lt;/sheetData&gt;
+&lt;/worksheet&gt;</code></pre>
+
+<p>ここで 16384 というのは、Excel 2007 以降から現在の Excel のバージョンに
+おける<a href="https://office.microsoft.com/ja-jp/excel-help/HP010073849.aspx" title="Excel の仕様および制限 - Excel - Office Support - Office 365">最大列数であり仕様に基づく</a>（それ以前は 256 列）。
+つまりすべての列に背景白のスタイルを設定すればよい。</p>
+
+<p>そこで、</p>
+
+<pre class="prettyprint"><code>require "rubyXL"
+
+workbook = RubyXL::Workbook.new
+worksheet = workbook[0]
+shironuri_style_index = workbook.modify_fill(nil, "ffffff")
+worksheet.cols &lt;&lt; RubyXL::ColumnRange.new(
+    :min =&gt; 1,
+    :max =&gt; 16384, # 0x4000
+    :style_index =&gt; shironuri_style_index,
+)
+workbook.write("/path/to/nil_shironuri.xlsx")</code></pre>
+<div>Output file: <a href="https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/nil_shironuri.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">nil_shironuri.xlsx</a></div>
+
+<p>とやってみたら、LibreOffice Calc で開けたんだが Excel で開くと
+何も表示されない <em>無</em> の画面が広がった…。</p>
+
+<p>なお厳密には、下記の通りでオンライン版では開けもしない。</p>
+
+<ul>
+  <li>デスクトップ版 Excel （Excel Viewer も含む） : <em>無</em> の画面</li>
+  <li>オンライン office.com の Excel : そもそも開けない</li>
+</ul>
+
+<figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
+<img src="/images/201803_shironurixlsx_nil_viewer_ss.png" />
+<figcaption><em>無</em>の画面</figcaption>
+</figure>
+
+<p>とやってみたら、LibreOffice で開けたんだが Excel で開くと
+何も表示されない <em>無</em> の画面が広がった…。</p>
+
+<p>なお厳密には、下記の通りでオンライン版では開けもしない。</p>
+
+<ul>
+  <li>デスクトップ版 Excel （Excel Viewer も含む） : <em>無</em> の画面</li>
+  <li>オンライン office.com の Excel : そもそも開けない</li>
+</ul>
+
+<pre class="prettyprint"><code>&lt;worksheet&gt;&lt;!-- worksheet 要素の属性値略 --&gt;
+  &lt;!-- 略 --&gt;
+  &lt;cols&gt;&lt;col min="1" max="16384" <ins>width="9"</ins> style="1"/&gt;&lt;/cols&gt;
+  &lt;sheetData&gt;&lt;!-- 略 --&gt;&lt;/sheetData&gt;
+&lt;/worksheet&gt;</code></pre>
+
+<p>これを実現するコードとしては…</p>
+
+<pre class="prettyprint"><code>require "rubyXL"
+
+workbook = RubyXL::Workbook.new
+worksheet = workbook[0]
+shironuri_style_index = workbook.modify_fill(nil, "ffffff")
+worksheet.cols &lt;&lt; RubyXL::ColumnRange.new(
+    :min =&gt; 1,
+    :max =&gt; 16384, # 0x4000
+    :style_index =&gt; shironuri_style_index,
+    <ins>:width =&gt; 9,</ins>
+)
+workbook.write("/path/to/blank_shironuri.xlsx")</code></pre>
+<div>Output file: <a href="https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_shironuri.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">blank_shironuri.xlsx</a></div>
+
+<h3>成果物</h3>
+
+<ul>
+  <li>本記事のコード <a href="https://gist.github.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5">
+  https://gist.github.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5</a></li>
+  <li>本記事の内容の適用例 <a href="https://github.com/cat-in-136/htot_conv/pull/8">Shironuri by cat-in-136 · Pull Request #8 · cat-in-136/htot_conv</a></li>
+</ul>
+
+<h3>感想</h3>
+
+<ul>
+  <li>はじめて Excel (デスクトップ)、Office.com の Excel (オンライン版)、
+LibreOffice Calc で挙動が異なるのを見た</li>
+  <li>xlsx ファイルは xml ファイルを zip で固めたものなので意外と融通が利く</li>
+  <li>もうちょっとまとめて書いて Qiita あたりに投稿しようと思ったが、
+まとまりのない文章に相成ったので essay としてここのブログに書くことにした</li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
+      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
+      <span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span>
+      <span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span>
+      <span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span>
+      <span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span>
+      <span class="post-thumb" data-image-path="/images/howto-github.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
+      <span class="post-meta">2016-04-23</span>
+      <span class="post-title">pango で縦書きとその能力</span>
+      <span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2018
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>

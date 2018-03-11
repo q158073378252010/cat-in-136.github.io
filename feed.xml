@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2018-02-08T00:30:17+09:00</updated>
+  <updated>2018-03-11T22:32:28+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,166 @@
 
   
   
+  
+    <entry>
+      <title type="html">白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る</title>
+      <link href="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" rel="alternate" type="text/html" title="白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る" />
+      <published>2018-03-11T22:27:27+09:00</published>
+      <updated>2018-03-11T22:27:27+09:00</updated>
+      <id>https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html">&lt;p&gt;Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。
+これを個人的に &lt;em&gt;白塗り&lt;/em&gt; と呼んでいる。&lt;/p&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img src=&quot;/images/201803_shironurixlsx_shironuri_example_ss.svg&quot; width=&quot;472&quot; height=&quot;173&quot; /&gt;
+&lt;figcaption&gt;&lt;em&gt;白塗り&lt;/em&gt;の例&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;罫線を非表示にする設定をすればいいだけなのだが、
+あまり方法が周知されていないため
+&lt;span style=&quot;vertical-align: super !important;font-size: smaller;&quot;&gt;[要出典]&lt;/span&gt;、
+ブック間をまたいだコピペでも自然に使用できる
+この白塗りをいまーだ使ってしまっている。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;白塗り&lt;/em&gt; Excel ファイル (xlsx) を作るにあたり、
+簡単のため何もデータを含まないファイルをベースとして考える。
+作成したライブラリは &lt;a href=&quot;https://rubygems.org/gems/rubyXL&quot;&gt;rubyXL&lt;/a&gt; である。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;require &quot;rubyXL&quot;
+
+workbook = RubyXL::Workbook.new
+workbook.write(&quot;/path/to/blank_nonshironuri.xlsx&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div&gt;Output file: &lt;a href=&quot;https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_nonshironuri.xlsx&quot; type=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;&gt;blank_nonshironuri.xlsx&lt;/a&gt;&lt;/div&gt;
+ 
+&lt;p&gt;xlsx ファイルは所詮 xml ファイルを zip で固めたものなので、
+Excel（など）で出力した xlsx ファイルを展開して xml ファイルを比較することで
+どういう風に編集すればいいかがわかる。&lt;/p&gt;
+
+&lt;p&gt;確認してみたところ &lt;code class=&quot;highlighter-rouge&quot;&gt;xl\worksheets\sheet1.xml&lt;/code&gt; に下記のような
+col 要素を投入すればよいことが分かった。&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;worksheet&amp;gt;&amp;lt;!-- worksheet 要素の属性値略 --&amp;gt;
+  &amp;lt;!-- 略 --&amp;gt;
+  &amp;lt;cols&amp;gt;&amp;lt;col min=&quot;1&quot; max=&quot;16384&quot; style=&quot;1&quot;/&amp;gt;&amp;lt;/cols&amp;gt;
+  &amp;lt;sheetData&amp;gt;&amp;lt;!-- 略 --&amp;gt;&amp;lt;/sheetData&amp;gt;
+&amp;lt;/worksheet&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここで 16384 というのは、Excel 2007 以降から現在の Excel のバージョンに
+おける&lt;a href=&quot;https://office.microsoft.com/ja-jp/excel-help/HP010073849.aspx&quot; title=&quot;Excel の仕様および制限 - Excel - Office Support - Office 365&quot;&gt;最大列数であり仕様に基づく&lt;/a&gt;（それ以前は 256 列）。
+つまりすべての列に背景白のスタイルを設定すればよい。&lt;/p&gt;
+
+&lt;p&gt;そこで、&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;require &quot;rubyXL&quot;
+
+workbook = RubyXL::Workbook.new
+worksheet = workbook[0]
+shironuri_style_index = workbook.modify_fill(nil, &quot;ffffff&quot;)
+worksheet.cols &amp;lt;&amp;lt; RubyXL::ColumnRange.new(
+    :min =&amp;gt; 1,
+    :max =&amp;gt; 16384, # 0x4000
+    :style_index =&amp;gt; shironuri_style_index,
+)
+workbook.write(&quot;/path/to/nil_shironuri.xlsx&quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div&gt;Output file: &lt;a href=&quot;https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/nil_shironuri.xlsx&quot; type=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;&gt;nil_shironuri.xlsx&lt;/a&gt;&lt;/div&gt;
+
+&lt;p&gt;とやってみたら、LibreOffice Calc で開けたんだが Excel で開くと
+何も表示されない &lt;em&gt;無&lt;/em&gt; の画面が広がった…。&lt;/p&gt;
+
+&lt;p&gt;なお厳密には、下記の通りでオンライン版では開けもしない。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;デスクトップ版 Excel （Excel Viewer も含む） : &lt;em&gt;無&lt;/em&gt; の画面&lt;/li&gt;
+  &lt;li&gt;オンライン office.com の Excel : そもそも開けない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
+&lt;img src=&quot;/images/201803_shironurixlsx_nil_viewer_ss.png&quot; /&gt;
+&lt;figcaption&gt;&lt;em&gt;無&lt;/em&gt;の画面&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;とやってみたら、LibreOffice で開けたんだが Excel で開くと
+何も表示されない &lt;em&gt;無&lt;/em&gt; の画面が広がった…。&lt;/p&gt;
+
+&lt;p&gt;なお厳密には、下記の通りでオンライン版では開けもしない。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;デスクトップ版 Excel （Excel Viewer も含む） : &lt;em&gt;無&lt;/em&gt; の画面&lt;/li&gt;
+  &lt;li&gt;オンライン office.com の Excel : そもそも開けない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;worksheet&amp;gt;&amp;lt;!-- worksheet 要素の属性値略 --&amp;gt;
+  &amp;lt;!-- 略 --&amp;gt;
+  &amp;lt;cols&amp;gt;&amp;lt;col min=&quot;1&quot; max=&quot;16384&quot; &lt;ins&gt;width=&quot;9&quot;&lt;/ins&gt; style=&quot;1&quot;/&amp;gt;&amp;lt;/cols&amp;gt;
+  &amp;lt;sheetData&amp;gt;&amp;lt;!-- 略 --&amp;gt;&amp;lt;/sheetData&amp;gt;
+&amp;lt;/worksheet&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これを実現するコードとしては…&lt;/p&gt;
+
+&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;require &quot;rubyXL&quot;
+
+workbook = RubyXL::Workbook.new
+worksheet = workbook[0]
+shironuri_style_index = workbook.modify_fill(nil, &quot;ffffff&quot;)
+worksheet.cols &amp;lt;&amp;lt; RubyXL::ColumnRange.new(
+    :min =&amp;gt; 1,
+    :max =&amp;gt; 16384, # 0x4000
+    :style_index =&amp;gt; shironuri_style_index,
+    &lt;ins&gt;:width =&amp;gt; 9,&lt;/ins&gt;
+)
+workbook.write(&quot;/path/to/blank_shironuri.xlsx&quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div&gt;Output file: &lt;a href=&quot;https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_shironuri.xlsx&quot; type=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;&gt;blank_shironuri.xlsx&lt;/a&gt;&lt;/div&gt;
+
+&lt;h3&gt;成果物&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;本記事のコード &lt;a href=&quot;https://gist.github.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5&quot;&gt;
+  https://gist.github.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;本記事の内容の適用例 &lt;a href=&quot;https://github.com/cat-in-136/htot_conv/pull/8&quot;&gt;Shironuri by cat-in-136 · Pull Request #8 · cat-in-136/htot_conv&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;感想&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;はじめて Excel (デスクトップ)、Office.com の Excel (オンライン版)、
+LibreOffice Calc で挙動が異なるのを見た&lt;/li&gt;
+  &lt;li&gt;xlsx ファイルは xml ファイルを zip で固めたものなので意外と融通が利く&lt;/li&gt;
+  &lt;li&gt;もうちょっとまとめて書いて Qiita あたりに投稿しようと思ったが、
+まとまりのない文章に相成ったので essay としてここのブログに書くことにした&lt;/li&gt;
+&lt;/ul&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="excel" />
+      
+        <category term="チラシの裏" />
+      
+
+      
+        <summary type="html">Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。 これを個人的に 白塗り と呼んでいる。</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 59.0 beta 7 default preference and firefox 58.0.1</title>
@@ -1173,543 +1333,6 @@ table.diff_firefox56_pref_diff tbody tr { transition: background 0.125s ease-in-
 
       
         <summary type="html">This is difference between the default preference of Firefox 56.0 beta 3 and one of 55.0.2.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Code Reading: “Firefox Send” encryption</title>
-      <link href="https://cat-in-136.github.io/2017/08/code-reading-firefox-send.html" rel="alternate" type="text/html" title="Code Reading: &quot;Firefox Send&quot; encryption" />
-      <published>2017-08-12T12:32:50+09:00</published>
-      <updated>2017-08-12T12:32:50+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/08/code-reading-firefox-send</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2017/08/code-reading-firefox-send.html">&lt;p&gt;
-Mozilla Test Pilot Team has released &lt;a href=&quot;https://send.firefox.com/&quot;&gt;Firefox Send&lt;/a&gt;.
-This post describes how safe Firefox Send is by reading code.
-Note that &lt;a href=&quot;https://blog.mozilla.org/blog/2017/08/01/new-test-pilot-experiments/&quot;&gt;The team blog post announces the safety of their service&lt;/a&gt;:
-&lt;/p&gt;
-
-&lt;blockquote cite=&quot;https://blog.mozilla.org/blog/2017/08/01/new-test-pilot-experiments/&quot;&gt;
-  &lt;p&gt;Your files are encrypted during transmission. Plus, &lt;a href=&quot;https://www.youtube.com/watch?v=ZGWZGYtAS3U&quot;&gt;Send&lt;/a&gt; encrypts files on the client side, so that not even Mozilla can read them.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;firefox_send_tldr&quot;&gt;TL;DR&lt;/h3&gt;
-
-
-
-&lt;p&gt;As of &lt;a href=&quot;https://github.com/mozilla/send/tree/v1.1.0&quot;&gt;v1.1.0&lt;/a&gt;,&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;File data is encrypted on the client side during uploading.&lt;/li&gt;
-  &lt;li&gt;File data is decrypted on the client side during downloading.&lt;/li&gt;
-  &lt;li&gt;File name is &lt;em&gt;not encrypted&lt;/em&gt; and stored on the server.&lt;/li&gt;
-  &lt;li&gt;Secret Key is generated by the client side and shared with the sender/receiver persons by &lt;em&gt;hash (&lt;code&gt;#&lt;/code&gt;) of the download link URL&lt;/em&gt;. It is &lt;em&gt;never sent&lt;/em&gt; to the server.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h3 id=&quot;firefox_send_fileSender_upload&quot;&gt;Client side: FileSender#upload()&lt;/h3&gt;
-
-&lt;p&gt;
-This clause describes &lt;code&gt;FileSender#upload()&lt;/code&gt; method defined in &lt;a href=&quot;https://github.com/mozilla/send/blob/v1.1.0/frontend/src/fileSender.js&quot;&gt;frontend/src/fileSender.js&lt;/a&gt; (to upload with client-side encryption).
-&lt;/p&gt;
-
-&lt;h4 id=&quot;firefox_send_fileSender_upload_1&quot;&gt;first Promise : Generate Key and Load File&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;    return Promise.all([
-      window.crypto.subtle.generateKey(
-        {
-          name: 'AES-GCM',
-          length: 128
-        },
-        true,
-        ['encrypt', 'decrypt']
-      ),
-      new Promise((resolve, reject) =&amp;gt; {
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(this.file);
-        reader.onload = function(event) {
-          const plaintext = new Uint8Array(this.result);
-          resolve(plaintext);
-        };
-        reader.onerror = function(err) {
-          reject(err);
-        };
-      })
-])
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The first promise is resolved when both of following two procedures are completed:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Generate Key:
-    &lt;ul&gt;
-      &lt;li&gt;using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey&quot;&gt;generateKey()&lt;/a&gt; of Web Crypto API;&lt;/li&gt;
-      &lt;li&gt;with a symmetric algorithm &quot;AES-GCM&quot; (AES in Galois/Counter Mode);&lt;/li&gt;
-      &lt;li&gt;with 128-bit key length.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Read file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;firefox_send_fileSender_upload_2&quot;&gt;second Promise : Encrypt and Export key&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;      .then(([secretKey, plaintext]) =&amp;gt; {
-        self.emit('encrypting');
-        return Promise.all([
-          window.crypto.subtle.encrypt(
-            {
-              name: 'AES-GCM',
-              iv: this.iv,
-              tagLength: 128
-            },
-            secretKey,
-            plaintext
-          ),
-          window.crypto.subtle.exportKey('jwk', secretKey)
-]);
-&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;The second promise is resolved when both of following two procedures are completed:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Encrypt file data &lt;code&gt;plaintext&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt&quot;&gt;encrypt()&lt;/a&gt; of Web Crypto API;&lt;/li&gt;
-      &lt;li&gt;with 128-bit authentication tag length.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Export key
-    &lt;ul&gt;
-      &lt;li&gt;using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/exportKey&quot;&gt;exportKey()&lt;/a&gt; of Web Crypto API;&lt;/li&gt;
-      &lt;li&gt;to the &lt;a href=&quot;https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41&quot;&gt;JSON Web Key&lt;/a&gt; format.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;firefox_send_fileSender_upload_3&quot;&gt;third Promise : Upload&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;      .then(([encrypted, keydata]) =&amp;gt; {
-        return new Promise((resolve, reject) =&amp;gt; {
-          const file = this.file;
-          const fileId = arrayToHex(this.iv);
-          const dataView = new DataView(encrypted);
-          const blob = new Blob([dataView], { type: file.type });
-          const fd = new FormData();
-          fd.append('data', blob, file.name);
-
-          // ****** snip (describe the next section...) ******
-
-          xhr.open('post', '/upload', true);
-          xhr.setRequestHeader(
-            'X-File-Metadata',
-            JSON.stringify({
-              id: fileId,
-              filename: encodeURIComponent(file.name)
-            })
-          );
-          xhr.send(fd);
-        });
-});&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The third promise executes the following procedure:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Upload the file data &lt;code&gt;encrypted&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;using XHR with Blob;&lt;/li&gt;
-      &lt;li&gt;with &lt;code&gt;X-File-Metadata&lt;/code&gt; consisting of
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code&gt;id&lt;/code&gt;: the file ID equivalent to &lt;code&gt;iv&lt;/code&gt; (initial vector);&lt;/li&gt;
-          &lt;li&gt;&lt;code&gt;filename&lt;/code&gt;.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;firefox_send_fileSender_upload_4&quot;&gt;return value: File Parameters&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;          xhr.onreadystatechange = () =&amp;gt; {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-              if (xhr.status === 200) {
-                const responseObj = JSON.parse(xhr.responseText);
-                return resolve({
-                  url: responseObj.url,
-                  fileId: responseObj.id,
-                  secretKey: keydata.k,
-                  deleteToken: responseObj.delete
-                });
-              }
-              reject(xhr.status);
-            }
-};&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The final promise returns following parameters:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;url&lt;/code&gt;: URL generated by server;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;fileId&lt;/code&gt;: File ID generated by server (different than &lt;code&gt;iv&lt;/code&gt; (initial vector) generated by client side);&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;secretKey&lt;/code&gt;: Secret key &quot;K&quot; exported by &lt;a href=&quot;#firefox_send_fileSender_upload_2&quot;&gt;the second promise&lt;/a&gt; on client side;&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;deleteToken&lt;/code&gt;: Key token to delete the file generated by server.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-Note: Download URL is &lt;code&gt;`${url}#${secretKey}`&lt;/code&gt;.
-See &lt;a href=&quot;https://github.com/mozilla/send/blob/v1.1.0/frontend/src/upload.js&quot;&gt;frontend/src/upload.js&lt;/a&gt; for detail.
-&lt;/p&gt;
-
-&lt;h3 id=&quot;firefox_send_server_upload&quot;&gt;Server side: POST /upload/&lt;/h3&gt;
-
-&lt;p&gt;
-This clause describes &quot;POST &lt;code&gt;/upload/&lt;/code&gt;&quot; handler defined in &lt;a href=&quot;https://github.com/mozilla/send/blob/v1.1.0/server/server.js&quot;&gt;server/server.js&lt;/a&gt; (to store).
-&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;app.post('/upload', (req, res, next) =&amp;gt; {
-  const newId = crypto.randomBytes(5).toString('hex');
-
-  // ***** snip *****
-
-  meta.delete = crypto.randomBytes(10).toString('hex');
-  req.pipe(req.busboy);
-
-  req.busboy.on('file', async (fieldname, file, filename) =&amp;gt; {
-    try {
-      await storage.set(newId, file, filename, meta);
-
-      const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-      res.json({
-        url,
-        delete: meta.delete,
-        id: newId
-      });
-    } catch (e) {
-      if (e.message === 'limit') {
-        return res.sendStatus(413);
-      }
-      res.sendStatus(500);
-    }
-  });
-
-  // ***** snip *****
-});
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Server stores:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code&gt;newId&lt;/code&gt;: File ID generated by server (different than &lt;code&gt;iv&lt;/code&gt; (initial vector) generated by client side).&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;file&lt;/code&gt;: File data encrypted (by client side)&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;meta&lt;/code&gt;: &lt;code&gt;X-File-Metadata&lt;/code&gt; consisting of
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code&gt;id&lt;/code&gt;: the file ID equivalent to &lt;code&gt;iv&lt;/code&gt; (initial vector) generated by client side;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;filename&lt;/code&gt;;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;delete&lt;/code&gt;: Key token to delete the file generated by server.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Server returns a response:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;with JSON response body consisting of
-    &lt;ul&gt;
-      &lt;li&gt;&lt;code&gt;url&lt;/code&gt;: URL generated by server;&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;delete&lt;/code&gt;: Key token to delete the file generated by server.&lt;/li&gt;
-      &lt;li&gt;&lt;code&gt;id&lt;/code&gt;: File ID generated by server (different than &lt;code&gt;iv&lt;/code&gt; (initial vector) generated by client side).&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;firefox_send_fileReceiver_download&quot;&gt;Client side: FileReceiver#download()&lt;/h3&gt;
-
-&lt;p&gt;
-This clause describes &lt;code&gt;FileReceiver#download()&lt;/code&gt; method defined in &lt;a href=&quot;https://github.com/mozilla/send/blob/v1.1.0/frontend/src/fileReceiver.js&quot;&gt;frontend/src/fileReceiver.js&lt;/a&gt; (to download with client side decryption).
-&lt;/p&gt;
-
-&lt;h4 id=&quot;firefox_send_fileReceiver_download_1&quot;&gt;first Promise : Import Key&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;window.crypto.subtle
-      .importKey(
-        'jwk',
-        {
-          kty: 'oct',
-          k: location.hash.slice(1),
-          alg: 'A128GCM',
-          ext: true
-        },
-        {
-          name: 'AES-GCM'
-        },
-        true,
-        ['encrypt', 'decrypt']
-)&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The first promise is resolved when following procedure is completed:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Import Key:
-    &lt;ul&gt;
-      &lt;li&gt;using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey&quot;&gt;importKey()&lt;/a&gt; of Web Crypto API;&lt;/li&gt;
-      &lt;li&gt;from the URL hash (&lt;code&gt;#&lt;/code&gt;) parameter;&lt;/li&gt;
-      &lt;li&gt;with a symmetric algorithm &quot;AES-GCM&quot; (AES in Galois/Counter Mode);&lt;/li&gt;
-      &lt;li&gt;with 128-bit key length.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;firefox_send_fileReceiver_download_2&quot;&gt;second Promise : Download&lt;/h4&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;      .then(key =&amp;gt; {
-        return new Promise((resolve, reject) =&amp;gt; {
-          const xhr = new XMLHttpRequest();
-
-          // ***** snip *****
-
-          xhr.onload = function(event) {
-            // ***** snip *****
-
-            const blob = new Blob([this.response]);
-            const type = xhr.getResponseHeader('Content-Type');
-            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
-            const fileReader = new FileReader();
-            fileReader.onload = function() {
-              resolve([
-                {
-                  data: this.result,
-                  filename: meta.filename,
-                  type,
-                  iv: meta.id
-                },
-                key
-              ]);
-            };
-
-            fileReader.readAsArrayBuffer(blob);
-          };
-
-          xhr.open('get', '/assets' + location.pathname.slice(0, -1), true);
-          xhr.responseType = 'blob';
-          xhr.send();
-        });
-})&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The second promise is resolved when following procedure is completed:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Download file:
-    &lt;ul&gt;
-      &lt;li&gt;using XHR with Blob;&lt;/li&gt;
-      &lt;li&gt;returns parameter consisting of
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code&gt;data&lt;/code&gt;: File data encrypted&lt;/li&gt;
-          &lt;li&gt;&lt;code&gt;filename&lt;/code&gt;;&lt;/li&gt;
-          &lt;li&gt;&lt;code&gt;type&lt;/code&gt;: the Content-Type of the HTTP response header;&lt;/li&gt;
-          &lt;li&gt;&lt;code&gt;iv&lt;/code&gt;: the file ID equivalent to &lt;code&gt;iv&lt;/code&gt; (initial vector) generated by sender client side.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;firefox_send_fileReceiver_download_3&quot;&gt;third Promise : Decrypt&lt;/h4&gt;
-
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;      .then(([fdata, key]) =&amp;gt; {
-        this.emit('decrypting');
-        return Promise.all([
-          window.crypto.subtle
-            .decrypt(
-              {
-                name: 'AES-GCM',
-                iv: hexToArray(fdata.iv),
-                tagLength: 128
-              },
-              key,
-              fdata.data
-            )
-            .then(decrypted =&amp;gt; {
-              return Promise.resolve(decrypted);
-            }),
-          {
-            name: decodeURIComponent(fdata.filename),
-            type: fdata.type
-          }
-        ]);
-});&lt;/code&gt;&lt;/pre&gt;
-
-
-&lt;p&gt;The third promise is resolved when following procedure is completed:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Encrypt file data &lt;code&gt;fdata.data&lt;/code&gt;
-    &lt;ul&gt;
-      &lt;li&gt;using &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt&quot;&gt;encrypt()&lt;/a&gt; of Web Crypto API;&lt;/li&gt;
-      &lt;li&gt;with a symmetric algorithm &quot;AES-GCM&quot; (AES in Galois/Counter Mode);&lt;/li&gt;
-      &lt;li&gt;with following parameters:
-        &lt;ul&gt;
-          &lt;li&gt;&lt;code&gt;iv&lt;/code&gt;: the file ID equivalent to &lt;code&gt;iv&lt;/code&gt; (initial vector) generated by sender client side;&lt;/li&gt;
-          &lt;li&gt;&lt;code&gt;key&lt;/code&gt;: Secret key &quot;K&quot; import by &lt;a href=&quot;#firefox_send_fileReceiver_download_1&quot;&gt;the first promise&lt;/a&gt; on client side.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;Conclusion&lt;/h3&gt;
-
-&lt;div&gt;
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;572&quot; height=&quot;678&quot; data=&quot;/images/201708-codereading_firefox_send.svg&quot;&gt;&lt;/object&gt;
-&lt;!--
-
-digraph G {
-  layout=dot;
-  node [ shape=box, color=black ];
-
-  subgraph cluster_Alice1 {
-    style=filled;
-    label = &quot;Sender Client&quot;;
-    color=pink
-    node [style=filled,color=white];
-
-    iv;
-    secretKey [ fontcolor=red ];
-    plaintext [ fontcolor=red ];
-    filename;
-    encrypted [ fontcolor=green ];
-
-    secretKey -&gt; encrypted;
-    iv -&gt; encrypted;
-    plaintext -&gt; encrypted;
-  }
-
-  subgraph cluster_Server {
-    style=filled;
-    label = &quot;Server&quot;;
-    color=orange
-    node [style=filled,color=white];
-
-    url;
-
-    subgraph cluster_Storage {
-      style=dashed;
-      label = &quot;Storage&quot;;
-      color=blue;
-      node [style=filled,color=white];
-
-      newId;
-      file [ fontcolor=green ];
-
-      meta_id [ label=&quot;meta.id&quot; ];
-      meta_filename [ label=&quot;meta.filename&quot; ];
-      meta_delete [ label=&quot;meta.delete&quot; ];
-    }
-  }
-
-  subgraph cluster_Alice2 {
-    style=filled;
-    label = &quot;Sender Client&quot;;
-    color=pink
-    node [style=filled,color=white];
-
-    url_alice2 [ label = &quot;url&quot; ];
-    fileId;
-    secretKey_alice2 [ label = &quot;secretKey&quot;, fontcolor=red ];
-    deleteToken;
-  }
-
-  subgraph cluster_DL {
-    style=filled;
-    label = &quot;Download URL&quot;;
-    color=lightgray;
-    node [style=filled,color=white];
-
-    DL_path [ label=&quot;https://xxx/yyy&quot; ];
-    DL_hash [ label=&quot;#zzz&quot;, fontcolor=red ];
-  }
-
-  subgraph cluster_Bob {
-    style=filled;
-    label = &quot;Receiver Client&quot;;
-    color=lightblue;
-    node [style=filled,color=white];
-
-    key [ fontcolor=red ];
-    url_bob [ label = &quot;url&quot; ];
-    data  [ fontcolor=green ];
-    decrypted  [ fontcolor=red ];
-    iv_bob [ label = &quot;iv&quot; ];
-    filename_bob [ label = &quot;filename&quot; ];
-    key -&gt; decrypted;
-    iv_bob -&gt; decrypted;
-    data -&gt; decrypted;
-    filename_bob;
-  }
-
-  encrypted -&gt; file [ weight=20 ];
-  iv -&gt; meta_id [ weight=20 ];
-  filename -&gt; meta_filename [ weight=20 ];
-  
-  newId -&gt; url [ weight=20 ];
-  
-  url -&gt; url_alice2 [ weight=20 ];
-  secretKey -&gt; secretKey_alice2 [ weight=20 ];
-  meta_delete -&gt; deleteToken;
-  newId -&gt; fileId;
-
-  url_alice2 -&gt; DL_path -&gt; url_bob [ weight=20 ];
-  secretKey_alice2 -&gt; DL_hash -&gt; key [ weight=20 ];
-  file -&gt; data [ weight=20 ];
-  meta_id -&gt; iv_bob [ weight=20 ];
-  meta_filename -&gt; filename_bob [ weight=20 ];
-}
-
---&gt;
-&lt;figcaption&gt;Parameter Analysis&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;/div&gt;
-
-
-&lt;p&gt;As of &lt;a href=&quot;https://github.com/mozilla/send/tree/v1.1.0&quot;&gt;v1.1.0&lt;/a&gt;,&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;File data is encrypted on the client side during uploading.&lt;/li&gt;
-  &lt;li&gt;File data is decrypted on the client side during downloading.&lt;/li&gt;
-  &lt;li&gt;File name is &lt;em&gt;not encrypted&lt;/em&gt; and stored on the server.&lt;/li&gt;
-  &lt;li&gt;Secret Key is generated by the client side and shared with the sender/receiver persons by &lt;em&gt;hash (&lt;code&gt;#&lt;/code&gt;) of the download link URL&lt;/em&gt;. It is &lt;em&gt;never sent&lt;/em&gt; to the server.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;h3&gt;References&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://send.firefox.com/&quot;&gt;Firefox Send&lt;/a&gt;, Firefox Test Pilot&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mozilla/send&quot;&gt;mozilla/send&lt;/a&gt;, &lt;a href=&quot;https://github.com/mozilla/send/tree/v1.1.0&quot;&gt;v1.1.0&lt;/a&gt;, Github&lt;/li&gt;
-  &lt;li&gt;&quot;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API&quot;&gt;Web Crypt API&lt;/a&gt;&quot;, MDN&lt;/li&gt;
-  &lt;li&gt;N.Nguyen, &quot;&lt;a href=&quot;https://blog.mozilla.org/blog/2017/08/01/new-test-pilot-experiments/&quot;&gt;New Test Pilot Experiments Available Today&lt;/a&gt;, The Mozilla Blog, Aug 1 2017&lt;/li&gt;
-&lt;/ul&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>cat_in_136</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="javascript" />
-      
-        <category term="encrypt" />
-      
-        <category term="web application" />
-      
-
-      
-        <summary type="html">Mozilla Test Pilot Team has released Firefox Send. This post describes how safe Firefox Send is by reading code. Note that The team blog post announces the safety of their service:</summary>
       
 
       
