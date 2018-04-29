@@ -145,10 +145,10 @@ hr { border: solid thin #828282; margin: 30px; }
 .post-content:lang(ja) > p { text-indent: 1em; }
 .post-content:lang(ja) > pre + p, .post-content:lang(ja) > math + p, .post-content:lang(ja) > ul + p, .post-content:lang(ja) > ol + p { text-indent: inherit !important; }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post-content h1, html.vertical-writing-recommended .post-content h2, html.vertical-writing-recommended .post-content h3, html.vertical-writing-recommended .post-content h4, html.vertical-writing-recommended .post-content h5, html.vertical-writing-recommended .post-content h6 { margin: 0 40px 0 20px; }
-  .post-content p { margin: auto 10px; }
-  .post-content .fitcontain { /* As of firefox 46, vertical-rl may conflict with object-fit. */ object-fit: unset; width: auto; height: auto; }
-  .post-content blockquote, .post-content math, .post-content > table, .post-content > figure { margin: auto 1px; }
-  .post-content figure { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 100vh; } }
+  html.vertical-writing-recommended .post-content p { margin: auto 10px; }
+  html.vertical-writing-recommended .post-content .fitcontain { /* As of firefox 46, vertical-rl may conflict with object-fit. */ object-fit: unset; width: auto; height: auto; }
+  html.vertical-writing-recommended .post-content blockquote, html.vertical-writing-recommended .post-content math, html.vertical-writing-recommended .post-content > table, html.vertical-writing-recommended .post-content > figure { margin: auto 1px; }
+  html.vertical-writing-recommended .post-content figure { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; /* As of Mar 2016, Edge fails to calculate the width of horizontal-tb block within vertical-rl block. */ max-width: 100vh; } }
 .post-content:lang(en) { text-align: left; }
 
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post-footer #disqus_thread { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; width: 90vh; } }
@@ -172,7 +172,7 @@ hr { border: solid thin #828282; margin: 30px; }
 .site-footer [role="contentinfo"], .site-footer [itemprop] { font-weight: bolder; }
 
 /** Syntax highlighting styles */
-.highlight { background: #fff; }
+.highlight { text-align: start; background: #fff; }
 .highlight .c { color: #998; font-style: italic; }
 .highlight .err { color: #a61717; background-color: #e3d2d2; }
 .highlight .k { font-weight: bold; }
