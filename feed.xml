@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2018-04-29T20:20:35+09:00</updated>
+  <updated>2018-05-24T00:55:02+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,44 @@
 
   
   
+  
+    <entry>
+      <title type="html">Diff between firefox 61.0 beta 7 default preference and firefox 60.0.1</title>
+      <link href="https://cat-in-136.github.io/2018/05/diff-between-firefox-610-beta-7-default.html" rel="alternate" type="text/html" title="Diff between firefox 61.0 beta 7 default preference and firefox 60.0.1" />
+      <published>2018-05-24T00:52:10+09:00</published>
+      <updated>2018-05-24T00:52:10+09:00</updated>
+      <id>https://cat-in-136.github.io/2018/05/diff-between-firefox-610-beta-7-default</id>
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>cat_in_136</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="pref diff" />
+      
+        <category term="mozilla" />
+      
+
+      
+        <summary type="html">This is difference between the default preference of Firefox 61.0 beta 7 and one of 60.0.1.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">rustのエラー処理と疑問符演算子</title>
@@ -1242,44 +1280,6 @@ v4.29 → v5.2 へのアップデートだったのだが、
 
       
         <summary type="html">とある private 運用している padrino + sequel rubygem を使ったアプリのバージョンアップをようやくやった。 v4.29 → v5.2 へのアップデートだったのだが、 一つ一つリリースノートを見ていって確認していったのだが かなりの分量だった。 特に、v4.45 の deprecated features が多すぎだった。</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">List of all the Config provided by Configuration Mania</title>
-      <link href="https://cat-in-136.github.io/2017/10/list-of-all-the-config-provided-by-configuration-mania.html" rel="alternate" type="text/html" title="List of all the Config provided by Configuration Mania" />
-      <published>2017-10-26T00:22:13+09:00</published>
-      <updated>2017-10-28T23:40:21+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/10/list-of-all-the-config-provided-by-configuration-mania</id>
-      
-      
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="mozilla" />
-      
-        <category term="configuration mania" />
-      
-
-      
-        <summary type="html">Dear &quot;Configuration Mania&quot; users, As mentioned at issue#254 on bitbucket, &quot;Configuration Mania&quot; never work on Firefox 57 or later. This means that it gets impossible to check the config using &quot;Configuration Mania&quot; on Firefox 57 or later. I have created a list of config that &quot;Configuration Mania&quot; has provided so far. It is able to be referred on Firefox 57 or later.</summary>
       
 
       
