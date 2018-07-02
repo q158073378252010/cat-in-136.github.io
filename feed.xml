@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2018-05-24T00:55:02+09:00</updated>
+  <updated>2018-07-02T23:43:22+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,88 @@
 
   
   
+  
+    <entry>
+      <title type="html">Redmine Tips: How to add an attachment using rails c</title>
+      <link href="https://cat-in-136.github.io/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html" rel="alternate" type="text/html" title="Redmine Tips: How to add an attachment using rails c" />
+      <published>2018-07-02T23:39:13+09:00</published>
+      <updated>2018-07-02T23:39:13+09:00</updated>
+      <id>https://cat-in-136.github.io/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html">&lt;p&gt;This post describes how to add an attachment (file) to an issue using &lt;code class=&quot;highlighter-rouge&quot;&gt;rails c&lt;/code&gt; (rails console).
+Note that it is assumed that &lt;code class=&quot;highlighter-rouge&quot;&gt;issue&lt;/code&gt; is already present.
+This would work even if the plugins such as &lt;a href=&quot;https://www.redmine.org/plugins/redmine_s3&quot;&gt;redmine_s3&lt;/a&gt; installed.&lt;/p&gt;
+
+&lt;h3 id=&quot;add-an-attachment-to-an-issue-w-journal&quot;&gt;Add an attachment to an issue w/ journal&lt;/h3&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# issue, user, filepath are assumed to be already set.&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# f.flock(File::LOCK_SH)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;attachment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Attachment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionDispatch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UploadedFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:tempfile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;basename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;image/jpeg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;init_journal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;attachments&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attachment&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;add-an-attachment-to-an-issue-wo-journal&quot;&gt;Add an attachment to an issue w/o journal&lt;/h3&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# issue, user, filepath are assumed to be already set.&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# f.flock(File::LOCK_SH)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Attachment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionDispatch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;UploadedFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:tempfile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;basename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filepath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;image/jpeg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;:container&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;issue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note: Unlike “w/ journal” case, you need to set &lt;code class=&quot;highlighter-rouge&quot;&gt;:container&lt;/code&gt; to the issue.&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="redmine" />
+      
+        <category term="howto" />
+      
+        <category term="チラシの裏" />
+      
+
+      
+        <summary type="html">This post describes how to add an attachment (file) to an issue using rails c (rails console). Note that it is assumed that issue is already present. This would work even if the plugins such as redmine_s3 installed.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 61.0 beta 7 default preference and firefox 60.0.1</title>
@@ -1202,84 +1284,6 @@ table.diff_firefox58_pref_diff tbody tr { transition: background 0.125s ease-in-
 
       
         <summary type="html">This is difference between the default preference of Firefox 58.0 beta 5 and one of 57.0.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Sequel のバージョンアップデートに関するメモ</title>
-      <link href="https://cat-in-136.github.io/2017/11/sequel-upgrade-memo.html" rel="alternate" type="text/html" title="Sequel のバージョンアップデートに関するメモ" />
-      <published>2017-11-08T00:27:30+09:00</published>
-      <updated>2017-11-08T00:27:30+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/11/sequel-upgrade-memo</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2017/11/sequel-upgrade-memo.html">&lt;p&gt;とある private 運用している &lt;a href=&quot;http://padrinorb.com/&quot;&gt;padrino&lt;/a&gt; +
-&lt;a href=&quot;http://sequel.jeremyevans.net/&quot;&gt;sequel&lt;/a&gt; rubygem を使ったアプリのバージョンアップをようやくやった。
-v4.29 → v5.2 へのアップデートだったのだが、
-一つ一つ&lt;a href=&quot;http://sequel.jeremyevans.net/documentation.html&quot;&gt;リリースノート&lt;/a&gt;を見ていって確認していったのだが
-かなりの分量だった。
-特に、v4.45 の deprecated features が多すぎだった。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;ただ、実際に影響があったのは下記の2つの変更だけだった。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;The schema plugin is now deprecated. Switch to defining the schema before creating the model class using the Database schema methods. (ref. &lt;a href=&quot;http://sequel.jeremyevans.net/rdoc/files/doc/release_notes/4_45_0_txt.html&quot;&gt;4.45.0txt&lt;/a&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;schema plugin が廃止されたが、代替が指示されておらず意味を理解するまで時間がかかったが、
-結論は plugin の読み込み (&lt;code class=&quot;highlighter-rouge&quot;&gt;Sequel::Model.plugin(:schema)&lt;/code&gt;) を消すだけだった。&lt;/li&gt;
-      &lt;li&gt;スキーマを定義した後にモデルクラスを呼び出すという暗黙的なことになった。&lt;/li&gt;
-      &lt;li&gt;普通(?)、そういう使い方をすると思うので schema plugin は御役御免でよい。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Dataset#and&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;exclude_where&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;, and range methods are now deprecated. Undeprecated copies are now available in the new &lt;code class=&quot;highlighter-rouge&quot;&gt;sequel_4_dataset_methods&lt;/code&gt; extension. (ref &lt;a href=&quot;http://sequel.jeremyevans.net/rdoc/files/doc/release_notes/4_48_0_txt.html&quot;&gt;4.48.0.txt&lt;/a&gt;)
-    &lt;ul&gt;
-      &lt;li&gt;微妙な例で示すと &lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.where(:bar =&amp;gt; 1).and(:baz =&amp;gt; 2)&lt;/code&gt; のような呼び出しの &lt;code class=&quot;highlighter-rouge&quot;&gt;and&lt;/code&gt; が使えなくなった。
-        &lt;ul&gt;
-          &lt;li&gt;単純な置き換えならば &lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.where(:bar =&amp;gt; 1).where(:baz =&amp;gt; 2)&lt;/code&gt; のように &lt;code class=&quot;highlighter-rouge&quot;&gt;where&lt;/code&gt; をどんどんつなげていけば良い&lt;/li&gt;
-          &lt;li&gt;なおこの例だと &lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.where(:bar =&amp;gt; 1, :baz =&amp;gt; 2)&lt;/code&gt; のようにも書けるのでリファクタした
-            &lt;ul&gt;
-              &lt;li&gt;ただ &lt;code class=&quot;highlighter-rouge&quot;&gt;:bar =&amp;gt; 1&lt;/code&gt; と &lt;code class=&quot;highlighter-rouge&quot;&gt;:baz =&amp;gt; 2&lt;/code&gt; の判定が別関数といった場合には、 &lt;code class=&quot;highlighter-rouge&quot;&gt;where&lt;/code&gt; をつなげていくしかない&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;たぶんかなり古い?記述だったぽい&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;or&lt;/code&gt; とかは引き続き使える&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="sequel" />
-      
-        <category term="ruby" />
-      
-        <category term="チラシの裏" />
-      
-
-      
-        <summary type="html">とある private 運用している padrino + sequel rubygem を使ったアプリのバージョンアップをようやくやった。 v4.29 → v5.2 へのアップデートだったのだが、 一つ一つリリースノートを見ていって確認していったのだが かなりの分量だった。 特に、v4.45 の deprecated features が多すぎだった。</summary>
       
 
       
