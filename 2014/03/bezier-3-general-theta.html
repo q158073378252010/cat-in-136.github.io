@@ -9,7 +9,7 @@
   <title>ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</title>
   <meta property="og:url" content="https://cat-in-136.github.io/2014/03/bezier-3-general-theta.html" />
   <meta property="og:title" content="ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない" />
-  <meta property="og:description" content="この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが 必要です もし数式部分が読めない場合は Firefoxをインストールするか このボタンをクリックしてMathJ..." />
+  <meta property="og:description" content="ベジェ曲線の円弧についていままで90度で計算してきた。 しかし、この数字に意味付けはなかった。 ただ単にドローソフトがそういう実装になっていたからだ。 そこで、任意の中心角の円弧をベジェ曲線で曲..." />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="/images/generic-kappa.svg" />
   <meta property="og:site_name" content="cat_in_136.blog()" />
@@ -48,7 +48,7 @@
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2014/03/bezier-3-general-theta.html" itemprop="url">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</a></h1>
     <div class="post-meta">Post date: <span itemprop="datePublished" content="2014-03-07T07:00:00+09:00">2014-03-07T07:00:00+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:39+09:00">2014-11-10T00:02:39+09:00</span></div>
+    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2018-08-08T18:35:30+09:00">2018-08-08T18:35:30+09:00</span></div>
     <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
     <div class="post-meta">Tags:
       <span itemprop="keywords">
@@ -68,18 +68,7 @@
   
 
   <div class="post-content" itemprop="articleBody" lang="ja">
-    <aside>
-<div style="background: #ffd; border: solid 3px #ff8">
-この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
-必要です
-もし数式部分が読めない場合は
-<a href="http://getfirefox.com/">Firefoxをインストールする</a>か
-<button onclick="var a=document.createElement(&quot;script&quot;);a.setAttribute(&quot;type&quot;,&quot;application/javascript&quot;);a.setAttribute(&quot;src&quot;,&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;);document.body.appendChild(a);">このボタンをクリックしてMathJaxを使って無理矢理表示する</button>
-などしてください。
-</div>
-</aside>
-
-<p>ベジェ曲線の円弧についていままで90度で計算してきた。
+    <p>ベジェ曲線の円弧についていままで90度で計算してきた。
 しかし、この数字に意味付けはなかった。
 ただ単にドローソフトがそういう実装になっていたからだ。</p>
 
@@ -305,6 +294,8 @@ AA'が頂点Aでの接線、AA'の長さも対称性より<var>&#x03BA;</var>で
 <li><a href="http://park12.wakwak.com/~shp/cgi-bin/wiki.cgi/view/bezier_curve">s.h's page - [graphic] ベジエ曲線</a></li>
 </ul>
 
+<script type="application/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=MML_CHTML"></script>
+
   </div>
 
   <footer class="post-footer">
@@ -368,10 +359,10 @@ AA'が頂点Aでの接線、AA'の長さも対称性より<var>&#x03BA;</var>で
     </a>
   </li>
   <li class="post-item">
-    <a class="post-link" href="/2011/09/33.html">
-      <span class="post-meta">2011-09-14</span>
-      <span class="post-title">ポニーテールの揺れの定式化と考察 (3/3)</span>
-      <span class="post-thumb" data-image-path="/images/pony_tail_model.png"></span>
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
+      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
     </a>
   </li>
   </ul>

@@ -11,6 +11,11 @@ blockquote::before, blockquote::after, q::before, q::after { content: ''; conten
 /** Reset some basic elements */
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure { margin: 0; padding: 0; }
 
+/** revert reset.scss */
+sup { vertical-align: super; }
+
+sub { vertical-align: sub; }
+
 /** Basic styling */
 body { font-family: "Fira Sans", "Source Han Sans", "Source Han Sans JP", "Noto Sans CJK", "Noto Sans CJK JP", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic Std", "HGPGothicE", sans-serif; font-size: 16px; line-height: 1.5; font-weight: 300; color: #111; background-color: #fdfdfd; -webkit-text-size-adjust: 100%; text-rendering: optimizelegibility; font-kerning: normal; }
 
@@ -22,16 +27,16 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight { mar
 /** Format */
 em { font-weight: normal; font-style: italic; }
 
-:lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+em:lang(ja) { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
 
-:lang(ja) em, :lang(ja) strong, :lang(ja) pre em, :lang(ja) pre strong, :lang(ja) code em, :lang(ja) code strong { -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
-:lang(ja) em, :lang(ja) pre em, :lang(ja) code em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; }
-:lang(ja) strong, :lang(ja) pre strong, :lang(ja) code strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; }
+pre:lang(ja) em, pre:lang(ja) strong, code:lang(ja) em, code:lang(ja) strong { -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+pre:lang(ja) em, code:lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; }
+pre:lang(ja) strong, code:lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; }
 
-@supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { :lang(ja) em, :lang(ja) strong { text-decoration: none; text-shadow: none; }
-  :lang(ja) em { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
-  :lang(ja) strong { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; }
-  :lang(ja) pre em, :lang(ja) pre strong, :lang(ja) code em, :lang(ja) code strong { -webkit-text-emphasis-style: none; text-emphasis-style: none; } }
+@supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { em:lang(ja), strong:lang(ja) { text-decoration: none; text-shadow: none; }
+  em:lang(ja) { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
+  strong:lang(ja) { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; }
+  pre:lang(ja) em, pre:lang(ja) strong, code:lang(ja) em, code:lang(ja) strong { -webkit-text-emphasis-style: none; text-emphasis-style: none; } }
 /** Images */
 img { max-width: 100%; vertical-align: middle; }
 
@@ -144,6 +149,7 @@ hr { border: solid thin #828282; margin: 30px; }
 .post-content:lang(ja) { text-align: justify; text-justify: inter-ideograph; }
 .post-content:lang(ja) > p { text-indent: 1em; }
 .post-content:lang(ja) > pre + p, .post-content:lang(ja) > math + p, .post-content:lang(ja) > ul + p, .post-content:lang(ja) > ol + p { text-indent: inherit !important; }
+.post-content:lang(ja) :not(:lang(ja)) { text-align: left; }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post-content h1, html.vertical-writing-recommended .post-content h2, html.vertical-writing-recommended .post-content h3, html.vertical-writing-recommended .post-content h4, html.vertical-writing-recommended .post-content h5, html.vertical-writing-recommended .post-content h6 { margin: 0 40px 0 20px; }
   html.vertical-writing-recommended .post-content p { margin: auto 10px; }
   html.vertical-writing-recommended .post-content .fitcontain { /* As of firefox 46, vertical-rl may conflict with object-fit. */ object-fit: unset; width: auto; height: auto; }

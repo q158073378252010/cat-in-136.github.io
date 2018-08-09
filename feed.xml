@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
-  <generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator>
+  <generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2018-07-10T22:54:34+09:00</updated>
+  <updated>2018-08-09T18:53:19+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,671 @@
 
   
   
+  
+    <entry>
+      <title type="html">マイナス2進数の考察</title>
+      <link href="https://cat-in-136.github.io/2018/08/count-in-base-negative-2.html" rel="alternate" type="text/html" title="マイナス2進数の考察" />
+      <published>2018-08-09T18:49:40+09:00</published>
+      <updated>2018-08-09T18:49:40+09:00</updated>
+      <id>https://cat-in-136.github.io/2018/08/count-in-base-negative-2</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2018/08/count-in-base-negative-2.html">&lt;p&gt;
+古くはビル・ゲイツの試験、最近だと &lt;a href=&quot;https://turingcomplete.fm/&quot;&gt;#tcfm&lt;/a&gt; で
+話題になった「マイナス2進数」が興味深い。
+&lt;/p&gt;
+
+&lt;h3&gt;導入&lt;/h3&gt;
+
+&lt;blockquote lang=&quot;en&quot;&gt;
+  &lt;p&gt;Answer 33 Count in base &lt;em&gt;negative&lt;/em&gt; 2.&lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;p&gt;
+    In general, any base works like a set of building blocks of differnt sizes.
+    In base 10, the blocks come in sizes 1, 10, 100, 1,000, etc.
+    In base 2, the blocks come in sizes 1, 2, 4, 8, 16, etc.
+    Combining units in these standard sizes creates any desired number.
+  &lt;/p&gt;
+  &lt;p&gt;
+    So what would base -2 notation be?
+  &lt;/p&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;footer&gt;
+    — &lt;cite&gt;&quot;How Would You Move Mount Fuji?: Microsoft's Cult of the Puzzle - How the World's Smartest Companies Select the Most Creative Thinkers&quot;&lt;/cite&gt;
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+  2進数は、一番右のビット(LSB)を2&lt;sup&gt;0&lt;/sup&gt;、その次が2&lt;sup&gt;1&lt;/sup&gt;、その次が2&lt;sup&gt;2&lt;/sup&gt;…
+  と表現することだが、ここでのマイナス2進数とは「メカニカルに」2→-2に置き換えたものだ。
+  すなわち、一番右のビット(LSB)を(-2)&lt;sup&gt;0&lt;/sup&gt;、その次が(-2)&lt;sup&gt;1&lt;/sup&gt;、その次が(-2)&lt;sup&gt;2&lt;/sup&gt;…
+  と表現することだ。
+&lt;/p&gt;
+
+&lt;p&gt;
+  マイナス2進数のLSBから0番目として桁を振っていったとしてマイナス2進数の各桁を
+  &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+    &lt;mrow&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;n&lt;/mi&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;k&lt;/mi&gt;
+        &lt;/mrow&gt;
+      &lt;/msub&gt;
+    &lt;/mrow&gt;
+    &lt;mo&gt;&amp;#x2208;&lt;/mo&gt;
+    &lt;mfenced open=&quot;{&quot; close=&quot;}&quot;&gt;
+      &lt;mrow&gt;
+         &lt;mn&gt;0&lt;/mn&gt;
+         &lt;mo&gt;,&lt;/mo&gt;
+         &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfenced&gt;
+    &lt;mspace width=&quot;1em&quot; /&gt;
+    &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+      &lt;mrow&gt;
+         &lt;mn&gt;0&lt;/mn&gt;
+         &lt;mo&gt;&amp;#x2264;&lt;/mo&gt;
+         &lt;mi&gt;k&lt;/mi&gt;
+         &lt;mo&gt;&amp;#x2264;&lt;/mo&gt;
+         &lt;mi&gt;L&lt;/mi&gt;
+         &lt;mo&gt;-&lt;/mo&gt;
+         &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/mfenced&gt;
+  &lt;/math&gt;
+  すなわち数値を
+  &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+    &lt;mrow&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;n&lt;/mi&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;L&lt;/mi&gt;
+          &lt;mo&gt;-&lt;/mo&gt;
+          &lt;mn&gt;1&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/msub&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;n&lt;/mi&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;L&lt;/mi&gt;
+          &lt;mo&gt;-&lt;/mo&gt;
+          &lt;mn&gt;2&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/msub&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;n&lt;/mi&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;L&lt;/mi&gt;
+          &lt;mo&gt;-&lt;/mo&gt;
+          &lt;mn&gt;3&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/msub&gt;
+      &lt;mo&gt;...&lt;/mo&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;n&lt;/mi&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/msub&gt;
+      &lt;msub&gt;
+        &lt;mi&gt;n&lt;/mi&gt;
+        &lt;mn&gt;0&lt;/mn&gt;
+      &lt;/msub&gt;
+    &lt;/mrow&gt;
+  &lt;/math&gt;
+  と表すとすると、10進数への変換式は
+&lt;/p&gt;
+
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;
+  &lt;mrow&gt;
+    &lt;mstyle displaystyle=&quot;true&quot;&gt;
+      &lt;munderover&gt;
+        &lt;mo&gt;&amp;#x02211;&lt;/mo&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;k&lt;/mi&gt;
+          &lt;mo&gt;=&lt;/mo&gt;
+          &lt;mn&gt;0&lt;/mn&gt;
+        &lt;/mrow&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;L&lt;/mi&gt;
+          &lt;mo&gt;-&lt;/mo&gt;
+          &lt;mn&gt;1&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/munderover&gt;
+    &lt;/mstyle&gt;
+    &lt;msub&gt;
+      &lt;mi&gt;n&lt;/mi&gt;
+      &lt;mi&gt;k&lt;/mi&gt;
+    &lt;/msub&gt;
+    &lt;msup&gt;
+      &lt;mrow&gt;
+        &lt;mo form=&quot;prefix&quot;&gt;(&lt;/mo&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mo form=&quot;postfix&quot;&gt;)&lt;/mo&gt;
+      &lt;/mrow&gt;
+      &lt;mi&gt;k&lt;/mi&gt;
+    &lt;/msup&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+
+&lt;p&gt;
+  ちなみに4桁のマイナス2進数と10進数の関係は下記のようになる。
+&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;table&gt;
+    &lt;caption&gt;count base negative 2 in 4-bits&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;&lt;td&gt;decimal&lt;/td&gt;&lt;td&gt;base negative 2&lt;/td&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;-10&lt;/td&gt;&lt;td&gt;1010&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-9&lt;/td&gt;&lt;td&gt;1011&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-8&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-7&lt;/td&gt;&lt;td&gt;1001&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-6&lt;/td&gt;&lt;td&gt;1110&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-5&lt;/td&gt;&lt;td&gt;1111&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-4&lt;/td&gt;&lt;td&gt;1100&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-3&lt;/td&gt;&lt;td&gt;1101&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-2&lt;/td&gt;&lt;td&gt;0010&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;-1&lt;/td&gt;&lt;td&gt;0011&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0000&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0001&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;0110&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;0111&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;0100&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;0101&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;
+  これの逆変換式を求めたい。
+&lt;/p&gt;
+
+&lt;h3&gt;補題：ビット幅で表現できる数値&lt;/h3&gt;
+
+&lt;p&gt;
+  手計算すると感覚的に下記の通りビット幅拡張によって表現できる範囲が、
+  正の方向と負の方向の交互に隙間なく広がることがわかる。
+&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;table&gt;
+    &lt;caption&gt;bit length vs range of &quot;base negative 2&quot;&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;bit length: L&lt;/th&gt;
+        &lt;td&gt;minimal&lt;/td&gt;
+        &lt;td&gt;MAXIMUM&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;th&gt;1&lt;/th&gt;
+        &lt;td&gt;0&lt;/td&gt;
+        &lt;td&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;2&lt;/th&gt;
+        &lt;td&gt;-2&lt;/td&gt;
+        &lt;td&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;3&lt;/th&gt;
+        &lt;td&gt;-2&lt;/td&gt;
+        &lt;td&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;th&gt;4&lt;/th&gt;
+        &lt;td&gt;-10&lt;/td&gt;
+        &lt;td&gt;5&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;
+  Lビット列のマイナス2進数で表現できる値の最大値と最小値は、
+  手続き的に書くとそれぞれ下記の通り。
+&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mbin_positive_max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pow2u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mbin_negative_min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pow2u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;i32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;#[inline]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;pow2u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;u32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;
+  なお、等比級数の和であるのだから数式としては
+&lt;/p&gt;
+
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;
+  &lt;mrow&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;msup&gt;
+          &lt;mn&gt;4&lt;/mn&gt;
+          &lt;mfenced open=&quot;&amp;#x2308;&quot; close=&quot;&amp;#x2309;&quot;&gt;
+            &lt;mfrac&gt;
+              &lt;mi&gt;L&lt;/mi&gt;
+              &lt;mn&gt;2&lt;/mn&gt;
+            &lt;/mfrac&gt;
+          &lt;/mfenced&gt;
+        &lt;/msup&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mn&gt;3&lt;/mn&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;,&lt;/mo&gt;
+    &lt;mspace width=&quot;1em&quot; /&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+          &lt;mrow&gt;
+            &lt;msup&gt;
+              &lt;mn&gt;4&lt;/mn&gt;
+              &lt;mfenced open=&quot;&amp;#x230A;&quot; close=&quot;&amp;#x230B;&quot;&gt;
+                &lt;mfrac&gt;
+                  &lt;mi&gt;L&lt;/mi&gt;
+                  &lt;mn&gt;2&lt;/mn&gt;
+                &lt;/mfrac&gt;
+              &lt;/mfenced&gt;
+            &lt;/msup&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfenced&gt;
+      &lt;/mrow&gt;
+      &lt;mn&gt;3&lt;/mn&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+
+&lt;p&gt;
+  注意すべき点としては、
+  Lが奇数ならば、Lビットのときの最大値はL+1ビットの最大値と同じで
+  Lビットのときの最小値はL-1ビットの最小値と同じである。
+  また、Lが偶数ならば、Lビットのときの最大値はL-1ビットの最大値と同じで
+  Lビットのときの最小値はL+1ビットの最小値と同じである。
+&lt;/p&gt;
+
+&lt;p&gt;
+  実のところマイナス2進数では、上述の範囲内の数値は隙間なくすべて表現できる。
+  Lの数値が小さいときは手作業で確認できるとして、このルールが続くことを下記に示す。
+&lt;/p&gt;
+
+&lt;p&gt;
+  Lが奇数のとき、L-1ビットからLビットに拡張したときに広がる数値の範囲の最小値は、
+  最も左のビット(MSB)が1となる数値の値に、L-1ビットのときの最小値(これはLビットのときの最小値と同じであるが)を
+  加算した値である。
+&lt;/p&gt;
+
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;
+  &lt;mrow&gt;
+    &lt;msup&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+      &lt;mrow&gt;
+        &lt;mi&gt;L&lt;/mi&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+          &lt;mrow&gt;
+            &lt;msup&gt;
+              &lt;mn&gt;4&lt;/mn&gt;
+              &lt;mfrac&gt;
+                &lt;mrow&gt;
+                  &lt;mi&gt;L&lt;/mi&gt;
+                  &lt;mo&gt;-&lt;/mo&gt;
+                  &lt;mn&gt;1&lt;/mn&gt;
+                &lt;/mrow&gt;
+                &lt;mn&gt;2&lt;/mn&gt;
+              &lt;/mfrac&gt;
+            &lt;/msup&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfenced&gt;
+      &lt;/mrow&gt;
+      &lt;mn&gt;3&lt;/mn&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+
+&lt;p&gt;
+  これを解くと
+&lt;/p&gt;
+
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;
+  &lt;mi&gt;...&lt;/mi&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mfrac&gt;
+    &lt;mrow&gt;
+      &lt;msup&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;L&lt;/mi&gt;
+          &lt;mo&gt;-&lt;/mo&gt;
+          &lt;mn&gt;1&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/msup&gt;
+      &lt;mo&gt;+&lt;/mo&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+    &lt;/mrow&gt;
+    &lt;mn&gt;3&lt;/mn&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mfrac&gt;
+    &lt;mrow&gt;
+      &lt;msup&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mrow&gt;
+          &lt;mi&gt;L&lt;/mi&gt;
+          &lt;mo&gt;-&lt;/mo&gt;
+          &lt;mn&gt;1&lt;/mn&gt;
+        &lt;/mrow&gt;
+      &lt;/msup&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+    &lt;/mrow&gt;
+    &lt;mn&gt;3&lt;/mn&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+  &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mfrac&gt;
+    &lt;mrow&gt;
+      &lt;msup&gt;
+        &lt;mn&gt;4&lt;/mn&gt;
+        &lt;mfrac&gt;
+          &lt;mrow&gt;
+            &lt;mi&gt;L&lt;/mi&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+          &lt;mn&gt;2&lt;/mn&gt;
+        &lt;/mfrac&gt;
+      &lt;/msup&gt;
+      &lt;mo&gt;-&lt;/mo&gt;
+      &lt;mn&gt;1&lt;/mn&gt;
+    &lt;/mrow&gt;
+    &lt;mn&gt;3&lt;/mn&gt;
+  &lt;/mfrac&gt;
+  &lt;mo&gt;+&lt;/mo&gt;
+  &lt;mn&gt;1&lt;/mn&gt;
+&lt;/math&gt;
+
+&lt;p&gt;
+  であるから、L-1ビットのときの最大値(これはL-2ビットのときの最大値に同じ)に
+  +1加算したものと等しい。
+&lt;/p&gt;
+&lt;p&gt;
+  よって、Lが奇数のとき、L-1ビットのとき隙間なくすべて表現できるのならば、
+  Lビットのときも隙間なくすべて表現できる。
+&lt;/p&gt;
+
+&lt;p&gt;
+  Lが偶数のとき(ただし0は除く)も同様に、L-1ビットからLビットに拡張したときに広がる数値の範囲の最大値は、
+&lt;/p&gt;
+
+&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;
+  &lt;mrow&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;msup&gt;
+      &lt;mn&gt;2&lt;/mn&gt;
+      &lt;mrow&gt;
+        &lt;mi&gt;L&lt;/mi&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+    &lt;/msup&gt;
+    &lt;mo&gt;+&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;msup&gt;
+          &lt;mn&gt;4&lt;/mn&gt;
+          &lt;mfrac&gt;
+            &lt;mi&gt;L&lt;/mi&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mfrac&gt;
+        &lt;/msup&gt;
+        &lt;mo&gt;-&lt;/mo&gt;
+        &lt;mn&gt;1&lt;/mn&gt;
+      &lt;/mrow&gt;
+      &lt;mn&gt;3&lt;/mn&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mo&gt;...&lt;/mo&gt;
+    &lt;mo&gt;=&lt;/mo&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mn&gt;2&lt;/mn&gt;
+        &lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;
+          &lt;mrow&gt;
+            &lt;msup&gt;
+              &lt;mn&gt;4&lt;/mn&gt;
+              &lt;mfrac&gt;
+                &lt;mi&gt;L&lt;/mi&gt;
+                &lt;mn&gt;2&lt;/mn&gt;
+              &lt;/mfrac&gt;
+            &lt;/msup&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/mfenced&gt;
+      &lt;/mrow&gt;
+      &lt;mn&gt;3&lt;/mn&gt;
+    &lt;/mfrac&gt;
+    &lt;mo&gt;-&lt;/mo&gt;
+    &lt;mn&gt;1&lt;/mn&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;
+
+
+&lt;p&gt;
+  であり、L-1ビットのときの最小値(これはLビットのときの最小値に同じ)に
+  -1したものと等しい。
+&lt;/p&gt;
+&lt;p&gt;
+  よって、Lが偶数のとき、L-1ビットのとき隙間なくすべて表現できるのならば、
+  Lビットのときも隙間なくすべて表現できる。
+&lt;/p&gt;
+
+&lt;p&gt;
+  したがってLが偶数であっても奇数であっても、帰納的に隙間なく表現できる、
+  すなわちビット幅拡張によって表現できる範囲が隙間なく広がっていくことを示せた。
+&lt;/p&gt;
+
+&lt;h3&gt;10進数→マイナス2進数変換アルゴリズム&lt;/h3&gt;
+
+&lt;p&gt;
+  既述の補題の考察より、(有界な数値であるならば、)
+  MSB側からビットが立つか判定していけば良いことがわかる。
+&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;r=10進数の値&lt;/li&gt;
+  &lt;li&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo&gt;...&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/math&gt;について繰り返し:
+    &lt;ol&gt;
+      &lt;li&gt;kビットからk+1ビットで拡張される値の範囲内に属するならば、kビット目の値&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/math&gt;。そうでなければ0&lt;/li&gt;
+      &lt;li&gt;rから&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/msub&gt;&lt;msup&gt;&lt;mfenced open=&quot;(&quot; close=&quot;)&quot;&gt;&lt;mrow&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;/mfenced&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/msup&gt;&lt;/math&gt;を引く&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    おわり。変換された値は
+    &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+      &lt;mrow&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;n&lt;/mi&gt;
+          &lt;mrow&gt;
+            &lt;mi&gt;L&lt;/mi&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;1&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msub&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;n&lt;/mi&gt;
+          &lt;mrow&gt;
+            &lt;mi&gt;L&lt;/mi&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;2&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msub&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;n&lt;/mi&gt;
+          &lt;mrow&gt;
+            &lt;mi&gt;L&lt;/mi&gt;
+            &lt;mo&gt;-&lt;/mo&gt;
+            &lt;mn&gt;3&lt;/mn&gt;
+          &lt;/mrow&gt;
+        &lt;/msub&gt;
+        &lt;mo&gt;...&lt;/mo&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;n&lt;/mi&gt;
+          &lt;mn&gt;1&lt;/mn&gt;
+        &lt;/msub&gt;
+        &lt;msub&gt;
+          &lt;mi&gt;n&lt;/mi&gt;
+          &lt;mn&gt;0&lt;/mn&gt;
+        &lt;/msub&gt;
+      &lt;/mrow&gt;
+    &lt;/math&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;オンライン変換サンプル(powered by WebAssembly)&lt;/h3&gt;
+
+&lt;p&gt;
+  仕様：オーバーフローを考慮していないので&lt;strong&gt;絶対値の大きな値だとエラーが出たり
+  不正な値がでる&lt;/strong&gt;。やろうと思えばなんとか対処できそうだが本題ではないので
+  省いた。
+&lt;/p&gt;
+
+&lt;div style=&quot;border: solid thin #000; margin: 1ex; padding: 1ex;&quot;&gt;
+  &lt;label for=&quot;minus-binary-string-input&quot;&gt;10進数を入力&lt;/label&gt;
+  &lt;input type=&quot;number&quot; id=&quot;minus-binary-string-input&quot; value=&quot;0&quot; /&gt;
+  &lt;br /&gt;
+  &lt;label for=&quot;minus-binary-string-output&quot;&gt;マイナス2進数計算結果&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;minus-binary-string-output&quot; maxlength=&quot;32&quot; readonly=&quot;readonly&quot; /&gt;
+&lt;/div&gt;
+&lt;script type=&quot;application/javascript&quot;&gt;
+window.addEventListener(&quot;DOMContentLoaded&quot;, function () {
+  &quot;use strict&quot;;
+  fetch(&quot;data:application/wasm;base64,AGFzbQEAAAABCQJgAABgAX8BfwMDAgABBQMBABEHFQIGbWVtb3J5AgAIZGVjMm1iaW4AAQqsAgJSAQF/AkACQEGACCgCAEEBRgRAQYQIQYQIKAIAQQFqIgA2AgAgAEEDSQ0BDAILQYAIQoGAgIAQNwMAC0GMCCgCACIAQX9MDQBBjAggADYCAAsAC9YBAQV/AkADQAJAAkBBHyAEayIFBEAgBUEBcQ0BQQAhAkEAIQEDQCACQQBBASABdCABQQFxG2ohAiAEIAFBAWoiAWpBH0cNAAsgACACTA0CIABBASAFdCIBayEAIAEgA2ohAwwCCyAAQQFLDQMgAyAAaiEDQQAhAAwBC0EAIQJBACEBA0AgAkEAIAFBAXFrQQEgAXRxayECIAQgAUEBaiIBakEfRw0ACyAAIAJODQBBASAFdCIBIABqIQAgASADaiEDCyAEQQFqIgRBIEkNAAsgAw8LEAAACwALB2xpbmtpbmcDARE=&quot;).then(response =&gt; {
+    return response.arrayBuffer();
+  }).then(bytes =&gt; WebAssembly.instantiate(bytes)).then(results =&gt; {
+    const instance = results.instance;
+
+    const onchange = function minus_binary_string_on_change (event) {
+      try {
+        const decval = parseInt(document.getElementById(&quot;minus-binary-string-input&quot;).value);
+        const mbinval = instance.exports.dec2mbin(decval).toString(2);
+        document.getElementById(&quot;minus-binary-string-output&quot;).value = mbinval;
+      } catch (e) {
+        document.getElementById(&quot;minus-binary-string-output&quot;).value = &quot;ERR&quot;;
+        console.error(e);
+      }
+    }
+    onchange();
+    document.getElementById(&quot;minus-binary-string-input&quot;).addEventListener(&quot;change&quot;, onchange, false);
+  }).catch(console.error);
+});
+&lt;/script&gt;
+
+&lt;p&gt;
+  ソースは rust で書いた後、WebAssembly に変換している。
+  変換前のソースコードは &lt;a href=&quot;https://gist.github.com/cat-in-136/d0efb4879290b09c8cebb358632d8749&quot;&gt;gist:cat-in-136/d0efb4879290b09c8cebb358632d8749&lt;/a&gt; においてある。
+  test code も書いてあり（WebAssembly からは取り除かれている）、
+  こちらは official release (WebAssembly 非対応) の rust でも動作する。
+&lt;/p&gt;
+
+&lt;p&gt;
+  なお WebAssembly の仕様上、文字列の引き渡しに問題があるので整数(&lt;code&gt;u32&lt;/code&gt;)を
+  単なる bitstring を表現するものとして扱ってやり取りしている。
+&lt;/p&gt;
+
+&lt;h3&gt;10進法→マイナス2進法の変換の考察&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;確かに数式としては数字の表現方法としては成り立つ&lt;/li&gt;
+  &lt;li&gt;でもむちゃくちゃ計算とかがやりづらい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;梶谷通稔, &quot;&lt;a href=&quot;http://www.arp-nt.co.jp/rensai/index-sono1.html&quot;&gt;連載　その1　あなたはビルゲイツの試験に受かる?&lt;/a&gt;&quot;, 株式会社あーぷ&lt;/li&gt;
+  &lt;li&gt;Poundstone, W., &quot;How Would You Move Mount Fuji?: Microsoft's Cult of the Puzzle - How the World's Smartest Companies Select the Most Creative Thinkers&quot;, Little Brown &amp;amp; Co., 2003. (ISBN 978-0-7595-2802-4)&lt;/li&gt;
+  &lt;li&gt;Rui Ueyama, hikalium, &quot;&lt;a href=&quot;https://turingcomplete.fm/29&quot;&gt;Turing Complete FM, 29. ユタ・ティーポット、Cコンパイラ開発の授業、中学生時代のOS自作エピソード&lt;/a&gt;&quot;, 2018.&lt;/li&gt;
+  &lt;li&gt;ichirin2501, &quot;&lt;a href=&quot;https://ichirin2501.hatenablog.com/entry/20100306/1267818827&quot;&gt;マイナス2進数を求めるプログラムを書いてみた。&lt;/a&gt;&quot;, ichirin2501's diary, 2010. (注：負数に非対応)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;application/javascript&quot; async=&quot;async&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=MML_CHTML&quot;&gt;&lt;/script&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="math" />
+      
+        <category term="チラシの裏" />
+      
+        <category term="rustlang" />
+      
+        <category term="wasm" />
+      
+        <category term="web application" />
+      
+
+      
+        <summary type="html">古くはビル・ゲイツの試験、最近だと #tcfm で 話題になった「マイナス2進数」が興味深い。</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 62.0 beta 6 default preference and firefox 61.0.1</title>
@@ -937,353 +1602,6 @@ WOFF さえ対応していないブラウザは縦書きをろくに対応して
 
       
         <summary type="html">&lt;![CDATA[ /* */ @font-face { font-family: &quot;Gantan2018catin136&quot;; src: url(&quot;/images/201801_newyearmessage2018_gantan2018catin136.woff2&quot;) format(&quot;woff2&quot;), url(&quot;/images/201801_newyearmessage2018_gantan2018catin136.woff&quot;) format(&quot;woff&quot;); }</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">ベジェ曲線で描く円と真円の面積について</title>
-      <link href="https://cat-in-136.github.io/2017/11/bezier-arc-area.html" rel="alternate" type="text/html" title="ベジェ曲線で描く円と真円の面積について" />
-      <published>2017-11-24T00:28:20+09:00</published>
-      <updated>2017-11-24T00:28:20+09:00</updated>
-      <id>https://cat-in-136.github.io/2017/11/bezier-arc-area</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2017/11/bezier-arc-area.html">&lt;p&gt;
-しばしば話題に上がるベジェ曲線で描く円と正円の差の話題、
-円弧の差分に注目してきたけれど正円よりも大きい部分があるのは
-「&lt;a href=&quot;/2014/03/bezier-2-diff.html&quot;&gt;ベジェ曲線で描く円と真円の差について&lt;/a&gt;」で既述のとおりである。
-&lt;/p&gt;
-&lt;p&gt;
-すると、
-円を円として扱わずベジェ曲線として使うツールを使って円を描いたあとに、
-円を印刷すると真円よりもインク代がかかったり
-3Dプリントすると真円よりもフィラメントを消費するということが
-考えられるのだが、それはどのくらいになるのであろうか?
-そこで、面積を計算してみた。
-&lt;/p&gt;
-
-&lt;aside&gt;
-&lt;div style=&quot;background: #ffd; border: solid 3px #ff8&quot;&gt;
-この記事を読むにはMathMLをレンダリングできるFirefoxといったブラウザが
-必要です
-もし数式部分が読めない場合は
-&lt;a href=&quot;http://getfirefox.com/&quot;&gt;Firefoxをインストールする&lt;/a&gt;か
-&lt;button onclick=&quot;var a=document.createElement(&amp;quot;script&amp;quot;);a.setAttribute(&amp;quot;type&amp;quot;,&amp;quot;application/javascript&amp;quot;);a.setAttribute(&amp;quot;src&amp;quot;,&amp;quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&amp;quot;);document.body.appendChild(a);&quot;&gt;このボタンをクリックしてMathJaxを使って無理矢理表示する&lt;/button&gt;
-などしてください。
-&lt;/div&gt;
-&lt;/aside&gt;
-
-&lt;h4&gt;ベジェ曲線で描く円の面積求め方&lt;/h4&gt;
-
-&lt;p&gt;
-中心角&amp;#x03B8;の円弧は次の制御点A, A', B, B'で書き表せる。
-&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\begin{aligned}
-\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
-\text{B:}&amp;amp;(1,0)\\
-\text{A':}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
-\text{B':}&amp;amp;(1,\kappa)\\
-\end{aligned}&quot;&gt;&lt;semantics&gt;&lt;mtable columnspacing=&quot;0em&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B:&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;A':&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;sin&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;cos&lt;/mo&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mtext&gt;B':&lt;/mtext&gt;&lt;/mtd&gt;&lt;mtd&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\begin{aligned}
-\text{A:}&amp;amp;(\cos\theta,\sin\theta)\\
-\text{B:}&amp;amp;(1,0)\\
-\text{A':}&amp;amp;(\cos\theta+\kappa\sin\theta,\sin\theta-\kappa\cos\theta)\\
-\text{B':}&amp;amp;(1,\kappa)\\
-\end{aligned}
-&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(5.1)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;where,&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math display=&quot;block&quot; xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00B7;&lt;/mo&gt;&lt;mo rspace=&quot;0.5ex&quot; lspace=&quot;0em&quot;&gt;tan&lt;/mo&gt;&lt;mfrac&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/mfrac&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;TeX&quot;&gt;\kappa=\frac{4}{3}\cdot\tan\frac\theta4&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(5.2)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;262&quot; height=&quot;302&quot; data=&quot;/images/generic-kappa.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;135degree arc using Bézier&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;ベジェ曲線の定義より、この曲線の任意の点はパラメータ&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;u (0\leq u \leq 1)&quot; display=&quot;inline&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;u(0\leq u \leq 1)&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;を使って、下記の通り表現できる。&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot; title=&quot;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;&lt;mo&gt;&amp;#x2061;&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;A&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;′&lt;/mo&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi mathvariant=&quot;bold&quot;&gt;B&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;u&lt;/mi&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}(u)=\bm{A}(1-u)^3+\bm{A}'3u(1-u)^2+\bm{B}'3u^2(1-u)+\bm{B}u^3&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(5.3)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\bm{P}(u)=\left(P_x(u),P_y(u)\right)&quot; display=&quot;inline&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;
-      &lt;mi mathvariant=&quot;bold&quot;&gt;P&lt;/mi&gt;
-      &lt;mo&gt;&amp;#x2061;&lt;/mo&gt;
-      &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
-      &lt;mi&gt;u&lt;/mi&gt;
-      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
-      &lt;mo&gt;=&lt;/mo&gt;
-      &lt;mo&gt;(&lt;/mo&gt;
-      &lt;mrow&gt;
-        &lt;msub&gt;
-          &lt;mi&gt;P&lt;/mi&gt;
-          &lt;mi&gt;x&lt;/mi&gt;
-        &lt;/msub&gt;
-        &lt;mo&gt;&amp;#x2061;&lt;/mo&gt;
-        &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
-        &lt;mi&gt;u&lt;/mi&gt;
-        &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
-        &lt;mo separator=&quot;true&quot;&gt;,&lt;/mo&gt;
-        &lt;msub&gt;
-          &lt;mi&gt;P&lt;/mi&gt;
-          &lt;mi&gt;y&lt;/mi&gt;
-        &lt;/msub&gt;
-        &lt;mo&gt;&amp;#x2061;&lt;/mo&gt;
-        &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
-        &lt;mi&gt;u&lt;/mi&gt;
-        &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
-      &lt;/mrow&gt;
-      &lt;mo&gt;)&lt;/mo&gt;
-    &lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;\bm{P}(u)=\left(P_x(u),P_y(u)\right)&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;
-とすると、よく下記の式で面積が求められる：
-&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;S = \int_{u=0}^{u=1} P_y(u)\,dx = \int_0^1 P_y(u)\cdot\frac{d P_x(u)}{du}\,du&quot; display=&quot;block&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;
-      &lt;mi&gt;S&lt;/mi&gt;
-      &lt;mo&gt;=&lt;/mo&gt;
-      &lt;msubsup&gt;
-        &lt;mo&gt;&amp;#x222B;&lt;!-- ∫ --&gt;&lt;/mo&gt;
-        &lt;mrow&gt;
-          &lt;mi&gt;u&lt;/mi&gt;
-          &lt;mo&gt;=&lt;/mo&gt;
-          &lt;mn&gt;0&lt;/mn&gt;
-        &lt;/mrow&gt;
-        &lt;mrow&gt;
-          &lt;mi&gt;u&lt;/mi&gt;
-          &lt;mo&gt;=&lt;/mo&gt;
-          &lt;mn&gt;1&lt;/mn&gt;
-        &lt;/mrow&gt;
-      &lt;/msubsup&gt;
-      &lt;msub&gt;
-        &lt;mi&gt;P&lt;/mi&gt;
-        &lt;mi&gt;y&lt;/mi&gt;
-      &lt;/msub&gt;
-      &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
-      &lt;mi&gt;u&lt;/mi&gt;
-      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
-      &lt;mspace width=&quot;thinmathspace&quot; /&gt;
-      &lt;mi&gt;d&lt;/mi&gt;
-      &lt;mi&gt;x&lt;/mi&gt;
-      &lt;mo&gt;=&lt;/mo&gt;
-      &lt;msubsup&gt;
-        &lt;mo&gt;&amp;#x222B;&lt;!-- ∫ --&gt;&lt;/mo&gt;
-        &lt;mn&gt;0&lt;/mn&gt;
-        &lt;mn&gt;1&lt;/mn&gt;
-      &lt;/msubsup&gt;
-      &lt;msub&gt;
-        &lt;mi&gt;P&lt;/mi&gt;
-        &lt;mi&gt;y&lt;/mi&gt;
-      &lt;/msub&gt;
-      &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
-      &lt;mi&gt;u&lt;/mi&gt;
-      &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
-      &lt;mo&gt;&amp;#x22C5;&lt;!-- ⋅ --&gt;&lt;/mo&gt;
-      &lt;mfrac&gt;
-        &lt;mrow&gt;
-          &lt;mi&gt;d&lt;/mi&gt;
-          &lt;msub&gt;
-            &lt;mi&gt;P&lt;/mi&gt;
-            &lt;mi&gt;x&lt;/mi&gt;
-          &lt;/msub&gt;
-          &lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;
-          &lt;mi&gt;u&lt;/mi&gt;
-          &lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;
-        &lt;/mrow&gt;
-        &lt;mrow&gt;
-          &lt;mi&gt;d&lt;/mi&gt;
-          &lt;mi&gt;u&lt;/mi&gt;
-        &lt;/mrow&gt;
-      &lt;/mfrac&gt;
-      &lt;mspace width=&quot;thinmathspace&quot; /&gt;
-      &lt;mi&gt;d&lt;/mi&gt;
-      &lt;mi&gt;u&lt;/mi&gt;
-    &lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;S = \int_{u=0}^{u=1} P_y(u)\,dx = \int_0^1 P_y(u)\cdot\frac{d P_x(u)}{du}\,du&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(5.4)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;
-(5.1),(5.2),(5.3)式を(5.4)式に適用することで面積を求めることができる。
-&lt;/p&gt;
-
-&lt;h4&gt;ベジェ曲線で描く円の面積&lt;/h4&gt;
-
-&lt;p&gt;
-(5.4)式を計算すればいいのだが、手計算を早速諦めて
-&lt;a href=&quot;http://maxima.sourceforge.net/&quot; title=&quot;Maxima, a Computer Algebra System&quot;&gt;maxima&lt;/a&gt;使って解いてみる。
-&lt;/p&gt;
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i1) &lt;kbd&gt;P(u):=A*(1-u)^3+Ac*3*u*(1-u)^2+Bc*3*u^2*(1-u)+B*u^3;&lt;/kbd&gt;
-                          3                 2         2              3
-(%o1)    P(u) := A (1 - u)  + Ac 3 u (1 - u)  + Bc 3 u  (1 - u) + B u
-(%i2) &lt;kbd&gt;Px(u):=sublis([A = cos(theta),B = 1,Ac = cos(theta)+k*sin(theta),Bc = 1],P(u));&lt;/kbd&gt;
-(%o2) Px(u) := sublis([A = cos(theta), B = 1, Ac = cos(theta) + k sin(theta), 
-                                                                 Bc = 1], P(u))
-(%i3) &lt;kbd&gt;Py(u):=sublis([A = sin(theta),B = 0,Ac = sin(theta)-k*cos(theta),Bc = k],P(u));&lt;/kbd&gt;
-(%o3) Py(u) := sublis([A = sin(theta), B = 0, Ac = sin(theta) - k cos(theta), 
-                                                                 Bc = k], P(u))
-(%i4) &lt;kbd&gt;integrate(Py(u)*diff(Px(u), u), u, 0, 1);&lt;/kbd&gt;
-              2                                  2
-(%o4) (6 k sin (theta) + ((- 10 cos(theta)) - 3 k  + 10) sin(theta)
-                                           2
-                                  + 6 k cos (theta) - 12 k cos(theta) + 6 k)/20
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-中心角が一般なときであっても一応は解析的に解けるようであり、面積は
-&lt;/p&gt;
-
-&lt;table style=&quot;width: 100%&quot;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&quot;width: 100%&quot;&gt;
-&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;S=6\kappa\sin ^2\theta+\left(-10\cos \theta-3\kappa^2+10\right)\sin \theta+6\kappa\cos ^2\theta-12\kappa\cos \theta+6\kappa&quot; display=&quot;block&quot;&gt;
-  &lt;semantics&gt;
-  &lt;mrow&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mspace width=&quot;thinmathspace&quot; /&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mi&gt;sin&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfenced separators=&quot;&quot;&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;cos&lt;/mi&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;3&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;10&lt;/mn&gt;&lt;/mfenced&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;sin&lt;/mi&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;msup&gt;&lt;mrow&gt;&lt;mi&gt;cos&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;-&lt;/mo&gt;&lt;mn&gt;12&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;cos&lt;/mi&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;6&lt;/mn&gt;&lt;mo&gt;&amp;#x2062;&lt;/mo&gt;&lt;mi&gt;&amp;#x03BA;&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;S=6\kappa\sin ^2\theta+\left(-10\cos \theta-3\kappa^2+10\right)\sin \theta+6\kappa\cos ^2\theta-12\kappa\cos \theta+6\kappa&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;
-&lt;/td&gt;
-&lt;td&gt;(5.5)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-
-&lt;p&gt;
-ところで典型的なベクトル画像ソフトは下図のように中心角90度で分割している。
-&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;object width=&quot;222&quot; height=&quot;222&quot; data=&quot;/images/circle-in-bezeir.svg&quot;&gt;&lt;/object&gt;
-&lt;figcaption&gt;A circle using Bézier generated by typical vector graphic editor&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;
-(5.5)式に&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; title=&quot;\theta=\pi/2&quot; display=&quot;inline&quot;&gt;
-  &lt;semantics&gt;
-    &lt;mrow&gt;&lt;mi&gt;&amp;#x03B8;&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;&amp;#x03C0;&lt;/mn&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;
-    &lt;annotation encoding=&quot;TeX&quot;&gt;\theta=\pi/2&lt;/annotation&gt;
-  &lt;/semantics&gt;
-&lt;/math&gt;を代入して4倍にすればベジェ曲線で描く円の面積がわかって
-&lt;/p&gt;
-
-&lt;pre class=&quot;maxima-output&quot;&gt;&lt;samp&gt;(%i5) &lt;kbd&gt;sublis([k = 4/3*(sqrt(2)-1), theta=%pi/2], %o4) * 4;&lt;/kbd&gt;
-                                                      2
-                                      16 (sqrt(2) - 1)
-                   16 (sqrt(2) - 1) - ----------------- + 10
-                                              3
-(%o5)              -----------------------------------------
-                                       5
-(%i6) &lt;kbd&gt;float(%o5);&lt;/kbd&gt;
-(%o6)                          3.142472332656507
-&lt;/samp&gt;&lt;/pre&gt;
-
-&lt;p&gt;
-半径1の円の面積は当然円周率であって、3.141592653589793...であるから、
-0.00028%ぐらい真円よりも面積が大きいということになる。
-&lt;/p&gt;
-
-&lt;h4&gt;結論&lt;/h4&gt;
-
-&lt;p&gt;
-ベジェ曲線で描かれた円は、真円よりも0.00028%ぐらい余計に大きい。
-円を円として扱わずベジェ曲線として使うツールを使って円を描いたあとに、
-プリントしたらそれだけ余計にインク代も消費するし、
-3Dプリントすると真円よりもそれだけフィラメントを消費するらしい。
-&lt;/p&gt;
-
-&lt;style type=&quot;text/css&quot; scoped=&quot;scoped&quot;&gt;&lt;!--
-.maxima-output {
-  background-color: #fff;
-  color: #000;
-  font-size: smaller;
-  border: solid 1px #888;
-}
-.maxima-output kbd {
-  color: #008;
-}
---&gt;&lt;/style&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="Math" />
-      
-        <category term="Bézier" />
-      
-
-      
-        <summary type="html">しばしば話題に上がるベジェ曲線で描く円と正円の差の話題、 円弧の差分に注目してきたけれど正円よりも大きい部分があるのは 「ベジェ曲線で描く円と真円の差について」で既述のとおりである。 すると、 円を円として扱わずベジェ曲線として使うツールを使って円を描いたあとに、 円を印刷すると真円よりもインク代がかかったり 3Dプリントすると真円よりもフィラメントを消費するということが 考えられるのだが、それはどのくらいになるのであろうか? そこで、面積を計算してみた。</summary>
       
 
       

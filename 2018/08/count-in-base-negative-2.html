@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>マイナス2進数の考察</title>
+  <meta property="og:url" content="https://cat-in-136.github.io/2018/08/count-in-base-negative-2.html" />
+  <meta property="og:title" content="マイナス2進数の考察" />
+  <meta property="og:description" content="古くはビル・ゲイツの試験、最近だと #tcfm で 話題になった「マイナス2進数」が興味深い。 導入 Answer 33 Count in base negative 2. ... In gen..." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="cat_in_136.blog()" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2018/08/count-in-base-negative-2.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+</head>
+
+
+  <body>
+    
+<header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger">
+        <a class="page-link" href="/about">About</a>
+        <a class="page-link" href="/archive">Archive</a>
+        <a class="page-link" href="/tags">Tags</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2018/08/count-in-base-negative-2.html" itemprop="url">マイナス2進数の考察</a></h1>
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2018-08-09T18:49:40+09:00">2018-08-09T18:49:40+09:00</span></div>
+    <div class="post-meta">Tags:
+      <span itemprop="keywords">
+      <a class="tag" href="/tags.html#tag_math">Math</a>
+      <a class="tag" href="/tags.html#tag_%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
+      <a class="tag" href="/tags.html#tag_rustlang">Rustlang</a>
+      <a class="tag" href="/tags.html#tag_wasm">Wasm</a>
+      <a class="tag" href="/tags.html#tag_web%20application">Web application</a>
+      </span>
+    </div>
+    <div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2018-08-09-count-in-base-negative-2.html" class="source-path">_posts/2018-08-09-count-in-base-negative-2.html</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2018-08-09-count-in-base-negative-2.html">History</a>)
+    </div>
+    <div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+  
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>
+古くはビル・ゲイツの試験、最近だと <a href="https://turingcomplete.fm/">#tcfm</a> で
+話題になった「マイナス2進数」が興味深い。
+</p>
+
+<h3>導入</h3>
+
+<blockquote lang="en">
+  <p>Answer 33 Count in base <em>negative</em> 2.</p>
+  <p>...</p>
+  <p>
+    In general, any base works like a set of building blocks of differnt sizes.
+    In base 10, the blocks come in sizes 1, 10, 100, 1,000, etc.
+    In base 2, the blocks come in sizes 1, 2, 4, 8, 16, etc.
+    Combining units in these standard sizes creates any desired number.
+  </p>
+  <p>
+    So what would base -2 notation be?
+  </p>
+  <p>...</p>
+  <footer>
+    — <cite>"How Would You Move Mount Fuji?: Microsoft's Cult of the Puzzle - How the World's Smartest Companies Select the Most Creative Thinkers"</cite>
+  </footer>
+</blockquote>
+
+<p>
+  2進数は、一番右のビット(LSB)を2<sup>0</sup>、その次が2<sup>1</sup>、その次が2<sup>2</sup>…
+  と表現することだが、ここでのマイナス2進数とは「メカニカルに」2→-2に置き換えたものだ。
+  すなわち、一番右のビット(LSB)を(-2)<sup>0</sup>、その次が(-2)<sup>1</sup>、その次が(-2)<sup>2</sup>…
+  と表現することだ。
+</p>
+
+<p>
+  マイナス2進数のLSBから0番目として桁を振っていったとしてマイナス2進数の各桁を
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <msub>
+        <mi>n</mi>
+        <mrow>
+          <mi>k</mi>
+        </mrow>
+      </msub>
+    </mrow>
+    <mo>&#x2208;</mo>
+    <mfenced open="{" close="}">
+      <mrow>
+         <mn>0</mn>
+         <mo>,</mo>
+         <mn>1</mn>
+      </mrow>
+    </mfenced>
+    <mspace width="1em" />
+    <mfenced open="(" close=")">
+      <mrow>
+         <mn>0</mn>
+         <mo>&#x2264;</mo>
+         <mi>k</mi>
+         <mo>&#x2264;</mo>
+         <mi>L</mi>
+         <mo>-</mo>
+         <mn>1</mn>
+      </mrow>
+    </mfenced>
+  </math>
+  すなわち数値を
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <msub>
+        <mi>n</mi>
+        <mrow>
+          <mi>L</mi>
+          <mo>-</mo>
+          <mn>1</mn>
+        </mrow>
+      </msub>
+      <msub>
+        <mi>n</mi>
+        <mrow>
+          <mi>L</mi>
+          <mo>-</mo>
+          <mn>2</mn>
+        </mrow>
+      </msub>
+      <msub>
+        <mi>n</mi>
+        <mrow>
+          <mi>L</mi>
+          <mo>-</mo>
+          <mn>3</mn>
+        </mrow>
+      </msub>
+      <mo>...</mo>
+      <msub>
+        <mi>n</mi>
+        <mn>1</mn>
+      </msub>
+      <msub>
+        <mi>n</mi>
+        <mn>0</mn>
+      </msub>
+    </mrow>
+  </math>
+  と表すとすると、10進数への変換式は
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow>
+    <mstyle displaystyle="true">
+      <munderover>
+        <mo>&#x02211;</mo>
+        <mrow>
+          <mi>k</mi>
+          <mo>=</mo>
+          <mn>0</mn>
+        </mrow>
+        <mrow>
+          <mi>L</mi>
+          <mo>-</mo>
+          <mn>1</mn>
+        </mrow>
+      </munderover>
+    </mstyle>
+    <msub>
+      <mi>n</mi>
+      <mi>k</mi>
+    </msub>
+    <msup>
+      <mrow>
+        <mo form="prefix">(</mo>
+        <mo>-</mo>
+        <mn>2</mn>
+        <mo form="postfix">)</mo>
+      </mrow>
+      <mi>k</mi>
+    </msup>
+  </mrow>
+</math>
+
+<p>
+  ちなみに4桁のマイナス2進数と10進数の関係は下記のようになる。
+</p>
+
+<figure>
+  <table>
+    <caption>count base negative 2 in 4-bits</caption>
+    <thead>
+      <tr><td>decimal</td><td>base negative 2</td></tr>
+    </thead>
+    <tbody>
+      <tr><td>-10</td><td>1010</td></tr>
+      <tr><td>-9</td><td>1011</td></tr>
+      <tr><td>-8</td><td>1000</td></tr>
+      <tr><td>-7</td><td>1001</td></tr>
+      <tr><td>-6</td><td>1110</td></tr>
+      <tr><td>-5</td><td>1111</td></tr>
+      <tr><td>-4</td><td>1100</td></tr>
+      <tr><td>-3</td><td>1101</td></tr>
+      <tr><td>-2</td><td>0010</td></tr>
+      <tr><td>-1</td><td>0011</td></tr>
+      <tr><td>0</td><td>0000</td></tr>
+      <tr><td>1</td><td>0001</td></tr>
+      <tr><td>2</td><td>0110</td></tr>
+      <tr><td>3</td><td>0111</td></tr>
+      <tr><td>4</td><td>0100</td></tr>
+      <tr><td>5</td><td>0101</td></tr>
+    </tbody>
+  </table>
+</figure>
+
+<p>
+  これの逆変換式を求めたい。
+</p>
+
+<h3>補題：ビット幅で表現できる数値</h3>
+
+<p>
+  手計算すると感覚的に下記の通りビット幅拡張によって表現できる範囲が、
+  正の方向と負の方向の交互に隙間なく広がることがわかる。
+</p>
+
+<figure>
+  <table>
+    <caption>bit length vs range of "base negative 2"</caption>
+    <thead>
+      <tr>
+        <th>bit length: L</th>
+        <td>minimal</td>
+        <td>MAXIMUM</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>1</th>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>-2</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <th>3</th>
+        <td>-2</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <th>4</th>
+        <td>-10</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+
+<p>
+  Lビット列のマイナス2進数で表現できる値の最大値と最小値は、
+  手続き的に書くとそれぞれ下記の通り。
+</p>
+
+<figure class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="nf">mbin_positive_max</span><span class="p">(</span><span class="n">l</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">i32</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="n">l</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">+</span> <span class="nf">pow2u32</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">as</span> <span class="nb">i32</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">val</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">mbin_negative_min</span><span class="p">(</span><span class="n">l</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">i32</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="k">mut</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="mi">0</span><span class="o">..</span><span class="n">l</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="err">-</span> <span class="nf">pow2u32</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">as</span> <span class="nb">i32</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">val</span>
+<span class="p">}</span>
+
+<span class="nd">#[inline]</span>
+<span class="k">fn</span> <span class="nf">pow2u32</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="nb">u32</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="nb">u32</span> <span class="p">{</span>
+    <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">exp</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>
+  なお、等比級数の和であるのだから数式としては
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mn>4</mn>
+          <mfenced open="&#x2308;" close="&#x2309;">
+            <mfrac>
+              <mi>L</mi>
+              <mn>2</mn>
+            </mfrac>
+          </mfenced>
+        </msup>
+        <mo>-</mo>
+        <mn>1</mn>
+      </mrow>
+      <mn>3</mn>
+    </mfrac>
+    <mo>,</mo>
+    <mspace width="1em" />
+    <mo>-</mo>
+    <mfrac>
+      <mrow>
+        <mn>2</mn>
+        <mfenced open="(" close=")">
+          <mrow>
+            <msup>
+              <mn>4</mn>
+              <mfenced open="&#x230A;" close="&#x230B;">
+                <mfrac>
+                  <mi>L</mi>
+                  <mn>2</mn>
+                </mfrac>
+              </mfenced>
+            </msup>
+            <mo>-</mo>
+            <mn>1</mn>
+          </mrow>
+        </mfenced>
+      </mrow>
+      <mn>3</mn>
+    </mfrac>
+  </mrow>
+</math>
+
+<p>
+  注意すべき点としては、
+  Lが奇数ならば、Lビットのときの最大値はL+1ビットの最大値と同じで
+  Lビットのときの最小値はL-1ビットの最小値と同じである。
+  また、Lが偶数ならば、Lビットのときの最大値はL-1ビットの最大値と同じで
+  Lビットのときの最小値はL+1ビットの最小値と同じである。
+</p>
+
+<p>
+  実のところマイナス2進数では、上述の範囲内の数値は隙間なくすべて表現できる。
+  Lの数値が小さいときは手作業で確認できるとして、このルールが続くことを下記に示す。
+</p>
+
+<p>
+  Lが奇数のとき、L-1ビットからLビットに拡張したときに広がる数値の範囲の最小値は、
+  最も左のビット(MSB)が1となる数値の値に、L-1ビットのときの最小値(これはLビットのときの最小値と同じであるが)を
+  加算した値である。
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow>
+    <msup>
+      <mn>2</mn>
+      <mrow>
+        <mi>L</mi>
+        <mo>-</mo>
+        <mn>1</mn>
+      </mrow>
+    </msup>
+    <mo>-</mo>
+    <mfrac>
+      <mrow>
+        <mn>2</mn>
+        <mfenced open="(" close=")">
+          <mrow>
+            <msup>
+              <mn>4</mn>
+              <mfrac>
+                <mrow>
+                  <mi>L</mi>
+                  <mo>-</mo>
+                  <mn>1</mn>
+                </mrow>
+                <mn>2</mn>
+              </mfrac>
+            </msup>
+            <mo>-</mo>
+            <mn>1</mn>
+          </mrow>
+        </mfenced>
+      </mrow>
+      <mn>3</mn>
+    </mfrac>
+  </mrow>
+</math>
+
+<p>
+  これを解くと
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>...</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <msup>
+        <mn>2</mn>
+        <mrow>
+          <mi>L</mi>
+          <mo>-</mo>
+          <mn>1</mn>
+        </mrow>
+      </msup>
+      <mo>+</mo>
+      <mn>2</mn>
+    </mrow>
+    <mn>3</mn>
+  </mfrac>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <msup>
+        <mn>2</mn>
+        <mrow>
+          <mi>L</mi>
+          <mo>-</mo>
+          <mn>1</mn>
+        </mrow>
+      </msup>
+      <mo>-</mo>
+      <mn>1</mn>
+    </mrow>
+    <mn>3</mn>
+  </mfrac>
+  <mo>+</mo>
+  <mn>1</mn>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <msup>
+        <mn>4</mn>
+        <mfrac>
+          <mrow>
+            <mi>L</mi>
+            <mo>-</mo>
+            <mn>1</mn>
+          </mrow>
+          <mn>2</mn>
+        </mfrac>
+      </msup>
+      <mo>-</mo>
+      <mn>1</mn>
+    </mrow>
+    <mn>3</mn>
+  </mfrac>
+  <mo>+</mo>
+  <mn>1</mn>
+</math>
+
+<p>
+  であるから、L-1ビットのときの最大値(これはL-2ビットのときの最大値に同じ)に
+  +1加算したものと等しい。
+</p>
+<p>
+  よって、Lが奇数のとき、L-1ビットのとき隙間なくすべて表現できるのならば、
+  Lビットのときも隙間なくすべて表現できる。
+</p>
+
+<p>
+  Lが偶数のとき(ただし0は除く)も同様に、L-1ビットからLビットに拡張したときに広がる数値の範囲の最大値は、
+</p>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mrow>
+    <mo>-</mo>
+    <msup>
+      <mn>2</mn>
+      <mrow>
+        <mi>L</mi>
+        <mo>-</mo>
+        <mn>1</mn>
+      </mrow>
+    </msup>
+    <mo>+</mo>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mn>4</mn>
+          <mfrac>
+            <mi>L</mi>
+            <mn>2</mn>
+          </mfrac>
+        </msup>
+        <mo>-</mo>
+        <mn>1</mn>
+      </mrow>
+      <mn>3</mn>
+    </mfrac>
+    <mo>=</mo>
+    <mo>...</mo>
+    <mo>=</mo>
+    <mo>-</mo>
+    <mfrac>
+      <mrow>
+        <mn>2</mn>
+        <mfenced open="(" close=")">
+          <mrow>
+            <msup>
+              <mn>4</mn>
+              <mfrac>
+                <mi>L</mi>
+                <mn>2</mn>
+              </mfrac>
+            </msup>
+            <mo>-</mo>
+            <mn>1</mn>
+          </mrow>
+        </mfenced>
+      </mrow>
+      <mn>3</mn>
+    </mfrac>
+    <mo>-</mo>
+    <mn>1</mn>
+  </mrow>
+</math>
+
+
+<p>
+  であり、L-1ビットのときの最小値(これはLビットのときの最小値に同じ)に
+  -1したものと等しい。
+</p>
+<p>
+  よって、Lが偶数のとき、L-1ビットのとき隙間なくすべて表現できるのならば、
+  Lビットのときも隙間なくすべて表現できる。
+</p>
+
+<p>
+  したがってLが偶数であっても奇数であっても、帰納的に隙間なく表現できる、
+  すなわちビット幅拡張によって表現できる範囲が隙間なく広がっていくことを示せた。
+</p>
+
+<h3>10進数→マイナス2進数変換アルゴリズム</h3>
+
+<p>
+  既述の補題の考察より、(有界な数値であるならば、)
+  MSB側からビットが立つか判定していけば良いことがわかる。
+</p>
+
+<ol>
+  <li>r=10進数の値</li>
+  <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi><mo>=</mo><mi>L</mi><mo>-</mo><mn>1</mn><mo>,</mo><mi>L</mi><mo>-</mo><mn>2</mn><mo>,</mo><mo>...</mo><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn></math>について繰り返し:
+    <ol>
+      <li>kビットからk+1ビットで拡張される値の範囲内に属するならば、kビット目の値<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>m</mi><mi>k</mi></msub><mo>=</mo><mn>1</mn></math>。そうでなければ0</li>
+      <li>rから<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>m</mi><mi>k</mi></msub><msup><mfenced open="(" close=")"><mrow><mo>-</mo><mn>2</mn></mrow></mfenced><mi>k</mi></msup></math>を引く</li>
+    </ol>
+  </li>
+  <li>
+    おわり。変換された値は
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <mrow>
+        <msub>
+          <mi>n</mi>
+          <mrow>
+            <mi>L</mi>
+            <mo>-</mo>
+            <mn>1</mn>
+          </mrow>
+        </msub>
+        <msub>
+          <mi>n</mi>
+          <mrow>
+            <mi>L</mi>
+            <mo>-</mo>
+            <mn>2</mn>
+          </mrow>
+        </msub>
+        <msub>
+          <mi>n</mi>
+          <mrow>
+            <mi>L</mi>
+            <mo>-</mo>
+            <mn>3</mn>
+          </mrow>
+        </msub>
+        <mo>...</mo>
+        <msub>
+          <mi>n</mi>
+          <mn>1</mn>
+        </msub>
+        <msub>
+          <mi>n</mi>
+          <mn>0</mn>
+        </msub>
+      </mrow>
+    </math>
+  </li>
+</ol>
+
+<h3>オンライン変換サンプル(powered by WebAssembly)</h3>
+
+<p>
+  仕様：オーバーフローを考慮していないので<strong>絶対値の大きな値だとエラーが出たり
+  不正な値がでる</strong>。やろうと思えばなんとか対処できそうだが本題ではないので
+  省いた。
+</p>
+
+<div style="border: solid thin #000; margin: 1ex; padding: 1ex;">
+  <label for="minus-binary-string-input">10進数を入力</label>
+  <input type="number" id="minus-binary-string-input" value="0" />
+  <br />
+  <label for="minus-binary-string-output">マイナス2進数計算結果</label>
+  <input type="text" id="minus-binary-string-output" maxlength="32" readonly="readonly" />
+</div>
+<script type="application/javascript">
+window.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  fetch("data:application/wasm;base64,AGFzbQEAAAABCQJgAABgAX8BfwMDAgABBQMBABEHFQIGbWVtb3J5AgAIZGVjMm1iaW4AAQqsAgJSAQF/AkACQEGACCgCAEEBRgRAQYQIQYQIKAIAQQFqIgA2AgAgAEEDSQ0BDAILQYAIQoGAgIAQNwMAC0GMCCgCACIAQX9MDQBBjAggADYCAAsAC9YBAQV/AkADQAJAAkBBHyAEayIFBEAgBUEBcQ0BQQAhAkEAIQEDQCACQQBBASABdCABQQFxG2ohAiAEIAFBAWoiAWpBH0cNAAsgACACTA0CIABBASAFdCIBayEAIAEgA2ohAwwCCyAAQQFLDQMgAyAAaiEDQQAhAAwBC0EAIQJBACEBA0AgAkEAIAFBAXFrQQEgAXRxayECIAQgAUEBaiIBakEfRw0ACyAAIAJODQBBASAFdCIBIABqIQAgASADaiEDCyAEQQFqIgRBIEkNAAsgAw8LEAAACwALB2xpbmtpbmcDARE=").then(response => {
+    return response.arrayBuffer();
+  }).then(bytes => WebAssembly.instantiate(bytes)).then(results => {
+    const instance = results.instance;
+
+    const onchange = function minus_binary_string_on_change (event) {
+      try {
+        const decval = parseInt(document.getElementById("minus-binary-string-input").value);
+        const mbinval = instance.exports.dec2mbin(decval).toString(2);
+        document.getElementById("minus-binary-string-output").value = mbinval;
+      } catch (e) {
+        document.getElementById("minus-binary-string-output").value = "ERR";
+        console.error(e);
+      }
+    }
+    onchange();
+    document.getElementById("minus-binary-string-input").addEventListener("change", onchange, false);
+  }).catch(console.error);
+});
+</script>
+
+<p>
+  ソースは rust で書いた後、WebAssembly に変換している。
+  変換前のソースコードは <a href="https://gist.github.com/cat-in-136/d0efb4879290b09c8cebb358632d8749">gist:cat-in-136/d0efb4879290b09c8cebb358632d8749</a> においてある。
+  test code も書いてあり（WebAssembly からは取り除かれている）、
+  こちらは official release (WebAssembly 非対応) の rust でも動作する。
+</p>
+
+<p>
+  なお WebAssembly の仕様上、文字列の引き渡しに問題があるので整数(<code>u32</code>)を
+  単なる bitstring を表現するものとして扱ってやり取りしている。
+</p>
+
+<h3>10進法→マイナス2進法の変換の考察</h3>
+
+<ul>
+  <li>確かに数式としては数字の表現方法としては成り立つ</li>
+  <li>でもむちゃくちゃ計算とかがやりづらい</li>
+</ul>
+
+<h3>参考文献</h3>
+
+<ul>
+  <li>梶谷通稔, "<a href="http://www.arp-nt.co.jp/rensai/index-sono1.html">連載　その1　あなたはビルゲイツの試験に受かる?</a>", 株式会社あーぷ</li>
+  <li>Poundstone, W., "How Would You Move Mount Fuji?: Microsoft's Cult of the Puzzle - How the World's Smartest Companies Select the Most Creative Thinkers", Little Brown &amp; Co., 2003. (ISBN 978-0-7595-2802-4)</li>
+  <li>Rui Ueyama, hikalium, "<a href="https://turingcomplete.fm/29">Turing Complete FM, 29. ユタ・ティーポット、Cコンパイラ開発の授業、中学生時代のOS自作エピソード</a>", 2018.</li>
+  <li>ichirin2501, "<a href="https://ichirin2501.hatenablog.com/entry/20100306/1267818827">マイナス2進数を求めるプログラムを書いてみた。</a>", ichirin2501's diary, 2010. (注：負数に非対応)</li>
+</ul>
+
+<script type="application/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=MML_CHTML"></script>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article>
+
+<aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list">
+  <li class="post-item">
+    <a class="post-link" href="/2015/07/Tokyo2015-logo-calc-area.html">
+      <span class="post-meta">2015-07-26</span>
+      <span class="post-title">白い部分の面積を求めなさい〜東京2020</span>
+      <span class="post-thumb" data-image-path="/images/201507_Tokyo2020_emblem_area_calc_figure.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2017/11/bezier-arc-area.html">
+      <span class="post-meta">2017-11-24</span>
+      <span class="post-title">ベジェ曲線で描く円と真円の面積について</span>
+      <span class="post-thumb" data-image-path="/images/circle-in-bezeir.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/03/bezier-3-general-theta.html">
+      <span class="post-meta">2014-03-07</span>
+      <span class="post-title">ベジェ曲線の円の近似で90度以外でもよいが180度以上はよくない</span>
+      <span class="post-thumb" data-image-path="/images/generic-kappa.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/03/bezier-2-diff.html">
+      <span class="post-meta">2014-03-06</span>
+      <span class="post-title">ベジェ曲線で描く円と真円の差について</span>
+      <span class="post-thumb" data-image-path="/images/kappa.svg"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/09/13.html">
+      <span class="post-meta">2011-09-11</span>
+      <span class="post-title">ポニーテールの揺れの定式化と考察 (1/3)</span>
+      <span class="post-thumb" data-image-path="/images/simple_pendulum_.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2011/09/33.html">
+      <span class="post-meta">2011-09-14</span>
+      <span class="post-title">ポニーテールの揺れの定式化と考察 (3/3)</span>
+      <span class="post-thumb" data-image-path="/images/pony_tail_model.png"></span>
+    </a>
+  </li>
+  <li class="post-item">
+    <a class="post-link" href="/2014/03/bezier-1-kappa.html">
+      <span class="post-meta">2014-03-05</span>
+      <span class="post-title">ベジェ曲線による円の描画の制御点の位置はなぜ0.55228…なのか?</span>
+      <span class="post-thumb" data-image-path="/images/kappa.svg"></span>
+    </a>
+  </li>
+  </ul>
+</aside>
+
+
+      </div>
+    </div>
+    
+<footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2018
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+</html>
