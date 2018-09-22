@@ -160,7 +160,7 @@ hr { border: solid thin #828282; margin: 30px; }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post-footer #disqus_thread { writing-mode: horizontal-tb; -webkit-writing-mode: horizontal-tb; width: 90vh; } }
 
 /* Tag / Archive */
-.tag-cloud, .archive-year-summary { margin-bottom: 30px; }
+.tag-cloud { margin-bottom: 30px; }
 
 /* About page */
 .about-content ul > li { list-style-type: none; }
