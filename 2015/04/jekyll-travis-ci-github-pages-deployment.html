@@ -1,70 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html" />
-  <meta property="og:title" content="Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ" />
-  <meta property="og:description" content="まとめる気はない、単なる Travis CI のチラ裏メモ。 メモ Travis-CI のビルド処理はコンテナ型仮想化で動いている。 OS は ubuntu 。ただし、何か細工しているかもしれな..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ" /><meta property="og:description" content="まとめる気はない、単なる Travis CI のチラ裏メモ。 メモ Travis-CI のビルド処理はコンテナ型仮想化で動いている。 OS は ubuntu 。ただし、何か細工しているかもしれな..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2015/04/jekyll-travis-ci-github-pages-deployment.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2015/04/jekyll-travis-ci-github-pages-deployment.html" itemprop="url">Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2015-04-30T00:42:49+09:00">2015-04-30T00:42:49+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/jekyll">Jekyll</a>
-      <a class="tag" href="/tags/travis-ci">Travis-ci</a>
-      <a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2015-04-30T00:42:49+09:00">2015-04-30T00:42:49+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/jekyll">Jekyll</a><a class="tag" href="/tags/travis-ci">Travis-ci</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2015-04-30-jekyll-travis-ci-github-pages-deployment.md" class="source-path">_posts/2015-04-30-jekyll-travis-ci-github-pages-deployment.md</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2015-04-30-jekyll-travis-ci-github-pages-deployment.md">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody" lang="ja">
     <p>まとめる気はない、単なる Travis CI のチラ裏メモ。</p>
@@ -156,73 +131,57 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
       <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span>
-    </a>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
       <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
-      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
-    </a>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/06/my-carelessness-of-switching-jekyll-on-github-pages-to-https-enforcement.html">
       <span class="post-meta">2016-06-25</span>
-      <span class="post-title">Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと</span>
-    </a>
+      <span class="post-title">Github Page の本ブログを HTTPS 強制に移行した際にやらかしたこと</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">
       <span class="post-meta">2010-07-31</span>
-      <span class="post-title">rpmbuild setting for multi core CPU (2)</span>
-    </a>
+      <span class="post-title">rpmbuild setting for multi core CPU (2)</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span>
-    </a>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/11/howto-export-openshift-app.html">
       <span class="post-meta">2016-11-29</span>
-      <span class="post-title">Note to self: how to export a simple openshift app and restore to another project</span>
-    </a>
+      <span class="post-title">Note to self: how to export a simple openshift app and restore to another project</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2018/04/rust-error-handling-question.html">
       <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span>
-    </a>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">
       <span class="post-meta">2010-02-27</span>
-      <span class="post-title">&quot;View Page Source&quot; in browser tabs without any addons</span>
-    </a>
+      <span class="post-title">&quot;View Page Source&quot; in browser tabs without any addons</span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -232,7 +191,5 @@
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

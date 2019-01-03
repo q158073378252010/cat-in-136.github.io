@@ -1,70 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Tip: JavaScript Operators for Obfuscation</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2011/01/tip-javascript-operators-for.html" />
-  <meta property="og:title" content="Tip: JavaScript Operators for Obfuscation" />
-  <meta property="og:description" content="!!arg Return true when arg is defined, false when undefined. +!!arg Same as !!arg, but returns 1 ..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="Tip: JavaScript Operators for Obfuscation" /><meta property="og:description" content="!!arg Return true when arg is defined, false when undefined. +!!arg Same as !!arg, but returns 1 ..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2011/01/tip-javascript-operators-for.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2011/01/tip-javascript-operators-for.html" itemprop="url">Tip: JavaScript Operators for Obfuscation</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2011-01-25T00:13:00+09:00">2011-01-25T00:13:00+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2011-01-25T01:23:07+09:00">2011-01-25T01:23:07+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/javascript">Javascript</a>
-      <a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2011-01-25T00:13:00+09:00">2011-01-25T00:13:00+09:00</span></div><div class="post-meta">Modified at: <span itemprop="dateModified" content="2011-01-25T01:23:07+09:00">2011-01-25T01:23:07+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/javascript">Javascript</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2011-01-25-tip-javascript-operators-for.html" class="source-path">_posts/2011-01-25-tip-javascript-operators-for.html</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2011-01-25-tip-javascript-operators-for.html">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody">
     <dl>
@@ -101,76 +76,57 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2012/01/javaswinglookandfeel.html">
       <span class="post-meta">2012-01-28</span>
-      <span class="post-title">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</span>
-      <span class="post-thumb" data-image-path="/images/VerySimpleLAFSwingSet2.png"></span>
-    </a>
+      <span class="post-title">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</span><span class="post-thumb" data-image-path="/images/VerySimpleLAFSwingSet2.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
       <span class="post-meta">2011-05-20</span>
-      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span>
-      <span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span>
-    </a>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html">
       <span class="post-meta">2010-07-25</span>
-      <span class="post-title">[Updated] rpmbuild setting for multi core CPU</span>
-    </a>
+      <span class="post-title">[Updated] rpmbuild setting for multi core CPU</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2013/10/blog-post.html">
       <span class="post-meta">2013-10-17</span>
-      <span class="post-title">デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</span>
-    </a>
+      <span class="post-title">デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span>
-    </a>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2012/02/blog-post.html">
       <span class="post-meta">2012-02-14</span>
-      <span class="post-title">バレンタインデーのチョコレートとグラフ理論</span>
-      <span class="post-thumb" data-image-path="/images/digraph-cjsvm.png"></span>
-    </a>
+      <span class="post-title">バレンタインデーのチョコレートとグラフ理論</span><span class="post-thumb" data-image-path="/images/digraph-cjsvm.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
       <span class="post-meta">2014-11-16</span>
-      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span>
-    </a>
+      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and_26.html">
       <span class="post-meta">2010-06-26</span>
-      <span class="post-title">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</span>
-      <span class="post-thumb" data-image-path="/images/conf-mania-mac-ng.png"></span>
-    </a>
+      <span class="post-title">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</span><span class="post-thumb" data-image-path="/images/conf-mania-mac-ng.png"></span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -180,7 +136,5 @@
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

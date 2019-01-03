@@ -1,76 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="vertical-writing-recommended">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml" class="vertical-writing-recommended"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html" />
-  <meta property="og:title" content="如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか" />
-  <meta property="og:description" content="@snsk @dagezi 漢文については、以前、W3C のワークショップで議題としたことがありました。 http://t.co/WaBNatYfvA このときに分かったのですが、CSS3 に最..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="/images/201610_kanbun_composition_layout_html5_ruby.svg" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか" /><meta property="og:description" content="@snsk @dagezi 漢文については、以前、W3C のワークショップで議題としたことがありました。 http://t.co/WaBNatYfvA このときに分かったのですが、CSS3 に最..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/201610_kanbun_composition_layout_html5_ruby.svg" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2016/10/writing-kanbun-in-html.html" itemprop="url">如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2016-10-26T00:05:18+09:00">2016-10-26T00:05:18+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2016-11-18T15:10:12+09:00">2016-11-18T15:10:12+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/%E7%B8%A6%E6%9B%B8%E3%81%8D">縦書き</a>
-      <a class="tag" href="/tags/html">Html</a>
-      <a class="tag" href="/tags/css">Css</a>
-      <a class="tag" href="/tags/ruby-annotation">Ruby-annotation</a>
-      <a class="tag" href="/tags/%E6%BC%A2%E6%96%87">漢文</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2016-10-26T00:05:18+09:00">2016-10-26T00:05:18+09:00</span></div><div class="post-meta">Modified at: <span itemprop="dateModified" content="2016-11-18T15:10:12+09:00">2016-11-18T15:10:12+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/%E7%B8%A6%E6%9B%B8%E3%81%8D">縦書き</a><a class="tag" href="/tags/html">Html</a><a class="tag" href="/tags/css">Css</a><a class="tag" href="/tags/ruby-annotation">Ruby-annotation</a><a class="tag" href="/tags/%E6%BC%A2%E6%96%87">漢文</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-10-26-writing-kanbun-in-html.html" class="source-path">_posts/2016-10-26-writing-kanbun-in-html.html</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-10-26-writing-kanbun-in-html.html">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody" lang="ja">
     <blockquote cite="https://twitter.com/ikeyasu/status/431696780506304512"><p lang="ja"><a href="https://twitter.com/snsk">@snsk</a> <a href="https://twitter.com/dagezi">@dagezi</a> 漢文については、以前、W3C のワークショップで議題としたことがありました。 <a href="http://t.co/WaBNatYfvA" title="http://www.w3.org/2013/06/ebooks/report">http://t.co/WaBNatYfvA</a> このときに分かったのですが、CSS3 に最近は行ったRubyの新しい仕様と、OpenType の仕様を使えば漢文は表現できます</p>— IKEUCHI Yasuki (@ikeyasu) <a href="https://twitter.com/ikeyasu/status/431696780506304512">February 7, 2014</a></blockquote>
@@ -356,72 +326,57 @@ figure.kanbun p.kanbun {
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2016/08/html-complex-ruby.html">
       <span class="post-meta">2016-08-05</span>
-      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span>
-    </a>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/03/css-vertical-with-multicolumn.html">
       <span class="post-meta">2016-03-23</span>
-      <span class="post-title">CSS で縦書きと段組を組み合わせる試み</span>
-    </a>
+      <span class="post-title">CSS で縦書きと段組を組み合わせる試み</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
       <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
-    </a>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
       <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span>
-    </a>
+      <span class="post-title">pango-view と OTF font features</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
       <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span>
-    </a>
+      <span class="post-title">pango で縦書きとその能力</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
       <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span>
-    </a>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2013/03/css.html">
       <span class="post-meta">2013-03-18</span>
-      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span>
-    </a>
+      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
-    </a>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -431,7 +386,5 @@ figure.kanbun p.kanbun {
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

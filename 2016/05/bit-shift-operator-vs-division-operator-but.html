@@ -1,72 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>ビットシフトと割り算はどっちが良いか、とはいうけれど</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html" />
-  <meta property="og:title" content="ビットシフトと割り算はどっちが良いか、とはいうけれど" />
-  <meta property="og:description" content="2の累乗の積または商は、ビットシフトで容易に書換可能だが、 どっちが良いか云々とかいう定番な話があるが… unsigned int div2ui(unsigned int x) { return..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="ビットシフトと割り算はどっちが良いか、とはいうけれど" /><meta property="og:description" content="2の累乗の積または商は、ビットシフトで容易に書換可能だが、 どっちが良いか云々とかいう定番な話があるが… unsigned int div2ui(unsigned int x) { return..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2016/05/bit-shift-operator-vs-division-operator-but.html" itemprop="url">ビットシフトと割り算はどっちが良いか、とはいうけれど</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2016-05-06T23:18:26+09:00">2016-05-06T23:18:26+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/c-language">C-language</a>
-      <a class="tag" href="/tags/clang">Clang</a>
-      <a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2016-05-06T23:18:26+09:00">2016-05-06T23:18:26+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/c-language">C-language</a><a class="tag" href="/tags/clang">Clang</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2016-05-06-bit-shift-operator-vs-division-operator-but.html" class="source-path">_posts/2016-05-06-bit-shift-operator-vs-division-operator-but.html</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2016-05-06-bit-shift-operator-vs-division-operator-but.html">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody" lang="ja">
     <p>
@@ -308,72 +282,57 @@ mul10ui:                                # @mul10ui
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
       <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span>
-    </a>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span>
-    </a>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2012/12/llvm-clangast.html">
       <span class="post-meta">2012-12-11</span>
-      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span>
-    </a>
+      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
       <span class="post-meta">2010-03-17</span>
-      <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span>
-    </a>
+      <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
       <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span>
-    </a>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
       <span class="post-meta">2015-01-19</span>
-      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span>
-    </a>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
       <span class="post-meta">2014-09-21</span>
-      <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span>
-    </a>
+      <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
       <span class="post-meta">2010-03-06</span>
-      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span>
-    </a>
+      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -383,7 +342,5 @@ mul10ui:                                # @mul10ui
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

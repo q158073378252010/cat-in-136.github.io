@@ -1,72 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html" />
-  <meta property="og:title" content="PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み" />
-  <meta property="og:description" content="WiFi 内蔵 SD カードである PQI Air Card[1] には WiFi の子機として繋ぐモードで動かすことができる。 WiFi AP が DHCP などで動的な IP 割り当てをして..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み" /><meta property="og:description" content="WiFi 内蔵 SD カードである PQI Air Card[1] には WiFi の子機として繋ぐモードで動かすことができる。 WiFi AP が DHCP などで動的な IP 割り当てをして..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2014/09/pqi-air-card-udp-yo.html" itemprop="url">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2014-09-21T19:55:07+09:00">2014-09-21T19:55:07+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-09-21T19:59:57+09:00">2014-09-21T19:59:57+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/pqi-air-card">Pqi air card</a>
-      <a class="tag" href="/tags/linux">Linux</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2014-09-21T19:55:07+09:00">2014-09-21T19:55:07+09:00</span></div><div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-09-21T19:59:57+09:00">2014-09-21T19:59:57+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/pqi-air-card">Pqi air card</a><a class="tag" href="/tags/linux">Linux</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2014-09-21-pqi-air-card-udp-yo.html" class="source-path">_posts/2014-09-21-pqi-air-card-udp-yo.html</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2014-09-21-pqi-air-card-udp-yo.html">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody" lang="ja">
     <p>WiFi 内蔵 SD カードである <a href="http://www.pqigroup.com/prod_in.aspx?mnuid=1286&amp;modid=138&amp;prodid=426">PQI Air Card</a>[1] には
@@ -479,72 +453,57 @@ NetBIOS 等が入っていない（or 導入が困難）かつ自作プログラ
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2011/10/linuxbijo-bijolinux.html">
       <span class="post-meta">2011-10-26</span>
-      <span class="post-title">美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux</span>
-    </a>
+      <span class="post-title">美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
       <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span>
-    </a>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
       <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span>
-    </a>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/03/sunrise-sunset.html">
       <span class="post-meta">2017-03-07</span>
-      <span class="post-title">日出と日没に関する考察メモ</span>
-    </a>
+      <span class="post-title">日出と日没に関する考察メモ</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2018/04/rust-error-handling-question.html">
       <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span>
-    </a>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span>
-    </a>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">
       <span class="post-meta">2010-05-02</span>
-      <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span>
-    </a>
+      <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2012/12/llvm-clangast.html">
       <span class="post-meta">2012-12-11</span>
-      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span>
-    </a>
+      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -554,7 +513,5 @@ NetBIOS 等が入っていない（or 導入が困難）かつ自作プログラ
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

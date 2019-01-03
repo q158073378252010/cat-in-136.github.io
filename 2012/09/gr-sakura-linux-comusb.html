@@ -1,73 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2012/09/gr-sakura-linux-comusb.html" />
-  <meta property="og:title" content="（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき" />
-  <meta property="og:description" content="ありそうでない、GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき… そんなことよりも GR-SAKURA の基板がピンクで無駄にかわいい。それの中央にルネサスの..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき" /><meta property="og:description" content="ありそうでない、GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき… そんなことよりも GR-SAKURA の基板がピンクで無駄にかわいい。それの中央にルネサスの..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2012/09/gr-sakura-linux-comusb.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script>
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
+  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2012/09/gr-sakura-linux-comusb.html" itemprop="url">（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2012-09-23T00:27:00+09:00">2012-09-23T00:27:00+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2012-09-23T00:27:11+09:00">2012-09-23T00:27:11+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/linux">Linux</a>
-      <a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      <a class="tag" href="/tags/gr-sakura">Gr-sakura</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2012-09-23T00:27:00+09:00">2012-09-23T00:27:00+09:00</span></div><div class="post-meta">Modified at: <span itemprop="dateModified" content="2012-09-23T00:27:11+09:00">2012-09-23T00:27:11+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/linux">Linux</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a><a class="tag" href="/tags/gr-sakura">Gr-sakura</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2012-09-23-gr-sakura-linux-comusb.html" class="source-path">_posts/2012-09-23-gr-sakura-linux-comusb.html</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2012-09-23-gr-sakura-linux-comusb.html">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody" lang="ja">
     <p>ありそうでない、GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき…</p>
@@ -157,78 +130,57 @@ lrwxrwxrwx. 1 root root         7  9月 22 23:39 /dev/ttyUSB-Sakura -&gt; ttyACM
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
       <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
-      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
-    </a>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
-      <span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span>
-    </a>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/06/lukstruecrypt.html">
       <span class="post-meta">2014-06-29</span>
-      <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span>
-    </a>
+      <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span>
-      <span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span>
-    </a>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
       <span class="post-meta">2010-03-06</span>
-      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span>
-    </a>
+      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span>
-      <span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span>
-    </a>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
       <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span>
-      <span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span>
-    </a>
+      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
       <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span>
-      <span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span>
-    </a>
+      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -238,7 +190,5 @@ lrwxrwxrwx. 1 root root         7  9月 22 23:39 /dev/ttyUSB-Sakura -&gt; ttyACM
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

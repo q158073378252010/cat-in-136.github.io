@@ -1,69 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Redmine Tips: How to add an attachment using rails c</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html" />
-  <meta property="og:title" content="Redmine Tips: How to add an attachment using rails c" />
-  <meta property="og:description" content="This post describes how to add an attachment (file) to an issue using rails c (rails console). No..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="Redmine Tips: How to add an attachment using rails c" /><meta property="og:description" content="This post describes how to add an attachment (file) to an issue using rails c (rails console). No..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html" itemprop="url">Redmine Tips: How to add an attachment using rails c</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2018-07-02T23:39:13+09:00">2018-07-02T23:39:13+09:00</span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/redmine">Redmine</a>
-      <a class="tag" href="/tags/howto">Howto</a>
-      <a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2018-07-02T23:39:13+09:00">2018-07-02T23:39:13+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/redmine">Redmine</a><a class="tag" href="/tags/howto">Howto</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2018-07-02-redmine-tips-how-to-add-an-attachment-using-rails-c.md" class="source-path">_posts/2018-07-02-redmine-tips-how-to-add-an-attachment-using-rails-c.md</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2018-07-02-redmine-tips-how-to-add-an-attachment-using-rails-c.md">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody">
     <p>This post describes how to add an attachment (file) to an issue using <code class="highlighter-rouge">rails c</code> (rails console).
@@ -116,74 +92,57 @@ This would work even if the plugins such as <a href="https://www.redmine.org/plu
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
       <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span>
-    </a>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2018/04/rust-error-handling-question.html">
       <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span>
-    </a>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span>
-    </a>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/03/tweet-to-myself.html">
       <span class="post-meta">2010-03-24</span>
-      <span class="post-title">Tweet to myself</span>
-    </a>
+      <span class="post-title">Tweet to myself</span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span>
-      <span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span>
-    </a>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
-  <li class="post-item">
-    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
-      <span class="post-meta">2014-04-27</span>
-      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span>
-    </a>
-  </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2016/08/html-complex-ruby.html">
       <span class="post-meta">2016-08-05</span>
-      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span>
-    </a>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
   </li>
-  <li class="post-item">
-    <a class="post-link" href="/2010/11/if-all-http-setting-are-removed-from.html">
-      <span class="post-meta">2010-11-09</span>
-      <span class="post-title">If all HTTP setting are removed from Configuration Mania...</span>
-      <span class="post-thumb" data-image-path="/images/CM.png"></span>
-    </a>
+<li class="post-item">
+    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
+      <span class="post-meta">2014-04-27</span>
+      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
   </li>
-  </ul>
+<li class="post-item">
+    <a class="post-link" href="/2016/11/howto-export-openshift-app.html">
+      <span class="post-meta">2016-11-29</span>
+      <span class="post-title">Note to self: how to export a simple openshift app and restore to another project</span></a>
+  </li>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -193,7 +152,5 @@ This would work even if the plugins such as <a href="https://www.redmine.org/plu
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

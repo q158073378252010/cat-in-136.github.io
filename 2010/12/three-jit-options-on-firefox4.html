@@ -1,72 +1,45 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Three JIT options on Firefox4 : jitprofiling, methodjit, and tracejit</title>
+
   <meta property="og:url" content="https://cat-in-136.github.io/2010/12/three-jit-options-on-firefox4.html" />
-  <meta property="og:title" content="Three JIT options on Firefox4 : jitprofiling, methodjit, and tracejit" />
-  <meta property="og:description" content="On Firefox4, there are three JIT options: javascript.options.jitprofiling.* Tuning JIT compiler h..." />
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="/images/jitconfig.png" />
-  <meta property="og:site_name" content="cat_in_136.blog()" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:title" content="Three JIT options on Firefox4 : jitprofiling, methodjit, and tracejit" /><meta property="og:description" content="On Firefox4, there are three JIT options: javascript.options.jitprofiling.* Tuning JIT compiler h..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/jitconfig.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
+
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
   <link rel="canonical" href="https://cat-in-136.github.io/2010/12/three-jit-options-on-firefox4.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
-
-
-  <body>
-    
-<header class="site-header">
+<body><header class="site-header">
   <div class="wrapper">
     <a class="site-title" href="/">cat_in_136.blog()</a>
     <nav class="site-nav">
       <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
-      <div class="trigger">
-        <a class="page-link" href="/about">About</a>
-        <a class="page-link" href="/archive">Archive</a>
-        <a class="page-link" href="/tags">Tags</a>
-      </div>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
     </nav>
   </div>
 </header>
-
-
-    <div class="page-content">
+<div class="page-content">
       <div class="wrapper">
         <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
-  
   <header class="post-header">
     <h1 class="post-title" itemprop="name"><a href="/2010/12/three-jit-options-on-firefox4.html" itemprop="url">Three JIT options on Firefox4 : jitprofiling, methodjit, and tracejit</a></h1>
-    <div class="post-meta">Post date: <span itemprop="datePublished" content="2010-12-13T23:56:00+09:00">2010-12-13T23:56:00+09:00</span></div>
-    <div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:32+09:00">2014-11-10T00:02:32+09:00</span></div>
-    <div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div>
-    <div class="post-meta">Tags:
-      <span itemprop="keywords">
-      <a class="tag" href="/tags/javascript">Javascript</a>
-      <a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a>
-      <a class="tag" href="/tags/mozilla">Mozilla</a>
-      </span>
-    </div>
-    <div class="post-meta">
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2010-12-13T23:56:00+09:00">2010-12-13T23:56:00+09:00</span></div><div class="post-meta">Modified at: <span itemprop="dateModified" content="2014-11-10T00:02:32+09:00">2014-11-10T00:02:32+09:00</span></div><div class="post-meta">Text by: <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><span itemprop="name">cat_in_136</span></span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/javascript">Javascript</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a><a class="tag" href="/tags/mozilla">Mozilla</a></span></div><div class="post-meta">
       Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2010-12-13-three-jit-options-on-firefox4.html" class="source-path">_posts/2010-12-13-three-jit-options-on-firefox4.html</a>
         (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2010-12-13-three-jit-options-on-firefox4.html">History</a>)
-    </div>
-    <div class="post-meta">
+    </div><div class="post-meta">
       Comments: <a href="#disqus_thread">↓</a>
       <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
     </div>
   </header>
-  
 
   <div class="post-content" itemprop="articleBody">
     <p>
@@ -102,80 +75,57 @@ Note: <code>javascript.options.jit.*</code> are replaced with <code>javascript.o
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
   </footer>
-</article>
-
-<aside class="post-related">
+</article><aside class="post-related">
   <h2>Related Posts</h2>
-  <ul class="post-list">
-  <li class="post-item">
+  <ul class="post-list"><li class="post-item">
     <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">
       <span class="post-meta">2011-02-23</span>
-      <span class="post-title">Visual Guide : New pref of Configuration Mania v1.14.2011022201</span>
-      <span class="post-thumb" data-image-path="/images/HWaccel.png"></span>
-    </a>
+      <span class="post-title">Visual Guide : New pref of Configuration Mania v1.14.2011022201</span><span class="post-thumb" data-image-path="/images/HWaccel.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2011/09/ui.html">
       <span class="post-meta">2011-09-28</span>
-      <span class="post-title">商業施設の店舗案内的なUIについて意味もなく考えてみる</span>
-      <span class="post-thumb" data-image-path="/images/AkasakaSakasu_BizTower_Board.jpg"></span>
-    </a>
+      <span class="post-title">商業施設の店舗案内的なUIについて意味もなく考えてみる</span><span class="post-thumb" data-image-path="/images/AkasakaSakasu_BizTower_Board.jpg"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
       <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span>
-      <span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span>
-    </a>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2012/03/0f.html">
       <span class="post-meta">2012-03-24</span>
-      <span class="post-title">零階(0F)の必要性について</span>
-      <span class="post-thumb" data-image-path="/images/groundfloor_fig1.svg"></span>
-    </a>
+      <span class="post-title">零階(0F)の必要性について</span><span class="post-thumb" data-image-path="/images/groundfloor_fig1.svg"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/04/which-do-you-like-modal-option-dialog.html">
       <span class="post-meta">2010-04-25</span>
-      <span class="post-title">Which do you like modal option dialog or instant apply?</span>
-      <span class="post-thumb" data-image-path="/images/diff.png"></span>
-    </a>
+      <span class="post-title">Which do you like modal option dialog or instant apply?</span><span class="post-thumb" data-image-path="/images/diff.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
       <span class="post-meta">2010-08-15</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span>
-      <span class="post-thumb" data-image-path="/images/fx_btn.png"></span>
-    </a>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">
       <span class="post-meta">2013-12-28</span>
-      <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span>
-      <span class="post-thumb" data-image-path="/images/error.png"></span>
-    </a>
+      <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span><span class="post-thumb" data-image-path="/images/error.png"></span></a>
   </li>
-  <li class="post-item">
+<li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span>
-      <span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span>
-    </a>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
-  </ul>
+</ul>
 </aside>
-
-
       </div>
-    </div>
-    
-<footer class="site-footer">
+    </div><footer class="site-footer">
   <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
   <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
     <h2 class="footer-heading">cat_in_136.blog()</h2>
     <p>
-      © 2018
+      © 2019
       <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
         <a href="/about"><span itemprop="name">cat_in_136</span></a>
       </span>;
@@ -185,7 +135,5 @@ Note: <code>javascript.options.jit.*</code> are replaced with <code>javascript.o
     </p>
   </div>
 </footer>
-
-
-  </body>
+</body>
 </html>

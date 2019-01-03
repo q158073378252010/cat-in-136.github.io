@@ -27,9 +27,9 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight { mar
 /** Format */
 em { font-weight: normal; font-style: italic; }
 
-em:lang(ja) { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+em:lang(ja) { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; text-decoration-style: double; text-decoration-line: underline; }
 
-pre:lang(ja) em, pre:lang(ja) strong, code:lang(ja) em, code:lang(ja) strong { -moz-text-decoration-style: double; text-decoration-style: double; -moz-text-decoration-line: underline; text-decoration-line: underline; }
+pre:lang(ja) em, pre:lang(ja) strong, code:lang(ja) em, code:lang(ja) strong { text-decoration-style: double; text-decoration-line: underline; }
 pre:lang(ja) em, code:lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; }
 pre:lang(ja) strong, code:lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; }
 
@@ -79,10 +79,10 @@ pre { padding: 8px 12px; overflow: auto; }
 pre > code { border: 0; padding: 0; background-color: inherit; color: inherit; }
 
 /** Wrapper */
-.wrapper { max-width: -webkit-calc(800px - (30px * 2)); max-width: calc(800px - (30px * 2)); margin: auto; padding: inherit 30px; }
-@media screen and (max-width: 800px) { .wrapper { max-width: -webkit-calc(800px - (30px)); max-width: calc(800px - (30px)); padding: inherit 15px; } }
-@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .wrapper { max-width: none; margin: auto; padding: 30px inherit; max-height: -webkit-calc(640px - (30px * 2)); max-height: calc(640px - (30px * 2)); }
-  @media screen and (max-width: 640px) { html.vertical-writing-recommended .wrapper { max-height: -webkit-calc(640px - (30px)); max-height: calc(640px - (30px)); padding: 15px inherit; } } }
+.wrapper { max-width: calc(800px - (30px * 2)); margin: auto; padding: inherit 30px; }
+@media screen and (max-width: 800px) { .wrapper { max-width: calc(800px - (30px)); padding: inherit 15px; } }
+@supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .wrapper { max-width: none; margin: auto; padding: 30px inherit; max-height: calc(640px - (30px * 2)); }
+  @media screen and (max-width: 640px) { html.vertical-writing-recommended .wrapper { max-height: calc(640px - (30px)); padding: 15px inherit; } } }
 
 /** Clearfix */
 .wrapper:after { content: ""; display: table; clear: both; }
@@ -96,6 +96,7 @@ hr { border: solid thin #828282; margin: 30px; }
 
 .site-nav { float: right; }
 .site-nav .menu-icon { display: none; }
+.site-nav .page-link { margin: 3px; }
 
 @media screen and (max-width: 600px) { .site-nav { position: absolute; top: 9px; right: 30px; background-color: #fdfdfd; border: 1px solid #e8e8e8; border-radius: 5px; text-align: right; }
   .site-nav .menu-icon { display: block; text-decoration: none; padding: 3px; }
@@ -141,7 +142,7 @@ hr { border: solid thin #828282; margin: 30px; }
 .post-content h5 { font-size: large; }
 .post-content p { margin: 10px 0; }
 .post-content pre.terminal { background-color: #333; color: #fff; }
-@media screen and (max-width: 480px) { .post-content .fitcontain { object-fit: scale-down; width: -webkit-available; width: -moz-available; width: available; height: auto; } }
+@media screen and (max-width: 480px) { .post-content .fitcontain { object-fit: scale-down; width: -webkit-fill-available; width: -moz-available; width: stretch; height: auto; } }
 .post-content table:not([class]):not([style]) { border-collapse: collapse; margin: auto; }
 .post-content table:not([class]):not([style]) td, .post-content table:not([class]):not([style]) th { border: 1px solid #e8e8e8; padding: 2px; }
 .post-content table:not([class]):not([style]) thead, .post-content table:not([class]):not([style]) tfoot { background-color: rgba(232, 232, 232, 0.25); }
@@ -161,6 +162,10 @@ hr { border: solid thin #828282; margin: 30px; }
 
 /* Tag / Archive */
 .tag-cloud { margin-bottom: 30px; }
+
+.tag { margin: 1px; }
+
+.archive .archive-year-summary a, .archive .archive-month-summary a { margin: 2px; }
 
 /* About page */
 .about-content ul > li { list-style-type: none; }
