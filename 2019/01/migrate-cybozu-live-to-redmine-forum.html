@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>サイボウズLiveからredmineへの移行</title>
+
+  <meta property="og:url" content="https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum.html" />
+  <meta property="og:title" content="サイボウズLiveからredmineへの移行" /><meta property="og:description" content="友人との情報共有のためにサイボウズLiveを使ってきたが、告知のとおり2019年4月15日でサービスが終了することになった。 そこで、私たちが別途運用しているredmineに移行することにした。..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2019/01/migrate-cybozu-live-to-redmine-forum.html" itemprop="url">サイボウズLiveからredmineへの移行</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2019-01-26T01:16:21+09:00">2019-01-26T01:16:21+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/redmine">Redmine</a><a class="tag" href="/tags/%E3%82%B5%E3%82%A4%E3%83%9C%E3%82%A6%E3%82%BA">サイボウズ</a><a class="tag" href="/tags/ruby">Ruby</a><a class="tag" href="/tags/%E3%83%87%E3%83%BC%E3%82%BF%E7%A7%BB%E8%A1%8C">データ移行</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2019-01-26-migrate-cybozu-live-to-redmine-forum.md" class="source-path">_posts/2019-01-26-migrate-cybozu-live-to-redmine-forum.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2019-01-26-migrate-cybozu-live-to-redmine-forum.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>友人との情報共有のためにサイボウズLiveを使ってきたが、<a href="https://live.cybozu.co.jp/about/20171024.html" title="サイボウズLiveサービス終了のお知らせ">告知のとおり2019年4月15日でサービスが終了</a>することになった。</p>
+
+<p>そこで、私たちが別途運用しているredmineに移行することにした。掲示板以外は使っていないか他のもので既に満足しているので、掲示板だけを移行することとした。redmineのフォーラム機能があるが、掲示板の内容をredmineのフォーラムに移行することとした。</p>
+
+<h2 id="移行先redmineの環境">移行先redmineの環境</h2>
+
+<p>移行先の環境は、おおよそ下記の通り</p>
+
+<ul>
+  <li>web: Heroku</li>
+  <li>db: ClearDB (mysql 5.6)</li>
+  <li>storage: Dropbox</li>
+</ul>
+
+<p>Heroku だとファイルが保存できないため、外部の何らかの AWS S3 といった Storage as a Service などを使って実現する必要がある。</p>
+
+<p>今回の環境ではファイル容量がそんなに大きくないことと費用面の理由から dropbox を使用した。なお、dropbox を添付ファイルとして使うためには下記のプラグインを redmine にインストールする必要がある。本家では現在の API バージョンに対応していないので、フォークされたものを使う必要がある。</p>
+
+<p><a href="https://github.com/bprotas/redmine_dropbox_attachments">bprotas/redmine_dropbox_attachments</a></p>
+
+<h2 id="変換スクリプト">変換スクリプト</h2>
+
+<p><a href="https://github.com/diffshare">@diffshare</a> 氏によってたたき台となる Ruby でかかれた変換プログラムが作られた。</p>
+
+<p><a href="https://gist.github.com/diffshare/f7899c48dca9988942c14d7126cefd29">https://gist.github.com/diffshare/f7899c48dca9988942c14d7126cefd29</a></p>
+
+<p>これは<a href="https://developer.cybozulive.com/doc/current/">サイボウズLive データ API</a> を使用するためデベロッパ登録した上でアプリの登録（無料）が必要である。この登録作業は本題ではないので説明は割愛する。</p>
+
+<p>これをもとに機能拡張などを行ったものを作成し、これを使って変換を実施する。</p>
+
+<p><a href="https://gist.github.com/cat-in-136/a7ec320939f35812a64ac4e35e2a947b">https://gist.github.com/cat-in-136/a7ec320939f35812a64ac4e35e2a947b</a></p>
+
+<p>なお、このスクリプトは、下記のような redmine のフォルダで実行することを想定している。ruby on rails を知っていれば、後述の解説さえ読めば、容易に読解可能な程度のスクリプトであるため、本稿では使い方はわざわざ解説しない。</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">cd </span>path/to/redmine
+<span class="gp">$</span> <span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s1">'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'</span><span class="se">\</span>
+  <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 <span class="nv">RACK_ENV</span><span class="o">=</span>production <span class="nv">RAILS_ENV</span><span class="o">=</span>production <span class="se">\</span>
+  <span class="nv">RAILS_SERVE_STATIC_FILES</span><span class="o">=</span>enabled <span class="nv">SECRET_KEY_BASE</span><span class="o">=</span>xxxxxxxx <span class="se">\</span>
+  <span class="nv">MISC_CONFIG</span><span class="o">=</span>miscconf.yaml <span class="nv">ATTACH_CACHE_DIR</span><span class="o">=</span>./ATTACH_CACHE_DIR <span class="se">\</span>
+  bundle <span class="nb">exec </span>rails r replace-from-cybozu-to-redmine.rb
+</code></pre></div></div>
+
+<p>注：後述の <a href="https://www.redmine.org/issues/26030">#26030</a> のパッチを当てていない場合、この変換スクリプトで変換後のフォーラムでは不具合が起こるので、事前に当該パッチを当てておく（か将来出る redmine 4.1+ を使う）ようにすること。</p>
+
+<h3 id="なぜcsvエクスポート機能を使わなかったのか">なぜCSVエクスポート機能を使わなかったのか?</h3>
+
+<p>簡単にいえば、扱いづらいの一言に限る。もちろん、単に手元に置いておくアーカイブとしては十分であろう。</p>
+
+<p>しかし、添付ファイルとの紐付けがなかったり、いいね!情報がないなどの問題があり、API で取得する方がかえってやり易いということになった。</p>
+
+<h2 id="変換で問題となったこと">変換で問題となったこと</h2>
+
+<h3 id="添付ファイル">添付ファイル</h3>
+
+<p>掲示板などの情報から添付ファイル情報として <code class="highlighter-rouge">cbl:attachement</code> という要素があり、添付ファイルのIDは取得できる。サイボウズの API 仕様にあるように<a href="https://developer.cybozulive.com/doc/current/pub/fileDownload.html">ファイルダウンロードAPIは画像のみの対応</a>である。実際に呼び出しても、<strong>画像ファイル以外はエラーを吐く</strong> という<a href="http://dotnsf.blog.jp/archives/1068218167.html">挙動が報告</a>されているし、筆者の手元でもそうなった。</p>
+
+<p>共有フォルダ（一括ダウンロード）機能は、画像以外の任意のファイルが保存できるが、コメントなどとの <strong>対応性に関する情報は与えられない</strong> 。また、同一ファイル名が ZIP 内で重複するのを防ぐため、ZIP 保存するとファイル名の末尾にランダムな文字列が付加される（このランダムな文字列はエクスポートするたびに異なるため、識別子としては使えない）。</p>
+
+<p>というわけで、画像は API で、非画像は悩んだ末に簡易的なスクレイピング（単にクッキーを食わせてダウンロード）で取得した。</p>
+
+<p>これとは別の話で、いずれの手段を使っても画像ファイルに関しては <strong>オリジナルのファイルを取り出すことはできない</strong> 。サイボウズ上の画像ファイルサイズが 1,145 kB と書いてあっても得られるダウンロードされるファイルは 197.0 kB といったような感じである。<code class="highlighter-rouge">optipng</code> などで非常に最適化をかけた画像については、逆にファイルサイズが肥大化していることもあるようだ。</p>
+
+<h3 id="photojpg-問題">photo.jpg 問題</h3>
+
+<p>添付ファイルをダウンロードしてみたら、<a href="https://live.cybozu.co.jp/info/2016122101.html">旧モバイルアプリ</a>で上げた画像ファイルは <code class="highlighter-rouge">photo.jpg</code> という名前のファイルになっているが、中身が JPEG ではなくて PNG になっていた。</p>
+
+<p>なお、API でダウンロードしたとしても手動でダウンロードしたとしてもPNGファイルになっていたので、ファイル名 <em>（拡張子）が間違って保存されている</em> らしい。</p>
+
+<p>解決策は対症療法だが、ファイルヘッダを見てPNGファイルかどうかを判断するようにした。この処理自体は<a href="https://rubygems.org/gems/mimemagic">mimemagic</a> gemを使えば極めて簡単に実現できた。</p>
+
+<h3 id="いいね">いいね!</h3>
+
+<p>Redmine にいいね!の機能は存在しない。そのためプラグインを入れることになるが、フォーラムにいいね!できるのは見当たらなかった。そこで下記の通り自作した。</p>
+
+<p><a href="https://github.com/cat-in-136/redmine_hearts">cat-in-136/redmine_hearts</a></p>
+
+<p>ひとつ API 上でややこしいところがある。<a href="https://developer.cybozulive.com/doc/current/pub/good.html">good の API レスポンス</a>において自分のいいね!と他人のいいね!は異なるかたちで表せられる。自分のは <code class="highlighter-rouge">cblGood:set</code> で、他人のは <code class="highlighter-rouge">cbl:who</code> だ。</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;cblGood:set&gt;</span>true<span class="nt">&lt;/cblGood:set&gt;</span>
+    <span class="nt">&lt;cbl:who</span> <span class="na">valueString=</span><span class="s">"佐藤 昇"</span> <span class="na">id=</span><span class="s">"1:1"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;cbl:who</span> <span class="na">valueString=</span><span class="s">"田中 美子"</span> <span class="na">id=</span><span class="s">"1:11"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h3 id="名寄せ">名寄せ</h3>
+
+<p>名寄せについては、簡単のため、YAML ファイルでサイボウズLiveのMember IDとredmineのIDの対応表を入れる実装とした。上のコマンドライン例に沿って言えば、miscconf.yaml に下記のように記入する。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">users</span><span class="pi">:</span>
+  <span class="s">1:2</span> <span class="pi">:</span> <span class="s">jsmith</span>
+  <span class="s">1:3</span> <span class="pi">:</span> <span class="s">dlopper</span>
+  <span class="c1"># "Member ID": "redmine login name"</span>
+</code></pre></div></div>
+
+<p>なお、Member IDはAPIのアクセスの他に「プロフィールの詳細」を開いてURLを確認することでも得られる。
+例えば、プロフィールの詳細のページのURLが <code class="highlighter-rouge">https://cybozulive.com/mpAddress/list?mid=1%3A2</code> ならば、
+Member ID は <code class="highlighter-rouge">1:2</code> である。</p>
+
+<h3 id="発言番号とパーマリンク">発言番号とパーマリンク</h3>
+
+<p>Redmine のフォーラム機能にはカスタムフィールドがないので、付加的なメタデータをつけることはできない。</p>
+
+<p>とはいえないのはないので過去のメッセージの参照において不便であるので、下記の通りとした。</p>
+
+<ul>
+  <li>発言番号は、苦肉の策だが subject 文字列に置換して移行</li>
+  <li>パーマリンクも苦肉の策ながら、テキストメッセージの末尾に書いた（miscconf.yaml にて<code class="highlighter-rouge">import_source_to_content: true</code>を指定した場合）</li>
+</ul>
+
+<p>これらは、あとは興味あるやつは頑張れ!というスタンスに基づく。使い勝手は悪いが、検索すれば見つけられるから後追いはできるようにはなるはずである。</p>
+
+<h3 id="フォーラムのコメントの表示順番">フォーラムのコメントの表示順番</h3>
+
+<p>redmineではデフォルトでは古→新の順番で表示され、またページあたりの表示項目数も固定である。
+これは既に redmine 本家チケットの <a href="https://www.redmine.org/issues/26030">#26030</a> であつかわれていて、
+これによって、ユーザ設定で変更できるようになり、例えば、ユーザ設定で降順に変更できる（サイボウズ Live っぽく使える）。</p>
+
+<p>入る予定が redmine 4.1 系になるらしい。だが、redmine 4 系への移行は、そもそもまだ開発段階のバージョンである上に、プラグインなど互換の都合上、慎重にならざるを得ないため今回は作業を見送ることとした。よって、手作業パッチをすることとした。</p>
+
+<p>ところで、変換スクリプトで変換かけたフォーラムだと <code class="highlighter-rouge">message#1234</code> といったリンクの複数ページがうまく行かないが、
+このパッチを当てることで実は正しく動くようになる。</p>
+
+<p><code class="highlighter-rouge">MessageController#show</code> にて <code class="highlighter-rouge">r=1234</code> というパラメータを渡すことで、pagination を対処する処理があったが、これは ID が過去から昇順で並んでいるのが前提でないと動かない。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="ss">:r</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">page</span><span class="p">.</span><span class="nf">nil?</span>
+      <span class="n">offset</span> <span class="o">=</span> <span class="vi">@topic</span><span class="p">.</span><span class="nf">children</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="no">Message</span><span class="p">.</span><span class="nf">table_name</span><span class="si">}</span><span class="s2">.id &lt; ?"</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="ss">:r</span><span class="p">].</span><span class="nf">to_i</span><span class="p">).</span><span class="nf">count</span>
+      <span class="n">page</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">/</span> <span class="no">REPLIES_PER_PAGE</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+
+<p>インポートスクリプトは、元のサイボウズLive の rss をそのままなめていっている挙動のせいでこれとは逆順に並んでいるため動作しなかった。</p>
+
+<p>ところで<a href="https://www.redmine.org/issues/26030">#26030</a>のパッチを投入した結果（あるいは redmine 4.1+）、ここのコードが下記のように、整列のところで <code class="highlighter-rouge">created_on</code> も見るようになっている。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">replies_order</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">current</span><span class="p">.</span><span class="nf">wants_comments_in_reverse_order?</span> <span class="p">?</span> <span class="s1">'DESC'</span> <span class="p">:</span> <span class="s1">'ASC'</span>
+    <span class="vi">@replies</span> <span class="o">=</span> <span class="vi">@topic</span><span class="p">.</span><span class="nf">children</span><span class="p">.</span>
+      <span class="nf">includes</span><span class="p">(</span><span class="ss">:author</span><span class="p">,</span> <span class="ss">:attachments</span><span class="p">,</span> <span class="p">{</span><span class="ss">:board</span> <span class="o">=&gt;</span> <span class="ss">:project</span><span class="p">}).</span>
+      <span class="nf">reorder</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="no">Message</span><span class="p">.</span><span class="nf">table_name</span><span class="si">}</span><span class="s2">.created_on </span><span class="si">#{</span><span class="n">replies_order</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="no">Message</span><span class="p">.</span><span class="nf">table_name</span><span class="si">}</span><span class="s2">.id </span><span class="si">#{</span><span class="n">replies_order</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="ss">:r</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">page</span><span class="p">.</span><span class="nf">nil?</span>
+      <span class="n">offset</span> <span class="o">=</span> <span class="vi">@replies</span><span class="p">.</span><span class="nf">pluck</span><span class="p">(</span><span class="ss">:id</span><span class="p">).</span><span class="nf">index</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:r</span><span class="p">].</span><span class="nf">to_i</span><span class="p">)</span>
+      <span class="n">page</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">/</span> <span class="n">per_page_option</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+
+<p>このお陰で、変換スクリプトで変換かけたフォーラムだと <code class="highlighter-rouge">message#1234</code> といったリンクの複数ページがうまく行かない不具合は結果的に解決できた。めでたしめでたし。（パッチをあたっていないときでも動作するような改造はやらないことにした。）</p>
+
+<h3 id="emoji">emoji</h3>
+
+<p>これは mysql の環境の問題だが、絵文字を入力すると正しく表示されなくなった。</p>
+
+<p>原因は、mysql を utf8mb4 ではなく utf8 で運用しているため5バイト(以上)文字は正しく表現できないのが原因だった。これは普通にredmineを使っていても注意が必要だ。</p>
+
+<p>対策は、実態参照で変換することとすることとした（miscconf.yaml にて<code class="highlighter-rouge">escape_emoji: true</code>を指定した場合）。また実態参照にするかどうかの判断をemojiかどうかではなく5バイト(以上)文字かどうかにすることとした。新し目の絵文字をいちいちフォローするのは困難であるし、こうすると mysql の制限に合った処理かつ処理としても簡素である。</p>
+
+<p>なお5バイト(以上)文字かどうかを判断する正規表現は下記の通りである:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">EMOJI_REGEX</span> <span class="o">=</span> <span class="sr">/[^\u0000-\uFFFF]/</span>
+</code></pre></div></div>
+
+<p>なお、当然のことながら <a href="http://xyk.hatenablog.com/entry/2015/01/14/143508">cleardb を utf8mb で運用</a>していたり、postgresql や sqlite で運用していたりする場合には、この現象は起こらないので気にしないで良い。</p>
+
+<h2 id="移行処理について">移行処理について</h2>
+
+<p>移行処理自体は <code class="highlighter-rouge">bundle exec rails run ./replace-from-cybozu-to-redmine.rb</code> で実行すればよいので、heroku 上で実行するために <code class="highlighter-rouge">heroku run bundle exec rails run ./replace-from-cybozu-to-redmine.rb</code> としてもよい。</p>
+
+<p>…のであるが、実際にこれを動かすと1時間ちょっと経過したところで <code class="highlighter-rouge">heroku run</code> のプロセスが切られた。つまるところ1時間以内に実行が完了しないとNGのようであり、変換量が多いときにはNGのようである。愚直なバッチ処理なのでどうしてもこのスクリプトの実行には時間がかかる。またローカルでスクリプトを単純に動かすのも cleardb のアクセスのせいで時間がかかる。</p>
+
+<p>そこで、一旦 cleardb のバックアップ用 sql ファイルをローカルのmysqlにインポートして、ローカルのmysql + リモートdropbox で変換を実施して、
+あとで mysql をcleardbにインポートする策をとることにした。
+一気にインポート/エクスポートする際は rails を介さないので良いので高速であり、またこの手法は安定している。</p>
+
+<h2 id="変換をあきらめた機能">変換をあきらめた機能</h2>
+
+<p>その他、主要な「あきらめた機能」は下記の通り。</p>
+
+<ul>
+  <li>HTML形式の本文 (HTMLコードを取得する方法が API 上ない。scraping するのが面倒なのでやっていない)</li>
+  <li>「<code class="highlighter-rouge">&gt;xxx</code>」のリンク</li>
+  <li>メッセージ本文のインライン画像貼り付け（<code class="highlighter-rouge">[file:1]</code>を置換すればできるが面倒なのでやっていない）</li>
+  <li>トピックのカテゴリ (階層構造なしでフラットにトピックが並ぶ)</li>
+  <li>トピックに対する「★お気に入り」</li>
+  <li>アンケート機能</li>
+  <li>その他、掲示板以外のすべての機能</li>
+</ul>
+
+<h2 id="おわりに">おわりに</h2>
+
+<p>元ネタはさっさと出来たがいろいろな点でハマり、
+片手間でやっているとはいえ、
+予想よりも三か月ぐらいも余計に時間がかかった</p>
+
+<p>また CSV では得られる情報が少ないのも驚いた。
+Kintone 含む CSV ファイルからインポートする場合は、移行時に情報はかなり失われることになるのだろう。
+それを上回るものができたのはずであるので、満足である。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html">
+      <span class="post-meta">2018-07-02</span>
+      <span class="post-title">Redmine Tips: How to add an attachment using rails c</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2012/11/twitter-api.html">
+      <span class="post-meta">2012-11-05</span>
+      <span class="post-title">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
+      <span class="post-meta">2014-04-27</span>
+      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/tweet-to-myself.html">
+      <span class="post-meta">2010-03-24</span>
+      <span class="post-title">Tweet to myself</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/04/jekyll-travis-ci-github-pages-deployment.html">
+      <span class="post-meta">2015-04-30</span>
+      <span class="post-title">Jekyll ブログの Travis CI 使って Github Page への配備する方法のメモ</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/08/html-complex-ruby.html">
+      <span class="post-meta">2016-08-05</span>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2019
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>

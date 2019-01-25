@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2019-01-04T01:39:47+09:00</updated>
+  <updated>2019-01-26T01:23:18+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,244 @@
 
   
   
+  
+    <entry>
+      <title type="html">サイボウズLiveからredmineへの移行</title>
+      <link href="https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum.html" rel="alternate" type="text/html" title="サイボウズLiveからredmineへの移行" />
+      <published>2019-01-26T01:16:21+09:00</published>
+      <updated>2019-01-26T01:16:21+09:00</updated>
+      <id>https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum.html">&lt;p&gt;友人との情報共有のためにサイボウズLiveを使ってきたが、&lt;a href=&quot;https://live.cybozu.co.jp/about/20171024.html&quot; title=&quot;サイボウズLiveサービス終了のお知らせ&quot;&gt;告知のとおり2019年4月15日でサービスが終了&lt;/a&gt;することになった。&lt;/p&gt;
+
+&lt;p&gt;そこで、私たちが別途運用しているredmineに移行することにした。掲示板以外は使っていないか他のもので既に満足しているので、掲示板だけを移行することとした。redmineのフォーラム機能があるが、掲示板の内容をredmineのフォーラムに移行することとした。&lt;/p&gt;
+
+&lt;h2 id=&quot;移行先redmineの環境&quot;&gt;移行先redmineの環境&lt;/h2&gt;
+
+&lt;p&gt;移行先の環境は、おおよそ下記の通り&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;web: Heroku&lt;/li&gt;
+  &lt;li&gt;db: ClearDB (mysql 5.6)&lt;/li&gt;
+  &lt;li&gt;storage: Dropbox&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Heroku だとファイルが保存できないため、外部の何らかの AWS S3 といった Storage as a Service などを使って実現する必要がある。&lt;/p&gt;
+
+&lt;p&gt;今回の環境ではファイル容量がそんなに大きくないことと費用面の理由から dropbox を使用した。なお、dropbox を添付ファイルとして使うためには下記のプラグインを redmine にインストールする必要がある。本家では現在の API バージョンに対応していないので、フォークされたものを使う必要がある。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bprotas/redmine_dropbox_attachments&quot;&gt;bprotas/redmine_dropbox_attachments&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;変換スクリプト&quot;&gt;変換スクリプト&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/diffshare&quot;&gt;@diffshare&lt;/a&gt; 氏によってたたき台となる Ruby でかかれた変換プログラムが作られた。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/diffshare/f7899c48dca9988942c14d7126cefd29&quot;&gt;https://gist.github.com/diffshare/f7899c48dca9988942c14d7126cefd29&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これは&lt;a href=&quot;https://developer.cybozulive.com/doc/current/&quot;&gt;サイボウズLive データ API&lt;/a&gt; を使用するためデベロッパ登録した上でアプリの登録（無料）が必要である。この登録作業は本題ではないので説明は割愛する。&lt;/p&gt;
+
+&lt;p&gt;これをもとに機能拡張などを行ったものを作成し、これを使って変換を実施する。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://gist.github.com/cat-in-136/a7ec320939f35812a64ac4e35e2a947b&quot;&gt;https://gist.github.com/cat-in-136/a7ec320939f35812a64ac4e35e2a947b&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;なお、このスクリプトは、下記のような redmine のフォルダで実行することを想定している。ruby on rails を知っていれば、後述の解説さえ読めば、容易に読解可能な程度のスクリプトであるため、本稿では使い方はわざわざ解説しない。&lt;/p&gt;
+
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;path/to/redmine
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;en_US.UTF-8 &lt;span class=&quot;nv&quot;&gt;RACK_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;nv&quot;&gt;RAILS_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;RAILS_SERVE_STATIC_FILES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;enabled &lt;span class=&quot;nv&quot;&gt;SECRET_KEY_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xxxxxxxx &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;MISC_CONFIG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;miscconf.yaml &lt;span class=&quot;nv&quot;&gt;ATTACH_CACHE_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./ATTACH_CACHE_DIR &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails r replace-from-cybozu-to-redmine.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注：後述の &lt;a href=&quot;https://www.redmine.org/issues/26030&quot;&gt;#26030&lt;/a&gt; のパッチを当てていない場合、この変換スクリプトで変換後のフォーラムでは不具合が起こるので、事前に当該パッチを当てておく（か将来出る redmine 4.1+ を使う）ようにすること。&lt;/p&gt;
+
+&lt;h3 id=&quot;なぜcsvエクスポート機能を使わなかったのか&quot;&gt;なぜCSVエクスポート機能を使わなかったのか?&lt;/h3&gt;
+
+&lt;p&gt;簡単にいえば、扱いづらいの一言に限る。もちろん、単に手元に置いておくアーカイブとしては十分であろう。&lt;/p&gt;
+
+&lt;p&gt;しかし、添付ファイルとの紐付けがなかったり、いいね!情報がないなどの問題があり、API で取得する方がかえってやり易いということになった。&lt;/p&gt;
+
+&lt;h2 id=&quot;変換で問題となったこと&quot;&gt;変換で問題となったこと&lt;/h2&gt;
+
+&lt;h3 id=&quot;添付ファイル&quot;&gt;添付ファイル&lt;/h3&gt;
+
+&lt;p&gt;掲示板などの情報から添付ファイル情報として &lt;code class=&quot;highlighter-rouge&quot;&gt;cbl:attachement&lt;/code&gt; という要素があり、添付ファイルのIDは取得できる。サイボウズの API 仕様にあるように&lt;a href=&quot;https://developer.cybozulive.com/doc/current/pub/fileDownload.html&quot;&gt;ファイルダウンロードAPIは画像のみの対応&lt;/a&gt;である。実際に呼び出しても、&lt;strong&gt;画像ファイル以外はエラーを吐く&lt;/strong&gt; という&lt;a href=&quot;http://dotnsf.blog.jp/archives/1068218167.html&quot;&gt;挙動が報告&lt;/a&gt;されているし、筆者の手元でもそうなった。&lt;/p&gt;
+
+&lt;p&gt;共有フォルダ（一括ダウンロード）機能は、画像以外の任意のファイルが保存できるが、コメントなどとの &lt;strong&gt;対応性に関する情報は与えられない&lt;/strong&gt; 。また、同一ファイル名が ZIP 内で重複するのを防ぐため、ZIP 保存するとファイル名の末尾にランダムな文字列が付加される（このランダムな文字列はエクスポートするたびに異なるため、識別子としては使えない）。&lt;/p&gt;
+
+&lt;p&gt;というわけで、画像は API で、非画像は悩んだ末に簡易的なスクレイピング（単にクッキーを食わせてダウンロード）で取得した。&lt;/p&gt;
+
+&lt;p&gt;これとは別の話で、いずれの手段を使っても画像ファイルに関しては &lt;strong&gt;オリジナルのファイルを取り出すことはできない&lt;/strong&gt; 。サイボウズ上の画像ファイルサイズが 1,145 kB と書いてあっても得られるダウンロードされるファイルは 197.0 kB といったような感じである。&lt;code class=&quot;highlighter-rouge&quot;&gt;optipng&lt;/code&gt; などで非常に最適化をかけた画像については、逆にファイルサイズが肥大化していることもあるようだ。&lt;/p&gt;
+
+&lt;h3 id=&quot;photojpg-問題&quot;&gt;photo.jpg 問題&lt;/h3&gt;
+
+&lt;p&gt;添付ファイルをダウンロードしてみたら、&lt;a href=&quot;https://live.cybozu.co.jp/info/2016122101.html&quot;&gt;旧モバイルアプリ&lt;/a&gt;で上げた画像ファイルは &lt;code class=&quot;highlighter-rouge&quot;&gt;photo.jpg&lt;/code&gt; という名前のファイルになっているが、中身が JPEG ではなくて PNG になっていた。&lt;/p&gt;
+
+&lt;p&gt;なお、API でダウンロードしたとしても手動でダウンロードしたとしてもPNGファイルになっていたので、ファイル名 &lt;em&gt;（拡張子）が間違って保存されている&lt;/em&gt; らしい。&lt;/p&gt;
+
+&lt;p&gt;解決策は対症療法だが、ファイルヘッダを見てPNGファイルかどうかを判断するようにした。この処理自体は&lt;a href=&quot;https://rubygems.org/gems/mimemagic&quot;&gt;mimemagic&lt;/a&gt; gemを使えば極めて簡単に実現できた。&lt;/p&gt;
+
+&lt;h3 id=&quot;いいね&quot;&gt;いいね!&lt;/h3&gt;
+
+&lt;p&gt;Redmine にいいね!の機能は存在しない。そのためプラグインを入れることになるが、フォーラムにいいね!できるのは見当たらなかった。そこで下記の通り自作した。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/cat-in-136/redmine_hearts&quot;&gt;cat-in-136/redmine_hearts&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ひとつ API 上でややこしいところがある。&lt;a href=&quot;https://developer.cybozulive.com/doc/current/pub/good.html&quot;&gt;good の API レスポンス&lt;/a&gt;において自分のいいね!と他人のいいね!は異なるかたちで表せられる。自分のは &lt;code class=&quot;highlighter-rouge&quot;&gt;cblGood:set&lt;/code&gt; で、他人のは &lt;code class=&quot;highlighter-rouge&quot;&gt;cbl:who&lt;/code&gt; だ。&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cblGood:set&amp;gt;&lt;/span&gt;true&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cblGood:set&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cbl:who&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;valueString=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;佐藤 昇&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1:1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cbl:who&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;valueString=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;田中 美子&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1:11&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;名寄せ&quot;&gt;名寄せ&lt;/h3&gt;
+
+&lt;p&gt;名寄せについては、簡単のため、YAML ファイルでサイボウズLiveのMember IDとredmineのIDの対応表を入れる実装とした。上のコマンドライン例に沿って言えば、miscconf.yaml に下記のように記入する。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;1:2&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jsmith&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;1:3&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dlopper&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# &quot;Member ID&quot;: &quot;redmine login name&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;なお、Member IDはAPIのアクセスの他に「プロフィールの詳細」を開いてURLを確認することでも得られる。
+例えば、プロフィールの詳細のページのURLが &lt;code class=&quot;highlighter-rouge&quot;&gt;https://cybozulive.com/mpAddress/list?mid=1%3A2&lt;/code&gt; ならば、
+Member ID は &lt;code class=&quot;highlighter-rouge&quot;&gt;1:2&lt;/code&gt; である。&lt;/p&gt;
+
+&lt;h3 id=&quot;発言番号とパーマリンク&quot;&gt;発言番号とパーマリンク&lt;/h3&gt;
+
+&lt;p&gt;Redmine のフォーラム機能にはカスタムフィールドがないので、付加的なメタデータをつけることはできない。&lt;/p&gt;
+
+&lt;p&gt;とはいえないのはないので過去のメッセージの参照において不便であるので、下記の通りとした。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;発言番号は、苦肉の策だが subject 文字列に置換して移行&lt;/li&gt;
+  &lt;li&gt;パーマリンクも苦肉の策ながら、テキストメッセージの末尾に書いた（miscconf.yaml にて&lt;code class=&quot;highlighter-rouge&quot;&gt;import_source_to_content: true&lt;/code&gt;を指定した場合）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらは、あとは興味あるやつは頑張れ!というスタンスに基づく。使い勝手は悪いが、検索すれば見つけられるから後追いはできるようにはなるはずである。&lt;/p&gt;
+
+&lt;h3 id=&quot;フォーラムのコメントの表示順番&quot;&gt;フォーラムのコメントの表示順番&lt;/h3&gt;
+
+&lt;p&gt;redmineではデフォルトでは古→新の順番で表示され、またページあたりの表示項目数も固定である。
+これは既に redmine 本家チケットの &lt;a href=&quot;https://www.redmine.org/issues/26030&quot;&gt;#26030&lt;/a&gt; であつかわれていて、
+これによって、ユーザ設定で変更できるようになり、例えば、ユーザ設定で降順に変更できる（サイボウズ Live っぽく使える）。&lt;/p&gt;
+
+&lt;p&gt;入る予定が redmine 4.1 系になるらしい。だが、redmine 4 系への移行は、そもそもまだ開発段階のバージョンである上に、プラグインなど互換の都合上、慎重にならざるを得ないため今回は作業を見送ることとした。よって、手作業パッチをすることとした。&lt;/p&gt;
+
+&lt;p&gt;ところで、変換スクリプトで変換かけたフォーラムだと &lt;code class=&quot;highlighter-rouge&quot;&gt;message#1234&lt;/code&gt; といったリンクの複数ページがうまく行かないが、
+このパッチを当てることで実は正しく動くようになる。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MessageController#show&lt;/code&gt; にて &lt;code class=&quot;highlighter-rouge&quot;&gt;r=1234&lt;/code&gt; というパラメータを渡すことで、pagination を対処する処理があったが、これは ID が過去から昇順で並んでいるのが前提でないと動かない。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.id &amp;lt; ?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;count&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;REPLIES_PER_PAGE&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;インポートスクリプトは、元のサイボウズLive の rss をそのままなめていっている挙動のせいでこれとは逆順に並んでいるため動作しなかった。&lt;/p&gt;
+
+&lt;p&gt;ところで&lt;a href=&quot;https://www.redmine.org/issues/26030&quot;&gt;#26030&lt;/a&gt;のパッチを投入した結果（あるいは redmine 4.1+）、ここのコードが下記のように、整列のところで &lt;code class=&quot;highlighter-rouge&quot;&gt;created_on&lt;/code&gt; も見るようになっている。&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;replies_order&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;wants_comments_in_reverse_order?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DESC'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ASC'&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@replies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;includes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:attachments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:project&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;reorder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.created_on &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replies_order&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.id &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replies_order&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@replies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pluck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;per_page_option&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;このお陰で、変換スクリプトで変換かけたフォーラムだと &lt;code class=&quot;highlighter-rouge&quot;&gt;message#1234&lt;/code&gt; といったリンクの複数ページがうまく行かない不具合は結果的に解決できた。めでたしめでたし。（パッチをあたっていないときでも動作するような改造はやらないことにした。）&lt;/p&gt;
+
+&lt;h3 id=&quot;emoji&quot;&gt;emoji&lt;/h3&gt;
+
+&lt;p&gt;これは mysql の環境の問題だが、絵文字を入力すると正しく表示されなくなった。&lt;/p&gt;
+
+&lt;p&gt;原因は、mysql を utf8mb4 ではなく utf8 で運用しているため5バイト(以上)文字は正しく表現できないのが原因だった。これは普通にredmineを使っていても注意が必要だ。&lt;/p&gt;
+
+&lt;p&gt;対策は、実態参照で変換することとすることとした（miscconf.yaml にて&lt;code class=&quot;highlighter-rouge&quot;&gt;escape_emoji: true&lt;/code&gt;を指定した場合）。また実態参照にするかどうかの判断をemojiかどうかではなく5バイト(以上)文字かどうかにすることとした。新し目の絵文字をいちいちフォローするのは困難であるし、こうすると mysql の制限に合った処理かつ処理としても簡素である。&lt;/p&gt;
+
+&lt;p&gt;なお5バイト(以上)文字かどうかを判断する正規表現は下記の通りである:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;EMOJI_REGEX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/[^\u0000-\uFFFF]/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;なお、当然のことながら &lt;a href=&quot;http://xyk.hatenablog.com/entry/2015/01/14/143508&quot;&gt;cleardb を utf8mb で運用&lt;/a&gt;していたり、postgresql や sqlite で運用していたりする場合には、この現象は起こらないので気にしないで良い。&lt;/p&gt;
+
+&lt;h2 id=&quot;移行処理について&quot;&gt;移行処理について&lt;/h2&gt;
+
+&lt;p&gt;移行処理自体は &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rails run ./replace-from-cybozu-to-redmine.rb&lt;/code&gt; で実行すればよいので、heroku 上で実行するために &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku run bundle exec rails run ./replace-from-cybozu-to-redmine.rb&lt;/code&gt; としてもよい。&lt;/p&gt;
+
+&lt;p&gt;…のであるが、実際にこれを動かすと1時間ちょっと経過したところで &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku run&lt;/code&gt; のプロセスが切られた。つまるところ1時間以内に実行が完了しないとNGのようであり、変換量が多いときにはNGのようである。愚直なバッチ処理なのでどうしてもこのスクリプトの実行には時間がかかる。またローカルでスクリプトを単純に動かすのも cleardb のアクセスのせいで時間がかかる。&lt;/p&gt;
+
+&lt;p&gt;そこで、一旦 cleardb のバックアップ用 sql ファイルをローカルのmysqlにインポートして、ローカルのmysql + リモートdropbox で変換を実施して、
+あとで mysql をcleardbにインポートする策をとることにした。
+一気にインポート/エクスポートする際は rails を介さないので良いので高速であり、またこの手法は安定している。&lt;/p&gt;
+
+&lt;h2 id=&quot;変換をあきらめた機能&quot;&gt;変換をあきらめた機能&lt;/h2&gt;
+
+&lt;p&gt;その他、主要な「あきらめた機能」は下記の通り。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML形式の本文 (HTMLコードを取得する方法が API 上ない。scraping するのが面倒なのでやっていない)&lt;/li&gt;
+  &lt;li&gt;「&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;xxx&lt;/code&gt;」のリンク&lt;/li&gt;
+  &lt;li&gt;メッセージ本文のインライン画像貼り付け（&lt;code class=&quot;highlighter-rouge&quot;&gt;[file:1]&lt;/code&gt;を置換すればできるが面倒なのでやっていない）&lt;/li&gt;
+  &lt;li&gt;トピックのカテゴリ (階層構造なしでフラットにトピックが並ぶ)&lt;/li&gt;
+  &lt;li&gt;トピックに対する「★お気に入り」&lt;/li&gt;
+  &lt;li&gt;アンケート機能&lt;/li&gt;
+  &lt;li&gt;その他、掲示板以外のすべての機能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;おわりに&quot;&gt;おわりに&lt;/h2&gt;
+
+&lt;p&gt;元ネタはさっさと出来たがいろいろな点でハマり、
+片手間でやっているとはいえ、
+予想よりも三か月ぐらいも余計に時間がかかった&lt;/p&gt;
+
+&lt;p&gt;また CSV では得られる情報が少ないのも驚いた。
+Kintone 含む CSV ファイルからインポートする場合は、移行時に情報はかなり失われることになるのだろう。
+それを上回るものができたのはずであるので、満足である。&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="redmine" />
+      
+        <category term="サイボウズ" />
+      
+        <category term="ruby" />
+      
+        <category term="データ移行" />
+      
+
+      
+        <summary type="html">友人との情報共有のためにサイボウズLiveを使ってきたが、告知のとおり2019年4月15日でサービスが終了することになった。</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 65.0 beta 4 default preference and firefox 64.0</title>
@@ -1283,166 +1521,6 @@ table.diff_firefox60_pref_diff tbody tr { transition: background 0.125s ease-in-
 
       
         <summary type="html">This is difference between the default preference of Firefox 60.0 beta 5 and one of 59.0.1.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る</title>
-      <link href="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" rel="alternate" type="text/html" title="白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る" />
-      <published>2018-03-11T22:27:27+09:00</published>
-      <updated>2018-03-11T22:27:27+09:00</updated>
-      <id>https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html">&lt;p&gt;Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。
-これを個人的に &lt;em&gt;白塗り&lt;/em&gt; と呼んでいる。&lt;/p&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img src=&quot;/images/201803_shironurixlsx_shironuri_example_ss.svg&quot; width=&quot;472&quot; height=&quot;173&quot; /&gt;
-&lt;figcaption&gt;&lt;em&gt;白塗り&lt;/em&gt;の例&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;罫線を非表示にする設定をすればいいだけなのだが、
-あまり方法が周知されていないため
-&lt;span style=&quot;vertical-align: super !important;font-size: smaller;&quot;&gt;[要出典]&lt;/span&gt;、
-ブック間をまたいだコピペでも自然に使用できる
-この白塗りをいまーだ使ってしまっている。&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;白塗り&lt;/em&gt; Excel ファイル (xlsx) を作るにあたり、
-簡単のため何もデータを含まないファイルをベースとして考える。
-作成したライブラリは &lt;a href=&quot;https://rubygems.org/gems/rubyXL&quot;&gt;rubyXL&lt;/a&gt; である。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;require &quot;rubyXL&quot;
-
-workbook = RubyXL::Workbook.new
-workbook.write(&quot;/path/to/blank_nonshironuri.xlsx&quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;div&gt;Output file: &lt;a href=&quot;https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_nonshironuri.xlsx&quot; type=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;&gt;blank_nonshironuri.xlsx&lt;/a&gt;&lt;/div&gt;
- 
-&lt;p&gt;xlsx ファイルは所詮 xml ファイルを zip で固めたものなので、
-Excel（など）で出力した xlsx ファイルを展開して xml ファイルを比較することで
-どういう風に編集すればいいかがわかる。&lt;/p&gt;
-
-&lt;p&gt;確認してみたところ &lt;code class=&quot;highlighter-rouge&quot;&gt;xl\worksheets\sheet1.xml&lt;/code&gt; に下記のような
-col 要素を投入すればよいことが分かった。&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;worksheet&amp;gt;&amp;lt;!-- worksheet 要素の属性値略 --&amp;gt;
-  &amp;lt;!-- 略 --&amp;gt;
-  &amp;lt;cols&amp;gt;&amp;lt;col min=&quot;1&quot; max=&quot;16384&quot; style=&quot;1&quot;/&amp;gt;&amp;lt;/cols&amp;gt;
-  &amp;lt;sheetData&amp;gt;&amp;lt;!-- 略 --&amp;gt;&amp;lt;/sheetData&amp;gt;
-&amp;lt;/worksheet&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ここで 16384 というのは、Excel 2007 以降から現在の Excel のバージョンに
-おける&lt;a href=&quot;https://office.microsoft.com/ja-jp/excel-help/HP010073849.aspx&quot; title=&quot;Excel の仕様および制限 - Excel - Office Support - Office 365&quot;&gt;最大列数であり仕様に基づく&lt;/a&gt;（それ以前は 256 列）。
-つまりすべての列に背景白のスタイルを設定すればよい。&lt;/p&gt;
-
-&lt;p&gt;そこで、&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;require &quot;rubyXL&quot;
-
-workbook = RubyXL::Workbook.new
-worksheet = workbook[0]
-shironuri_style_index = workbook.modify_fill(nil, &quot;ffffff&quot;)
-worksheet.cols &amp;lt;&amp;lt; RubyXL::ColumnRange.new(
-    :min =&amp;gt; 1,
-    :max =&amp;gt; 16384, # 0x4000
-    :style_index =&amp;gt; shironuri_style_index,
-)
-workbook.write(&quot;/path/to/nil_shironuri.xlsx&quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div&gt;Output file: &lt;a href=&quot;https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/nil_shironuri.xlsx&quot; type=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;&gt;nil_shironuri.xlsx&lt;/a&gt;&lt;/div&gt;
-
-&lt;p&gt;とやってみたら、LibreOffice Calc で開けたんだが Excel で開くと
-何も表示されない &lt;em&gt;無&lt;/em&gt; の画面が広がった…。&lt;/p&gt;
-
-&lt;p&gt;なお厳密には、下記の通りでオンライン版では開けもしない。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;デスクトップ版 Excel （Excel Viewer も含む） : &lt;em&gt;無&lt;/em&gt; の画面&lt;/li&gt;
-  &lt;li&gt;オンライン office.com の Excel : そもそも開けない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure style=&quot;display: block; margin: auto; text-align: center; font-size: smaller;&quot;&gt;
-&lt;img src=&quot;/images/201803_shironurixlsx_nil_viewer_ss.png&quot; /&gt;
-&lt;figcaption&gt;&lt;em&gt;無&lt;/em&gt;の画面&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;とやってみたら、LibreOffice で開けたんだが Excel で開くと
-何も表示されない &lt;em&gt;無&lt;/em&gt; の画面が広がった…。&lt;/p&gt;
-
-&lt;p&gt;なお厳密には、下記の通りでオンライン版では開けもしない。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;デスクトップ版 Excel （Excel Viewer も含む） : &lt;em&gt;無&lt;/em&gt; の画面&lt;/li&gt;
-  &lt;li&gt;オンライン office.com の Excel : そもそも開けない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;&amp;lt;worksheet&amp;gt;&amp;lt;!-- worksheet 要素の属性値略 --&amp;gt;
-  &amp;lt;!-- 略 --&amp;gt;
-  &amp;lt;cols&amp;gt;&amp;lt;col min=&quot;1&quot; max=&quot;16384&quot; &lt;ins&gt;width=&quot;9&quot;&lt;/ins&gt; style=&quot;1&quot;/&amp;gt;&amp;lt;/cols&amp;gt;
-  &amp;lt;sheetData&amp;gt;&amp;lt;!-- 略 --&amp;gt;&amp;lt;/sheetData&amp;gt;
-&amp;lt;/worksheet&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;これを実現するコードとしては…&lt;/p&gt;
-
-&lt;pre class=&quot;prettyprint&quot;&gt;&lt;code&gt;require &quot;rubyXL&quot;
-
-workbook = RubyXL::Workbook.new
-worksheet = workbook[0]
-shironuri_style_index = workbook.modify_fill(nil, &quot;ffffff&quot;)
-worksheet.cols &amp;lt;&amp;lt; RubyXL::ColumnRange.new(
-    :min =&amp;gt; 1,
-    :max =&amp;gt; 16384, # 0x4000
-    :style_index =&amp;gt; shironuri_style_index,
-    &lt;ins&gt;:width =&amp;gt; 9,&lt;/ins&gt;
-)
-workbook.write(&quot;/path/to/blank_shironuri.xlsx&quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;div&gt;Output file: &lt;a href=&quot;https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_shironuri.xlsx&quot; type=&quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;&gt;blank_shironuri.xlsx&lt;/a&gt;&lt;/div&gt;
-
-&lt;h3&gt;成果物&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;本記事のコード &lt;a href=&quot;https://gist.github.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5&quot;&gt;
-  https://gist.github.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;本記事の内容の適用例 &lt;a href=&quot;https://github.com/cat-in-136/htot_conv/pull/8&quot;&gt;Shironuri by cat-in-136 · Pull Request #8 · cat-in-136/htot_conv&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3&gt;感想&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;はじめて Excel (デスクトップ)、Office.com の Excel (オンライン版)、
-LibreOffice Calc で挙動が異なるのを見た&lt;/li&gt;
-  &lt;li&gt;xlsx ファイルは xml ファイルを zip で固めたものなので意外と融通が利く&lt;/li&gt;
-  &lt;li&gt;もうちょっとまとめて書いて Qiita あたりに投稿しようと思ったが、
-まとまりのない文章に相成ったので essay としてここのブログに書くことにした&lt;/li&gt;
-&lt;/ul&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="excel" />
-      
-        <category term="チラシの裏" />
-      
-
-      
-        <summary type="html">Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。 これを個人的に 白塗り と呼んでいる。</summary>
       
 
       
