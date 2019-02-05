@@ -33,10 +33,10 @@ pre:lang(ja) em, pre:lang(ja) strong, code:lang(ja) em, code:lang(ja) strong { t
 pre:lang(ja) em, code:lang(ja) em { font-style: normal; text-shadow: 0.25px 0 0.125px currentColor; }
 pre:lang(ja) strong, code:lang(ja) strong { color: #c00; text-shadow: 0.5px 0 0.125px #c00; }
 
-@supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { em:lang(ja), strong:lang(ja) { text-decoration: none; text-shadow: none; }
-  em:lang(ja) { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
-  strong:lang(ja) { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; }
-  pre:lang(ja) em, pre:lang(ja) strong, code:lang(ja) em, code:lang(ja) strong { -webkit-text-emphasis-style: none; text-emphasis-style: none; } }
+@supports ((text-emphasis-style: sesame) or (-webkit-text-emphasis-style: sesame)) and ((text-emphasis-style: circle) or (-webkit-text-emphasis-style: circle)) { @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended em:lang(ja), html.vertical-writing-recommended strong:lang(ja) { text-decoration: none; text-shadow: none; }
+    html.vertical-writing-recommended em:lang(ja) { -webkit-text-emphasis-style: sesame; text-emphasis-style: sesame; }
+    html.vertical-writing-recommended strong:lang(ja) { -webkit-text-emphasis-style: circle; text-emphasis-style: circle; }
+    html.vertical-writing-recommended pre:lang(ja) em, html.vertical-writing-recommended pre:lang(ja) strong, html.vertical-writing-recommended code:lang(ja) em, html.vertical-writing-recommended code:lang(ja) strong { -webkit-text-emphasis-style: none; text-emphasis-style: none; } } }
 /** Images */
 img { max-width: 100%; vertical-align: middle; }
 
