@@ -126,6 +126,8 @@ hr { border: solid thin #828282; margin: 30px; }
 /* Home Layout */
 .pagination { text-align: center; margin: 30px; }
 
+.pagination > * { margin: auto 0.2ex; }
+
 /* Post Layout */
 .post .post-header { margin: 60px 0; line-height: 1.2; }
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post .post-header { margin: 0 60px; } }
