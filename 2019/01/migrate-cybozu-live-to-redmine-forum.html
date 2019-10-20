@@ -76,8 +76,8 @@
 
 <p>なお、このスクリプトは、下記のような redmine のフォルダで実行することを想定している。ruby on rails を知っていれば、後述の解説さえ読めば、容易に読解可能な程度のスクリプトであるため、本稿では使い方はわざわざ解説しない。</p>
 
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">cd </span>path/to/redmine
-<span class="gp">$</span> <span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s1">'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'</span><span class="se">\</span>
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>path/to/redmine
+<span class="gp">$</span><span class="w"> </span><span class="nv">DATABASE_URL</span><span class="o">=</span><span class="s1">'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'</span><span class="se">\</span>
   <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 <span class="nv">RACK_ENV</span><span class="o">=</span>production <span class="nv">RAILS_ENV</span><span class="o">=</span>production <span class="se">\</span>
   <span class="nv">RAILS_SERVE_STATIC_FILES</span><span class="o">=</span>enabled <span class="nv">SECRET_KEY_BASE</span><span class="o">=</span>xxxxxxxx <span class="se">\</span>
   <span class="nv">MISC_CONFIG</span><span class="o">=</span>miscconf.yaml <span class="nv">ATTACH_CACHE_DIR</span><span class="o">=</span>./ATTACH_CACHE_DIR <span class="se">\</span>

@@ -52,7 +52,7 @@
 <span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="n">env</span><span class="p">;</span>
 
 <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nf">.clone</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="nn">File</span><span class="p">::</span><span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="nf">.unwrap</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">reader</span> <span class="o">=</span> <span class="nn">BufReader</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
@@ -130,7 +130,7 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
 <span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="n">process</span><span class="p">;</span>
 
 <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
     <span class="k">let</span> <span class="n">filename</span> <span class="o">=</span> <span class="k">if</span> <span class="n">args</span><span class="nf">.len</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="p">{</span>
         <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="nf">.clone</span><span class="p">()</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -249,9 +249,9 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
 <span class="p">}</span>
 
 <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
     <span class="k">match</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="mi">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
         <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
             <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
             <span class="nn">process</span><span class="p">::</span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -309,9 +309,9 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
 <span class="p">}</span>
 
 <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
     <span class="k">match</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="mi">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
         <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
             <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
             <span class="nn">process</span><span class="p">::</span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -369,9 +369,9 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
 <span class="p">}</span>
 
 <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
     <span class="k">match</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="mi">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
         <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
             <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
             <span class="nn">process</span><span class="p">::</span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -429,9 +429,9 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
 <span class="p">}</span>
 
 <span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
     <span class="k">match</span> <span class="nf">open_file</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="mi">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
         <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
             <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
             <span class="nn">process</span><span class="p">::</span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -465,8 +465,8 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
 </p>
 
 <figure class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
-    <span class="k">match</span> <span class="p">(|</span><span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;</span><span class="p">|</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;</span><span class="n">_</span><span class="p">,</span> <span class="n">CliError</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nn">env</span><span class="p">::</span><span class="nf">args</span><span class="p">()</span><span class="nf">.collect</span><span class="p">();</span>
+    <span class="k">match</span> <span class="p">(|</span><span class="n">args</span><span class="p">:</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="mi">_</span><span class="o">&gt;</span><span class="p">|</span> <span class="k">-&gt;</span> <span class="n">Result</span><span class="o">&lt;</span><span class="mi">_</span><span class="p">,</span> <span class="n">CliError</span><span class="o">&gt;</span> <span class="p">{</span>
         <span class="k">let</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">args</span><span class="nf">.get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="nf">.ok_or</span><span class="p">(</span><span class="nn">CliError</span><span class="p">::</span><span class="n">FileNotSpecified</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
         <span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="nn">File</span><span class="p">::</span><span class="nf">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
         <span class="k">let</span> <span class="n">reader</span> <span class="o">=</span> <span class="nn">BufReader</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
@@ -477,7 +477,7 @@ Rust は例外に対応していないので、いちいち戻り値を確認す
         <span class="nf">Ok</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="p">})(</span><span class="n">args</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="nf">Ok</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
+        <span class="nf">Ok</span><span class="p">(</span><span class="mi">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(),</span>
         <span class="nf">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">{</span>
             <span class="nd">eprintln!</span><span class="p">(</span><span class="s">"Error: {}"</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
             <span class="nn">process</span><span class="p">::</span><span class="nf">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>

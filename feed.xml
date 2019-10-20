@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
-  <generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator>
+  <generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2019-09-29T11:18:46+09:00</updated>
+  <updated>2019-10-20T12:51:40+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -765,8 +765,8 @@ table.diff_firefox66_pref_diff tbody tr { transition: background 0.125s ease-in-
 
 &lt;p&gt;なお、このスクリプトは、下記のような redmine のフォルダで実行することを想定している。ruby on rails を知っていれば、後述の解説さえ読めば、容易に読解可能な程度のスクリプトであるため、本稿では使い方はわざわざ解説しない。&lt;/p&gt;
 
-&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;path/to/redmine
-&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;path/to/redmine
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   &lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;en_US.UTF-8 &lt;span class=&quot;nv&quot;&gt;RACK_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;nv&quot;&gt;RAILS_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   &lt;span class=&quot;nv&quot;&gt;RAILS_SERVE_STATIC_FILES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;enabled &lt;span class=&quot;nv&quot;&gt;SECRET_KEY_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xxxxxxxx &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
   &lt;span class=&quot;nv&quot;&gt;MISC_CONFIG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;miscconf.yaml &lt;span class=&quot;nv&quot;&gt;ATTACH_CACHE_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./ATTACH_CACHE_DIR &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
