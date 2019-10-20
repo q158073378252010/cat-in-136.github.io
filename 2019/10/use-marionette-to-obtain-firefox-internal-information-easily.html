@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Use Marionette to obtain Firefox internal information easily</title>
+
+  <meta property="og:url" content="https://cat-in-136.github.io/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html" />
+  <meta property="og:title" content="Use Marionette to obtain Firefox internal information easily" /><meta property="og:description" content="I’ve been tracking updates/differences in Firefox default settings since around 2010. It used to ..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <link rel="canonical" href="https://cat-in-136.github.io/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html" itemprop="url">Use Marionette to obtain Firefox internal information easily</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2019-10-20T12:52:16+09:00">2019-10-20T12:52:16+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/firefox">Firefox</a><a class="tag" href="/tags/mozilla">Mozilla</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2019-10-20-use-marionette-to-obtain-firefox-internal-information-easily.md" class="source-path">_posts/2019-10-20-use-marionette-to-obtain-firefox-internal-information-easily.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2019-10-20-use-marionette-to-obtain-firefox-internal-information-easily.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>I’ve been tracking updates/differences in Firefox default settings <a href="/2010/08/diff-of-firefox4-default-preference.html">since around 2010</a>.</p>
+
+<p>It used to be a semi-manual process to extract files like prefs.js from <a href="https://developer.mozilla.org/en-US/docs/Mozilla/About_omni.ja_%28formerly_omni.jar%29"><code class="highlighter-rouge">omni.ja</code> files</a> Firefox, and then combine them using <code class="highlighter-rouge">cat</code> command.</p>
+
+<p>Recently, more and more settings are embedded inside libxul.so instead of writing them in text file (like prefs.js).
+In addition, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1563555">to make it easier to use with trust, these settings were changed to be generated from YAML files</a> when building Firefox binaries.
+The old methods are not making much sense.</p>
+
+<p>So <a href="https://github.com/cat-in-136/firefox-prefjs-surveyer/pull/3">I changed the process drastically</a>. First, run Firefox headless and <a href="https://firefox-source-docs.mozilla.org/testing/marionette/index.html">marionette mode</a>. And then, run a script using <a href="https://www.npmjs.com/package/foxr">foxr NPM package</a> to get the Firefox defaults directly.</p>
+
+<p>The instruction in the README include the technique for using a <em>fresh clean</em> profile. Refer <a href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">another post</a> for details.</p>
+
+<blockquote>
+  <p>Create a temporary folder to use a <em>fresh clean</em> profile.</p>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% mkdir /tmp/profile_dir
+</code></pre></div>  </div>
+
+  <p>Run firefox in headless mode.</p>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% /path/to/firefox -profile /tmp/profile_dir -marionette -headless
+</code></pre></div>  </div>
+
+  <p>Execute fetcher.js to obtain all default prefs.</p>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% node fetcher.js &gt; prefall.json
+</code></pre></div>  </div>
+</blockquote>
+
+<p>We can run JavaScript snippets on an opened page using foxr, which can be used for things like scraping.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="dl">'</span><span class="s1">about:config</span><span class="dl">'</span><span class="p">)</span>
+
+    <span class="c1">//await page.evaluate('ShowPrefs()');</span>
+    <span class="kd">const</span> <span class="nx">prefs</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="s2">`(function(){
+      const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+      const gPrefBranch = Services.prefs;
+      const defaultBranch = gPrefBranch.getDefaultBranch("");
+      // ... (snip) ...
+      return prefs.map(entry =&gt; [entry.name, gTypeStrs[entry.type], entry.value]);
+    })()`</span><span class="p">);</span>
+    <span class="c1">//console.log(prefs);</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">prefs</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">fetcher.js</code> opens about:config and run some snippets.
+about:config supports firefox private interfaces (used to be available with old extensions).
+So, <code class="highlighter-rouge">fetcher.js</code> is able to access Firefox preference information.</p>
+
+<p>The comparison logic is the same as in the past.
+I ported from code running in the browser to code running on Node.js.
+In addition, it was rewritten into a modern grammar.
+As a result, surveyer.js has also changed a lot.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/01/tip-how-to-run-firefox-w-temp.html">
+      <span class="post-meta">2017-01-25</span>
+      <span class="post-title">Tip: How to run Firefox w/ temporary profile w/o jpm/web-ext</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
+      <span class="post-meta">2017-07-22</span>
+      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">
+      <span class="post-meta">2010-05-04</span>
+      <span class="post-title">OOPP Setting on Configuration Mania</span><span class="post-thumb" data-image-path="/images/oop-setting-screenshot1.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html">
+      <span class="post-meta">2010-07-25</span>
+      <span class="post-title">[Updated] rpmbuild setting for multi core CPU</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">
+      <span class="post-meta">2012-12-31</span>
+      <span class="post-title">Tip: How to run a new Firefox instance w/ temporary profile</span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2019
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
