@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2019-10-20T14:43:13+09:00</updated>
+  <updated>2019-11-02T10:37:51+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,1022 @@
 
   
   
+  
+    <entry>
+      <title type="html">Diff between firefox 71.0 beta 6 default preference and firefox 70.0.1</title>
+      <link href="https://cat-in-136.github.io/2019/11/diff-between-firefox-710-beta-6-default.html" rel="alternate" type="text/html" title="Diff between firefox 71.0 beta 6 default preference and firefox 70.0.1" />
+      <published>2019-11-02T10:23:24+09:00</published>
+      <updated>2019-11-02T10:30:07+09:00</updated>
+      <id>https://cat-in-136.github.io/2019/11/diff-between-firefox-710-beta-6-default</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2019/11/diff-between-firefox-710-beta-6-default.html">&lt;p&gt;
+This is difference between the default preference of Firefox 71.0 beta 6 and one of 70.0.1.
+This diff table is generated with my small script &lt;a href=&quot;https://github.com/cat-in-136/firefox-prefjs-surveyer&quot;&gt;firefox-prefjs-surveyer&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox71_pref_diff&quot;&gt;
+&lt;caption&gt;Preference difference&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 70.0.1&lt;/td&gt;&lt;td&gt;Firefox 71.0 beta 6&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;accessibility.&lt;wbr /&gt;heading-element-level-changes.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;app.&lt;wbr /&gt;productInfo.&lt;wbr /&gt;baseURL&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/features/&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;app.&lt;wbr /&gt;releaseNotesURL&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%beta/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;channel&lt;/td&gt;
+      &lt;td&gt;release&lt;/td&gt;
+      &lt;td&gt;beta&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url.&lt;wbr /&gt;details&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/notes&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/beta/notes&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url.&lt;wbr /&gt;manual&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/beta&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;axis_&lt;wbr /&gt;lock.&lt;wbr /&gt;breakout_&lt;wbr /&gt;angle&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;3926991&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;392699&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;axis_&lt;wbr /&gt;lock.&lt;wbr /&gt;direct_&lt;wbr /&gt;pan_&lt;wbr /&gt;angle&lt;/td&gt;
+      &lt;td&gt;1.&lt;wbr /&gt;047197&lt;/td&gt;
+      &lt;td&gt;1.&lt;wbr /&gt;0472&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;axis_&lt;wbr /&gt;lock.&lt;wbr /&gt;lock_&lt;wbr /&gt;angle&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;5235987&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;523599&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;curve_&lt;wbr /&gt;function_&lt;wbr /&gt;x1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;curve_&lt;wbr /&gt;function_&lt;wbr /&gt;x2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;curve_&lt;wbr /&gt;function_&lt;wbr /&gt;y1&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;fling_&lt;wbr /&gt;curve_&lt;wbr /&gt;function_&lt;wbr /&gt;y2&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;apz.&lt;wbr /&gt;pinch_&lt;wbr /&gt;lock.&lt;wbr /&gt;scoll_&lt;wbr /&gt;lock_&lt;wbr /&gt;threshold&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;03125&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;offline.&lt;wbr /&gt;insecure.&lt;wbr /&gt;enable&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;offline.&lt;wbr /&gt;storage.&lt;wbr /&gt;enable&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;cfr-milestone.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;cfr-milestone.&lt;wbr /&gt;milestone-achieved&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;cfr-milestone.&lt;wbr /&gt;milestones&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td class=&quot;json&quot;&gt;[1000, 5000, 10000, 25000, 50000, 100000, 500000]&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;display.&lt;wbr /&gt;permit_&lt;wbr /&gt;backplate&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;asrouter.&lt;wbr /&gt;useRemoteL10n&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;discoverystream.&lt;wbr /&gt;campaign.&lt;wbr /&gt;blocks&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;ut.&lt;wbr /&gt;events&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;offline-apps.&lt;wbr /&gt;notify&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;separate&lt;wbr /&gt;PrivateDefault.&lt;wbr /&gt;ui.&lt;wbr /&gt;banner.&lt;wbr /&gt;max&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;separate&lt;wbr /&gt;PrivateDefault.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;suggest.&lt;wbr /&gt;enabled.&lt;wbr /&gt;private&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;documentchannel&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;remote.&lt;wbr /&gt;separated&lt;wbr /&gt;MozillaDomains&lt;/td&gt;
+      &lt;td&gt;addons.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;org,&lt;wbr /&gt;accounts.&lt;wbr /&gt;firefox.&lt;wbr /&gt;com&lt;/td&gt;
+      &lt;td&gt;addons.&lt;wbr /&gt;cdn.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;net,&lt;wbr /&gt;addons.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;org,&lt;wbr /&gt;accounts.&lt;wbr /&gt;firefox.&lt;wbr /&gt;com&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;browserconsole.&lt;wbr /&gt;input.&lt;wbr /&gt;editor&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;connectpage.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;inline-preview&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;overlay&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;overlay-step-buttons&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;watchpoints&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;log-event-breakpoints&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;compatibility.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;use-new-box-model-highlighter&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;layout.&lt;wbr /&gt;flex-container.&lt;wbr /&gt;opened&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;layout.&lt;wbr /&gt;flex-item.&lt;wbr /&gt;opened&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;netmonitor.&lt;wbr /&gt;features.&lt;wbr /&gt;requestBlocking&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;responsive.&lt;wbr /&gt;browserUI.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;responsive.&lt;wbr /&gt;show-setting-tooltip&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;target-switching.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;features.&lt;wbr /&gt;editor&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;autoConnectRuntime&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;autoinstallADBExtension&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;busyTimeout&lt;/td&gt;
+      &lt;td&gt;10000&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;enableLocalRuntime&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;lastConnectedRuntime&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;lastSelectedProject&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;restoreLastProject&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;templatesURL&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://code.cdn.mozilla.net/templates/list.json&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;devtools.&lt;wbr /&gt;webide.&lt;wbr /&gt;zoom&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;datatransfer.&lt;wbr /&gt;mozAtAPIs&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;disable_&lt;wbr /&gt;window_&lt;wbr /&gt;showModalDialog&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;event.&lt;wbr /&gt;handling-user-input-time-limit&lt;/td&gt;
+      &lt;td&gt;1000&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;formdata.&lt;wbr /&gt;event.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;media.&lt;wbr /&gt;mediasession.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;missing_&lt;wbr /&gt;prop_&lt;wbr /&gt;counters.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;postMessage.&lt;wbr /&gt;sharedArrayBuffer.&lt;wbr /&gt;withCOOP_&lt;wbr /&gt;COEP&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;security.&lt;wbr /&gt;respect_&lt;wbr /&gt;document_&lt;wbr /&gt;nosniff&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;storage.&lt;wbr /&gt;next_&lt;wbr /&gt;gen&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;targetBlankNoOpener.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;user_&lt;wbr /&gt;activation.&lt;wbr /&gt;transient.&lt;wbr /&gt;timeout&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;5000&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;webnotifications.&lt;wbr /&gt;requireuserinteraction&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;webshare.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;xmldocument.&lt;wbr /&gt;async.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;dom.&lt;wbr /&gt;xmldocument.&lt;wbr /&gt;load.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;extensions.&lt;wbr /&gt;abuseReport.&lt;wbr /&gt;amWebAPI.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;extensions.&lt;wbr /&gt;abuseReport.&lt;wbr /&gt;amoDetailsURL&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://services.addons.mozilla.org/api/v4/addons/addon/&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;extensions.&lt;wbr /&gt;abuseReport.&lt;wbr /&gt;openDialog&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;extensions.&lt;wbr /&gt;abuseReport.&lt;wbr /&gt;url&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://addons.mozilla.org/api/v4/abuse/report/addon/&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://services.addons.mozilla.org/api/v4/abuse/report/addon/&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;extensions.&lt;wbr /&gt;cookiesBehavior.&lt;wbr /&gt;overrideOnTopLevel&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;extensions.&lt;wbr /&gt;webcompat-reporter.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;first-startup.&lt;wbr /&gt;timeout&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;30000&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;general.&lt;wbr /&gt;aboutConfig.&lt;wbr /&gt;enable&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;general.&lt;wbr /&gt;useragent.&lt;wbr /&gt;site_&lt;wbr /&gt;specific_&lt;wbr /&gt;overrides&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;general.&lt;wbr /&gt;warnOnAboutConfig&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;geo.&lt;wbr /&gt;wifi.&lt;wbr /&gt;uri&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_LOCATION_SERVICE_API_KEY%&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;gfx.&lt;wbr /&gt;direct3d11.&lt;wbr /&gt;use-double-buffering&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;debug.&lt;wbr /&gt;obscure-images&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;debug.&lt;wbr /&gt;smart-profiler&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;start-debug-server&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;identity.&lt;wbr /&gt;sendtabpromo.&lt;wbr /&gt;url&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/send-tab&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;idle_&lt;wbr /&gt;period.&lt;wbr /&gt;cross_&lt;wbr /&gt;process_&lt;wbr /&gt;scheduling&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;image.&lt;wbr /&gt;mem.&lt;wbr /&gt;surfacecache.&lt;wbr /&gt;max_&lt;wbr /&gt;size_&lt;wbr /&gt;kb&lt;/td&gt;
+      &lt;td&gt;1048576&lt;/td&gt;
+      &lt;td&gt;2072576&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;main_&lt;wbr /&gt;thread_&lt;wbr /&gt;stack_&lt;wbr /&gt;quota_&lt;wbr /&gt;cap&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;2097152&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;wasm_&lt;wbr /&gt;trustedprincipals&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layers.&lt;wbr /&gt;effect.&lt;wbr /&gt;contrast&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layers.&lt;wbr /&gt;low-precision-opacity&lt;/td&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;height&lt;/td&gt;
+      &lt;td&gt;36&lt;/td&gt;
+      &lt;td&gt;36.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;accessiblecaret.&lt;wbr /&gt;width&lt;/td&gt;
+      &lt;td&gt;34&lt;/td&gt;
+      &lt;td&gt;34.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;clip-path-path.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;column-span.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;devPixelsPerPx&lt;/td&gt;
+      &lt;td&gt;-1&lt;/td&gt;
+      &lt;td&gt;-1.&lt;wbr /&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;grid-template-subgrid-value.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;line-height.&lt;wbr /&gt;normal-as-resolved-value.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;moz-document.&lt;wbr /&gt;url-prefix-hack.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;moz-touch-enabled.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;prefixes.&lt;wbr /&gt;device-pixel-ratio-webkit&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-anchoring.&lt;wbr /&gt;suppressions.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap-v1.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-snap.&lt;wbr /&gt;prediction-sensitivity&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;750&lt;/td&gt;
+      &lt;td&gt;0.&lt;wbr /&gt;75&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;width-and-height-map-to-aspect-ratio.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;xul-box-display-values.&lt;wbr /&gt;survive-blockification.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;dynamic-reflow-roots.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;layout.&lt;wbr /&gt;scroll.&lt;wbr /&gt;root-frame-containers&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;mathml.&lt;wbr /&gt;deprecated_&lt;wbr /&gt;alignment_&lt;wbr /&gt;attributes.&lt;wbr /&gt;disabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;mathml.&lt;wbr /&gt;deprecated_&lt;wbr /&gt;menclose_&lt;wbr /&gt;notation_&lt;wbr /&gt;radical.&lt;wbr /&gt;disabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;mathml.&lt;wbr /&gt;mfenced_&lt;wbr /&gt;element.&lt;wbr /&gt;disabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;mathml.&lt;wbr /&gt;mfrac_&lt;wbr /&gt;bevelled_&lt;wbr /&gt;attribute.&lt;wbr /&gt;disabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;mathml.&lt;wbr /&gt;script_&lt;wbr /&gt;shift_&lt;wbr /&gt;attributes.&lt;wbr /&gt;disabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;mathml.&lt;wbr /&gt;xlink.&lt;wbr /&gt;disabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;media.&lt;wbr /&gt;ffvpx.&lt;wbr /&gt;mp3.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;media.&lt;wbr /&gt;hardwaremediakeys.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;dtls.&lt;wbr /&gt;version.&lt;wbr /&gt;max&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;771&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;dtls.&lt;wbr /&gt;version.&lt;wbr /&gt;min&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;770&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;media.&lt;wbr /&gt;webrtc.&lt;wbr /&gt;hw.&lt;wbr /&gt;h264.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;network.&lt;wbr /&gt;delay.&lt;wbr /&gt;tracking.&lt;wbr /&gt;load&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;network.&lt;wbr /&gt;notify.&lt;wbr /&gt;dnsSuffixList&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;builtin-excluded-domains&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;localhost,&lt;wbr /&gt;local&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;clear-cache-on-pref-change&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;excluded-domains&lt;/td&gt;
+      &lt;td&gt;localhost,&lt;wbr /&gt;local&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;network.&lt;wbr /&gt;warnOnAboutNetworking&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;offline-apps.&lt;wbr /&gt;allow_&lt;wbr /&gt;by_&lt;wbr /&gt;default&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;offline-apps.&lt;wbr /&gt;quota.&lt;wbr /&gt;warn&lt;/td&gt;
+      &lt;td&gt;51200&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;permissions.&lt;wbr /&gt;delegation.&lt;wbr /&gt;enable&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;permissions.&lt;wbr /&gt;desktop-notification.&lt;wbr /&gt;postPrompt.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;plugins.&lt;wbr /&gt;load_&lt;wbr /&gt;appdir_&lt;wbr /&gt;plugins&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;annotate_&lt;wbr /&gt;channels.&lt;wbr /&gt;strict_&lt;wbr /&gt;list.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;notification.&lt;wbr /&gt;counter&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;notification.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;notification.&lt;wbr /&gt;lastShown&lt;/td&gt;
+      &lt;td&gt;0&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;notification.&lt;wbr /&gt;max&lt;/td&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;notification.&lt;wbr /&gt;period.&lt;wbr /&gt;min&lt;/td&gt;
+      &lt;td&gt;172800000&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;notification.&lt;wbr /&gt;session.&lt;wbr /&gt;pageload.&lt;wbr /&gt;min&lt;/td&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;privacy.&lt;wbr /&gt;trackingprotection.&lt;wbr /&gt;fingerprinting.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;security.&lt;wbr /&gt;aboutcertificate.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;security.&lt;wbr /&gt;block_&lt;wbr /&gt;Worker_&lt;wbr /&gt;with_&lt;wbr /&gt;wrong_&lt;wbr /&gt;mime&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;security.&lt;wbr /&gt;csp.&lt;wbr /&gt;enableNavigateTo&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;security.&lt;wbr /&gt;disallow_&lt;wbr /&gt;non_&lt;wbr /&gt;local_&lt;wbr /&gt;systemprincipal_&lt;wbr /&gt;in_&lt;wbr /&gt;tests&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;security.&lt;wbr /&gt;ssl.&lt;wbr /&gt;errorReporting.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;version.&lt;wbr /&gt;enable-deprecated&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;buffer&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;passwords.&lt;wbr /&gt;validation.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;fxa.&lt;wbr /&gt;privacyURL&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/legal/privacy&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;oldkey&quot;&gt;
+      &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;fxa.&lt;wbr /&gt;termsURL&lt;/td&gt;
+      &lt;td class=&quot;uri&quot;&gt;https://accounts.firefox.com/legal/terms&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;signon.&lt;wbr /&gt;includeOtherSubdomainsInLookup&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;signon.&lt;wbr /&gt;management.&lt;wbr /&gt;page.&lt;wbr /&gt;sort&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;name&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;signon.&lt;wbr /&gt;showAutoCompleteOrigins&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;toolkit.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;enabled&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;toolkit.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;testing.&lt;wbr /&gt;overrideProductsCheck&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;false&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;trailhead.&lt;wbr /&gt;firstrun.&lt;wbr /&gt;branches&lt;/td&gt;
+      &lt;td&gt;join-supercharge&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr class=&quot;newkey&quot;&gt;
+      &lt;td&gt;widget.&lt;wbr /&gt;content.&lt;wbr /&gt;gtk-theme-override&lt;/td&gt;
+      &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox71_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox71_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox71_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox71_pref_diff td.json,
+table.diff_firefox71_pref_diff td.uri,
+table.diff_firefox71_pref_diff td.dump { word-break: break-all; }
+table.diff_firefox71_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox71_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox71_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox71_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox71_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox71_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>cat_in_136</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="pref diff" />
+      
+        <category term="mozilla" />
+      
+
+      
+        <summary type="html">This is difference between the default preference of Firefox 71.0 beta 6 and one of 70.0.1. This diff table is generated with my small script firefox-prefjs-surveyer.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Use Marionette to obtain Firefox internal information easily</title>
@@ -1046,96 +2062,6 @@ Kintone 含む CSV ファイルからインポートする場合は、移行時�
 
       
         <summary type="html">友人との情報共有のためにサイボウズLiveを使ってきたが、告知のとおり2019年4月15日でサービスが終了することになった。</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Diff between firefox 65.0 beta 4 default preference and firefox 64.0</title>
-      <link href="https://cat-in-136.github.io/2018/12/diff-between-firefox-650-beta-4-default.html" rel="alternate" type="text/html" title="Diff between firefox 65.0 beta 4 default preference and firefox 64.0" />
-      <published>2018-12-15T19:25:21+09:00</published>
-      <updated>2018-12-15T19:25:21+09:00</updated>
-      <id>https://cat-in-136.github.io/2018/12/diff-between-firefox-650-beta-4-default</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2018/12/diff-between-firefox-650-beta-4-default.html">&lt;p&gt;
-This is difference between the default preference of Firefox 64.0 beta 4 and one of 62.0.
-&lt;/p&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox65_pref_diff&quot;&gt;
-&lt;caption&gt;Preference difference&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 64.0&lt;/td&gt;&lt;td&gt;Firefox 65.0 beta 4&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url.&lt;wbr /&gt;details&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/notes&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/beta/notes&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url.&lt;wbr /&gt;manual&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/beta&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;apz.&lt;wbr /&gt;relative-update.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;control-center.&lt;wbr /&gt;ui.&lt;wbr /&gt;show&lt;wbr /&gt;Allowed&lt;wbr /&gt;Labels&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;control-center.&lt;wbr /&gt;ui.&lt;wbr /&gt;show&lt;wbr /&gt;Blocked&lt;wbr /&gt;Labels&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;cookies-site-data.&lt;wbr /&gt;ui.&lt;wbr /&gt;reject-trackers.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;cookies-site-data.&lt;wbr /&gt;ui.&lt;wbr /&gt;reject-trackers.&lt;wbr /&gt;recommended&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;fastblock.&lt;wbr /&gt;control-center.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;fastblock.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;global-toggle.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;rejecttrackers.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;rejecttrackers.&lt;wbr /&gt;ui.&lt;wbr /&gt;recommended&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;reportBreakage.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;trackingprotection.&lt;wbr /&gt;ui.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;discovery.&lt;wbr /&gt;containers.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;discovery.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;discovery.&lt;wbr /&gt;sites&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;addons.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;org&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;engagement.&lt;wbr /&gt;recent_&lt;wbr /&gt;visited_&lt;wbr /&gt;origins.&lt;wbr /&gt;expiry&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;86400&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;fastblock.&lt;wbr /&gt;limit&lt;/td&gt;&lt;td&gt;20000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;fastblock.&lt;wbr /&gt;timeout&lt;/td&gt;&lt;td&gt;5000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;fixup.&lt;wbr /&gt;hide_&lt;wbr /&gt;user_&lt;wbr /&gt;pass&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;asrouter.&lt;wbr /&gt;providers.&lt;wbr /&gt;snippets&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{&quot;id&quot;:&quot;snippets&quot;,&quot;enabled&quot;:false,&quot;type&quot;:&quot;remote&quot;,&quot;url&quot;:&quot;https://snippets.cdn.mozilla.net/%STARTPAGE_VERSION%/%NAME%/%VERSION%/%APPBUILDID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/&quot;,&quot;updateCycleInMs&quot;:14400000}&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;{&quot;id&quot;:&quot;snippets&quot;,&quot;enabled&quot;:true,&quot;type&quot;:&quot;remote&quot;,&quot;url&quot;:&quot;https://snippets.cdn.mozilla.net/%STARTPAGE_VERSION%/%NAME%/%VERSION%/%APPBUILDID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/&quot;,&quot;updateCycleInMs&quot;:14400000}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;improvesearch.&lt;wbr /&gt;top&lt;wbr /&gt;Site&lt;wbr /&gt;Search&lt;wbr /&gt;Shortcuts&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;safebrowsing.&lt;wbr /&gt;provider.&lt;wbr /&gt;mozilla.&lt;wbr /&gt;lists&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;base-track-digest256,mozstd-trackwhite-digest256,content-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256,block-flash-digest256,except-flash-digest256,allow-flashallow-digest256,except-flashallow-digest256,block-flashsubdoc-digest256,except-flashsubdoc-digest256,except-flashinfobar-digest256,ads-track-digest256,social-track-digest256,analytics-track-digest256,fastblock1-track-digest256,fastblock1-trackwhite-digest256,fastblock2-track-digest256,fastblock2-trackwhite-digest256,fastblock3-track-digest256&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;base-track-digest256,mozstd-trackwhite-digest256,content-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256,block-flash-digest256,except-flash-digest256,allow-flashallow-digest256,except-flashallow-digest256,block-flashsubdoc-digest256,except-flashsubdoc-digest256,except-flashinfobar-digest256,ads-track-digest256,social-track-digest256,analytics-track-digest256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;schedule&lt;wbr /&gt;Pressure.&lt;wbr /&gt;default&lt;wbr /&gt;Count&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;schedule&lt;wbr /&gt;Pressure.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;schedule&lt;wbr /&gt;Pressure.&lt;wbr /&gt;timeoutMs&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;browser.&lt;wbr /&gt;security.&lt;wbr /&gt;newcerterrorpage.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;security.&lt;wbr /&gt;newcerterrorpage.&lt;wbr /&gt;mitm.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;sessionstore.&lt;wbr /&gt;warnOnQuit&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;20Fps&lt;wbr /&gt;Throbber&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;30Fps&lt;wbr /&gt;Throbber&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;autocomplete.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;match&lt;wbr /&gt;Behavior&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;suggest.&lt;wbr /&gt;history.&lt;wbr /&gt;onlyTyped&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;canvas.&lt;wbr /&gt;customfocusring.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;aboutdebugging.&lt;wbr /&gt;network&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;aboutdebugging.&lt;wbr /&gt;wifi&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;console.&lt;wbr /&gt;stdout.&lt;wbr /&gt;chrome&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;console.&lt;wbr /&gt;stdout.&lt;wbr /&gt;content&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;end-panel-size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;event-listeners&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;origial-blackbox&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;xhr-breakpoints&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;forbid-certified-apps&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;logging&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;new-debugger-frontend&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;start-panel-size&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;300&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;xhr-breakpoints-visible&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;flexboxinspector.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;changes.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;flexboxHighlighter.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;fonteditor.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;show&lt;wbr /&gt;UserAgent&lt;wbr /&gt;Shadow&lt;wbr /&gt;Roots&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;netmonitor.&lt;wbr /&gt;visible&lt;wbr /&gt;Columns&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;status&quot;,&quot;method&quot;,&quot;file&quot;,&quot;domain&quot;,&quot;cause&quot;,&quot;type&quot;,&quot;transferred&quot;,&quot;contentSize&quot;,&quot;waterfall&quot;]&lt;/td&gt;&lt;td class=&quot;json&quot;&gt;[&quot;status&quot;,&quot;method&quot;,&quot;domain&quot;,&quot;file&quot;,&quot;cause&quot;,&quot;type&quot;,&quot;transferred&quot;,&quot;contentSize&quot;,&quot;waterfall&quot;]&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;profiler.&lt;wbr /&gt;sample-frequency-hz&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;1000&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;profiler.&lt;wbr /&gt;sample-frequency-khz&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;recordreplay.&lt;wbr /&gt;allow&lt;wbr /&gt;Repaint&lt;wbr /&gt;Failures&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;recordreplay.&lt;wbr /&gt;include&lt;wbr /&gt;System&lt;wbr /&gt;Scripts&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;devtools.&lt;wbr /&gt;recordreplay.&lt;wbr /&gt;timeline.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;devtools.&lt;wbr /&gt;webconsole.&lt;wbr /&gt;jsterm.&lt;wbr /&gt;reverse-search&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;browserElement.&lt;wbr /&gt;max&lt;wbr /&gt;Screenshot&lt;wbr /&gt;DelayMS&lt;/td&gt;&lt;td&gt;2000&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;tabs.&lt;wbr /&gt;create&lt;wbr /&gt;Kill&lt;wbr /&gt;Hard&lt;wbr /&gt;Crash&lt;wbr /&gt;Reports&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;dispatch_&lt;wbr /&gt;during_&lt;wbr /&gt;composition&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;keypress.&lt;wbr /&gt;dispatch_&lt;wbr /&gt;non_&lt;wbr /&gt;printable_&lt;wbr /&gt;keys_&lt;wbr /&gt;only_&lt;wbr /&gt;system_&lt;wbr /&gt;group_&lt;wbr /&gt;in_&lt;wbr /&gt;content&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;keypress.&lt;wbr /&gt;hack.&lt;wbr /&gt;dispatch_&lt;wbr /&gt;non_&lt;wbr /&gt;printable_&lt;wbr /&gt;keys&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;keyboardevent.&lt;wbr /&gt;keypress.&lt;wbr /&gt;hack.&lt;wbr /&gt;use_&lt;wbr /&gt;legacy_&lt;wbr /&gt;keycode_&lt;wbr /&gt;and_&lt;wbr /&gt;charcode&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;payments.&lt;wbr /&gt;request.&lt;wbr /&gt;supported&lt;wbr /&gt;Regions&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;US,&lt;wbr /&gt;CA&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;performance.&lt;wbr /&gt;time_&lt;wbr /&gt;to_&lt;wbr /&gt;contentful_&lt;wbr /&gt;paint.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;sidebar.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;storage.&lt;wbr /&gt;next_&lt;wbr /&gt;gen&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;storage.&lt;wbr /&gt;shadow_&lt;wbr /&gt;writes&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;storage.&lt;wbr /&gt;snapshot_&lt;wbr /&gt;prefill&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;16384&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;storage.&lt;wbr /&gt;snapshot_&lt;wbr /&gt;reusing&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;storage_&lt;wbr /&gt;access.&lt;wbr /&gt;auto_&lt;wbr /&gt;grants&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;storage_&lt;wbr /&gt;access.&lt;wbr /&gt;max_&lt;wbr /&gt;concurrent_&lt;wbr /&gt;auto_&lt;wbr /&gt;grants&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;ua_&lt;wbr /&gt;widget.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;webcomponents.&lt;wbr /&gt;customelements.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;dom.&lt;wbr /&gt;webcomponents.&lt;wbr /&gt;shadowdom.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;dom.&lt;wbr /&gt;window.&lt;wbr /&gt;event.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;extensions.&lt;wbr /&gt;formautofill.&lt;wbr /&gt;reauth.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;extensions.&lt;wbr /&gt;webcompat-reporter.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;geo.&lt;wbr /&gt;provider.&lt;wbr /&gt;use_&lt;wbr /&gt;gpsd&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;debug.&lt;wbr /&gt;slow-frame-indicator&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;debug.&lt;wbr /&gt;texture-cache.&lt;wbr /&gt;clear-evicted&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;picture-caching&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;animated.&lt;wbr /&gt;decode-on-demand.&lt;wbr /&gt;recycle&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;image.&lt;wbr /&gt;animated.&lt;wbr /&gt;generate-full-frames&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;image.&lt;wbr /&gt;http.&lt;wbr /&gt;accept&lt;/td&gt;&lt;td&gt;*/*&lt;/td&gt;&lt;td&gt;image/webp,*/*&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;image.&lt;wbr /&gt;webp.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;io.&lt;wbr /&gt;activity.&lt;wbr /&gt;interval&lt;wbr /&gt;Milliseconds&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;bigint&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;streams&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;shape-outside.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;text-align-unsafe-value.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;av1.&lt;wbr /&gt;use-dav1d&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;agc&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;getusermedia.&lt;wbr /&gt;use_&lt;wbr /&gt;aec_&lt;wbr /&gt;mobile&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;mediadatadecoder_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;mediadatadecoder_&lt;wbr /&gt;h264_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;media.&lt;wbr /&gt;navigator.&lt;wbr /&gt;mediadatadecoder_&lt;wbr /&gt;vpx_&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;IDN.&lt;wbr /&gt;blacklist_&lt;wbr /&gt;chars&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;  ¼½¾ǃː̷̸։֊׃״؉؊٪۔܁܂܃܄ᅟᅠ᜵           ​‎‏‐’․‧  ‪‫‬‭‮ ‹›⁁⁄⁒ ⅓⅔⅕⅖⅗⅘⅙⅚⅛⅜⅝⅞⅟∕∶⎮╱⧶⧸⫻⫽⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻　。〔〕〳゠ㅤ㈝㈞㎮㎯㏆㏟꞉︔︕︿﹝﹞﻿．／｡ﾠ￹￺￻￼�&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;IDN.&lt;wbr /&gt;extra_&lt;wbr /&gt;allowed_&lt;wbr /&gt;chars&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;IDN.&lt;wbr /&gt;extra_&lt;wbr /&gt;blocked_&lt;wbr /&gt;chars&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;connectivity-service.&lt;wbr /&gt;DNSv4.&lt;wbr /&gt;domain&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;mozilla.&lt;wbr /&gt;org&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;connectivity-service.&lt;wbr /&gt;DNSv6.&lt;wbr /&gt;domain&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;mozilla.&lt;wbr /&gt;org&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;connectivity-service.&lt;wbr /&gt;IPv4.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;http://detectportal.firefox.com/success.txt?ipv4&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;connectivity-service.&lt;wbr /&gt;IPv6.&lt;wbr /&gt;url&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;http://detectportal.firefox.com/success.txt?ipv6&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;connectivity-service.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;cookie.&lt;wbr /&gt;cookieBehavior&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;accept.&lt;wbr /&gt;default&lt;/td&gt;&lt;td&gt;text/html,&lt;wbr /&gt;application/xhtml+xml,&lt;wbr /&gt;application/xml;&lt;wbr /&gt;q=0.&lt;wbr /&gt;9,*/*;&lt;wbr /&gt;q=0.&lt;wbr /&gt;8&lt;/td&gt;&lt;td&gt;text/html,&lt;wbr /&gt;application/xhtml+xml,&lt;wbr /&gt;application/xml;&lt;wbr /&gt;q=0.&lt;wbr /&gt;9,&lt;wbr /&gt;image/webp,*/*;&lt;wbr /&gt;q=0.&lt;wbr /&gt;8&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;spdy.&lt;wbr /&gt;enable-hpack-dump&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;spdy.&lt;wbr /&gt;websockets&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;custom_&lt;wbr /&gt;uri&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;pdfium.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;popups.&lt;wbr /&gt;maxReported&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;restrict&lt;wbr /&gt;3rdparty&lt;wbr /&gt;storage.&lt;wbr /&gt;partitioned&lt;wbr /&gt;Hosts&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;accounts.&lt;wbr /&gt;google.&lt;wbr /&gt;com/o/oauth2/&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;restrict&lt;wbr /&gt;3rdparty&lt;wbr /&gt;storage.&lt;wbr /&gt;user&lt;wbr /&gt;Interaction&lt;wbr /&gt;Required&lt;wbr /&gt;For&lt;wbr /&gt;Hosts&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;privacy.&lt;wbr /&gt;trackingprotection.&lt;wbr /&gt;introCount&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;security.&lt;wbr /&gt;strict_&lt;wbr /&gt;security_&lt;wbr /&gt;checks.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;passwords.&lt;wbr /&gt;validation.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;browser.&lt;wbr /&gt;contentblocking.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;autocomplete.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;oldkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;suggest.&lt;wbr /&gt;history.&lt;wbr /&gt;onlyTyped&lt;/td&gt;&lt;td&gt;true&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;privacy.&lt;wbr /&gt;fuzzyfox.&lt;wbr /&gt;clockgrainus&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;prefs.&lt;wbr /&gt;sync.&lt;wbr /&gt;privacy.&lt;wbr /&gt;fuzzyfox.&lt;wbr /&gt;enabled&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;disallow_&lt;wbr /&gt;completions&lt;/td&gt;&lt;td&gt;test-malware-simple,&lt;wbr /&gt;test-harmful-simple,&lt;wbr /&gt;test-phish-simple,&lt;wbr /&gt;test-unwanted-simple,&lt;wbr /&gt;test-track-simple,&lt;wbr /&gt;test-trackwhite-simple,&lt;wbr /&gt;test-block-simple,&lt;wbr /&gt;goog-downloadwhite-digest256,&lt;wbr /&gt;base-track-digest256,&lt;wbr /&gt;mozstd-trackwhite-digest256,&lt;wbr /&gt;content-track-digest256,&lt;wbr /&gt;mozplugin-block-digest256,&lt;wbr /&gt;mozplugin2-block-digest256,&lt;wbr /&gt;block-flash-digest256,&lt;wbr /&gt;except-flash-digest256,&lt;wbr /&gt;allow-flashallow-digest256,&lt;wbr /&gt;except-flashallow-digest256,&lt;wbr /&gt;block-flashsubdoc-digest256,&lt;wbr /&gt;except-flashsubdoc-digest256,&lt;wbr /&gt;except-flashinfobar-digest256,&lt;wbr /&gt;goog-passwordwhite-proto,&lt;wbr /&gt;ads-track-digest256,&lt;wbr /&gt;social-track-digest256,&lt;wbr /&gt;analytics-track-digest256,&lt;wbr /&gt;fastblock1-track-digest256,&lt;wbr /&gt;fastblock1-trackwhite-digest256,&lt;wbr /&gt;fastblock2-track-digest256,&lt;wbr /&gt;fastblock2-trackwhite-digest256,&lt;wbr /&gt;fastblock3-track-digest256&lt;/td&gt;&lt;td&gt;test-malware-simple,&lt;wbr /&gt;test-harmful-simple,&lt;wbr /&gt;test-phish-simple,&lt;wbr /&gt;test-unwanted-simple,&lt;wbr /&gt;test-track-simple,&lt;wbr /&gt;test-trackwhite-simple,&lt;wbr /&gt;test-block-simple,&lt;wbr /&gt;goog-downloadwhite-digest256,&lt;wbr /&gt;base-track-digest256,&lt;wbr /&gt;mozstd-trackwhite-digest256,&lt;wbr /&gt;content-track-digest256,&lt;wbr /&gt;mozplugin-block-digest256,&lt;wbr /&gt;mozplugin2-block-digest256,&lt;wbr /&gt;block-flash-digest256,&lt;wbr /&gt;except-flash-digest256,&lt;wbr /&gt;allow-flashallow-digest256,&lt;wbr /&gt;except-flashallow-digest256,&lt;wbr /&gt;block-flashsubdoc-digest256,&lt;wbr /&gt;except-flashsubdoc-digest256,&lt;wbr /&gt;except-flashinfobar-digest256,&lt;wbr /&gt;goog-passwordwhite-proto,&lt;wbr /&gt;ads-track-digest256,&lt;wbr /&gt;social-track-digest256,&lt;wbr /&gt;analytics-track-digest256&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;newkey&quot;&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;tracking&lt;wbr /&gt;Annotation&lt;wbr /&gt;SkipURLs&lt;/td&gt;&lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;&lt;td class=&quot;uri&quot;&gt;google.com/recaptcha/,*.google.com/recaptcha/&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;urlclassifier.&lt;wbr /&gt;tracking&lt;wbr /&gt;Annotation&lt;wbr /&gt;Table&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-track-simple,base-track-digest256&lt;/td&gt;&lt;td class=&quot;dump&quot;&gt;test-track-simple,base-track-digest256,content-track-digest256&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;div&gt;
-&lt;table class=&quot;diff_firefox65_pref_diff&quot;&gt;
-&lt;caption&gt;Default pref Javascript files&lt;/caption&gt;
-&lt;thead&gt;
-&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 64.0&lt;/td&gt;&lt;td&gt;Firefox 65.0 beta 4&lt;/td&gt;&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/debugger.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/devtools-client.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/devtools-startup.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox-branding.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox-l10n.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/firefox.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;browser/omni.ja.d/defaults/preferences/webide.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;omni.ja.d/defaults/pref/marionette.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;omni.ja.d/defaults/pref/services-sync.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;omni.ja.d/greprefs.js&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;td&gt;present&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-
-&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
-table.diff_firefox65_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
-table.diff_firefox65_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
-table.diff_firefox65_pref_diff thead td { background-color: #ddd; font-weight: bold; }
-table.diff_firefox65_pref_diff td.json,
-table.diff_firefox65_pref_diff td.uri,
-table.diff_firefox65_pref_diff td.dump { word-break: break-all; }
-table.diff_firefox65_pref_diff td.undefined { color: #888; font-style: italic; }
-table.diff_firefox65_pref_diff tr.sameval td:first-child { color: #444; }
-table.diff_firefox65_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
-table.diff_firefox65_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
-table.diff_firefox65_pref_diff tbody tr:hover { background-color: #eee; }
-table.diff_firefox65_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
-/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>cat_in_136</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="pref diff" />
-      
-        <category term="mozilla" />
-      
-
-      
-        <summary type="html">This is difference between the default preference of Firefox 64.0 beta 4 and one of 62.0.</summary>
       
 
       
