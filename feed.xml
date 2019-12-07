@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2019-11-02T10:37:51+09:00</updated>
+  <updated>2019-12-07T14:54:20+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,944 @@
 
   
   
+  
+    <entry>
+      <title type="html">Diff between firefox 72.0 beta 3 default preference and firefox 71.0</title>
+      <link href="https://cat-in-136.github.io/2019/12/diff-between-firefox-720-beta-3-default.html" rel="alternate" type="text/html" title="Diff between firefox 72.0 beta 3 default preference and firefox 71.0" />
+      <published>2019-12-07T14:46:42+09:00</published>
+      <updated>2019-12-07T14:46:42+09:00</updated>
+      <id>https://cat-in-136.github.io/2019/12/diff-between-firefox-720-beta-3-default</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2019/12/diff-between-firefox-720-beta-3-default.html">&lt;p&gt;
+This is difference between the default preference of Firefox 72.0 beta 3 and one of 71.0.
+This diff table is generated with my small script &lt;a href=&quot;https://github.com/cat-in-136/firefox-prefjs-surveyer&quot;&gt;firefox-prefjs-surveyer&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;div&gt;
+&lt;table class=&quot;diff_firefox72_pref_diff&quot;&gt;
+&lt;caption&gt;Preference difference&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;td&gt;Pref&lt;/td&gt;&lt;td&gt;Firefox 71.0&lt;/td&gt;&lt;td&gt;Firefox 72.0 beta 3&lt;/td&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;accessibility.&lt;wbr /&gt;heading-element-level-changes.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;app.&lt;wbr /&gt;releaseNotesURL&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/%VERSION%beta/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;channel&lt;/td&gt;
+        &lt;td&gt;release&lt;/td&gt;
+        &lt;td&gt;beta&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url.&lt;wbr /&gt;details&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/notes&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/%LOCALE%/firefox/beta/notes&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;app.&lt;wbr /&gt;update.&lt;wbr /&gt;url.&lt;wbr /&gt;manual&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.mozilla.org/firefox/beta&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;editDialog.&lt;wbr /&gt;maxRecentFolders&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;7&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;cache.&lt;wbr /&gt;offline.&lt;wbr /&gt;storage.&lt;wbr /&gt;enable&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;display.&lt;wbr /&gt;permit_&lt;wbr /&gt;backplate&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;messaging-system.&lt;wbr /&gt;personalized-cfr.&lt;wbr /&gt;score-threshold&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;5000&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;messaging-system.&lt;wbr /&gt;personalized-cfr.&lt;wbr /&gt;scores&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;asrouter.&lt;wbr /&gt;providers.&lt;wbr /&gt;whats-new-panel&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;{&amp;quot;id&amp;quot;:&amp;quot;whats-new-panel&amp;quot;,&amp;quot;enabled&amp;quot;:true,&amp;quot;type&amp;quot;:&amp;quot;remote-settings&amp;quot;,&amp;quot;bucket&amp;quot;:&amp;quot;whats-new-panel&amp;quot;,&amp;quot;updateCycleInMs&amp;quot;:3600000,&amp;quot;exclude&amp;quot;:[&amp;quot;EXTENDED_TRIPLETS_PRETRAILHEAD&amp;quot;]}&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;{&amp;quot;id&amp;quot;:&amp;quot;whats-new-panel&amp;quot;,&amp;quot;enabled&amp;quot;:true,&amp;quot;type&amp;quot;:&amp;quot;remote-settings&amp;quot;,&amp;quot;bucket&amp;quot;:&amp;quot;whats-new-panel&amp;quot;,&amp;quot;updateCycleInMs&amp;quot;:3600000}&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;discoverystream.&lt;wbr /&gt;campaign.&lt;wbr /&gt;blocks&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;discoverystream.&lt;wbr /&gt;flight.&lt;wbr /&gt;blocks&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;{}&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;discoverystream.&lt;wbr /&gt;lang-layout-config&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;en&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;ping.&lt;wbr /&gt;endpoint&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://tiles.services.mozilla.com/v4/links/activity-stream&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;structuredIngestion.&lt;wbr /&gt;endpoint&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://incoming.telemetry.mozilla.org/submit/activity-stream&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://incoming.telemetry.mozilla.org/submit&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;newtabpage.&lt;wbr /&gt;activity-stream.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;ut.&lt;wbr /&gt;events&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;ping-centre.&lt;wbr /&gt;production.&lt;wbr /&gt;endpoint&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://tiles.services.mozilla.com/v3/links/ping-centre&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;ping-centre.&lt;wbr /&gt;staging.&lt;wbr /&gt;endpoint&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://onyx_tiles.stage.mozaws.net/v3/links/ping-centre&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;search.&lt;wbr /&gt;modernConfig&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;tabs.&lt;wbr /&gt;remote.&lt;wbr /&gt;dataUriInDefaultWebProcess&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;megabar&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;timesBeforeHidingSuggestionsHint&lt;/td&gt;
+        &lt;td&gt;4&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;update1&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;update1.&lt;wbr /&gt;expandTextOnFocus&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;update1.&lt;wbr /&gt;view.&lt;wbr /&gt;stripHttps&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;browser.&lt;wbr /&gt;urlbar.&lt;wbr /&gt;userMadeSearchSuggestionsChoice&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;command-button-scratchpad.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;debugger.&lt;wbr /&gt;features.&lt;wbr /&gt;windowless-service-workers&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;inspector.&lt;wbr /&gt;color-scheme-simulation.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;recording.&lt;wbr /&gt;duration&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;recording.&lt;wbr /&gt;entries&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;10000000&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;recording.&lt;wbr /&gt;features&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;[&amp;quot;js&amp;quot;,&amp;quot;leaf&amp;quot;,&amp;quot;stackwalk&amp;quot;]&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;recording.&lt;wbr /&gt;interval&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;1000&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;performance.&lt;wbr /&gt;recording.&lt;wbr /&gt;threads&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td class=&quot;json&quot;&gt;[&amp;quot;GeckoMain&amp;quot;,&amp;quot;Compositor&amp;quot;,&amp;quot;Renderer&amp;quot;]&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;recordreplay.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;recordreplay.&lt;wbr /&gt;fastLogpoints&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;responsive.&lt;wbr /&gt;metaViewport.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;editorFontSize&lt;/td&gt;
+        &lt;td&gt;12&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;enableAutocompletion&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;lineNumbers&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;recentFilesMax&lt;/td&gt;
+        &lt;td&gt;10&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;showTrailingSpace&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;devtools.&lt;wbr /&gt;scratchpad.&lt;wbr /&gt;wrapText&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;docshell.&lt;wbr /&gt;shistory.&lt;wbr /&gt;testing.&lt;wbr /&gt;bfevict&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;formdata.&lt;wbr /&gt;event.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;indexedDB.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;ipc.&lt;wbr /&gt;plugins.&lt;wbr /&gt;allow_&lt;wbr /&gt;dxgi_&lt;wbr /&gt;surface&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;mozPaintCount.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;postMessage.&lt;wbr /&gt;sharedArrayBuffer.&lt;wbr /&gt;bypassCOOP_&lt;wbr /&gt;COEP.&lt;wbr /&gt;insecure.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;promise_&lt;wbr /&gt;rejection_&lt;wbr /&gt;events.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;security.&lt;wbr /&gt;respect_&lt;wbr /&gt;document_&lt;wbr /&gt;nosniff&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;storage.&lt;wbr /&gt;next_&lt;wbr /&gt;gen&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;targetBlankNoOpener.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;vr.&lt;wbr /&gt;webxr.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;webcomponents.&lt;wbr /&gt;elementInternals.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;webnotifications.&lt;wbr /&gt;requireuserinteraction&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;dom.&lt;wbr /&gt;webshare.&lt;wbr /&gt;requireinteraction&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;extensions.&lt;wbr /&gt;blocklist.&lt;wbr /&gt;useXML&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;extensions.&lt;wbr /&gt;content_&lt;wbr /&gt;script_&lt;wbr /&gt;csp.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;extensions.&lt;wbr /&gt;content_&lt;wbr /&gt;script_&lt;wbr /&gt;csp.&lt;wbr /&gt;report_&lt;wbr /&gt;only&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;extensions.&lt;wbr /&gt;contentblocker.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;extensions.&lt;wbr /&gt;webcompat-reporter.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;fission.&lt;wbr /&gt;sessionHistoryInParent&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;font.&lt;wbr /&gt;cjk_&lt;wbr /&gt;pref_&lt;wbr /&gt;fallback_&lt;wbr /&gt;order&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;zh-cn,&lt;wbr /&gt;zh-hk,&lt;wbr /&gt;zh-tw,&lt;wbr /&gt;ja,&lt;wbr /&gt;ko&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;geo.&lt;wbr /&gt;wifi.&lt;wbr /&gt;uri&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_LOCATION_SERVICE_API_KEY%&lt;/td&gt;
+        &lt;td class=&quot;uri&quot;&gt;https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;compositor.&lt;wbr /&gt;glcontext.&lt;wbr /&gt;opaque&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;core-animation.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;core-animation.&lt;wbr /&gt;tint-opaque&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;direct3d11.&lt;wbr /&gt;use-double-buffering&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;compositor&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;compositor.&lt;wbr /&gt;max_&lt;wbr /&gt;update_&lt;wbr /&gt;rects&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;debug.&lt;wbr /&gt;glyph-flashing&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;enable-gpu-markers&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;gfx.&lt;wbr /&gt;webrender.&lt;wbr /&gt;max-partial-present-rects&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;gl.&lt;wbr /&gt;require-hardware&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;javascript.&lt;wbr /&gt;options.&lt;wbr /&gt;writable_&lt;wbr /&gt;streams&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layers.&lt;wbr /&gt;advanced.&lt;wbr /&gt;fission.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;always-repaint-on-unvisited&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;individual-transform.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;motion-path-ray.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;motion-path.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;moz-binding.&lt;wbr /&gt;content.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;moz-document.&lt;wbr /&gt;url-prefix-hack.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;notify-of-unvisited&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-anchoring.&lt;wbr /&gt;max-consecutive-adjustments&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;10&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;scroll-anchoring.&lt;wbr /&gt;min-average-adjustment-threshold&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;3&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;shadow-parts.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;css.&lt;wbr /&gt;zoom-transform-hack.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;dynamic-reflow-roots.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;layout.&lt;wbr /&gt;viewport_&lt;wbr /&gt;contains_&lt;wbr /&gt;no_&lt;wbr /&gt;contents_&lt;wbr /&gt;area&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;geckoview.&lt;wbr /&gt;autoplay.&lt;wbr /&gt;request&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;geckoview.&lt;wbr /&gt;autoplay.&lt;wbr /&gt;request.&lt;wbr /&gt;testing&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;ice.&lt;wbr /&gt;obfuscate_&lt;wbr /&gt;host_&lt;wbr /&gt;addresses&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;ice.&lt;wbr /&gt;obfuscate_&lt;wbr /&gt;host_&lt;wbr /&gt;addresses.&lt;wbr /&gt;whitelist&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;sdp.&lt;wbr /&gt;alternate_&lt;wbr /&gt;parse_&lt;wbr /&gt;mode&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;never&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;sdp.&lt;wbr /&gt;parser&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;sipcc&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;sdp.&lt;wbr /&gt;rust.&lt;wbr /&gt;compare&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;peerconnection.&lt;wbr /&gt;sdp.&lt;wbr /&gt;rust.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;rdd-webaudio.&lt;wbr /&gt;batch.&lt;wbr /&gt;size&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;100&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;videocontrols.&lt;wbr /&gt;picture-in-picture.&lt;wbr /&gt;audio-toggle.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;videocontrols.&lt;wbr /&gt;picture-in-picture.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;media.&lt;wbr /&gt;videocontrols.&lt;wbr /&gt;picture-in-picture.&lt;wbr /&gt;video-toggle.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;mousewheel.&lt;wbr /&gt;ignore_&lt;wbr /&gt;cursor_&lt;wbr /&gt;position_&lt;wbr /&gt;in_&lt;wbr /&gt;lparam&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;http3.&lt;wbr /&gt;default-max-stream-blocked&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;10&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;http3.&lt;wbr /&gt;default-qpack-table-size&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;65536&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;http.&lt;wbr /&gt;http3.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;netlink.&lt;wbr /&gt;route.&lt;wbr /&gt;check.&lt;wbr /&gt;IPv4&lt;/td&gt;
+        &lt;td&gt;23.&lt;wbr /&gt;219.&lt;wbr /&gt;91.&lt;wbr /&gt;27&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;netlink.&lt;wbr /&gt;route.&lt;wbr /&gt;check.&lt;wbr /&gt;IPv6&lt;/td&gt;
+        &lt;td&gt;2a02:&lt;wbr /&gt;26f0:&lt;wbr /&gt;40::&lt;wbr /&gt;17db:&lt;wbr /&gt;5b1b&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;notify.&lt;wbr /&gt;checkForNRPT&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;notify.&lt;wbr /&gt;checkForProxies&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;preload-experimental&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;enable_&lt;wbr /&gt;when_&lt;wbr /&gt;nrpt_&lt;wbr /&gt;detected&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;enable_&lt;wbr /&gt;when_&lt;wbr /&gt;proxy_&lt;wbr /&gt;detected&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;enable_&lt;wbr /&gt;when_&lt;wbr /&gt;vpn_&lt;wbr /&gt;detected&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;network.&lt;wbr /&gt;trr.&lt;wbr /&gt;send_&lt;wbr /&gt;accept-language_&lt;wbr /&gt;headers&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;permissions.&lt;wbr /&gt;desktop-notification.&lt;wbr /&gt;postPrompt.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;permissions.&lt;wbr /&gt;isolateBy.&lt;wbr /&gt;privateBrowsing&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;permissions.&lt;wbr /&gt;isolateBy.&lt;wbr /&gt;userContext&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;plugin.&lt;wbr /&gt;defaultXpi.&lt;wbr /&gt;state&lt;/td&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;privacy.&lt;wbr /&gt;annotate_&lt;wbr /&gt;channels.&lt;wbr /&gt;strict_&lt;wbr /&gt;list.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;privacy.&lt;wbr /&gt;restrict3rdpartystorage.&lt;wbr /&gt;heuristic.&lt;wbr /&gt;opened_&lt;wbr /&gt;window_&lt;wbr /&gt;after_&lt;wbr /&gt;interaction&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;privacy.&lt;wbr /&gt;restrict3rdpartystorage.&lt;wbr /&gt;heuristic.&lt;wbr /&gt;window_&lt;wbr /&gt;open&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;privacy.&lt;wbr /&gt;trackingprotection.&lt;wbr /&gt;fingerprinting.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;security.&lt;wbr /&gt;block_&lt;wbr /&gt;Worker_&lt;wbr /&gt;with_&lt;wbr /&gt;wrong_&lt;wbr /&gt;mime&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;security.&lt;wbr /&gt;cert_&lt;wbr /&gt;pinning.&lt;wbr /&gt;hpkp.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;security.&lt;wbr /&gt;disallow_&lt;wbr /&gt;non_&lt;wbr /&gt;local_&lt;wbr /&gt;systemprincipal_&lt;wbr /&gt;in_&lt;wbr /&gt;tests&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;security.&lt;wbr /&gt;osclientcerts.&lt;wbr /&gt;autoload&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;security.&lt;wbr /&gt;remote_&lt;wbr /&gt;settings.&lt;wbr /&gt;intermediates.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;security.&lt;wbr /&gt;tls.&lt;wbr /&gt;hello_&lt;wbr /&gt;downgrade_&lt;wbr /&gt;check&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;buffer&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;bookmarks.&lt;wbr /&gt;validation.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;services.&lt;wbr /&gt;sync.&lt;wbr /&gt;engine.&lt;wbr /&gt;passwords.&lt;wbr /&gt;validation.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;signon.&lt;wbr /&gt;management.&lt;wbr /&gt;page.&lt;wbr /&gt;showPasswordSyncNotification&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;signon.&lt;wbr /&gt;storeSignons&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;svg.&lt;wbr /&gt;text-spacing.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;toolkit.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;oldkey&quot;&gt;
+        &lt;td&gt;toolkit.&lt;wbr /&gt;telemetry.&lt;wbr /&gt;hybridContent.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;urlclassifier.&lt;wbr /&gt;features.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;annotate.&lt;wbr /&gt;blacklistTables&lt;/td&gt;
+        &lt;td&gt;social-tracking-protection-digest256,&lt;wbr /&gt;social-tracking-protection-facebook-digest256,&lt;wbr /&gt;social-tracking-protection-linkedin-digest256,&lt;wbr /&gt;social-tracking-protection-twitter-digest256&lt;/td&gt;
+        &lt;td&gt;social-tracking-protection-facebook-digest256,&lt;wbr /&gt;social-tracking-protection-linkedin-digest256,&lt;wbr /&gt;social-tracking-protection-twitter-digest256&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;urlclassifier.&lt;wbr /&gt;features.&lt;wbr /&gt;socialtracking.&lt;wbr /&gt;blacklistTables&lt;/td&gt;
+        &lt;td&gt;social-tracking-protection-digest256,&lt;wbr /&gt;social-tracking-protection-facebook-digest256,&lt;wbr /&gt;social-tracking-protection-linkedin-digest256,&lt;wbr /&gt;social-tracking-protection-twitter-digest256&lt;/td&gt;
+        &lt;td&gt;social-tracking-protection-facebook-digest256,&lt;wbr /&gt;social-tracking-protection-linkedin-digest256,&lt;wbr /&gt;social-tracking-protection-twitter-digest256&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;urlclassifier.&lt;wbr /&gt;trackingTable&lt;/td&gt;
+        &lt;td&gt;moztest-track-simple,&lt;wbr /&gt;base-track-digest256&lt;/td&gt;
+        &lt;td&gt;moztest-track-simple,&lt;wbr /&gt;ads-track-digest256,&lt;wbr /&gt;social-track-digest256,&lt;wbr /&gt;analytics-track-digest256&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;webgl.&lt;wbr /&gt;cgl.&lt;wbr /&gt;multithreaded&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;true&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;widget.&lt;wbr /&gt;disable-dark-scrollbar&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr class=&quot;newkey&quot;&gt;
+        &lt;td&gt;widget.&lt;wbr /&gt;wayland_&lt;wbr /&gt;vsync.&lt;wbr /&gt;enabled&lt;/td&gt;
+        &lt;td class=&quot;undefined&quot;&gt;undefined&lt;/td&gt;
+        &lt;td&gt;false&lt;/td&gt;
+      &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /* --&gt;&lt;![CDATA[ /* */
+table.diff_firefox72_pref_diff { border-collapse: collapse; font-size: x-small; overflow: auto; }
+table.diff_firefox72_pref_diff td { border: 1px solid #ddd; padding: 1px; vertical-align: top; }
+table.diff_firefox72_pref_diff thead td { background-color: #ddd; font-weight: bold; }
+table.diff_firefox72_pref_diff td.json,
+table.diff_firefox72_pref_diff td.uri,
+table.diff_firefox72_pref_diff td.dump { word-break: break-all; }
+table.diff_firefox72_pref_diff td.undefined { color: #888; font-style: italic; }
+table.diff_firefox72_pref_diff tr.sameval td:first-child { color: #444; }
+table.diff_firefox72_pref_diff tr.newkey  td:first-child { text-decoration: underline;    }
+table.diff_firefox72_pref_diff tr.oldkey  td:first-child { text-decoration: line-through; }
+table.diff_firefox72_pref_diff tbody tr:hover { background-color: #eee; }
+table.diff_firefox72_pref_diff tbody tr { transition: background 0.125s ease-in-out 0s; }
+/* ]]&gt;&lt;!-- */ --&gt;&lt;/style&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>cat_in_136</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="pref diff" />
+      
+        <category term="mozilla" />
+      
+
+      
+        <summary type="html">This is difference between the default preference of Firefox 72.0 beta 3 and one of 71.0. This diff table is generated with my small script firefox-prefjs-surveyer.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 71.0 beta 6 default preference and firefox 70.0.1</title>
@@ -1824,244 +2762,6 @@ table.diff_firefox66_pref_diff tbody tr { transition: background 0.125s ease-in-
 
       
         <summary type="html">「ときめき」は &quot;spark joy&quot; と訳すようだが、 他にも訳し方があるようなのでここに記すこととする。</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">サイボウズLiveからredmineへの移行</title>
-      <link href="https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum.html" rel="alternate" type="text/html" title="サイボウズLiveからredmineへの移行" />
-      <published>2019-01-26T01:16:21+09:00</published>
-      <updated>2019-01-26T01:16:21+09:00</updated>
-      <id>https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2019/01/migrate-cybozu-live-to-redmine-forum.html">&lt;p&gt;友人との情報共有のためにサイボウズLiveを使ってきたが、&lt;a href=&quot;https://live.cybozu.co.jp/about/20171024.html&quot; title=&quot;サイボウズLiveサービス終了のお知らせ&quot;&gt;告知のとおり2019年4月15日でサービスが終了&lt;/a&gt;することになった。&lt;/p&gt;
-
-&lt;p&gt;そこで、私たちが別途運用しているredmineに移行することにした。掲示板以外は使っていないか他のもので既に満足しているので、掲示板だけを移行することとした。redmineのフォーラム機能があるが、掲示板の内容をredmineのフォーラムに移行することとした。&lt;/p&gt;
-
-&lt;h2 id=&quot;移行先redmineの環境&quot;&gt;移行先redmineの環境&lt;/h2&gt;
-
-&lt;p&gt;移行先の環境は、おおよそ下記の通り&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;web: Heroku&lt;/li&gt;
-  &lt;li&gt;db: ClearDB (mysql 5.6)&lt;/li&gt;
-  &lt;li&gt;storage: Dropbox&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Heroku だとファイルが保存できないため、外部の何らかの AWS S3 といった Storage as a Service などを使って実現する必要がある。&lt;/p&gt;
-
-&lt;p&gt;今回の環境ではファイル容量がそんなに大きくないことと費用面の理由から dropbox を使用した。なお、dropbox を添付ファイルとして使うためには下記のプラグインを redmine にインストールする必要がある。本家では現在の API バージョンに対応していないので、フォークされたものを使う必要がある。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/bprotas/redmine_dropbox_attachments&quot;&gt;bprotas/redmine_dropbox_attachments&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;変換スクリプト&quot;&gt;変換スクリプト&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/diffshare&quot;&gt;@diffshare&lt;/a&gt; 氏によってたたき台となる Ruby でかかれた変換プログラムが作られた。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://gist.github.com/diffshare/f7899c48dca9988942c14d7126cefd29&quot;&gt;https://gist.github.com/diffshare/f7899c48dca9988942c14d7126cefd29&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;これは&lt;a href=&quot;https://developer.cybozulive.com/doc/current/&quot;&gt;サイボウズLive データ API&lt;/a&gt; を使用するためデベロッパ登録した上でアプリの登録（無料）が必要である。この登録作業は本題ではないので説明は割愛する。&lt;/p&gt;
-
-&lt;p&gt;これをもとに機能拡張などを行ったものを作成し、これを使って変換を実施する。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://gist.github.com/cat-in-136/a7ec320939f35812a64ac4e35e2a947b&quot;&gt;https://gist.github.com/cat-in-136/a7ec320939f35812a64ac4e35e2a947b&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;なお、このスクリプトは、下記のような redmine のフォルダで実行することを想定している。ruby on rails を知っていれば、後述の解説さえ読めば、容易に読解可能な程度のスクリプトであるため、本稿では使い方はわざわざ解説しない。&lt;/p&gt;
-
-&lt;div class=&quot;language-terminal highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;path/to/redmine
-&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DATABASE_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mysql2://user:mysecretpassword@localhost/redmine?reconnect=true'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;en_US.UTF-8 &lt;span class=&quot;nv&quot;&gt;RACK_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;nv&quot;&gt;RAILS_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;RAILS_SERVE_STATIC_FILES&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;enabled &lt;span class=&quot;nv&quot;&gt;SECRET_KEY_BASE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xxxxxxxx &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;MISC_CONFIG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;miscconf.yaml &lt;span class=&quot;nv&quot;&gt;ATTACH_CACHE_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;./ATTACH_CACHE_DIR &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails r replace-from-cybozu-to-redmine.rb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;注：後述の &lt;a href=&quot;https://www.redmine.org/issues/26030&quot;&gt;#26030&lt;/a&gt; のパッチを当てていない場合、この変換スクリプトで変換後のフォーラムでは不具合が起こるので、事前に当該パッチを当てておく（か将来出る redmine 4.1+ を使う）ようにすること。&lt;/p&gt;
-
-&lt;h3 id=&quot;なぜcsvエクスポート機能を使わなかったのか&quot;&gt;なぜCSVエクスポート機能を使わなかったのか?&lt;/h3&gt;
-
-&lt;p&gt;簡単にいえば、扱いづらいの一言に限る。もちろん、単に手元に置いておくアーカイブとしては十分であろう。&lt;/p&gt;
-
-&lt;p&gt;しかし、添付ファイルとの紐付けがなかったり、いいね!情報がないなどの問題があり、API で取得する方がかえってやり易いということになった。&lt;/p&gt;
-
-&lt;h2 id=&quot;変換で問題となったこと&quot;&gt;変換で問題となったこと&lt;/h2&gt;
-
-&lt;h3 id=&quot;添付ファイル&quot;&gt;添付ファイル&lt;/h3&gt;
-
-&lt;p&gt;掲示板などの情報から添付ファイル情報として &lt;code class=&quot;highlighter-rouge&quot;&gt;cbl:attachement&lt;/code&gt; という要素があり、添付ファイルのIDは取得できる。サイボウズの API 仕様にあるように&lt;a href=&quot;https://developer.cybozulive.com/doc/current/pub/fileDownload.html&quot;&gt;ファイルダウンロードAPIは画像のみの対応&lt;/a&gt;である。実際に呼び出しても、&lt;strong&gt;画像ファイル以外はエラーを吐く&lt;/strong&gt; という&lt;a href=&quot;http://dotnsf.blog.jp/archives/1068218167.html&quot;&gt;挙動が報告&lt;/a&gt;されているし、筆者の手元でもそうなった。&lt;/p&gt;
-
-&lt;p&gt;共有フォルダ（一括ダウンロード）機能は、画像以外の任意のファイルが保存できるが、コメントなどとの &lt;strong&gt;対応性に関する情報は与えられない&lt;/strong&gt; 。また、同一ファイル名が ZIP 内で重複するのを防ぐため、ZIP 保存するとファイル名の末尾にランダムな文字列が付加される（このランダムな文字列はエクスポートするたびに異なるため、識別子としては使えない）。&lt;/p&gt;
-
-&lt;p&gt;というわけで、画像は API で、非画像は悩んだ末に簡易的なスクレイピング（単にクッキーを食わせてダウンロード）で取得した。&lt;/p&gt;
-
-&lt;p&gt;これとは別の話で、いずれの手段を使っても画像ファイルに関しては &lt;strong&gt;オリジナルのファイルを取り出すことはできない&lt;/strong&gt; 。サイボウズ上の画像ファイルサイズが 1,145 kB と書いてあっても得られるダウンロードされるファイルは 197.0 kB といったような感じである。&lt;code class=&quot;highlighter-rouge&quot;&gt;optipng&lt;/code&gt; などで非常に最適化をかけた画像については、逆にファイルサイズが肥大化していることもあるようだ。&lt;/p&gt;
-
-&lt;h3 id=&quot;photojpg-問題&quot;&gt;photo.jpg 問題&lt;/h3&gt;
-
-&lt;p&gt;添付ファイルをダウンロードしてみたら、&lt;a href=&quot;https://live.cybozu.co.jp/info/2016122101.html&quot;&gt;旧モバイルアプリ&lt;/a&gt;で上げた画像ファイルは &lt;code class=&quot;highlighter-rouge&quot;&gt;photo.jpg&lt;/code&gt; という名前のファイルになっているが、中身が JPEG ではなくて PNG になっていた。&lt;/p&gt;
-
-&lt;p&gt;なお、API でダウンロードしたとしても手動でダウンロードしたとしてもPNGファイルになっていたので、ファイル名 &lt;em&gt;（拡張子）が間違って保存されている&lt;/em&gt; らしい。&lt;/p&gt;
-
-&lt;p&gt;解決策は対症療法だが、ファイルヘッダを見てPNGファイルかどうかを判断するようにした。この処理自体は&lt;a href=&quot;https://rubygems.org/gems/mimemagic&quot;&gt;mimemagic&lt;/a&gt; gemを使えば極めて簡単に実現できた。&lt;/p&gt;
-
-&lt;h3 id=&quot;いいね&quot;&gt;いいね!&lt;/h3&gt;
-
-&lt;p&gt;Redmine にいいね!の機能は存在しない。そのためプラグインを入れることになるが、フォーラムにいいね!できるのは見当たらなかった。そこで下記の通り自作した。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/cat-in-136/redmine_hearts&quot;&gt;cat-in-136/redmine_hearts&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ひとつ API 上でややこしいところがある。&lt;a href=&quot;https://developer.cybozulive.com/doc/current/pub/good.html&quot;&gt;good の API レスポンス&lt;/a&gt;において自分のいいね!と他人のいいね!は異なるかたちで表せられる。自分のは &lt;code class=&quot;highlighter-rouge&quot;&gt;cblGood:set&lt;/code&gt; で、他人のは &lt;code class=&quot;highlighter-rouge&quot;&gt;cbl:who&lt;/code&gt; だ。&lt;/p&gt;
-
-&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cblGood:set&amp;gt;&lt;/span&gt;true&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cblGood:set&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cbl:who&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;valueString=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;佐藤 昇&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1:1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cbl:who&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;valueString=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;田中 美子&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1:11&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;名寄せ&quot;&gt;名寄せ&lt;/h3&gt;
-
-&lt;p&gt;名寄せについては、簡単のため、YAML ファイルでサイボウズLiveのMember IDとredmineのIDの対応表を入れる実装とした。上のコマンドライン例に沿って言えば、miscconf.yaml に下記のように記入する。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;1:2&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jsmith&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;1:3&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;dlopper&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# &quot;Member ID&quot;: &quot;redmine login name&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;なお、Member IDはAPIのアクセスの他に「プロフィールの詳細」を開いてURLを確認することでも得られる。
-例えば、プロフィールの詳細のページのURLが &lt;code class=&quot;highlighter-rouge&quot;&gt;https://cybozulive.com/mpAddress/list?mid=1%3A2&lt;/code&gt; ならば、
-Member ID は &lt;code class=&quot;highlighter-rouge&quot;&gt;1:2&lt;/code&gt; である。&lt;/p&gt;
-
-&lt;h3 id=&quot;発言番号とパーマリンク&quot;&gt;発言番号とパーマリンク&lt;/h3&gt;
-
-&lt;p&gt;Redmine のフォーラム機能にはカスタムフィールドがないので、付加的なメタデータをつけることはできない。&lt;/p&gt;
-
-&lt;p&gt;とはいえないのはないので過去のメッセージの参照において不便であるので、下記の通りとした。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;発言番号は、苦肉の策だが subject 文字列に置換して移行&lt;/li&gt;
-  &lt;li&gt;パーマリンクも苦肉の策ながら、テキストメッセージの末尾に書いた（miscconf.yaml にて&lt;code class=&quot;highlighter-rouge&quot;&gt;import_source_to_content: true&lt;/code&gt;を指定した場合）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらは、あとは興味あるやつは頑張れ!というスタンスに基づく。使い勝手は悪いが、検索すれば見つけられるから後追いはできるようにはなるはずである。&lt;/p&gt;
-
-&lt;h3 id=&quot;フォーラムのコメントの表示順番&quot;&gt;フォーラムのコメントの表示順番&lt;/h3&gt;
-
-&lt;p&gt;redmineではデフォルトでは古→新の順番で表示され、またページあたりの表示項目数も固定である。
-これは既に redmine 本家チケットの &lt;a href=&quot;https://www.redmine.org/issues/26030&quot;&gt;#26030&lt;/a&gt; であつかわれていて、
-これによって、ユーザ設定で変更できるようになり、例えば、ユーザ設定で降順に変更できる（サイボウズ Live っぽく使える）。&lt;/p&gt;
-
-&lt;p&gt;入る予定が redmine 4.1 系になるらしい。だが、redmine 4 系への移行は、そもそもまだ開発段階のバージョンである上に、プラグインなど互換の都合上、慎重にならざるを得ないため今回は作業を見送ることとした。よって、手作業パッチをすることとした。&lt;/p&gt;
-
-&lt;p&gt;ところで、変換スクリプトで変換かけたフォーラムだと &lt;code class=&quot;highlighter-rouge&quot;&gt;message#1234&lt;/code&gt; といったリンクの複数ページがうまく行かないが、
-このパッチを当てることで実は正しく動くようになる。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;MessageController#show&lt;/code&gt; にて &lt;code class=&quot;highlighter-rouge&quot;&gt;r=1234&lt;/code&gt; というパラメータを渡すことで、pagination を対処する処理があったが、これは ID が過去から昇順で並んでいるのが前提でないと動かない。&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.id &amp;lt; ?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;count&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;REPLIES_PER_PAGE&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;インポートスクリプトは、元のサイボウズLive の rss をそのままなめていっている挙動のせいでこれとは逆順に並んでいるため動作しなかった。&lt;/p&gt;
-
-&lt;p&gt;ところで&lt;a href=&quot;https://www.redmine.org/issues/26030&quot;&gt;#26030&lt;/a&gt;のパッチを投入した結果（あるいは redmine 4.1+）、ここのコードが下記のように、整列のところで &lt;code class=&quot;highlighter-rouge&quot;&gt;created_on&lt;/code&gt; も見るようになっている。&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;replies_order&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;wants_comments_in_reverse_order?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'DESC'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ASC'&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@replies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@topic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;includes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:attachments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:project&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;reorder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.created_on &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replies_order&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;table_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.id &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replies_order&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;nil?&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@replies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pluck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;per_page_option&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;このお陰で、変換スクリプトで変換かけたフォーラムだと &lt;code class=&quot;highlighter-rouge&quot;&gt;message#1234&lt;/code&gt; といったリンクの複数ページがうまく行かない不具合は結果的に解決できた。めでたしめでたし。（パッチをあたっていないときでも動作するような改造はやらないことにした。）&lt;/p&gt;
-
-&lt;h3 id=&quot;emoji&quot;&gt;emoji&lt;/h3&gt;
-
-&lt;p&gt;これは mysql の環境の問題だが、絵文字を入力すると正しく表示されなくなった。&lt;/p&gt;
-
-&lt;p&gt;原因は、mysql を utf8mb4 ではなく utf8 で運用しているため5バイト(以上)文字は正しく表現できないのが原因だった。これは普通にredmineを使っていても注意が必要だ。&lt;/p&gt;
-
-&lt;p&gt;対策は、実態参照で変換することとすることとした（miscconf.yaml にて&lt;code class=&quot;highlighter-rouge&quot;&gt;escape_emoji: true&lt;/code&gt;を指定した場合）。また実態参照にするかどうかの判断をemojiかどうかではなく5バイト(以上)文字かどうかにすることとした。新し目の絵文字をいちいちフォローするのは困難であるし、こうすると mysql の制限に合った処理かつ処理としても簡素である。&lt;/p&gt;
-
-&lt;p&gt;なお5バイト(以上)文字かどうかを判断する正規表現は下記の通りである:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;EMOJI_REGEX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/[^\u0000-\uFFFF]/&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;なお、当然のことながら &lt;a href=&quot;http://xyk.hatenablog.com/entry/2015/01/14/143508&quot;&gt;cleardb を utf8mb で運用&lt;/a&gt;していたり、postgresql や sqlite で運用していたりする場合には、この現象は起こらないので気にしないで良い。&lt;/p&gt;
-
-&lt;h2 id=&quot;移行処理について&quot;&gt;移行処理について&lt;/h2&gt;
-
-&lt;p&gt;移行処理自体は &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec rails run ./replace-from-cybozu-to-redmine.rb&lt;/code&gt; で実行すればよいので、heroku 上で実行するために &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku run bundle exec rails run ./replace-from-cybozu-to-redmine.rb&lt;/code&gt; としてもよい。&lt;/p&gt;
-
-&lt;p&gt;…のであるが、実際にこれを動かすと1時間ちょっと経過したところで &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku run&lt;/code&gt; のプロセスが切られた。つまるところ1時間以内に実行が完了しないとNGのようであり、変換量が多いときにはNGのようである。愚直なバッチ処理なのでどうしてもこのスクリプトの実行には時間がかかる。またローカルでスクリプトを単純に動かすのも cleardb のアクセスのせいで時間がかかる。&lt;/p&gt;
-
-&lt;p&gt;そこで、一旦 cleardb のバックアップ用 sql ファイルをローカルのmysqlにインポートして、ローカルのmysql + リモートdropbox で変換を実施して、
-あとで mysql をcleardbにインポートする策をとることにした。
-一気にインポート/エクスポートする際は rails を介さないので良いので高速であり、またこの手法は安定している。&lt;/p&gt;
-
-&lt;h2 id=&quot;変換をあきらめた機能&quot;&gt;変換をあきらめた機能&lt;/h2&gt;
-
-&lt;p&gt;その他、主要な「あきらめた機能」は下記の通り。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HTML形式の本文 (HTMLコードを取得する方法が API 上ない。scraping するのが面倒なのでやっていない)&lt;/li&gt;
-  &lt;li&gt;「&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;xxx&lt;/code&gt;」のリンク&lt;/li&gt;
-  &lt;li&gt;メッセージ本文のインライン画像貼り付け（&lt;code class=&quot;highlighter-rouge&quot;&gt;[file:1]&lt;/code&gt;を置換すればできるが面倒なのでやっていない）&lt;/li&gt;
-  &lt;li&gt;トピックのカテゴリ (階層構造なしでフラットにトピックが並ぶ)&lt;/li&gt;
-  &lt;li&gt;トピックに対する「★お気に入り」&lt;/li&gt;
-  &lt;li&gt;アンケート機能&lt;/li&gt;
-  &lt;li&gt;その他、掲示板以外のすべての機能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;おわりに&quot;&gt;おわりに&lt;/h2&gt;
-
-&lt;p&gt;元ネタはさっさと出来たがいろいろな点でハマり、
-片手間でやっているとはいえ、
-予想よりも三か月ぐらいも余計に時間がかかった&lt;/p&gt;
-
-&lt;p&gt;また CSV では得られる情報が少ないのも驚いた。
-Kintone 含む CSV ファイルからインポートする場合は、移行時に情報はかなり失われることになるのだろう。
-それを上回るものができたのはずであるので、満足である。&lt;/p&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="redmine" />
-      
-        <category term="サイボウズ" />
-      
-        <category term="ruby" />
-      
-        <category term="データ移行" />
-      
-
-      
-        <summary type="html">友人との情報共有のためにサイボウズLiveを使ってきたが、告知のとおり2019年4月15日でサービスが終了することになった。</summary>
       
 
       
