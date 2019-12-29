@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/04/google-maps-javascript-api.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/04/google-maps-javascript-api.html" />
   <meta property="og:title" content="カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法" /><meta property="og:description" content="地理人さんの想像都市を勝手にスクロール地図化を作ったところ受け取った、 下記メンションに対する一定の回答として。 @cat_in_136 突然で申し訳ありませんが、僕も地理人さんと同じく架空の地..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/howto-github.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/04/google-maps-javascript-api.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -179,7 +178,7 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
 
 <p>以下のタイトル部分をお好みのタイトルに変える：</p>
 
-<pre class="prettyprint lang-html"><code>  &lt;title&gt;＿タイトル＿&lt;/title&gt;
+<pre><code>  &lt;title&gt;＿タイトル＿&lt;/title&gt;
 ↓
   &lt;title&gt;<ins>私の想像地図</ins>&lt;/title&gt;
 </code></pre>
@@ -188,7 +187,7 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
 環境とかのために何らかのリンクを貼ったほうがよいと思われる。
 （検索エンジン最適化も兼ねる）</p>
 
-<pre class="prettyprint lang-html"><code> &lt;div id="map_canvas"&gt;
+<pre><code> &lt;div id="map_canvas"&gt;
    JavaScript を有効にしてください。
  &lt;/div&gt;
 ↓
@@ -207,14 +206,14 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
 <p>以下の部分をあなたのウェブページなどに変える。
 私だったら下記のように変える：</p>
 
-<pre class="prettyprint lang-js"><code>  copyrightSpan.innerHTML = "地図データ &amp;#169; " + "＿地図製作者＿".link("http://example.com/＿地図製作者のページへのリンク＿");
+<pre><code>  copyrightSpan.innerHTML = "地図データ &amp;#169; " + "＿地図製作者＿".link("http://example.com/＿地図製作者のページへのリンク＿");
 ↓
   copyrightSpan.innerHTML = "地図データ &amp;#169; " + "<ins>@cat_in_136</ins>".link("<ins>http://cat-in-136.blogspot.com/</ins>");
 </code></pre>
 
 <p>余計な注釈：地図画像を上の例とは違った置き方やファイル名とした場合は下記の箇所を変えると動作する。html ファイルからの相対パスかあるいは絶対パスを指定する。以下は変更例：</p>
 
-<pre class="prettyprint lang-js"><code>      return "../tile/custom_map_tile_%y_%x.png"
+<pre><code>      return "../tile/custom_map_tile_%y_%x.png"
        .replace("%x", x.toString())
        .replace("%y", y.toString());
 ↓
@@ -275,11 +274,6 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
@@ -290,9 +284,9 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
       <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/11/bloggers-stats-is-flash-free-but-looks.html">
@@ -300,14 +294,19 @@ PNG ファイルまたは JPEG ファイルをドラッグアンドドロップ�
       <span class="post-title">Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics</span><span class="post-thumb" data-image-path="/images/bloggers-stats-is-flash-free-but-looks-screenshot2.png"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
       <span class="post-meta">2016-04-23</span>
       <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/03/css-vertical-with-multicolumn.html">
-      <span class="post-meta">2016-03-23</span>
-      <span class="post-title">CSS で縦書きと段組を組み合わせる試み</span><span class="post-thumb" data-image-path="/images/2016_03_css_vertical_with_multicolumn_render_expection.svg"></span></a>
+    <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
+      <span class="post-meta">2013-04-13</span>
+      <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span><span class="post-thumb" data-image-path="/images/bar.png"></span></a>
   </li>
 </ul>
 </aside>

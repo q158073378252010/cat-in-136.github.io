@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" />
   <meta property="og:title" content="白塗りの xlsx ファイルを rubyXL で作ろうとしたワイ、無を見る" /><meta property="og:description" content="Excel （や互換のスプレッドシート）で背景色を白で塗りつぶすと罫線が消える。 これを個人的に 白塗り と呼んでいる。 白塗りの例 罫線を非表示にする設定をすればいいだけなのだが、 あまり方法..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/201803_shironurixlsx_nil_viewer_ss.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2018/03/shironuri-xlsx-file-using-rubyxl-but-nil.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -61,11 +60,10 @@
 簡単のため何もデータを含まないファイルをベースとして考える。
 作成したライブラリは <a href="https://rubygems.org/gems/rubyXL">rubyXL</a> である。</p>
 
-<pre class="prettyprint"><code>require "rubyXL"
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"rubyXL"</span>
 
-workbook = RubyXL::Workbook.new
-workbook.write("/path/to/blank_nonshironuri.xlsx")
-</code></pre>
+<span class="n">workbook</span> <span class="o">=</span> <span class="no">RubyXL</span><span class="o">::</span><span class="no">Workbook</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">workbook</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">"/path/to/blank_nonshironuri.xlsx"</span><span class="p">)</span></code></pre></figure>
 <div>Output file: <a href="https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_nonshironuri.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">blank_nonshironuri.xlsx</a></div>
  
 <p>xlsx ファイルは所詮 xml ファイルを zip で固めたものなので、
@@ -75,11 +73,11 @@ Excel（など）で出力した xlsx ファイルを展開して xml ファイ�
 <p>確認してみたところ <code class="highlighter-rouge">xl\worksheets\sheet1.xml</code> に下記のような
 col 要素を投入すればよいことが分かった。</p>
 
-<pre class="prettyprint"><code>&lt;worksheet&gt;&lt;!-- worksheet 要素の属性値略 --&gt;
-  &lt;!-- 略 --&gt;
-  &lt;cols&gt;&lt;col min="1" max="16384" style="1"/&gt;&lt;/cols&gt;
-  &lt;sheetData&gt;&lt;!-- 略 --&gt;&lt;/sheetData&gt;
-&lt;/worksheet&gt;</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;worksheet&gt;</span><span class="c">&lt;!-- worksheet 要素の属性値略 --&gt;</span>
+  <span class="c">&lt;!-- 略 --&gt;</span>
+  <span class="nt">&lt;cols&gt;&lt;col</span> <span class="na">min=</span><span class="s">"1"</span> <span class="na">max=</span><span class="s">"16384"</span> <span class="na">style=</span><span class="s">"1"</span><span class="nt">/&gt;&lt;/cols&gt;</span>
+  <span class="nt">&lt;sheetData&gt;</span><span class="c">&lt;!-- 略 --&gt;</span><span class="nt">&lt;/sheetData&gt;</span>
+<span class="nt">&lt;/worksheet&gt;</span></code></pre></figure>
 
 <p>ここで 16384 というのは、Excel 2007 以降から現在の Excel のバージョンに
 おける<a href="https://office.microsoft.com/ja-jp/excel-help/HP010073849.aspx" title="Excel の仕様および制限 - Excel - Office Support - Office 365">最大列数であり仕様に基づく</a>（それ以前は 256 列）。
@@ -87,17 +85,17 @@ col 要素を投入すればよいことが分かった。</p>
 
 <p>そこで、</p>
 
-<pre class="prettyprint"><code>require "rubyXL"
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"rubyXL"</span>
 
-workbook = RubyXL::Workbook.new
-worksheet = workbook[0]
-shironuri_style_index = workbook.modify_fill(nil, "ffffff")
-worksheet.cols &lt;&lt; RubyXL::ColumnRange.new(
-    :min =&gt; 1,
-    :max =&gt; 16384, # 0x4000
-    :style_index =&gt; shironuri_style_index,
-)
-workbook.write("/path/to/nil_shironuri.xlsx")</code></pre>
+<span class="n">workbook</span> <span class="o">=</span> <span class="no">RubyXL</span><span class="o">::</span><span class="no">Workbook</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">shironuri_style_index</span> <span class="o">=</span> <span class="n">workbook</span><span class="p">.</span><span class="nf">modify_fill</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="s2">"ffffff"</span><span class="p">)</span>
+<span class="n">worksheet</span><span class="p">.</span><span class="nf">cols</span> <span class="o">&lt;&lt;</span> <span class="no">RubyXL</span><span class="o">::</span><span class="no">ColumnRange</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+    <span class="ss">:min</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="ss">:max</span> <span class="o">=&gt;</span> <span class="mi">16384</span><span class="p">,</span> <span class="c1"># 0x4000</span>
+    <span class="ss">:style_index</span> <span class="o">=&gt;</span> <span class="n">shironuri_style_index</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">workbook</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">"/path/to/nil_shironuri.xlsx"</span><span class="p">)</span></code></pre></figure>
 <div>Output file: <a href="https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/nil_shironuri.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">nil_shironuri.xlsx</a></div>
 
 <p>とやってみたら、LibreOffice Calc で開けたんだが Excel で開くと
@@ -125,26 +123,26 @@ workbook.write("/path/to/nil_shironuri.xlsx")</code></pre>
   <li>オンライン office.com の Excel : そもそも開けない</li>
 </ul>
 
-<pre class="prettyprint"><code>&lt;worksheet&gt;&lt;!-- worksheet 要素の属性値略 --&gt;
-  &lt;!-- 略 --&gt;
-  &lt;cols&gt;&lt;col min="1" max="16384" <ins>width="9"</ins> style="1"/&gt;&lt;/cols&gt;
-  &lt;sheetData&gt;&lt;!-- 略 --&gt;&lt;/sheetData&gt;
-&lt;/worksheet&gt;</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;worksheet&gt;</span><span class="c">&lt;!-- worksheet 要素の属性値略 --&gt;</span>
+  <span class="c">&lt;!-- 略 --&gt;</span>
+  <span class="nt">&lt;cols&gt;&lt;col</span> <span class="na">min=</span><span class="s">"1"</span> <span class="na">max=</span><span class="s">"16384"</span> <span class="na">width=</span><span class="s">"9"</span> <span class="na">style=</span><span class="s">"1"</span><span class="nt">/&gt;&lt;/cols&gt;</span>
+  <span class="nt">&lt;sheetData&gt;</span><span class="c">&lt;!-- 略 --&gt;</span><span class="nt">&lt;/sheetData&gt;</span>
+<span class="nt">&lt;/worksheet&gt;</span></code></pre></figure>
 
 <p>これを実現するコードとしては…</p>
 
-<pre class="prettyprint"><code>require "rubyXL"
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"rubyXL"</span>
 
-workbook = RubyXL::Workbook.new
-worksheet = workbook[0]
-shironuri_style_index = workbook.modify_fill(nil, "ffffff")
-worksheet.cols &lt;&lt; RubyXL::ColumnRange.new(
-    :min =&gt; 1,
-    :max =&gt; 16384, # 0x4000
-    :style_index =&gt; shironuri_style_index,
-    <ins>:width =&gt; 9,</ins>
-)
-workbook.write("/path/to/blank_shironuri.xlsx")</code></pre>
+<span class="n">workbook</span> <span class="o">=</span> <span class="no">RubyXL</span><span class="o">::</span><span class="no">Workbook</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">shironuri_style_index</span> <span class="o">=</span> <span class="n">workbook</span><span class="p">.</span><span class="nf">modify_fill</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="s2">"ffffff"</span><span class="p">)</span>
+<span class="n">worksheet</span><span class="p">.</span><span class="nf">cols</span> <span class="o">&lt;&lt;</span> <span class="no">RubyXL</span><span class="o">::</span><span class="no">ColumnRange</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span>
+    <span class="ss">:min</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="ss">:max</span> <span class="o">=&gt;</span> <span class="mi">16384</span><span class="p">,</span> <span class="c1"># 0x4000</span>
+    <span class="ss">:style_index</span> <span class="o">=&gt;</span> <span class="n">shironuri_style_index</span><span class="p">,</span>
+    <span class="ss">:width</span> <span class="o">=&gt;</span> <span class="mi">9</span><span class="p">,</span> <span class="c1"># ** 差分箇所はここ</span>
+<span class="p">)</span>
+<span class="n">workbook</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">"/path/to/blank_shironuri.xlsx"</span><span class="p">)</span></code></pre></figure>
 <div>Output file: <a href="https://gist.githubusercontent.com/cat-in-136/0cf92ed96ee88cf65a3bcba0676986b5/raw/blank_shironuri.xlsx" type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">blank_shironuri.xlsx</a></div>
 
 <h3>成果物</h3>
@@ -181,19 +179,19 @@ LibreOffice Calc で挙動が異なるのを見た</li>
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
-      <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
-      <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
+    <a class="post-link" href="/2016/08/html-complex-ruby.html">
+      <span class="post-meta">2016-08-05</span>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
@@ -206,14 +204,14 @@ LibreOffice Calc で挙動が異なるのを見た</li>
       <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
+    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
+      <span class="post-meta">2016-04-23</span>
+      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+    <a class="post-link" href="/2011/01/xul-tip-scrolling-for-tabs-on-xul.html">
+      <span class="post-meta">2011-01-20</span>
+      <span class="post-title">XUL Tip: Scrolling for tabs on XUL tabbox</span><span class="post-thumb" data-image-path="/images/scrolledtab.png"></span></a>
   </li>
 </ul>
 </aside>

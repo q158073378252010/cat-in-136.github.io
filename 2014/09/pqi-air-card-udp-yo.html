@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html" />
   <meta property="og:title" content="PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み" /><meta property="og:description" content="WiFi 内蔵 SD カードである PQI Air Card[1] には WiFi の子機として繋ぐモードで動かすことができる。 WiFi AP が DHCP などで動的な IP 割り当てをして..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/09/pqi-air-card-udp-yo.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -147,7 +146,7 @@ PQI Air Card の IP アドレスがわかる。</p>
 
 <p>下記のとおり C 言語で書いた：</p>
 
-<pre class="prettyprint lang-c"><code>/* yo_service.c
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/* yo_service.c
  * under MIT license
  * 
  * Copyright (c) 2014 @cat_in_136
@@ -169,8 +168,8 @@ PQI Air Card の IP アドレスがわかる。</p>
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- */
-#include &lt;stdio.h&gt;
+ */</span>
+<span class="cp">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
 #include &lt;signal.h&gt;
@@ -179,151 +178,150 @@ PQI Air Card の IP アドレスがわかる。</p>
 #include &lt;netinet/in.h&gt;
 #include &lt;arpa/inet.h&gt;
 #include &lt;unistd.h&gt;
+</span>
+<span class="cm">/** Have SIGTERM been received? */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">isTermReceived</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-/** Have SIGTERM been received? */
-static int isTermReceived = 0;
-
-/** Open a UDP connection.
+<span class="cm">/** Open a UDP connection.
  *
  * @param[in] b_addr bind address, may be INADDR_ANY.
  * @param[in] port Port number.
  * @return a file descriptor for the socket on success, -1 on error.
- */
-static int open_udp_conn(in_addr_t b_addr, u_short port)
-{
-  int sock;
-  int ret;
-  struct sockaddr_in addr;
+ */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">open_udp_conn</span><span class="p">(</span><span class="n">in_addr_t</span> <span class="n">b_addr</span><span class="p">,</span> <span class="n">u_short</span> <span class="n">port</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">sock</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">addr</span><span class="p">;</span>
 
-  sock = socket(AF_INET, SOCK_DGRAM, 0);
-  if (sock == -1) {
-    perror("Socket open error.");
-    return sock;
-  }
+  <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">sock</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"Socket open error."</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">sock</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  memset(&amp;addr, 0, sizeof(addr));
-  addr.sin_family = AF_INET;
-  addr.sin_port = htons(port);
-  addr.sin_addr.s_addr = b_addr;
-  ret = bind(sock, (struct sockaddr *) &amp;addr, sizeof(addr));
-  if (ret == -1) {
-    perror("bind error.");
-    close(sock);
-    return -1;
-  }
+  <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">;</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+  <span class="n">addr</span><span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">b_addr</span><span class="p">;</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"bind error."</span><span class="p">);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">sock</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  return sock;
-}
+  <span class="k">return</span> <span class="n">sock</span><span class="p">;</span>
+<span class="p">}</span>
 
-/** Listen a UDP packet and send a packet of the response.
+<span class="cm">/** Listen a UDP packet and send a packet of the response.
  *
  * @param[in] sock the socket.
  * @param[in] msg the response message.
  * @param[in] msg_len length of the response message.
- */
-static void handle_udp_conn(int sock, const char *msg, size_t msg_len)
-{
-  static const char * CRLF = "\r\n";
-  char buf[1024];
-  ssize_t s;
-  struct sockaddr src_addr;
-  socklen_t addrlen;
+ */</span>
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">handle_udp_conn</span><span class="p">(</span><span class="kt">int</span> <span class="n">sock</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">msg</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">msg_len</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">CRLF</span> <span class="o">=</span> <span class="s">"</span><span class="se">\r\n</span><span class="s">"</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+  <span class="kt">ssize_t</span> <span class="n">s</span><span class="p">;</span>
+  <span class="k">struct</span> <span class="n">sockaddr</span> <span class="n">src_addr</span><span class="p">;</span>
+  <span class="n">socklen_t</span> <span class="n">addrlen</span><span class="p">;</span>
 
-  // receive a packet
-  memset(buf, 0, sizeof(buf));
-  s = recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr *) &amp;src_addr, &amp;addrlen);
-  if (s == 0) {
-    perror("empty message received");
-    return;
-  }
+  <span class="c1">// receive a packet</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">recvfrom</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">src_addr</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">addrlen</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"empty message received"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  //puts(buf);
+  <span class="c1">//puts(buf);</span>
   
-  // build response message
-  if ((s + strlen(CRLF) + msg_len) &lt; sizeof(buf)) {
-    memcpy(&amp;buf[s], CRLF, strlen(CRLF));
-    s += strlen(CRLF);
+  <span class="c1">// build response message</span>
+  <span class="k">if</span> <span class="p">((</span><span class="n">s</span> <span class="o">+</span> <span class="n">strlen</span><span class="p">(</span><span class="n">CRLF</span><span class="p">)</span> <span class="o">+</span> <span class="n">msg_len</span><span class="p">)</span> <span class="o">&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">CRLF</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">CRLF</span><span class="p">));</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">CRLF</span><span class="p">);</span>
 
-    memcpy(&amp;buf[s], msg, msg_len);
-    s += msg_len;
+    <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">msg</span><span class="p">,</span> <span class="n">msg_len</span><span class="p">);</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">msg_len</span><span class="p">;</span>
 
-    sendto(sock, buf, s, 0, (struct sockaddr *) &amp;src_addr, addrlen);
-  }
-}
+    <span class="n">sendto</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">src_addr</span><span class="p">,</span> <span class="n">addrlen</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-/** Close the UDP connection.
+<span class="cm">/** Close the UDP connection.
  *
  * @param[in] sock the socket.
  * @return 0 on success, -1 on error.
- */
-static int close_udp_conn(int sock)
-{
-  close(sock);
+ */</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="nf">close_udp_conn</span><span class="p">(</span><span class="kt">int</span> <span class="n">sock</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">close</span><span class="p">(</span><span class="n">sock</span><span class="p">);</span>
 
-  return 0;
-}
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-static void signal_handler(int signo)
-{
-  if (signo == SIGTERM) {
-    isTermReceived = 1;
-  }
-}
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">signal_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">signo</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">signo</span> <span class="o">==</span> <span class="n">SIGTERM</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">isTermReceived</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-int main(int argc, char *argv[]) {
-  int ret;
-  int sock;
-  in_addr_t b_addr;
-  u_short port;
-  char *response_msg;
-  size_t response_msg_len;
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">sock</span><span class="p">;</span>
+  <span class="n">in_addr_t</span> <span class="n">b_addr</span><span class="p">;</span>
+  <span class="n">u_short</span> <span class="n">port</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">response_msg</span><span class="p">;</span>
+  <span class="kt">size_t</span> <span class="n">response_msg_len</span><span class="p">;</span>
 
-  if(signal(SIGTERM, signal_handler) == SIG_ERR) {
-    perror("SIGTERM handler error");
-    //return EXIT_FAILURE;
-  }
+  <span class="k">if</span><span class="p">(</span><span class="n">signal</span><span class="p">(</span><span class="n">SIGTERM</span><span class="p">,</span> <span class="n">signal_handler</span><span class="p">)</span> <span class="o">==</span> <span class="n">SIG_ERR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"SIGTERM handler error"</span><span class="p">);</span>
+    <span class="c1">//return EXIT_FAILURE;</span>
+  <span class="p">}</span>
 
-  if (argc != 4) {
-    printf("Usage: %s bind_address port response_msg\n", argv[0]);
-    printf("Example:\n");
-    printf("  %s 0.0.0.0 22222\n", argv[0]);
-    return EXIT_FAILURE;
-  }
+  <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Usage: %s bind_address port response_msg</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Example:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  %s 0.0.0.0 22222</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  ret = inet_aton(argv[1], (struct in_addr *) &amp;b_addr);
-  if (ret == 0) {
-    perror("Invalid IP address");
-    return EXIT_FAILURE;
-  }
-  port = atoi(argv[2]);
-  if (port == 0) {
-    perror("Invalid IP port");
-    return EXIT_FAILURE;
-  }
-  response_msg = argv[3];
-  response_msg_len = strlen(argv[3]);
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">inet_aton</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="k">struct</span> <span class="n">in_addr</span> <span class="o">*</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">b_addr</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"Invalid IP address"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">port</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">port</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"Invalid IP port"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">response_msg</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="n">response_msg_len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
 
-  sock = open_udp_conn(b_addr, port);
-  if (sock == -1) {
-    perror("Failed to open socket");
-    return EXIT_FAILURE;
-  }
+  <span class="n">sock</span> <span class="o">=</span> <span class="n">open_udp_conn</span><span class="p">(</span><span class="n">b_addr</span><span class="p">,</span> <span class="n">port</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">sock</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"Failed to open socket"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  while (isTermReceived == 0) {
-    handle_udp_conn(sock, response_msg, response_msg_len);
-  }
+  <span class="k">while</span> <span class="p">(</span><span class="n">isTermReceived</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">handle_udp_conn</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">response_msg</span><span class="p">,</span> <span class="n">response_msg_len</span><span class="p">);</span>
+  <span class="p">}</span>
 
-  ret = close_udp_conn(sock);
-  if (ret == -1) {
-    perror("Failed to close socket");
-    return EXIT_FAILURE;
-  }
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">close_udp_conn</span><span class="p">(</span><span class="n">sock</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">perror</span><span class="p">(</span><span class="s">"Failed to close socket"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">EXIT_FAILURE</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  return EXIT_SUCCESS;
-}
+  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
 
-/* vim:set tabstop=2 expandtab shiftwidth=2 softtabstop=0: */
-</code></pre>
+<span class="cm">/* vim:set tabstop=2 expandtab shiftwidth=2 softtabstop=0: */</span></code></pre></figure>
 
 <p>これを PQI Air Card 向けにコンパイルをした。
 商用であるが無料で使える <a href="http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/" title="Sourcery CodeBench Lite Edition including ARM GCC IDE - Mentor Graphics">Sourcery CodeBench Lite</a> という
@@ -342,16 +340,15 @@ PC上でデバッグ検証をするのならば普通に x86_64 の gcc など�
 
 <p>そしてSDカードのルートの<code>autorun.sh</code>には下記を記述する（または追記する）。</p>
 
-<pre class="prettyprint lang-sh"><code>#!/bin/sh
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c">#!/bin/sh</span>
 
-sleep 5
+<span class="nb">sleep </span>5
 
-ln -s /mnt/sd/path/to/yo_service /bin/yo_service
-chmod +x /bin/yo_service
-sync; sync; sync
+<span class="nb">ln</span> <span class="nt">-s</span> /mnt/sd/path/to/yo_service /bin/yo_service
+<span class="nb">chmod</span> +x /bin/yo_service
+<span class="nb">sync</span><span class="p">;</span> <span class="nb">sync</span><span class="p">;</span> <span class="nb">sync
 
-yo_service 0.0.0.0 10091 "Yo from PQI_AIR_CARD" &amp;
-</code></pre>
+</span>yo_service 0.0.0.0 10091 <span class="s2">"Yo from PQI_AIR_CARD"</span> &amp;</code></pre></figure>
 
 <p>あとはカメラの電源を入れたときに <code>yo_service</code> が起動し常駐するようになる。</p>
 
@@ -360,25 +357,24 @@ yo_service 0.0.0.0 10091 "Yo from PQI_AIR_CARD" &amp;
 <p>機器（サービス）側の実装とデプロイで疲れてしまったので、
 クライアント側は下記のような適当な ruby コードで確認した。</p>
 
-<pre class="prettyprint lang-ruby"><code>#!/usr/bin/ruby
-require "socket"
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/usr/bin/ruby</span>
+<span class="nb">require</span> <span class="s2">"socket"</span>
 
-udp = nil
-begin
-  udp = UDPSocket.open
-  udp.setsockopt(Socket::SOL_SOCKET, Socket::SO_BROADCAST, 1)
+<span class="n">udp</span> <span class="o">=</span> <span class="kp">nil</span>
+<span class="k">begin</span>
+  <span class="n">udp</span> <span class="o">=</span> <span class="no">UDPSocket</span><span class="p">.</span><span class="nf">open</span>
+  <span class="n">udp</span><span class="p">.</span><span class="nf">setsockopt</span><span class="p">(</span><span class="no">Socket</span><span class="o">::</span><span class="no">SOL_SOCKET</span><span class="p">,</span> <span class="no">Socket</span><span class="o">::</span><span class="no">SO_BROADCAST</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-  udp.bind("0.0.0.0", 20091)
+  <span class="n">udp</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">20091</span><span class="p">)</span>
 
-  udp.send("Yo from laptop", 0, "255.255.255.255", 10091)
+  <span class="n">udp</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="s2">"Yo from laptop"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"255.255.255.255"</span><span class="p">,</span> <span class="mi">10091</span><span class="p">)</span>
 
-  res, res_addr = udp.recvfrom(2048)
-  p res
-  p res_addr
-ensure
-  udp.close unless udp.nil?
-end
-</code></pre>
+  <span class="n">res</span><span class="p">,</span> <span class="n">res_addr</span> <span class="o">=</span> <span class="n">udp</span><span class="p">.</span><span class="nf">recvfrom</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+  <span class="nb">p</span> <span class="n">res</span>
+  <span class="nb">p</span> <span class="n">res_addr</span>
+<span class="k">ensure</span>
+  <span class="n">udp</span><span class="p">.</span><span class="nf">close</span> <span class="k">unless</span> <span class="n">udp</span><span class="p">.</span><span class="nf">nil?</span>
+<span class="k">end</span></code></pre></figure>
 
 <p>カメラに電源を入れた後しばらく待って (PQI Air Card の WiFi が確立する時間)
 下記実行したらきちんと “Yo” が帰ってきた。</p>
@@ -466,9 +462,9 @@ NetBIOS 等が入っていない（or 導入が困難）かつ自作プログラ
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/03/sunrise-sunset.html">
@@ -476,19 +472,19 @@ NetBIOS 等が入っていない（or 導入が困難）かつ自作プログラ
       <span class="post-title">日出と日没に関する考察メモ</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
-      <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
-      <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">
       <span class="post-meta">2010-05-02</span>
       <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2012/12/llvm-clangast.html">

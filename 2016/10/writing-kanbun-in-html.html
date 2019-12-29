@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="vertical-writing-recommended"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html" />
   <meta property="og:title" content="如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか" /><meta property="og:description" content="@snsk @dagezi 漢文については、以前、W3C のワークショップで議題としたことがありました。 http://t.co/WaBNatYfvA このときに分かったのですが、CSS3 に最..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/201610_kanbun_composition_layout_html5_ruby.svg" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2016/10/writing-kanbun-in-html.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -77,22 +76,21 @@
 
 <p>具体的には下記の通りとなる</p>
 
-<pre class="prettyprint lang-html"><code>&lt;ruby&gt;
-  &lt;rb&gt;以&lt;/rb&gt;
-  &lt;rb class="kaeriten"&gt;&#12696;&lt;/rb&gt;
-  &lt;rtc&gt;
-    &lt;rt&gt;もつ&lt;/rt&gt;
-    &lt;rt&gt;テ&lt;/rt&gt;
-  &lt;/rtc&gt;
-&lt;/ruby&gt;
-&lt;style&gt;
-.kaeriten {
-  font-size: xx-small;
-  vertical-align: sub;
-  ruby-align: start;
-}
-&lt;/style&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ruby&gt;</span>
+  <span class="nt">&lt;rb&gt;</span>以<span class="nt">&lt;/rb&gt;</span>
+  <span class="nt">&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12696;</span><span class="nt">&lt;/rb&gt;</span>
+  <span class="nt">&lt;rtc&gt;</span>
+    <span class="nt">&lt;rt&gt;</span>もつ<span class="nt">&lt;/rt&gt;</span>
+    <span class="nt">&lt;rt&gt;</span>テ<span class="nt">&lt;/rt&gt;</span>
+  <span class="nt">&lt;/rtc&gt;</span>
+<span class="nt">&lt;/ruby&gt;</span>
+<span class="nt">&lt;style&gt;</span>
+<span class="nc">.kaeriten</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="nb">xx-small</span><span class="p">;</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="n">sub</span><span class="p">;</span>
+  <span class="nl">ruby-align</span><span class="p">:</span> <span class="n">start</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span></code></pre></figure>
 
 <p>
 ここで&lt;rb&gt;要素を緑枠、&lt;rt&gt;要素を青枠で囲んで図に示すと次のようになる。
@@ -129,13 +127,11 @@
   <li>送り仮名は、&lt;sup&gt;として扱う。</li>
 </ul>
 
-<pre class="prettyprint lang-html"><code>
-如何&lt;sup&gt;ニシテ&lt;/sup&gt;
-用&lt;sub class="kaeriten"&gt;&#12691;&lt;/sub&gt;&lt;sup&gt;ヒテ&lt;/sup&gt;
-HTML5 Complex Ruby&lt;sub class="kaeriten"&gt;&#12690;&lt;/sub&gt;&lt;sup&gt;ヲ&lt;/sup&gt;
-寫&lt;sub class="kaeriten"&gt;&#12691;&lt;/sub&gt;&lt;sup&gt;スカ&lt;/sup&gt;
-漢文訓讀文&lt;sub class="kaeriten"&gt;&#12690;&lt;/sub&gt;&lt;sup&gt;ヲ&lt;/sup&gt;。
-</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">如何<span class="nt">&lt;sup&gt;</span>ニシテ<span class="nt">&lt;/sup&gt;</span>
+用<span class="nt">&lt;sub</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12691;</span><span class="nt">&lt;/sub&gt;&lt;sup&gt;</span>ヒテ<span class="nt">&lt;/sup&gt;</span>
+HTML5 Complex Ruby<span class="nt">&lt;sub</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12690;</span><span class="nt">&lt;/sub&gt;&lt;sup&gt;</span>ヲ<span class="nt">&lt;/sup&gt;</span>
+寫<span class="nt">&lt;sub</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12691;</span><span class="nt">&lt;/sub&gt;&lt;sup&gt;</span>スカ<span class="nt">&lt;/sup&gt;</span>
+漢文訓讀文<span class="nt">&lt;sub</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12690;</span><span class="nt">&lt;/sub&gt;&lt;sup&gt;</span>ヲ<span class="nt">&lt;/sup&gt;</span>。</code></pre></figure>
 
 <figure class="kanbun">
 <p class="kanbun" style="margin: 1em;">
@@ -207,61 +203,59 @@ Complex Ruby を使わない場合との差、おわかりいただけるであ�
 
 <p>これは次のソースから得られる。</p>
 
-<pre class="prettyprint lang-html"><code>
-&lt;p class="kanbun" style="margin: 1em;"&gt;
-&lt;ruby&gt;&lt;rb&gt;荷宇&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ハ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;生&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;マレテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;十月&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ニシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;而&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;喪&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;うしな&lt;/rt&gt;&lt;rt&gt;フ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;其&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ノ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12690;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;。
-&lt;ruby&gt;&lt;rb&gt;及&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ビ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;有&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ルニ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;知&lt;/rb&gt;&lt;/ruby&gt;、
-&lt;ruby&gt;&lt;rb&gt;即&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;チ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;時時&lt;/rb&gt;&lt;/ruby&gt;、
-&lt;ruby&gt;&lt;rb&gt;念&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;おも&lt;/rt&gt;&lt;rt&gt;ヒテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;不&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12689;&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;置&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;カ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;、
-&lt;ruby&gt;&lt;rb&gt;弥&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;いよいよ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;久&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;シクシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;弥&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;篤&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;あつ&lt;/rt&gt;&lt;rt&gt;シ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;。
-&lt;ruby&gt;&lt;rb&gt;哀&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;かな&lt;/rt&gt;&lt;rt&gt;シム&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;其&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ノ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;身&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ノ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;不&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12690;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;能&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12692;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ハ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;一日&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;トシテ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;事&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;フル&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;乎&lt;/rb&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12690;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ニ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;也&lt;/rb&gt;&lt;/ruby&gt;。
-&lt;ruby&gt;&lt;rb&gt;哀&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12691;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;かな&lt;/rt&gt;&lt;rt&gt;シム&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;母之言語動作&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;モ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;亦&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;ま&lt;/rt&gt;&lt;rt&gt;タ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;未&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12690;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ダ&lt;/rt&gt;&lt;/rtc&gt;&lt;rtc class="okurikana-2nd"&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ルヲ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;能&lt;/rb&gt;&lt;rb class="kaeriten"&gt;&amp;#12689;&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;ハ&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;識&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;し&lt;/rt&gt;&lt;rt&gt;ル&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-&lt;ruby&gt;&lt;rb&gt;也&lt;/rb&gt;&lt;/ruby&gt;。
-&lt;/p&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"kanbun"</span> <span class="na">style=</span><span class="s">"margin: 1em;"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>荷宇<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ハ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>生<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>マレテ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>十月<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ニシテ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>而<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>喪<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12691;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>うしな<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>フ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>其<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ノ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>母<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12690;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ヲ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>。
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>及<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ビ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>有<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ルニ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>知<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>、
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>即<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>チ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>時時<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>、
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>念<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>おも<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>ヒテ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>母<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ヲ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>不<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>置<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>カ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>、
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>弥<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>いよいよ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>久<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>シクシテ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>弥<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>篤<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>あつ<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>シ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>。
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>哀<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12691;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>かな<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>シム<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>其<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ノ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>身<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ノ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>不<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12690;&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ヲ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>能<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12692;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ハ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>一日<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>トシテ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>事<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12691;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>フル<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>乎<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>母<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12690;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ニ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>也<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>。
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>哀<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12691;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>かな<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>シム<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>母之言語動作<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>モ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>亦<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>ま<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>タ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>未<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12690;&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ダ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;rtc</span> <span class="na">class=</span><span class="s">"okurikana-2nd"</span><span class="nt">&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ルヲ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>能<span class="nt">&lt;/rb&gt;&lt;rb</span> <span class="na">class=</span><span class="s">"kaeriten"</span><span class="nt">&gt;</span><span class="ni">&amp;#12689;</span><span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;&lt;/rt&gt;&lt;rt&gt;</span>ハ<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>識<span class="nt">&lt;/rb&gt;&lt;rtc&gt;&lt;rt&gt;</span>し<span class="nt">&lt;/rt&gt;&lt;rt&gt;</span>ル<span class="nt">&lt;/rt&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>也<span class="nt">&lt;/rb&gt;&lt;/ruby&gt;</span>。
+<span class="nt">&lt;/p&gt;</span>
 
-&lt;style scope="scope"&gt;
-.kanbun {
-  line-height: 150%;
-}
-.kanbun rb.kaeriten {
-  font-size: xx-small;
-  vertical-align: sub;
-  ruby-align: start;
-}
-.kanbun .okurikana-2nd {
-  ruby-position: under;
-}
-&lt;/style&gt;
-</code></pre>
+<span class="nt">&lt;style </span><span class="na">scope=</span><span class="s">"scope"</span><span class="nt">&gt;</span>
+<span class="nc">.kanbun</span> <span class="p">{</span>
+  <span class="nl">line-height</span><span class="p">:</span> <span class="m">150%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.kanbun</span> <span class="nt">rb</span><span class="nc">.kaeriten</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="nb">xx-small</span><span class="p">;</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="n">sub</span><span class="p">;</span>
+  <span class="nl">ruby-align</span><span class="p">:</span> <span class="n">start</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.kanbun</span> <span class="nc">.okurikana-2nd</span> <span class="p">{</span>
+  <span class="nl">ruby-position</span><span class="p">:</span> <span class="n">under</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span></code></pre></figure>
 
 <style scope="scope">
 figure.kanbun {
@@ -344,29 +338,29 @@ figure.kanbun p.kanbun {
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
       <span class="post-meta">2016-04-23</span>
       <span class="post-title">pango で縦書きとその能力</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span></a>
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/03/css.html">
-      <span class="post-meta">2013-03-18</span>
-      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span></a>
+    <a class="post-link" href="/2012/01/javagui.html">
+      <span class="post-meta">2012-01-15</span>
+      <span class="post-title">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 </ul>
 </aside>

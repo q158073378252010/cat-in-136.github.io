@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Components.utils.reportError() is easy to use for debugging</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html" />
   <meta property="og:title" content="Components.utils.reportError() is easy to use for debugging" /><meta property="og:description" content="Firefox 3.0+ supports Components.utils.reportError(). This function send a debugging message to t..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/componentsutilsreporterror-screenshot1.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/04/componentsutilsreporterror-is-easy-to.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -54,10 +53,9 @@ Firefox 3.0+ supports <code>Components.utils.reportError()</code>. This function
 <p>
 If you don't hope debugging message displayed as a error, <a href="https://developer.mozilla.org/en/nsIConsoleService#logStringMessage()">nsIConsoleService#logStringMessage()</a> is better.
 </p>
-<pre class="prettyprint"><code>Components.classes["@mozilla.org/consoleservice;1"]
- .getService(Components.interfaces.nsIConsoleService)
- .logStringMessage("a debugging message");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/consoleservice;1</span><span class="dl">"</span><span class="p">]</span>
+ <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIConsoleService</span><span class="p">)</span>
+ <span class="p">.</span><span class="nx">logStringMessage</span><span class="p">(</span><span class="dl">"</span><span class="s2">a debugging message</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 <p>
 yields following message to the Error Console:
 </p>
@@ -118,14 +116,14 @@ Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">
-      <span class="post-meta">2010-05-02</span>
-      <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
       <span class="post-meta">2010-08-15</span>
       <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">
+      <span class="post-meta">2010-05-02</span>
+      <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">
@@ -133,14 +131,14 @@ Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</
       <span class="post-title">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/tweet-to-myself.html">
-      <span class="post-meta">2010-03-24</span>
-      <span class="post-title">Tweet to myself</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">
       <span class="post-meta">2010-11-27</span>
       <span class="post-title">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</span><span class="post-thumb" data-image-path="/images/traditional-addons-are-required-browser-restart.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/tweet-to-myself.html">
+      <span class="post-meta">2010-03-24</span>
+      <span class="post-title">Tweet to myself</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2012/12/tip-how-to-run-new-firefox-instance-w.html">
@@ -148,9 +146,9 @@ Use of <a href="https://developer.mozilla.org/en/DOM/window.dump"><code>dump()</
       <span class="post-title">Tip: How to run a new Firefox instance w/ temporary profile</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">
-      <span class="post-meta">2010-03-20</span>
-      <span class="post-title">inode# is different from NTFS FileRef#</span></a>
+    <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">
+      <span class="post-meta">2010-05-26</span>
+      <span class="post-title">nsIPref is deprecated and removed on Firefox 3.7</span></a>
   </li>
 </ul>
 </aside>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>HTML でのコピペしやすさを user-select などで向上させる</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2013/03/html-user-select.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2013/03/html-user-select.html" />
   <meta property="og:title" content="HTML でのコピペしやすさを user-select などで向上させる" /><meta property="og:description" content="HTML の COPY 禁止をするにはどうすればいいですか?では、 とかく HTML の COPY 禁止というありがちな問答(FAQ)に即して、 user-select プロパティについて述べた..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2013/03/html-user-select.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -107,38 +106,36 @@ Also on the news Web page there are some
 
 <p>例えば、twitter.com のリンクの部分はこのようになっている：</p>
 
-<pre class="prettyprint"><code>&lt;a href="https://t.co/qcITCzV8Mt"
-   class="twitter-timeline-link"
-   target="_blank"
-   data-expanded-url="https://developer.mozilla.org/en/docs/CSS/user-select"
-   title="https://developer.mozilla.org/en/docs/CSS/user-select"
-   dir="ltr"&gt;
-  &lt;span class="invisible"&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://t.co/qcITCzV8Mt"</span>
+   <span class="na">class=</span><span class="s">"twitter-timeline-link"</span>
+   <span class="na">target=</span><span class="s">"_blank"</span>
+   <span class="na">data-expanded-url=</span><span class="s">"https://developer.mozilla.org/en/docs/CSS/user-select"</span>
+   <span class="na">title=</span><span class="s">"https://developer.mozilla.org/en/docs/CSS/user-select"</span>
+   <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"invisible"</span><span class="nt">&gt;</span>
     https://
-  &lt;/span&gt;
-  &lt;span class="js-display-url"&gt;
+  <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"js-display-url"</span><span class="nt">&gt;</span>
     developer.mozilla.org/en/docs/CSS/us
-  &lt;/span&gt;
-  &lt;span class="invisible"&gt;
+  <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"invisible"</span><span class="nt">&gt;</span>
     er-select
-  &lt;/span&gt;
-  &lt;span class="tco-ellipsis"&gt;
-    &lt;span class="invisible"&gt;
-      &amp;nbsp;
-    &lt;/span&gt;
+  <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tco-ellipsis"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"invisible"</span><span class="nt">&gt;</span>
+      <span class="ni">&amp;nbsp;</span>
+    <span class="nt">&lt;/span&gt;</span>
     …
-  &lt;/span&gt;
-&lt;/a&gt;
-</code></pre>
+  <span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span></code></pre></figure>
 
 <p><code>invisible</code>クラスについては下記の通り、表示をしないように
 <a href="https://abs.twimg.com/a/1362168403/t1/css/t1_core.bundle.css" rel="nofollow">twitter の CSS</a> で設定している。</p>
 
-<pre class="prettyprint"><code>.tweet a .invisible,.dm-message a .invisible,.bio a .invisible{
-    font-size:0;
-    line-height:0
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.tweet</span> <span class="nt">a</span> <span class="nc">.invisible</span><span class="o">,</span><span class="nc">.dm-message</span> <span class="nt">a</span> <span class="nc">.invisible</span><span class="o">,</span><span class="nc">.bio</span> <span class="nt">a</span> <span class="nc">.invisible</span><span class="p">{</span>
+    <span class="nl">font-size</span><span class="p">:</span><span class="m">0</span><span class="p">;</span>
+    <span class="nl">line-height</span><span class="p">:</span><span class="m">0</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>よって、twitter.com のリンクをコピーすると、
 画面上には https:// や省略部分は表示されないが、</p>
@@ -151,41 +148,39 @@ Also on the news Web page there are some
 <p>惜しむらくは、省略記号はコピーできないようになっていないところ。
 つまり、<code>user-select: none</code> を以下のように適用して欲しいところだ。</p>
 
-<pre class="prettyprint"><code>&lt;a href="https://t.co/qcITCzV8Mt"
-   class="twitter-timeline-link"
-   target="_blank"
-   data-expanded-url="https://developer.mozilla.org/en/docs/CSS/user-select"
-   title="https://developer.mozilla.org/en/docs/CSS/user-select"
-   dir="ltr"&gt;
-  &lt;span class="invisible"&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://t.co/qcITCzV8Mt"</span>
+   <span class="na">class=</span><span class="s">"twitter-timeline-link"</span>
+   <span class="na">target=</span><span class="s">"_blank"</span>
+   <span class="na">data-expanded-url=</span><span class="s">"https://developer.mozilla.org/en/docs/CSS/user-select"</span>
+   <span class="na">title=</span><span class="s">"https://developer.mozilla.org/en/docs/CSS/user-select"</span>
+   <span class="na">dir=</span><span class="s">"ltr"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"invisible"</span><span class="nt">&gt;</span>
     https://
-  &lt;/span&gt;
-  &lt;span class="js-display-url"&gt;
+  <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"js-display-url"</span><span class="nt">&gt;</span>
     developer.mozilla.org/en/docs/CSS/us
-  &lt;/span&gt;
-  &lt;span class="invisible"&gt;
+  <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"invisible"</span><span class="nt">&gt;</span>
     er-select
-  &lt;/span&gt;
-  &lt;span class="tco-ellipsis"&gt;
-    &lt;span class="invisible"&gt;
-      &amp;nbsp;
-    &lt;/span&gt;
-    &lt;span class="unselectable"&gt;
+  <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tco-ellipsis"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"invisible"</span><span class="nt">&gt;</span>
+      <span class="ni">&amp;nbsp;</span>
+    <span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"unselectable"</span><span class="nt">&gt;</span>
       …
-    &lt;/span&gt;
-  &lt;/span&gt;
-&lt;/a&gt;
-</code></pre>
+    <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/a&gt;</span></code></pre></figure>
 
 <p><code>unselectable</code> という class は <a href="https://abs.twimg.com/a/1362168403/t1/css/t1_core.bundle.css">twitter.com の CSS</a> には既に入っているのだからね。</p>
 
-<pre class="prettyprint"><code>.unselectable{
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -o-user-select:none;
-    user-select:none
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.unselectable</span><span class="p">{</span>
+    <span class="nl">-webkit-user-select</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">-moz-user-select</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="nl">-o-user-select</span><span class="p">:</span><span class="nb">none</span><span class="p">;</span>
+    <span class="py">user-select</span><span class="p">:</span><span class="nb">none</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>このようにすれば、表示は&#8230;で後ろが省略された URL が表示され、
 コピーするときはフルのURLが（&#8230; も付かずに）そのままコピーされるので
@@ -210,19 +205,14 @@ Also on the news Web page there are some
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2013/03/html-copy.html">
-      <span class="post-meta">2013-03-04</span>
-      <span class="post-title">HTML の COPY 禁止をするにはどうすればいいですか? </span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
       <span class="post-meta">2017-10-26</span>
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2013/03/html-copy.html">
+      <span class="post-meta">2013-03-04</span>
+      <span class="post-title">HTML の COPY 禁止をするにはどうすればいいですか? </span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2011/03/javascript-typed-array-use-native.html">
@@ -230,9 +220,19 @@ Also on the news Web page there are some
       <span class="post-title">JavaScript Typed Array use native endian</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2012/04/m-font-css-font-weight.html">
+      <span class="post-meta">2012-04-07</span>
+      <span class="post-title">見よ！これが M+ font と CSS font-weight の実力だ！</span><span class="post-thumb" data-image-path="/images/M++font-weight.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
       <span class="post-meta">2015-07-04</span>
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2013/03/css.html">
+      <span class="post-meta">2013-03-18</span>
+      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2012/11/twitter-api.html">
@@ -240,14 +240,9 @@ Also on the news Web page there are some
       <span class="post-title">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/03/bezier-4-diff.html">
-      <span class="post-meta">2014-03-26</span>
-      <span class="post-title">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</span><span class="post-thumb" data-image-path="/images/generic-theta-tile.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2012/04/m-font-css-font-weight.html">
-      <span class="post-meta">2012-04-07</span>
-      <span class="post-title">見よ！これが M+ font と CSS font-weight の実力だ！</span><span class="post-thumb" data-image-path="/images/M++font-weight.png"></span></a>
+    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
+      <span class="post-meta">2010-11-29</span>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
 </ul>
 </aside>

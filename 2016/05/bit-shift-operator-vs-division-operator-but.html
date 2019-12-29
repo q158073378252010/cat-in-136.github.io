@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>ビットシフトと割り算はどっちが良いか、とはいうけれど</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html" />
   <meta property="og:title" content="ビットシフトと割り算はどっちが良いか、とはいうけれど" /><meta property="og:description" content="2の累乗の積または商は、ビットシフトで容易に書換可能だが、 どっちが良いか云々とかいう定番な話があるが… unsigned int div2ui(unsigned int x) { return..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2016/05/bit-shift-operator-vs-division-operator-but.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -48,16 +47,15 @@
 どっちが良いか云々とかいう定番な話があるが…
 </p>
 
-<pre class="prettyprint"><code>unsigned int div2ui(unsigned int x) {
-  return x / 2;
-}
-int div2si(int x) {
-  return x / 2;
-}
-unsigned int shiftdiv2ui(unsigned int x) {
-  return x &gt;&gt; 1;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">div2ui</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">div2si</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">shiftdiv2ui</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>
 なお、ここではC言語を前提としているため、
@@ -82,33 +80,32 @@ If <code>E1</code> has a signed type and a negative value, the resulting value i
 <pre class="console"><samp>% clang -c -S -emit-llvm hoge.c
 % </samp></pre>
 
-<pre class="prettyprint"><code>; Function Attrs: nounwind uwtable
-define i32 @div2ui(i32 %x) #0 {
-  %1 = alloca i32, align 4
-  store i32 %x, i32* %1, align 4
-  %2 = load i32, i32* %1, align 4
-  %3 = udiv i32 %2, 2
-  ret i32 %3
-}
+<figure class="highlight"><pre><code class="language-llvm" data-lang="llvm"><span class="c1">; Function Attrs: nounwind uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@div2ui</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">alloca</span> <span class="kt">i32</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="k">store</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="kt">i32</span><span class="p">*</span> <span class="nv">%1</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="nv">%2</span> <span class="p">=</span> <span class="k">load</span> <span class="kt">i32</span><span class="p">,</span> <span class="kt">i32</span><span class="p">*</span> <span class="nv">%1</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="nv">%3</span> <span class="p">=</span> <span class="k">udiv</span> <span class="kt">i32</span> <span class="nv">%2</span><span class="p">,</span> <span class="m">2</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%3</span>
+<span class="p">}</span>
 
-; Function Attrs: nounwind uwtable
-define i32 @div2si(i32 %x) #0 {
-  %1 = alloca i32, align 4
-  store i32 %x, i32* %1, align 4
-  %2 = load i32, i32* %1, align 4
-  %3 = sdiv i32 %2, 2
-  ret i32 %3
-}
+<span class="c1">; Function Attrs: nounwind uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@div2si</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">alloca</span> <span class="kt">i32</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="k">store</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="kt">i32</span><span class="p">*</span> <span class="nv">%1</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="nv">%2</span> <span class="p">=</span> <span class="k">load</span> <span class="kt">i32</span><span class="p">,</span> <span class="kt">i32</span><span class="p">*</span> <span class="nv">%1</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="nv">%3</span> <span class="p">=</span> <span class="k">sdiv</span> <span class="kt">i32</span> <span class="nv">%2</span><span class="p">,</span> <span class="m">2</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%3</span>
+<span class="p">}</span>
 
-; Function Attrs: nounwind uwtable
-define i32 @shiftdiv2ui(i32 %x) #0 {
-  %1 = alloca i32, align 4
-  store i32 %x, i32* %1, align 4
-  %2 = load i32, i32* %1, align 4
-  %3 = lshr i32 %2, 1
-  ret i32 %3
-}
-</code></pre>
+<span class="c1">; Function Attrs: nounwind uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@shiftdiv2ui</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">alloca</span> <span class="kt">i32</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="k">store</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="kt">i32</span><span class="p">*</span> <span class="nv">%1</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="nv">%2</span> <span class="p">=</span> <span class="k">load</span> <span class="kt">i32</span><span class="p">,</span> <span class="kt">i32</span><span class="p">*</span> <span class="nv">%1</span><span class="p">,</span> <span class="k">align</span> <span class="m">4</span>
+  <span class="nv">%3</span> <span class="p">=</span> <span class="k">lshr</span> <span class="kt">i32</span> <span class="nv">%2</span><span class="p">,</span> <span class="m">1</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%3</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>
 LLIR を見るまでもなく予見できたことではあるが、
@@ -128,24 +125,23 @@ clang は LLVM IR によりプロセッサに独立したレベルでの最適�
 <pre class="console"><samp>% clang -c -S -emit-llvm hoge.c -O
 % </samp></pre>
 
-<pre class="prettyprint"><code>; Function Attrs: nounwind optsize readnone uwtable
-define i32 @div2ui(i32 %x) #0 {
-  %1 = lshr i32 %x, 1
-  ret i32 %1
-}
+<figure class="highlight"><pre><code class="language-llvm" data-lang="llvm"><span class="c1">; Function Attrs: nounwind optsize readnone uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@div2ui</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">lshr</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="m">1</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%1</span>
+<span class="p">}</span>
 
-; Function Attrs: nounwind optsize readnone uwtable
-define i32 @div2si(i32 %x) #0 {
-  %1 = sdiv i32 %x, 2
-  ret i32 %1
-}
+<span class="c1">; Function Attrs: nounwind optsize readnone uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@div2si</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">sdiv</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="m">2</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%1</span>
+<span class="p">}</span>
 
-; Function Attrs: nounwind optsize readnone uwtable
-define i32 @shiftdiv2ui(i32 %x) #0 {
-  %1 = lshr i32 %x, 1
-  ret i32 %1
-}
-</code></pre>
+<span class="c1">; Function Attrs: nounwind optsize readnone uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@shiftdiv2ui</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">lshr</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="m">1</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%1</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>
 敢えて <code>-O</code> と最も最適化レベルが低いものを指定したが、
@@ -165,45 +161,43 @@ define i32 @shiftdiv2ui(i32 %x) #0 {
 <pre class="console"><samp>% clang -c -S hoge.c -O
 % </samp></pre>
 
-<pre class="prettyprint"><code>
-	.globl	div2ui
-	.type	div2ui,@function
-div2ui:                                 # @div2ui
-	.cfi_startproc
-# BB#0:
-	shrl	%edi
-	movl	%edi, %eax
-	retq
-.Lfunc_end0:
-	.size	div2ui, .Lfunc_end0-div2ui
-	.cfi_endproc
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm">	<span class="p">.</span><span class="n">globl</span>	<span class="n">div2ui</span>
+	<span class="p">.</span><span class="n">type</span>	<span class="n">div2ui</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
+<span class="n">div2ui</span><span class="o">:</span>                                 <span class="err">#</span> <span class="err">@</span><span class="n">div2ui</span>
+	<span class="p">.</span><span class="n">cfi_startproc</span>
+<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
+	<span class="n">shrl</span>	<span class="err">%</span><span class="n">edi</span>
+	<span class="n">movl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
+	<span class="n">retq</span>
+<span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">:</span>
+	<span class="p">.</span><span class="n">size</span>	<span class="n">div2ui</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">-</span><span class="n">div2ui</span>
+	<span class="p">.</span><span class="n">cfi_endproc</span>
 
-	.globl	div2si
-	.type	div2si,@function
-div2si:                                 # @div2si
-	.cfi_startproc
-# BB#0:
-	movl	%edi, %eax
-	shrl	$31, %eax
-	leal	(%rax,%rdi), %eax
-	sarl	%eax
-	retq
-.Lfunc_end1:
-	.size	div2si, .Lfunc_end1-div2si
-	.cfi_endproc
+	<span class="p">.</span><span class="n">globl</span>	<span class="n">div2si</span>
+	<span class="p">.</span><span class="n">type</span>	<span class="n">div2si</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
+<span class="n">div2si</span><span class="o">:</span>                                 <span class="err">#</span> <span class="err">@</span><span class="n">div2si</span>
+	<span class="p">.</span><span class="n">cfi_startproc</span>
+<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
+	<span class="n">movl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
+	<span class="n">shrl</span>	<span class="err">$</span><span class="mi">31</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
+	<span class="n">leal</span>	<span class="p">(</span><span class="err">%</span><span class="n">rax</span><span class="p">,</span><span class="err">%</span><span class="n">rdi</span><span class="p">),</span> <span class="err">%</span><span class="n">eax</span>
+	<span class="n">sarl</span>	<span class="err">%</span><span class="n">eax</span>
+	<span class="n">retq</span>
+<span class="p">.</span><span class="n">Lfunc_end1</span><span class="o">:</span>
+	<span class="p">.</span><span class="n">size</span>	<span class="n">div2si</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end1</span><span class="o">-</span><span class="n">div2si</span>
+	<span class="p">.</span><span class="n">cfi_endproc</span>
 
-	.globl	shiftdiv2ui
-	.type	shiftdiv2ui,@function
-shiftdiv2ui:                            # @shiftdiv2ui
-	.cfi_startproc
-# BB#0:
-	shrl	%edi
-	movl	%edi, %eax
-	retq
-.Lfunc_end2:
-	.size	shiftdiv2ui, .Lfunc_end2-shiftdiv2ui
-	.cfi_endproc
-</code></pre>
+	<span class="p">.</span><span class="n">globl</span>	<span class="n">shiftdiv2ui</span>
+	<span class="p">.</span><span class="n">type</span>	<span class="n">shiftdiv2ui</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
+<span class="n">shiftdiv2ui</span><span class="o">:</span>                            <span class="err">#</span> <span class="err">@</span><span class="n">shiftdiv2ui</span>
+	<span class="p">.</span><span class="n">cfi_startproc</span>
+<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
+	<span class="n">shrl</span>	<span class="err">%</span><span class="n">edi</span>
+	<span class="n">movl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
+	<span class="n">retq</span>
+<span class="p">.</span><span class="n">Lfunc_end2</span><span class="o">:</span>
+	<span class="p">.</span><span class="n">size</span>	<span class="n">shiftdiv2ui</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end2</span><span class="o">-</span><span class="n">shiftdiv2ui</span>
+	<span class="p">.</span><span class="n">cfi_endproc</span></code></pre></figure>
 
 <p>
 当然のことながら、<code>div2ui:</code> と <code>shiftdiv2ui:</code> とで
@@ -238,30 +232,26 @@ shiftdiv2ui:                            # @shiftdiv2ui
 考えられるが、これも同様にして解析することができる。
 </p>
 
-<pre class="prettyprint"><code>unsigned int mul10ui(unsigned int x) {
-  return x * 10;
-}
-</code></pre>
-<pre class="prettyprint"><code>; Function Attrs: nounwind readnone uwtable
-define i32 @mul10ui(i32 %x) #0 {
-  %1 = mul i32 %x, 10
-  ret i32 %1
-}
-</code></pre>
-<pre class="prettyprint"><code>
-	.globl	mul10ui
-	.align	16, 0x90
-	.type	mul10ui,@function
-mul10ui:                                # @mul10ui
-	.cfi_startproc
-# BB#0:
-	addl	%edi, %edi
-	leal	(%rdi,%rdi,4), %eax
-	retq
-.Lfunc_end0:
-	.size	mul10ui, .Lfunc_end0-mul10ui
-	.cfi_endproc
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">mul10ui</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-llvm" data-lang="llvm"><span class="c1">; Function Attrs: nounwind readnone uwtable</span>
+<span class="k">define</span> <span class="kt">i32</span> <span class="vg">@mul10ui</span><span class="p">(</span><span class="kt">i32</span> <span class="nv">%x</span><span class="p">)</span> <span class="vg">#0</span> <span class="p">{</span>
+  <span class="nv">%1</span> <span class="p">=</span> <span class="k">mul</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="m">10</span>
+  <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%1</span>
+<span class="p">}</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm">	<span class="p">.</span><span class="n">globl</span>	<span class="n">mul10ui</span>
+	<span class="p">.</span><span class="n">align</span>	<span class="mi">16</span><span class="p">,</span> <span class="mh">0x90</span>
+	<span class="p">.</span><span class="n">type</span>	<span class="n">mul10ui</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
+<span class="n">mul10ui</span><span class="o">:</span>                                <span class="err">#</span> <span class="err">@</span><span class="n">mul10ui</span>
+	<span class="p">.</span><span class="n">cfi_startproc</span>
+<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
+	<span class="n">addl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">edi</span>
+	<span class="n">leal</span>	<span class="p">(</span><span class="err">%</span><span class="n">rdi</span><span class="p">,</span><span class="err">%</span><span class="n">rdi</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="err">%</span><span class="n">eax</span>
+	<span class="n">retq</span>
+<span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">:</span>
+	<span class="p">.</span><span class="n">size</span>	<span class="n">mul10ui</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">-</span><span class="n">mul10ui</span>
+	<span class="p">.</span><span class="n">cfi_endproc</span></code></pre></figure>
 
 <p>
 この場合、<code>x * 10</code>が<code>(x + x) + (x + x) * 4</code>と展開されていることがわかる。
@@ -290,14 +280,14 @@ mul10ui:                                # @mul10ui
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
-      <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2012/12/llvm-clangast.html">
       <span class="post-meta">2012-12-11</span>
       <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
@@ -305,9 +295,9 @@ mul10ui:                                # @mul10ui
       <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
+      <span class="post-meta">2010-03-06</span>
+      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
@@ -315,14 +305,14 @@ mul10ui:                                # @mul10ui
       <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
-      <span class="post-meta">2014-09-21</span>
-      <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
-      <span class="post-meta">2010-03-06</span>
-      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
+    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
+      <span class="post-meta">2011-05-20</span>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
   </li>
 </ul>
 </aside>

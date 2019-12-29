@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>nsIPref is deprecated and removed on Firefox 3.7</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/05/nsipref-is-deprecated-and-removed-on.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/05/nsipref-is-deprecated-and-removed-on.html" />
   <meta property="og:title" content="nsIPref is deprecated and removed on Firefox 3.7" /><meta property="og:description" content="On firefox 3.7a4, following code throws a exception: Components.classes[&quot;@mozilla.org/preferences..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/05/nsipref-is-deprecated-and-removed-on.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -45,9 +44,8 @@
   <div class="post-content" itemprop="articleBody">
     <p>On firefox 3.7a4, following code throws a exception:</p>
 
-<pre class="prettyprint"><code>Components.classes["@mozilla.org/preferences;1"]
-  .getService(Components.interfaces.nsIPref);
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/preferences;1</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPref</span><span class="p">);</span></code></pre></figure>
 
 <p>Thrown exception is:</p>
 
@@ -67,33 +65,29 @@ Error: uncaught exception: [Exception... "Component returned failure code: 0x805
 
 <p><code>nsIPref#getBranch</code> -&gt; <code>nsIPrefService#getBranch</code></p>
 
-<pre class="prettyprint"><code> var pref = Components.classes["@mozilla.org/preferences;1"]
-  .getService(Components.interfaces.nsIPref);
- var branch = pref.getBranch("browser");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">pref</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/preferences;1</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPref</span><span class="p">);</span>
+ <span class="kd">var</span> <span class="nx">branch</span> <span class="o">=</span> <span class="nx">pref</span><span class="p">.</span><span class="nx">getBranch</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>shall be replaced with</p>
 
-<pre class="prettyprint"><code> var pref = Components.classes["@mozilla.org/preferences-service;1"]
-  .getService(Components.interfaces.nsIPrefService);
- var branch = pref.getBranch("browser");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">pref</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/preferences-service;1</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPrefService</span><span class="p">);</span>
+ <span class="kd">var</span> <span class="nx">branch</span> <span class="o">=</span> <span class="nx">pref</span><span class="p">.</span><span class="nx">getBranch</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <h4>Example#2</h4>
 
 <p><code>nsIPref#getBoolPref</code> -&gt; <code>nsIPrefBranch#getBoolPref</code></p>
 
-<pre class="prettyprint"><code> var pref = Components.classes["@mozilla.org/preferences;1"]
-  .getService(Components.interfaces.nsIPref);
- var autoHide = pref.getBoolPref("browser.tabs.autoHide");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">pref</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/preferences;1</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPref</span><span class="p">);</span>
+ <span class="kd">var</span> <span class="nx">autoHide</span> <span class="o">=</span> <span class="nx">pref</span><span class="p">.</span><span class="nx">getBoolPref</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser.tabs.autoHide</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>shall be replaced with</p>
 
-<pre class="prettyprint"><code> var pref = Components.classes["@mozilla.org/preferences-service;1"]
-  .getService(Components.interfaces.nsIPrefBranch);
- var autoHide = pref.getBoolPref("browser.tabs.autoHide");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">pref</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/preferences-service;1</span><span class="dl">"</span><span class="p">]</span>
+  <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPrefBranch</span><span class="p">);</span>
+ <span class="kd">var</span> <span class="nx">autoHide</span> <span class="o">=</span> <span class="nx">pref</span><span class="p">.</span><span class="nx">getBoolPref</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser.tabs.autoHide</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <h4>See Also</h4>
 
@@ -103,6 +97,7 @@ Error: uncaught exception: [Exception... "Component returned failure code: 0x805
 nsIPrefはFirefox 3.7以降では利用できません</a> - Mozilla Developer Street (japanese)</li>
 <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=524449">Bug 524449 – Remove nsIPref from tree</a></li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -119,14 +114,29 @@ nsIPrefはFirefox 3.7以降では利用できません</a> - Mozilla Developer S
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">
+      <span class="post-meta">2010-02-04</span>
+      <span class="post-title">AMO warns use of &quot;setTimeout()&quot;</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
+      <span class="post-meta">2015-01-19</span>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/u-in-ua-string-and-aboutconfig-pref.html">
       <span class="post-meta">2010-08-11</span>
       <span class="post-title">&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
+      <span class="post-meta">2014-11-16</span>
+      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
@@ -137,21 +147,6 @@ nsIPrefはFirefox 3.7以降では利用できません</a> - Mozilla Developer S
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
-      <span class="post-meta">2014-11-16</span>
-      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
-      <span class="post-meta">2015-01-19</span>
-      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 </ul>
 </aside>

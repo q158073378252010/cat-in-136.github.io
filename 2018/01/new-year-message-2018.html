@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="vertical-writing-recommended"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>新年の挨拶（とウェブフォント）</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2018/01/new-year-message-2018.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2018/01/new-year-message-2018.html" />
   <meta property="og:title" content="新年の挨拶（とウェブフォント）" /><meta property="og:description" content="あけましておめでとうございます 平成三十年元旦 あらまし 年始の挨拶を電子化された媒体（メディア）で行うようになって久しい。 伝統的には、手書きで挨拶の文（賀詞も含む）を紙に書くのだが、手書きと..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2018/01/new-year-message-2018.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -162,24 +161,23 @@ OpenType の仕様上「まして」「ます」のように最初の字を共�
 これをバラして別要素とすると、片方の ligature は無視されてしまう。
 </p>
 
-<pre class="prettyprint"><code>&lt;Lookup index=&quot;0&quot;&gt;
-  &lt;LookupType value=&quot;4&quot;/&gt;
-  &lt;LookupFlag value=&quot;0&quot;/&gt;
-  &lt;!-- SubTableCount=1 --&gt;
-  &lt;LigatureSubst index=&quot;0&quot; Format=&quot;1&quot;&gt;
-    &lt;LigatureSet glyph=&quot;cid12392&quot;&gt;
-      &lt;Ligature components=&quot;cid12358&quot; glyph=&quot;cid59650&quot;/&gt;
-    &lt;/LigatureSet&gt;
-    &lt;LigatureSet glyph=&quot;cid12414&quot;&gt;
-      &lt;Ligature components=&quot;cid12375,cid12390&quot; glyph=&quot;cid59648&quot;/&gt;
-      &lt;Ligature components=&quot;cid12377&quot; glyph=&quot;cid59651&quot;/&gt;
-    &lt;/LigatureSet&gt;
-    &lt;LigatureSet glyph=&quot;cid12417&quot;&gt;
-      &lt;Ligature components=&quot;cid12391&quot; glyph=&quot;cid59649&quot;/&gt;
-    &lt;/LigatureSet&gt;
-  &lt;/LigatureSubst&gt;
-&lt;/Lookup&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Lookup</span> <span class="na">index=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;LookupType</span> <span class="na">value=</span><span class="s">"4"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LookupFlag</span> <span class="na">value=</span><span class="s">"0"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- SubTableCount=1 --&gt;</span>
+  <span class="nt">&lt;LigatureSubst</span> <span class="na">index=</span><span class="s">"0"</span> <span class="na">Format=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;LigatureSet</span> <span class="na">glyph=</span><span class="s">"cid12392"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Ligature</span> <span class="na">components=</span><span class="s">"cid12358"</span> <span class="na">glyph=</span><span class="s">"cid59650"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LigatureSet&gt;</span>
+    <span class="nt">&lt;LigatureSet</span> <span class="na">glyph=</span><span class="s">"cid12414"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Ligature</span> <span class="na">components=</span><span class="s">"cid12375,cid12390"</span> <span class="na">glyph=</span><span class="s">"cid59648"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Ligature</span> <span class="na">components=</span><span class="s">"cid12377"</span> <span class="na">glyph=</span><span class="s">"cid59651"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LigatureSet&gt;</span>
+    <span class="nt">&lt;LigatureSet</span> <span class="na">glyph=</span><span class="s">"cid12417"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Ligature</span> <span class="na">components=</span><span class="s">"cid12391"</span> <span class="na">glyph=</span><span class="s">"cid59649"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LigatureSet&gt;</span>
+  <span class="nt">&lt;/LigatureSubst&gt;</span>
+<span class="nt">&lt;/Lookup&gt;</span></code></pre></figure>
 
 <p>
 Edge は仮名連綿を正しくレンダリングできず、文字がひどく崩れるようであった。
@@ -269,14 +267,14 @@ WOFF さえ対応していないブラウザは縦書きをろくに対応して
       <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
       <span class="post-meta">2017-10-26</span>
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/04/two-element-barchart-designing.html">

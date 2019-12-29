@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="vertical-writing-recommended"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>CSS で縦書きと段組を組み合わせる試み</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html" />
   <meta property="og:title" content="CSS で縦書きと段組を組み合わせる試み" /><meta property="og:description" content="今時の CSS では、次の通り縦書きと段組ができるが、これを組合せられるのだろうかという試み。 writing-mode: vertical-rl;で和文の縦書き column-width: &amp;..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/2016_03_css_vertical_with_multicolumn_render_expection.svg" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2016/03/css-vertical-with-multicolumn.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -96,26 +95,24 @@
 単純に横書き→縦書き→横書きの順番で文章が並んだHTMLファイルを用意した。
 </p>
 
-<pre class="prettyprint lang-html"><code>&lt;p&gt;(横書きのコンテンツ)...&lt;/p&gt;
-&lt;p class="vertical-writing"&gt;(縦書きのコンテンツ)...&lt;/p&gt;
-&lt;p&gt;(横書きのコンテンツ)...&lt;/p&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span>(横書きのコンテンツ)...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"vertical-writing"</span><span class="nt">&gt;</span>(縦書きのコンテンツ)...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>(横書きのコンテンツ)...<span class="nt">&lt;/p&gt;</span></code></pre></figure>
 
 <p>
 これに対して、適切なCSSルールを定義した。
 </p>
-<pre class="prettyprint lang-css"><code>.vertical-writing {
-  -webkit-writing-mode: vertical-rl;
-  writing-mode: vertical-rl;
-  width: 100%; /* 縦書き部の横幅 */
-  -moz-column-width: calc(100vh - 20px);
-  -moz-column-gap: 20px;
-  -moz-column-rule: 2px dashed #000;
-  column-width: calc(100vh - 20px);
-  column-gap: 20px;
-  column-rule: 2px dashed #000;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.vertical-writing</span> <span class="p">{</span>
+  <span class="nl">-webkit-writing-mode</span><span class="p">:</span> <span class="n">vertical-rl</span><span class="p">;</span>
+  <span class="nl">writing-mode</span><span class="p">:</span> <span class="n">vertical-rl</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span> <span class="c">/* 縦書き部の横幅 */</span>
+  <span class="nl">-moz-column-width</span><span class="p">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">100vh</span> <span class="n">-</span> <span class="m">20px</span><span class="p">);</span>
+  <span class="nl">-moz-column-gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">-moz-column-rule</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">dashed</span> <span class="m">#000</span><span class="p">;</span>
+  <span class="nl">column-width</span><span class="p">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">100vh</span> <span class="n">-</span> <span class="m">20px</span><span class="p">);</span>
+  <span class="nl">column-gap</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">column-rule</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">dashed</span> <span class="m">#000</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>
 段組の指定には、段数 (<code>column-count</code>) を使うこともできるが、
@@ -209,9 +206,9 @@
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span></a>
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/08/html-complex-ruby.html">
@@ -219,29 +216,29 @@
       <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
-      <span class="post-meta">2016-10-08</span>
-      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
+      <span class="post-meta">2016-04-23</span>
+      <span class="post-title">pango で縦書きとその能力</span></a>
   </li>
 </ul>
 </aside>

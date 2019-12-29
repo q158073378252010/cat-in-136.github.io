@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Lissajous curve in HTML5 cakejs</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html" />
   <meta property="og:title" content="Lissajous curve in HTML5 cakejs" /><meta property="og:description" content="Here, I show you a Lissajous curve with HTML 5 canvas. (No flash use!) This program use cakejs (2..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/07/lissajous-curve-in-html5-cakejs.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -3908,24 +3907,22 @@ This program use <a href="http://code.google.com/p/cakejs/">cakejs</a> (2D scene
 <p>
 Source code is straightforward. A object with radial gradient moves along the curve. Frequency ratio is 5:6.
 </p>
-<pre class="prettyprint"><code>
-    var rect = new Rectangle(20, 20, {centered: true});
-    var g = new Gradient({
-        type: "radial",
-        endRadius: rect.width / 2,
-        colorStops: [[0, "rgba(240,240,240,100)"], [0.1, "rgba(0,240,100,50)"], [1, "rgba(0,240,100,0)"]]
-    });
-    rect.fill = g;
-    var phase = Math.PI * 0.5;
-    rect.addFrameListener(function(t, dt) {
-        var cx = canvas.width  * 0.5;
-        var cy = canvas.height * 0.5;
-        var a = Math.min(cx, cy) - rect.width * 0.5;
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">rect</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Rectangle</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">{</span><span class="na">centered</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
+    <span class="kd">var</span> <span class="nx">g</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gradient</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">radial</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">endRadius</span><span class="p">:</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">colorStops</span><span class="p">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="dl">"</span><span class="s2">rgba(240,240,240,100)</span><span class="dl">"</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">rgba(0,240,100,50)</span><span class="dl">"</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">rgba(0,240,100,0)</span><span class="dl">"</span><span class="p">]]</span>
+    <span class="p">});</span>
+    <span class="nx">rect</span><span class="p">.</span><span class="nx">fill</span> <span class="o">=</span> <span class="nx">g</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">phase</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
+    <span class="nx">rect</span><span class="p">.</span><span class="nx">addFrameListener</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">dt</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span>  <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">cy</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">)</span> <span class="o">-</span> <span class="nx">rect</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">;</span>
 
-        rect.x = cx + a * Math.sin((5) * t * 0.0005);
-        rect.y = cy + a * Math.sin((6) * t * 0.0005 + phase);
-    });
-</code></pre>
+        <span class="nx">rect</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">cx</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">((</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span> <span class="o">*</span> <span class="mf">0.0005</span><span class="p">);</span>
+        <span class="nx">rect</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">cy</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">((</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="nx">t</span> <span class="o">*</span> <span class="mf">0.0005</span> <span class="o">+</span> <span class="nx">phase</span><span class="p">);</span>
+    <span class="p">});</span></code></pre></figure>
 <p>
 Cakejs's demo is very very cool. I like <a href="http://glimr.rubyforge.org/cake/missile_fleet.html">Missile Fleet</a> game demo.
 </p>
@@ -3963,9 +3960,9 @@ Cakejs's demo is very very cool. I like <a href="http://glimr.rubyforge.org/cake
       <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/11/embeded-font.html">
-      <span class="post-meta">2016-11-20</span>
-      <span class="post-title">文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?</span><span class="post-thumb" data-image-path="/images/201611_embedded_font_susanoo_demo_raster.png"></span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/12/aadecode-decode-encoded-as-aaencode.html">
@@ -3973,19 +3970,19 @@ Cakejs's demo is very very cool. I like <a href="http://glimr.rubyforge.org/cake
       <span class="post-title">aadecode - Decode encoded-as-aaencode JavaScript program. [&#39;_&#39;]</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2016/11/embeded-font.html">
+      <span class="post-meta">2016-11-20</span>
+      <span class="post-title">文字を画像化して貼るのはやめろとはいうが埋め込むとなると…?</span><span class="post-thumb" data-image-path="/images/201611_embedded_font_susanoo_demo_raster.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
+      <span class="post-meta">2015-01-19</span>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2010/05/runninginboard-generator.html">
       <span class="post-meta">2010-05-16</span>
       <span class="post-title">Running_in_board Generator (駅名標ジェネレータ)</span><span class="post-thumb" data-image-path="/images/120px-JR_Tokyo_Keihintouhoku_and_Yamanote_Line.jpg"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/09/trta-emblem-design-analysis.html">
-      <span class="post-meta">2015-09-06</span>
-      <span class="post-title">帝都高速度交通営団の団章の解析</span><span class="post-thumb" data-image-path="/images/201509_trta_emblem_design_analysis.svg"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/03/sunrise-sunset.html">
-      <span class="post-meta">2017-03-07</span>
-      <span class="post-title">日出と日没に関する考察メモ</span></a>
   </li>
 </ul>
 </aside>

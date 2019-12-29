@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Lissajous curve in raymarching using GLSL over WebGL</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" />
   <meta property="og:title" content="Lissajous curve in raymarching using GLSL over WebGL" /><meta property="og:description" content="This &quot;effect&quot; is also posted to glslsandbox. After posting this article, I found that it is not a..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/201706-lissajous-curve-in-raymarching-using-glsl-over-webgl-thumbnail.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -52,23 +51,24 @@
 <div id="lissajous-curve-raymarching-container">
 </div>
 
-<pre id="lissajous-curve-raymarching-shader"><code class="prettyprint">uniform vec2 resolution;
-uniform float time;
+<div id="lissajous-curve-raymarching-shader">
+<figure class="highlight"><pre><code class="language-glsl" data-lang="glsl"><span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">resolution</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">time</span><span class="p">;</span>
 
-void main() {
-  vec2 pos = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">vec2</span> <span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="o">-</span> <span class="n">resolution</span><span class="p">)</span> <span class="o">/</span> <span class="n">min</span><span class="p">(</span><span class="n">resolution</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">resolution</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
 
-  float v = 0.0;
-  for (int i = 0; i &lt; 500; i++) {
-    float s = time + float(i) * 0.0075;
-    vec2 mpos = 0.8 * vec2(sin(s * 5.0), - cos(s * 6.0));
-    float t = 0.01 / length(mpos - pos);
-    v += pow(t, 2.0) * float(i + 1) / 100.0;
-  }
+  <span class="kt">float</span> <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">s</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="kt">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="mi">0</span><span class="p">.</span><span class="mo">0075</span><span class="p">;</span>
+    <span class="kt">vec2</span> <span class="n">mpos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8</span> <span class="o">*</span> <span class="kt">vec2</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="mi">5</span><span class="p">.</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span> <span class="n">cos</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="mi">6</span><span class="p">.</span><span class="mi">0</span><span class="p">));</span>
+    <span class="kt">float</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">.</span><span class="mo">01</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">mpos</span> <span class="o">-</span> <span class="n">pos</span><span class="p">);</span>
+    <span class="n">v</span> <span class="o">+=</span> <span class="n">pow</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="kt">float</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
 
-  gl_FragColor = 1.0 * vec4(vec3(v), 1.0);
-}
-</code></pre>
+  <span class="nb">gl_FragColor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span> <span class="kt">vec4</span><span class="p">(</span><span class="kt">vec3</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+</div>
 
 <script type="application/javascript">
 window.addEventListener("DOMContentLoaded", function () {
@@ -134,6 +134,11 @@ window.addEventListener("DOMContentLoaded", function () {
       <span class="post-title">Which is faster eval() or JSON.parse()</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">
+      <span class="post-meta">2012-10-08</span>
+      <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2018/02/progress-of-year.html">
       <span class="post-meta">2018-02-02</span>
       <span class="post-title">年の進捗</span></a>
@@ -144,19 +149,14 @@ window.addEventListener("DOMContentLoaded", function () {
       <span class="post-title">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</span><span class="post-thumb" data-image-path="/images/ksj_w15_52l_2k_chofu.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">
-      <span class="post-meta">2012-10-08</span>
-      <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
       <span class="post-meta">2015-07-04</span>
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
-      <span class="post-meta">2015-01-19</span>
-      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
+    <a class="post-link" href="/2017/03/sunrise-sunset.html">
+      <span class="post-meta">2017-03-07</span>
+      <span class="post-title">日出と日没に関する考察メモ</span></a>
   </li>
 </ul>
 </aside>

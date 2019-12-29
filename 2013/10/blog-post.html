@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2013/10/blog-post.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2013/10/blog-post.html" />
   <meta property="og:title" content="デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト" /><meta property="og:description" content="EXIFとレンズ 昔はついていなかったけれど、今はデジタル一眼（レフ）カメラで撮影した写真のメタ情報である EXIF にレンズの情報が乗っているらしい。 EXIF 規格本体に追加されたのは最近み..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2013/10/blog-post.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -76,24 +75,23 @@ Exif.Photo.LensModel                         Ascii      21  EF85mm f/1.2L II USM
 Exif.Photo.LensModel から取得できない時は Maker Note を見て試してみるようにしてある。
 </p>
 
-<pre class="prettyprint lang-sh"><code>#!/bin/sh
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c">#!/bin/sh</span>
 
-for i in `find . -iname "*.jpg"`; do
-  cap_time=`exiv2 -g Exif.Photo.DateTimeOriginal -Pv $i`
-  lens_name=`exiv2 -g Exif.Photo.LensModel -Pv $i`
-  if [ "x$lens_name" == "x" ]; then
-    lens_name=`exiv2 -g Exif.Canon.LensModel -Pv $i`
-  fi
-  if [ "x$lens_name" == "x" ]; then
-    lens_name=`exiv2 -g Exif.MinoltaLensID -Pv $i`
-  fi
-  if [ "x$lens_name" == "x" ]; then
-    lens_name=`exiv2 -g Exif.Panasonic.LensType -Pv $i`
-  fi
+<span class="k">for </span>i <span class="k">in</span> <span class="sb">`</span>find <span class="nb">.</span> <span class="nt">-iname</span> <span class="s2">"*.jpg"</span><span class="sb">`</span><span class="p">;</span> <span class="k">do
+  </span><span class="nv">cap_time</span><span class="o">=</span><span class="sb">`</span>exiv2 <span class="nt">-g</span> Exif.Photo.DateTimeOriginal <span class="nt">-Pv</span> <span class="nv">$i</span><span class="sb">`</span>
+  <span class="nv">lens_name</span><span class="o">=</span><span class="sb">`</span>exiv2 <span class="nt">-g</span> Exif.Photo.LensModel <span class="nt">-Pv</span> <span class="nv">$i</span><span class="sb">`</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"x</span><span class="nv">$lens_name</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"x"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nv">lens_name</span><span class="o">=</span><span class="sb">`</span>exiv2 <span class="nt">-g</span> Exif.Canon.LensModel <span class="nt">-Pv</span> <span class="nv">$i</span><span class="sb">`</span>
+  <span class="k">fi
+  if</span> <span class="o">[</span> <span class="s2">"x</span><span class="nv">$lens_name</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"x"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nv">lens_name</span><span class="o">=</span><span class="sb">`</span>exiv2 <span class="nt">-g</span> Exif.MinoltaLensID <span class="nt">-Pv</span> <span class="nv">$i</span><span class="sb">`</span>
+  <span class="k">fi
+  if</span> <span class="o">[</span> <span class="s2">"x</span><span class="nv">$lens_name</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"x"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nv">lens_name</span><span class="o">=</span><span class="sb">`</span>exiv2 <span class="nt">-g</span> Exif.Panasonic.LensType <span class="nt">-Pv</span> <span class="nv">$i</span><span class="sb">`</span>
+  <span class="k">fi
 
-  echo $i,$cap_time,$lens_name
-done
-</code></pre>
+  </span><span class="nb">echo</span> <span class="nv">$i</span>,<span class="nv">$cap_time</span>,<span class="nv">$lens_name</span>
+<span class="k">done</span></code></pre></figure>
 
 <p>
 上記を適当な名前で保存して（仮に ichigen_taihen.sh とでもする）画像ファイルがあるディレクトリをカレントディレクトリとして、
@@ -118,6 +116,7 @@ done
 <li><a href="http://www.cipa.jp/hyoujunka/kikaku/pdf/DC-008-2010_J.pdf">"デジタルスチルカメラ用 画像ファイルフォーマット規格 Exif 2.3"</a>, CIPA DC-008-2010 / JEITA CP-3451B</li>
 <li><a href="http://www.exiv2.org/metadata.html">Exiv2 - Image metadata library and tools</a>, Exiv2</li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -139,24 +138,19 @@ done
       <span class="post-title">小うるさい端末 chatty ――を zsh で。</span><span class="post-thumb" data-image-path="/images/zle-chatty.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
+      <span class="post-meta">2017-07-22</span>
+      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
+      <span class="post-meta">2010-03-06</span>
+      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
       <span class="post-meta">2014-04-27</span>
       <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
-      <span class="post-meta">2017-07-22</span>
-      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2011/02/tip-how-to-convert-from-gnu-arch-to.html">
@@ -167,6 +161,11 @@ done
     <a class="post-link" href="/2012/12/llvm-clangast.html">
       <span class="post-meta">2012-12-11</span>
       <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
+      <span class="post-meta">2010-11-29</span>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
 </ul>
 </aside>

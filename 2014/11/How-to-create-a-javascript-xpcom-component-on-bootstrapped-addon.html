@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>How to create a JavaScript XPCOM component on bootstrapped addon</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" />
   <meta property="og:title" content="How to create a JavaScript XPCOM component on bootstrapped addon" /><meta property="og:description" content="This post describes how to create a JavaScript XPCOM component on bootstrapped (restartless) addo..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -66,32 +65,31 @@ on bootstrapped (restartless) addon.</p>
   <li>
     <p>Create the component code (in the bootstrap.js).</p>
 
-    <pre class="prettyprint"><code>const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
-const Cr = Components.results;
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">Cc</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Ci</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Cu</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">utils</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Cr</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">results</span><span class="p">;</span>
     
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+<span class="nx">Cu</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">resource://gre/modules/XPCOMUtils.jsm</span><span class="dl">"</span><span class="p">);</span>
     
-function ComponentFooBar() { }
-ComponentFooBar.prototype = {
-  classDescription: "foobar class",
-  contractID: "@mozilla.org/foo/bar;1",
-  classID: Components.ID("{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}"),
-  QueryInterface: XPCOMUtils.generateQI([]),
+<span class="kd">function</span> <span class="nx">ComponentFooBar</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nx">ComponentFooBar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">classDescription</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar class</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">contractID</span><span class="p">:</span> <span class="dl">"</span><span class="s2">@mozilla.org/foo/bar;1</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">classID</span><span class="p">:</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">ID</span><span class="p">(</span><span class="dl">"</span><span class="s2">{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">QueryInterface</span><span class="p">:</span> <span class="nx">XPCOMUtils</span><span class="p">.</span><span class="nx">generateQI</span><span class="p">([]),</span>
 
-  // members to implement...
-};
-//
-const ComponentFooBarFactory = Object.freeze({
-  createInstance: function(aOuter, aIID) {
-    if (aOuter) { throw Cr.NS_ERROR_NO_AGGREGATION; }
-    return new ComponentFooBar();
-  },
-  loadFactory: function (aLock) { /* unused */ },
-  QueryInterface: XPCOMUtils.generateQI([Ci.nsIFactory])
-});
-</code></pre>
+  <span class="c1">// members to implement...</span>
+<span class="p">};</span>
+<span class="c1">//</span>
+<span class="kd">const</span> <span class="nx">ComponentFooBarFactory</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({</span>
+  <span class="na">createInstance</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aOuter</span><span class="p">,</span> <span class="nx">aIID</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">aOuter</span><span class="p">)</span> <span class="p">{</span> <span class="k">throw</span> <span class="nx">Cr</span><span class="p">.</span><span class="nx">NS_ERROR_NO_AGGREGATION</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">ComponentFooBar</span><span class="p">();</span>
+  <span class="p">},</span>
+  <span class="na">loadFactory</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">aLock</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* unused */</span> <span class="p">},</span>
+  <span class="na">QueryInterface</span><span class="p">:</span> <span class="nx">XPCOMUtils</span><span class="p">.</span><span class="nx">generateQI</span><span class="p">([</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIFactory</span><span class="p">])</span>
+<span class="p">});</span></code></pre></figure>
 
     <ul>
       <li>You may specify base interface to <code>ComponentFooBar.prototype.QueryInterface</code> and implement methods.</li>
@@ -100,24 +98,22 @@ const ComponentFooBarFactory = Object.freeze({
   <li>
     <p>To regist the component on startup, add the following codes to the <code>startup()</code> in bootstrap.js:</p>
 
-    <pre class="prettyprint"><code>function startup(params, aReason) {
-  const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
-  registrar.registerFactory(ComponentFooBar.prototype.classID,
-                            ComponentFooBar.prototype.classDescription,
-                            ComponentFooBar.prototype.contractID,
-                            ComponentFooBarFactory);
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">startup</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">aReason</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">registrar</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">manager</span><span class="p">.</span><span class="nx">QueryInterface</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIComponentRegistrar</span><span class="p">);</span>
+  <span class="nx">registrar</span><span class="p">.</span><span class="nx">registerFactory</span><span class="p">(</span><span class="nx">ComponentFooBar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">classID</span><span class="p">,</span>
+                            <span class="nx">ComponentFooBar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">classDescription</span><span class="p">,</span>
+                            <span class="nx">ComponentFooBar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">contractID</span><span class="p">,</span>
+                            <span class="nx">ComponentFooBarFactory</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
   </li>
   <li>
     <p>To release the component on shutdown, add the following codes to the <code>shutdown()</code> in bootstrap.js:</p>
 
-    <pre class="prettyprint"><code>function shutdown(params, aReason) {
-  const registrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
-  registrar.unregisterFactory(ComponentFooBar.prototype.classID,
-                              ComponentFooBarFactory);
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">shutdown</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">aReason</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">registrar</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">manager</span><span class="p">.</span><span class="nx">QueryInterface</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIComponentRegistrar</span><span class="p">);</span>
+  <span class="nx">registrar</span><span class="p">.</span><span class="nx">unregisterFactory</span><span class="p">(</span><span class="nx">ComponentFooBar</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">classID</span><span class="p">,</span>
+                              <span class="nx">ComponentFooBarFactory</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
     <ul>
       <li>Note: bootstrapped add-ons <em>must</em> take care to clean up any component registrations at shutdown. So you must not miss this clean-up code.</li>
@@ -140,24 +136,23 @@ contract @mozilla.org/foo/var;1 {22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}
   <li>
     <p>Create the component code in components/FooBar.js</p>
 
-    <pre class="prettyprint"><code>const Cc = Components.classes;
-const Ci = Components.interfaces;
-const Cu = Components.utils;
-const Cr = Components.results;
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">Cc</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Ci</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Cu</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">utils</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">Cr</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">results</span><span class="p">;</span>
     
-Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+<span class="nx">Cu</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">resource://gre/modules/XPCOMUtils.jsm</span><span class="dl">"</span><span class="p">);</span>
     
-function ComponentFooBar() { }
-ComponentFooBar.prototype = {
-  classDescription: "foobar class",
-  contractID: "@mozilla.org/foo/bar;1",
-  classID: Components.ID("{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}"),
-  QueryInterface: XPCOMUtils.generateQI([]),
+<span class="kd">function</span> <span class="nx">ComponentFooBar</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="nx">ComponentFooBar</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">classDescription</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar class</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">contractID</span><span class="p">:</span> <span class="dl">"</span><span class="s2">@mozilla.org/foo/bar;1</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">classID</span><span class="p">:</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">ID</span><span class="p">(</span><span class="dl">"</span><span class="s2">{22e1de77-790a-4a78-9ed4-8a8fca8c9f0f}</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">QueryInterface</span><span class="p">:</span> <span class="nx">XPCOMUtils</span><span class="p">.</span><span class="nx">generateQI</span><span class="p">([]),</span>
 
-  // members to implement...
-};
-this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
-</code></pre>
+  <span class="c1">// members to implement...</span>
+<span class="p">};</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">NSGetFactory</span> <span class="o">=</span> <span class="nx">XPCOMUtils</span><span class="p">.</span><span class="nx">generateNSGetFactory</span><span class="p">([</span><span class="nx">ComponentFooBar</span><span class="p">]);</span></code></pre></figure>
   </li>
 </ol>
 
@@ -185,11 +180,6 @@ this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
       <span class="post-meta">2011-12-24</span>
       <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
@@ -200,14 +190,19 @@ this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
+      <span class="post-meta">2010-11-29</span>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
-      <span class="post-meta">2017-07-22</span>
-      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
+    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
+      <span class="post-meta">2015-01-19</span>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
@@ -215,9 +210,9 @@ this.NSGetFactory = XPCOMUtils.generateNSGetFactory([ComponentFooBar]);
       <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
-      <span class="post-meta">2015-01-19</span>
-      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 </ul>
 </aside>

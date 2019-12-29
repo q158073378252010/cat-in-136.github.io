@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" />
   <meta property="og:title" content="Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?" /><meta property="og:description" content="下記のようなクラス継承のコードは… class Pet { name: string; age: number; constructor(name: string) { this.name = ..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -47,29 +46,28 @@
 下記のようなクラス継承のコードは…
 </p>
 
-<pre class="prettyprint"><code>class Pet {
-    name: string;
-    age: number;
-    constructor(name: string) {
-        this.name = name;
-        this.age = 0;
-    }
-    countAge() {
-        this.age += 1;
-    }
-}
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">class</span> <span class="nx">Pet</span> <span class="p">{</span>
+    <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="nl">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">;</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">countAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-class Cat extends Pet {
-    sleep() {
-        alert(this.name + " is sleeping.");
-    }
-}
+<span class="kd">class</span> <span class="nx">Cat</span> <span class="kd">extends</span> <span class="nx">Pet</span> <span class="p">{</span>
+    <span class="nx">sleep</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is sleeping.</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-var cat = new Cat("Cathy");
-cat.countAge();
-cat.sleep();
-alert(cat.name + " is " + cat.age + " y.o.");
-</code></pre>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cathy</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">countAge</span><span class="p">();</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">cat</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> y.o.</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>
 伝統的には<code>prototype</code>をコピーして継承をするのが、
@@ -77,28 +75,27 @@ JavaScript のやり方。
 流派はあるが大体下記のような感じじゃないだろうか：
 </p>
 
-<pre class="prettyprint"><code>function Pet(name) {
-    this.name = name;
-    this.age = 0;
-}
-Pet.prototype.countAge = function () {
-    this.age += 1;
-}
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Pet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Pet</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">countAge</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
 
-function Cat(name) {
-    Pet.apply(this, arguments);
-}
-Cat.prototype = $.extend(Cat.prototype, Pet.prototype);
-Cat.prototype.constructor = Cat;
-Cat.prototype.sleep = function () {
-    alert(this.name + " is sleeping.");
-}
+<span class="kd">function</span> <span class="nx">Cat</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Pet</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="nx">Pet</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">=</span> <span class="nx">Cat</span><span class="p">;</span>
+<span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sleep</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is sleeping.</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
 
-var cat = new Cat("Cathy");
-cat.countAge();
-cat.sleep();
-alert(cat.name + " is " + cat.age + " y.o.");
-</code></pre>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cathy</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">countAge</span><span class="p">();</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">cat</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> y.o.</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>
 最近の JavaScript (ECMA Script 5) では、<a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.3.5"><code>Object.create( O [, Properties] )</code></a>というのがある。
@@ -126,21 +123,20 @@ alert(cat.name + " is " + cat.age + " y.o.");
 要するに下記のように使って欲しいらしい。
 </p>
 
-<pre class="prettyprint"><code>var Cat = {
-    age: 0,
-    countAge: function () {
-        this.age += 1;
-    },
-    sleep: function () {
-        alert(this.name + " is sleeping.");
-    }
-}
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Cat</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="na">countAge</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">sleep</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is sleeping.</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-var cat = Object.create(Cat, {name: {value: "Cathy"}});
-cat.countAge();
-cat.sleep();
-alert(cat.name + " is " + cat.age + " y.o.");
-</code></pre>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Cat</span><span class="p">,</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="p">{</span><span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Cathy</span><span class="dl">"</span><span class="p">}});</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">countAge</span><span class="p">();</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">cat</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> y.o.</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>
 なお <code>cat.name = "Cathy"</code>を改名可能なようにするためには、
@@ -161,48 +157,47 @@ alert(cat.name + " is " + cat.age + " y.o.");
 結構冗長。
 </p>
 
-<pre class="prettyprint"><code>function Pet(name) {
-    this.name = name;
-    this.age = 0;
-}
-Pet.prototype = Object.create(Object.prototype, {
-    name: {
-        writable: true
-    },
-    age: {
-        writable: true
-    },
-    constructor: {
-        value: Pet,
-        enumerable: false
-    },
-    countAge: {
-        value: function () {
-            this.age += 1;
-        }
-    }
-});
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Pet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Pet</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">writable</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">age</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">writable</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="na">constructor</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">Pet</span><span class="p">,</span>
+        <span class="na">enumerable</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">countAge</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">value</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
 
-function Cat(name) {
-    Pet.apply(this, arguments);
-}
-Cat.prototype = Object.create(Pet.prototype, {
-    constructor: {
-        value: Cat,
-        enumerable: false
-    },
-    sleep: {
-        value: function () {
-            alert(this.name + " is sleeping.");
-        }
-    }
-});
+<span class="kd">function</span> <span class="nx">Cat</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Pet</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Pet</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">constructor</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">value</span><span class="p">:</span> <span class="nx">Cat</span><span class="p">,</span>
+        <span class="na">enumerable</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">sleep</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">value</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is sleeping.</span><span class="dl">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
 
-var cat = new Cat("Cathy");
-cat.countAge();
-cat.sleep();
-alert(cat.name + " is " + cat.age + " y.o.");
-</code></pre>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cathy</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">countAge</span><span class="p">();</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">cat</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> y.o.</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>
 prototype を<code>Object.create()</code> するという業!
@@ -224,37 +219,36 @@ ECMA Script 6 ないし TypeScript となっていて、
 JavaScript に変換すると下のようになる。
 </p>
 
-<pre class="prettyprint"><code>var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
-var Pet = (function () {
-    function Pet(name) {
-        this.name = name;
-        this.age = 0;
-    }
-    Pet.prototype.countAge = function () {
-        this.age += 1;
-    };
-    return Pet;
-})();
-var Cat = (function (_super) {
-    __extends(Cat, _super);
-    function Cat() {
-        _super.apply(this, arguments);
-    }
-    Cat.prototype.sleep = function () {
-        alert(this.name + " is sleeping.");
-    };
-    return Cat;
-})(Pet);
-var cat = new Cat("Cathy");
-cat.countAge();
-cat.sleep();
-alert(cat.name + " is " + cat.age + " y.o.");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">__extends</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">__extends</span> <span class="o">||</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">in</span> <span class="nx">b</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span> <span class="nx">d</span><span class="p">[</span><span class="nx">p</span><span class="p">]</span> <span class="o">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">p</span><span class="p">];</span>
+    <span class="kd">function</span> <span class="nx">__</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">=</span> <span class="nx">d</span><span class="p">;</span> <span class="p">}</span>
+    <span class="nx">__</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+    <span class="nx">d</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">__</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">Pet</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">Pet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">Pet</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">countAge</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">Pet</span><span class="p">;</span>
+<span class="p">})();</span>
+<span class="kd">var</span> <span class="nx">Cat</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_super</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">__extends</span><span class="p">(</span><span class="nx">Cat</span><span class="p">,</span> <span class="nx">_super</span><span class="p">);</span>
+    <span class="kd">function</span> <span class="nx">Cat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">_super</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">Cat</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sleep</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is sleeping.</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">Cat</span><span class="p">;</span>
+<span class="p">})(</span><span class="nx">Pet</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Cat</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cathy</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">countAge</span><span class="p">();</span>
+<span class="nx">cat</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+<span class="nx">alert</span><span class="p">(</span><span class="nx">cat</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">cat</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> y.o.</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 
 <p>参考文献</p>
 
@@ -286,11 +280,6 @@ alert(cat.name + " is " + cat.age + " y.o.");
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
       <span class="post-meta">2011-05-20</span>
       <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
@@ -301,14 +290,19 @@ alert(cat.name + " is " + cat.age + " y.o.");
       <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">
-      <span class="post-meta">2012-10-08</span>
-      <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
       <span class="post-meta">2015-07-04</span>
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">
+      <span class="post-meta">2010-02-04</span>
+      <span class="post-title">AMO warns use of &quot;setTimeout()&quot;</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">

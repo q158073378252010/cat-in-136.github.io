@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/study-for-adding-menuitem-to-firefox4s.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/09/study-for-adding-menuitem-to-firefox4s.html" />
   <meta property="og:title" content="Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)" /><meta property="og:description" content="A few day ago, I received issue#15 Config mania option on Fx 4.0 new Menu button. I found Firefox..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/cm-issue15.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/study-for-adding-menuitem-to-firefox4s.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -46,23 +45,21 @@
     <p>
 A few day ago, I received <a href="http://bitbucket.org/cat_in_136/configuration-mania/issue/15/config-mania-option-on-fx-40-new-menu">issue#15 Config mania option on Fx 4.0 new Menu button</a>. I found Firefox 4.0b5 new menu is changed to 2-column.
 </p>
-<pre class="prettyprint"><code>&lt;!-- Firefox 4.0b4 --&gt;
- &lt;menupopup id="appmenu-popup" ... &gt;
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Firefox 4.0b4 --&gt;</span>
+ <span class="nt">&lt;menupopup</span> <span class="na">id=</span><span class="s">"appmenu-popup"</span> <span class="err">...</span> <span class="nt">&gt;</span>
    ...
- &lt;/menupopup&gt;
-</code></pre>
-<pre class="prettyprint"><code>&lt;!-- Firefox 4.0b5 --&gt;
- &lt;menupopup id="appmenu-popup" ... &gt;
-   &lt;hbox&gt;
-     &lt;vbox id="appmenuPrimaryPane"&gt;
+ <span class="nt">&lt;/menupopup&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="c">&lt;!-- Firefox 4.0b5 --&gt;</span>
+ <span class="nt">&lt;menupopup</span> <span class="na">id=</span><span class="s">"appmenu-popup"</span> <span class="err">...</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;hbox&gt;</span>
+     <span class="nt">&lt;vbox</span> <span class="na">id=</span><span class="s">"appmenuPrimaryPane"</span><span class="nt">&gt;</span>
        ...
-     &lt;/vbox&gt;
-     &lt;vbox id="appmenuSecondaryPane"&gt;
+     <span class="nt">&lt;/vbox&gt;</span>
+     <span class="nt">&lt;vbox</span> <span class="na">id=</span><span class="s">"appmenuSecondaryPane"</span><span class="nt">&gt;</span>
        ...
-     &lt;/vbox&gt;
-   &lt;/hbox&gt;
- &lt;/menupopup&gt;
-</code></pre>
+     <span class="nt">&lt;/vbox&gt;</span>
+   <span class="nt">&lt;/hbox&gt;</span>
+ <span class="nt">&lt;/menupopup&gt;</span></code></pre></figure>
 <p>
 Configuration Mania 1.12.2010082901 append "Configuration Mania" menu item is append on "<code>appmenu-popup</code>". On Firefox 4.0b5, it does not work well:
 </p>
@@ -105,14 +102,14 @@ I moved "Configuration Mania" menuitem to Option submenu:
       <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">
-      <span class="post-meta">2010-05-04</span>
-      <span class="post-title">OOPP Setting on Configuration Mania</span><span class="post-thumb" data-image-path="/images/oop-setting-screenshot1.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2017/03/look-back-13-year-ago-of-confmania.html">
       <span class="post-meta">2017-03-24</span>
       <span class="post-title">Look back 13 years ago of Configuration Mania</span><span class="post-thumb" data-image-path="/images/201703-lookbackconfmania-ext.svg"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">
+      <span class="post-meta">2010-05-04</span>
+      <span class="post-title">OOPP Setting on Configuration Mania</span><span class="post-thumb" data-image-path="/images/oop-setting-screenshot1.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">
@@ -125,9 +122,9 @@ I moved "Configuration Mania" menuitem to Option submenu:
       <span class="post-title">今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる</span><span class="post-thumb" data-image-path="/images/healthy_body_weight.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">
-      <span class="post-meta">2010-05-26</span>
-      <span class="post-title">nsIPref is deprecated and removed on Firefox 3.7</span></a>
+    <a class="post-link" href="/2010/09/unofficial-css-property-zoom.html">
+      <span class="post-meta">2010-09-02</span>
+      <span class="post-title">Unofficial CSS property zoom implemented on WebKit</span></a>
   </li>
 </ul>
 </aside>

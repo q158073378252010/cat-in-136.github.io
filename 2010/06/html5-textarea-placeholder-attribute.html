@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>HTML5 textarea placeholder attribute must not contains LF.</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/06/html5-textarea-placeholder-attribute.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/06/html5-textarea-placeholder-attribute.html" />
   <meta property="og:title" content="HTML5 textarea placeholder attribute must not contains LF." /><meta property="og:description" content="The placeholder attribute for &lt;input&gt; and &lt;textarea&gt; is supported on Firefox3.7/Chrom..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/placeholderLF.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/06/html5-textarea-placeholder-attribute.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -43,10 +42,11 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>The placeholder attribute for &lt;input&gt; and &lt;textarea&gt; is supported on Firefox3.7/Chrome/Safari. Placeholder text is displayed when text is empty and is not focused. It is very easy to use:</p><pre class="prettyprint"><code>&lt;input type="text" placeholder="empty text" value=""&gt;
-&lt;textarea placeholder="empty text"&gt;
-&lt;/textarea&gt;
-</code></pre><p>When <code>placeholder="foo&amp;#x0a;bar"</code> is specified to &lt;textarea&gt;, "&amp;#x0a;"(LF) is removed on Firefox. On Chrome, line break after "foo".</p><p><img src="/images/placeholderLF.png" /></p><p>Since <a href="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder">HTML 5 specification</a> deny "&amp;#x0a;"(LF) to <code>placeholder</code> attribute, it seems to be no matter. <strong>"&amp;#x0a;"(LF) MUST NOT be contained in <code>placeholder</code> attribute.</strong> (i.e. <code>placeholder</code> must be a single-line text)</p><blockquote cite="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder"><p>The attribute, if specified, must have a value that contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters. </p></blockquote><h4>Sample</h4><textarea placeholder="foo&#x0a;bar"></textarea>
+    <p>The placeholder attribute for &lt;input&gt; and &lt;textarea&gt; is supported on Firefox3.7/Chrome/Safari. Placeholder text is displayed when text is empty and is not focused. It is very easy to use:</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"empty text"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
+<span class="nt">&lt;textarea</span> <span class="na">placeholder=</span><span class="s">"empty text"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/textarea&gt;</span></code></pre></figure>
+<p>When <code>placeholder="foo&amp;#x0a;bar"</code> is specified to &lt;textarea&gt;, "&amp;#x0a;"(LF) is removed on Firefox. On Chrome, line break after "foo".</p><p><img src="/images/placeholderLF.png" /></p><p>Since <a href="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder">HTML 5 specification</a> deny "&amp;#x0a;"(LF) to <code>placeholder</code> attribute, it seems to be no matter. <strong>"&amp;#x0a;"(LF) MUST NOT be contained in <code>placeholder</code> attribute.</strong> (i.e. <code>placeholder</code> must be a single-line text)</p><blockquote cite="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder"><p>The attribute, if specified, must have a value that contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters. </p></blockquote><h4>Sample</h4><textarea placeholder="foo&#x0a;bar"></textarea>
 
   </div>
 
@@ -59,14 +59,14 @@
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
-      <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">
       <span class="post-meta">2010-06-22</span>
       <span class="post-title">Study: multi-text vs single-text on XUL elements</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/06/moz-resize-can-be-applied-to-any.html">
@@ -74,9 +74,14 @@
       <span class="post-title">-moz-resize can be applied to any elements!?</span><span class="post-thumb" data-image-path="/images/resizer_is_displayed_at_div_element.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2012/11/twitter-api.html">
@@ -84,14 +89,9 @@
       <span class="post-title">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-08-15</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">

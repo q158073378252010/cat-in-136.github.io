@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html" />
   <meta property="og:title" content="Hack Micropolis (a.k.a. SimCity) and get $2,147,483,647!" /><meta property="og:description" content="Micropolis (The original SimCity) is old game (published in 1989) and newly freed game (released ..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/micropolis.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/08/hack-micropolis-aka-simcity-and-get.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -80,22 +79,21 @@ v
 <p>
 Micropolis's cty file format is as following:
 </p>
-<pre class="prettyprint"><code>#define WORLD_X     120
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#define WORLD_X     120
 #define WORLD_Y     120
 #define HISTLEN     480
 #define MISCHISTLEN 240
-
-typedef struct {
-    short   ResHis[HISTLEN/2];
-    short   ComHis[HISTLEN/2];
-    short   IndHis[HISTLEN/2];
-    short   CrimeHis[HISTLEN/2];
-    short   PollutionHis[HISTLEN/2];
-    short   MoneyHis[HISTLEN/2];
-    short   MiscHis[MISCHISTLEN/2];
-    short   Map[WORLD_X * WORLD_Y];
-} CTY_DATA;
-</code></pre>
+</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">short</span>   <span class="n">ResHis</span><span class="p">[</span><span class="n">HISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">ComHis</span><span class="p">[</span><span class="n">HISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">IndHis</span><span class="p">[</span><span class="n">HISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">CrimeHis</span><span class="p">[</span><span class="n">HISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">PollutionHis</span><span class="p">[</span><span class="n">HISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">MoneyHis</span><span class="p">[</span><span class="n">HISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">MiscHis</span><span class="p">[</span><span class="n">MISCHISTLEN</span><span class="o">/</span><span class="mi">2</span><span class="p">];</span>
+    <span class="kt">short</span>   <span class="n">Map</span><span class="p">[</span><span class="n">WORLD_X</span> <span class="o">*</span> <span class="n">WORLD_Y</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">CTY_DATA</span><span class="p">;</span></code></pre></figure>
 <p>
 Note: <code>short</code> is a Big-Endian (signed) 16-bits number.
 </p>
@@ -105,21 +103,19 @@ For example, <code>Map</code> data is written in cty file at offset 0x0C30.
 </p>
 <p>
 Total funds is <code>MiscHis[50]</code> and <code>MiscHis[51]</code>
-as a signed 32-bit number. 
-<code>MiscHis[50]</code> is high-order word and <code>MiscHis[51]</code> is 
+as a signed 32-bit number.
+<code>MiscHis[50]</code> is high-order word and <code>MiscHis[51]</code> is
 low-order word.
 This is written at micropolis's source code
 (<code>src/sim/s_fileio.c#loadFile(char*)</code>) as follows:
 </p>
-<pre class="prettyprint"><code>
-   /* total funds is a long.....    MiscHis is array of shorts */
-   /* total funds is being put in the 50th &amp; 51th word of MiscHis */
-   /* find the address, cast the ptr to a lontPtr, take contents */
- 
-   l = *(QUAD *)(MiscHis + 50);
-   HALF_SWAP_LONGS(&amp;l, 1);
-   SetFunds(l);
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c">   <span class="cm">/* total funds is a long.....    MiscHis is array of shorts */</span>
+   <span class="cm">/* total funds is being put in the 50th &amp; 51th word of MiscHis */</span>
+   <span class="cm">/* find the address, cast the ptr to a lontPtr, take contents */</span>
+
+   <span class="n">l</span> <span class="o">=</span> <span class="o">*</span><span class="p">(</span><span class="n">QUAD</span> <span class="o">*</span><span class="p">)(</span><span class="n">MiscHis</span> <span class="o">+</span> <span class="mi">50</span><span class="p">);</span>
+   <span class="n">HALF_SWAP_LONGS</span><span class="p">(</span><span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+   <span class="n">SetFunds</span><span class="p">(</span><span class="n">l</span><span class="p">);</span></code></pre></figure>
 
 <h4>See also</h4>
 <ul>
@@ -154,14 +150,9 @@ This is written at micropolis's source code
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">
-      <span class="post-meta">2010-03-20</span>
-      <span class="post-title">inode# is different from NTFS FileRef#</span></a>
+    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
+      <span class="post-meta">2011-05-20</span>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/02/view-page-source-in-browser-tabs.html">
@@ -169,14 +160,19 @@ This is written at micropolis's source code
       <span class="post-title">&quot;View Page Source&quot; in browser tabs without any addons</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
-      <span class="post-meta">2011-05-20</span>
-      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">
-      <span class="post-meta">2010-06-22</span>
-      <span class="post-title">Study: multi-text vs single-text on XUL elements</span></a>
+    <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">
+      <span class="post-meta">2010-03-20</span>
+      <span class="post-title">inode# is different from NTFS FileRef#</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 </ul>
 </aside>

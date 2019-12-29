@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2011/12/how-to-inject-some-xul-elements-to.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2011/12/how-to-inject-some-xul-elements-to.html" />
   <meta property="og:title" content="How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack" /><meta property="og:description" content="Do you want to wait for restart? See also: How to create restart-less #Firefox4 extension WITHOUT..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/Do_you_want_to_wait_for_restart_firefox.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2011/12/how-to-inject-some-xul-elements-to.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -68,31 +67,30 @@ When a browser window is closed, everything injected shall be removed.</p>
 
 <p>Source code:</p>
 
-<pre class="prettyprint"><code>function BrowserWindowObserver(handlers) {
-    this.handlers = handlers;
-}
-BrowserWindowObserver.prototype = {
-    observe: function (aSubject, aTopic, aData) {
-        if (aTopic == "domwindowopened") {
-            // Let this notified when DOM content loaded.
-            aSubject.QueryInterface(Ci.nsIDOMWindow)
-              .addEventListener("DOMContentLoaded", this, false);
-        } else if (aTopic == "domwindowclosed") {
-            if (aSubject.document.documentElement.getAttribute("windowtype") == "navigator:browser") {
-                this.handlers.onShutdown(aSubject);
-            }
-        }
-    },
-    handleEvent: function(aEvent) {
-        let aWindow = aEvent.currentTarget;
-        aWindow.removeEventListener(aEvent.type, this, false);
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">BrowserWindowObserver</span><span class="p">(</span><span class="nx">handlers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">handlers</span> <span class="o">=</span> <span class="nx">handlers</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">BrowserWindowObserver</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">observe</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">aSubject</span><span class="p">,</span> <span class="nx">aTopic</span><span class="p">,</span> <span class="nx">aData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">aTopic</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">domwindowopened</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Let this notified when DOM content loaded.</span>
+            <span class="nx">aSubject</span><span class="p">.</span><span class="nx">QueryInterface</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIDOMWindow</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">aTopic</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">domwindowclosed</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">aSubject</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">windowtype</span><span class="dl">"</span><span class="p">)</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">navigator:browser</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">handlers</span><span class="p">.</span><span class="nx">onShutdown</span><span class="p">(</span><span class="nx">aSubject</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">handleEvent</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">aEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">aWindow</span> <span class="o">=</span> <span class="nx">aEvent</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">;</span>
+        <span class="nx">aWindow</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="nx">aEvent</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 
-        if (aWindow.document.documentElement.getAttribute("windowtype") == "navigator:browser") {
-            this.handlers.onStartup(aWindow);
-        }
-    }
-};
-</code></pre>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">aWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">windowtype</span><span class="dl">"</span><span class="p">)</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">navigator:browser</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">handlers</span><span class="p">.</span><span class="nx">onStartup</span><span class="p">(</span><span class="nx">aWindow</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
 
 <p>Note that:</p>
 
@@ -118,30 +116,29 @@ BrowserWindowObserver.prototype = {
 
 <p>Source code:</p>
 
-<pre class="prettyprint"><code>var _gWindowListener = null;
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">_gWindowListener</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 
-function startup(params, aReason) {
-    // do something...
+<span class="kd">function</span> <span class="nx">startup</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">aReason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something...</span>
 
-    let ww = Cc["@mozilla.org/embedcomp/window-watcher;1"]
-      .getService(Ci.nsIWindowWatcher);
-    let wm = Cc["@mozilla.org/appshell/window-mediator;1"]
-      .getService(Ci.nsIWindowMediator);
+    <span class="kd">let</span> <span class="nx">ww</span> <span class="o">=</span> <span class="nx">Cc</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/embedcomp/window-watcher;1</span><span class="dl">"</span><span class="p">]</span>
+      <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIWindowWatcher</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">wm</span> <span class="o">=</span> <span class="nx">Cc</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/appshell/window-mediator;1</span><span class="dl">"</span><span class="p">]</span>
+      <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIWindowMediator</span><span class="p">);</span>
 
-    // create and register a browser window observer.
-    _gWindowListener = new BrowserWindowObserver({
-        onStartup: browserWindowStartupFunc,
-        onShutdown: browserWindowShutdownFunc
-    });
-    ww.registerNotification(_gWindowListener);
+    <span class="c1">// create and register a browser window observer.</span>
+    <span class="nx">_gWindowListener</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserWindowObserver</span><span class="p">({</span>
+        <span class="na">onStartup</span><span class="p">:</span> <span class="nx">browserWindowStartupFunc</span><span class="p">,</span>
+        <span class="na">onShutdown</span><span class="p">:</span> <span class="nx">browserWindowShutdownFunc</span>
+    <span class="p">});</span>
+    <span class="nx">ww</span><span class="p">.</span><span class="nx">registerNotification</span><span class="p">(</span><span class="nx">_gWindowListener</span><span class="p">);</span>
 
-    // call startup function for each the browser windows.
-    let winenu = wm.getEnumerator("navigator:browser");
-    while (winenu.hasMoreElements()) {
-        browserWindowShutdownFunc(winenu.getNext());
-    }
-}
-</code></pre>
+    <span class="c1">// call startup function for each the browser windows.</span>
+    <span class="kd">let</span> <span class="nx">winenu</span> <span class="o">=</span> <span class="nx">wm</span><span class="p">.</span><span class="nx">getEnumerator</span><span class="p">(</span><span class="dl">"</span><span class="s2">navigator:browser</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">winenu</span><span class="p">.</span><span class="nx">hasMoreElements</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">browserWindowShutdownFunc</span><span class="p">(</span><span class="nx">winenu</span><span class="p">.</span><span class="nx">getNext</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>Note that:</p>
 
@@ -161,24 +158,23 @@ function startup(params, aReason) {
 
 <p>Source code:</p>
 
-<pre class="prettyprint"><code>function shutdown(params, aReason) {
-    // do something ...
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">shutdown</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">aReason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something ...</span>
 
-    let ww = Cc["@mozilla.org/embedcomp/window-watcher;1"]
-      .getService(Ci.nsIWindowWatcher);
-    let wm = Cc["@mozilla.org/appshell/window-mediator;1"]
-      .getService(Ci.nsIWindowMediator);
-    // unregister a browser window observer.
-    ww.unregisterNotification(_gWindowListener);
-    _gWindowListener = null;
+    <span class="kd">let</span> <span class="nx">ww</span> <span class="o">=</span> <span class="nx">Cc</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/embedcomp/window-watcher;1</span><span class="dl">"</span><span class="p">]</span>
+      <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIWindowWatcher</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">wm</span> <span class="o">=</span> <span class="nx">Cc</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/appshell/window-mediator;1</span><span class="dl">"</span><span class="p">]</span>
+      <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Ci</span><span class="p">.</span><span class="nx">nsIWindowMediator</span><span class="p">);</span>
+    <span class="c1">// unregister a browser window observer.</span>
+    <span class="nx">ww</span><span class="p">.</span><span class="nx">unregisterNotification</span><span class="p">(</span><span class="nx">_gWindowListener</span><span class="p">);</span>
+    <span class="nx">_gWindowListener</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 
-    // call shutdown function for each the browser windows.
-    let winenu = wm.getEnumerator("navigator:browser");
-    while (winenu.hasMoreElements()) {
-        browserWindowShutdownFunc(winenu.getNext());
-    }
-}
-</code></pre>
+    <span class="c1">// call shutdown function for each the browser windows.</span>
+    <span class="kd">let</span> <span class="nx">winenu</span> <span class="o">=</span> <span class="nx">wm</span><span class="p">.</span><span class="nx">getEnumerator</span><span class="p">(</span><span class="dl">"</span><span class="s2">navigator:browser</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">winenu</span><span class="p">.</span><span class="nx">hasMoreElements</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">browserWindowShutdownFunc</span><span class="p">(</span><span class="nx">winenu</span><span class="p">.</span><span class="nx">getNext</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <h4>4. inject and remove</h4>
 
@@ -186,20 +182,19 @@ function startup(params, aReason) {
 
 <p>Source code:</p>
 
-<pre class="prettyprint"><code>function browserWindowStartupFunc(aWindow) {
-    let contextMenu = aWindow.document.getElementById("contentAreaContextMenu");
-    let menuitem = aWindow.document.createElement("menuitem");
-    menuitem.label = "Foobar";
-    menuitem.id = "foobar_menuitem";
-    contextMenu.appendChild(menuitem);
-}
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">browserWindowStartupFunc</span><span class="p">(</span><span class="nx">aWindow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">contextMenu</span> <span class="o">=</span> <span class="nx">aWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">contentAreaContextMenu</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">menuitem</span> <span class="o">=</span> <span class="nx">aWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">menuitem</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">menuitem</span><span class="p">.</span><span class="nx">label</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Foobar</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">menuitem</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foobar_menuitem</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">contextMenu</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">menuitem</span><span class="p">);</span>
+<span class="p">}</span>
 
-function browserWindowShutdownFunc(aWindow) {
-    let contextMenu = aWindow.document.getElementById("contentAreaContextMenu");
-    let menuitem = aWindow.document.getElementById("foobar_menuitem");
-    contextMenu.removeChild(menuitem);
-}
-</code></pre>
+<span class="kd">function</span> <span class="nx">browserWindowShutdownFunc</span><span class="p">(</span><span class="nx">aWindow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">contextMenu</span> <span class="o">=</span> <span class="nx">aWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">contentAreaContextMenu</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">menuitem</span> <span class="o">=</span> <span class="nx">aWindow</span><span class="p">.</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">foobar_menuitem</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">contextMenu</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">menuitem</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
 <h4>References</h4>
 
@@ -237,6 +232,11 @@ function browserWindowShutdownFunc(aWindow) {
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
+      <span class="post-meta">2010-08-19</span>
+      <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and_26.html">
       <span class="post-meta">2010-06-26</span>
       <span class="post-title">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</span><span class="post-thumb" data-image-path="/images/conf-mania-mac-ng.png"></span></a>
@@ -247,19 +247,14 @@ function browserWindowShutdownFunc(aWindow) {
       <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
-      <span class="post-meta">2010-08-19</span>
-      <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
+    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
+      <span class="post-meta">2015-01-19</span>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
       <span class="post-meta">2010-08-15</span>
       <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 </ul>
 </aside>

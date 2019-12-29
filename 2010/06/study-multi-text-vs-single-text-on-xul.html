@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Study: multi-text vs single-text on XUL elements</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/06/study-multi-text-vs-single-text-on-xul.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/06/study-multi-text-vs-single-text-on-xul.html" />
   <meta property="og:title" content="Study: multi-text vs single-text on XUL elements" /><meta property="og:description" content="&lt;description&gt; is used to create a block of text. There are two ways: &lt;description&gt;Thi..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/06/study-multi-text-vs-single-text-on-xul.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -47,20 +46,17 @@
 <code>&lt;description&gt;</code> is used to create a block of text. There are two ways:
 </p>
 
-<pre class="prettyprint"><code>&lt;description&gt;This text will word wrap when displayed.&lt;description&gt;
-&lt;description label="This text will not word wrap when displayed."/&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;description&gt;</span>This text will word wrap when displayed.<span class="nt">&lt;description&gt;</span>
+<span class="nt">&lt;description</span> <span class="na">label=</span><span class="s">"This text will not word wrap when displayed."</span><span class="nt">/&gt;</span></code></pre></figure>
 
 <p>
 It's simple. Text content will word wrap when displayed. Attribute will not.
 </p>
 
-<pre class="prettyprint"><code>&lt;label&gt;This text will word wrap when displayed.&lt;label&gt;
-&lt;label value="This text will not word wrap when displayed."/&gt;
-</code></pre>
-<pre class="prettyprint"><code>&lt;button&gt;This text will word wrap when displayed.&lt;button&gt;
-&lt;button label="This text will not word wrap when displayed."/&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;label&gt;</span>This text will word wrap when displayed.<span class="nt">&lt;label&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">value=</span><span class="s">"This text will not word wrap when displayed."</span><span class="nt">/&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;button&gt;</span>This text will word wrap when displayed.<span class="nt">&lt;button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">label=</span><span class="s">"This text will not word wrap when displayed."</span><span class="nt">/&gt;</span></code></pre></figure>
 
 <h3>
 Exception</h3>
@@ -68,24 +64,22 @@ Exception</h3>
 <p>
 e.g. <code>radio</code> element:</p>
 
-<pre class="prettyprint"><code>&lt;radio label="This text will word wrap when displayed."/&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;radio</span> <span class="na">label=</span><span class="s">"This text will word wrap when displayed."</span><span class="nt">/&gt;</span></code></pre></figure>
 
 <p>
 Why? Firefox expands this code to</p>
 
-<pre class="prettyprint"><code>&lt;xul:hbox class="radio-spacer-box"&gt;
-   &lt;!-- **snip** --&gt;
-&lt;/xul:hbox&gt;
-&lt;xul:hbox class="radio-label-center-box" flex="1"&gt;
-  &lt;xul:hbox class="radio-label-box"&gt;
-    &lt;xul:image class="radio-icon" src=""/&gt;
-    &lt;xul:label class="radio-label" flex="1"&gt;
-      <strong>This text will word wrap when displayed.</strong>
-    &lt;/xul:label&gt;
-  &lt;/xul:hbox&gt;
-&lt;/xul:hbox&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;xul:hbox</span> <span class="na">class=</span><span class="s">"radio-spacer-box"</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!-- **snip** --&gt;</span>
+<span class="nt">&lt;/xul:hbox&gt;</span>
+<span class="nt">&lt;xul:hbox</span> <span class="na">class=</span><span class="s">"radio-label-center-box"</span> <span class="na">flex=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;xul:hbox</span> <span class="na">class=</span><span class="s">"radio-label-box"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;xul:image</span> <span class="na">class=</span><span class="s">"radio-icon"</span> <span class="na">src=</span><span class="s">""</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;xul:label</span> <span class="na">class=</span><span class="s">"radio-label"</span> <span class="na">flex=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      This text will word wrap when displayed.
+    <span class="nt">&lt;/xul:label&gt;</span>
+  <span class="nt">&lt;/xul:hbox&gt;</span>
+<span class="nt">&lt;/xul:hbox&gt;</span></code></pre></figure>
 
 <p>
 The text "This text will word wrap when displayed." is expanded to text content (not attribute!) of <code>label</code> element.
@@ -94,8 +88,7 @@ The text "This text will word wrap when displayed." is expanded to text content 
 <p>
 e.g. <code>richlistitem</code> element:</p>
 
-<pre class="prettyprint"><code>&lt;richlistitem&gt;This text will not word wrap when displayed."&lt;/richlistitem&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;richlistitem&gt;</span>This text will not word wrap when displayed."<span class="nt">&lt;/richlistitem&gt;</span></code></pre></figure>
 
 <p>
 I don't know why.</p>
@@ -106,20 +99,17 @@ Effect of &lt;html:br/&gt;</h3>
 <p>
 (X)HTML's <code>br</code> element represents a line break. <code>html:br</code> element can be readily applied to XUL.</p>
 
-<pre class="prettyprint"><code>&lt;description&gt;This text is&lt;html:br/&gt; multiple line.&lt;description&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;description&gt;</span>This text is<span class="nt">&lt;html:br/&gt;</span> multiple line.<span class="nt">&lt;description&gt;</span></code></pre></figure>
 
 <p>
 <code>html:br</code> element can not be applied to attribute.</p>
 
 <ul>
 <li>this code is invalid.
-<pre class="prettyprint"><code>&lt;radio label="br can not be&lt;html:br/&gt; applied to attribute."/&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;radio</span> <span class="na">label=</span><span class="s">"br can not be&lt;html:br/&gt; applied to attribute."</span><span class="nt">/&gt;</span></code></pre></figure>
 </li>
 <li>this radio button label is "br can not be&lt;html:br/&gt; applied to attribute."
-<pre class="prettyprint"><code>&lt;radio label="br can not be&amp;lt;html:br/&amp;gt; applied to attribute."/&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;radio</span> <span class="na">label=</span><span class="s">"br can not be&amp;amp;lt;html:br/&amp;amp;gt; applied to attribute."</span><span class="nt">/&gt;</span></code></pre></figure>
 </li>
 </ul>
 
@@ -129,6 +119,7 @@ See also</h4>
 <ul>
 <li><a href="https://developer.mozilla.org/en/XUL/description">description</a> - MDC</li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -145,11 +136,6 @@ See also</h4>
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
@@ -160,24 +146,29 @@ See also</h4>
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2010/06/html5-textarea-placeholder-attribute.html">
+      <span class="post-meta">2010-06-13</span>
+      <span class="post-title">HTML5 textarea placeholder attribute must not contains LF.</span><span class="post-thumb" data-image-path="/images/placeholderLF.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
+    <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">
+      <span class="post-meta">2010-11-27</span>
+      <span class="post-title">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</span><span class="post-thumb" data-image-path="/images/traditional-addons-are-required-browser-restart.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/01/xul-tip-scrolling-for-tabs-on-xul.html">
+      <span class="post-meta">2011-01-20</span>
+      <span class="post-title">XUL Tip: Scrolling for tabs on XUL tabbox</span><span class="post-thumb" data-image-path="/images/scrolledtab.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/12/xmlserializerserializetostring-is.html">
       <span class="post-meta">2010-12-23</span>
       <span class="post-title">XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
-      <span class="post-meta">2017-07-22</span>
-      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 </ul>
 </aside>

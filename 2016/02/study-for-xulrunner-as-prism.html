@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Study for XULRunner as Prism, using Firefox</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html" />
   <meta property="og:title" content="Study for XULRunner as Prism, using Firefox" /><meta property="og:description" content="Mission: run a web application without the normal browser UI, as a XULRunner application but usin..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/201602_prism_xulrunner_firefox.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2016/02/study-for-xulrunner-as-prism.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -82,44 +81,44 @@ And then <code>app.xul</code> load the web page – <code>https://www.google.com
   <li>
     <p>application.ini</p>
 
-    <div><pre class="prettyprint"><code>[App]
-Vendor=cat_in_136
-Name=XULRunner_as_prism
-Version=0.0
-BuildID=20160206
-Copyright=Copyright (c) 2016 @cat_in_136
-ID=xulrunner_as_prism@cat-in-136.github.io
-   
-[Gecko]
-MinVersion=38
-MaxVersion=*
-</code></pre>
+    <div>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[App]</span>
+<span class="py">Vendor</span><span class="p">=</span><span class="s">cat_in_136</span>
+<span class="py">Name</span><span class="p">=</span><span class="s">XULRunner_as_prism</span>
+<span class="py">Version</span><span class="p">=</span><span class="s">0.0</span>
+<span class="py">BuildID</span><span class="p">=</span><span class="s">20160206</span>
+<span class="py">Copyright</span><span class="p">=</span><span class="s">Copyright (c) 2016 @cat_in_136</span>
+<span class="py">ID</span><span class="p">=</span><span class="s">xulrunner_as_prism@cat-in-136.github.io</span>
+
+<span class="nn">[Gecko]</span>
+<span class="py">MinVersion</span><span class="p">=</span><span class="s">38</span>
+<span class="py">MaxVersion</span><span class="p">=</span><span class="s">*</span></code></pre></figure>
     </div>
   </li>
   <li>
     <p>defaults/preferences/prefs.js</p>
 
-    <div><pre class="prettyprint"><code>pref("toolkit.defaultChromeURI", "chrome://xrap/content/app.xul");
-</code></pre>
+    <div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">pref</span><span class="p">(</span><span class="dl">"</span><span class="s2">toolkit.defaultChromeURI</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">chrome://xrap/content/app.xul</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
     </div>
   </li>
   <li>
     <p>chrome.manifest</p>
 
-    <div><pre class="prettyprint"><code>content xrap content/
+    <div><pre><code>content xrap content/
 </code></pre>
     </div>
   </li>
   <li>
     <p>content/app.xul</p>
 
-    <div><pre class="prettyprint"><code>&lt;?xml version="1.0"?&gt;
-&lt;?xml-stylesheet href="chrome://global/skin/" type="text/css"?&gt;
-&lt;window id="main" width="400" height="300" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"&gt;
-&lt;browser id="browser" flex="1" type="content-primary" src="https://www.google.co.jp/"/&gt;
-&lt;findbar id="findbar" hidden="false" browserid="browser"/&gt;
-&lt;/window&gt;
-</code></pre>
+    <div>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet href="chrome://global/skin/" type="text/css"?&gt;</span>
+<span class="nt">&lt;window</span> <span class="na">id=</span><span class="s">"main"</span> <span class="na">width=</span><span class="s">"400"</span> <span class="na">height=</span><span class="s">"300"</span> <span class="na">xmlns=</span><span class="s">"http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;browser</span> <span class="na">id=</span><span class="s">"browser"</span> <span class="na">flex=</span><span class="s">"1"</span> <span class="na">type=</span><span class="s">"content-primary"</span> <span class="na">src=</span><span class="s">"https://www.google.co.jp/"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;findbar</span> <span class="na">id=</span><span class="s">"findbar"</span> <span class="na">hidden=</span><span class="s">"false"</span> <span class="na">browserid=</span><span class="s">"browser"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/window&gt;</span></code></pre></figure>
     </div>
   </li>
 </ul>
@@ -146,25 +145,25 @@ MaxVersion=*
   <li>
     <p>application.ini (No Change)</p>
 
-    <div><pre class="prettyprint"><code>[App]
-Vendor=cat_in_136
-Name=XULRunner_as_prism
-Version=0.0
-BuildID=20160206
-Copyright=Copyright (c) 2016 @cat_in_136
-ID=xulrunner_as_prism@cat-in-136.github.io
-   
-[Gecko]
-MinVersion=38
-MaxVersion=*
-</code></pre>
+    <div>
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[App]</span>
+<span class="py">Vendor</span><span class="p">=</span><span class="s">cat_in_136</span>
+<span class="py">Name</span><span class="p">=</span><span class="s">XULRunner_as_prism</span>
+<span class="py">Version</span><span class="p">=</span><span class="s">0.0</span>
+<span class="py">BuildID</span><span class="p">=</span><span class="s">20160206</span>
+<span class="py">Copyright</span><span class="p">=</span><span class="s">Copyright (c) 2016 @cat_in_136</span>
+<span class="py">ID</span><span class="p">=</span><span class="s">xulrunner_as_prism@cat-in-136.github.io</span>
+
+<span class="nn">[Gecko]</span>
+<span class="py">MinVersion</span><span class="p">=</span><span class="s">38</span>
+<span class="py">MaxVersion</span><span class="p">=</span><span class="s">*</span></code></pre></figure>
     </div>
   </li>
   <li>
     <p>defaults/preferences/prefs.js</p>
 
-    <div><pre class="prettyprint"><code>pref("toolkit.defaultChromeURI", "https://www.google.com/");
-</code></pre>
+    <div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">pref</span><span class="p">(</span><span class="dl">"</span><span class="s2">toolkit.defaultChromeURI</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://www.google.com/</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
     </div>
   </li>
 </ul>
@@ -211,29 +210,29 @@ You may remove this folder after you close this XULRunner_as_prism application.<
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
-      <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2017/03/look-back-13-year-ago-of-confmania.html">
-      <span class="post-meta">2017-03-24</span>
-      <span class="post-title">Look back 13 years ago of Configuration Mania</span><span class="post-thumb" data-image-path="/images/201703-lookbackconfmania-ext.svg"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
-      <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">
-      <span class="post-meta">2013-12-28</span>
-      <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span><span class="post-thumb" data-image-path="/images/error.png"></span></a>
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
       <span class="post-meta">2010-08-15</span>
       <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
   </li>
 </ul>
 </aside>

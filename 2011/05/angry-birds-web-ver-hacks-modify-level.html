@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Angry Birds (Web ver.) Hacks: Modify the Level Data!</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2011/05/angry-birds-web-ver-hacks-modify-level.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2011/05/angry-birds-web-ver-hacks-modify-level.html" />
   <meta property="og:title" content="Angry Birds (Web ver.) Hacks: Modify the Level Data!" /><meta property="og:description" content="An example : ADD 10 MORE BLACK BIRDS! Bookmark following bookmarklet. Bookmarklet: Add more 10 bl..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/VerySimpleLevelExample.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2011/05/angry-birds-web-ver-hacks-modify-level.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -60,103 +59,101 @@ Bookmarklet:
 
 <h3>Original source code</h3>
 
-<code><pre class="prettyprint">
-(function () {
-    var RealXMLHttpRequest = XMLHttpRequest;
-    var FakeXMLHttpRequest = function () {
-        this._req = new RealXMLHttpRequest();
-    };
-    FakeXMLHttpRequest.prototype = {
-        abort: function () {
-            this._req.abort.apply(this._req, arguments);
-        },
-        getAllResponseHeaders: function () {
-            return this._req.getAllResponseHeaders.apply(this._req, arguments);
-        },
-        open: function () {
-            this._url = arguments[1];
-            this._req.open.apply(this._req, arguments);
-        },
-        overrideMimeType: function () {
-            this._req.overrideMimeType.apply(this._req, arguments);
-        },
-        send: function () {
-            this._req.send.apply(this._req, arguments);
-        },
-        sendAsBinary: function () {
-            this._req.sendAsBinary.apply(this._req, arguments);
-        },
-        setRequestHeader: function () {
-            this._req.setRequestHeader.apply(this._req, arguments);
-        },
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">RealXMLHttpRequest</span> <span class="o">=</span> <span class="nx">XMLHttpRequest</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">FakeXMLHttpRequest</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RealXMLHttpRequest</span><span class="p">();</span>
+    <span class="p">};</span>
+    <span class="nx">FakeXMLHttpRequest</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">abort</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">abort</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">getAllResponseHeaders</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">getAllResponseHeaders</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">open</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_url</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">open</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">overrideMimeType</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">overrideMimeType</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">send</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">send</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">sendAsBinary</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">sendAsBinary</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="na">setRequestHeader</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="p">},</span>
 
-        get multipart() {
-            return this._req.multipart;
-        },
-        set multipart(value) {
-            this._req.multipart = value;
-        },
-        get onreadystatechange() {
-            return this._req.onreadystatechange;
-        },
-        set onreadystatechange(value) {
-            this._req.onreadystatechange = value;
-        },
-        get readyState() {
-            return this._req.readyState;
-        },
-        get response() {
-            return this._req.response;
-        },
-        get responseText() {
-            return this._hookResponseText(this._req.responseText);
-        },
-        get responseXML() {
-            return this._req.responseXML;
-        },
-        get status() {
-            return this._req.status;
-        },
-        get statusText() {
-            return this._req.statusText;
-        },
-        get upload() {
-            return this._req.upload;
-        },
-        get withCredentials() {
-            return this._req.withCredentials;
-        },
+        <span class="kd">get</span> <span class="nx">multipart</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">multipart</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">set</span> <span class="nx">multipart</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">multipart</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">onreadystatechange</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">onreadystatechange</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">set</span> <span class="nx">onreadystatechange</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">readyState</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">readyState</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">response</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">response</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">responseText</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_hookResponseText</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">responseXML</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">responseXML</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">status</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">status</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">statusText</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">statusText</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">upload</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">upload</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="kd">get</span> <span class="nx">withCredentials</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_req</span><span class="p">.</span><span class="nx">withCredentials</span><span class="p">;</span>
+        <span class="p">},</span>
 
-        _hookResponseText: function (responseText) {
-            try {
-                if (/Level[0-9]+.json$/.test(this._url)) {
-                    var jsonData = JSON.parse(responseText);
-                    jsonData = this._modifyAngryBirdLevel(jsonData);
-                    responseText = JSON.stringify(jsonData);
-                }
-            } catch (ex) {
-            }
-            return responseText;
-        },
-        _modifyAngryBirdLevel: function(jsonData) {
-            // Add 10 more BIRD_BLACK.
-            for (var i = 0; i &lt; 10; i++) {
-                jsonData.counts.birds ++;
-                jsonData.world[&quot;bird_&quot; + jsonData.counts.birds] = {
-                    &quot;angle&quot;: 0,
-                    &quot;id&quot;: &quot;BIRD_BLACK&quot;,
-                    &quot;x&quot;: jsonData.world[&quot;bird_1&quot;].x,
-                    &quot;y&quot;: jsonData.world[&quot;bird_1&quot;].y
-                };
-            }
-            return jsonData;
-        },
+        <span class="na">_hookResponseText</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">responseText</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="sr">/Level</span><span class="se">[</span><span class="sr">0-9</span><span class="se">]</span><span class="sr">+.json$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_url</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">jsonData</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">responseText</span><span class="p">);</span>
+                    <span class="nx">jsonData</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_modifyAngryBirdLevel</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">);</span>
+                    <span class="nx">responseText</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">responseText</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="na">_modifyAngryBirdLevel</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Add 10 more BIRD_BLACK.</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">jsonData</span><span class="p">.</span><span class="nx">counts</span><span class="p">.</span><span class="nx">birds</span> <span class="o">++</span><span class="p">;</span>
+                <span class="nx">jsonData</span><span class="p">.</span><span class="nx">world</span><span class="p">[</span><span class="dl">"</span><span class="s2">bird_</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nx">counts</span><span class="p">.</span><span class="nx">birds</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="dl">"</span><span class="s2">angle</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BIRD_BLACK</span><span class="dl">"</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nx">world</span><span class="p">[</span><span class="dl">"</span><span class="s2">bird_1</span><span class="dl">"</span><span class="p">].</span><span class="nx">x</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nx">world</span><span class="p">[</span><span class="dl">"</span><span class="s2">bird_1</span><span class="dl">"</span><span class="p">].</span><span class="nx">y</span>
+                <span class="p">};</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">jsonData</span><span class="p">;</span>
+        <span class="p">},</span>
 
-        dummy: null
-    };
-    window.XMLHttpRequest = FakeXMLHttpRequest;
-})();
-</pre></code>
+        <span class="na">dummy</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">};</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span> <span class="o">=</span> <span class="nx">FakeXMLHttpRequest</span><span class="p">;</span>
+<span class="p">})();</span></code></pre></figure>
 
 <h3>Principle: Hooking XMLHttpRequest</h3>
 
@@ -178,73 +175,68 @@ So, I hooked <code>XMLHttpRequest</code> class to modify the level data.
 <p>
 You can also modify blocks. Following example converts stone and wood blocks to ice blocks.
 </p>
-
-<code><pre class="prettyprint">
-        _modifyAngryBirdLevel: function(jsonData) {
-            // ...
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">        <span class="nx">_modifyAngryBirdLevel</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
             
-            // Add 10 more BIRD_BLACK.
-            for (var i = 1; i &lt; jsonData.counts.blocks; i++) {
-                jsonData.world[&quot;block_&quot; + i].id = jsonData.world[&quot;block_&quot; + i].id.replace(/(STONE|WOOD)_BLOCK/, "ICE_BLOCK");
-            }
-            return jsonData;
-        },
-</pre></code>
+            <span class="c1">// Add 10 more BIRD_BLACK.</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nx">counts</span><span class="p">.</span><span class="nx">blocks</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">jsonData</span><span class="p">.</span><span class="nx">world</span><span class="p">[</span><span class="dl">"</span><span class="s2">block_</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">i</span><span class="p">].</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nx">world</span><span class="p">[</span><span class="dl">"</span><span class="s2">block_</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">i</span><span class="p">].</span><span class="nx">id</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">(</span><span class="sr">STONE|WOOD</span><span class="se">)</span><span class="sr">_BLOCK/</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ICE_BLOCK</span><span class="dl">"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="nx">jsonData</span><span class="p">;</span>
+        <span class="p">},</span></code></pre></figure>
 
 <p>
 You can also make your <em>own</em> custom levels!!
 </p>
 
-<code><pre class="prettyprint">
-        _modifyAngryBirdLevel: function(jsonData) {
-            // A very very simple level: 1 black bird vs 1 pig.
-            return {
-              "camera": [
-                 {
-                    "bottom": -45,
-                    "id": "Slingshot",
-                    "left": -60,
-                    "right": 4,
-                    "top": -45,
-                    "x": 30,
-                    "y": -4
-                 },
-                 {
-                    "bottom": -45,
-                    "id": "Castle",
-                    "left": 10,
-                    "right": 60,
-                    "top": -45,
-                    "x": 30,
-                    "y": -4
-                 }
-              ],
-              "counts": {
-                 "birds": 1,
-                 "blocks": 1
-              },
-              "id": jsonData.id,
-              "scoreEagle": 40000,
-              "scoreGold": 60000,
-              "scoreSilver": 50000,
-              "theme": "BACKGROUND_BLUE_GRASS",
-              "world": {
-                "bird_1": {
-                  "angle": 0,
-                  "id": "BIRD_BLACK",
-                  "x": 10,
-                  "y": -1
-                },
-                "block_1": {
-                  "angle": 0,
-                  "id": "PIG_BASIC_MEDIUM",
-                  "x": 50,
-                  "y": -1
-                }
-              }
-            };
-        },
-</pre></code>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">        <span class="nx">_modifyAngryBirdLevel</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// A very very simple level: 1 black bird vs 1 pig.</span>
+            <span class="k">return</span> <span class="p">{</span>
+              <span class="dl">"</span><span class="s2">camera</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+                 <span class="p">{</span>
+                    <span class="dl">"</span><span class="s2">bottom</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Slingshot</span><span class="dl">"</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">right</span><span class="dl">"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">top</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span>
+                 <span class="p">},</span>
+                 <span class="p">{</span>
+                    <span class="dl">"</span><span class="s2">bottom</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Castle</span><span class="dl">"</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">right</span><span class="dl">"</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">top</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                    <span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span>
+                 <span class="p">}</span>
+              <span class="p">],</span>
+              <span class="dl">"</span><span class="s2">counts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="dl">"</span><span class="s2">birds</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                 <span class="dl">"</span><span class="s2">blocks</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span>
+              <span class="p">},</span>
+              <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="nx">jsonData</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+              <span class="dl">"</span><span class="s2">scoreEagle</span><span class="dl">"</span><span class="p">:</span> <span class="mi">40000</span><span class="p">,</span>
+              <span class="dl">"</span><span class="s2">scoreGold</span><span class="dl">"</span><span class="p">:</span> <span class="mi">60000</span><span class="p">,</span>
+              <span class="dl">"</span><span class="s2">scoreSilver</span><span class="dl">"</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+              <span class="dl">"</span><span class="s2">theme</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BACKGROUND_BLUE_GRASS</span><span class="dl">"</span><span class="p">,</span>
+              <span class="dl">"</span><span class="s2">world</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">"</span><span class="s2">bird_1</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="dl">"</span><span class="s2">angle</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BIRD_BLACK</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">},</span>
+                <span class="dl">"</span><span class="s2">block_1</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="dl">"</span><span class="s2">angle</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PIG_BASIC_MEDIUM</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="p">}</span>
+              <span class="p">}</span>
+            <span class="p">};</span>
+        <span class="p">},</span></code></pre></figure>
 
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <img src="/images/VerySimpleLevelExample.png" />
@@ -285,24 +277,9 @@ I think ROVIO will encrypt all level files to avoid this hack ...
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
-      <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
-      <span class="post-meta">2017-07-22</span>
-      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">
-      <span class="post-meta">2010-11-27</span>
-      <span class="post-title">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</span><span class="post-thumb" data-image-path="/images/traditional-addons-are-required-browser-restart.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
@@ -310,9 +287,24 @@ I think ROVIO will encrypt all level files to avoid this hack ...
       <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2017/03/look-back-13-year-ago-of-confmania.html">
-      <span class="post-meta">2017-03-24</span>
-      <span class="post-title">Look back 13 years ago of Configuration Mania</span><span class="post-thumb" data-image-path="/images/201703-lookbackconfmania-ext.svg"></span></a>
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">
+      <span class="post-meta">2010-11-27</span>
+      <span class="post-title">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</span><span class="post-thumb" data-image-path="/images/traditional-addons-are-required-browser-restart.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
   </li>
 </ul>
 </aside>

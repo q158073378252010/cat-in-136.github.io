@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>XMLSerializer().serializeToString() is a simple useful HTML2XML Converter.</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html" />
   <meta property="og:title" content="XMLSerializer().serializeToString() is a simple useful HTML2XML Converter." /><meta property="og:description" content="XMLSerializer().serializeToString() method converts DOM tree to text. (new XMLSerializer()).seria..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/12/xmlserializerserializetostring-is.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -48,8 +47,7 @@
 </p>
 
 <div>
-<pre class="prettyprint"><code>(new XMLSerializer()).serializeToString(document.documentElement)
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="k">new</span> <span class="nx">XMLSerializer</span><span class="p">()).</span><span class="nx">serializeToString</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">)</span></code></pre></figure>
 <a href="javascript:(function(){prompt('', (new XMLSerializer()).serializeToString(document.documentElement))})();">bookmarklet</a>
 </div>
 
@@ -60,6 +58,7 @@ If <code>XMLSerializer().serializeToString()</code> is applied to a HTML documen
 it returns a XML-converted source code.
 For example, <code>img</code> elements ("<code>&lt;img ...&gt;</code>") are converted to <a href="http://www.w3.org/TR/2008/REC-xml-20081126/#NT-EmptyElemTag">the XML's empty-element tag form</a> : "<code>&lt;img ... <strong style="background-color: #ff0;">/</strong>&gt;</code>"
 </p>
+
   </div>
 
   <footer class="post-footer">
@@ -96,19 +95,19 @@ For example, <code>img</code> elements ("<code>&lt;img ...&gt;</code>") are conv
       <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/10/handling-namespaceless-xml-file-with.html">
-      <span class="post-meta">2010-10-27</span>
-      <span class="post-title">Handling namespaceless XML file with SAX</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
       <span class="post-meta">2015-07-04</span>
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
-      <span class="post-meta">2014-04-27</span>
-      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
+    <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
+      <span class="post-meta">2010-08-19</span>
+      <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/01/firefox-restartless-bootstrap-stylesheet-dynamic-insertion.html">
+      <span class="post-meta">2014-01-12</span>
+      <span class="post-title">Firefox restartless (bootstrap) 拡張で動的に stylesheet を追加削除する方法</span></a>
   </li>
 </ul>
 </aside>

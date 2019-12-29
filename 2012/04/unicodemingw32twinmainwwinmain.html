@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html" />
   <meta property="og:title" content="UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜" /><meta property="og:description" content="本記事はPitfall of &quot;Unicode in Mingw32&quot;の和訳+αです。 あまりにもmingw32での「undefined reference to `WinMain@16&#39;」の日..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/04/unicodemingw32twinmainwwinmain.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -53,16 +52,15 @@ Mingw32 は完全には Unicode に対応していない。いくつかよく知
 </p>
 
 <h4><code>wWinMain</code>が使えない</h4>
-<pre class="prettyprint"><code>// NG:
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow)
-{
-//...
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// NG:</span>
+<span class="kt">int</span> <span class="n">WINAPI</span> <span class="nf">wWinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span> <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span> <span class="n">LPWSTR</span> <span class="n">lpCmdLine</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nCmdShow</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c1">//...</span>
 
-// OK:
-int main(int argc, char** argv)
-{
-//...
-</code></pre>
+<span class="c1">// OK:</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c1">//...</span></code></pre></figure>
 <p>
 Mingw32では、<code>wWinMain</code>関数は使えない<span style="font-size: smaller;">（→<a href="http://cat-in-136.blogspot.jp/2010/03/mingw32undefined-reference-to-winmain16.html" title="mingw32での「undefined reference to `WinMain@16'」" rel="nofollow">以前の記事</a>で述べたとおり）</span>。さらに<code>wmain</code>関数も同じく使えない。なので Unicode 環境においては、エントリー関数(entry function)として<code>main</code>関数を使うしかない。
 </p>
@@ -71,10 +69,9 @@ Mingw32では、<code>wWinMain</code>関数は使えない<span style="font-size
 </p>
 
 <h5><code>hInstance</code>を<code>main</code>関数でどうやって取得するのか?</h5>
-<pre class="prettyprint"><code>HINSTANCE hInstance;
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">;</span>
 
-hInstance = GetModuleHandle(NULL);
-</code></pre>
+<span class="n">hInstance</span> <span class="o">=</span> <span class="n">GetModuleHandle</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span></code></pre></figure>
 <p>
 なお、<code>wWinMain</code>の引数<code>hPrevInstance</code>は Win32 環境では常に<code>NULL</code>であることに留意すること。
 </p>
@@ -86,47 +83,45 @@ hInstance = GetModuleHandle(NULL);
 </p>
 
 <h4><code>__wargv</code>も使えないがどうするのか?</h4>
-<pre class="prettyprint"><code>// NG:
-for (i = 0; i &lt; __argc; i++) {
-    arg = __wargv[i];
-    //...
-}
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// NG:</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">__argc</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="n">__wargv</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
 
-// OK:
-INT argc;
-WCHAR **argv;
-wargv = CommandLineToArgvW(GetCommandLineW(), &amp;argc);
-for (i = 0; i &lt; argc; i++) {
-    arg = wargv[i];
-    //...
-}
-LocalFree(wargv);
-</code></pre>
+<span class="c1">// OK:</span>
+<span class="n">INT</span> <span class="n">argc</span><span class="p">;</span>
+<span class="n">WCHAR</span> <span class="o">**</span><span class="n">argv</span><span class="p">;</span>
+<span class="n">wargv</span> <span class="o">=</span> <span class="n">CommandLineToArgvW</span><span class="p">(</span><span class="n">GetCommandLineW</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">argc</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">argc</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">arg</span> <span class="o">=</span> <span class="n">wargv</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+<span class="n">LocalFree</span><span class="p">(</span><span class="n">wargv</span><span class="p">);</span></code></pre></figure>
 <p>
 <code>__wargv</code>もMingw32では使えない。引数リストを取得するには<code>CommandLineToArgvW</code> 関数と<code>GetCommandLineW</code>関数を使う。
 なお、ここで<code>CommandLineToArgv<strong>A</strong></code>という名前の関数は Win32 API には定義されていないので注意すること。
 </p>
 
 <h4>例：_tMainWin問題の私なりの解決策</h4>
-<pre class="prettyprint"><code>int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
-{
-    // ...
-}
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">WINAPI</span> <span class="nf">_tWinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span> <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span> <span class="n">LPTSTR</span> <span class="n">lpCmdLine</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nCmdShow</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
 
-#ifdef _UNICODE
+<span class="cp">#ifdef _UNICODE
 #ifndef _tWinMain // Mingw32 does not implement wide startup module
-int main(int argc, char **argv)
-{
-    HINSTANCE hInstance = GetModuleHandle(NULL);
-    int retval = 0;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">HINSTANCE</span> <span class="n">hInstance</span> <span class="o">=</span> <span class="n">GetModuleHandle</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">retval</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-    retval = _tWinMain(hInstance, NULL, _T("") /* lpCmdLine is not available*/, SW_SHOW);
+    <span class="n">retval</span> <span class="o">=</span> <span class="n">_tWinMain</span><span class="p">(</span><span class="n">hInstance</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s">""</span><span class="p">)</span> <span class="cm">/* lpCmdLine is not available*/</span><span class="p">,</span> <span class="n">SW_SHOW</span><span class="p">);</span>
 
-    return retval;
-}
-#endif
-#endif /* _UNICODE */
-</code></pre>
+    <span class="k">return</span> <span class="n">retval</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">#endif
+#endif </span><span class="cm">/* _UNICODE */</span></code></pre></figure>
 
 <p>
 なお、概述のように<code>lpCmdLine</code>と完全に同じものは簡単には得られないので<code>lpCmdLine</code>は使わない、という前提で使う。
@@ -160,24 +155,19 @@ int main(int argc, char **argv)
       <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2018/04/rust-error-handling-question.html">
       <span class="post-meta">2018-04-29</span>
       <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
-      <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">
+      <span class="post-meta">2010-05-02</span>
+      <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
@@ -185,9 +175,14 @@ int main(int argc, char **argv)
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/05/how-to-launch-application-in-terminal.html">
-      <span class="post-meta">2010-05-02</span>
-      <span class="post-title">How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</span></a>
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
+      <span class="post-meta">2017-07-22</span>
+      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 </ul>
 </aside>

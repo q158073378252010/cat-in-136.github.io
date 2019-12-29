@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>C言語の構造体を構造分析したい〜静的解析としての doxygen</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html" />
   <meta property="og:title" content="C言語の構造体を構造分析したい〜静的解析としての doxygen" /><meta property="og:description" content="ソースコードからドキュメント生成するツールとしていにしえの時代から有名な doxygen には xml 出力があるので、静的解析ツールの補助として いろいろと活用ができそう。 使い方 $ dox..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/04/c-struct-with-doxygen-xml.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -55,7 +54,7 @@
 <p>で生成された Doxyfile ないしすでにある Doxyfile において
 <code>GENERATE_XML</code> を <code>YES</code> にして、</p>
 
-<pre class="prettyprint"><code># If the GENERATE_XML tag is set to YES doxygen will generate an XML file that
+<pre><code># If the GENERATE_XML tag is set to YES doxygen will generate an XML file that
 # captures the structure of the code including all documentation.
 # The default value is: NO.
 
@@ -72,24 +71,23 @@ html 出力などほかの出力も有効にしているならば、一緒に出
 
 <p>構造体 <code>struct _Foo</code> にどんなメンバがあるかを構造分析したい：</p>
 
-<pre class="prettyprint lang-c"><code>// foobar.h
-typedef enum _BarType {
-  BAR_TYPE_A,
-  BAR_TYPE_B
-} BarType;
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// foobar.h</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">_BarType</span> <span class="p">{</span>
+  <span class="n">BAR_TYPE_A</span><span class="p">,</span>
+  <span class="n">BAR_TYPE_B</span>
+<span class="p">}</span> <span class="n">BarType</span><span class="p">;</span>
 
-#define NUM_B 3
+<span class="cp">#define NUM_B 3
+</span>
+<span class="k">typedef</span> <span class="k">union</span> <span class="n">_Bar</span> <span class="p">{</span>
+  <span class="n">uint</span> <span class="n">a</span><span class="p">;</span>
+  <span class="n">uint</span> <span class="n">b</span><span class="p">[</span><span class="n">NUM_B</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">Bar</span><span class="p">;</span>
 
-typedef union _Bar {
-  uint a;
-  uint b[NUM_B];
-} Bar;
-
-typedef struct _Foo {
-  BarType bartype;
-  Bar bar;
-} Foo;
-</code></pre>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">_Foo</span> <span class="p">{</span>
+  <span class="n">BarType</span> <span class="n">bartype</span><span class="p">;</span>
+  <span class="n">Bar</span> <span class="n">bar</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Foo</span><span class="p">;</span></code></pre></figure>
 
 <p>doxygen の実行</p>
 
@@ -118,63 +116,62 @@ compound.xsd  index.xml      struct__Foo.xml
 
 <p>構造体 <code>struct _Foo</code> の構造を見るには <code>struct__Foo.xml</code> を見るという風な単純な構造となっている：</p>
 
-<pre class="prettyprint lang-xml"><code>&lt;?xml version='1.0' encoding='UTF-8' standalone='no'?&gt;
-&lt;doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6"&gt;
-  &lt;compounddef id="struct__Foo" kind="struct" prot="public"&gt;
-    &lt;compoundname&gt;_Foo&lt;/compoundname&gt;
-      &lt;sectiondef kind="public-attrib"&gt;
-      &lt;memberdef kind="variable" id="struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d" prot="public" static="no" mutable="no"&gt;
-        &lt;type&gt;BarType&lt;/type&gt;
-        &lt;definition&gt;BarType _Foo::bartype&lt;/definition&gt;
-        &lt;argsstring&gt;&lt;/argsstring&gt;
-        &lt;name&gt;bartype&lt;/name&gt;
-        &lt;briefdescription&gt;
-        &lt;/briefdescription&gt;
-        &lt;detaileddescription&gt;
-        &lt;/detaileddescription&gt;
-        &lt;inbodydescription&gt;
-        &lt;/inbodydescription&gt;
-        &lt;location file="/tmp/doxytest/foobar.h" line="12" column="1" bodyfile="/tmp/doxytest/foobar.h" bodystart="12" bodyend="-1"/&gt;
-      &lt;/memberdef&gt;
-      &lt;memberdef kind="variable" id="struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8" prot="public" static="no" mutable="no"&gt;
-        &lt;type&gt;&lt;ref refid="union__Bar" kindref="compound"&gt;Bar&lt;/ref&gt;&lt;/type&gt;
-        &lt;definition&gt;Bar _Foo::bar&lt;/definition&gt;
-        &lt;argsstring&gt;&lt;/argsstring&gt;
-        &lt;name&gt;bar&lt;/name&gt;
-        &lt;briefdescription&gt;
-        &lt;/briefdescription&gt;
-        &lt;detaileddescription&gt;
-        &lt;/detaileddescription&gt;
-        &lt;inbodydescription&gt;
-        &lt;/inbodydescription&gt;
-        &lt;location file="/tmp/doxytest/foobar.h" line="13" column="1" bodyfile="/tmp/doxytest/foobar.h" bodystart="13" bodyend="-1"/&gt;
-      &lt;/memberdef&gt;
-      &lt;/sectiondef&gt;
-    &lt;briefdescription&gt;
-    &lt;/briefdescription&gt;
-    &lt;detaileddescription&gt;
-    &lt;/detaileddescription&gt;
-    &lt;collaborationgraph&gt;
-      &lt;node id="4"&gt;
-        &lt;label&gt;_Bar&lt;/label&gt;
-        &lt;link refid="union__Bar"/&gt;
-      &lt;/node&gt;
-      &lt;node id="3"&gt;
-        &lt;label&gt;_Foo&lt;/label&gt;
-        &lt;link refid="struct__Foo"/&gt;
-        &lt;childnode refid="4" relation="usage"&gt;
-          &lt;edgelabel&gt;bar&lt;/edgelabel&gt;
-        &lt;/childnode&gt;
-      &lt;/node&gt;
-    &lt;/collaborationgraph&gt;
-    &lt;location file="/tmp/doxytest/foobar.h" line="11" column="1" bodyfile="/tmp/doxytest/foobar.h" bodystart="11" bodyend="14"/&gt;
-    &lt;listofallmembers&gt;
-      &lt;member refid="struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8" prot="public" virt="non-virtual"&gt;&lt;scope&gt;_Foo&lt;/scope&gt;&lt;name&gt;bar&lt;/name&gt;&lt;/member&gt;
-      &lt;member refid="struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d" prot="public" virt="non-virtual"&gt;&lt;scope&gt;_Foo&lt;/scope&gt;&lt;name&gt;bartype&lt;/name&gt;&lt;/member&gt;
-    &lt;/listofallmembers&gt;
-  &lt;/compounddef&gt;
-&lt;/doxygen&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version='1.0' encoding='UTF-8' standalone='no'?&gt;</span>
+<span class="nt">&lt;doxygen</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">"compound.xsd"</span> <span class="na">version=</span><span class="s">"1.8.6"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;compounddef</span> <span class="na">id=</span><span class="s">"struct__Foo"</span> <span class="na">kind=</span><span class="s">"struct"</span> <span class="na">prot=</span><span class="s">"public"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;compoundname&gt;</span>_Foo<span class="nt">&lt;/compoundname&gt;</span>
+      <span class="nt">&lt;sectiondef</span> <span class="na">kind=</span><span class="s">"public-attrib"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;memberdef</span> <span class="na">kind=</span><span class="s">"variable"</span> <span class="na">id=</span><span class="s">"struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d"</span> <span class="na">prot=</span><span class="s">"public"</span> <span class="na">static=</span><span class="s">"no"</span> <span class="na">mutable=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;type&gt;</span>BarType<span class="nt">&lt;/type&gt;</span>
+        <span class="nt">&lt;definition&gt;</span>BarType _Foo::bartype<span class="nt">&lt;/definition&gt;</span>
+        <span class="nt">&lt;argsstring&gt;&lt;/argsstring&gt;</span>
+        <span class="nt">&lt;name&gt;</span>bartype<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;briefdescription&gt;</span>
+        <span class="nt">&lt;/briefdescription&gt;</span>
+        <span class="nt">&lt;detaileddescription&gt;</span>
+        <span class="nt">&lt;/detaileddescription&gt;</span>
+        <span class="nt">&lt;inbodydescription&gt;</span>
+        <span class="nt">&lt;/inbodydescription&gt;</span>
+        <span class="nt">&lt;location</span> <span class="na">file=</span><span class="s">"/tmp/doxytest/foobar.h"</span> <span class="na">line=</span><span class="s">"12"</span> <span class="na">column=</span><span class="s">"1"</span> <span class="na">bodyfile=</span><span class="s">"/tmp/doxytest/foobar.h"</span> <span class="na">bodystart=</span><span class="s">"12"</span> <span class="na">bodyend=</span><span class="s">"-1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/memberdef&gt;</span>
+      <span class="nt">&lt;memberdef</span> <span class="na">kind=</span><span class="s">"variable"</span> <span class="na">id=</span><span class="s">"struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8"</span> <span class="na">prot=</span><span class="s">"public"</span> <span class="na">static=</span><span class="s">"no"</span> <span class="na">mutable=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;type&gt;&lt;ref</span> <span class="na">refid=</span><span class="s">"union__Bar"</span> <span class="na">kindref=</span><span class="s">"compound"</span><span class="nt">&gt;</span>Bar<span class="nt">&lt;/ref&gt;&lt;/type&gt;</span>
+        <span class="nt">&lt;definition&gt;</span>Bar _Foo::bar<span class="nt">&lt;/definition&gt;</span>
+        <span class="nt">&lt;argsstring&gt;&lt;/argsstring&gt;</span>
+        <span class="nt">&lt;name&gt;</span>bar<span class="nt">&lt;/name&gt;</span>
+        <span class="nt">&lt;briefdescription&gt;</span>
+        <span class="nt">&lt;/briefdescription&gt;</span>
+        <span class="nt">&lt;detaileddescription&gt;</span>
+        <span class="nt">&lt;/detaileddescription&gt;</span>
+        <span class="nt">&lt;inbodydescription&gt;</span>
+        <span class="nt">&lt;/inbodydescription&gt;</span>
+        <span class="nt">&lt;location</span> <span class="na">file=</span><span class="s">"/tmp/doxytest/foobar.h"</span> <span class="na">line=</span><span class="s">"13"</span> <span class="na">column=</span><span class="s">"1"</span> <span class="na">bodyfile=</span><span class="s">"/tmp/doxytest/foobar.h"</span> <span class="na">bodystart=</span><span class="s">"13"</span> <span class="na">bodyend=</span><span class="s">"-1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/memberdef&gt;</span>
+      <span class="nt">&lt;/sectiondef&gt;</span>
+    <span class="nt">&lt;briefdescription&gt;</span>
+    <span class="nt">&lt;/briefdescription&gt;</span>
+    <span class="nt">&lt;detaileddescription&gt;</span>
+    <span class="nt">&lt;/detaileddescription&gt;</span>
+    <span class="nt">&lt;collaborationgraph&gt;</span>
+      <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">"4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>_Bar<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">refid=</span><span class="s">"union__Bar"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/node&gt;</span>
+      <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>_Foo<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;link</span> <span class="na">refid=</span><span class="s">"struct__Foo"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;childnode</span> <span class="na">refid=</span><span class="s">"4"</span> <span class="na">relation=</span><span class="s">"usage"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;edgelabel&gt;</span>bar<span class="nt">&lt;/edgelabel&gt;</span>
+        <span class="nt">&lt;/childnode&gt;</span>
+      <span class="nt">&lt;/node&gt;</span>
+    <span class="nt">&lt;/collaborationgraph&gt;</span>
+    <span class="nt">&lt;location</span> <span class="na">file=</span><span class="s">"/tmp/doxytest/foobar.h"</span> <span class="na">line=</span><span class="s">"11"</span> <span class="na">column=</span><span class="s">"1"</span> <span class="na">bodyfile=</span><span class="s">"/tmp/doxytest/foobar.h"</span> <span class="na">bodystart=</span><span class="s">"11"</span> <span class="na">bodyend=</span><span class="s">"14"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;listofallmembers&gt;</span>
+      <span class="nt">&lt;member</span> <span class="na">refid=</span><span class="s">"struct__Foo_1a21f3b7dab2816e7ea7938baf94e643c8"</span> <span class="na">prot=</span><span class="s">"public"</span> <span class="na">virt=</span><span class="s">"non-virtual"</span><span class="nt">&gt;&lt;scope&gt;</span>_Foo<span class="nt">&lt;/scope&gt;&lt;name&gt;</span>bar<span class="nt">&lt;/name&gt;&lt;/member&gt;</span>
+      <span class="nt">&lt;member</span> <span class="na">refid=</span><span class="s">"struct__Foo_1a8f8833abcfaa7b946be2b13d9e4ef73d"</span> <span class="na">prot=</span><span class="s">"public"</span> <span class="na">virt=</span><span class="s">"non-virtual"</span><span class="nt">&gt;&lt;scope&gt;</span>_Foo<span class="nt">&lt;/scope&gt;&lt;name&gt;</span>bartype<span class="nt">&lt;/name&gt;&lt;/member&gt;</span>
+    <span class="nt">&lt;/listofallmembers&gt;</span>
+  <span class="nt">&lt;/compounddef&gt;</span>
+<span class="nt">&lt;/doxygen&gt;</span></code></pre></figure>
 
 <p><code>memberdef</code> 要素の中身を探していけば良い。他のファイルにその定義がある場合は <code>ref</code> 要素
 があるようなので再帰的に処理を行えば探せる。</p>
@@ -182,95 +179,94 @@ compound.xsd  index.xml      struct__Foo.xml
 <p>というわけで、さくっと doxygen の xml 出力を利用して、<a href="https://gist.github.com/cat-in-136/11336549">C言語構造体の構造を JSON で吐き出すスクリプトを書いてみた</a>。
 100 行未満で書けるのだから doxygen の xml 出力は強力である。</p>
 
-<pre class="prettyprint lang-ruby"><code>#!/usr/bin/ruby
-# vim: filetype=ruby fileencoding=UTF-8 shiftwidth=2 tabstop=2 autoindent expandtab
-# 
-# MIT License
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/usr/bin/ruby</span>
+<span class="c1"># vim: filetype=ruby fileencoding=UTF-8 shiftwidth=2 tabstop=2 autoindent expandtab</span>
+<span class="c1"># </span>
+<span class="c1"># MIT License</span>
 
-require 'rexml/document'
-require 'json'
+<span class="nb">require</span> <span class="s1">'rexml/document'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
 
-class DoxyStructXml
-  def initialize
-    @structs = {}
-  end
-  attr_reader :structs
+<span class="k">class</span> <span class="nc">DoxyStructXml</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@structs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">end</span>
+  <span class="nb">attr_reader</span> <span class="ss">:structs</span>
 
-  def load_doxy_struct_xml_file(file)
-    File.open(file, 'r') do |f|
-      doc = REXML::Document.new(f)
+  <span class="k">def</span> <span class="nf">load_doxy_struct_xml_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+      <span class="n">doc</span> <span class="o">=</span> <span class="no">REXML</span><span class="o">::</span><span class="no">Document</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
-      id = doc.elements['doxygen/compounddef'].attributes['id']
+      <span class="nb">id</span> <span class="o">=</span> <span class="n">doc</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'doxygen/compounddef'</span><span class="p">].</span><span class="nf">attributes</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
 
-      members = []
-      doc.elements.each('doxygen/compounddef//memberdef') do |elem|
-        member = {}
-        if elem.elements['type/ref']
-          member[:typeref] = elem.elements['type/ref'].attributes['refid']
-          member[:type] = elem.elements['type/ref'].text
-        else
-          member[:type] = elem.elements['type'].text
-        end
-        member[:argsstring] = elem.elements['argsstring'].text
-        member[:name] = elem.elements['name'].text
+      <span class="n">members</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">doc</span><span class="p">.</span><span class="nf">elements</span><span class="p">.</span><span class="nf">each</span><span class="p">(</span><span class="s1">'doxygen/compounddef//memberdef'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">elem</span><span class="o">|</span>
+        <span class="n">member</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">elem</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'type/ref'</span><span class="p">]</span>
+          <span class="n">member</span><span class="p">[</span><span class="ss">:typeref</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'type/ref'</span><span class="p">].</span><span class="nf">attributes</span><span class="p">[</span><span class="s1">'refid'</span><span class="p">]</span>
+          <span class="n">member</span><span class="p">[</span><span class="ss">:type</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'type/ref'</span><span class="p">].</span><span class="nf">text</span>
+        <span class="k">else</span>
+          <span class="n">member</span><span class="p">[</span><span class="ss">:type</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'type'</span><span class="p">].</span><span class="nf">text</span>
+        <span class="k">end</span>
+        <span class="n">member</span><span class="p">[</span><span class="ss">:argsstring</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'argsstring'</span><span class="p">].</span><span class="nf">text</span>
+        <span class="n">member</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'name'</span><span class="p">].</span><span class="nf">text</span>
 
-        members &lt;&lt; member
-      end
+        <span class="n">members</span> <span class="o">&lt;&lt;</span> <span class="n">member</span>
+      <span class="k">end</span>
 
-      @structs[id] = {
-        :name =&gt; doc.elements['doxygen/compounddef/compoundname'].text,
-        :members =&gt; members
-      }
-    end
-  end
+      <span class="vi">@structs</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="n">doc</span><span class="p">.</span><span class="nf">elements</span><span class="p">[</span><span class="s1">'doxygen/compounddef/compoundname'</span><span class="p">].</span><span class="nf">text</span><span class="p">,</span>
+        <span class="ss">:members</span> <span class="o">=&gt;</span> <span class="n">members</span>
+      <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
 
-  def data(struct_id)
-    d = {}
-    d[:id] = struct_id
-    d[:name] = @structs[struct_id][:name]
-    d[:members] = []
-    @structs[struct_id][:members].each do |member|
-      m = {}
-      m[:name] = member[:name]
-      m[:type] = member[:type]
-      m[:name] &lt;&lt; member[:argsstring] if member[:argsstring]
-      if member[:typeref]
-        m[:type_data] = data(member[:typeref])
-      end
-      d[:members] &lt;&lt; m
-    end
+  <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="n">struct_id</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">d</span><span class="p">[</span><span class="ss">:id</span><span class="p">]</span> <span class="o">=</span> <span class="n">struct_id</span>
+    <span class="n">d</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@structs</span><span class="p">[</span><span class="n">struct_id</span><span class="p">][</span><span class="ss">:name</span><span class="p">]</span>
+    <span class="n">d</span><span class="p">[</span><span class="ss">:members</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="vi">@structs</span><span class="p">[</span><span class="n">struct_id</span><span class="p">][</span><span class="ss">:members</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">member</span><span class="o">|</span>
+      <span class="n">m</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="n">m</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span> <span class="o">=</span> <span class="n">member</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span>
+      <span class="n">m</span><span class="p">[</span><span class="ss">:type</span><span class="p">]</span> <span class="o">=</span> <span class="n">member</span><span class="p">[</span><span class="ss">:type</span><span class="p">]</span>
+      <span class="n">m</span><span class="p">[</span><span class="ss">:name</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">member</span><span class="p">[</span><span class="ss">:argsstring</span><span class="p">]</span> <span class="k">if</span> <span class="n">member</span><span class="p">[</span><span class="ss">:argsstring</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">member</span><span class="p">[</span><span class="ss">:typeref</span><span class="p">]</span>
+        <span class="n">m</span><span class="p">[</span><span class="ss">:type_data</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">(</span><span class="n">member</span><span class="p">[</span><span class="ss">:typeref</span><span class="p">])</span>
+      <span class="k">end</span>
+      <span class="n">d</span><span class="p">[</span><span class="ss">:members</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">m</span>
+    <span class="k">end</span>
 
-    d
-  end
-end
+    <span class="n">d</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-if $0 == __FILE__
-  doxy_struct_xml = DoxyStructXml.new
-  Dir.glob('{struct,union}_*.xml') do |file|
-    doxy_struct_xml.load_doxy_struct_xml_file(file)
-  end
+<span class="k">if</span> <span class="vg">$0</span> <span class="o">==</span> <span class="kp">__FILE__</span>
+  <span class="n">doxy_struct_xml</span> <span class="o">=</span> <span class="no">DoxyStructXml</span><span class="p">.</span><span class="nf">new</span>
+  <span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="s1">'{struct,union}_*.xml'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+    <span class="n">doxy_struct_xml</span><span class="p">.</span><span class="nf">load_doxy_struct_xml_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+  <span class="k">end</span>
 
-  struct_id = ARGV[0]
+  <span class="n">struct_id</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-  unless struct_id
-    $stderr &lt;&lt; "Usage: ruby #{$0} struct_id\n"
-    $stderr &lt;&lt; "struct_id: "
-    doxy_struct_xml.structs.each do |key,value|
-      $stderr &lt;&lt; key &lt;&lt; "  "
-    end
-    $stderr &lt;&lt; "\n\n"
-    exit 1
-  end
+  <span class="k">unless</span> <span class="n">struct_id</span>
+    <span class="vg">$stderr</span> <span class="o">&lt;&lt;</span> <span class="s2">"Usage: ruby </span><span class="si">#{</span><span class="vg">$0</span><span class="si">}</span><span class="s2"> struct_id</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="vg">$stderr</span> <span class="o">&lt;&lt;</span> <span class="s2">"struct_id: "</span>
+    <span class="n">doxy_struct_xml</span><span class="p">.</span><span class="nf">structs</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="o">|</span>
+      <span class="vg">$stderr</span> <span class="o">&lt;&lt;</span> <span class="n">key</span> <span class="o">&lt;&lt;</span> <span class="s2">"  "</span>
+    <span class="k">end</span>
+    <span class="vg">$stderr</span> <span class="o">&lt;&lt;</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span>
+    <span class="nb">exit</span> <span class="mi">1</span>
+  <span class="k">end</span>
 
-  if doxy_struct_xml.structs[struct_id]
-    $stdout &lt;&lt; JSON.dump(doxy_struct_xml.data(struct_id))
-    $stdout &lt;&lt; "\n"
-  else
-    $stderr &lt;&lt; "#{struct_id} does not found"
-    exit 1
-  end
-end
-</code></pre>
+  <span class="k">if</span> <span class="n">doxy_struct_xml</span><span class="p">.</span><span class="nf">structs</span><span class="p">[</span><span class="n">struct_id</span><span class="p">]</span>
+    <span class="vg">$stdout</span> <span class="o">&lt;&lt;</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">doxy_struct_xml</span><span class="p">.</span><span class="nf">data</span><span class="p">(</span><span class="n">struct_id</span><span class="p">))</span>
+    <span class="vg">$stdout</span> <span class="o">&lt;&lt;</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span>
+  <span class="k">else</span>
+    <span class="vg">$stderr</span> <span class="o">&lt;&lt;</span> <span class="s2">"</span><span class="si">#{</span><span class="n">struct_id</span><span class="si">}</span><span class="s2"> does not found"</span>
+    <span class="nb">exit</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
 
 <p>列挙体が扱えないことが残念なことこの上ない。</p>
 
@@ -305,9 +301,9 @@ $ <kbd>ruby doxy_struct_xml_to_json.rb struct__Foo</kbd>
       <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
@@ -315,14 +311,19 @@ $ <kbd>ruby doxy_struct_xml_to_json.rb struct__Foo</kbd>
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
-      <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
+      <span class="post-meta">2010-03-06</span>
+      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/03/css.html">
-      <span class="post-meta">2013-03-18</span>
-      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span></a>
+    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
+      <span class="post-meta">2010-11-29</span>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
@@ -330,14 +331,9 @@ $ <kbd>ruby doxy_struct_xml_to_json.rb struct__Foo</kbd>
       <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
-      <span class="post-meta">2010-03-06</span>
-      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/11/define.html">
-      <span class="post-meta">2013-11-26</span>
-      <span class="post-title">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</span><span class="post-thumb" data-image-path="/images/vc-tooltip.png"></span></a>
+    <a class="post-link" href="/2012/12/llvm-clangast.html">
+      <span class="post-meta">2012-12-11</span>
+      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
   </li>
 </ul>
 </aside>

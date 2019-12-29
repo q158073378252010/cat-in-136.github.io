@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>How to Launch &quot;Application in Terminal&quot; from (your) GTK Application</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/05/how-to-launch-application-in-terminal.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/05/how-to-launch-application-in-terminal.html" />
   <meta property="og:title" content="How to Launch &quot;Application in Terminal&quot; from (your) GTK Application" /><meta property="og:description" content="system(3) executes an external command. This is an example that the external command is a CUI app..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/05/how-to-launch-application-in-terminal.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -45,9 +44,8 @@
   <div class="post-content" itemprop="articleBody">
     <p><code>system(3)</code> executes an external command. This is an example that the external command is a CUI application.</p>
 
-<pre class="prettyprint"><code>int ret;
-ret = system("/path/to/shellscript.sh");
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">system</span><span class="p">(</span><span class="s">"/path/to/shellscript.sh"</span><span class="p">);</span></code></pre></figure>
 
 <p>If <code>system(3)</code> is called from CUI application, standard output can be write to the <em>terminal</em> and standard input can be read from the <em>terminal</em>. But GTK+ applications (or any other typical GUI application) don't have the <em>terminal</em>.</p>
 
@@ -55,26 +53,24 @@ ret = system("/path/to/shellscript.sh");
 
 <p>Here is a simple example of launching <code>/path/to/shellscript.sh</code> with terminal emulator.</p>
 
-<pre class="prettyprint"><code>int ret;
-ret = system("xterm -e /path/to/shellscript.sh");
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">system</span><span class="p">(</span><span class="s">"xterm -e /path/to/shellscript.sh"</span><span class="p">);</span></code></pre></figure>
 
 <p>It's simple. But hard-coding <code>"xterm -e "</code> is not smart.</p>
 
 <p>Following example is depends on User's terminal emulator preference (e.g. <a href="http://library.gnome.org/users/user-guide/2.27/prefs-preferredapps.html.en">Gnome Preferred Applications preference tool</a>):</p>
 
-<pre class="prettyprint"><code>GAppInfo *appinfo = NULL;
-gboolean ret = FALSE;
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="n">GAppInfo</span> <span class="o">*</span><span class="n">appinfo</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="n">gboolean</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
 
-appinfo = g_app_info_create_from_commandline("/path/to/shellscript.sh",
-                                             NULL,
-                                             G_APP_INFO_CREATE_NEEDS_TERMINAL,
-                                             NULL);
-g_assert(appinfo != NULL); // TODO error handling is not implemented.
+<span class="n">appinfo</span> <span class="o">=</span> <span class="n">g_app_info_create_from_commandline</span><span class="p">(</span><span class="s">"/path/to/shellscript.sh"</span><span class="p">,</span>
+                                             <span class="nb">NULL</span><span class="p">,</span>
+                                             <span class="n">G_APP_INFO_CREATE_NEEDS_TERMINAL</span><span class="p">,</span>
+                                             <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_assert</span><span class="p">(</span><span class="n">appinfo</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">// TODO error handling is not implemented.</span>
 
-ret = g_app_info_launch(appinfo, NULL, NULL, NULL);
-g_assert(ret == TRUE); // TODO error handling is not implemented.
-</code></pre>
+<span class="n">ret</span> <span class="o">=</span> <span class="n">g_app_info_launch</span><span class="p">(</span><span class="n">appinfo</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">g_assert</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">TRUE</span><span class="p">);</span> <span class="c1">// TODO error handling is not implemented.</span></code></pre></figure>
 
 <p>Note that:</p>
 <ul>
@@ -82,39 +78,39 @@ g_assert(ret == TRUE); // TODO error handling is not implemented.
 <li>On my environment, following code does not work (segmentation fault at calling <code>g_app_info_create_from_commandline()</code>). GTK seems to be required.</li>
 </ul>
 
-<pre class="prettyprint"><code>#include &lt;glib.h&gt;
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;glib.h&gt;
 #include &lt;gio/gio.h&gt;
-//#include &lt;gtk/gtk.h&gt;// !! HERE is required!
+</span><span class="c1">//#include &lt;gtk/gtk.h&gt;// !! HERE is required!</span>
 
-static const gchar *SCRIPT_PATH = "/path/to/shellscript.sh";
+<span class="k">static</span> <span class="k">const</span> <span class="n">gchar</span> <span class="o">*</span><span class="n">SCRIPT_PATH</span> <span class="o">=</span> <span class="s">"/path/to/shellscript.sh"</span><span class="p">;</span>
 
-int main(int argc, char *argv[])
-{
-    GAppInfo *appinfo = NULL;
-    gboolean ret = FALSE;
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">GAppInfo</span> <span class="o">*</span><span class="n">appinfo</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">gboolean</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
 
-    //gtk_init(&amp;argc, &amp;argv);// !! HERE is required!
+    <span class="c1">//gtk_init(&amp;argc, &amp;argv);// !! HERE is required!</span>
 
-    appinfo = g_app_info_create_from_commandline(SCRIPT_PATH,
-                                                 NULL,
-                                                 G_APP_INFO_CREATE_NEEDS_TERMINAL,
-                                                 NULL);
-    g_assert(appinfo != NULL); // TODO error handling is not implemented.
-    ret = g_app_info_launch(appinfo,
-                            NULL,
-                            NULL,
-                            NULL);
-    g_assert(ret == TRUE); // TODO error handling is not implemented.
+    <span class="n">appinfo</span> <span class="o">=</span> <span class="n">g_app_info_create_from_commandline</span><span class="p">(</span><span class="n">SCRIPT_PATH</span><span class="p">,</span>
+                                                 <span class="nb">NULL</span><span class="p">,</span>
+                                                 <span class="n">G_APP_INFO_CREATE_NEEDS_TERMINAL</span><span class="p">,</span>
+                                                 <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">g_assert</span><span class="p">(</span><span class="n">appinfo</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">// TODO error handling is not implemented.</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">g_app_info_launch</span><span class="p">(</span><span class="n">appinfo</span><span class="p">,</span>
+                            <span class="nb">NULL</span><span class="p">,</span>
+                            <span class="nb">NULL</span><span class="p">,</span>
+                            <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">g_assert</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="n">TRUE</span><span class="p">);</span> <span class="c1">// TODO error handling is not implemented.</span>
 
-    return 0;
-}
-</code></pre>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <h4>See also</h4>
 <ul>
 <li><a href="http://library.gnome.org/devel/gio/stable/GAppInfo.html">GAppInfo - GIO Reference Manual</a></li>
 <li><a href="http://git.gnome.org/browse/gtk+/tree/gtk/gtkshow.c?h=gtk-2-18#n58"><code>gtk_show_uri</code> implementation</a></li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -131,9 +127,9 @@ int main(int argc, char *argv[])
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2012/12/llvm-clangast.html">
-      <span class="post-meta">2012-12-11</span>
-      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
+    <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
+      <span class="post-meta">2010-03-17</span>
+      <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
@@ -141,9 +137,9 @@ int main(int argc, char *argv[])
       <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
-      <span class="post-meta">2010-03-17</span>
-      <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
@@ -151,14 +147,14 @@ int main(int argc, char *argv[])
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2012/12/llvm-clangast.html">
+      <span class="post-meta">2012-12-11</span>
+      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2012/04/unicodemingw32twinmainwwinmain.html">
       <span class="post-meta">2012-04-22</span>
       <span class="post-title">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>UAC shield icon incompatibility between Vista and 7</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/03/uac-shield-icon-incompatibility-between.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/03/uac-shield-icon-incompatibility-between.html" />
   <meta property="og:title" content="UAC shield icon incompatibility between Vista and 7" /><meta property="og:description" content="UAC shield icon on Windows 7 is different from those on Vista. Those on 7 is colored with blue an..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/uac_seven_vista.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/03/uac-shield-icon-incompatibility-between.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -63,29 +62,27 @@ Why <code>SystemIcons.Shield</code> has incompatibility? <code>SystemIcons.Shiel
 Using <a href="http://msdn.microsoft.com/en-us/library/bb762205(VS.85).aspx"><code>SHGetStockIconInfo()</code></a> with <code>SIID_SHIELD</code> seems to be a correct answer. This code return the UAC shield icon colored with blue and yellow on windows 7, and colored with four colors on Vista. Example code is as follows:
 
 </p>
-<pre class="prettyprint"><code>SHSTOCKICONINFO sii;
-sii.cbSize = sizeof(SHSTOCKICONINFO);
-SHGetStockIconInfo(SIID_SHIELD, SHGSI_ICON, &amp;sii);
-sii.hIcon; // this is a UAC shield icon handler!
-</code></pre>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">SHSTOCKICONINFO</span> <span class="n">sii</span><span class="p">;</span>
+<span class="n">sii</span><span class="p">.</span><span class="n">cbSize</span> <span class="p">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">SHSTOCKICONINFO</span><span class="p">);</span>
+<span class="nf">SHGetStockIconInfo</span><span class="p">(</span><span class="n">SIID_SHIELD</span><span class="p">,</span> <span class="n">SHGSI_ICON</span><span class="p">,</span> <span class="p">&amp;</span><span class="n">amp</span><span class="p">;</span><span class="n">sii</span><span class="p">);</span>
+<span class="n">sii</span><span class="p">.</span><span class="n">hIcon</span><span class="p">;</span> <span class="c1">// this is a UAC shield icon handler!</span></code></pre></figure>
 <p>
 If your program is a .NET Framework application, P/Invoke is required such as following code. Another example code is also available at <a href="http://www.codeproject.com/KB/vista-security/UAC__The_Definitive_Guide.aspx">CodeProject</a>.
 </p>
-<pre class="prettyprint"><code>[StructLayout(LayoutKind.Sequential, CharSet=CharSet.Unicode)]
-struct SHSTOCKICONINFO
-{
-    public Int32 cbSize;
-    public IntPtr hIcon;
-    public Int32 iSysImageIndex;
-    public Int32 iIcon;
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst=260)]
-    public string szPath;
-}
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">[</span><span class="nf">StructLayout</span><span class="p">(</span><span class="n">LayoutKind</span><span class="p">.</span><span class="n">Sequential</span><span class="p">,</span> <span class="n">CharSet</span><span class="p">=</span><span class="n">CharSet</span><span class="p">.</span><span class="n">Unicode</span><span class="p">)]</span>
+<span class="k">struct</span> <span class="nc">SHSTOCKICONINFO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">Int32</span> <span class="n">cbSize</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">Int32</span> <span class="n">iSysImageIndex</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">Int32</span> <span class="n">iIcon</span><span class="p">;</span>
+    <span class="p">[</span><span class="nf">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">ByValTStr</span><span class="p">,</span> <span class="n">SizeConst</span><span class="p">=</span><span class="m">260</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">szPath</span><span class="p">;</span>
+<span class="p">}</span>
 
-[DllImport("shell32.dll", CharSet=CharSet.Unicode, SetLastError=true)]
-static extern void SHGetStockIconInfo(UInt32 siid, UInt32 uFlags,
-                                      ref SHSTOCKICONINFO sii);
-</code></pre>
+<span class="p">[</span><span class="nf">DllImport</span><span class="p">(</span><span class="s">"shell32.dll"</span><span class="p">,</span> <span class="n">CharSet</span><span class="p">=</span><span class="n">CharSet</span><span class="p">.</span><span class="n">Unicode</span><span class="p">,</span> <span class="n">SetLastError</span><span class="p">=</span><span class="k">true</span><span class="p">)]</span>
+<span class="k">static</span> <span class="k">extern</span> <span class="k">void</span> <span class="nf">SHGetStockIconInfo</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">siid</span><span class="p">,</span> <span class="n">UInt32</span> <span class="n">uFlags</span><span class="p">,</span>
+                                      <span class="k">ref</span> <span class="n">SHSTOCKICONINFO</span> <span class="n">sii</span><span class="p">);</span></code></pre></figure>
 <p>
 Note that SIID_SHIELD shall be used for UAC prompts only, which is written at <a href="http://msdn.microsoft.com/en-us/library/bb762542%28VS.85%29.aspx">SIID_SHIELD description at MSDN</a>.
 </p>
@@ -113,6 +110,11 @@ Note that SIID_SHIELD shall be used for UAC prompts only, which is written at <a
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
       <span class="post-meta">2017-07-22</span>
       <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
@@ -123,14 +125,9 @@ Note that SIID_SHIELD shall be used for UAC prompts only, which is written at <a
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
-      <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
@@ -138,14 +135,14 @@ Note that SIID_SHIELD shall be used for UAC prompts only, which is written at <a
       <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
-      <span class="post-meta">2011-12-24</span>
-      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">
       <span class="post-meta">2010-02-04</span>
       <span class="post-title">AMO warns use of &quot;setTimeout()&quot;</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/10/handling-namespaceless-xml-file-with.html">
+      <span class="post-meta">2010-10-27</span>
+      <span class="post-title">Handling namespaceless XML file with SAX</span></a>
   </li>
 </ul>
 </aside>

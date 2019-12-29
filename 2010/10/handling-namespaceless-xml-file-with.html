@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Handling namespaceless XML file with SAX</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with.html" />
   <meta property="og:title" content="Handling namespaceless XML file with SAX" /><meta property="og:description" content="On the SAX handlers&#39; function, 3 element name present: void startElement(String uri, String local..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -46,11 +45,11 @@
     <p>
 On the <abbr title="Simple API for XML">SAX</abbr> handlers' function, 3 element name present:
 </p>
-<pre class="prettyprint"><code>void startElement(<strong>String uri</strong>,
-                  <strong>String localName</strong>,
-                  <strong>String qName</strong>,
-                  Attributes atts)
-                  throws SAXException</code></pre>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">startElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">uri</span><span class="o">,</span>
+                  <span class="nc">String</span> <span class="n">localName</span><span class="o">,</span>
+                  <span class="nc">String</span> <span class="n">qName</span><span class="o">,</span>
+                  <span class="nc">Attributes</span> <span class="n">atts</span><span class="o">)</span>
+                  <span class="kd">throws</span> <span class="nc">SAXException</span></code></pre></figure>
 <p>
 For example, when <code>&lt;foobar:test xmlns:foobar="http://example.com/foobar"&gt;</code> tag is seeked, SAX call <code>startElement</code> function with following parameters:
 
@@ -116,33 +115,34 @@ When handling the Namespaceless XML documents, only <var>qName</var> seems to be
 <p>
 Sourcecode for Android 2.2/1.5 is as following:
 </p>
-<pre class="prettyprint"><code>public void testSAX() throws Exception {
-    final TextView tv = new TextView(this);
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSAX</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="kd">final</span> <span class="nc">TextView</span> <span class="n">tv</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TextView</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
 
-    ByteArrayInputStream input = new ByteArrayInputStream("&lt;test&gt;&lt;/test&gt;".getBytes());
+    <span class="nc">ByteArrayInputStream</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ByteArrayInputStream</span><span class="o">(</span><span class="s">"&lt;test&gt;&lt;/test&gt;"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
 
-    SAXParserFactory factory = SAXParserFactory.newInstance();
-    SAXParser parser = factory.newSAXParser();
-    parser.parse(input, new DefaultHandler() {
-        @Override
-        public void startElement(String uri, String localName,
-                String qName, Attributes attributes) throws SAXException {
-            System.out.println("uri: " + uri);
-            System.out.println("localName: " + localName);
-            System.out.println("qName: " + qName);
-     
-            tv.setText(
-                "uri: " + uri + "\n" +
-                "localName: " + localName + "\n" +
-                "test: " + qName
-            );
+    <span class="nc">SAXParserFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="nc">SAXParserFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+    <span class="nc">SAXParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newSAXParser</span><span class="o">();</span>
+    <span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DefaultHandler</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">startElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">uri</span><span class="o">,</span> <span class="nc">String</span> <span class="n">localName</span><span class="o">,</span>
+                <span class="nc">String</span> <span class="n">qName</span><span class="o">,</span> <span class="nc">Attributes</span> <span class="n">attributes</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SAXException</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"uri: "</span> <span class="o">+</span> <span class="n">uri</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"localName: "</span> <span class="o">+</span> <span class="n">localName</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"qName: "</span> <span class="o">+</span> <span class="n">qName</span><span class="o">);</span>
 
-            super.startElement(uri, localName, qName, attributes);
-        }
-    });
+            <span class="n">tv</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span>
+                <span class="s">"uri: "</span> <span class="o">+</span> <span class="n">uri</span> <span class="o">+</span> <span class="s">"\n"</span> <span class="o">+</span>
+                <span class="s">"localName: "</span> <span class="o">+</span> <span class="n">localName</span> <span class="o">+</span> <span class="s">"\n"</span> <span class="o">+</span>
+                <span class="s">"test: "</span> <span class="o">+</span> <span class="n">qName</span>
+            <span class="o">);</span>
 
-    setContentView(tv);
-}</code></pre>
+            <span class="kd">super</span><span class="o">.</span><span class="na">startElement</span><span class="o">(</span><span class="n">uri</span><span class="o">,</span> <span class="n">localName</span><span class="o">,</span> <span class="n">qName</span><span class="o">,</span> <span class="n">attributes</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+
+    <span class="n">setContentView</span><span class="o">(</span><span class="n">tv</span><span class="o">);</span>
+<span class="o">}</span></code></pre></figure>
+
   </div>
 
   <footer class="post-footer">
@@ -179,19 +179,19 @@ Sourcecode for Android 2.2/1.5 is as following:
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2010/03/uac-shield-icon-incompatibility-between.html">
       <span class="post-meta">2010-03-06</span>
       <span class="post-title">UAC shield icon incompatibility between Vista and 7</span><span class="post-thumb" data-image-path="/images/uac_seven_vista.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/04/stats-flash-vs-java.html">
-      <span class="post-meta">2010-04-11</span>
-      <span class="post-title">[stats] Flash vs Java</span><span class="post-thumb" data-image-path="/images/Flash_vs_Java_trends.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2016/08/html-complex-ruby.html">
-      <span class="post-meta">2016-08-05</span>
-      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
+    <a class="post-link" href="/2018/08/count-in-base-negative-2.html">
+      <span class="post-meta">2018-08-09</span>
+      <span class="post-title">マイナス2進数の考察</span></a>
   </li>
 </ul>
 </aside>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>小うるさい端末 chatty ――を zsh で。</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2013/11/chatty-zsh.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2013/11/chatty-zsh.html" />
   <meta property="og:title" content="小うるさい端末 chatty ――を zsh で。" /><meta property="og:description" content="動機づけ chatty はユーザが入力した文字列に応じて端末のタイトルバーに 小うるさいメッセージを表示するソフトウェアです。 という代物があるのだが、zsh 単独でやってみたい。 zsh で ..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/zle-chatty.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2013/11/chatty-zsh.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -95,107 +94,106 @@ Line 284
 <p>で、<code>self-insert</code>, <code>magic-space</code>, <code>backward-delete-char</code>, <code>delete-char-or-list</code> をホックして、
 そのときの入力コマンド(<code>$BUFFER</code>)を毎度条件判定してメッセージを表示するという方法に至った。</p>
 
-<pre class="prettyprint"><code># chatty: 小うるさい端末 のzsh版 
-#
-# 元ネタ：http://0xcc.net/chatty/
-# 
-# Usage:
-#     autoload chatty-on
-#     chatty-on              
-#
+<figure class="highlight"><pre><code class="language-zsh" data-lang="zsh"><span class="c"># chatty: 小うるさい端末 のzsh版 </span>
+<span class="c">#</span>
+<span class="c"># 元ネタ：http://0xcc.net/chatty/</span>
+<span class="c"># </span>
+<span class="c"># Usage:</span>
+<span class="c">#     autoload chatty-on</span>
+<span class="c">#     chatty-on              </span>
+<span class="c">#</span>
 
-chatty-on() {
-  zle -N self-insert          chatty-self-insert
-  zle -N magic-space          chatty-magic-space
-  zle -N backward-delete-char chatty-backward-delete-char
-  zle -N delete-char-or-list  chatty-delete-char-or-list
-  return 0
-}
-chatty-off() {
-  zle -A .self-insert          self-insert
-  zle -A .magic-space          magic-space
-  zle -A .backward-delete-char backward-delete-char
-  zle -A .delete-char-or-list  delete-char-or-list
-  return 0
-}
+chatty-on<span class="o">()</span> <span class="o">{</span>
+  zle <span class="nt">-N</span> self-insert          chatty-self-insert
+  zle <span class="nt">-N</span> magic-space          chatty-magic-space
+  zle <span class="nt">-N</span> backward-delete-char chatty-backward-delete-char
+  zle <span class="nt">-N</span> delete-char-or-list  chatty-delete-char-or-list
+  <span class="k">return </span>0
+<span class="o">}</span>
+chatty-off<span class="o">()</span> <span class="o">{</span>
+  zle <span class="nt">-A</span> .self-insert          self-insert
+  zle <span class="nt">-A</span> .magic-space          magic-space
+  zle <span class="nt">-A</span> .backward-delete-char backward-delete-char
+  zle <span class="nt">-A</span> .delete-char-or-list  delete-char-or-list
+  <span class="k">return </span>0
+<span class="o">}</span>
 
-chatty-self-insert() {
-  zle .$WIDGET "$@"
+chatty-self-insert<span class="o">()</span> <span class="o">{</span>
+  zle .<span class="nv">$WIDGET</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
   chatty-info
-}
-chatty-magic-space() {
-  zle .$WIDGET "$@"
+<span class="o">}</span>
+chatty-magic-space<span class="o">()</span> <span class="o">{</span>
+  zle .<span class="nv">$WIDGET</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
   chatty-info
-}
-chatty-backward-delete-char() {
-  zle .$WIDGET "$@"
+<span class="o">}</span>
+chatty-backward-delete-char<span class="o">()</span> <span class="o">{</span>
+  zle .<span class="nv">$WIDGET</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
   chatty-info
-}
-chatty-delete-char-or-list() {
-  zle .$WIDGET "$@"
+<span class="o">}</span>
+chatty-delete-char-or-list<span class="o">()</span> <span class="o">{</span>
+  zle .<span class="nv">$WIDGET</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
   chatty-info
-}
+<span class="o">}</span>
 
-chatty-info() {
-  if [[ "$BUFFER" =~ "^ *man ?$" ]]; then
-    zle -M "google使えよ"
-  elif [[ "$BUFFER" =~ "^ *mail ?$" ]]; then
-    zle -M "仕事しないでメールばっかり"
-  elif [[ "$BUFFER" =~ "^ *more ?$" ]]; then
-    zle -M "まだこんなコマンドあったのか"
-  elif [[ "$BUFFER" =~ "^ *reboot ?$" ]]; then
-    zle -M "面倒なトラブルは再起動で解決"
-  elif [[ "$BUFFER" =~ "^ *vi ?$" ]]; then
-    zle -M "emacsは嫌いなのね"
-  elif [[ "$BUFFER" =~ "^ *vim ?$" ]]; then
-    zle -M "お〜れだっけ V.I.M. &lt;http://www.taiyaki.org/misc/vim/&gt;"
-  elif [[ "$BUFFER" =~ "^ *sudo ?$" ]]; then
-    zle -M "他人のメールでも見るんでしょ〜"
-  elif [[ "$BUFFER" =~ "^ *vipw ?$" ]]; then
-    zle -M "rootの雑用ご苦労さま"
-  elif [[ "$BUFFER" =~ "^ *w3m ?$" ]]; then
-    zle -M "仕事中に目立たずネットサーフィンするのだ"
-  elif [[ "$BUFFER" =~ "^ *find ?$" ]]; then
-    zle -M "ファイルってすぐどっかいっちゃうんだよね"
-  elif [[ "$BUFFER" =~ "^ *telnet ?$" ]]; then
-    zle -M "余所の計算機に不正侵入しちゃいまーす"
-  elif [[ "$BUFFER" =~ "^ *xman ?$" ]]; then
-    zle -M "うげ。まだこんなのあったのか"
-  elif [[ "$BUFFER" =~ "^ *killall ?$" ]]; then
-    zle -M "皆殺し大好き"
-  elif [[ "$BUFFER" =~ "^ *./configure ?$" ]]; then
-    zle -M "途中でこけたりして"
-  elif [[ "$BUFFER" =~ "^ *#jet ?$" ]]; then
-    zle -M "jet氏のメッセージ"
-  elif [[ "$BUFFER" =~ "^ *make ?$" ]]; then
-    zle -M "ソースからビルドかよ"
-  elif [[ "$BUFFER" =~ "^ *rm -f ?$" ]]; then
-    zle -M "実は大切なファイルだったりして..."
-  elif [[ "$BUFFER" =~ "^ *rpm ?$" ]]; then
-    zle -M "バイナリで手抜きかよ"
-  elif [[ "$BUFFER" =~ "^ *ssh ?$" ]]; then
-    zle -M "隠しごとかよ"
-  elif [[ "$BUFFER" =~ "^ *pwd ?$" ]]; then
-    zle -M "今いる場所ぐらい覚えとけよ"
-  elif [[ "$BUFFER" =~ "^ *emacs ?$" ]]; then
-    zle -M "やっぱりお前もAの横のCapsLock死ねとか思ってるの?"
-  elif [[ "$BUFFER" =~ "^ *gimp ?$" ]]; then
-    zle -M "失敗した写真の修正?"
-  elif [[ "$BUFFER" =~ "^ *kill ?$" ]]; then
-    zle -M "ひでーやつだ"
-  elif [[ "$BUFFER" =~ "^ *less ?$" ]]; then
-    zle -M "むしろ動体視力鍛えてcatでしょ"
-  elif [[ "$BUFFER" =~ "^ *ls ?$" ]]; then
-    zle -M "cdの後のそれは癖なんか?"
-  else
-    # clear
-    zle -M ""
-  fi
-}
+chatty-info<span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *man ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"google使えよ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *mail ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"仕事しないでメールばっかり"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *more ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"まだこんなコマンドあったのか"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *reboot ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"面倒なトラブルは再起動で解決"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *vi ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"emacsは嫌いなのね"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *vim ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"お〜れだっけ V.I.M. &lt;http://www.taiyaki.org/misc/vim/&gt;"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *sudo ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"他人のメールでも見るんでしょ〜"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *vipw ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"rootの雑用ご苦労さま"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *w3m ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"仕事中に目立たずネットサーフィンするのだ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *find ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"ファイルってすぐどっかいっちゃうんだよね"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *telnet ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"余所の計算機に不正侵入しちゃいまーす"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *xman ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"うげ。まだこんなのあったのか"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *killall ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"皆殺し大好き"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *./configure ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"途中でこけたりして"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *#jet ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"jet氏のメッセージ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *make ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"ソースからビルドかよ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *rm -f ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"実は大切なファイルだったりして..."</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *rpm ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"バイナリで手抜きかよ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *ssh ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"隠しごとかよ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *pwd ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"今いる場所ぐらい覚えとけよ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *emacs ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"やっぱりお前もAの横のCapsLock死ねとか思ってるの?"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *gimp ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"失敗した写真の修正?"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *kill ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"ひでーやつだ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *less ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"むしろ動体視力鍛えてcatでしょ"</span>
+  <span class="k">elif</span> <span class="o">[[</span> <span class="s2">"</span><span class="nv">$BUFFER</span><span class="s2">"</span> <span class="o">=</span>~ <span class="s2">"^ *ls ?$"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+    </span>zle <span class="nt">-M</span> <span class="s2">"cdの後のそれは癖なんか?"</span>
+  <span class="k">else</span>
+    <span class="c"># clear</span>
+    zle <span class="nt">-M</span> <span class="s2">""</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
 
-# Handle zsh autoloading conventions
-chatty-on "$@"
-</code></pre>
+<span class="c"># Handle zsh autoloading conventions</span>
+chatty-on <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span></code></pre></figure>
 
 <p>使い方は <code>chatty-on</code> というファイル名で <code>/usr/share/zsh/site-functions</code> (などの<code>$fpath</code>が通っているフォルダ)に置いた上で、下記を実行する。</p>
 
@@ -234,14 +232,29 @@ chatty-on "$@"
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
       <span class="post-meta">2010-11-29</span>
       <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2012/12/llvm-clangast.html">
+      <span class="post-meta">2012-12-11</span>
+      <span class="post-title">LLVM-ClangのASTを解析するまっとうな方法について</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
+      <span class="post-meta">2013-04-13</span>
+      <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span><span class="post-thumb" data-image-path="/images/bar.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/03/css-vertical-with-multicolumn.html">
@@ -249,24 +262,9 @@ chatty-on "$@"
       <span class="post-title">CSS で縦書きと段組を組み合わせる試み</span><span class="post-thumb" data-image-path="/images/2016_03_css_vertical_with_multicolumn_render_expection.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
       <span class="post-meta">2014-04-27</span>
       <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/11/define.html">
-      <span class="post-meta">2013-11-26</span>
-      <span class="post-title">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</span><span class="post-thumb" data-image-path="/images/vc-tooltip.png"></span></a>
   </li>
 </ul>
 </aside>

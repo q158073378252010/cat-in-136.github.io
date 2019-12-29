@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Light な weight な日本語フォントを android に投入</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/12/light-weight-font-android.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/12/light-weight-font-android.html" />
   <meta property="og:title" content="Light な weight な日本語フォントを android に投入" /><meta property="og:description" content="Background 昨今は細い (light)フォントが流行っていて、 android アプリの一部にも細いフォントを指定しているのがある。 一方で、日本語フォントは android デフォル..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/201412_light_weight_font_screen103.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/12/light-weight-font-android.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -74,23 +73,21 @@ android アプリの一部にも細いフォントを指定しているのがあ
 <p>ここには、下記のように <code>NotoSansJP-Regular.otf</code> というのが書かれているため、
 Noto Sans JP が使われるように見える。</p>
 
-<pre class="prettyprint lang-xml"><code>    &lt;family&gt;
-        &lt;fileset&gt;
-            &lt;file lang="ja"&gt;NotoSansJP-Regular.otf&lt;/file&gt;
-        &lt;/fileset&gt;
-    &lt;/family&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;family&gt;</span>
+        <span class="nt">&lt;fileset&gt;</span>
+            <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansJP-Regular.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;/fileset&gt;</span>
+    <span class="nt">&lt;/family&gt;</span></code></pre></figure> 
 
 <p>が、標準で入っていた <code>/system/fonts/NotoSansJP-Regular.otf</code> は、特殊な文字が入っているだけの168kB程度のファイルであった。
 なので、この記述よりも後ろの下記の内容が有効となるので日本語は特に断りがなければ、
 <code>/system/fonts/MTLmr3m.ttf</code> (モトヤLマルベリ3) で表示されるのである。</p>
 
-<pre class="prettyprint lang-xml"><code>    &lt;family&gt;
-        &lt;fileset&gt;
-            &lt;file lang="ja"&gt;MTLmr3m.ttf&lt;/file&gt;
-        &lt;/fileset&gt;
-    &lt;/family&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;family&gt;</span>
+        <span class="nt">&lt;fileset&gt;</span>
+            <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>MTLmr3m.ttf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;/fileset&gt;</span>
+    <span class="nt">&lt;/family&gt;</span></code></pre></figure> 
 
 <p>よって、<code>NotoSansJP-*.otf</code> として日本語フォントを送り込み、 
 <code>fallback_fonts.xml</code> で追加した方のフォントにフォールバックするように設定すれば良い。</p>
@@ -112,37 +109,35 @@ Noto Sans JP が使われるように見える。</p>
     <p><code>/system/etc/fallback_fonts.xml</code> に上記で追加したフォントへの fallback を記述し、既存の日本語フォントへの fallback を削除する。
 例えば、下記のようにする。</p>
 
-    <pre class="prettyprint lang-xml"><code>&lt;!-- 既存の日本語フォントへの fallback を削除 --&gt;
-&lt;!--family&gt;
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- 既存の日本語フォントへの fallback を削除 --&gt;</span>
+<span class="c">&lt;!--family&gt;
     &lt;fileset&gt;
         &lt;file lang="ja"&gt;MTLmr3m.ttf&lt;/file&gt;
     &lt;/fileset&gt;
-&lt;/family--&gt;
-&lt;!-- ここ以下を追加 --&gt;
-&lt;family&gt;
-    &lt;fileset&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Light.otf&lt;/file&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Regular.otf&lt;/file&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Bold.otf&lt;/file&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Black.otf&lt;/file&gt;
-    &lt;/fileset&gt;
-&lt;/family&gt;
-</code></pre>
+&lt;/family--&gt;</span>
+<span class="c">&lt;!-- ここ以下を追加 --&gt;</span>
+<span class="nt">&lt;family&gt;</span>
+    <span class="nt">&lt;fileset&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Light.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Regular.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Bold.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Black.otf<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;/fileset&gt;</span>
+<span class="nt">&lt;/family&gt;</span></code></pre></figure>
   </li>
   <li>
     <p><code>/system/etc/fonts.xml</code> に上記で追加したフォントの内容を登録する。
 ここで weight なども設定することとなる。
 例えば、下記を追加する。</p>
 
-    <pre class="prettyprint lang-xml"><code>&lt;family&gt;
-    &lt;fileset&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Light.otf&lt;/file&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Regular.otf&lt;/file&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Bold.otf&lt;/file&gt;
-        &lt;file lang="ja"&gt;NotoSansCJKJP-Black.otf&lt;/file&gt;
-    &lt;/fileset&gt;
-&lt;/family&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;family&gt;</span>
+    <span class="nt">&lt;fileset&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Light.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Regular.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Bold.otf<span class="nt">&lt;/file&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">lang=</span><span class="s">"ja"</span><span class="nt">&gt;</span>NotoSansCJKJP-Black.otf<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;/fileset&gt;</span>
+<span class="nt">&lt;/family&gt;</span></code></pre></figure>
   </li>
   <li>最後に再起動をする。</li>
 </ol>
@@ -196,7 +191,7 @@ Noto Sans JP が使われるように見える。</p>
 
 <p>updates-script:</p>
 
-<pre class="prettyprint"><code>ui_print("=== Japanese-NotoSans-install ===");
+<pre><code>ui_print("=== Japanese-NotoSans-install ===");
 ui_print("Mounting file system...");
 run_program("/sbin/mount", "/system");
 ui_print("Installing...");
@@ -264,11 +259,6 @@ ui_print("all done!");
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
@@ -284,19 +274,24 @@ ui_print("all done!");
       <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2010/11/bloggers-stats-is-flash-free-but-looks.html">
       <span class="post-meta">2010-11-01</span>
       <span class="post-title">Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics</span><span class="post-thumb" data-image-path="/images/bloggers-stats-is-flash-free-but-looks-screenshot2.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
-      <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
+    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-08-15</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/03/css-vertical-with-multicolumn.html">
-      <span class="post-meta">2016-03-23</span>
-      <span class="post-title">CSS で縦書きと段組を組み合わせる試み</span><span class="post-thumb" data-image-path="/images/2016_03_css_vertical_with_multicolumn_render_expection.svg"></span></a>
+    <a class="post-link" href="/2015/11/android6-introduces-notosans-jp.html">
+      <span class="post-meta">2015-11-29</span>
+      <span class="post-title">Android v6 (Marshmallow) に Noto Sans JP が導入された</span><span class="post-thumb" data-image-path="/images/201511_android6-notosans-jp.png"></span></a>
   </li>
 </ul>
 </aside>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>[TIPS] WEBrick proxy server with Digest Auth</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2011/07/tips-webrick-proxy-server-with-digest.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2011/07/tips-webrick-proxy-server-with-digest.html" />
   <meta property="og:title" content="[TIPS] WEBrick proxy server with Digest Auth" /><meta property="og:description" content="Well-known WEBrick proxy server with BASIC auth is as following: auth_proc = Proc.new do |req,res..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2011/07/tips-webrick-proxy-server-with-digest.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -46,50 +45,49 @@
     <p>
 Well-known WEBrick proxy server with BASIC auth is as following:
 </p>
-<code><pre class="prettyprint lang-ruby">auth_proc = Proc.new do |req,res|
-  WEBrick::HTTPAuth.proxy_basic_auth(req,res,'proxy') do |user,pass|
-    user == "user" &amp;&amp; pass == "pass"
-  end
-end
-server = WEBrick::HTTPProxyServer.new({
-  :Port => 8080,
-  :ProxyAuthProcess =&gt; auth_proc
-})
-Signal.trap("INT") do server.shutdown end
-server.start
-</pre></code>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">auth_proc</span> <span class="o">=</span> <span class="no">Proc</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="n">res</span><span class="o">|</span>
+  <span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPAuth</span><span class="p">.</span><span class="nf">proxy_basic_auth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span><span class="n">res</span><span class="p">,</span><span class="s1">'proxy'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="p">,</span><span class="n">pass</span><span class="o">|</span>
+    <span class="n">user</span> <span class="o">==</span> <span class="s2">"user"</span> <span class="o">&amp;&amp;</span> <span class="n">pass</span> <span class="o">==</span> <span class="s2">"pass"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">server</span> <span class="o">=</span> <span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPProxyServer</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span>
+  <span class="ss">:Port</span> <span class="o">=&gt;</span> <span class="mi">8080</span><span class="p">,</span>
+  <span class="ss">:ProxyAuthProcess</span> <span class="o">=&gt;</span> <span class="n">auth_proc</span>
+<span class="p">})</span>
+<span class="no">Signal</span><span class="p">.</span><span class="nf">trap</span><span class="p">(</span><span class="s2">"INT"</span><span class="p">)</span> <span class="k">do</span> <span class="n">server</span><span class="p">.</span><span class="nf">shutdown</span> <span class="k">end</span>
+<span class="n">server</span><span class="p">.</span><span class="nf">start</span></code></pre></figure>
 <p>
 But There is not a DIGEST version of <code>proxy_basic_auth()</code> method...
 </p>
 <p>
-Solution: Use <code class="prettyprint lang-ruby">WEBrick::HTTPAuth::ProxyDigestAuth</code>:
+Solution: Use <code>WEBrick::HTTPAuth::ProxyDigestAuth</code>:
 </p>
-<code><pre class="prettyprint lang-ruby">require "webrick"
-require "webrick/httpproxy"
-require "webrick/httpauth/digestauth"
-require "webrick/httpauth/basicauth"
-require "webrick/httpauth/userdb"
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">"webrick"</span>
+<span class="nb">require</span> <span class="s2">"webrick/httpproxy"</span>
+<span class="nb">require</span> <span class="s2">"webrick/httpauth/digestauth"</span>
+<span class="nb">require</span> <span class="s2">"webrick/httpauth/basicauth"</span>
+<span class="nb">require</span> <span class="s2">"webrick/httpauth/userdb"</span>
 
-userdb = Hash.new
-userdb.extend(WEBrick::HTTPAuth::UserDB)
-userdb.auth_type = WEBrick::HTTPAuth::ProxyDigestAuth # or WEBrick::HTTPAuth::ProxyBasicAuth
-userdb.set_passwd("realm", "user", "pass")
-authenticator = userdb.auth_type.new({
-     :Realm =&gt; "realm",
-     :UserDB =&gt; userdb,
-     :Algorithm =&gt; "MD5",
-})
+<span class="n">userdb</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">userdb</span><span class="p">.</span><span class="nf">extend</span><span class="p">(</span><span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPAuth</span><span class="o">::</span><span class="no">UserDB</span><span class="p">)</span>
+<span class="n">userdb</span><span class="p">.</span><span class="nf">auth_type</span> <span class="o">=</span> <span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPAuth</span><span class="o">::</span><span class="no">ProxyDigestAuth</span> <span class="c1"># or WEBrick::HTTPAuth::ProxyBasicAuth</span>
+<span class="n">userdb</span><span class="p">.</span><span class="nf">set_passwd</span><span class="p">(</span><span class="s2">"realm"</span><span class="p">,</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"pass"</span><span class="p">)</span>
+<span class="n">authenticator</span> <span class="o">=</span> <span class="n">userdb</span><span class="p">.</span><span class="nf">auth_type</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span>
+     <span class="ss">:Realm</span> <span class="o">=&gt;</span> <span class="s2">"realm"</span><span class="p">,</span>
+     <span class="ss">:UserDB</span> <span class="o">=&gt;</span> <span class="n">userdb</span><span class="p">,</span>
+     <span class="ss">:Algorithm</span> <span class="o">=&gt;</span> <span class="s2">"MD5"</span><span class="p">,</span>
+<span class="p">})</span>
 
-auth_proc = Proc.new do |req,res|
-    authenticator.authenticate(req, res)
-end
-server = WEBrick::HTTPProxyServer.new({
-  :Port => 8080,
-  :ProxyAuthProcess =&gt; auth_proc
-})
-Signal.trap("INT") do server.shutdown end
-server.start
-</pre></code>
+<span class="n">auth_proc</span> <span class="o">=</span> <span class="no">Proc</span><span class="p">.</span><span class="nf">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">req</span><span class="p">,</span><span class="n">res</span><span class="o">|</span>
+    <span class="n">authenticator</span><span class="p">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">server</span> <span class="o">=</span> <span class="no">WEBrick</span><span class="o">::</span><span class="no">HTTPProxyServer</span><span class="p">.</span><span class="nf">new</span><span class="p">({</span>
+  <span class="ss">:Port</span> <span class="o">=&gt;</span> <span class="mi">8080</span><span class="p">,</span>
+  <span class="ss">:ProxyAuthProcess</span> <span class="o">=&gt;</span> <span class="n">auth_proc</span>
+<span class="p">})</span>
+<span class="no">Signal</span><span class="p">.</span><span class="nf">trap</span><span class="p">(</span><span class="s2">"INT"</span><span class="p">)</span> <span class="k">do</span> <span class="n">server</span><span class="p">.</span><span class="nf">shutdown</span> <span class="k">end</span>
+<span class="n">server</span><span class="p">.</span><span class="nf">start</span></code></pre></figure>
+
   </div>
 
   <footer class="post-footer">
@@ -101,24 +99,14 @@ server.start
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
-      <span class="post-meta">2014-04-27</span>
-      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
-      <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
+      <span class="post-meta">2014-04-27</span>
+      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
@@ -136,9 +124,19 @@ server.start
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2012/11/twitter-api.html">
       <span class="post-meta">2012-11-05</span>
       <span class="post-title">「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/10/linuxbijo-bijolinux.html">
+      <span class="post-meta">2011-10-26</span>
+      <span class="post-title">美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux</span></a>
   </li>
 </ul>
 </aside>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>JavaScript Typed Array use native endian</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html" />
   <meta property="og:title" content="JavaScript Typed Array use native endian" /><meta property="og:description" content="var a = new Uint8Array([0x12, 0x34]); var b = new Uint16Array(a.buffer); alert(&quot;0x&quot; + (b[0]).toSt..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2011/03/javascript-typed-array-use-native.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -44,11 +43,9 @@
 
   <div class="post-content" itemprop="articleBody">
     <div>
-<pre class="prettyprint"><code id="js_uint8_array_test_code">var a = new Uint8Array([0x12, 0x34]);
-var b = new Uint16Array(a.buffer);
-alert("0x" + (b[0]).toString(16)); // #=> 0x3412 or 0x1234 ?
-</code></pre>
-<button onclick="eval(document.getElementById('js_uint8_array_test_code').textContent); void(0);">Run above code (for Modern browser : Firefox4, Chrome10...)</button>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">([</span><span class="mh">0x12</span><span class="p">,</span> <span class="mh">0x34</span><span class="p">]);</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint16Array</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">buffer</span><span class="p">);</span>
+<span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">0x</span><span class="dl">"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span> <span class="c1">// #=&gt; 0x3412 or 0x1234 ?</span></code></pre></figure>
 </div>
 
 <div>
@@ -72,6 +69,7 @@ If you use big endian machine (e.g. Sun SPARC, PowerPC), <code>b[0]</code> is <c
 <li><a href="http://www.khronos.org/registry/typedarray/specs/latest/">Typed Array Specification</a></li>
 <li><a href="http://lists.w3.org/Archives/Public/public-script-coord/2010AprJun/0048.html">Re: Adoption of the Typed Array Specification</a> (public-script-coord at w3.org) </li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -88,14 +86,14 @@ If you use big endian machine (e.g. Sun SPARC, PowerPC), <code>b[0]</code> is <c
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/03/html-copy.html">
       <span class="post-meta">2013-03-04</span>
       <span class="post-title">HTML の COPY 禁止をするにはどうすればいいですか? </span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/10/firefox-supports-nested-jar-protocol.html">
+      <span class="post-meta">2010-10-11</span>
+      <span class="post-title">Firefox supports Nested jar: Protocol!</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
@@ -103,9 +101,9 @@ If you use big endian machine (e.g. Sun SPARC, PowerPC), <code>b[0]</code> is <c
       <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/10/firefox-supports-nested-jar-protocol.html">
-      <span class="post-meta">2010-10-11</span>
-      <span class="post-title">Firefox supports Nested jar: Protocol!</span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/03/html-user-select.html">
@@ -118,9 +116,9 @@ If you use big endian machine (e.g. Sun SPARC, PowerPC), <code>b[0]</code> is <c
       <span class="post-title">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</span><span class="post-thumb" data-image-path="/images/ksj_w15_52l_2k_chofu.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
+      <span class="post-meta">2010-11-29</span>
+      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
 </ul>
 </aside>

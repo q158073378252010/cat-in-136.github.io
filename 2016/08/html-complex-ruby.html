@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>HTML5 Complex Ruby 今日の実装状況</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2016/08/html-complex-ruby.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2016/08/html-complex-ruby.html" />
   <meta property="og:title" content="HTML5 Complex Ruby 今日の実装状況" /><meta property="og:description" content="HTML のルビには、古典的な &quot;Basic Ruby&quot; と新し目の文法の &quot;Complex Ruby&quot; があるが、 &quot;Complex Ruby&quot; は色々できるがまだあまり実用的ではないっぽい。..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2016/08/html-complex-ruby.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -50,12 +49,11 @@ HTML のルビには、古典的な "Basic Ruby" と新し目の文法の "Compl
 <p>
 "Complex Ruby" は、間に&lt;rbc&gt;要素と&lt;rtc&gt;要素をはさむ方の文法のこと。
 </p>
-<pre class="prettyprint lang-html"><code>&lt;!-- Basic Ruby --&gt;
-&lt;ruby&gt;&lt;rb&gt;法華経&lt;/rb&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;ほけきょう&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Basic Ruby --&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rb&gt;</span>法華経<span class="nt">&lt;/rb&gt;&lt;rp&gt;</span>(<span class="nt">&lt;/rp&gt;&lt;rt&gt;</span>ほけきょう<span class="nt">&lt;/rt&gt;&lt;rp&gt;</span>)<span class="nt">&lt;/rp&gt;&lt;/ruby&gt;</span>
 
-&lt;!-- Complex Ruby --&gt;
-&lt;ruby&gt;&lt;rbc&gt;&lt;rb&gt;法華経&lt;/rb&gt;&lt;/rbc&gt;&lt;rtc&gt;&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;ほけきょう&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/rtc&gt;&lt;/ruby&gt;
-</code></pre>
+<span class="c">&lt;!-- Complex Ruby --&gt;</span>
+<span class="nt">&lt;ruby&gt;&lt;rbc&gt;&lt;rb&gt;</span>法華経<span class="nt">&lt;/rb&gt;&lt;/rbc&gt;&lt;rtc&gt;&lt;rp&gt;</span>(<span class="nt">&lt;/rp&gt;&lt;rt&gt;</span>ほけきょう<span class="nt">&lt;/rt&gt;&lt;rp&gt;</span>)<span class="nt">&lt;/rp&gt;&lt;/rtc&gt;&lt;/ruby&gt;</span></code></pre></figure>
 
 <figure style="display: block; margin: auto; text-align: center; font-size: smaller;">
 <figcaption>Live sample</figcaption>
@@ -323,14 +321,14 @@ HTML のルビには、古典的な "Basic Ruby" と新し目の文法の "Compl
       <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span><span class="post-thumb" data-image-path="/images/bar.png"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2016/10/writing-kanbun-in-html.html">
+      <span class="post-meta">2016-10-26</span>
+      <span class="post-title">如何用HTML5 Complex Ruby寫漢文訓讀文。〜如何にしてHTML5 Complex Rubyを用いて漢文訓読文を写すか</span><span class="post-thumb" data-image-path="/images/201610_kanbun_composition_layout_html5_ruby.svg"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
-      <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/03/bezier-2-diff.html">
@@ -338,9 +336,9 @@ HTML のルビには、古典的な "Basic Ruby" と新し目の文法の "Compl
       <span class="post-title">ベジェ曲線で描く円と真円の差について</span><span class="post-thumb" data-image-path="/images/kappa.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
-      <span class="post-meta">2016-10-08</span>
-      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
+    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
+      <span class="post-meta">2016-04-23</span>
+      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/03/bezier-3-general-theta.html">

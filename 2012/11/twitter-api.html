@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>「このツイートをサイトに埋め込む」のための隠し Twitter API の存在</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/11/twitter-api.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/11/twitter-api.html" />
   <meta property="og:title" content="「このツイートをサイトに埋め込む」のための隠し Twitter API の存在" /><meta property="og:description" content="(2015-01-20加筆)本記事の内容は古くなっていて、ここに記した隠し Twitter API が廃止・変更されている。 Twitter の標準機能として、Tweet を埋め込む機能がある。..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/11/twitter-api.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -59,23 +58,22 @@
 ただ、JavaScript が動かなくともツイートのテキストを含めるような仕組みになっている。
 以下にソースコードの例を示す（読みやすさのためにインデントと改行を挿入してある）。</p>
 
-<pre class="prettyprint"><code>&lt;blockquote class="twitter-tweet"&gt;
-  &lt;p&gt;
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"twitter-tweet"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;p&gt;</span>
     プライバシー等の問題を抜きにしてもビッグデータのビジネスは日本（特に大手企業）からは生まれなさそうだ。何らかのサービスを提供する手段であるはずが目的になってしまっている。 
-    &lt;a href="https://twitter.com/search/%23ビッグデータ"&gt;
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://twitter.com/search/%23ビッグデータ"</span><span class="nt">&gt;</span>
       #ビッグデータ
-    &lt;/a&gt;
-    &lt;a href="http://t.co/yl6s6sma" title="http://twitter.com/cat_in_136/status/176199889313734657/photo/1"&gt;
+    <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://t.co/yl6s6sma"</span> <span class="na">title=</span><span class="s">"http://twitter.com/cat_in_136/status/176199889313734657/photo/1"</span><span class="nt">&gt;</span>
       twitter.com/cat_in_136/sta…
-    &lt;/a&gt;
-  &lt;/p&gt;
-  &amp;mdash; cat_in_136 (@cat_in_136) 
-  &lt;a href="https://twitter.com/cat_in_136/status/176199889313734657" data-datetime="2012-03-04T06:58:22+00:00"&gt;
+    <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/p&gt;</span>
+  <span class="ni">&amp;mdash;</span> cat_in_136 (@cat_in_136) 
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://twitter.com/cat_in_136/status/176199889313734657"</span> <span class="na">data-datetime=</span><span class="s">"2012-03-04T06:58:22+00:00"</span><span class="nt">&gt;</span>
     March 4, 2012
-  &lt;/a&gt;
-&lt;/blockquote&gt;
-&lt;script src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
-</code></pre>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//platform.twitter.com/widgets.js"</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
 <p>なお、JavaScript が無効にした場合やソースコードを貼りつけた場合、<a href="https://dev.twitter.com/terms/display-requirements" title="Developer Display Requirements | Twitter Developers">Developer Display Requirements</a>の下記に違反することとなってしまうが、Twitter 標準機能がそうなっているんだからしょうがない。</p>
 
@@ -187,24 +185,24 @@ For example, there are many applications that are pulling data from the Twitter 
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
       <span class="post-meta">2016-02-07</span>
       <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/03/html-user-select.html">
       <span class="post-meta">2013-03-05</span>
       <span class="post-title">HTML でのコピペしやすさを user-select などで向上させる</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">

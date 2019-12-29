@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>AMO warns use of &quot;setTimeout()&quot;</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html" />
   <meta property="og:title" content="AMO warns use of &quot;setTimeout()&quot;" /><meta property="og:description" content="Since these functions can be used in the same way as eval() to run code from a string, An example..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/02/amo-warns-use-of-settimeout.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -49,22 +48,22 @@ Since these functions can be used in the same way as eval() to run code from a s
 <p>
 An example of usage to "run code from a string" is:
 </p>
-<pre class="prettyprint"><code>setTimeout("alert('foobar')", 1000);</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">setTimeout</span><span class="p">(</span><span class="dl">"</span><span class="s2">alert('foobar')</span><span class="dl">"</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span></code></pre></figure>
 <p>
 It is recommended and secure that the first argument of <code>window.setTimeout()</code> is a function, not a string. You can use following sample code:
 </p>
-<pre class="prettyprint"><code>setTimeout(function(){alert('foobar');}, 1000);</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">foobar</span><span class="dl">'</span><span class="p">);},</span> <span class="mi">1000</span><span class="p">);</span></code></pre></figure>
 <p>
 On <a href="https://addons.mozilla.org/firefox/pages/validation#help-21">Mozilla add-on site AMO's security test</a>, <code>window.setTimeout()</code> is <strong>always</strong> flagged as insecure, regardless type of the first argument.
 </p>
 <p>
 So, for JavaScript codes on Firefox(and/or other Mozilla) extensions, <code>window.setTimeout()</code> shall be replaced with <code>nsITimer</code> as follows:
 </p>
-<pre class="prettyprint"><code>var timer = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
- timer.initWithCallback({function(){
-   alert('foobar');
- }}, 1000, Components.interfaces.nsITimer.TYPE_ONE_SHOT);
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/timer;1</span><span class="dl">"</span><span class="p">].</span><span class="nx">createInstance</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsITimer</span><span class="p">);</span>
+ <span class="nx">timer</span><span class="p">.</span><span class="nx">initWithCallback</span><span class="p">({</span><span class="kd">function</span><span class="p">(){</span>
+   <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">foobar</span><span class="dl">'</span><span class="p">);</span>
+ <span class="p">}},</span> <span class="mi">1000</span><span class="p">,</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsITimer</span><span class="p">.</span><span class="nx">TYPE_ONE_SHOT</span><span class="p">);</span></code></pre></figure>
+
   </div>
 
   <footer class="post-footer">
@@ -81,14 +80,9 @@ So, for JavaScript codes on Firefox(and/or other Mozilla) extensions, <code>wind
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2010/05/nsipref-is-deprecated-and-removed-on.html">
+      <span class="post-meta">2010-05-26</span>
+      <span class="post-title">nsIPref is deprecated and removed on Firefox 3.7</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
@@ -96,24 +90,29 @@ So, for JavaScript codes on Firefox(and/or other Mozilla) extensions, <code>wind
       <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
       <span class="post-meta">2014-11-16</span>
       <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/uac-shield-icon-incompatibility-between.html">
-      <span class="post-meta">2010-03-06</span>
-      <span class="post-title">UAC shield icon incompatibility between Vista and 7</span><span class="post-thumb" data-image-path="/images/uac_seven_vista.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/02/fontforge-script-to-merge-and-replace.html">
-      <span class="post-meta">2010-02-19</span>
-      <span class="post-title">fontforge script to merge and replace font glyphs</span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
       <span class="post-meta">2010-08-19</span>
       <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 </ul>
 </aside>

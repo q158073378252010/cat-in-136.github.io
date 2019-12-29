@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Code Reading: &quot;Firefox Send&quot; encryption</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2017/08/code-reading-firefox-send.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2017/08/code-reading-firefox-send.html" />
   <meta property="og:title" content="Code Reading: &quot;Firefox Send&quot; encryption" /><meta property="og:description" content="Mozilla Test Pilot Team has released Firefox Send. This post describes how safe Firefox Send is b..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2017/08/code-reading-firefox-send.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -74,28 +73,27 @@ This clause describes <code>FileSender#upload()</code> method defined in <a href
 
 <h4 id="firefox_send_fileSender_upload_1">first Promise : Generate Key and Load File</h4>
 
-<pre class="prettyprint"><code>    return Promise.all([
-      window.crypto.subtle.generateKey(
-        {
-          name: 'AES-GCM',
-          length: 128
-        },
-        true,
-        ['encrypt', 'decrypt']
-      ),
-      new Promise((resolve, reject) =&gt; {
-        const reader = new FileReader();
-        reader.readAsArrayBuffer(this.file);
-        reader.onload = function(event) {
-          const plaintext = new Uint8Array(this.result);
-          resolve(plaintext);
-        };
-        reader.onerror = function(err) {
-          reject(err);
-        };
-      })
-])
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span><span class="p">.</span><span class="nx">generateKey</span><span class="p">(</span>
+        <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AES-GCM</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">length</span><span class="p">:</span> <span class="mi">128</span>
+        <span class="p">},</span>
+        <span class="kc">true</span><span class="p">,</span>
+        <span class="p">[</span><span class="dl">'</span><span class="s1">encrypt</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">decrypt</span><span class="dl">'</span><span class="p">]</span>
+      <span class="p">),</span>
+      <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+        <span class="nx">reader</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">);</span>
+        <span class="nx">reader</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">plaintext</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+          <span class="nx">resolve</span><span class="p">(</span><span class="nx">plaintext</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="nx">reader</span><span class="p">.</span><span class="nx">onerror</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+        <span class="p">};</span>
+      <span class="p">})</span>
+<span class="p">])</span></code></pre></figure>
 
 <p>The first promise is resolved when both of following two procedures are completed:</p>
 <ul>
@@ -111,21 +109,20 @@ This clause describes <code>FileSender#upload()</code> method defined in <a href
 
 <h4 id="firefox_send_fileSender_upload_2">second Promise : Encrypt and Export key</h4>
 
-<pre class="prettyprint"><code>      .then(([secretKey, plaintext]) =&gt; {
-        self.emit('encrypting');
-        return Promise.all([
-          window.crypto.subtle.encrypt(
-            {
-              name: 'AES-GCM',
-              iv: this.iv,
-              tagLength: 128
-            },
-            secretKey,
-            plaintext
-          ),
-          window.crypto.subtle.exportKey('jwk', secretKey)
-]);
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">then</span><span class="p">(([</span><span class="nx">secretKey</span><span class="p">,</span> <span class="nx">plaintext</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">encrypting</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span>
+            <span class="p">{</span>
+              <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AES-GCM</span><span class="dl">'</span><span class="p">,</span>
+              <span class="na">iv</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">iv</span><span class="p">,</span>
+              <span class="na">tagLength</span><span class="p">:</span> <span class="mi">128</span>
+            <span class="p">},</span>
+            <span class="nx">secretKey</span><span class="p">,</span>
+            <span class="nx">plaintext</span>
+          <span class="p">),</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span><span class="p">.</span><span class="nx">exportKey</span><span class="p">(</span><span class="dl">'</span><span class="s1">jwk</span><span class="dl">'</span><span class="p">,</span> <span class="nx">secretKey</span><span class="p">)</span>
+<span class="p">]);</span></code></pre></figure>
 
 
 <p>The second promise is resolved when both of following two procedures are completed:</p>
@@ -146,28 +143,28 @@ This clause describes <code>FileSender#upload()</code> method defined in <a href
 
 <h4 id="firefox_send_fileSender_upload_3">third Promise : Upload</h4>
 
-<pre class="prettyprint"><code>      .then(([encrypted, keydata]) =&gt; {
-        return new Promise((resolve, reject) =&gt; {
-          const file = this.file;
-          const fileId = arrayToHex(this.iv);
-          const dataView = new DataView(encrypted);
-          const blob = new Blob([dataView], { type: file.type });
-          const fd = new FormData();
-          fd.append('data', blob, file.name);
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">then</span><span class="p">(([</span><span class="nx">encrypted</span><span class="p">,</span> <span class="nx">keydata</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">file</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">file</span><span class="p">;</span>
+          <span class="kd">const</span> <span class="nx">fileId</span> <span class="o">=</span> <span class="nx">arrayToHex</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">iv</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">dataView</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">DataView</span><span class="p">(</span><span class="nx">encrypted</span><span class="p">);</span>
+          <span class="kd">const</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="nx">dataView</span><span class="p">],</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="nx">file</span><span class="p">.</span><span class="nx">type</span> <span class="p">});</span>
+          <span class="kd">const</span> <span class="nx">fd</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
+          <span class="nx">fd</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="nx">blob</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 
-          // ****** snip (describe the next section...) ******
+          <span class="c1">// ****** snip (describe the next section...) ******</span>
 
-          xhr.open('post', '/upload', true);
-          xhr.setRequestHeader(
-            'X-File-Metadata',
-            JSON.stringify({
-              id: fileId,
-              filename: encodeURIComponent(file.name)
-            })
-          );
-          xhr.send(fd);
-        });
-});</code></pre>
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">post</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/upload</span><span class="dl">'</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span>
+            <span class="dl">'</span><span class="s1">X-File-Metadata</span><span class="dl">'</span><span class="p">,</span>
+            <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+              <span class="na">id</span><span class="p">:</span> <span class="nx">fileId</span><span class="p">,</span>
+              <span class="na">filename</span><span class="p">:</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+            <span class="p">})</span>
+          <span class="p">);</span>
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">fd</span><span class="p">);</span>
+        <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
 
 <p>The third promise executes the following procedure:</p>
 <ul>
@@ -186,20 +183,20 @@ This clause describes <code>FileSender#upload()</code> method defined in <a href
 
 <h4 id="firefox_send_fileSender_upload_4">return value: File Parameters</h4>
 
-<pre class="prettyprint"><code>          xhr.onreadystatechange = () =&gt; {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-              if (xhr.status === 200) {
-                const responseObj = JSON.parse(xhr.responseText);
-                return resolve({
-                  url: responseObj.url,
-                  fileId: responseObj.id,
-                  secretKey: keydata.k,
-                  deleteToken: responseObj.delete
-                });
-              }
-              reject(xhr.status);
-            }
-};</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">xhr</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">responseObj</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nx">resolve</span><span class="p">({</span>
+                  <span class="na">url</span><span class="p">:</span> <span class="nx">responseObj</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span>
+                  <span class="na">fileId</span><span class="p">:</span> <span class="nx">responseObj</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+                  <span class="na">secretKey</span><span class="p">:</span> <span class="nx">keydata</span><span class="p">.</span><span class="nx">k</span><span class="p">,</span>
+                  <span class="na">deleteToken</span><span class="p">:</span> <span class="nx">responseObj</span><span class="p">.</span><span class="k">delete</span>
+                <span class="p">});</span>
+              <span class="p">}</span>
+              <span class="nx">reject</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">status</span><span class="p">);</span>
+            <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
 
 <p>The final promise returns following parameters:</p>
 <ul>
@@ -220,36 +217,35 @@ See <a href="https://github.com/mozilla/send/blob/v1.1.0/frontend/src/upload.js"
 This clause describes "POST <code>/upload/</code>" handler defined in <a href="https://github.com/mozilla/send/blob/v1.1.0/server/server.js">server/server.js</a> (to store).
 </p>
 
-<pre class="prettyprint"><code>app.post('/upload', (req, res, next) =&gt; {
-  const newId = crypto.randomBytes(5).toString('hex');
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">'</span><span class="s1">/upload</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">newId</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mi">5</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
 
-  // ***** snip *****
+  <span class="c1">// ***** snip *****</span>
 
-  meta.delete = crypto.randomBytes(10).toString('hex');
-  req.pipe(req.busboy);
+  <span class="nx">meta</span><span class="p">.</span><span class="k">delete</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mi">10</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">busboy</span><span class="p">);</span>
 
-  req.busboy.on('file', async (fieldname, file, filename) =&gt; {
-    try {
-      await storage.set(newId, file, filename, meta);
+  <span class="nx">req</span><span class="p">.</span><span class="nx">busboy</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">file</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">fieldname</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">filename</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">storage</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">newId</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">filename</span><span class="p">,</span> <span class="nx">meta</span><span class="p">);</span>
 
-      const protocol = conf.env === 'production' ? 'https' : req.protocol;
-      const url = `${protocol}://${req.get('host')}/download/${newId}/`;
-      res.json({
-        url,
-        delete: meta.delete,
-        id: newId
-      });
-    } catch (e) {
-      if (e.message === 'limit') {
-        return res.sendStatus(413);
-      }
-      res.sendStatus(500);
-    }
-  });
+      <span class="kd">const</span> <span class="nx">protocol</span> <span class="o">=</span> <span class="nx">conf</span><span class="p">.</span><span class="nx">env</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">production</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">https</span><span class="dl">'</span> <span class="p">:</span> <span class="nx">req</span><span class="p">.</span><span class="nx">protocol</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">protocol</span><span class="p">}</span><span class="s2">://</span><span class="p">${</span><span class="nx">req</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">host</span><span class="dl">'</span><span class="p">)}</span><span class="s2">/download/</span><span class="p">${</span><span class="nx">newId</span><span class="p">}</span><span class="s2">/`</span><span class="p">;</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span>
+        <span class="nx">url</span><span class="p">,</span>
+        <span class="na">delete</span><span class="p">:</span> <span class="nx">meta</span><span class="p">.</span><span class="k">delete</span><span class="p">,</span>
+        <span class="na">id</span><span class="p">:</span> <span class="nx">newId</span>
+      <span class="p">});</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">message</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">limit</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">413</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">sendStatus</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
 
-  // ***** snip *****
-});
-</code></pre>
+  <span class="c1">// ***** snip *****</span>
+<span class="p">});</span></code></pre></figure>
 
 <p>Server stores:</p>
 <ul>
@@ -283,21 +279,21 @@ This clause describes <code>FileReceiver#download()</code> method defined in <a 
 
 <h4 id="firefox_send_fileReceiver_download_1">first Promise : Import Key</h4>
 
-<pre class="prettyprint"><code>window.crypto.subtle
-      .importKey(
-        'jwk',
-        {
-          kty: 'oct',
-          k: location.hash.slice(1),
-          alg: 'A128GCM',
-          ext: true
-        },
-        {
-          name: 'AES-GCM'
-        },
-        true,
-        ['encrypt', 'decrypt']
-)</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span>
+      <span class="p">.</span><span class="nx">importKey</span><span class="p">(</span>
+        <span class="dl">'</span><span class="s1">jwk</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">{</span>
+          <span class="na">kty</span><span class="p">:</span> <span class="dl">'</span><span class="s1">oct</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">k</span><span class="p">:</span> <span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+          <span class="na">alg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">A128GCM</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">ext</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AES-GCM</span><span class="dl">'</span>
+        <span class="p">},</span>
+        <span class="kc">true</span><span class="p">,</span>
+        <span class="p">[</span><span class="dl">'</span><span class="s1">encrypt</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">decrypt</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">)</span></code></pre></figure>
 
 <p>The first promise is resolved when following procedure is completed:</p>
 <ul>
@@ -313,39 +309,39 @@ This clause describes <code>FileReceiver#download()</code> method defined in <a 
 
 <h4 id="firefox_send_fileReceiver_download_2">second Promise : Download</h4>
 
-<pre class="prettyprint"><code>      .then(key =&gt; {
-        return new Promise((resolve, reject) =&gt; {
-          const xhr = new XMLHttpRequest();
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 
-          // ***** snip *****
+          <span class="c1">// ***** snip *****</span>
 
-          xhr.onload = function(event) {
-            // ***** snip *****
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ***** snip *****</span>
 
-            const blob = new Blob([this.response]);
-            const type = xhr.getResponseHeader('Content-Type');
-            const meta = JSON.parse(xhr.getResponseHeader('X-File-Metadata'));
-            const fileReader = new FileReader();
-            fileReader.onload = function() {
-              resolve([
-                {
-                  data: this.result,
-                  filename: meta.filename,
-                  type,
-                  iv: meta.id
-                },
-                key
-              ]);
-            };
+            <span class="kd">const</span> <span class="nx">blob</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Blob</span><span class="p">([</span><span class="k">this</span><span class="p">.</span><span class="nx">response</span><span class="p">]);</span>
+            <span class="kd">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">getResponseHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">);</span>
+            <span class="kd">const</span> <span class="nx">meta</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xhr</span><span class="p">.</span><span class="nx">getResponseHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">X-File-Metadata</span><span class="dl">'</span><span class="p">));</span>
+            <span class="kd">const</span> <span class="nx">fileReader</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FileReader</span><span class="p">();</span>
+            <span class="nx">fileReader</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+              <span class="nx">resolve</span><span class="p">([</span>
+                <span class="p">{</span>
+                  <span class="na">data</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">result</span><span class="p">,</span>
+                  <span class="na">filename</span><span class="p">:</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">filename</span><span class="p">,</span>
+                  <span class="nx">type</span><span class="p">,</span>
+                  <span class="na">iv</span><span class="p">:</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">id</span>
+                <span class="p">},</span>
+                <span class="nx">key</span>
+              <span class="p">]);</span>
+            <span class="p">};</span>
 
-            fileReader.readAsArrayBuffer(blob);
-          };
+            <span class="nx">fileReader</span><span class="p">.</span><span class="nx">readAsArrayBuffer</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+          <span class="p">};</span>
 
-          xhr.open('get', '/assets' + location.pathname.slice(0, -1), true);
-          xhr.responseType = 'blob';
-          xhr.send();
-        });
-})</code></pre>
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">'</span><span class="s1">get</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">/assets</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="kc">true</span><span class="p">);</span>
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">responseType</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">blob</span><span class="dl">'</span><span class="p">;</span>
+          <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+        <span class="p">});</span>
+<span class="p">})</span></code></pre></figure>
 
 <p>The second promise is resolved when following procedure is completed:</p>
 <ul>
@@ -367,28 +363,28 @@ This clause describes <code>FileReceiver#download()</code> method defined in <a 
 <h4 id="firefox_send_fileReceiver_download_3">third Promise : Decrypt</h4>
 
 
-<pre class="prettyprint"><code>      .then(([fdata, key]) =&gt; {
-        this.emit('decrypting');
-        return Promise.all([
-          window.crypto.subtle
-            .decrypt(
-              {
-                name: 'AES-GCM',
-                iv: hexToArray(fdata.iv),
-                tagLength: 128
-              },
-              key,
-              fdata.data
-            )
-            .then(decrypted =&gt; {
-              return Promise.resolve(decrypted);
-            }),
-          {
-            name: decodeURIComponent(fdata.filename),
-            type: fdata.type
-          }
-        ]);
-});</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">.</span><span class="nx">then</span><span class="p">(([</span><span class="nx">fdata</span><span class="p">,</span> <span class="nx">key</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">decrypting</span><span class="dl">'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">subtle</span>
+            <span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span>
+              <span class="p">{</span>
+                <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">AES-GCM</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">iv</span><span class="p">:</span> <span class="nx">hexToArray</span><span class="p">(</span><span class="nx">fdata</span><span class="p">.</span><span class="nx">iv</span><span class="p">),</span>
+                <span class="na">tagLength</span><span class="p">:</span> <span class="mi">128</span>
+              <span class="p">},</span>
+              <span class="nx">key</span><span class="p">,</span>
+              <span class="nx">fdata</span><span class="p">.</span><span class="nx">data</span>
+            <span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">decrypted</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">decrypted</span><span class="p">);</span>
+            <span class="p">}),</span>
+          <span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">fdata</span><span class="p">.</span><span class="nx">filename</span><span class="p">),</span>
+            <span class="na">type</span><span class="p">:</span> <span class="nx">fdata</span><span class="p">.</span><span class="nx">type</span>
+          <span class="p">}</span>
+        <span class="p">]);</span>
+<span class="p">});</span></code></pre></figure>
 
 
 <p>The third promise is resolved when following procedure is completed:</p>
@@ -561,6 +557,11 @@ digraph G {
       <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
       <span class="post-meta">2015-05-01</span>
       <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
@@ -571,24 +572,19 @@ digraph G {
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
-      <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">
-      <span class="post-meta">2010-03-20</span>
-      <span class="post-title">inode# is different from NTFS FileRef#</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
-      <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+    <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
+      <span class="post-meta">2014-11-16</span>
+      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
   </li>
 </ul>
 </aside>

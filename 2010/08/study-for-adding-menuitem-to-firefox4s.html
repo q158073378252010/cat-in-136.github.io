@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html" />
   <meta property="og:title" content="Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;" /><meta property="og:description" content="On Windows Vista/7, the menu bar is replaced with the new &quot;Firefox button.&quot; The old(legacy?) menu..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/fx_btn.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/08/study-for-adding-menuitem-to-firefox4s.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -69,16 +68,15 @@ ID of "Firefox button" is "<code>appmenu-button</code>", and its <code>&lt;menup
 <p>
 To add a menuitem "<code>appmenu-foobar</code>", write the following overlay:
 </p>
-<pre class="prettyprint"><code>&lt;?xml version="1.0"?&gt;
-&lt;overlay id="foobarOverlay"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"&gt;
-  &lt;menupopup id="appmenu-popup"&gt;
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;overlay</span> <span class="na">id=</span><span class="s">"foobarOverlay"</span>
+         <span class="na">xmlns=</span><span class="s">"http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;menupopup</span> <span class="na">id=</span><span class="s">"appmenu-popup"</span><span class="nt">&gt;</span>
 
-      &lt;menuitem id="appmenu_foobar" command="FooBarCmd"
-                label="Foobar"/&gt;
-  &lt;/menupopup&gt;
-&lt;/overlay&gt;
-</code></pre>
+      <span class="nt">&lt;menuitem</span> <span class="na">id=</span><span class="s">"appmenu_foobar"</span> <span class="na">command=</span><span class="s">"FooBarCmd"</span>
+                                    <span class="na">label=</span><span class="s">"Foobar"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/menupopup&gt;</span>
+<span class="nt">&lt;/overlay&gt;</span></code></pre></figure>
 
 <p>
 Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current Firefox 4.0b3 build on Linux, etc...), this overlay is ignored and does not occur error.
@@ -96,25 +94,24 @@ Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current
 <li>Two menuitems share a same command "<code>ConfMania:Open</code>".</li>
 </ul>
 
-<pre class="prettyprint"><code>&lt;overlay id="confmania-Overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"&gt;
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;overlay</span> <span class="na">id=</span><span class="s">"confmania-Overlay"</span> <span class="na">xmlns=</span><span class="s">"http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"</span><span class="nt">&gt;</span>
 
-  &lt;script type="application/x-javascript" src="chrome://confmania/content/browser-Overlay.js"&gt;&lt;/script&gt;
-  &lt;commandset id="mainCommandSet"&gt;
-    &lt;command id="ConfMania:Open" oncommand="window['ConfMania'].open()"/&gt;
-  &lt;/commandset&gt;
-  &lt;menupopup id="menu_ToolsPopup"&gt;
-    &lt;menuitem id="confmania" command="ConfMania:Open"
-              label="&amp;confmania.label;" insertafter="menu_preferences"/&gt;
+  <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"application/x-javascript"</span> <span class="na">src=</span><span class="s">"chrome://confmania/content/browser-Overlay.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;commandset</span> <span class="na">id=</span><span class="s">"mainCommandSet"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;command</span> <span class="na">id=</span><span class="s">"ConfMania:Open"</span> <span class="na">oncommand=</span><span class="s">"window['ConfMania'].open()"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/commandset&gt;</span>
+  <span class="nt">&lt;menupopup</span> <span class="na">id=</span><span class="s">"menu_ToolsPopup"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;menuitem</span> <span class="na">id=</span><span class="s">"confmania"</span> <span class="na">command=</span><span class="s">"ConfMania:Open"</span>
+     <span class="na">label=</span><span class="s">"&amp;amp;confmania.label;"</span> <span class="na">insertafter=</span><span class="s">"menu_preferences"</span><span class="nt">/&gt;</span>
 
-  &lt;/menupopup&gt;
+  <span class="nt">&lt;/menupopup&gt;</span>
 
-<ins>  &lt;menupopup id="appmenu-popup"&gt;</ins>
-<ins>    &lt;menuitem id="appmenu_confmania" command="ConfMania:Open"</ins>
-<ins>              label="&amp;confmania.label;" insertafter="appmenu_preferences"/&gt;</ins>
-<ins>  &lt;/menupopup&gt;</ins>
+  <span class="nt">&lt;menupopup</span> <span class="na">id=</span><span class="s">"appmenu-popup"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;menuitem</span> <span class="na">id=</span><span class="s">"appmenu_confmania"</span> <span class="na">command=</span><span class="s">"ConfMania:Open"</span>
+        <span class="na">label=</span><span class="s">"&amp;confmania.label;"</span> <span class="na">insertafter=</span><span class="s">"appmenu_preferences"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/menupopup&gt;</span>
 
-&lt;/overlay&gt;
-</code></pre>
+<span class="nt">&lt;/overlay&gt;</span></code></pre></figure>
 
 <ul>
 <li>"<code>menu_ToolsPopup</code>" is the "Tools" menupopup of the menubar.</li>
@@ -160,6 +157,11 @@ Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2010/09/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-09-12</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</span><span class="post-thumb" data-image-path="/images/cm-issue15.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
@@ -170,24 +172,19 @@ Note: if the browser does not have "Firefox Button" (e.g. older Firefox, current
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/09/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-09-12</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</span><span class="post-thumb" data-image-path="/images/cm-issue15.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">
       <span class="post-meta">2013-12-28</span>
       <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span><span class="post-thumb" data-image-path="/images/error.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
-      <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">
       <span class="post-meta">2010-11-27</span>
       <span class="post-title">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</span><span class="post-thumb" data-image-path="/images/traditional-addons-are-required-browser-restart.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
 </ul>
 </aside>

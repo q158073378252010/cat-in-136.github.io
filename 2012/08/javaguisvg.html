@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>JavaのGUIをベクトルデータとしてスクリーンショットを撮る〜SVG編〜</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/08/javaguisvg.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/08/javaguisvg.html" />
   <meta property="og:title" content="JavaのGUIをベクトルデータとしてスクリーンショットを撮る〜SVG編〜" /><meta property="og:description" content="かつてJavaのGUIをベクトルデータとしてスクリーンショットを撮る と題して、JavaといってもSwing GUI限定ではあるが、 スクリーンショットを PostScript で出力するアイデ..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/foobar.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/08/javaguisvg.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -60,17 +59,16 @@
 
 <p>つまり、前回のソースに対して、以下のような document に描画情報を出力した後ファイル出力するコードをねじ込んだ。</p>
 
-<pre class="prettyprint"><code>DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-DocumentBuilder builder = factory.newDocumentBuilder();
-Document document = builder.getDOMImplementation().createDocument("http://www.w3.org/2000/svg", "svg", null);
-SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-Printable printable = createPrintable();
-PageFormat pagefmt = new PageFormat();
-for (int i = 0; printable.print((Graphics)svgGenerator, pagefmt, i) == Printable.PAGE_EXISTS; i++) {
-    // do nothing
-}
-svgGenerator.stream(filewriter, true);
-</code></pre>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">DocumentBuilderFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="nc">DocumentBuilderFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+<span class="nc">DocumentBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newDocumentBuilder</span><span class="o">();</span>
+<span class="nc">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">getDOMImplementation</span><span class="o">().</span><span class="na">createDocument</span><span class="o">(</span><span class="s">"http://www.w3.org/2000/svg"</span><span class="o">,</span> <span class="s">"svg"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="nc">SVGGraphics2D</span> <span class="n">svgGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SVGGraphics2D</span><span class="o">(</span><span class="n">document</span><span class="o">);</span>
+<span class="nc">Printable</span> <span class="n">printable</span> <span class="o">=</span> <span class="n">createPrintable</span><span class="o">();</span>
+<span class="nc">PageFormat</span> <span class="n">pagefmt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PageFormat</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">printable</span><span class="o">.</span><span class="na">print</span><span class="o">((</span><span class="nc">Graphics</span><span class="o">)</span><span class="n">svgGenerator</span><span class="o">,</span> <span class="n">pagefmt</span><span class="o">,</span> <span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="nc">Printable</span><span class="o">.</span><span class="na">PAGE_EXISTS</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="c1">// do nothing</span>
+<span class="o">}</span>
+<span class="n">svgGenerator</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="n">filewriter</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span></code></pre></figure>
 
 <p>これはなかなか強力で、テキストがテキストのままで出力された。
 テキスト描画がそのまま&lt;text&gt;要素でSVGに変換されていた。</p>
@@ -122,19 +120,14 @@ svgGenerator.stream(filewriter, true);
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2012/05/blog-post.html">
       <span class="post-meta">2012-05-19</span>
       <span class="post-title">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</span><span class="post-thumb" data-image-path="/images/ksj_w15_52l_2k_chofu.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
@@ -142,9 +135,14 @@ svgGenerator.stream(filewriter, true);
       <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/03/bezier-4-diff.html">
-      <span class="post-meta">2014-03-26</span>
-      <span class="post-title">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</span><span class="post-thumb" data-image-path="/images/generic-theta-tile.png"></span></a>
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/11/bloggers-stats-is-flash-free-but-looks.html">
+      <span class="post-meta">2010-11-01</span>
+      <span class="post-title">Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics</span><span class="post-thumb" data-image-path="/images/bloggers-stats-is-flash-free-but-looks-screenshot2.png"></span></a>
   </li>
 </ul>
 </aside>

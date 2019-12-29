@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Jekyll移行メモ</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/09/move-to-jekyll.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/09/move-to-jekyll.html" />
   <meta property="og:title" content="Jekyll移行メモ" /><meta property="og:description" content="Blogger から Jekyll (Github pages) に移行したときのメモ。 Bloggerからの取り込み Blogger からは設定→その他→ブログツール→ブログをエクスポート A..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/09/move-to-jekyll.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -82,27 +81,24 @@ Atom 形式で<a href="https://support.google.com/blogger/answer/97416?hl=ja" ti
 
 <p>具体的には HTML/JavaScript のウィジットで下記を表示するようにした。</p>
 
-<pre class="prettyprint lang-html"><code>
-This blog has moved to github page (&lt;a href="http://cat-in-136.github.io/"&gt;http://cat-in-136.github.io/&lt;/a&gt;).
-&lt;script&gt;
-(function (){
-  var oLink = document.querySelector("link[rel=canonical]");
-  if (oLink) {
-    var canoUrl = oLink.getAttribute("href");
-    if (canoUrl != "http://cat-in-136.github.io/") {
-      document.writeln("&lt;br /&gt;" + "The content would be available at new blog site".link(canoUrl));
-    }
-  }
-})();
-&lt;/script&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html">This blog has moved to github page (<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://cat-in-136.github.io/"</span><span class="nt">&gt;</span>http://cat-in-136.github.io/<span class="nt">&lt;/a&gt;</span>).
+<span class="nt">&lt;script&gt;</span>
+<span class="p">(</span><span class="kd">function</span> <span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">oLink</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">link[rel=canonical]</span><span class="dl">"</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">oLink</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">canoUrl</span> <span class="o">=</span> <span class="nx">oLink</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">href</span><span class="dl">"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">canoUrl</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">http://cat-in-136.github.io/</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;br /&gt;</span><span class="dl">"</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">The content would be available at new blog site</span><span class="dl">"</span><span class="p">.</span><span class="nx">link</span><span class="p">(</span><span class="nx">canoUrl</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <p>なお、<code>link[rel=canonical]</code>は、下記のような JavaScript で生成するコードを入れている。</p>
 
-<pre class="prettyprint lang-html"><code>&lt;script&gt;
-document.writeln("&lt;link href='" + location.href.replace(location.host + "/", "cat-in-136.github.io/") +"' rel='canonical'/&gt;");
-&lt;/script&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;link href='</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">cat-in-136.github.io/</span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span><span class="dl">"</span><span class="s2">' rel='canonical'/&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <p>このようなことをするため記事のパーマリンクは Blogger と合わせた
 <code>/:year/:month/:title.html</code> としている。
@@ -125,23 +121,22 @@ document.writeln("&lt;link href='" + location.href.replace(location.host + "/", 
 link[rel=canonical] を入れるようにした。
 </p>
 
-<pre class="prettyprint lang-html"><code>&lt;b:if cond='data:blog.pageType == &amp;quot;index&amp;quot;'&gt;
-  &lt;link href='http://cat-in-136.github.io/' rel='canonical'/&gt;
-  &lt;meta content='http://cat-in-136.github.io/' property='og:url'/&gt;
-&lt;/b:if&gt;
-&lt;b:if cond='data:blog.pageType == &amp;quot;archive&amp;quot;'&gt;
-  &lt;link href='http://cat-in-136.github.io/archive.html' rel='canonical'/&gt;
-  &lt;meta content='http://cat-in-136.github.io/archive.html' property='og:url'/&gt;
-&lt;/b:if&gt;
-&lt;b:if cond='data:blog.pageType == &amp;quot;item&amp;quot;'&gt;
-  &lt;script&gt;
-    document.writeln(&amp;quot;&lt;link href='&amp;quot; + location.href.replace(location.host + &amp;quot;/&amp;quot;, &amp;quot;cat-in-136.github.io/&amp;quot;) +&amp;quot;' rel='canonical'/&gt;&amp;quot;);
-    document.writeln(&amp;quot;&lt;meta content='&amp;quot; + location.href.replace(location.host + &amp;quot;/&amp;quot;, &amp;quot;cat-in-136.github.io/&amp;quot;) +&amp;quot;' property='og:url'/&gt;&amp;quot;);
-  &lt;/script&gt;
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;b:if</span> <span class="na">cond=</span><span class="s">'data:blog.pageType == &amp;quot;index&amp;quot;'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'http://cat-in-136.github.io/'</span> <span class="na">rel=</span><span class="s">'canonical'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">content=</span><span class="s">'http://cat-in-136.github.io/'</span> <span class="na">property=</span><span class="s">'og:url'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/b:if&gt;</span>
+<span class="nt">&lt;b:if</span> <span class="na">cond=</span><span class="s">'data:blog.pageType == &amp;quot;archive&amp;quot;'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'http://cat-in-136.github.io/archive.html'</span> <span class="na">rel=</span><span class="s">'canonical'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;meta</span> <span class="na">content=</span><span class="s">'http://cat-in-136.github.io/archive.html'</span> <span class="na">property=</span><span class="s">'og:url'</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/b:if&gt;</span>
+<span class="nt">&lt;b:if</span> <span class="na">cond=</span><span class="s">'data:blog.pageType == &amp;quot;item&amp;quot;'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+    document.writeln(<span class="ni">&amp;quot;</span><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">'&amp;quot; + location.href.replace(location.host + &amp;quot;/&amp;quot;, &amp;quot;cat-in-136.github.io/&amp;quot;) +&amp;quot;'</span> <span class="na">rel=</span><span class="s">'canonical'</span><span class="nt">/&gt;</span><span class="ni">&amp;quot;</span>);
+    document.writeln(<span class="ni">&amp;quot;</span><span class="nt">&lt;meta</span> <span class="na">content=</span><span class="s">'&amp;quot; + location.href.replace(location.host + &amp;quot;/&amp;quot;, &amp;quot;cat-in-136.github.io/&amp;quot;) +&amp;quot;'</span> <span class="na">property=</span><span class="s">'og:url'</span><span class="nt">/&gt;</span><span class="ni">&amp;quot;</span>);
+  <span class="nt">&lt;/script&gt;</span>
 
-  &lt;!-- snip --&gt;
-&lt;/b:if&gt;
-</code></pre>
+  <span class="c">&lt;!-- snip --&gt;</span>
+<span class="nt">&lt;/b:if&gt;</span></code></pre></figure>
 </ins>
 
 <h3>DISQUS</h3>
@@ -194,29 +189,29 @@ disqus ウィジェットについても <a href="https://disqus.com/admin/setti
       <span class="post-title">Blogger の国別ドメインリダイレクト対策コードを入れると、Cookie 無効 + JavaScript 有効なブラウザの環境下で無限リダイレクトする件</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
+      <span class="post-meta">2015-01-19</span>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/11/define.html">
-      <span class="post-meta">2013-11-26</span>
-      <span class="post-title">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</span><span class="post-thumb" data-image-path="/images/vc-tooltip.png"></span></a>
   </li>
 </ul>
 </aside>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>mingw32での「undefined reference to `WinMain@16&#39;」</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html" />
   <meta property="og:title" content="mingw32での「undefined reference to `WinMain@16&#39;」" /><meta property="og:description" content="Unicode有効（-DUNICODE -D_UNICODE）時に下記のコードをmingw32-gccでビルドしようとすると&quot;WinMain&quot;が未定義ですという旨のリンクエラーが出てしまう。 #..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/03/mingw32undefined-reference-to-winmain16.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -44,14 +43,13 @@
 
   <div class="post-content" itemprop="articleBody" lang="ja">
     <p>Unicode有効（<code>-DUNICODE -D_UNICODE</code>）時に下記のコードをmingw32-gccでビルドしようとすると"WinMain"が未定義ですという旨のリンクエラーが出てしまう。</p>
-<pre class="prettyprint"><code>#include &lt;windows.h&gt;
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;windows.h&gt;
 #include &lt;tchar.h&gt;
-
-int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
-{
-    return 0;
-}
-</code></pre>
+</span>
+<span class="kt">int</span> <span class="n">WINAPI</span> <span class="nf">_tWinMain</span><span class="p">(</span><span class="n">HINSTANCE</span> <span class="n">hInstance</span><span class="p">,</span> <span class="n">HINSTANCE</span> <span class="n">hPrevInstance</span><span class="p">,</span> <span class="n">LPTSTR</span> <span class="n">lpCmdLine</span><span class="p">,</span> <span class="kt">int</span> <span class="n">nCmdShow</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 <pre style="background-color: #000; color: #fff; overflow: auto; padding: 2px;"><code>$ gcc -o foobar.exe foobar.c -D_UNICODE -DUNICODE -mwindows -lmingw32 -lkernel32
 /usr/i686-pc-mingw32/sys-root/mingw/lib/libmingw32.a(main.o):(.text+0xd2): undefined reference to `WinMain@16'
 $ </code></pre>
@@ -67,11 +65,12 @@ $ </code></pre>
 <p>
 このコンパイルオプションとき、<code>TCHAR</code>は<code>CHAR</code>に、<code>_tWinMain</code>関数は<code>WinMain</code>関数とみなされる。これは<code>tchar.h</code>での単純な<code>#define</code>で実現されている。
 </p>
-<blockquote><pre class="prettyprint"><code>#define _tmain      main
+<blockquote>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#define _tmain      main
 #define _tWinMain   WinMain
 #define _tenviron  _environ
-#define __targv     __argv
-</code></pre></blockquote>
+#define __targv     __argv</span></code></pre></figure>
+</blockquote>
 <p>
 そしてこのとき、エントリーポイント<code>WinMain</code>から実行されることとなり、実際そのように動作する。
 </p>
@@ -79,14 +78,15 @@ $ </code></pre>
 <p>
 冒頭で示したUnicodeのコンパイルオプションのとき、<code>TCHAR</code>は<code>WCHAR</code>に、<code>_tWinMain</code>関数は<code>wWinMain</code>関数とみなされるのが正しい動作である。同様に<code>tchar.h</code>を参照すると下記の通りになっている。
 </p>
-<blockquote><pre class="prettyprint"><code>/*  for porting from other Windows compilers */
-#if 0  /* no  wide startup module */
+<blockquote>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/*  for porting from other Windows compilers */</span>
+<span class="c">#if 0  /* no  wide startup module */
 #define _tmain      wmain
 #define _tWinMain   wWinMain
 #define _tenviron   _wenviron
 #define __targv     __wargv
-#endif
-</code></pre></blockquote>
+</span><span class="err">#endif</span></code></pre></figure>
+</blockquote>
 <p>
 ここにはmingw32 が「<em>no</em> wide startup module（Unicode向けスタートアップモジュールが<em>未実装</em>）」だということがかかれている。つまり、プログラムやコンパイルオプションなどは正しいが、mingw32 の未実装機能を使っているコードになっているのが正確な回答であって、簡単に言えば<code>_tWinMain</code>および<code>wWinMain</code>は mingw32 では現状使用できないのである。この対策として<code>main</code>関数をエントリーポイントにすることが多く行われるようである。
 </p>
@@ -115,14 +115,14 @@ $ </code></pre>
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2012/04/unicodemingw32twinmainwwinmain.html">
-      <span class="post-meta">2012-04-22</span>
-      <span class="post-title">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
       <span class="post-meta">2010-03-17</span>
       <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2012/04/unicodemingw32twinmainwwinmain.html">
+      <span class="post-meta">2012-04-22</span>
+      <span class="post-title">UnicodeでMingw32の落とし穴〜_tWinMain/wWinMain問題など〜</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
@@ -130,9 +130,14 @@ $ </code></pre>
       <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/06/lukstruecrypt.html">
-      <span class="post-meta">2014-06-29</span>
-      <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
+    <a class="post-link" href="/2013/11/define.html">
+      <span class="post-meta">2013-11-26</span>
+      <span class="post-title">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</span><span class="post-thumb" data-image-path="/images/vc-tooltip.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2012/09/gr-sakura-linux-comusb.html">
@@ -140,19 +145,14 @@ $ </code></pre>
       <span class="post-title">（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/03/html-copy.html">
-      <span class="post-meta">2013-03-04</span>
-      <span class="post-title">HTML の COPY 禁止をするにはどうすればいいですか? </span></a>
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
-      <span class="post-meta">2014-04-27</span>
-      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/11/define.html">
-      <span class="post-meta">2013-11-26</span>
-      <span class="post-title">#define 展開を沢山一気に確認+整形をプログラムでやらせるときに注意する点について</span><span class="post-thumb" data-image-path="/images/vc-tooltip.png"></span></a>
+    <a class="post-link" href="/2014/06/lukstruecrypt.html">
+      <span class="post-meta">2014-06-29</span>
+      <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
   </li>
 </ul>
 </aside>

@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>XUL Tip: Scrolling for tabs on XUL tabbox</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2011/01/xul-tip-scrolling-for-tabs-on-xul.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2011/01/xul-tip-scrolling-for-tabs-on-xul.html" />
   <meta property="og:title" content="XUL Tip: Scrolling for tabs on XUL tabbox" /><meta property="og:description" content="The solution using &lt;arrowscrollbox&gt;. &lt;tabbox&gt; &lt;arrowscrollbox clicktoscroll=&quot;true&quot;..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/scrolledtab.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2011/01/xul-tip-scrolling-for-tabs-on-xul.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -46,21 +45,20 @@
     <p>
 The solution using <code>&lt;arrowscrollbox&gt;</code>.
 </p>
-<pre class="prettyprint"><code>&lt;tabbox&gt;
-  &lt;arrowscrollbox clicktoscroll="true" orient="horizontal"&gt;
-    &lt;tabs&gt;
-      &lt;tab label="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/&gt;
-      &lt;tab label="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"/&gt;
-      &lt;tab label="cccccccccccccccccccccccccccccccccccccccccccccccccccc"/&gt;
-    &lt;/tabs&gt;
-  &lt;/arrowscrollbox&gt;
-  &lt;tabpanels&gt;
-    &lt;label value="a"/&gt;
-    &lt;label value="b"/&gt;
-    &lt;label value="c"/&gt;
-  &lt;/tabpanels&gt;
-&lt;/tabbox&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tabbox&gt;</span>
+  <span class="nt">&lt;arrowscrollbox</span> <span class="na">clicktoscroll=</span><span class="s">"true"</span> <span class="na">orient=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tabs&gt;</span>
+      <span class="nt">&lt;tab</span> <span class="na">label=</span><span class="s">"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;tab</span> <span class="na">label=</span><span class="s">"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;tab</span> <span class="na">label=</span><span class="s">"cccccccccccccccccccccccccccccccccccccccccccccccccccc"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/tabs&gt;</span>
+  <span class="nt">&lt;/arrowscrollbox&gt;</span>
+  <span class="nt">&lt;tabpanels&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">value=</span><span class="s">"a"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">value=</span><span class="s">"b"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">value=</span><span class="s">"c"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/tabpanels&gt;</span>
+<span class="nt">&lt;/tabbox&gt;</span></code></pre></figure>
 <p>
 When some of tabs are not visible, arrow-scroll-button is shown:
 </p>
@@ -73,15 +71,14 @@ Note that <code>arrowscrollbox</code> element surrounds <code>tabs</code> elemen
 If <code>arrowscrollbox</code> element is child of <code>tabs</code> element,
 tabbox does not work properly.
 </p>
-<pre class="prettyprint"><code>&lt;!-- Note: Does not work! --&gt;
-  &lt;tabs&gt;
-    &lt;arrowscrollbox clicktoscroll="true" orient="horizontal"&gt;
-      &lt;tab label="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/&gt;
-      &lt;tab label="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"/&gt;
-      &lt;tab label="cccccccccccccccccccccccccccccccccccccccccccccccccccc"/&gt;
-    &lt;/arrowscrollbox&gt;
-  &lt;/tabs&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="c">&lt;!-- Note: Does not work! --&gt;</span>
+  <span class="nt">&lt;tabs&gt;</span>
+    <span class="nt">&lt;arrowscrollbox</span> <span class="na">clicktoscroll=</span><span class="s">"true"</span> <span class="na">orient=</span><span class="s">"horizontal"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;tab</span> <span class="na">label=</span><span class="s">"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;tab</span> <span class="na">label=</span><span class="s">"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;tab</span> <span class="na">label=</span><span class="s">"cccccccccccccccccccccccccccccccccccccccccccccccccccc"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/arrowscrollbox&gt;</span>
+  <span class="nt">&lt;/tabs&gt;</span></code></pre></figure> 
 
 
 <h4>Issue of this solution</h4>
@@ -121,24 +118,14 @@ On Mac theme, tabs are not painted properly:
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
-      <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
-      <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
@@ -149,6 +136,16 @@ On Mac theme, tabs are not painted properly:
     <a class="post-link" href="/2010/11/bloggers-stats-is-flash-free-but-looks.html">
       <span class="post-meta">2010-11-01</span>
       <span class="post-title">Blogger&#39;s Stats is &quot;Flash Free&quot; but looks like Google Analytics</span><span class="post-thumb" data-image-path="/images/bloggers-stats-is-flash-free-but-looks-screenshot2.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-08-15</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/08/html-complex-ruby.html">
+      <span class="post-meta">2016-08-05</span>
+      <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
   </li>
 </ul>
 </aside>

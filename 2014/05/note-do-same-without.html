@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Note: do same without browser.tabs.closeButtons on Firefox 31+</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2014/05/note-do-same-without.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2014/05/note-do-same-without.html" />
   <meta property="og:title" content="Note: do same without browser.tabs.closeButtons on Firefox 31+" /><meta property="og:description" content="Unfortunately Bug865826 remove browser.tabs.closeButtons pref (&quot;Browser&quot; -&gt; &quot;TabBrowsing&quot; -&amp;gt..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/note-do-same-without-value0.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2014/05/note-do-same-without.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -74,12 +73,11 @@ This removal would be captured in upcoming Firefox 31.</p>
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
 
-<pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
-  .tab-close-button:not([selected]) {
-    display: none;
-  }
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@-moz-document</span> <span class="sx">url(chrome://browser/content/browser.xul)</span> <span class="p">{</span>
+  <span class="nc">.tab-close-button</span><span class="nd">:not</span><span class="o">([</span><span class="nt">selected</span><span class="o">])</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <h5>Value=1: Display close buttons on All tabs</h5>
 
@@ -98,12 +96,11 @@ This removal would be captured in upcoming Firefox 31.</p>
 <figcaption style="display: block; text-align: center;"></figcaption>
 </figure>
 
-<pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
-  .tab-close-button {
-    display: none;
-  }
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@-moz-document</span> <span class="sx">url(chrome://browser/content/browser.xul)</span> <span class="p">{</span>
+  <span class="nc">.tab-close-button</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <h5>Value=3: Display a close button at the end of the tab strip (Firefox 1.x behavior)</h5>
 
@@ -118,23 +115,22 @@ Therefore, some sorta addon would be needed.</p>
 
 <p>For example, to get back the close button, add following user script using <a href="http://userchromejs.mozdev.org/">userChrome.js</a>.</p>
 
-<pre class="prettyprint"><code>// ==UserScript==
-// @name close_btn_end_tab_strip.uc.js
-// @include main
-// ==/UserScript==
-(function () {
-  var tabsCloseButton = document.createElement("toolbarbutton");
-  tabsCloseButton.setAttribute("id", "tabs-closebutton");
-  tabsCloseButton.setAttribute("class", "close-button tabs-closebutton close-icon");
-  tabsCloseButton.setAttribute("command", "cmd_close");
-  tabsCloseButton.setAttribute("label", "Close Tab");
-  tabsCloseButton.setAttribute("cui-areatype", "toolbar");
-  tabsCloseButton.setAttribute("tooltiptext", "Close Tab");
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// ==UserScript==</span>
+<span class="c1">// @name close_btn_end_tab_strip.uc.js</span>
+<span class="c1">// @include main</span>
+<span class="c1">// ==/UserScript==</span>
+<span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">tabsCloseButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">toolbarbutton</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsCloseButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">tabs-closebutton</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsCloseButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">class</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">close-button tabs-closebutton close-icon</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsCloseButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">command</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">cmd_close</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsCloseButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">label</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Close Tab</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsCloseButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">cui-areatype</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">toolbar</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsCloseButton</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="dl">"</span><span class="s2">tooltiptext</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Close Tab</span><span class="dl">"</span><span class="p">);</span>
 
-  var tabsToolbar = document.getElementById("TabsToolbar");
-  tabsToolbar.appendChild(tabsCloseButton);
-})();
-</code></pre>
+  <span class="kd">var</span> <span class="nx">tabsToolbar</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">TabsToolbar</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">tabsToolbar</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">tabsCloseButton</span><span class="p">);</span>
+<span class="p">})();</span></code></pre></figure>
 
 <p>(Note: To hide close buttons on tabs, the user CSS rule described in value=2 is also required.)</p>
 
@@ -142,27 +138,25 @@ Therefore, some sorta addon would be needed.</p>
 
 <p>Example 1. Display close button when the cursor hovers over the tab, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
 
-<pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
-  tab:hover .tab-close-button {
-    display: -moz-box ! important;
-  }
-  tab:not(:hover) .tab-close-button {
-    display: none ! important;
-  }
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@-moz-document</span> <span class="sx">url(chrome://browser/content/browser.xul)</span> <span class="p">{</span>
+  <span class="py">tab</span><span class="p">:</span><span class="n">hover</span> <span class="p">.</span><span class="n">tab-close-button</span> <span class="err">{</span>
+    <span class="n">display</span><span class="p">:</span> <span class="n">-moz-box</span> <span class="cp">! important</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nt">tab</span><span class="nd">:not</span><span class="o">(</span><span class="nd">:hover</span><span class="o">)</span> <span class="nc">.tab-close-button</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">! important</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="err">}</span></code></pre></figure>
 
 <p>Example 2. Display close button when the cursor hovers near the tabbar, even if tab width is smaller than <code>browser.tabs.tabClipWidth</code>.</p>
 
-<pre class="prettyprint"><code>@-moz-document url(chrome://browser/content/browser.xul) {
-  .tabbrowser-tabs[closebuttons="activetab"] .tab-close-button {
-    display: -moz-box ! important;
-  }
-  tab:not(:hover) .tab-close-button {
-    display: none ! important;
-  }
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@-moz-document</span> <span class="sx">url(chrome://browser/content/browser.xul)</span> <span class="p">{</span>
+  <span class="nc">.tabbrowser-tabs</span><span class="o">[</span><span class="nt">closebuttons</span><span class="o">=</span><span class="s1">"activetab"</span><span class="o">]</span> <span class="nc">.tab-close-button</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="n">-moz-box</span> <span class="cp">! important</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nt">tab</span><span class="nd">:not</span><span class="o">(</span><span class="nd">:hover</span><span class="o">)</span> <span class="nc">.tab-close-button</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span> <span class="cp">! important</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
 <h4>Reference</h4>
 
@@ -201,6 +195,11 @@ Therefore, some sorta addon would be needed.</p>
       <span class="post-title">Look back 13 years ago of Configuration Mania</span><span class="post-thumb" data-image-path="/images/201703-lookbackconfmania-ext.svg"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-08-15</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
@@ -211,14 +210,9 @@ Therefore, some sorta addon would be needed.</p>
       <span class="post-title">白い部分の面積を求めなさい〜東京2020</span><span class="post-thumb" data-image-path="/images/201507_Tokyo2020_emblem_area_calc_figure.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-08-15</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
   </li>
 </ul>
 </aside>

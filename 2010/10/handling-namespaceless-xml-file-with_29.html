@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Handling namespaceless XML file with SAX (2)</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html" />
   <meta property="og:title" content="Handling namespaceless XML file with SAX (2)" /><meta property="og:description" content="After last post, I found SAX namespace handling method can be changed with SAXParserFactory#setNa..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/10/handling-namespaceless-xml-file-with_29.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -46,10 +45,9 @@
     <p>
 After last post, I found SAX namespace handling method can be changed with <a href="http://download.oracle.com/javase/6/docs/api/javax/xml/parsers/SAXParserFactory.html#setNamespaceAware%28boolean%29"><code>SAXParserFactory#setNamespaceAware()</code> function</a>.
 </p>
-<pre class="prettyprint"><code>    SAXParserFactory factory = SAXParserFactory.newInstance();
-<em style="font-style:normal; background-color: #ff0;">    factory.setNamespaceAware(true);</em>
-    SAXParser parser = factory.newSAXParser();
-</code></pre>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="nc">SAXParserFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="nc">SAXParserFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+    <span class="n">factory</span><span class="o">.</span><span class="na">setNamespaceAware</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Added</span>
+    <span class="nc">SAXParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newSAXParser</span><span class="o">();</span></code></pre></figure> 
 <p>
 This setting specify whether the parser supports XML namespaces or not and default value is <code>false</code>.
 </p>
@@ -89,6 +87,7 @@ Following table is the result of namespace-less <code>"&lt;test&gt;"</code> tag.
 <p>
 Note that: On Android <em>1.5</em>, calling <code>SAXParserFactory#setNamespaceAware()</code> throws <code>SAXNotSupportedException</code> "The 'namespace-prefix' feature is not supported while the 'namespaces' feature is enabled.". We SHOULD USE newer Android OS.
 </p>
+
   </div>
 
   <footer class="post-footer">
@@ -130,14 +129,14 @@ Note that: On Android <em>1.5</em>, calling <code>SAXParserFactory#setNamespaceA
       <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">
-      <span class="post-meta">2010-03-20</span>
-      <span class="post-title">inode# is different from NTFS FileRef#</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2016/08/html-complex-ruby.html">
       <span class="post-meta">2016-08-05</span>
       <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/04/stats-flash-vs-java.html">
+      <span class="post-meta">2010-04-11</span>
+      <span class="post-title">[stats] Flash vs Java</span><span class="post-thumb" data-image-path="/images/Flash_vs_Java_trends.png"></span></a>
   </li>
 </ul>
 </aside>

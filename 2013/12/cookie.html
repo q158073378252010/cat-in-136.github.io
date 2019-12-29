@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Cookie のブロックを検出する方法：更新</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2013/12/cookie.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2013/12/cookie.html" />
   <meta property="og:title" content="Cookie のブロックを検出する方法：更新" /><meta property="og:description" content="Cookie を検出してブロックする、のではなくて あるサイトに訪れたユーザの ブラウザが Cookie をブロックする設定となっているのを検出できるかどうか、 のおはなし。 Android の..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/device-2013-12-31-111917.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2013/12/cookie.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -62,16 +61,15 @@
 
 <h4>Solution</h4>
 
-<pre class="prettyprint"><code>document.cookie = "cookie-block-check=a;max-age=1;domain=%DOMAIN%;path=%PATH%%SECURE%"
-                  .replace("%DOMAIN%", location.host)
-                  .replace("%PATH%", location.pathname)
-                  .replace("%SECURE%", (location.protocol == "https:")? ";secure" : "")
-if (document.cookie == "") {
-    alert("Cookie is blocked");
-} else {
-    alert("Cookie is allowed");
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">cookie-block-check=a;max-age=1;domain=%DOMAIN%;path=%PATH%%SECURE%</span><span class="dl">"</span>
+                  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">%DOMAIN%</span><span class="dl">"</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">host</span><span class="p">)</span>
+                  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">%PATH%</span><span class="dl">"</span><span class="p">,</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">)</span>
+                  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">%SECURE%</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">https:</span><span class="dl">"</span><span class="p">)?</span> <span class="dl">"</span><span class="s2">;secure</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">""</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">==</span> <span class="dl">""</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cookie is blocked</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">Cookie is allowed</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>Cookie の受け入れをON/OFFするなり、ドメイン指定で拒否/許可を切り替えるなりして、
 下記ボタンを押すと動作が変わると思う。</p>
@@ -129,14 +127,14 @@ key=value ペアしか取得できないので、
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2012/05/blog-post.html">
-      <span class="post-meta">2012-05-19</span>
-      <span class="post-title">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</span><span class="post-thumb" data-image-path="/images/ksj_w15_52l_2k_chofu.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">
       <span class="post-meta">2013-12-28</span>
       <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span><span class="post-thumb" data-image-path="/images/error.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2012/05/blog-post.html">
+      <span class="post-meta">2012-05-19</span>
+      <span class="post-title">調布に通っている電通生なら、調布駅に沿って川あるの知ってるよね? な、なんだってー(たぶん嘘)</span><span class="post-thumb" data-image-path="/images/ksj_w15_52l_2k_chofu.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
@@ -144,14 +142,9 @@ key=value ペアしか取得できないので、
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/09/nerinefirefox4.html">
-      <span class="post-meta">2010-09-15</span>
-      <span class="post-title">NerineをFirefox4で動くよう改造してみる</span><span class="post-thumb" data-image-path="/images/nerinefirefox4-screenshot1.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-08-15</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
@@ -159,14 +152,19 @@ key=value ペアしか取得できないので、
       <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
+    <a class="post-link" href="/2013/09/blog-post.html">
+      <span class="post-meta">2013-09-24</span>
+      <span class="post-title">もしも英語の地名を漢字にしてみたら〜はわざわざ考えるまでもなかったの巻</span><span class="post-thumb" data-image-path="/images/BART_map_cc_my.svg"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
       <span class="post-meta">2013-04-13</span>
       <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span><span class="post-thumb" data-image-path="/images/bar.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 </ul>
 </aside>

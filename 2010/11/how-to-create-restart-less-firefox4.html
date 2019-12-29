@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html" />
   <meta property="og:title" content="How to create restart-less #Firefox4 extension *WITHOUT* Jetpack" /><meta property="og:description" content="On Firefox 4, users can install and uninstall Jetpack extensions without a browser restart. The t..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/traditional-addons-are-required-browser-restart.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/11/how-to-create-restart-less-firefox4.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -72,59 +71,58 @@ To make a bootstrapped extension, you need:
 <p>
 There is no difference from traditional extensions... Only one exception is to add <code>em:bootstrap="true"</code>.
 </p>
-<pre class="prettyprint"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:em="http://www.mozilla.org/2004/em-rdf#"&gt;
-  &lt;Description about="urn:mozilla:install-manifest"&gt;
-     &lt;em:id&gt;bootstraptest@cat-in-136.blogspot.com&lt;/em:id&gt;
-     &lt;em:version&gt;1.0&lt;/em:version&gt;
-     &lt;em:type&gt;2&lt;/em:type&gt;&lt;!-- extension! --&gt;
-<span style="background:#ff0">     &lt;em:bootstrap&gt;true&lt;/em:bootstrap&gt;</span>
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;RDF</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/1999/02/22-rdf-syntax-ns#"</span>
+     <span class="na">xmlns:em=</span><span class="s">"http://www.mozilla.org/2004/em-rdf#"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">about=</span><span class="s">"urn:mozilla:install-manifest"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;em:id&gt;</span>bootstraptest@cat-in-136.blogspot.com<span class="nt">&lt;/em:id&gt;</span>
+     <span class="nt">&lt;em:version&gt;</span>1.0<span class="nt">&lt;/em:version&gt;</span>
+     <span class="nt">&lt;em:type&gt;</span>2<span class="nt">&lt;/em:type&gt;</span><span class="c">&lt;!-- extension! --&gt;</span>
+     <span class="nt">&lt;em:bootstrap&gt;</span>true<span class="nt">&lt;/em:bootstrap&gt;</span>
 
-     &lt;!-- Firefox --&gt;
-     &lt;em:targetApplication&gt;
-        &lt;Description&gt;
-            &lt;em:id&gt;{ec8030f7-c20a-464f-9b0e-13a3a9e97384}&lt;/em:id&gt;
-            &lt;em:minVersion&gt;4.0b5&lt;/em:minVersion&gt;
-            &lt;em:maxVersion&gt;4.0&lt;/em:maxVersion&gt;
-        &lt;/Description&gt;
-     &lt;/em:targetApplication&gt;
+     <span class="c">&lt;!-- Firefox --&gt;</span>
+     <span class="nt">&lt;em:targetApplication&gt;</span>
+        <span class="nt">&lt;Description&gt;</span>
+            <span class="nt">&lt;em:id&gt;</span>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}<span class="nt">&lt;/em:id&gt;</span>
+            <span class="nt">&lt;em:minVersion&gt;</span>4.0b5<span class="nt">&lt;/em:minVersion&gt;</span>
+            <span class="nt">&lt;em:maxVersion&gt;</span>4.0<span class="nt">&lt;/em:maxVersion&gt;</span>
+        <span class="nt">&lt;/Description&gt;</span>
+     <span class="nt">&lt;/em:targetApplication&gt;</span>
 
-     &lt;em:name&gt;bootstraptest&lt;/em:name&gt;
-     &lt;em:description&gt;bootstraptest&lt;/em:description&gt;
-     &lt;em:creator&gt;@cat_in_136&lt;/em:creater&gt;
-     &lt;em:iconURL/&gt;
-     &lt;em:optionsURL/&gt;
-  &lt;/Description&gt;
-&lt;/RDF&gt;</code></pre>
+     <span class="nt">&lt;em:name&gt;</span>bootstraptest<span class="nt">&lt;/em:name&gt;</span>
+     <span class="nt">&lt;em:description&gt;</span>bootstraptest<span class="nt">&lt;/em:description&gt;</span>
+     <span class="nt">&lt;em:creator&gt;</span>@cat_in_136<span class="nt">&lt;/em:creater&gt;</span>
+     <span class="nt">&lt;em:iconURL/&gt;</span>
+     <span class="nt">&lt;em:optionsURL/&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
+<span class="nt">&lt;/RDF&gt;</span></code></pre></figure>
 
 <h5>Step2. Write bootstrap.js</h5>
 
 <p>
 This file shall contains entry point functions : <code>install(data,reason)</code>, <code>startup(data,reason)</code>, <code>shutdown(data,reason)</code> and <code>uninstall(data,reason)</code>.
 </p>
-<pre class="prettyprint"><code>unction install(data, reason) {
-}
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">install</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
 
-function startup(data, reason) {
-    var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-                    .getService(Components.interfaces.nsIPromptService);
-    prompts.alert(null,
-                  "Startup!",
-                  "Hello world.");
-}
+<span class="kd">function</span> <span class="nx">startup</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">prompts</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/embedcomp/prompt-service;1</span><span class="dl">"</span><span class="p">]</span>
+                    <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPromptService</span><span class="p">);</span>
+    <span class="nx">prompts</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">Startup!</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">Hello world.</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
 
-function shutdown(data, reason) {
-    var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-                    .getService(Components.interfaces.nsIPromptService);
-    prompts.alert(null,
-                  "Shutdown!",
-                  "Good bye.");
-}
+<span class="kd">function</span> <span class="nx">shutdown</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">prompts</span> <span class="o">=</span> <span class="nx">Components</span><span class="p">.</span><span class="nx">classes</span><span class="p">[</span><span class="dl">"</span><span class="s2">@mozilla.org/embedcomp/prompt-service;1</span><span class="dl">"</span><span class="p">]</span>
+                    <span class="p">.</span><span class="nx">getService</span><span class="p">(</span><span class="nx">Components</span><span class="p">.</span><span class="nx">interfaces</span><span class="p">.</span><span class="nx">nsIPromptService</span><span class="p">);</span>
+    <span class="nx">prompts</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">Shutdown!</span><span class="dl">"</span><span class="p">,</span>
+                  <span class="dl">"</span><span class="s2">Good bye.</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
 
-function uninstall(data, reason) {
-}
-</code></pre>
+<span class="kd">function</span> <span class="nx">uninstall</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span></code></pre></figure>
 <p>
 This extension says "Hello world." after it is installed and/or enabled, and "Good bye." after it is uninstalled and/or disabled.
 </p>
@@ -181,11 +179,6 @@ Open the XPI file to install. As soon as it is installed, a following dialog is 
       <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
       <span class="post-meta">2010-08-15</span>
       <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
@@ -194,6 +187,11 @@ Open the XPI file to install. As soon as it is installed, a following dialog is 
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
       <span class="post-meta">2014-12-29</span>
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/03/look-back-13-year-ago-of-confmania.html">

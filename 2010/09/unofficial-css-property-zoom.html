@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Unofficial CSS property zoom implemented on WebKit</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html" />
   <meta property="og:title" content="Unofficial CSS property zoom implemented on WebKit" /><meta property="og:description" content="I found unofficial CSS property &quot;zoom&quot; is implemented on WebKit (Safari and Google Chrome.) And i..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/unofficial-css-property-zoom.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -51,9 +50,9 @@ I found unofficial CSS property "<code>zoom</code>" is implemented on WebKit (Sa
 Here is test of CSS <code>zoom</code>. (scale by 200%.)
 </div>
 <div>
-<pre class="prettyprint"><code>&lt;div style="zoom: 2.0; background-color: #ff8;"&gt;
-Here is test of CSS &lt;code&gt;zoom&lt;/code&gt;. (scale by 200%.)
-&lt;/div&gt;</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"zoom: 2.0; background-color: #ff8;"</span><span class="nt">&gt;</span>
+Here is test of CSS <span class="nt">&lt;code&gt;</span>zoom<span class="nt">&lt;/code&gt;</span>. (scale by 200%.)
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
 </div>
 
 <p>
@@ -62,10 +61,9 @@ I think if you wanna scale you SHALL use CSS3 transform as follows:
 <div style="transform: scale(2); -webkit-transform: scale(2); -webkit-transform-origin: 0 0; -moz-transform: scale(2); -moz-transform-origin: 0 0; -o-transform: scale(2); -o-transform-origin: 0 0; -ms-transform: scale(2); -ms-transform-origin: 0 0;">
 Here is test of CSS3 <code>transform</code>. (scale by 200%.)
 </div>
-<pre class="prettyprint"><code>&lt;div style="transform: scale(2); -webkit-transform: scale(2); -webkit-transform-origin: 0 0; -moz-transform: scale(2); -moz-transform-origin: 0 0; -o-transform: scale(2); -o-transform-origin: 0 0; -ms-transform: scale(2); -ms-transform-origin: 0 0;"&gt;
-Here is test of CSS &lt;code&gt;transform&lt;/code&gt;. (scale by 200%.)
-&lt;/div&gt;
-</code></pre>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"transform: scale(2); -webkit-transform: scale(2); -webkit-transform-origin: 0 0; -moz-transform: scale(2); -moz-transform-origin: 0 0; -o-transform: scale(2); -o-transform-origin: 0 0; -ms-transform: scale(2); -ms-transform-origin: 0 0;"</span><span class="nt">&gt;</span>
+Here is test of CSS3 <span class="nt">&lt;code&gt;</span>transform<span class="nt">&lt;/code&gt;</span>. (scale by 200%.)
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
 <p>
 Note that...
 </p>
@@ -74,6 +72,7 @@ Note that...
 So vender prefix (e.g. <code>-webkit-</code>, <code>-moz-</code>, <code>-o-</code>, and/or <code>-ms-</code>) is required.</li>
 <li>The default value of <code>transform-origin</code> is "<code>50% 50%</code>" (or <code>center center</code>) So I specified <code>transform-origin: 0 0</code> (or <code>top left</code>) to do the same thing with <code>zoom</code>.</li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -85,14 +84,14 @@ So vender prefix (e.g. <code>-webkit-</code>, <code>-moz-</code>, <code>-o-</cod
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
-      <span class="post-meta">2017-10-26</span>
-      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/09/nerinefirefox4.html">
       <span class="post-meta">2010-09-15</span>
       <span class="post-title">NerineをFirefox4で動くよう改造してみる</span><span class="post-thumb" data-image-path="/images/nerinefirefox4-screenshot1.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
@@ -100,9 +99,9 @@ So vender prefix (e.g. <code>-webkit-</code>, <code>-moz-</code>, <code>-o-</cod
       <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/09/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-09-12</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</span><span class="post-thumb" data-image-path="/images/cm-issue15.png"></span></a>
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2019/02/spark-joy.html">
@@ -110,19 +109,19 @@ So vender prefix (e.g. <code>-webkit-</code>, <code>-moz-</code>, <code>-o-</cod
       <span class="post-title">「ときめき」をどう訳しているか、の一考察 (KonMari Method)</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/10/bmi.html">
-      <span class="post-meta">2010-10-06</span>
-      <span class="post-title">今更になってBMIに代わられ使われなくなったブローカ式桂変法を褒めてみる</span><span class="post-thumb" data-image-path="/images/healthy_body_weight.svg"></span></a>
+    <a class="post-link" href="/2010/09/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-09-12</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot; (#2)</span><span class="post-thumb" data-image-path="/images/cm-issue15.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
-      <span class="post-meta">2015-07-04</span>
-      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+    <a class="post-link" href="/2010/06/moz-resize-can-be-applied-to-any.html">
+      <span class="post-meta">2010-06-24</span>
+      <span class="post-title">-moz-resize can be applied to any elements!?</span><span class="post-thumb" data-image-path="/images/resizer_is_displayed_at_div_element.png"></span></a>
   </li>
 </ul>
 </aside>

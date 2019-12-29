@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>NerineをFirefox4で動くよう改造してみる</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/nerinefirefox4.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/09/nerinefirefox4.html" />
   <meta property="og:title" content="NerineをFirefox4で動くよう改造してみる" /><meta property="og:description" content="NerineはHTML5/JavaScript製のプレゼンテーションソフトであるが、Webkitでしか動作しない構造となっている。Firefox4(Beta)でCSS3 transitionsに..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/nerinefirefox4-screenshot1.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/09/nerinefirefox4.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -87,36 +86,33 @@ CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&am
 このようなものに他の各種ブラウザの vender prefix をつけた。なお、使用しているブラウザ以外の vender prefix は無視されるので、何も考えずに追記すればよい。
 </p>
 
-<pre class="prettyprint"><code>  -webkit-transition: opacity 0.5s linear;
-<ins>  -moz-transition: opacity 0.5s linear;</ins>
-<ins>  -ms-transition: opacity 0.5s linear;</ins>
-<ins>  -o-transition: opacity 0.5s linear;</ins>
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-patch" data-lang="patch">   -webkit-transition: opacity 0.5s linear;
+<span class="gi">+  -moz-transition: opacity 0.5s linear;
++  -ms-transition: opacity 0.5s linear;
++  -o-transition: opacity 0.5s linear;</span></code></pre></figure>
 
 <p>
 なお、JavaScriptでアクセスする場合はラクダ文字(camelCase)にしなければならないが、このときは<code>WebkitTransition</code>,<code>MozTransition</code>と書く。以上を踏まえるとCSS zoomをJavaScriptで設定しているコードは下記のようになった：
 </p>
 
-<pre class="prettyprint"><code><ins>    var transform = ["scale(", (scale-4)/100.0, ",", (scale-4)/100.0, ")"].join('');</ins>
-    $('article > section').css({
-<del>      width: [scale-2, '%'].join(''),</del>
-<del>      height: [scale-2, '%'].join(''),</del>
-<del>      zoom: [scale-4, '%'].join(''),</del>
-<ins>      WebkitTransform: transform,</ins>
-<ins>      MozTransform: transform,</ins>
-<ins>      MsTransform: transform,</ins>
-<ins>      OTransform: transform,</ins>
-<ins>      transform: transform,</ins>
-<ins>      WebkitTransformOrigin: "0 0",</ins>
-<ins>      MozTransformOrigin: "0 0",</ins>
-<ins>      MsTransformOrigin: "0 0",</ins>
-<ins>      OTransformOrigin: "0 0",</ins>
-<ins>      transformOrigin: transform,</ins>
-      margin: '2%',
-      padding: 0
-});
-</code></pre>
+<figure class="highlight"><pre><code class="language-patch" data-lang="patch"><span class="gi">+    var transform = ["scale(", (scale-4)/100.0, ",", (scale-4)/100.0, ")"].join('');
+</span>     $('article &gt; section').css({
+<span class="gd">-      width: [scale-2, '%'].join(''),
+-      height: [scale-2, '%'].join(''),
+-      zoom: [scale-4, '%'].join(''),
+</span><span class="gi">+      WebkitTransform: transform,
++      MozTransform: transform,
++      MsTransform: transform,
++      OTransform: transform,
++      transform: transform,
++      WebkitTransformOrigin: "0 0",
++      MozTransformOrigin: "0 0",
++      MsTransformOrigin: "0 0",
++      OTransformOrigin: "0 0",
++      transformOrigin: transform,
+</span>       margin: '2%',
+       padding: 0
+ });</code></pre></figure>
 
 <h4>その他・課題</h4>
 
@@ -141,14 +137,14 @@ CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&am
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
-      <span class="post-meta">2015-11-30</span>
-      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/09/unofficial-css-property-zoom.html">
       <span class="post-meta">2010-09-02</span>
       <span class="post-title">Unofficial CSS property zoom implemented on WebKit</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
@@ -161,14 +157,14 @@ CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&am
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
-      <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
+    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
+      <span class="post-meta">2016-04-09</span>
+      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/08/html-complex-ruby.html">
@@ -176,9 +172,9 @@ CSS zoomをCSS3 transformの<code>scale()</code>関数に置き換える。IE&am
       <span class="post-title">HTML5 Complex Ruby 今日の実装状況</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+    <a class="post-link" href="/2016/03/css-vertical-with-multicolumn.html">
+      <span class="post-meta">2016-03-23</span>
+      <span class="post-title">CSS で縦書きと段組を組み合わせる試み</span><span class="post-thumb" data-image-path="/images/2016_03_css_vertical_with_multicolumn_render_expection.svg"></span></a>
   </li>
 </ul>
 </aside>

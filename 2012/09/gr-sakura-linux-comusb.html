@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/09/gr-sakura-linux-comusb.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/09/gr-sakura-linux-comusb.html" />
   <meta property="og:title" content="（チラシの裏）GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき" /><meta property="og:description" content="ありそうでない、GR-SAKURA を linux で繋いで仮想COM(USB)通信時のおぼえがき… そんなことよりも GR-SAKURA の基板がピンクで無駄にかわいい。それの中央にルネサスの..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/09/gr-sakura-linux-comusb.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -53,15 +52,14 @@
 
 <p>単にシリアル出力するだけならばプログラム（スケッチ）はこんな程度のを書けば良い。</p>
 
-<pre class="prettyprint"><code>#include &lt;rxduino.h&gt;
-
-void setup() {
-    Serial.begin(38400, SCI_USB0);
-    Serial.println("Hello, world.");
-}
-void loop() {
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;rxduino.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">38400</span><span class="p">,</span> <span class="n">SCI_USB0</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Hello, world."</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span></code></pre></figure>
 
 <p style="font-size: x-large; font-weight: light;">でも、実はUSBで繋ぐだけ、設定しなくてもよい。</p>
 
@@ -103,7 +101,7 @@ crw-rw----. 1 root dialout 166, 0  9月 22 23:29 /dev/ttyACM0
 加えて <code>ttyACM0</code> という名前も気に食わない。
 そう思う人は以下のような udev スクリプトを作って、<code>/etc/udev/rules.d/51-gr-sakura.rules</code> に放り込んでやればよい。</p>
 
-<pre class="prettyprint"><code># Gadget Renesas SAKURA (idVendor=2129, idProduct=0531)
+<pre><code># Gadget Renesas SAKURA (idVendor=2129, idProduct=0531)
 KERNEL=="ttyACM[0-9]*", ATTRS{product}=="Gadget Renesas SAKURA", MODE="0660", GROUP="plugdev", SYMLINK+="ttyUSB-Sakura"
 </code></pre>
 
@@ -138,9 +136,9 @@ lrwxrwxrwx. 1 root root         7  9月 22 23:39 /dev/ttyUSB-Sakura -&gt; ttyACM
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
+    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
+      <span class="post-meta">2010-03-06</span>
+      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/06/lukstruecrypt.html">
@@ -148,19 +146,14 @@ lrwxrwxrwx. 1 root root         7  9月 22 23:39 /dev/ttyUSB-Sakura -&gt; ttyACM
       <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/03/mingw32undefined-reference-to-winmain16.html">
-      <span class="post-meta">2010-03-06</span>
-      <span class="post-title">mingw32での「undefined reference to `WinMain@16&#39;」</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
@@ -168,9 +161,14 @@ lrwxrwxrwx. 1 root root         7  9月 22 23:39 /dev/ttyUSB-Sakura -&gt; ttyACM
       <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
-      <span class="post-meta">2016-04-23</span>
-      <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
+      <span class="post-meta">2013-04-13</span>
+      <span class="post-title">２本の（省略付き）棒グラフを思いのまま描く方法</span><span class="post-thumb" data-image-path="/images/bar.png"></span></a>
   </li>
 </ul>
 </aside>

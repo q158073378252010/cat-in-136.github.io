@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html" />
   <meta property="og:title" content="&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4" /><meta property="og:description" content="&quot;U; &quot; in UA-string and about:config pref &quot;general.useragent.security&quot; are removed #firefox4 On Fi..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/08/u-in-ua-string-and-aboutconfig-pref.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -104,8 +103,7 @@ Note that pref "<code>general.useragent.security</code>" was also removed at <a 
 An error was occurs whenever the dialog initialized.
 Following code on Configuration Mania (version 1.12.2010071001) throws <code>NS_ERROR_UNEXPECTED</code> since <code>"general.useragent.security"</code> does not exist on Firefox 4.0b2.
 </p>
-<pre class="prettyprint"><code>     var mSecurity = prefBranch.getCharPref("general.useragent.security");
-</code></pre>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mSecurity</span> <span class="o">=</span> <span class="nx">prefBranch</span><span class="p">.</span><span class="nx">getCharPref</span><span class="p">(</span><span class="dl">"</span><span class="s2">general.useragent.security</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 <p>
 Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configuration-mania/changesets">bitbucket's repository</a>.
 </p>
@@ -122,6 +120,7 @@ Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configur
 <ul><li>mozilla-central's <a href="http://hg.mozilla.org/mozilla-central/rev/35b64ad7910c">changeset:35b64ad7910c Bug 581783 - Remove "Windows;" from the UA string. r=bz</a> commited by Dão Gottwald</li></ul></li>
 <li>IE9 blog, <a href="http://blogs.msdn.com/b/ie/archive/2010/03/23/introducing-ie9-s-user-agent-string.aspx">Introducing IE9’s User Agent String</a>, 2010-03-23</li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -143,6 +142,11 @@ Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configur
       <span class="post-title">nsIPref is deprecated and removed on Firefox 3.7</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
@@ -151,11 +155,6 @@ Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configur
     <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
       <span class="post-meta">2010-08-15</span>
       <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
-      <span class="post-meta">2011-12-24</span>
-      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
@@ -168,9 +167,9 @@ Fixed patch has been pushed on <a href="http://bitbucket.org/cat_in_136/configur
       <span class="post-title">&quot;View Page Source&quot; in browser tabs without any addons</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html">
-      <span class="post-meta">2019-10-20</span>
-      <span class="post-title">Use Marionette to obtain Firefox internal information easily</span></a>
+    <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">
+      <span class="post-meta">2010-02-04</span>
+      <span class="post-title">AMO warns use of &quot;setTimeout()&quot;</span></a>
   </li>
 </ul>
 </aside>

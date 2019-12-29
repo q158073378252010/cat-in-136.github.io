@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>C言語での static キーワード付き配列パラメータ宣言</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html" />
   <meta property="og:title" content="C言語での static キーワード付き配列パラメータ宣言" /><meta property="og:description" content="[〜]の間に指定されるstatic In addition to optional type qualifiers and the keyword static, the [ and ] may..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -96,17 +95,16 @@ elements as specified by the size expression.</p>
 
 <p>要するに下記のとおりということだ:</p>
 
-<pre class="prettyprint lang-c"><code>void f(int a[static 3]);
-void g(void) {
-      int x2[2] = {0};
-      int x3[3] = {0};
-      int x4[4] = {0};
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="k">static</span> <span class="mi">3</span><span class="p">]);</span>
+<span class="kt">void</span> <span class="nf">g</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">x2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+      <span class="kt">int</span> <span class="n">x3</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+      <span class="kt">int</span> <span class="n">x4</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
       
-      f(x4); // OK
-      f(x3); // OK
-      f(x2); // NG
-}
-</code></pre>
+      <span class="n">f</span><span class="p">(</span><span class="n">x4</span><span class="p">);</span> <span class="c1">// OK</span>
+      <span class="n">f</span><span class="p">(</span><span class="n">x3</span><span class="p">);</span> <span class="c1">// OK</span>
+      <span class="n">f</span><span class="p">(</span><span class="n">x2</span><span class="p">);</span> <span class="c1">// NG</span>
+<span class="p">}</span></code></pre></figure>
 
 <h4>課題コード EXAMPLE 4</h4>
 
@@ -117,23 +115,22 @@ void g(void) {
 <blockquote>
   <p>EXAMPLE 4 The following prototype has a variably modified parameter.</p>
 
-  <pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[n][n*m+300], double x);
-int main()
-{
-      double b[4][308];
-      addscalar(4, 2, b, 2.17);
-      return 0;
-}
-void addscalar(int n, int m,
-      double a[n][n*m+300], double x)
-{
-      for (int i = 0; i &lt; n; i++)
-            for (int j = 0, k = n*m+300; j &lt; k; j++)
-                  // a is a pointer to a VLA with n*m+300 elements
-                  a[i][j] += x;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+      <span class="kt">double</span> <span class="n">b</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">308</span><span class="p">];</span>
+      <span class="n">addscalar</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">17</span><span class="p">);</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">;</span> <span class="n">j</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">k</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                  <span class="c1">// a is a pointer to a VLA with n*m+300 elements</span>
+                  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
   <footer>- <cite>6.7.6.3 Function declarators (including prototypes) - 20, <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf" title="WG14/N1570">N1570 C11 Commitee Draft</a></cite></footer>
 </blockquote>
@@ -143,19 +140,17 @@ void addscalar(int n, int m,
 <blockquote>
   <p>EXAMPLE 5 The following are all compatible function prototype declarators.</p>
 
-  <pre class="prettyprint lang-c"><code>double maximum(int n, int m, double a[n][m]);
-double maximum(int n, int m, double a[*][*]);
-double maximum(int n, int m, double a[ ][*]);
-double maximum(int n, int m, double a[ ][m]);
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">double</span> <span class="nf">maximum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">m</span><span class="p">]);</span>
+<span class="kt">double</span> <span class="nf">maximum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="o">*</span><span class="p">][</span><span class="o">*</span><span class="p">]);</span>
+<span class="kt">double</span> <span class="nf">maximum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">double</span> <span class="n">a</span><span class="p">[</span> <span class="p">][</span><span class="o">*</span><span class="p">]);</span>
+<span class="kt">double</span> <span class="nf">maximum</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="kt">double</span> <span class="n">a</span><span class="p">[</span> <span class="p">][</span><span class="n">m</span><span class="p">]);</span></code></pre></figure>
 
   <p>as are:</p>
 
-  <pre class="prettyprint lang-c"><code>void f(double (* restrict a)[5]);
-void f(double a[restrict][5]);
-void f(double a[restrict 3][5]);
-void f(double a[restrict static 3][5]);
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="p">(</span><span class="o">*</span> <span class="kr">restrict</span> <span class="n">a</span><span class="p">)[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="kr">restrict</span><span class="p">][</span><span class="mi">5</span><span class="p">]);</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="kr">restrict</span> <span class="mi">3</span><span class="p">][</span><span class="mi">5</span><span class="p">]);</span>
+<span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="kr">restrict</span> <span class="k">static</span> <span class="mi">3</span><span class="p">][</span><span class="mi">5</span><span class="p">]);</span></code></pre></figure>
 
   <p>(Note that the last declaration also specifies that the argument corresponding to <code>a</code> in any call to <code>f</code> must be a
 non-null pointer to the first of at least three arrays of 5 doubles, which the others do not.)</p>
@@ -165,51 +160,47 @@ non-null pointer to the first of at least three arrays of 5 doubles, which the o
 
 <p>よって、<code>addscalar</code> のプロトタイプ宣言は下記のようにも変更可能。</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[][*], double x);
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[][</span><span class="o">*</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span></code></pre></figure>
 
 <p>ところで下記のようにすると、<code>a</code> は不完全型ということでコンパイルが通らない。</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[][], double x); // compile error!
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[][],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span> <span class="c1">// compile error!</span></code></pre></figure>
 
 <p>少なくともふたつ目の<code>[</code>〜<code>]</code>の間には数字を入れなくてはいけない。</p>
 
 <p>単純に定数値を入れるとすると例えば下記のような感じになると思われる。
 （C言語規格解釈のためのコードであって使い物にならないコードスニペットになってしまっているが。）</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[][308], double x);
-// (snip)
-void addscalar(int n, int m,
-      double a[][308], double x)
-{
-      // assert(n*m+300 == 308);
-      for (int i = 0; i &lt; n; i++)
-            for (int j = 0, k = 308; j &lt; k; j++)
-                  a[i][j] += x;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[][</span><span class="mi">308</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span>
+<span class="c1">// (snip)</span>
+<span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[][</span><span class="mi">308</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="c1">// assert(n*m+300 == 308);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="p">;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">308</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span><span class="p">;</span> <span class="n">k</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>ここで308を<code>n*m+300</code>に可変長配列化したものがExample 4のコードということみたいだ。</p>
 
 <p>そもそもひとつ目は単なるqualified pointerに過ぎないのだから</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double (* const a)[n*m+300], double x);
-// (snip)
-void addscalar(int n, int m,
-      double (* const a)[n*m+300], double x)
-{
-      for (int i = 0; i &lt; n; i++)
-            for (int j = 0, k = n*m+300; j &lt; k; j++)
-                  // a is a pointer to a VLA with n*m+300 elements
-                  // i.e. *(a + i) is a VLA with n*m+300 elements
-                  (* (a + i))[j] += x;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="p">(</span><span class="o">*</span> <span class="k">const</span> <span class="n">a</span><span class="p">)[</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span>
+<span class="c1">// (snip)</span>
+<span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="p">(</span><span class="o">*</span> <span class="k">const</span> <span class="n">a</span><span class="p">)[</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span><span class="p">;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span><span class="p">;</span> <span class="n">k</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+                  <span class="c1">// a is a pointer to a VLA with n*m+300 elements</span>
+                  <span class="c1">// i.e. *(a + i) is a VLA with n*m+300 elements</span>
+                  <span class="p">(</span><span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">i</span><span class="p">))[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>と書けば、”<code>a</code> is a pointer to a VLA …” であって “<code>a</code> is a VLA …” ではないことが明瞭にわかる。</p>
 
@@ -217,9 +208,8 @@ void addscalar(int n, int m,
 
 <p>まず、本節のタイトル通りのことを何も考えずにやると</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[static n][static n*m+300], double x); // compile error!
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="k">static</span> <span class="n">n</span><span class="p">][</span><span class="k">static</span> <span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span> <span class="c1">// compile error!</span></code></pre></figure>
 
 <p>というコードになるが、コンパイルエラーになる。
 前節で書いたとおり <code>n*m+300</code> は(可変長)配列長そのものだからである。</p>
@@ -228,49 +218,45 @@ void addscalar(int n, int m,
 規格としては最初に挙げたものの<cite>only in the outermost array type derivation.</cite>に
 あるように、<code>[</code>〜<code>]</code>の間に <code>static</code> を入れるとしても一番左の<code>[</code>〜<code>]</code>だけである。</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[static n][n*m+300], double x);
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="k">static</span> <span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span></code></pre></figure>
 
 <p>さて、一番左の<code>[</code>〜<code>]</code>における <code>static</code> のない配列長の指定は、
 特に意味のないものとして知られている。
 例えば、下記コード中の <code>sizeof()</code> はすべて同じ値を返す。</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[n][n*m+300], double x)
-{
-      sizeof(a);
-      sizeof(double (*)[n*m+300]);
-      sizeof(void*);
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+      <span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span> <span class="p">(</span><span class="o">*</span><span class="p">)[</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">]);</span>
+      <span class="k">sizeof</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>ここで例え <code>a[static n][10]</code> としても配列長が<code>n</code>以上としか意味しない。
 よって、下記コード中の <code>sizeof()</code> はやはりすべて同じ値を返す。</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[static n][n*m+300], double x)
-{
-      sizeof(a);
-      sizeof(double (*)[n*m+300]);
-      sizeof(void*);
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="k">static</span> <span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="k">sizeof</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+      <span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span> <span class="p">(</span><span class="o">*</span><span class="p">)[</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">]);</span>
+      <span class="k">sizeof</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>であるならば <code>[static n]</code> が意味がありそうなのは、
 呼び出し時の範囲確認ぐらいである。</p>
 
 <p>試しに下記のようなコードにしてみた。</p>
 
-<pre class="prettyprint lang-c"><code>void addscalar(int n, int m,
-      double a[static n][n*m+300], double x);
-int main()
-{
-      double b[2][308];
-      addscalar(4, 2, b, 2.17); // NG
-      return 0;
-}
-</code></pre>
+<figure class="highlight"><pre><code class="language-c" data-lang="c"><span class="kt">void</span> <span class="nf">addscalar</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">m</span><span class="p">,</span>
+      <span class="kt">double</span> <span class="n">a</span><span class="p">[</span><span class="k">static</span> <span class="n">n</span><span class="p">][</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="o">+</span><span class="mi">300</span><span class="p">],</span> <span class="kt">double</span> <span class="n">x</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+      <span class="kt">double</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">308</span><span class="p">];</span>
+      <span class="n">addscalar</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">17</span><span class="p">);</span> <span class="c1">// NG</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>このとき、明らかに <code>addscalar()</code> の呼び出し引数の配列サイズはオーバーしているので、
 なんとかしてほしいものであったが、LLVM Clang も GCC も何も警告はなかった。</p>
@@ -296,24 +282,19 @@ int main()
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2016/05/bit-shift-operator-vs-division-operator-but.html">
       <span class="post-meta">2016-05-06</span>
       <span class="post-title">ビットシフトと割り算はどっちが良いか、とはいうけれど</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
-      <span class="post-meta">2014-09-21</span>
-      <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2010/03/pitfall-of-unicode-in-mingw32.html">
       <span class="post-meta">2010-03-17</span>
       <span class="post-title">Pitfall of &quot;Unicode in Mingw32&quot;</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
-      <span class="post-meta">2018-04-29</span>
-      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
@@ -326,14 +307,19 @@ int main()
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/03/css.html">
-      <span class="post-meta">2013-03-18</span>
-      <span class="post-title">CSSの改行を含む属性値を含むセレクターについて</span></a>
+    <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
+      <span class="post-meta">2014-09-21</span>
+      <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
       <span class="post-meta">2017-08-12</span>
       <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
   </li>
 </ul>
 </aside>

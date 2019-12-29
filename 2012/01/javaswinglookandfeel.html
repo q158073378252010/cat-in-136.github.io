@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/01/javaswinglookandfeel.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/01/javaswinglookandfeel.html" />
   <meta property="og:title" content="JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード" /><meta property="og:description" content="先日こんなJavaソースコードのファイルを自分のHDDもといSSDの中から発掘した。 それなりにおもしろい内容になりそうだったのでここに書いておく。 import javax.swing.pla..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/VerySimpleLAFSwingSet2.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/01/javaswinglookandfeel.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -46,31 +45,30 @@
     <p>先日こんなJavaソースコードのファイルを自分のHDDもといSSDの中から発掘した。
 それなりにおもしろい内容になりそうだったのでここに書いておく。</p>
 
-<pre class="prettyprint"><code>import javax.swing.plaf.basic.BasicLookAndFeel;
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.plaf.basic.BasicLookAndFeel</span><span class="o">;</span>
 
-public class VerySimpleLookAndFeel extends BasicLookAndFeel {
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VerySimpleLookAndFeel</span> <span class="kd">extends</span> <span class="nc">BasicLookAndFeel</span> <span class="o">{</span>
 
-    public String getDescription() {
-        return "This is " + getName();
-    }
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"This is "</span> <span class="o">+</span> <span class="n">getName</span><span class="o">();</span>
+    <span class="o">}</span>
 
-    public String getID() {
-        return "VerySimpleLookAndFeel";
-    }
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getID</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"VerySimpleLookAndFeel"</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    public String getName() {
-        return "Very Simple Look &amp; Feel";
-    }
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Very Simple Look &amp; Feel"</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    public boolean isNativeLookAndFeel() {
-        return false;
-    }
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isNativeLookAndFeel</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    public boolean isSupportedLookAndFeel() {
-        return true;
-    }
-}
-</code></pre>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isSupportedLookAndFeel</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
 <p>このクラスは <a href="http://java.sun.com/javase/ja/6/docs/ja/api/javax/swing/plaf/basic/BasicLookAndFeel.html" title="javax.swing.plaf.BasicLookAndFeel"><code>BasicLookAndFeel</code></a> クラスの派生クラスになっていて、
 オーバライドすべきメソッドだけをオーバライドしたものになっている。</p>
@@ -144,24 +142,14 @@ Look And Feels の動作に必要な殆どの処理が入っているからで�
       <span class="post-title">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</span><span class="post-thumb" data-image-path="/images/swingset_java_ocean_gv.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/12/light-weight-font-android.html">
-      <span class="post-meta">2014-12-29</span>
-      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
-      <span class="post-meta">2016-10-08</span>
-      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
       <span class="post-meta">2013-02-24</span>
       <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2016/04/pango-view-vertical-writing.html">
@@ -169,9 +157,19 @@ Look And Feels の動作に必要な殆どの処理が入っているからで�
       <span class="post-title">pango で縦書きとその能力</span><span class="post-thumb" data-image-path="/images/201604_pango_view_vertical_writing_sagabon_render002.svg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/04/pango-view-otf-font-features.html">
-      <span class="post-meta">2016-04-09</span>
-      <span class="post-title">pango-view と OTF font features</span><span class="post-thumb" data-image-path="/images/201604_pango_view_otf_font_features_jis8903_render005.svg"></span></a>
+    <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
+      <span class="post-meta">2016-10-08</span>
+      <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 </ul>
 </aside>

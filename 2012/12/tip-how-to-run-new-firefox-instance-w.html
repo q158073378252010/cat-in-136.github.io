@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Tip: How to run a new Firefox instance w/ temporary profile</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html" />
   <meta property="og:title" content="Tip: How to run a new Firefox instance w/ temporary profile" /><meta property="og:description" content="Create a temporary folder for a temporary profile, Run Firefox with argument -profile path/to/tem..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/12/tip-how-to-run-new-firefox-instance-w.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -56,24 +55,22 @@
 
 <p>Are you a linux/unix user? If so, you can easily do it with the following shell script:</p>
 
-<pre class="prettyprint"><code class="lang-sh">#!/bin/sh
-PROFILEDIR=/tmp/tmp-fx-profile.$$.d
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c">#!/bin/sh</span>
+<span class="nv">PROFILEDIR</span><span class="o">=</span>/tmp/tmp-fx-profile.<span class="nv">$$</span>.d
 
-mkdir $PROFILEDIR
-firefox -profile $PROFILEDIR -no-remote -new-instance
-rm -rf $PROFILEDIR
-</code></pre>
+<span class="nb">mkdir</span> <span class="nv">$PROFILEDIR</span>
+firefox <span class="nt">-profile</span> <span class="nv">$PROFILEDIR</span> <span class="nt">-no-remote</span> <span class="nt">-new-instance</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> <span class="nv">$PROFILEDIR</span></code></pre></figure>
 
 <ins datetime="2015-12-29T09:45:14+09:00">
 <p>
 According to the Sangye's comment,
 using <a href="http://www.gnu.org/software/autogen/mktemp.html">mktemp(1)</a> is more better:
 </p>
-<pre class="prettyprint"><code class="lang-sh">#!/bin/sh
-PROFILEDIR=`mktemp -p /tmp -d tmp-fx-profile.XXXXXX.d`
-firefox -profile $PROFILEDIR -no-remote -new-instance
-rm -rf $PROFILEDIR
-</code></pre>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c">#!/bin/sh</span>
+<span class="nv">PROFILEDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">mktemp</span> <span class="nt">-p</span> /tmp <span class="nt">-d</span> tmp-fx-profile.XXXXXX.d<span class="sb">`</span>
+firefox <span class="nt">-profile</span> <span class="nv">$PROFILEDIR</span> <span class="nt">-no-remote</span> <span class="nt">-new-instance</span>
+<span class="nb">rm</span> <span class="nt">-rf</span> <span class="nv">$PROFILEDIR</span></code></pre></figure>
 </ins>
 
   </div>
@@ -97,9 +94,9 @@ rm -rf $PROFILEDIR
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/06/lukstruecrypt.html">
-      <span class="post-meta">2014-06-29</span>
-      <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html">
@@ -107,14 +104,14 @@ rm -rf $PROFILEDIR
       <span class="post-title">Use Marionette to obtain Firefox internal information easily</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
+    <a class="post-link" href="/2014/06/lukstruecrypt.html">
+      <span class="post-meta">2014-06-29</span>
+      <span class="post-title">LUKSを(TrueCryptみたいに)仮想ドライブファイルで運用するには</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
-      <span class="post-meta">2016-02-07</span>
-      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
+    <a class="post-link" href="/2010/11/how-to-create-restart-less-firefox4.html">
+      <span class="post-meta">2010-11-27</span>
+      <span class="post-title">How to create restart-less #Firefox4 extension *WITHOUT* Jetpack</span><span class="post-thumb" data-image-path="/images/traditional-addons-are-required-browser-restart.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
@@ -122,9 +119,9 @@ rm -rf $PROFILEDIR
       <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-08-15</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+    <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">
+      <span class="post-meta">2010-04-15</span>
+      <span class="post-title">Components.utils.reportError() is easy to use for debugging</span><span class="post-thumb" data-image-path="/images/componentsutilsreporterror-screenshot1.png"></span></a>
   </li>
 </ul>
 </aside>

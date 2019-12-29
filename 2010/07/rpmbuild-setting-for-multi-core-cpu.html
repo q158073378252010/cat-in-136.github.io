@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>[Updated] rpmbuild setting for multi core CPU</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu.html" />
   <meta property="og:title" content="[Updated] rpmbuild setting for multi core CPU" /><meta property="og:description" content="rpmbuild(8) is a command to build a RPM file (binary software package.) Usually rpmbuild&#39;s build ..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -49,9 +48,8 @@ Usually rpmbuild's build process is running with only one CPU.
 But it is possible to run with more than one CPU.
 To run with more than one CPU, edit <code>~/.rpmmacros</code> and add:
 </p>
-<code class="prettyprint"><pre>
-%__make         /usr/bin/make -j <var>6</var>
-</pre></code>
+<pre><code>%__make         /usr/bin/make -j <var>6</var>
+</code></pre>
 <p>
 Specify <code>-j <em>6</em></code> if you have a hexa-core CPU. Specify <code>-j <em>4</em></code> if dual-core.
 <ins date="2011-04-16T04:08:18Z">Clearer advices that just only <code>-j</code> make to create as many threads as it feels like.</ins>
@@ -66,6 +64,7 @@ Specify <code>-j <em>6</em></code> if you have a hexa-core CPU. Specify <code>-j
 <li><a href="http://www.redhat.com/archives/rpm-list/2004-July/msg00004.html">Re: rpmbuild using more than one cpu</a> - redhat rpm-list, July 1, 2004</li>
 <li><code>man 1 make</code></li>
 </ul>
+
   </div>
 
   <footer class="post-footer">
@@ -87,19 +86,9 @@ Specify <code>-j <em>6</em></code> if you have a hexa-core CPU. Specify <code>-j
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
-      <span class="post-meta">2011-05-20</span>
-      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">
-      <span class="post-meta">2010-07-31</span>
-      <span class="post-title">rpmbuild setting for multi core CPU (2)</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
-      <span class="post-meta">2010-08-15</span>
-      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+    <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">
+      <span class="post-meta">2010-05-04</span>
+      <span class="post-title">OOPP Setting on Configuration Mania</span><span class="post-thumb" data-image-path="/images/oop-setting-screenshot1.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">
@@ -107,14 +96,24 @@ Specify <code>-j <em>6</em></code> if you have a hexa-core CPU. Specify <code>-j
       <span class="post-title">Components.utils.reportError() is easy to use for debugging</span><span class="post-thumb" data-image-path="/images/componentsutilsreporterror-screenshot1.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/05/oopp-setting-on-configuration-mania.html">
-      <span class="post-meta">2010-05-04</span>
-      <span class="post-title">OOPP Setting on Configuration Mania</span><span class="post-thumb" data-image-path="/images/oop-setting-screenshot1.png"></span></a>
+    <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">
+      <span class="post-meta">2010-07-31</span>
+      <span class="post-title">rpmbuild setting for multi core CPU (2)</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/05/angry-birds-web-ver-hacks-modify-level.html">
+      <span class="post-meta">2011-05-20</span>
+      <span class="post-title">Angry Birds (Web ver.) Hacks: Modify the Level Data!</span><span class="post-thumb" data-image-path="/images/VerySimpleLevelExample.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2011/03/javascript-typed-array-use-native.html">
       <span class="post-meta">2011-03-19</span>
       <span class="post-title">JavaScript Typed Array use native endian</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/inode-is-different-from-ntfs-fileref.html">
+      <span class="post-meta">2010-03-20</span>
+      <span class="post-title">inode# is different from NTFS FileRef#</span></a>
   </li>
 </ul>
 </aside>

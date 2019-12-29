@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>rpmbuild setting for multi core CPU (2)</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" />
   <meta property="og:title" content="rpmbuild setting for multi core CPU (2)" /><meta property="og:description" content="According to Fedora Project&#39;s Package Guideline, %{?_smp_mflags} seems to be the recommended way...." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -49,14 +48,12 @@ According to <a href="http://fedoraproject.org/wiki/Packaging/Guidelines">Fedora
 <blockquote cite="http://fedoraproject.org/wiki/Packaging/Guidelines#Parallel_make">
 <p>Whenever possible, invocations of <code>make</code> should be done as
 </p>
-<pre class="prettyprint">make&nbsp;%{?_smp_mflags}
-</pre>
+<pre><code>make&nbsp;%{?_smp_mflags}</code></pre>
 <p>This generally speeds up builds and especially on SMP machines.
 </p><p>Do make sure, however, that the package builds cleanly this way as some make files do not support parallel building. Therefore you should consider adding
 </p>
 
-<pre class="prettyprint">%_smp_mflags -j3
-</pre>
+<pre><code>%_smp_mflags -j3</code></pre>
 <p>to your <code>~/.rpmmacros</code> file -- even on UP machines -- as this will expose most of these errors.
 </p>
 </blockquote>
@@ -77,44 +74,44 @@ Today, however, most of packages do not use <code>make&nbsp;%{?_smp_mflags}</cod
 </article><aside class="post-related">
   <h2>Related Posts</h2>
   <ul class="post-list"><li class="post-item">
-    <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html">
-      <span class="post-meta">2010-07-25</span>
-      <span class="post-title">[Updated] rpmbuild setting for multi core CPU</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2014/03/bezier-4-diff.html">
-      <span class="post-meta">2014-03-26</span>
-      <span class="post-title">ベジェ曲線で描く円弧と本物の円弧の差（中心角について一般化）</span><span class="post-thumb" data-image-path="/images/generic-theta-tile.png"></span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/06/study-multi-text-vs-single-text-on-xul.html">
-      <span class="post-meta">2010-06-22</span>
-      <span class="post-title">Study: multi-text vs single-text on XUL elements</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2010/02/amo-warns-use-of-settimeout.html">
-      <span class="post-meta">2010-02-04</span>
-      <span class="post-title">AMO warns use of &quot;setTimeout()&quot;</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
-      <span class="post-meta">2017-08-12</span>
-      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html">
       <span class="post-meta">2019-10-20</span>
       <span class="post-title">Use Marionette to obtain Firefox internal information easily</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/02/fontforge-script-to-merge-and-replace.html">
-      <span class="post-meta">2010-02-19</span>
-      <span class="post-title">fontforge script to merge and replace font glyphs</span></a>
+    <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu.html">
+      <span class="post-meta">2010-07-25</span>
+      <span class="post-title">[Updated] rpmbuild setting for multi core CPU</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/10/blog-post.html">
-      <span class="post-meta">2013-10-17</span>
-      <span class="post-title">デジイチのレンズ付け替えを大変そうだなぁとしみじみ思うためのシェルスクリプト</span></a>
+    <a class="post-link" href="/2017/03/look-back-13-year-ago-of-confmania.html">
+      <span class="post-meta">2017-03-24</span>
+      <span class="post-title">Look back 13 years ago of Configuration Mania</span><span class="post-thumb" data-image-path="/images/201703-lookbackconfmania-ext.svg"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/03/javascript-typed-array-use-native.html">
+      <span class="post-meta">2011-03-19</span>
+      <span class="post-title">JavaScript Typed Array use native endian</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/02/babelzilla-doesnt-support-installrdf.html">
+      <span class="post-meta">2010-02-13</span>
+      <span class="post-title">Babelzilla doesn&#39;t support &quot;install.rdf&quot; localization.</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/tweet-to-myself.html">
+      <span class="post-meta">2010-03-24</span>
+      <span class="post-title">Tweet to myself</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">
+      <span class="post-meta">2010-04-15</span>
+      <span class="post-title">Components.utils.reportError() is easy to use for debugging</span><span class="post-thumb" data-image-path="/images/componentsutilsreporterror-screenshot1.png"></span></a>
   </li>
 </ul>
 </aside>

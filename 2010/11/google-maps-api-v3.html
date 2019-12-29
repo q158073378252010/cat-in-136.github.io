@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>Google Maps API v3 で鉄道網のみを表示する</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2010/11/google-maps-api-v3.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2010/11/google-maps-api-v3.html" />
   <meta property="og:title" content="Google Maps API v3 で鉄道網のみを表示する" /><meta property="og:description" content="GoogleマップAPI(v3)には地図レイヤーの表示項目を細かく選べるスタイル付き地図がサポートされている。 MapTypeStyleFeatureType リファレンスにあるリストにある個々..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2010/11/google-maps-api-v3.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -112,45 +111,46 @@ GoogleマップAPI(v3)には地図レイヤーの表示項目を細かく選べ�
 <p>
 ソースコードのうち鉄道網表示に関係する箇所は下記の通りである。上述の表示・非表示を設定した<code>railsStyles</code>を元にして<code>StyledMapType</code>を作って、それを<code>Map</code>インスタンスである<code>map</code>に登録するのみである。
 </p>
-<pre class="prettyprint"><code>var railsStyles = [
-  {
-    featureType: "all",
-    elementType: "all",
-    stylers: [{visibility: "off"}]
-  },
-  {
-    featureType: "water",
-    elementType: "geometry",
-    stylers: [
-      { hue: "#8899CC" }, // 航路の線と色相を合わせて目立たなくする
-      { visibility: "simplifed" }
-    ]
-  },
-  {
-    featureType: "transit.line",// 交通機関の路線
-    elementType: "all", // ラベルを含めてすべて
-    stylers: [
-      { visibility: "on" }
-    ]
-  },
-  {
-    featureType: "transit.station.rail",// 電車の駅
-    elementType: "all", // ラベルを含めてすべて
-    stylers: [
-      { visibility: "on" }
-    ]
-  }
-];
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">railsStyles</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">featureType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">elementType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">stylers</span><span class="p">:</span> <span class="p">[{</span><span class="na">visibility</span><span class="p">:</span> <span class="dl">"</span><span class="s2">off</span><span class="dl">"</span><span class="p">}]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">featureType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">water</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">elementType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">geometry</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">stylers</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">hue</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#8899CC</span><span class="dl">"</span> <span class="p">},</span> <span class="c1">// 航路の線と色相を合わせて目立たなくする</span>
+      <span class="p">{</span> <span class="na">visibility</span><span class="p">:</span> <span class="dl">"</span><span class="s2">simplifed</span><span class="dl">"</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">featureType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">transit.line</span><span class="dl">"</span><span class="p">,</span><span class="c1">// 交通機関の路線</span>
+    <span class="na">elementType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// ラベルを含めてすべて</span>
+    <span class="na">stylers</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">visibility</span><span class="p">:</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">featureType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">transit.station.rail</span><span class="dl">"</span><span class="p">,</span><span class="c1">// 電車の駅</span>
+    <span class="na">elementType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">all</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// ラベルを含めてすべて</span>
+    <span class="na">stylers</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="na">visibility</span><span class="p">:</span> <span class="dl">"</span><span class="s2">on</span><span class="dl">"</span> <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">];</span>
 
-var railsMapType = new google.maps.StyledMapType(railsStyles, {name: "鉄道網"});
-map.mapTypes.set("rails", railsMapType);// 登録
-map.setMapTypeId("rails");</code></pre>
+<span class="kd">var</span> <span class="nx">railsMapType</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">StyledMapType</span><span class="p">(</span><span class="nx">railsStyles</span><span class="p">,</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">鉄道網</span><span class="dl">"</span><span class="p">});</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">mapTypes</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">rails</span><span class="dl">"</span><span class="p">,</span> <span class="nx">railsMapType</span><span class="p">);</span><span class="c1">// 登録</span>
+<span class="nx">map</span><span class="p">.</span><span class="nx">setMapTypeId</span><span class="p">(</span><span class="dl">"</span><span class="s2">rails</span><span class="dl">"</span><span class="p">);</span></code></pre></figure>
 <p>
 問題点としては、路線ごとに色がついていたりしないので、特に東京をはじめとする鉄道網が複雑なところでは、路線図としての利用はできないことがある。
 </p>
 <p>
 なお、上述の内容を他の対象物にすることで道路網だけを表示したり、水域だけを表示（=白地図的利用）をしたりする利用法も可能であろう。
 </p>
+
   </div>
 
   <footer class="post-footer">
@@ -172,6 +172,11 @@ map.setMapTypeId("rails");</code></pre>
       <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
+      <span class="post-meta">2015-01-19</span>
+      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2012/10/display-size-converter-in-meter-unit.html">
       <span class="post-meta">2012-10-08</span>
       <span class="post-title">画面サイズ換算器 - Display Size Converter in meter unit</span></a>
@@ -182,24 +187,19 @@ map.setMapTypeId("rails");</code></pre>
       <span class="post-title">Running_in_board Generator (駅名標ジェネレータ)</span><span class="post-thumb" data-image-path="/images/120px-JR_Tokyo_Keihintouhoku_and_Yamanote_Line.jpg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2015/01/object-create-makes-javascript-class-inherit-easier-or-not.html">
-      <span class="post-meta">2015-01-19</span>
-      <span class="post-title">Object.create() のお陰でピュアな JavaScript でクラス継承は楽になったか?</span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2012/12/google-maps-api-v3-2.html">
       <span class="post-meta">2012-12-23</span>
       <span class="post-title">Google Maps API v3 で地下鉄路線図を表示する〜パート2〜</span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
+      <span class="post-meta">2015-07-04</span>
+      <span class="post-title">Study of the link tracking methods and the protection</span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
       <span class="post-meta">2017-07-22</span>
       <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/09/trta-emblem-design-analysis.html">
-      <span class="post-meta">2015-09-06</span>
-      <span class="post-title">帝都高速度交通営団の団章の解析</span><span class="post-thumb" data-image-path="/images/201509_trta_emblem_design_analysis.svg"></span></a>
   </li>
 </ul>
 </aside>

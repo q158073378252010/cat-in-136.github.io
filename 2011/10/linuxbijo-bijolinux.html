@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2011/10/linuxbijo-bijolinux.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2011/10/linuxbijo-bijolinux.html" />
   <meta property="og:title" content="美女Linuxがコマンドから呼び出せないと不便なのでbijoコマンドを作ってみたお .@bijolinux" /><meta property="og:description" content="美女LinuxというLinuxのコマンドを女の子の画像付きで紹介するサイトがある。 久しぶりに見たら対応コマンド数は400程度もあり、普通に使えるレベルになりつつある。 しかしながら、美女Lin..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2011/10/linuxbijo-bijolinux.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -82,65 +81,65 @@ document.getElementsByTagName("head")[0].appendChild(oStyle);
 </div>
 </ins>
 
-<pre class="prettyprint" style="clear: both;"><code>#!/bin/env ruby
-# Copyright (C) 2011 by cat_in_136
-#  
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the &quot;Software&quot;), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/bin/env ruby</span>
+<span class="c1"># Copyright (C) 2011 by cat_in_136</span>
+<span class="c1">#  </span>
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the "Software"), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+<span class="c1"># </span>
+<span class="c1"># The above copyright notice and this permission notice shall be included in</span>
+<span class="c1"># all copies or substantial portions of the Software.</span>
+<span class="c1"># </span>
+<span class="c1"># THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class="c1"># THE SOFTWARE.</span>
 
-require &quot;optparse&quot;
+<span class="nb">require</span> <span class="s2">"optparse"</span>
 
-config = {
-  :place =&gt; :tokyo,
-  :app   =&gt; 'firefox',
-}
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">:place</span> <span class="o">=&gt;</span> <span class="ss">:tokyo</span><span class="p">,</span>
+  <span class="ss">:app</span>   <span class="o">=&gt;</span> <span class="s1">'firefox'</span><span class="p">,</span>
+<span class="p">}</span>
 
-opts = OptionParser.new
-opts.version = &quot;0.1&quot;
-opts.banner = &quot;Usage: #{$0} [options] COMMAND&quot;
-opts.on('-p', '--place=WHERE', [:tokyo, :kobe], 'Which do you like, tokyo or kobe?') do |w|
-  config[:place] = w
-end
-opts.on('--browser=BROWSER', 'browser command to open the page.') do |browser|
-  config[:app] = browser
-end
-opts.parse!(ARGV)
+<span class="n">opts</span> <span class="o">=</span> <span class="no">OptionParser</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">opts</span><span class="p">.</span><span class="nf">version</span> <span class="o">=</span> <span class="s2">"0.1"</span>
+<span class="n">opts</span><span class="p">.</span><span class="nf">banner</span> <span class="o">=</span> <span class="s2">"Usage: </span><span class="si">#{</span><span class="vg">$0</span><span class="si">}</span><span class="s2"> [options] COMMAND"</span>
+<span class="n">opts</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="s1">'-p'</span><span class="p">,</span> <span class="s1">'--place=WHERE'</span><span class="p">,</span> <span class="p">[</span><span class="ss">:tokyo</span><span class="p">,</span> <span class="ss">:kobe</span><span class="p">],</span> <span class="s1">'Which do you like, tokyo or kobe?'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">w</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">[</span><span class="ss">:place</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span>
+<span class="k">end</span>
+<span class="n">opts</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="s1">'--browser=BROWSER'</span><span class="p">,</span> <span class="s1">'browser command to open the page.'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">browser</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">[</span><span class="ss">:app</span><span class="p">]</span> <span class="o">=</span> <span class="n">browser</span>
+<span class="k">end</span>
+<span class="n">opts</span><span class="p">.</span><span class="nf">parse!</span><span class="p">(</span><span class="no">ARGV</span><span class="p">)</span>
 
 
-if ARGV.length != 0
-  command = ARGV.shift
-  url = &quot;http://bijo-linux.com/girls/#{command}/&quot;
-  if config[:place] == :kobe
-    url = &quot;http://kobe.bijo-linux.com/girls/#{command}/&quot;
-  end
-else
-  url = &quot;http://bijo-linux.com/&quot;
-  if config[:place] == :kobe
-    url = &quot;http://kobe.bijo-linux.com/&quot;
-  end
-end
+<span class="k">if</span> <span class="no">ARGV</span><span class="p">.</span><span class="nf">length</span> <span class="o">!=</span> <span class="mi">0</span>
+  <span class="n">command</span> <span class="o">=</span> <span class="no">ARGV</span><span class="p">.</span><span class="nf">shift</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://bijo-linux.com/girls/</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="s2">/"</span>
+  <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="ss">:place</span><span class="p">]</span> <span class="o">==</span> <span class="ss">:kobe</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://kobe.bijo-linux.com/girls/</span><span class="si">#{</span><span class="n">command</span><span class="si">}</span><span class="s2">/"</span>
+  <span class="k">end</span>
+<span class="k">else</span>
+  <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://bijo-linux.com/"</span>
+  <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="ss">:place</span><span class="p">]</span> <span class="o">==</span> <span class="ss">:kobe</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"http://kobe.bijo-linux.com/"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-exec(config[:app], url)
-</code></pre>
+<span class="nb">exec</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="ss">:app</span><span class="p">],</span> <span class="n">url</span><span class="p">)</span></code></pre></figure>
 
 <p>
 なお、美女Linuxには神戸版の<a href="http://kobe.bijo-linux.com/">神戸美女Linux</a>もあるが、<code>-p kobe</code>というオプションをつけると神戸美女Linuxになるようにした。
 </p>
+
   </div>
 
   <footer class="post-footer">
@@ -177,19 +176,19 @@ exec(config[:app], url)
       <span class="post-title">HTML の COPY 禁止をするにはどうすればいいですか? </span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2016/02/study-for-xulrunner-as-prism.html">
+      <span class="post-meta">2016-02-07</span>
+      <span class="post-title">Study for XULRunner as Prism, using Firefox</span><span class="post-thumb" data-image-path="/images/201602_prism_xulrunner_firefox.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
       <span class="post-meta">2015-07-04</span>
       <span class="post-title">Study of the link tracking methods and the protection</span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2010/11/code-reading-aaencoded-javascript-code.html">
-      <span class="post-meta">2010-11-29</span>
-      <span class="post-title">code reading : javascript code encoded as aaencode</span></a>
-  </li>
-<li class="post-item">
-    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
-      <span class="post-meta">2015-05-01</span>
-      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
+      <span class="post-meta">2014-04-27</span>
+      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
   </li>
 </ul>
 </aside>

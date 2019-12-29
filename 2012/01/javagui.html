@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
   <title>JavaのGUIをベクトルデータとしてスクリーンショットを撮る</title>
 
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2012/01/javagui.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
   <meta property="og:url" content="https://cat-in-136.github.io/2012/01/javagui.html" />
   <meta property="og:title" content="JavaのGUIをベクトルデータとしてスクリーンショットを撮る" /><meta property="og:description" content="Mac OS X には、スクリーンショットの形式として PDF を選べる。 さらに驚きなのは、Tiger より前の Mac では、それがデフォルトのファイル形式だったことだ。[1] 実際にその ..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/swingset_java_ocean_gv.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@cat_in_136" />
   <meta name="twitter:creator" content="@cat_in_136" />
-
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <link rel="canonical" href="https://cat-in-136.github.io/2012/01/javagui.html" />
-  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" /><script type="application/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.js" defer="defer"></script>
-  <script type="application/javascript" src="data:application/javascript,window.addEventListener(%22DOMContentLoaded%22%2Cfunction(e)%7BprettyPrint()%3B%7D%2Cfalse)%3B" defer="defer"></script><script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 </head>
 <body><header class="site-header">
   <div class="wrapper">
@@ -77,42 +76,41 @@ PDF へは直接出力する機能を Java の API は有していないため P
 <p>大枠は下記の通りで、
 <code>outputFile</code>に<code>createPrintable()</code>メソッド(後述)で得られた印刷ドキュメントをPostScript形式で書き込む。</p>
 
-<pre class="prettyprint"><code>final DocFlavor flavor = DocFlavor.SERVICE_FORMATTED.PRINTABLE;
-StreamPrintServiceFactory[] serviceFactories;
-PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-File outputFile = ...; // 保存先ファイル new File("….ps);
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">final</span> <span class="nc">DocFlavor</span> <span class="n">flavor</span> <span class="o">=</span> <span class="nc">DocFlavor</span><span class="o">.</span><span class="na">SERVICE_FORMATTED</span><span class="o">.</span><span class="na">PRINTABLE</span><span class="o">;</span>
+<span class="nc">StreamPrintServiceFactory</span><span class="o">[]</span> <span class="n">serviceFactories</span><span class="o">;</span>
+<span class="nc">PrintRequestAttributeSet</span> <span class="n">aset</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashPrintRequestAttributeSet</span><span class="o">();</span>
+<span class="nc">File</span> <span class="n">outputFile</span> <span class="o">=</span> <span class="o">...;</span> <span class="c1">// 保存先ファイル new File("….ps);</span>
 
-FileOutputStream fos = null;
-try {
-    fos = new FileOutputStream(outputFile);
-    serviceFactories = StreamPrintServiceFactory
-        .lookupStreamPrintServiceFactories(flavor,
-                DocFlavor.BYTE_ARRAY.POSTSCRIPT.getMimeType());
-    if (serviceFactories != null &amp;&amp; serviceFactories.length &gt; 0) {
-        StreamPrintService service = serviceFactories[0]
-            .getPrintService(fos);
-        if (ServiceUI.printDialog(null, 0, 0,
-                new PrintService[] { service }, service, flavor, aset) != null) {
-            Doc doc = new SimpleDoc(createPrintable(), flavor, null);
-            DocPrintJob job = service.createPrintJob();
-            //job.addPrintJobListener(this); // お望みで（印刷状況が得られます）
-            job.print(doc, aset);
-            //job.removePrintJobListener(this); // お望みで
-        }
-    } else {
-        System.err.println("Print Service Not Found.");
-    }
-} catch (Exception e1) {
-    // 例外処理のため略記
-} finally {
-    try {
-        if (fos != null) {
-            fos.close();
-        }
-    } catch (IOException e1) {
-    }
-}
-</code></pre>
+<span class="nc">FileOutputStream</span> <span class="n">fos</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">fos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="n">outputFile</span><span class="o">);</span>
+    <span class="n">serviceFactories</span> <span class="o">=</span> <span class="nc">StreamPrintServiceFactory</span>
+        <span class="o">.</span><span class="na">lookupStreamPrintServiceFactories</span><span class="o">(</span><span class="n">flavor</span><span class="o">,</span>
+                <span class="nc">DocFlavor</span><span class="o">.</span><span class="na">BYTE_ARRAY</span><span class="o">.</span><span class="na">POSTSCRIPT</span><span class="o">.</span><span class="na">getMimeType</span><span class="o">());</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">serviceFactories</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">serviceFactories</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">StreamPrintService</span> <span class="n">service</span> <span class="o">=</span> <span class="n">serviceFactories</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+            <span class="o">.</span><span class="na">getPrintService</span><span class="o">(</span><span class="n">fos</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="nc">ServiceUI</span><span class="o">.</span><span class="na">printDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
+                <span class="k">new</span> <span class="nc">PrintService</span><span class="o">[]</span> <span class="o">{</span> <span class="n">service</span> <span class="o">},</span> <span class="n">service</span><span class="o">,</span> <span class="n">flavor</span><span class="o">,</span> <span class="n">aset</span><span class="o">)</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Doc</span> <span class="n">doc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDoc</span><span class="o">(</span><span class="n">createPrintable</span><span class="o">(),</span> <span class="n">flavor</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="nc">DocPrintJob</span> <span class="n">job</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">createPrintJob</span><span class="o">();</span>
+            <span class="c1">//job.addPrintJobListener(this); // お望みで（印刷状況が得られます）</span>
+            <span class="n">job</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">doc</span><span class="o">,</span> <span class="n">aset</span><span class="o">);</span>
+            <span class="c1">//job.removePrintJobListener(this); // お望みで</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Print Service Not Found."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// 例外処理のため略記</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">fos</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">fos</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
 <p>流れをざっと説明すると</p>
 
@@ -134,19 +132,17 @@ PostScript(<code>DocFlavor.BYTE_ARRAY.POSTSCRIPT.getMimeType()</code>)を指定�
 
 <p>次は、<code>createPrintJob()</code>の中身を記載する。</p>
 
-<pre class="prettyprint"><code>private Printable createPrintable() {
-    Window[] windows = Window.getWindows();
-    ArrayList&lt;Component&gt; list = new ArrayList&lt;Component&gt;();
-    for (int i = 0; i &lt; windows.length; i++) {
-        if (windows[i].isVisible()) {
-            list.add(windows[i]);
-        }
-    }
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">private</span> <span class="nc">Printable</span> <span class="nf">createPrintable</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">Window</span><span class="o">[]</span> <span class="n">windows</span> <span class="o">=</span> <span class="nc">Window</span><span class="o">.</span><span class="na">getWindows</span><span class="o">();</span>
+    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Component</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Component</span><span class="o">&gt;();</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">windows</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">windows</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">isVisible</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">windows</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
 
-    return new ComponentPrintableWrapper(list.toArray(new Component[list.size()]));
-}
-
-</code></pre>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">ComponentPrintableWrapper</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="nc">Component</span><span class="o">[</span><span class="n">list</span><span class="o">.</span><span class="na">size</span><span class="o">()]));</span>
+<span class="o">}</span></code></pre></figure>
 
 <p><a href="http://java.sun.com/javase/ja/6/docs/ja/api/java/awt/Window.html#getWindows()"><code>Window.getWindows()</code></a>で、Java プログラムから開いたすべてのウィンドウの配列が得られる。
 これらのうち可視、すなわち<code>isVisible()</code>が真となるウィンドウをリストアップしていく。
@@ -155,44 +151,42 @@ PostScript(<code>DocFlavor.BYTE_ARRAY.POSTSCRIPT.getMimeType()</code>)を指定�
 <p>このウィンドウの配列をそのまま印刷サービスに流し込めればいいのだが、印刷用のインスタンス<a href="http://java.sun.com/javase/ja/6/docs/ja/api/java/awt/print/Printable.html"><code>Printable</code></a>の形にしなければならない。
 であるので、<code>ComponentPrintableWrapper</code>クラスという<del datetime="2013-03-04T20:37:59+09:00">ワッパー</del><ins datetime="2013-03-04T20:37:59+09:00">ラッパー</ins>を作った。</p>
 
-<pre class="prettyprint"><code>import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.Component</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics2D</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.print.PageFormat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.print.Printable</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.print.PrinterException</span><span class="o">;</span>
 
-import javax.swing.RepaintManager;
+<span class="kn">import</span> <span class="nn">javax.swing.RepaintManager</span><span class="o">;</span>
 
-class ComponentPrintableWrapper implements Printable {
-    private Component[] component = null;
+<span class="kd">class</span> <span class="nc">ComponentPrintableWrapper</span> <span class="kd">implements</span> <span class="nc">Printable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Component</span><span class="o">[]</span> <span class="n">component</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
 
-    public ComponentPrintableWrapper(Component[] component) {
-        this.component = component;
-    }
+    <span class="kd">public</span> <span class="nf">ComponentPrintableWrapper</span><span class="o">(</span><span class="nc">Component</span><span class="o">[]</span> <span class="n">component</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">component</span> <span class="o">=</span> <span class="n">component</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    @Override
-    public int print(Graphics g, PageFormat format, int pageIndex)
-            throws PrinterException {
-        Graphics2D g2 = (Graphics2D) g;
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">print</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">,</span> <span class="nc">PageFormat</span> <span class="n">format</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageIndex</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="nc">PrinterException</span> <span class="o">{</span>
+        <span class="nc">Graphics2D</span> <span class="n">g2</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Graphics2D</span><span class="o">)</span> <span class="n">g</span><span class="o">;</span>
 
-        if (pageIndex &lt; component.length) {
-            Component paintComponent = component[pageIndex];
+        <span class="k">if</span> <span class="o">(</span><span class="n">pageIndex</span> <span class="o">&lt;</span> <span class="n">component</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Component</span> <span class="n">paintComponent</span> <span class="o">=</span> <span class="n">component</span><span class="o">[</span><span class="n">pageIndex</span><span class="o">];</span>
 
-            g2.translate(format.getImageableX(), format.getImageableY()); // 位置調整
+            <span class="n">g2</span><span class="o">.</span><span class="na">translate</span><span class="o">(</span><span class="n">format</span><span class="o">.</span><span class="na">getImageableX</span><span class="o">(),</span> <span class="n">format</span><span class="o">.</span><span class="na">getImageableY</span><span class="o">());</span> <span class="c1">// 位置調整</span>
 
-            RepaintManager.currentManager(paintComponent).setDoubleBufferingEnabled(false);
-            paintComponent.paint(g);
-            RepaintManager.currentManager(paintComponent).setDoubleBufferingEnabled(true);
+            <span class="nc">RepaintManager</span><span class="o">.</span><span class="na">currentManager</span><span class="o">(</span><span class="n">paintComponent</span><span class="o">).</span><span class="na">setDoubleBufferingEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+            <span class="n">paintComponent</span><span class="o">.</span><span class="na">paint</span><span class="o">(</span><span class="n">g</span><span class="o">);</span>
+            <span class="nc">RepaintManager</span><span class="o">.</span><span class="na">currentManager</span><span class="o">(</span><span class="n">paintComponent</span><span class="o">).</span><span class="na">setDoubleBufferingEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 
-            return Printable.PAGE_EXISTS;
-        } else {
-            return Printable.NO_SUCH_PAGE;
-        }
-    }
-}
-
-</code></pre>
+            <span class="k">return</span> <span class="nc">Printable</span><span class="o">.</span><span class="na">PAGE_EXISTS</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Printable</span><span class="o">.</span><span class="na">NO_SUCH_PAGE</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
 
 <p>プリンタジョブへの印刷指示<code>job.print(doc, aset)</code>では、プリンタジョブから本クラスの<code>print()</code>メソッドが呼ばれる。
 ページ(<code>pageIndex</code>)が変わるごとに<code>print()</code>メソッドが呼ばれるので、このコードは1ページあたり1個のウィンドウが描き込まれる。</p>
@@ -276,19 +270,14 @@ class ComponentPrintableWrapper implements Printable {
       <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
-      <span class="post-meta">2013-02-24</span>
-      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
-  </li>
-<li class="post-item">
     <a class="post-link" href="/2012/01/javaswinglookandfeel.html">
       <span class="post-meta">2012-01-28</span>
       <span class="post-title">JavaのSwingの自作LookAndFeelをそれなりに実現してしまった超最小限のコード</span><span class="post-thumb" data-image-path="/images/VerySimpleLAFSwingSet2.png"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
-      <span class="post-meta">2014-04-06</span>
-      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
+    <a class="post-link" href="/2013/02/netscape-communicator-4-beta-2-throbber.html">
+      <span class="post-meta">2013-02-24</span>
+      <span class="post-title">#Netscape Communicator 4 beta 2 Throbber ☆彡☆彡 🌙</span><span class="post-thumb" data-image-path="/images/ns4b_splash.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2014/12/light-weight-font-android.html">
@@ -296,14 +285,19 @@ class ComponentPrintableWrapper implements Printable {
       <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
   </li>
 <li class="post-item">
+    <a class="post-link" href="/2014/05/note-do-same-without.html">
+      <span class="post-meta">2014-05-12</span>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+  </li>
+<li class="post-item">
     <a class="post-link" href="/2016/10/optical-analysis-of-art-aquarium-water-bowl.html">
       <span class="post-meta">2016-10-08</span>
       <span class="post-title">アートアクアリウムの水盤における光学的解析のメモ</span><span class="post-thumb" data-image-path="https://c7.staticflickr.com/9/8134/30075992142_fc249ffbab_t.jpg"></span></a>
   </li>
 <li class="post-item">
-    <a class="post-link" href="/2014/05/note-do-same-without.html">
-      <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+    <a class="post-link" href="/2014/04/google-maps-javascript-api.html">
+      <span class="post-meta">2014-04-06</span>
+      <span class="post-title">カスタムマップを Google Maps JavaScript API を使ってスクロール地図にする方法</span><span class="post-thumb" data-image-path="/images/howto-github.png"></span></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2013/04/two-element-barchart-designing.html">
