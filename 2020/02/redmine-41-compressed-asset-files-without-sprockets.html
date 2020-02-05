@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Redmine 4.1 でアセットファイルの圧縮をするように頑張った顛末メモ</title>
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2020/02/redmine-41-compressed-asset-files-without-sprockets.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <meta property="og:url" content="https://cat-in-136.github.io/2020/02/redmine-41-compressed-asset-files-without-sprockets.html" />
+  <meta property="og:title" content="Redmine 4.1 でアセットファイルの圧縮をするように頑張った顛末メモ" /><meta property="og:description" content="Redmine 4.1 では下記のとおり sprockets が削除された。 Defect #32223: Disable sprockets to avoid Sprockets::Railt..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2020/02/redmine-41-compressed-asset-files-without-sprockets.html" itemprop="url">Redmine 4.1 でアセットファイルの圧縮をするように頑張った顛末メモ</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2020-02-05T22:00:47+09:00">2020-02-05T22:00:47+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/redmine">Redmine</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a><a class="tag" href="/tags/httpd">Httpd</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2020-02-05-redmine-41-compressed-asset-files-without-sprockets.md" class="source-path">_posts/2020-02-05-redmine-41-compressed-asset-files-without-sprockets.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2020-02-05-redmine-41-compressed-asset-files-without-sprockets.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>Redmine 4.1 では下記のとおり sprockets が削除された。</p>
+
+<ul>
+  <li><a href="https://www.redmine.org/issues/32223">Defect #32223: Disable sprockets to avoid Sprockets::Railtie::ManifestNeededError raised by sprockets 4.0.0 - Redmine</a></li>
+  <li><a href="https://github.com/rails/sprockets/issues/643">Exception without manifest.js in 4.0.0 · Issue #643 · rails/sprockets</a></li>
+</ul>
+
+<p>sprockets によるアセットの gzip 自動圧縮がされなくなった。
+gzipアセットはデータ転送の削減するが、この恩恵が得られなくなる。
+すなわちギガを消費するようになってしまう。</p>
+
+<p>であるならば、 sprockets を再導入すればいい訳だが、
+消された理由からは、sprockets の再導入は難しそうであった。</p>
+
+<p>経緯を確認してみると、
+sprockets 4.0.0 がインストールされると <code class="highlighter-rouge">Sprockets::Railtie::ManifestNeededError</code> が発生しRedmineが起動しない問題に対して、sprockets 3.7 系で固定化する暫定対処をしていた。
+（<a href="https://www.redmine.org/issues/32300">Defect #32300: Don’t use sprockets 4.0.0 in order to avoid Sprockets::Railtie::ManifestNeededError - Redmine</a>）
+これに対する正式対応が sprockets を使わなくするということになった模様だ。
+なお、 sprockets を自力で有効する場合についての情報は不明であった。
+もっとも sprockets はかなり複雑であり、ただ単に gzip したいという要求にはそもそも向かない。</p>
+
+<blockquote>
+  <blockquote>
+    <p>I don’t know if disabling/removing sprockets this way in the Redmine core makes enabling of the Rails asset pipeline locally more difficult than it currently is?</p>
+  </blockquote>
+
+  <p>Sorry, I don’t know.</p>
+</blockquote>
+
+<p>ところで、gzip アセットを配信する仕組みを調べてみると、<a href="https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/static.rb">actionpack の <code class="highlighter-rouge">action_dispatch/middleware/static.rb</code> の <code class="highlighter-rouge">ActionDispatch::FileHandler</code> で処理されている</a>ことがわかるが。
+興味深いことに、ただ単に precompiled gzip ファイルさえ置いてしまえば動作するようである。</p>
+
+<p>というわけでバッチでも何でも良いので、public フォルダ配下のファイルについて gzip ファイルを作成してしまえば良い。</p>
+
+<p>ただsprocketsのこの仕組みはversion 3.5頃でもコロコロと変わったことがあるらしく、<a href="https://stackoverflow.com/questions/29700369/missing-gzip-version-of-css-and-js-assets">その頃の先人たちの記録</a>を見ると rake task で対処している例が見つかった。</p>
+
+<p>ところで、heroku でもアセットの precompile を行ってくれるのだが、
+sprockets が無くとも <code class="highlighter-rouge">assets:precompile</code> task を捏造さえすれば Heroku の Slug Compiler (Google Cloud Build の heroku 版だと思えば良い) の <a href="https://devcenter.heroku.com/articles/ruby-support#rails-5-x-applications-compile-phase">compile phase</a> でビルドが動くことが判明した。</p>
+
+<blockquote>
+  <p>As a final task in the compilation phase, the <code class="highlighter-rouge">assets:precompile</code> Rake task is executed if you have a <code class="highlighter-rouge">assets:precompile</code> Rake task defined, and don’t have a <code class="highlighter-rouge">public/assets/manifest-*.json</code> file.</p>
+</blockquote>
+
+<p>…という経緯を経て、結局のところ、
+gzip 実行する <code class="highlighter-rouge">assets:precompile</code> を作れば汎用的な解決策になるだろうということで、
+結果下記のようなタスクを追加するに至った。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">namespace</span> <span class="ss">:assets</span> <span class="k">do</span>
+  <span class="n">desc</span> <span class="s2">"Gzip all the HTML/CSS/JS files in the public folder"</span>
+  <span class="n">task</span> <span class="ss">:precompile</span> <span class="k">do</span>
+    <span class="nb">require</span> <span class="s1">'zlib'</span>
+
+    <span class="k">begin</span>
+      <span class="no">Rake</span><span class="o">::</span><span class="no">Task</span><span class="p">[</span><span class="s1">'redmine:plugins:assets'</span><span class="p">].</span><span class="nf">invoke</span>
+    <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">error</span>
+      <span class="nb">puts</span> <span class="s2">"failed to execute redmine:plugins:assets task: </span><span class="si">#{</span><span class="n">error</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+
+    <span class="no">Dir</span><span class="p">.</span><span class="nf">glob</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">Rails</span><span class="p">.</span><span class="nf">root</span><span class="p">,</span> <span class="s1">'public'</span><span class="p">,</span> <span class="s1">'**'</span><span class="p">,</span> <span class="s1">'*.{html,css,js}'</span><span class="p">)).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">.gz"</span><span class="p">)</span> <span class="k">if</span> <span class="no">File</span><span class="p">.</span><span class="nf">exist?</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">.gz"</span><span class="p">)</span>
+      <span class="no">Zlib</span><span class="o">::</span><span class="no">GzipWriter</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"</span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2">.gz"</span><span class="p">,</span> <span class="no">Zlib</span><span class="o">::</span><span class="no">BEST_COMPRESSION</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">gz</span><span class="o">|</span>
+        <span class="n">gz</span><span class="p">.</span><span class="nf">mtime</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">mtime</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">gz</span><span class="p">.</span><span class="nf">orig_name</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">gz</span><span class="p">.</span><span class="nf">puts</span> <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">read</span> <span class="p">}</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>ポイントは <code class="highlighter-rouge">redmine:plugins:assets</code> タスクを事前に実行しておいて、
+プラグインのアセットファイルも <code class="highlighter-rouge">public</code> フォルダにコピーをしてから、
+gzip 処理を施すことだ。そうしないとプラグインのアセットファイルが圧縮されない。</p>
+
+<p>なお zopfli などを使えばもっと圧縮率を上げれるだろうがそこまではやっていない。
+そこまでやるなら brotli 使うぐらいの対処を施したいものである。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/07/redmine-tips-how-to-add-an-attachment-using-rails-c.html">
+      <span class="post-meta">2018-07-02</span>
+      <span class="post-title">Redmine Tips: How to add an attachment using rails c</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/04/rust-error-handling-question.html">
+      <span class="post-meta">2018-04-29</span>
+      <span class="post-title">rustのエラー処理と疑問符演算子</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/07/rpmbuild-setting-for-multi-core-cpu-2.html">
+      <span class="post-meta">2010-07-31</span>
+      <span class="post-title">rpmbuild setting for multi core CPU (2)</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2019/01/migrate-cybozu-live-to-redmine-forum.html">
+      <span class="post-meta">2019-01-26</span>
+      <span class="post-title">サイボウズLiveからredmineへの移行</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/09/pqi-air-card-udp-yo.html">
+      <span class="post-meta">2014-09-21</span>
+      <span class="post-title">PQI Air Card から UDP で Yo と答えさせてデバイス検出する試み</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/04/c-struct-with-doxygen-xml.html">
+      <span class="post-meta">2014-04-27</span>
+      <span class="post-title">C言語の構造体を構造分析したい〜静的解析としての doxygen</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/07/tips-webrick-proxy-server-with-digest.html">
+      <span class="post-meta">2011-07-16</span>
+      <span class="post-title">[TIPS] WEBrick proxy server with Digest Auth</span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2020
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
