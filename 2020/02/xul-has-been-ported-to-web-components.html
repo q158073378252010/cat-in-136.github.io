@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>XUL が Web Components になったね</title>
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2020/02/xul-has-been-ported-to-web-components.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <meta property="og:url" content="https://cat-in-136.github.io/2020/02/xul-has-been-ported-to-web-components.html" />
+  <meta property="og:title" content="XUL が Web Components になったね" /><meta property="og:description" content="XBL が消えたね Firefox の GUI は長らくMozilla固有のUI技術XMLであるXULでつくられてきたが、これはHTMLに置き換えられた…というのは実は間違っていてXULはWeb..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2020/02/xul-has-been-ported-to-web-components.html" itemprop="url">XUL が Web Components になったね</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2020-02-24T01:33:48+09:00">2020-02-24T01:33:48+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/firefox">Firefox</a><a class="tag" href="/tags/xul">Xul</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2020-02-24-xul-has-been-ported-to-web-components.md" class="source-path">_posts/2020-02-24-xul-has-been-ported-to-web-components.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2020-02-24-xul-has-been-ported-to-web-components.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <h2 id="xbl-が消えたね">XBL が消えたね</h2>
+
+<p>Firefox の GUI は長らくMozilla固有のUI技術XMLであるXULでつくられてきたが、これはHTMLに置き換えられた…というのは実は間違っていてXULはWebComponentsに置き換えられた。基幹機能であるXBLが捨てられWebComponentsに置き換えられた。</p>
+
+<blockquote>
+  <p>WebComponentsの先祖みたいなMozilla固有のUI技術XMLであるXULを支える基幹機能であり、Webブラウザに高度な拡張機能のエコシステムをもたらしたXBLがお亡くなりになりました！</p>
+
+  <p>— dynamis (でゅなみす/レッサーパンダの人) (@dynamitter) <a href="https://twitter.com/dynamitter/status/1182108689739575296">October 10, 2019</a></p>
+</blockquote>
+
+<p>したがって、現在のFirefoxのGUIはWebComponentsでいわば再実装されたXULで書かれている。WebComponentsなのでHTMLで書かれていることになる（正しくはXHTML）。</p>
+
+<p>これはFirefoxで<code class="highlighter-rouge">chrome://content/browser/browser.xhtml</code>と打ち込んだ後で、開発者ツールなどで確認することができる。</p>
+
+<figure>
+<img class="fitcontain" src="/images/2020-02-24_xulhasbeenported_browser-html.png" width="1024" />
+<figcaption><code>chrome://content/browser/browser.xhtml</code></figcaption>
+</figure>
+
+<h2 id="xul-の-webcomponents-構造と-xbl-構造を雑に眺めてみる">XUL の WebComponents 構造と XBL 構造を雑に眺めてみる</h2>
+
+<p>上述の開発者ツールで、たとえばダウンロードボタンが<code class="highlighter-rouge">toolbarbutton</code>という要素名なのだが、これはWebComponentsで登録されたものであることは、下記を実行すれば直ちにわかる。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#downloads-button</span><span class="dl">"</span><span class="p">)</span> <span class="k">instanceof</span> <span class="nx">customElements</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">toolbarbutton</span><span class="dl">"</span><span class="p">)</span>
+<span class="c1">// =&gt; true</span>
+</code></pre></div></div>
+
+<p>クラスの階層構造は、XULとかDOMに関わらない純粋なJavaScriptのテクとして、
+下記のようにして追っかけられる。
+得られた配列の最後が祖先のクラス（のコンストラクタ）である。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="o">*</span><span class="nx">hoge</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span> <span class="nx">proto</span><span class="p">;</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">yield</span> <span class="nx">proto</span><span class="p">.</span><span class="kd">constructor</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nb">Array</span><span class="p">.</span><span class="k">from</span><span class="p">(</span><span class="nx">hoge</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#downloads-button</span><span class="dl">"</span><span class="p">)))</span>
+<span class="c1">// =&gt; Array(10) [ MozToolbarbutton(args), MozButtonBase(), BaseText(args),</span>
+<span class="c1">//                BaseControl(args), MozElementBase(), (), (), (), (), Object() ]</span>
+</code></pre></div></div>
+
+<p>実際にこれを実行するとJavaScriptコードへの参照は定義場所へ移動するアイコン
+<img src="/images/2020-02-24_xulhasbeenported_jump-definition.svg" width="16" height="16" />
+が表示されるのでJavaScriptで書かれているクラスに関しては追っていくのは結構簡単だ。</p>
+
+<p>クラス階層を表すと下記の通りとなる。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Object</code>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget"><code class="highlighter-rouge">EventTarget</code></a>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node"><code class="highlighter-rouge">Node</code></a>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element"><code class="highlighter-rouge">Element</code></a>
+                <ul>
+                  <li><code class="highlighter-rouge">XULElement</code> (<a href="https://dxr.mozilla.org/mozilla-central/source/dom/xul/nsXULElement.h">nsXULElement.h</a>)
+                    <ul>
+                      <li><code class="highlighter-rouge">MozElementBase</code> (chrome://global/content/customElements.js)
+                        <ul>
+                          <li><code class="highlighter-rouge">BaseControl</code> (chrome://global/content/customElements.js)
+                            <ul>
+                              <li><code class="highlighter-rouge">BaseText</code> (chrome://global/content/customElements.js)
+                                <ul>
+                                  <li><code class="highlighter-rouge">MozButtonBase</code> (chrome://global/content/elements/button.js)
+                                    <ul>
+                                      <li><code class="highlighter-rouge">MozToolbarbutton</code> (chrome://global/content/elements/toolbarbutton.js)</li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><code class="highlighter-rouge">Object</code>〜<code class="highlighter-rouge">Element</code>まではDOM要素で共通だ。
+HTML要素の場合は<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement"><code class="highlighter-rouge">HTMLElement</code></a>が共通祖先になるが、
+XUL要素の場合はあくまで<code class="highlighter-rouge">HTMLElement</code>ではなく<code class="highlighter-rouge">XULElement</code>である。</p>
+
+<p>ちなみにXBL時代の古いFirefoxを使って同様に階層を調べると下記の通りと判明した。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Object</code>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget"><code class="highlighter-rouge">EventTarget</code></a>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node"><code class="highlighter-rouge">Node</code></a>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element"><code class="highlighter-rouge">Element</code></a>
+                <ul>
+                  <li><code class="highlighter-rouge">XULElement</code> (<a href="https://dxr.mozilla.org/mozilla-central/source/dom/xul/nsXULElement.h">nsXULElement.h</a>)
+                    <ul>
+                      <li>chrome://global/content/bindings/general.xml#basecontrol
+                        <ul>
+                          <li>chrome://global/content/bindings/general.xml#basetext
+                            <ul>
+                              <li>chrome://global/content/bindings/button.xml#button-base
+                                <ul>
+                                  <li>chrome://global/content/bindings/toolbarbutton.xml#toolbarbutton</li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>これは意図してやったことだが、
+XBL時代の階層をほぼそのままにWebComponentsに移行していることがよくわかる。
+<code class="highlighter-rouge">BaseControl</code>以下がかつてXBLであった対応性がよくわかる。
+それらのXBLで書かれていたところをJavaScriptに置き換えられたのだ。</p>
+
+<p>興味深いことに<code class="highlighter-rouge">XULElement</code>はネイティブコードのままで変えていない。
+設計は変えずに実装方法だけを現代化した、リファクタリングしたというのはすごい。</p>
+
+<h2 id="参考文献">参考文献</h2>
+
+<ul>
+  <li>Brian Grinstead, “<a href="https://briangrinstead.com/blog/firefox-webcomponents/">The Firefox UI is now built with Web Components</a>”</li>
+  <li>Brian Grinstead, “<a href="https://briangrinstead.com/blog/xbl-in-firefox/">XBL In Firefox</a>”</li>
+  <li><a href="https://bgrins.github.io/xbl-analysis/">Are We XBL Still?</a></li>
+  <li><a href="https://wiki.mozilla.org/Firefox/XUL_and_XBL_Replacement">Firefox/XUL and XBL Replacement - MozillaWiki</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2010/04/componentsutilsreporterror-is-easy-to.html">
+      <span class="post-meta">2010-04-15</span>
+      <span class="post-title">Components.utils.reportError() is easy to use for debugging</span><span class="post-thumb" data-image-path="/images/componentsutilsreporterror-screenshot1.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/08/tip-calling-windowatob-and-btoa-from.html">
+      <span class="post-meta">2010-08-19</span>
+      <span class="post-title">Tip: Calling window.atob() and btoa() from Jetpack-SDK</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">
+      <span class="post-meta">2011-02-23</span>
+      <span class="post-title">Visual Guide : New pref of Configuration Mania v1.14.2011022201</span><span class="post-thumb" data-image-path="/images/HWaccel.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/configuration-mania-1122010032801.html">
+      <span class="post-meta">2010-03-28</span>
+      <span class="post-title">UPDATE#2: Configuration Mania 1.12.2010032801: Hardware accelerated browsing settings for Fx3.7</span><span class="post-thumb" data-image-path="/images/try_direct2d.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/ie6-died-but-ie-doesnt-yet-support.html">
+      <span class="post-meta">2010-03-10</span>
+      <span class="post-title">IE6 died, but IE doesn&#39;t yet support addEventListener...</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/08/study-for-adding-menuitem-to-firefox4s.html">
+      <span class="post-meta">2010-08-15</span>
+      <span class="post-title">Study for adding a menuitem to Firefox4&#39;s &quot;Firefox button&quot;</span><span class="post-thumb" data-image-path="/images/fx_btn.png"></span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2020
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
