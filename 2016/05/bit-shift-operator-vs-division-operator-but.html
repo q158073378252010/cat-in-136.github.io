@@ -161,43 +161,43 @@ clang は LLVM IR によりプロセッサに独立したレベルでの最適�
 <pre class="console"><samp>% clang -c -S hoge.c -O
 % </samp></pre>
 
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm">	<span class="p">.</span><span class="n">globl</span>	<span class="n">div2ui</span>
-	<span class="p">.</span><span class="n">type</span>	<span class="n">div2ui</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
-<span class="n">div2ui</span><span class="o">:</span>                                 <span class="err">#</span> <span class="err">@</span><span class="n">div2ui</span>
-	<span class="p">.</span><span class="n">cfi_startproc</span>
-<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
-	<span class="n">shrl</span>	<span class="err">%</span><span class="n">edi</span>
-	<span class="n">movl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
-	<span class="n">retq</span>
-<span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">:</span>
-	<span class="p">.</span><span class="n">size</span>	<span class="n">div2ui</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">-</span><span class="n">div2ui</span>
-	<span class="p">.</span><span class="n">cfi_endproc</span>
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm">	<span class="nf">.globl</span>	<span class="nb">di</span><span class="nv">v2ui</span>
+	<span class="nf">.type</span>	<span class="nb">di</span><span class="nv">v2ui</span><span class="p">,</span><span class="err">@</span><span class="nv">function</span>
+<span class="nl">div2ui:</span>                                 <span class="err">#</span> <span class="err">@</span><span class="nf">div2ui</span>
+	<span class="nf">.cfi_startproc</span>
+<span class="err">#</span> <span class="nl">BB#0:</span>
+	<span class="nf">shrl</span>	<span class="o">%</span><span class="nb">edi</span>
+	<span class="nf">movl</span>	<span class="o">%</span><span class="nb">edi</span><span class="p">,</span> <span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">retq</span>
+<span class="nl">.Lfunc_end0:</span>
+	<span class="nf">.size</span>	<span class="nb">di</span><span class="nv">v2ui</span><span class="p">,</span> <span class="nv">.Lfunc_end0</span><span class="o">-</span><span class="nb">di</span><span class="nv">v2ui</span>
+	<span class="nf">.cfi_endproc</span>
 
-	<span class="p">.</span><span class="n">globl</span>	<span class="n">div2si</span>
-	<span class="p">.</span><span class="n">type</span>	<span class="n">div2si</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
-<span class="n">div2si</span><span class="o">:</span>                                 <span class="err">#</span> <span class="err">@</span><span class="n">div2si</span>
-	<span class="p">.</span><span class="n">cfi_startproc</span>
-<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
-	<span class="n">movl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
-	<span class="n">shrl</span>	<span class="err">$</span><span class="mi">31</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
-	<span class="n">leal</span>	<span class="p">(</span><span class="err">%</span><span class="n">rax</span><span class="p">,</span><span class="err">%</span><span class="n">rdi</span><span class="p">),</span> <span class="err">%</span><span class="n">eax</span>
-	<span class="n">sarl</span>	<span class="err">%</span><span class="n">eax</span>
-	<span class="n">retq</span>
-<span class="p">.</span><span class="n">Lfunc_end1</span><span class="o">:</span>
-	<span class="p">.</span><span class="n">size</span>	<span class="n">div2si</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end1</span><span class="o">-</span><span class="n">div2si</span>
-	<span class="p">.</span><span class="n">cfi_endproc</span>
+	<span class="nf">.globl</span>	<span class="nb">di</span><span class="nv">v2si</span>
+	<span class="nf">.type</span>	<span class="nb">di</span><span class="nv">v2si</span><span class="p">,</span><span class="err">@</span><span class="nv">function</span>
+<span class="nl">div2si:</span>                                 <span class="err">#</span> <span class="err">@</span><span class="nf">div2si</span>
+	<span class="nf">.cfi_startproc</span>
+<span class="err">#</span> <span class="nl">BB#0:</span>
+	<span class="nf">movl</span>	<span class="o">%</span><span class="nb">edi</span><span class="p">,</span> <span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">shrl</span>	<span class="kc">$</span><span class="mi">31</span><span class="p">,</span> <span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">leal</span>	<span class="p">(</span><span class="o">%</span><span class="nb">rax</span><span class="p">,</span><span class="o">%</span><span class="nb">rdi</span><span class="p">),</span> <span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">sarl</span>	<span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">retq</span>
+<span class="nl">.Lfunc_end1:</span>
+	<span class="nf">.size</span>	<span class="nb">di</span><span class="nv">v2si</span><span class="p">,</span> <span class="nv">.Lfunc_end1</span><span class="o">-</span><span class="nb">di</span><span class="nv">v2si</span>
+	<span class="nf">.cfi_endproc</span>
 
-	<span class="p">.</span><span class="n">globl</span>	<span class="n">shiftdiv2ui</span>
-	<span class="p">.</span><span class="n">type</span>	<span class="n">shiftdiv2ui</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
-<span class="n">shiftdiv2ui</span><span class="o">:</span>                            <span class="err">#</span> <span class="err">@</span><span class="n">shiftdiv2ui</span>
-	<span class="p">.</span><span class="n">cfi_startproc</span>
-<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
-	<span class="n">shrl</span>	<span class="err">%</span><span class="n">edi</span>
-	<span class="n">movl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">eax</span>
-	<span class="n">retq</span>
-<span class="p">.</span><span class="n">Lfunc_end2</span><span class="o">:</span>
-	<span class="p">.</span><span class="n">size</span>	<span class="n">shiftdiv2ui</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end2</span><span class="o">-</span><span class="n">shiftdiv2ui</span>
-	<span class="p">.</span><span class="n">cfi_endproc</span></code></pre></figure>
+	<span class="nf">.globl</span>	<span class="nv">shiftdiv2ui</span>
+	<span class="nf">.type</span>	<span class="nv">shiftdiv2ui</span><span class="p">,</span><span class="err">@</span><span class="nv">function</span>
+<span class="nl">shiftdiv2ui:</span>                            <span class="err">#</span> <span class="err">@</span><span class="nf">shiftdiv2ui</span>
+	<span class="nf">.cfi_startproc</span>
+<span class="err">#</span> <span class="nl">BB#0:</span>
+	<span class="nf">shrl</span>	<span class="o">%</span><span class="nb">edi</span>
+	<span class="nf">movl</span>	<span class="o">%</span><span class="nb">edi</span><span class="p">,</span> <span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">retq</span>
+<span class="nl">.Lfunc_end2:</span>
+	<span class="nf">.size</span>	<span class="nv">shiftdiv2ui</span><span class="p">,</span> <span class="nv">.Lfunc_end2</span><span class="o">-</span><span class="nv">shiftdiv2ui</span>
+	<span class="nf">.cfi_endproc</span></code></pre></figure>
 
 <p>
 当然のことながら、<code>div2ui:</code> と <code>shiftdiv2ui:</code> とで
@@ -240,18 +240,18 @@ clang は LLVM IR によりプロセッサに独立したレベルでの最適�
   <span class="nv">%1</span> <span class="p">=</span> <span class="k">mul</span> <span class="kt">i32</span> <span class="nv">%x</span><span class="p">,</span> <span class="m">10</span>
   <span class="k">ret</span> <span class="kt">i32</span> <span class="nv">%1</span>
 <span class="p">}</span></code></pre></figure>
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm">	<span class="p">.</span><span class="n">globl</span>	<span class="n">mul10ui</span>
-	<span class="p">.</span><span class="n">align</span>	<span class="mi">16</span><span class="p">,</span> <span class="mh">0x90</span>
-	<span class="p">.</span><span class="n">type</span>	<span class="n">mul10ui</span><span class="p">,</span><span class="err">@</span><span class="n">function</span>
-<span class="n">mul10ui</span><span class="o">:</span>                                <span class="err">#</span> <span class="err">@</span><span class="n">mul10ui</span>
-	<span class="p">.</span><span class="n">cfi_startproc</span>
-<span class="err">#</span> <span class="n">BB</span><span class="err">#</span><span class="mi">0</span><span class="o">:</span>
-	<span class="n">addl</span>	<span class="err">%</span><span class="n">edi</span><span class="p">,</span> <span class="err">%</span><span class="n">edi</span>
-	<span class="n">leal</span>	<span class="p">(</span><span class="err">%</span><span class="n">rdi</span><span class="p">,</span><span class="err">%</span><span class="n">rdi</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="err">%</span><span class="n">eax</span>
-	<span class="n">retq</span>
-<span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">:</span>
-	<span class="p">.</span><span class="n">size</span>	<span class="n">mul10ui</span><span class="p">,</span> <span class="p">.</span><span class="n">Lfunc_end0</span><span class="o">-</span><span class="n">mul10ui</span>
-	<span class="p">.</span><span class="n">cfi_endproc</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm">	<span class="nf">.globl</span>	<span class="nv">mul10ui</span>
+	<span class="nf">.align</span>	<span class="mi">16</span><span class="p">,</span> <span class="mh">0x90</span>
+	<span class="nf">.type</span>	<span class="nv">mul10ui</span><span class="p">,</span><span class="err">@</span><span class="nv">function</span>
+<span class="nl">mul10ui:</span>                                <span class="err">#</span> <span class="err">@</span><span class="nf">mul10ui</span>
+	<span class="nf">.cfi_startproc</span>
+<span class="err">#</span> <span class="nl">BB#0:</span>
+	<span class="nf">addl</span>	<span class="o">%</span><span class="nb">edi</span><span class="p">,</span> <span class="o">%</span><span class="nb">edi</span>
+	<span class="nf">leal</span>	<span class="p">(</span><span class="o">%</span><span class="nb">rdi</span><span class="p">,</span><span class="o">%</span><span class="nb">rdi</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="o">%</span><span class="nb">eax</span>
+	<span class="nf">retq</span>
+<span class="nl">.Lfunc_end0:</span>
+	<span class="nf">.size</span>	<span class="nv">mul10ui</span><span class="p">,</span> <span class="nv">.Lfunc_end0</span><span class="o">-</span><span class="nv">mul10ui</span>
+	<span class="nf">.cfi_endproc</span></code></pre></figure>
 
 <p>
 この場合、<code>x * 10</code>が<code>(x + x) + (x + x) * 4</code>と展開されていることがわかる。

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2020-04-12T15:57:33+09:00</updated>
+  <updated>2020-05-01T18:37:51+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,176 @@
 
   
   
+  
+    <entry>
+      <title type="html">GStreamer ximagesrc でウィンドウごとにキャプチャできる件</title>
+      <link href="https://cat-in-136.github.io/2020/05/gstreamer-ximagesrc-to-capture-window.html" rel="alternate" type="text/html" title="GStreamer ximagesrc でウィンドウごとにキャプチャできる件" />
+      <published>2020-05-01T18:32:27+09:00</published>
+      <updated>2020-05-01T18:32:27+09:00</updated>
+      <id>https://cat-in-136.github.io/2020/05/gstreamer-ximagesrc-to-capture-window</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2020/05/gstreamer-ximagesrc-to-capture-window.html">&lt;p&gt;Web上のオンライン会議システムなどで画面共有するさいに、&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture&quot;&gt;Screen Capture API&lt;/a&gt;が使われる。
+getDisplayMedia demoで試せばすぐわかるがウィンドウ毎にキャプチャ（画面共有）できる。&lt;/p&gt;
+
+&lt;p&gt;興味深いのはウィンドウが下に隠れていてもキャプチャされ続けることだ。
+コンポジット型ウィンドウマネージャを使う現代において下に隠れているウィンドウは再描画され続けている。
+これをそのままキャプチャできるわけだ。
+（古典的なキャプチャツールの xwd や ffmpeg の x11grab などでは見たままの通り上にウィンドウが乗っていたらそれがキャプチャされる）&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-desktop-composition.svg&quot; width=&quot;384&quot; height=&quot;284&quot; /&gt;
+&lt;figcaption&gt;半透明のときは勿論、そうでなくとも下のウィンドウも再描画され続けている&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;これを単にミラーリング的な使い方をしてみたい。&lt;/p&gt;
+
+&lt;h3 id=&quot;tldr&quot;&gt;TL;DR&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% gst-launch-1.0 -v ximagesrc xid=$XWINDOW_ID ! videoconvert ! autovideosink
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ximagesrc&quot;&gt;ximagesrc&lt;/h3&gt;
+
+&lt;p&gt;ximagesrc は何もしないとディスプレイ全体を取り込む。
+一方で XID を指定して特定のウィンドウを取り込むことができる。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&quot;xid&quot;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;guint64&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+  &lt;p&gt;The XID of the window to capture. 0 for the root window (default).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;XID というのは X Window の Window id のことだ。
+典型的な方法としては xwininfo を使って調べる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% xwininfo                                                                                                  ~
+
+xwininfo: Please select the window about which you
+          would like information by clicking the
+          mouse in that window.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;マウスポインタが「＋」の形に変わるので、XID 調べたいウィンドウをクリックすると情報が表示される。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xwininfo: Window id: 0xc000007 &quot;Noto Sans CJK JP&quot;
+
+  Absolute upper-left X:  568
+  Absolute upper-left Y:  239
+  Relative upper-left X:  568
+  Relative upper-left Y:  239
+  Width: 802
+  Height: 641
+  Depth: 32
+  Visual: 0xc2
+  Visual Class: TrueColor
+  Border width: 0
+  Class: InputOutput
+  Colormap: 0xc000006 (not installed)
+  Bit Gravity State: NorthWestGravity
+  Window Gravity State: NorthWestGravity
+  Backing Store State: NotUseful
+  Save Under State: no
+  Map State: IsViewable
+  Override Redirect State: no
+  Corners:  +568+239  -550+239  -550-200  +568-200
+  -geometry 802x641+568+239
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;長々と貼り付けたが今注目するのは &lt;code class=&quot;highlighter-rouge&quot;&gt;Window id: 0xc000007&lt;/code&gt; のところだけで XID は &lt;code class=&quot;highlighter-rouge&quot;&gt;0xc000007&lt;/code&gt; ということになる。
+このとき、下記のように入力して使うことになる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% gst-launch-1.0 -v ximagesrc xid=0xc000007 ! videoconvert ! autovideosink
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;なお、XID を調べるのならば &lt;code class=&quot;highlighter-rouge&quot;&gt;wmctrl -l&lt;/code&gt; を実行して XID 一覧を出してそこから探しても良い。
+ただこの手法だと同一のウィンドウ名（タイトル）がある場合は区別が付かない。&lt;/p&gt;
+
+&lt;h3 id=&quot;videoconvert--autovideosink&quot;&gt;videoconvert ! autovideosink&lt;/h3&gt;
+
+&lt;p&gt;コンバートをかけて、 autovideosink を指定するといい感じに出力される。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;autovideosink is a video sink that automatically detects an appropriate video sink to use.
+It does so by scanning the registry for all elements that have “Sink” and “Video”
+in the class field of their element information, and also have a non-zero autoplugging rank.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;こうしてウィンドウで表示されることになる。&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-example.png&quot; /&gt;
+&lt;figcaption&gt;表示されるウィンドウ&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;こうして表示されたウィンドウはリサイズできるが、キャプチャ対象のウィンドウはリサイズできない。
+リサイズするとこの GStreamer が落ちてしまった。
+リサイズする度に実行し直しが必要なようだ。&lt;/p&gt;
+
+&lt;h3 id=&quot;おまけマルチモニタ時の画面キャプチャについて&quot;&gt;おまけ：マルチモニタ時の画面キャプチャについて&lt;/h3&gt;
+
+&lt;p&gt;複数のモニタがつながった大きさのものがそのままキャプチャされてしまう。&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-multimonitor-view.png&quot; /&gt;
+&lt;figcaption&gt;マルチモニタ環境時の ximagesrc 実行結果&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;モニタごとに見るには範囲指定をするしかない。&lt;/p&gt;
+
+&lt;p&gt;例えば、一つのモニタのサイズが1920x1080ならば、この例ならばオフセットとして1920を横に付けてやればよい。&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;object width=&quot;449&quot; height=&quot;225&quot; data=&quot;/images/2020-05-01_gstreamer-ximagesrc-multimonitor-layout.svg&quot;&gt;&lt;/object&gt;
+&lt;figcaption&gt;横につなげた場合の2枚目のオフセット&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;コマンドとしては例えば下記のようになる。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;% gst-launch-1.0 -v ximagesrc startx=1920 ! videoconvert ! autovideosink
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;参考文献&quot;&gt;参考文献&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gstreamer.freedesktop.org/documentation/ximagesrc/index.html&quot;&gt;ximagesrc&lt;/a&gt;, GStreamer API reference&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gstreamer.freedesktop.org/documentation/autodetect/autovideosink.html&quot;&gt;autovideosink&lt;/a&gt;, GStreamer API reference&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/33747500/using-gstreamer-to-capture-screen-and-show-it-in-a-window&quot;&gt;Using Gstreamer to capture screen and show it in a window?&lt;/a&gt;, stackoverflow, May 2017.&lt;/li&gt;
+&lt;/ul&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>cat_in_136</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="linux" />
+      
+        <category term="video" />
+      
+        <category term="gstreamer" />
+      
+
+      
+        <summary type="html">Web上のオンライン会議システムなどで画面共有するさいに、Screen Capture APIが使われる。 getDisplayMedia demoで試せばすぐわかるがウィンドウ毎にキャプチャ（画面共有）できる。 興味深いのはウィンドウが下に隠れていてもキャプチャされ続けることだ。 コンポジット型ウィンドウマネージャを使う現代において下に隠れているウィンドウは再描画され続けている。 これをそのままキャプチャできるわけだ。 （古典的なキャプチャツールの xwd や ffmpeg の x11grab などでは見たままの通り上にウィンドウが乗っていたらそれがキャプチャされる） 半透明のときは勿論、そうでなくとも下のウィンドウも再描画され続けている これを単にミラーリング的な使い方をしてみたい。 TL;DR % gst-launch-1.0 -v ximagesrc xid=$XWINDOW_ID ! videoconvert ! autovideosink ximagesrc ximagesrc は何もしないとディスプレイ全体を取り込む。 一方で XID を指定して特定のウィンドウを取り込むことができる。 &quot;xid&quot; guint64 The XID of the window to capture. 0 for the root window (default). XID というのは X Window の Window id のことだ。 典型的な方法としては xwininfo を使って調べる。 % xwininfo ~ xwininfo: Please select the window about which you would like information by clicking the mouse in that window. マウスポインタが「＋」の形に変わるので、XID 調べたいウィンドウをクリックすると情報が表示される。 xwininfo: Window id: 0xc000007 &quot;Noto Sans CJK JP&quot; Absolute upper-left X: 568 Absolute upper-left Y: 239 Relative upper-left X: 568 Relative upper-left Y: 239 Width: 802 Height: 641 Depth: 32 Visual: 0xc2 Visual Class: TrueColor Border width: 0 Class: InputOutput Colormap: 0xc000006 (not installed) Bit Gravity State: NorthWestGravity Window Gravity State: NorthWestGravity Backing Store State: NotUseful Save Under State: no Map State: IsViewable Override Redirect State: no Corners: +568+239 -550+239 -550-200 +568-200 -geometry 802x641+568+239 長々と貼り付けたが今注目するのは Window id: 0xc000007 のところだけで XID は 0xc000007 ということになる。 このとき、下記のように入力して使うことになる。 % gst-launch-1.0 -v ximagesrc xid=0xc000007 ! videoconvert ! autovideosink なお、XID を調べるのならば wmctrl -l を実行して XID 一覧を出してそこから探しても良い。 ただこの手法だと同一のウィンドウ名（タイトル）がある場合は区別が付かない。 videoconvert ! autovideosink コンバートをかけて、 autovideosink を指定するといい感じに出力される。 autovideosink is a video sink that automatically detects an appropriate video sink to use. It does so by scanning the registry for all elements that have “Sink” and “Video” in the class field of their element information, and also have a non-zero autoplugging rank. こうしてウィンドウで表示されることになる。 表示されるウィンドウ こうして表示されたウィンドウはリサイズできるが、キャプチャ対象のウィンドウはリサイズできない。 リサイズするとこの GStreamer が落ちてしまった。 リサイズする度に実行し直しが必要なようだ。 おまけ：マルチモニタ時の画面キャプチャについて 複数のモニタがつながった大きさのものがそのままキャプチャされてしまう。 マルチモニタ環境時の ximagesrc 実行結果 モニタごとに見るには範囲指定をするしかない。 例えば、一つのモニタのサイズが1920x1080ならば、この例ならばオフセットとして1920を横に付けてやればよい。 横につなげた場合の2枚目のオフセット コマンドとしては例えば下記のようになる。 % gst-launch-1.0 -v ximagesrc startx=1920 ! videoconvert ! autovideosink 参考文献 ximagesrc, GStreamer API reference autovideosink, GStreamer API reference Using Gstreamer to capture screen and show it in a window?, stackoverflow, May 2017.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 76.0 beta 3 default preference and firefox 75.0</title>
@@ -5186,44 +5356,6 @@ As a result, surveyer.js has also changed a lot.&lt;/p&gt;</content>
 
       
         <summary type="html">I’ve been tracking updates/differences in Firefox default settings since around 2010. It used to be a semi-manual process to extract files like prefs.js from omni.ja files Firefox, and then combine them using cat command. Recently, more and more settings are embedded inside libxul.so instead of writing them in text file (like prefs.js). In addition, to make it easier to use with trust, these settings were changed to be generated from YAML files when building Firefox binaries. The old methods are not making much sense. So I changed the process drastically. First, run Firefox headless and marionette mode. And then, run a script using foxr NPM package to get the Firefox defaults directly. The instruction in the README include the technique for using a fresh clean profile. Refer another post for details. Create a temporary folder to use a fresh clean profile. % mkdir /tmp/profile_dir Run firefox in headless mode. % /path/to/firefox -profile /tmp/profile_dir -marionette -headless Execute fetcher.js to obtain all default prefs. % node fetcher.js &amp;gt; prefall.json We can run JavaScript snippets on an opened page using foxr, which can be used for things like scraping. await page.goto('about:config') //await page.evaluate('ShowPrefs()'); const prefs = await page.evaluate(`(function(){ const { Services } = ChromeUtils.import(&quot;resource://gre/modules/Services.jsm&quot;); const gPrefBranch = Services.prefs; const defaultBranch = gPrefBranch.getDefaultBranch(&quot;&quot;); // ... (snip) ... return prefs.map(entry =&amp;gt; [entry.name, gTypeStrs[entry.type], entry.value]); })()`); //console.log(prefs); process.stdout.write(JSON.stringify(prefs)); fetcher.js opens about:config and run some snippets. about:config supports firefox private interfaces (used to be available with old extensions). So, fetcher.js is able to access Firefox preference information. The comparison logic is the same as in the past. I ported from code running in the browser to code running on Node.js. In addition, it was rewritten into a modern grammar. As a result, surveyer.js has also changed a lot.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Diff between firefox 70.0 beta 10 default preference and firefox 69.0.1</title>
-      <link href="https://cat-in-136.github.io/2019/09/diff-between-firefox-700-beta-10-default.html" rel="alternate" type="text/html" title="Diff between firefox 70.0 beta 10 default preference and firefox 69.0.1" />
-      <published>2019-09-29T11:01:05+09:00</published>
-      <updated>2019-09-29T11:01:05+09:00</updated>
-      <id>https://cat-in-136.github.io/2019/09/diff-between-firefox-700-beta-10-default</id>
-      
-      
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>cat_in_136</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="pref diff" />
-      
-        <category term="mozilla" />
-      
-
-      
-        <summary type="html">This is difference between the default preference of Firefox 70.0 beta 10 and one of 69.0.1. This diff table is generated with my small script firefox-prefjs-surveyer. Preference difference PrefFirefox 69.0.1Firefox 70.0 beta 10 abc.def true undefined app.releaseNotesURL https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew https://www.mozilla.org/%LOCALE%/firefox/%VERSION%beta/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew app.update.channel release beta app.update.url.details https://www.mozilla.org/%LOCALE%/firefox/notes https://www.mozilla.org/%LOCALE%/firefox/beta/notes app.update.url.manual https://www.mozilla.org/firefox/ https://www.mozilla.org/firefox/beta apz.allow_immediate_handoff true false apz.gtk.kinetic_scroll.enabled false true apz.overscroll.spring_friction 0.015 undefined apz.overscroll.spring_stiffness 0.0018 undefined browser.cache.cache_isolation undefined false browser.cache.compression_level 0 undefined browser.cache.frecency_experiment 0 undefined browser.cache.memory.capacity undefined -1 browser.contentblocking.allowlist.annotations.enabled true undefined browser.contentblocking.allowlist.storage.enabled true undefined browser.contentblocking.customBlockList.preferences.ui.enabled undefined false browser.contentblocking.features.strict tp,tpPrivate,cookieBehavior4,cm,fp tp,tpPrivate,cookieBehavior4,cm,fp,stp browser.contentblocking.introCount 0 undefined browser.contentblocking.introDelaySeconds 1800 undefined browser.contentblocking.maxIntroCount 0 undefined browser.contentblocking.rejecttrackers.control-center.ui.enabled true undefined browser.contentblocking.rejecttrackers.reportBreakage.enabled true undefined browser.contentblocking.report.cookie.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/cross-site-tracking-report browser.contentblocking.report.cryptominer.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/cryptominers-report browser.contentblocking.report.fingerprinter.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/fingerprinters-report browser.contentblocking.report.lockwise.enabled undefined true browser.contentblocking.report.lockwise.how_it_works.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/password-manager-report browser.contentblocking.report.lockwise.url undefined https://lockwise.firefox.com/ browser.contentblocking.report.manage_devices.url undefined https://accounts.firefox.com/settings/clients browser.contentblocking.report.monitor.enabled undefined true browser.contentblocking.report.monitor.how_it_works.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/monitor-faq browser.contentblocking.report.monitor.sign_in_url undefined https://monitor.firefox.com/oauth/init?entrypoint=protection_report_monitor&amp;amp;utm_source=about-protections&amp;amp;email= browser.contentblocking.report.monitor.url undefined https://monitor.firefox.com/?entrypoint=protection_report_monitor&amp;amp;utm_source=about-protections browser.contentblocking.report.proxy.enabled undefined false browser.contentblocking.report.proxy_extension.url undefined https://private-network.firefox.com/ browser.contentblocking.report.social.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/social-media-tracking-report browser.contentblocking.report.tracker.url undefined https://support.mozilla.org/1/firefox/%VERSION%/%OS%/%LOCALE%/tracking-content-report browser.contentblocking.reportBreakage.enabled false undefined browser.contentblocking.trackingprotection.control-center.ui.enabled true undefined browser.fixup.typo.scheme undefined true browser.in-content.dark-mode false true browser.messaging-system.fxatoolbarbadge.enabled undefined true browser.messaging-system.whatsNewPanel.enabled false true browser.newtabpage.activity-stream.asrouter.providers.whats-new-panel undefined {&amp;quot;id&amp;quot;:&amp;quot;whats-new-panel&amp;quot;,&amp;quot;enabled&amp;quot;:true,&amp;quot;type&amp;quot;:&amp;quot;remote-settings&amp;quot;,&amp;quot;bucket&amp;quot;:&amp;quot;whats-new-panel&amp;quot;,&amp;quot;updateCycleInMs&amp;quot;:3600000} browser.newtabpage.activity-stream.discoverystream.enabled false true browser.safebrowsing.provider.mozilla.lists base-track-digest256,mozstd-trackwhite-digest256,content-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256,block-flash-digest256,except-flash-digest256,allow-flashallow-digest256,except-flashallow-digest256,block-flashsubdoc-digest256,except-flashsubdoc-digest256,ads-track-digest256,social-track-digest256,analytics-track-digest256,base-fingerprinting-track-digest256,content-fingerprinting-track-digest256,base-cryptomining-track-digest256,content-cryptomining-track-digest256,fanboyannoyance-ads-digest256,fanboysocial-ads-digest256,easylist-ads-digest256,easyprivacy-ads-digest256,adguard-ads-digest256 base-track-digest256,mozstd-trackwhite-digest256,content-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256,block-flash-digest256,except-flash-digest256,allow-flashallow-digest256,except-flashallow-digest256,block-flashsubdoc-digest256,except-flashsubdoc-digest256,ads-track-digest256,social-track-digest256,analytics-track-digest256,base-fingerprinting-track-digest256,content-fingerprinting-track-digest256,base-cryptomining-track-digest256,content-cryptomining-track-digest256,fanboyannoyance-ads-digest256,fanboysocial-ads-digest256,easylist-ads-digest256,easyprivacy-ads-digest256,adguard-ads-digest256,social-tracking-protection-digest256,social-tracking-protection-facebook-digest256,social-tracking-protection-linkedin-digest256,social-tracking-protection-twitter-digest256 browser.search.separatePrivateDefault undefined false browser.security.newcerterrorpage.mitm.enabled true undefined browser.tabs.remote.force-paint undefined true browser.tabs.remote.useCrossOriginEmbedderPolicy undefined false browser.tabs.remote.useCrossOriginPolicy false undefined browser.urlbar.megabar undefined false browser.urlbar.quantumbar true undefined content.cors.disable undefined false content.notify.backoffcount undefined -1 content.notify.interval undefined 120000 content.notify.ontimer undefined true content.sink.enable_perf_mode undefined 0 content.sink.event_probe_rate undefined 1 content.sink.initial_perf_time undefined 2000000 content.sink.interactive_deflect_count undefined 0 content.sink.interactive_parse_time undefined 3000 content.sink.interactive_time undefined 750000 content.sink.perf_deflect_count undefined 200 content.sink.perf_parse_time undefined 360000 device.sensors.test.events undefined false devtools.aboutdebugging.new-enabled true undefined devtools.browserconsole.input.editorWidth undefined 0 devtools.browsertoolbox.fission undefined false devtools.connectpage.enabled undefined false devtools.debugger.component-visible true false devtools.debugger.dom-mutation-breakpoints-visible undefined false devtools.debugger.event-listeners-visible true false devtools.debugger.expressions-visible true false devtools.debugger.features.async-stepping true false devtools.debugger.features.dom-mutation-breakpoints undefined true devtools.debugger.features.inline-preview undefined false devtools.debugger.features.overlay-step-buttons undefined false devtools.debugger.features.windowless-workers true undefined devtools.debugger.workers-visible true false devtools.debugger.xhr-breakpoints-visible true false devtools.inspector.inactive.css.enabled false true devtools.markup.mutationBreakpoints.enabled false true devtools.netmonitor.features.resizeColumns true undefined devtools.netmonitor.features.search undefined false devtools.netmonitor.panes-search-height undefined 450 devtools.netmonitor.panes-search-width undefined 550 devtools.netmonitor.ws.displayed-frames.limit undefined 500 devtools.netmonitor.ws.messageDataLimit undefined 100000 devtools.netmonitor.ws.payload-preview-height 450 128 devtools.netmonitor.ws.payload-preview-width 550 undefined devtools.netmonitor.ws.visibleColumns undefined [&amp;quot;data&amp;quot;, &amp;quot;time&amp;quot;] devtools.onboarding.experiment off undefined devtools.onboarding.experiment.flipped false undefined devtools.onboarding.telemetry.logged false undefined devtools.popup.disable_autohide undefined false devtools.recordreplay.logging undefined false devtools.recordreplay.loggingFull undefined false devtools.storage.extensionStorage.enabled undefined false devtools.toolbox.content-frame undefined true devtools.toolbox.force-chrome-prefs undefined true devtools.webconsole.input.editorOnboarding undefined true devtools.webconsole.input.editorWidth undefined 0 devtools.webconsole.jsterm.codeMirror true undefined devtools.webide.enabled true false dom.allow_XUL_XBL_for_file undefined false dom.block_reload_from_resize_event_handler undefined true dom.capture.enabled undefined false dom.enable_window_print undefined true dom.events.dataTransfer.protected.enabled undefined false dom.events.user_interaction_interval undefined 5000 dom.forms.number.grouping undefined false dom.ipc.cancel_content_js_when_navigating false true dom.ipc.cpows.log.enabled undefined false dom.ipc.cpows.log.stack undefined false dom.ipc.processPrelaunch.delayMs undefined 1000 dom.ipc.processPriorityManager.backgroundGracePeriodMS undefined 0 dom.ipc.processPriorityManager.backgroundPerceivableGracePeriodMS undefined 0 dom.ipc.processPriorityManager.enabled undefined false dom.ipc.processPriorityManager.testMode undefined false dom.ipc.tabs.disabled undefined false dom.largeAllocation.testing.allHttpLoads undefined false dom.maxtouchpoints.testing.value undefined -1 dom.min_tracking_background_timeout_value 4 undefined dom.min_tracking_timeout_value 4 undefined dom.quotaManager.loadQuotaFromCache undefined true dom.quotaManager.temporaryStorage.chunkSize undefined 10240 dom.quotaManager.temporaryStorage.fixedLimit undefined -1 dom.script_loader.external_scripts.utf8_parsing.enabled false true dom.securecontext.whitelist_onions undefined false dom.security.respect_document_nosniff undefined true dom.storage.abort_on_sync_parent_to_child_messages undefined false dom.storage.next_gen false true dom.testing.sync-content-blocking-notifications undefined false dom.w3c_pointer_events.multiprocess.android.enabled undefined true dom.webidl.test1 undefined true dom.webidl.test2 undefined true dom.webnotifications.allowcrossoriginiframe undefined false dom.window.history.async undefined true dom.worker.script_loader.utf8_parsing.enabled false true dom.xhr.lowercase_header.enabled true undefined editor.password.mask_delay undefined -1 editor.password.testing.mask_delay undefined false extensions.getAddons.discovery.api_url https://services.addons.mozilla.org/api/v4/discovery/?lang=%LOCALE% https://services.addons.mozilla.org/api/v4/discovery/?lang=%LOCALE%&amp;amp;edition=%DISTRIBUTION% extensions.webcompat-reporter.enabled false true geo.timeout undefined 6000 gfx.blocklist.all undefined 0 gfx.core-animation.enabled undefined false gfx.font_ahem_antialias_none false undefined gfx.font_rendering.ahem_antialias_none undefined false ghi.jkl true undefined identity.fxaccounts.service.monitorLoginUrl undefined https://monitor.firefox.com/ identity.fxaccounts.service.sendLoginUrl undefined https://send.firefox.com/login/ idle_period.during_page_load.min undefined 12 idle_period.min undefined 3 javascript.options.baselinejit.threshold 10 100 javascript.options.bigint true undefined javascript.options.blinterp undefined true javascript.options.blinterp.threshold undefined 10 javascript.options.gc_delay undefined 4000 javascript.options.gc_delay.first undefined 10000 javascript.options.gc_delay.full undefined 60000 javascript.options.gc_delay.interslice undefined 100 javascript.options.mem.gc_allocation_threshold_factor 90 undefined javascript.options.mem.gc_allocation_threshold_factor_avoid_interrupt 90 undefined javascript.options.mem.gc_allocation_threshold_mb 30 27 javascript.options.mem.gc_avoid_interrupt_factor undefined 100 javascript.options.mem.gc_non_incremental_factor undefined 112 javascript.options.mem.high_water_mark 128 undefined javascript.options.unboxed_objects false undefined layers.compositing-tiles.height undefined 1024 layers.compositing-tiles.width undefined 1024 layers.d3d11.enable-blacklist undefined true layout.css.aspect-ratio-number.enabled undefined false layout.css.devPixelsPerPx -1.0 -1 layout.css.paint-order.enabled true undefined layout.css.shared-memory-ua-sheets.enabled false true layout.css.text-decoration-skip-ink.enabled false true layout.css.text-decoration-thickness.enabled undefined true layout.css.text-decoration-width.enabled false undefined layout.css.text-underline-offset.enabled false true layout.css.use-counters-unimplemented.enabled undefined false layout.float-fragments-inside-column.enabled true undefined layout.framevisibility.amountscrollbeforeupdatehorizontal undefined 2 layout.framevisibility.amountscrollbeforeupdatevertical undefined 2 layout.reflow.synthMouseMove undefined true layout.show_previous_page undefined true layout.viewport_contains_no_contents_area undefined false mathml.deprecated_style_attributes.disabled undefined false mathml.legacy_number_syntax.disabled undefined true mathml.mathsize_names.disabled undefined false mathml.mathspace_names.disabled undefined false mathml.mfrac_linethickness_names.disabled undefined false mathml.nonzero_unitless_lengths.disabled undefined true media.audioFocus.management undefined false media.audioipc.pool_size 2 1 media.cloneElementVisually.testing undefined false media.mediacapabilities.drop-threshold undefined 95 media.mediacapabilities.from-database undefined true media.mediasource.webm.enabled true false media.peerconnection.ice.obfuscate_host_addresses undefined false media.peerconnection.ice.proxy_only_if_behind_proxy undefined false media.peerconnection.mtransport_process undefined false media.rdd-opus.enabled undefined true media.rdd-wav.enabled undefined true media.webrtc.net.force_disable_rtcp_reception undefined false media.webrtc.platformencoder undefined false network.dns.disablePrefetchFromHTTPS undefined true network.dns.skipTRR-when-parental-control-enabled undefined true network.http.altsvc.proxy_checks undefined true network.http.referer.defaultPolicy.trackers 3 2 network.http.referer.referrerLengthLimit undefined 4096 network.http.sendOriginHeader 0 2 network.http.spdy.bug1556491 undefined true network.http.spdy.bug1563695 undefined true network.netlink.route.check.IPv4 undefined 23.219.91.27 network.netlink.route.check.IPv6 undefined 2a02:26f0:40::17db:5b1b network.trr.request-timeout 1500 undefined network.trr.request_timeout_mode_trronly_ms undefined 30000 network.trr.request_timeout_ms undefined 1500 page_load.deprioritization_period undefined 5000 permissions.desktop-notification.notNow.enabled undefined false permissions.fullscreen.allowed undefined false privacy.firstparty.isolate.block_post_message undefined false privacy.fuzzyfox.clockgrainus undefined 100 privacy.reduceTimerPrecision.unconditional undefined true privacy.resistFingerprinting.target_video_res undefined 480 privacy.restrict3rdpartystorage.console.lazy undefined true privacy.socialtracking.block_cookies.enabled undefined true privacy.socialtracking.notification.counter undefined 0 privacy.socialtracking.notification.enabled undefined true privacy.socialtracking.notification.lastShown undefined 0 privacy.socialtracking.notification.max undefined 2 privacy.socialtracking.notification.period.min undefined 172800000 privacy.socialtracking.notification.session.pageload.min undefined 4 privacy.trackingprotection.cryptomining.annotate.enabled true undefined privacy.trackingprotection.fingerprinting.annotate.enabled true undefined privacy.trackingprotection.introURL https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/content-blocking/start/ undefined privacy.trackingprotection.socialtracking.annotate.enabled false undefined security.aboutcertificate.enabled undefined false security.all_resource_uri_content_accessible undefined false security.allow_eval_in_parent_process undefined false security.allow_eval_with_system_principal undefined false security.block_Worker_with_wrong_mime undefined false security.block_ftp_subresources true undefined security.identityblock.show_extended_validation undefined false security.insecure_connection_icon.enabled false true security.insecure_connection_icon.pbmode.enabled false true security.protectionspopup.recordEventTelemetry undefined true security.remote_settings.crlite_filters.bucket undefined security-state security.remote_settings.crlite_filters.checked undefined 0 security.remote_settings.crlite_filters.collection undefined cert-revocations security.remote_settings.crlite_filters.enabled undefined false security.remote_settings.crlite_filters.signer undefined onecrl.content-signature.mozilla.org security.secure_connection_icon_color_gray undefined true security.tls.enable_delegated_credentials undefined false services.common.log.logger.rest.request undefined Debug services.common.log.logger.rest.response undefined Debug services.common.log.logger.tokenserverclient undefined Debug services.sync.prefs.sync.browser.contentblocking.introCount true undefined services.sync.prefs.sync.privacy.trackingprotection.cryptomining.annotate.enabled true undefined services.sync.prefs.sync.privacy.trackingprotection.fingerprinting.annotate.enabled true undefined signon.generation.available false true signon.generation.enabled false true signon.management.overrideURI undefined about:logins?filter=%DOMAIN% signon.management.page.breach-alerts.enabled undefined true signon.management.page.breachAlertUrl undefined https://monitor.firefox.com/breach-details/ signon.management.page.enabled false true signon.management.page.faqURL https://lockwise.firefox.com/faq.html undefined signon.management.page.feedbackURL https://www.surveygizmo.com/s3/5036102/Lockwise-feedback?ver=%VERSION% undefined signon.management.page.hideMobileFooter undefined false signon.management.page.mobileAndroidURL undefined https://app.adjust.com/6tteyjo?redirect=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dmozilla.lockbox&amp;amp;utm_campaign=Desktop&amp;amp;utm_adgroup=InProduct&amp;amp;utm_creative= signon.management.page.mobileAppleURL undefined https://app.adjust.com/6tteyjo?redirect=https%3A%2F%2Fitunes.apple.com%2Fapp%2Fid1314000270%3Fmt%3D8&amp;amp;utm_campaign=Desktop&amp;amp;utm_adgroup=InProduct&amp;amp;utm_creative= toolkit.telemetry.enabled false true toolkit.telemetry.geckoview.batchDurationMS undefined 5000 toolkit.telemetry.geckoview.streaming undefined false toolkit.telemetry.ipcBatchTimeout undefined 2000 toolkit.telemetry.isGeckoViewMode undefined false ui.scrolling.negate_wheel_scroll undefined false urlclassifier.disallow_completions goog-downloadwhite-digest256,base-track-digest256,mozstd-trackwhite-digest256,content-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256,block-flash-digest256,except-flash-digest256,allow-flashallow-digest256,except-flashallow-digest256,block-flashsubdoc-digest256,except-flashsubdoc-digest256,goog-passwordwhite-proto,ads-track-digest256,social-track-digest256,analytics-track-digest256,base-fingerprinting-track-digest256,content-fingerprinting-track-digest256,base-cryptomining-track-digest256,content-cryptomining-track-digest256,fanboyannoyance-ads-digest256,fanboysocial-ads-digest256,easylist-ads-digest256,easyprivacy-ads-digest256,adguard-ads-digest256 goog-downloadwhite-digest256,base-track-digest256,mozstd-trackwhite-digest256,content-track-digest256,mozplugin-block-digest256,mozplugin2-block-digest256,block-flash-digest256,except-flash-digest256,allow-flashallow-digest256,except-flashallow-digest256,block-flashsubdoc-digest256,except-flashsubdoc-digest256,goog-passwordwhite-proto,ads-track-digest256,social-track-digest256,analytics-track-digest256,base-fingerprinting-track-digest256,content-fingerprinting-track-digest256,base-cryptomining-track-digest256,content-cryptomining-track-digest256,fanboyannoyance-ads-digest256,fanboysocial-ads-digest256,easylist-ads-digest256,easyprivacy-ads-digest256,adguard-ads-digest256,social-tracking-protection-digest256,social-tracking-protection-facebook-digest256,social-tracking-protection-linkedin-digest256,social-tracking-protection-twitter-digest256 urlclassifier.features.cryptomining.annotate.blacklistTables undefined base-cryptomining-track-digest256 urlclassifier.features.cryptomining.annotate.whitelistTables undefined mozstd-trackwhite-digest256 urlclassifier.features.fingerprinting.annotate.blacklistTables undefined base-fingerprinting-track-digest256 urlclassifier.features.fingerprinting.annotate.whitelistTables undefined mozstd-trackwhite-digest256 urlclassifier.features.socialtracking.annotate.blacklistTables undefined social-tracking-protection-digest256,social-tracking-protection-facebook-digest256,social-tracking-protection-linkedin-digest256,social-tracking-protection-twitter-digest256 urlclassifier.features.socialtracking.annotate.whitelistTables undefined mozstd-trackwhite-digest256 urlclassifier.features.socialtracking.blacklistTables undefined social-tracking-protection-digest256,social-tracking-protection-facebook-digest256,social-tracking-protection-linkedin-digest256,social-tracking-protection-twitter-digest256 urlclassifier.features.socialtracking.whitelistTables undefined mozstd-trackwhite-digest256 widget.disable-native-theme undefined false</summary>
       
 
       

@@ -107,20 +107,10 @@ hr { border: solid thin #84898C; margin: 30px; }
 
 .site-nav .page-link { margin: 3px; }
 
-@media screen and (max-width: 600px) { .site-nav { position: absolute; top: 9px; right: 30px; background-color: #fff; border: 1px solid #edeeef; text-align: right; }
-  .site-nav .menu-icon { display: block; text-decoration: none; padding: 3px; }
-  .site-nav .menu-icon::before { content: '≡'; }
-  .site-nav .menu-icon:hover::before, .site-nav .menu-icon:active::before, .site-nav .menu-icon:focus::before { content: '🍔'; }
-  .site-nav .trigger { clear: both; display: none; }
-  .site-nav:hover, .site-nav:focus-within { box-shadow: 5px 5px #84898C; border: 1px solid #46494b; }
-  .site-nav:hover .trigger, .site-nav .menu-icon:active + .trigger { display: block; padding: 10px; }
-  .site-nav .page-link { display: block; } }
+@media screen and (max-width: 600px) { .site-nav { position: absolute; top: 9px; right: 30px; background-color: #fff; border: 1px solid #edeeef; text-align: right; } .site-nav .menu-icon { display: block; text-decoration: none; padding: 3px; } .site-nav .menu-icon::before { content: '≡'; } .site-nav .menu-icon:hover::before, .site-nav .menu-icon:active::before, .site-nav .menu-icon:focus::before { content: '🍔'; } .site-nav .trigger { clear: both; display: none; } .site-nav:hover, .site-nav:focus-within { box-shadow: 5px 5px #84898C; border: 1px solid #46494b; } .site-nav:hover .trigger, .site-nav .menu-icon:active + .trigger { display: block; padding: 10px; } .site-nav .page-link { display: block; } }
 
 @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .site-header { border-bottom: 0px none; border-left: 1px solid #edeeef; min-height: none; min-width: 56px; font-size: 150%; }
-  @media screen and (max-width: 600px) { html.vertical-writing-recommended .site-nav { position: static; top: none; right: none; border: 0px none; float: right; }
-    html.vertical-writing-recommended .site-nav .menu-icon { display: none !important; }
-    html.vertical-writing-recommended .site-nav .trigger, html.vertical-writing-recommended .site-nav:hover .trigger, html.vertical-writing-recommended .site-nav .menu-icon:active + .trigger { display: block; padding: inherit; clear: none; }
-    html.vertical-writing-recommended .site-nav .page-link { display: inline !important; } } }
+  @media screen and (max-width: 600px) { html.vertical-writing-recommended .site-nav { position: static; top: none; right: none; border: 0px none; float: right; } html.vertical-writing-recommended .site-nav .menu-icon { display: none !important; } html.vertical-writing-recommended .site-nav .trigger, html.vertical-writing-recommended .site-nav:hover .trigger, html.vertical-writing-recommended .site-nav .menu-icon:active + .trigger { display: block; padding: inherit; clear: none; } html.vertical-writing-recommended .site-nav .page-link { display: inline !important; } } }
 
 /* Post list cards */
 @supports (display: -ms-flexbox) or (display: -webkit-flex) or (display: flex) { .post-list { display: block; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-align-content: flex-start; -ms-flex-line-pack: start; align-content: flex-start; }
@@ -130,8 +120,7 @@ hr { border: solid thin #84898C; margin: 30px; }
   .post-list .post-item .post-title { display: block; }
   .post-list .post-item .post-thumb { display: block; height: 5em; background-size: contain; background-repeat: no-repeat; background-position: center; margin: auto; }
   .post-list .post-item .post-thumb[data-image-path] { background-color: #edeeef; }
-  @media screen and (max-width: 600px) { .post-list .post-item { width: 100%; }
-    .post-list .post-item .post-thumb { display: none; visibility: hidden; } }
+  @media screen and (max-width: 600px) { .post-list .post-item { width: 100%; } .post-list .post-item .post-thumb { display: none; visibility: hidden; } }
   @supports (writing-mode: vertical-rl) or (-webkit-writing-mode: vertical-rl) { html.vertical-writing-recommended .post-list { /* As of Oct 2016, Firefox fails to render flex boxes within vertical-rl block. */ display: block; }
     html.vertical-writing-recommended .post-list .post-item { width: auto; height: 100%; }
     html.vertical-writing-recommended .post-list .post-item .post-thumb { display: none; visibility: hidden; } } }
