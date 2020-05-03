@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Porting GLSL Sandbox effect to GStreamer glshader element</title>
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2020/05/port-glsl-sandbox-effect-to-gstreamer-glshader.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <meta property="og:url" content="https://cat-in-136.github.io/2020/05/port-glsl-sandbox-effect-to-gstreamer-glshader.html" />
+  <meta property="og:title" content="Porting GLSL Sandbox effect to GStreamer glshader element" /><meta property="og:description" content="GStreamer has various filter elements, among which is OpenGL fragment shader filter “glshader”. T..." /><meta property="og:type" content="article" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2020/05/port-glsl-sandbox-effect-to-gstreamer-glshader.html" itemprop="url">Porting GLSL Sandbox effect to GStreamer glshader element</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2020-05-03T00:48:01+09:00">2020-05-03T00:48:01+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/glsl">Glsl</a><a class="tag" href="/tags/gstreamer">Gstreamer</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader.md" class="source-path">_posts/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>GStreamer has various filter elements, among which is
+<a href="https://gstreamer.freedesktop.org/documentation/opengl/glshader.html">OpenGL fragment shader filter “glshader”</a>.</p>
+
+<p>This filter accepts GLSL vertex source and shader,
+but you can specify only shader. For example:</p>
+
+<blockquote>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gst-launch-1.0 videotestsrc ! glupload ! glshader fragment="\"`cat myshader.frag`\"" ! glimagesink
+</code></pre></div>  </div>
+</blockquote>
+
+<p>“Shader” can create real-time effect/demo “movie” like posted in <a href="http://glslsandbox.com/">GLSLSandbox</a> and <a href="https://www.shadertoy.com/">Shadertoy</a>.
+So, I looked into how to stream “shader” into Gstreamer.</p>
+
+<h3 id="input-is-required">Input is required</h3>
+
+<p>An input is actually required for glshader.
+glshader is an implement of <code class="highlighter-rouge">GstBaseTransform</code>, which shall have a sink pad.</p>
+
+<figure> <img class="fitcontain" src="/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-diagram-glshader.svg" width="957" height="256" />
+<figcaption>Example diagram of glshader</figcaption>
+</figure>
+
+<p>If no input required to the filter, the a dummy input is required.
+I believe gltestsrc is good,
+because using OpenGL source is the most efficient way to stream it to the glshader element
+without conversion.</p>
+
+<h3 id="shader-parameter-incompatibility-between-gstreamer-and-glslsandbox">Shader parameter incompatibility between GStreamer and GLSLSandbox</h3>
+
+<p>glshader varying and uniform parameters:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">varying</span> <span class="kt">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">tex</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">time</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">width</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">height</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>GLSLSandbox uniform parameters:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">float</span> <span class="n">time</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">mouse</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">resolution</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">backbuffer</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Here, it is impossible to port some uniforms such as <code class="highlighter-rouge">mouse</code> into glshader.
+<code class="highlighter-rouge">time</code> can be ported in the same value.
+<code class="highlighter-rouge">resolution</code> can be ported to <code class="highlighter-rouge">vec2(width, height)</code>.</p>
+
+<p>The output parameter <code class="highlighter-rouge">gl_FragColor</code> is same.
+<code class="highlighter-rouge">Gl_FragCoord</code> can be used in the same way, but the coordinate systems are different.</p>
+
+<figure> <object width="673" height="184" data="/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-coordinate-system.svg"></object>
+<figcaption>Coordinate system difference</figcaption>
+</figure>
+
+<p>The coordinate transformation is required to acquire the same output image.
+For example,</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// For GLSLSandbox</span>
+<span class="cp">#ifdef GL_ES
+</span><span class="k">precision</span> <span class="kt">mediump</span> <span class="kt">float</span><span class="p">;</span>
+<span class="cp">#endif
+</span>
+<span class="cp">#extension GL_OES_standard_derivatives : enable
+</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">time</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">mouse</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">vec2</span> <span class="n">resolution</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="kt">vec2</span> <span class="n">uv</span> <span class="o">=</span> <span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">xy</span> <span class="o">/</span> <span class="n">resolution</span><span class="p">;</span>
+  <span class="nb">gl_FragColor</span> <span class="o">=</span> <span class="kt">vec4</span><span class="p">(</span> <span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// For GStreamer glshader</span>
+<span class="cp">#version 100
+#ifdef GL_ES
+</span><span class="k">precision</span> <span class="kt">mediump</span> <span class="kt">float</span><span class="p">;</span>
+<span class="cp">#endif
+</span><span class="k">varying</span> <span class="kt">vec2</span> <span class="n">v_texcoord</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">tex</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">time</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">width</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">float</span> <span class="n">height</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">vec2</span> <span class="n">uv</span> <span class="o">=</span> <span class="kt">vec2</span><span class="p">(</span><span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="nb">gl_FragCoord</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="kt">vec2</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+  <span class="nb">gl_FragColor</span> <span class="o">=</span> <span class="kt">vec4</span><span class="p">(</span> <span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Both yield same output as following:</p>
+
+<figure> <img src="/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-example.png" />
+<figcaption>Example output</figcaption>
+</figure>
+
+<h3 id="output-sink">Output sink</h3>
+
+<p>All that’s left is to connect some filters and sinks after the glshader in the usual GStreamer way.</p>
+
+<p>For example, to show a window, connect glimagesink directly:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% gst-launch-1.0 gltestsrc pattern=black ! \
+      glshader fragment="\"$(cat myshader.frag)\"" ! \
+      glimagesink
+</code></pre></div></div>
+
+<p>To redirect a V4L2 device, conversion is required before connect to the device:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% gst-launch-1.0 gltestsrc pattern=black ! \
+      glshader fragment="\"$(cat myshader.frag)\"" ! \
+      gldownload ! \
+      videoconvert ! \
+      videoscale ! \
+      video/x-raw,width=640,height=480,framerate=30/1,format=YUY2 ! \
+      v4l2sink device=/dev/video1
+</code></pre></div></div>
+
+<p>To generate a PNG file…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% gst-launch-1.0 gltestsrc pattern=black num-buffers=1 ! \
+      glshader fragment="\"$(cat myshader.frag)\"" ! \
+      gldownload ! \
+      videoconvert ! \
+      pngenc ! \
+      filesink location=capture1.png
+</code></pre></div></div>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+  <li><a href="https://gstreamer.freedesktop.org/documentation/opengl/glshader.html">glshader</a>, GStreamer API Reference</li>
+  <li><a href="https://gstreamer.freedesktop.org/documentation/base/gstbasetransform.html">GstBaseTransform</a>, GStreamer API Reference</li>
+  <li><a href="https://gstreamer.freedesktop.org/documentation/opengl/gltestsrc.html">gltestsrc</a>, GStreamer API Reference</li>
+  <li><a href="https://github.com/mrdoob/glsl-sandbox">mrdoob/glsl-sandbox: Online live editor for fragment shaders.</a></li>
+  <li><a href="https://github.com/jolivain/gst-shadertoy">jolivain/gst-shadertoy: Scripts for using some ShaderToy shaders in GStreamer</a></li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/07/apply-to-html-svg-filter-inkscape.html">
+      <span class="post-meta">2017-07-22</span>
+      <span class="post-title">Apply to HTML elements the SVG filters of inkscape preset filters</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/06/lissajous-curve-in-raymarching-using-glsl-over-webgl.html">
+      <span class="post-meta">2017-06-10</span>
+      <span class="post-title">Lissajous curve in raymarching using GLSL over WebGL</span><span class="post-thumb" data-image-path="/images/201706-lissajous-curve-in-raymarching-using-glsl-over-webgl-thumbnail.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2020/05/gstreamer-ximagesrc-to-capture-window.html">
+      <span class="post-meta">2020-05-01</span>
+      <span class="post-title">GStreamer ximagesrc でウィンドウごとにキャプチャできる件</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/05/declaration-of-a-parameter-as-array-with-static-keyword-in-c-language.html">
+      <span class="post-meta">2015-05-01</span>
+      <span class="post-title">C言語での static キーワード付き配列パラメータ宣言</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/12/how-to-inject-some-xul-elements-to.html">
+      <span class="post-meta">2011-12-24</span>
+      <span class="post-title">How to inject some XUL-elements to browser windows in restart-less addon **WITHOUT** Jetpack</span><span class="post-thumb" data-image-path="/images/Do_you_want_to_wait_for_restart_firefox.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2010/03/uac-shield-icon-incompatibility-between.html">
+      <span class="post-meta">2010-03-06</span>
+      <span class="post-title">UAC shield icon incompatibility between Vista and 7</span><span class="post-thumb" data-image-path="/images/uac_seven_vista.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2013/12/why-cannot-upload-photo-to-blogger-and.html">
+      <span class="post-meta">2013-12-28</span>
+      <span class="post-title">Why cannot upload a photo to Blogger and Why is &quot;In order to select an item from your online storage, please sign in&quot; displayed?</span><span class="post-thumb" data-image-path="/images/error.png"></span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2020
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
