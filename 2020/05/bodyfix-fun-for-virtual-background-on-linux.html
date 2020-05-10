@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>Linux上でbodypixを使ってバーチャル背景を実現する試み</title>
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2020/05/bodyfix-fun-for-virtual-background-on-linux.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <meta property="og:url" content="https://cat-in-136.github.io/2020/05/bodyfix-fun-for-virtual-background-on-linux.html" />
+  <meta property="og:title" content="Linux上でbodypixを使ってバーチャル背景を実現する試み" /><meta property="og:description" content="Snap Cameraの linux 版がないせいで… 多くの linux ユーザがバーチャル背景を実現しようと…と予想していたが、 あんまし記事が上がっていないので書いておく。 TL;DR h..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/2020-05-11-bodypix-fun-for-virtual-ground-on-linux-demo-roman-holiday.jpg" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2020/05/bodyfix-fun-for-virtual-background-on-linux.html" itemprop="url">Linux上でbodypixを使ってバーチャル背景を実現する試み</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2020-05-11T00:31:01+09:00">2020-05-11T00:31:01+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/gstreamer">Gstreamer</a><a class="tag" href="/tags/linux">Linux</a><a class="tag" href="/tags/virtual-background">Virtual background</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2020-05-11-bodyfix-fun-for-virtual-background-on-linux.md" class="source-path">_posts/2020-05-11-bodyfix-fun-for-virtual-background-on-linux.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2020-05-11-bodyfix-fun-for-virtual-background-on-linux.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>Snap Cameraの linux 版がないせいで…
+多くの linux ユーザがバーチャル背景を実現しようと…と予想していたが、
+あんまし記事が上がっていないので書いておく。</p>
+
+<h3 id="tldr">TL;DR</h3>
+
+<p><a href="https://github.com/cat-in-136/bodypix-fun/blob/master/README.md">https://github.com/cat-in-136/bodypix-fun/blob/master/README.md</a></p>
+
+<h3 id="合成">合成</h3>
+
+<p>先行事例<a href="https://elder.dev/posts/open-source-virtual-background/">Open Source Virtual Background | BenTheElder</a>で、BodyPixの実行を GPU 支援を有効にした docker 上の Node.js でサーバプログラムとして実行して、他を python でやるという回りくどいことをやっていたので、これは面倒くさいということで、早速この成果をベースに自分自身で拵えてみようということになったのである。</p>
+
+<p>まずは、Jitsi meet の背景ブラーにも使われているオープンソースのライブラリ <a href="https://github.com/tensorflow/tfjs-models/tree/master/body-pix">BodyPix</a> を使って、簡単なバーチャル背景合成をするプログラムを作るところから始めた。</p>
+
+<p>bodypix は TensorFlow.js ベースでありブラウザ・Node.jsのどちらでも推論を実行させることができる。
+ブラウザで動かすとブラウザの外に持っていくのが面倒なので Node.js で動かすこととした。</p>
+
+<p>処理自体は簡単で、bodypix で推論を実行<code class="highlighter-rouge">net.segmentPerson()</code>してやると<code class="highlighter-rouge">data</code>に
+人物が入ったところに 1 が、そうでないところに 0 が入った二値画像が生成される。
+これをマスクとして背景画像とカメラ画像を合成してやれば良い。</p>
+
+<p>この初回の実装は非常に雑なので説明は省略するが、bodypix 以外のところが重く
+640x480 のサイズでさえ一周で1秒超えという非常に遅いものが出来上がった。
+TensorFlow の様々な高速化を台無しにする他の処理の重さはダメだろうということで見直しが必要となった。
+そこでカメラ処理や画像合成処理において高速に動きそうなライブラリを使う必要性をきづいたわけである。</p>
+
+<p>昔ながらからあるこの手の定番のライブラリである OpenCV を Node.js から使うことができる
+<a href="https://www.npmjs.com/package/opencv4nodejs">opencv4nodejs</a> を見つけたため、これで
+カメラの扱いとマスク合成などの画像処理を行うこととした。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+<span class="kd">const</span> <span class="nx">tf</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@tensorflow/tfjs-node-gpu</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">bodyPix</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@tensorflow-models/body-pix</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">cv</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">opencv4nodejs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">vCap</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cv</span><span class="p">.</span><span class="nx">VideoCapture</span><span class="p">(</span><span class="nx">argv</span><span class="p">[</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">]);</span>
+  <span class="c1">// ...</span>
+
+  <span class="kd">const</span> <span class="nx">background</span> <span class="o">=</span> <span class="p">(</span><span class="o">!!</span><span class="nx">argv</span><span class="p">[</span><span class="dl">'</span><span class="s1">background</span><span class="dl">'</span><span class="p">])</span> <span class="p">?</span>
+    <span class="nx">cv</span><span class="p">.</span><span class="nx">imread</span><span class="p">(</span><span class="nx">argv</span><span class="p">[</span><span class="dl">'</span><span class="s1">background</span><span class="dl">'</span><span class="p">]).</span><span class="nx">resize</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">new</span> <span class="nx">cv</span><span class="p">.</span><span class="nx">Mat</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">cv</span><span class="p">.</span><span class="nx">CV_8UC3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]);</span>
+
+  <span class="c1">// ...</span>
+
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">frame</span> <span class="o">=</span> <span class="nx">vCap</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">frame</span><span class="p">.</span><span class="nx">empty</span><span class="p">)</span> <span class="p">{</span> <span class="k">break</span><span class="p">;</span> <span class="p">}</span>
+      <span class="nx">frame</span> <span class="o">=</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">resize</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">);</span>
+
+      <span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="dl">'</span><span class="s1">bodyPix</span><span class="dl">'</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">tf</span><span class="p">.</span><span class="nx">tensor3d</span><span class="p">(</span><span class="k">await</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">getData</span><span class="p">(),</span> <span class="p">[</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+      <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">net</span><span class="p">.</span><span class="nx">segmentPerson</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">flipHorizontal</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="na">internalResolution</span><span class="p">:</span> <span class="dl">'</span><span class="s1">medium</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">segmentationThreshold</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+      <span class="p">});</span>
+      <span class="nx">image</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="dl">'</span><span class="s1">bodyPix</span><span class="dl">'</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">mask</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cv</span><span class="p">.</span><span class="nx">Mat</span><span class="p">(</span><span class="k">new</span> <span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span> <span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">cv</span><span class="p">.</span><span class="nx">CV_8U</span><span class="p">);</span>
+
+      <span class="kd">const</span> <span class="nx">outFrame</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">cv</span><span class="p">.</span><span class="nx">Mat</span><span class="p">(</span><span class="nx">height</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">frame</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span>
+      <span class="nx">background</span><span class="p">.</span><span class="nx">copyTo</span><span class="p">(</span><span class="nx">outFrame</span><span class="p">);</span>
+      <span class="nx">frame</span><span class="p">.</span><span class="nx">copyTo</span><span class="p">(</span><span class="nx">outFrame</span><span class="p">,</span> <span class="nx">mask</span><span class="p">);</span>
+
+      <span class="c1">// ...</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">argv</span><span class="p">[</span><span class="dl">'</span><span class="s1">preview</span><span class="dl">'</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nx">cv</span><span class="p">.</span><span class="nx">imshow</span><span class="p">(</span><span class="dl">'</span><span class="s1">out</span><span class="dl">'</span><span class="p">,</span> <span class="nx">outFrame</span><span class="p">);</span>
+        <span class="c1">// ...</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// ...</span>
+  <span class="p">}</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>上におおよその処理の流れを示した。bodypix 以外の処理は OpenCV で書いたが、
+TensorFlow.js でも書けると思うが、今はこうしてある。</p>
+
+<p>bodypix のよくあるサンプルプログラムでは <code class="highlighter-rouge">image.dispose()</code> に相当する処理が
+抜けているがこれを実行しないとメモリを食いつぶすので注意が必要だ。
+OpenCV は自動開放してくれるらしくこのような手動での開放処理は無くとも問題は発生しなかった。</p>
+
+<p>プログラム自体は <a href="https://github.com/cat-in-136/bodypix-fun">cat-in-136/bodypix-fun</a> にあげたが、
+<code class="highlighter-rouge">npm i</code> を実行したら（OpenCVのコンパイルをするので時間がそれなりにかかる）、
+下記のように実行すれば良い。<code class="highlighter-rouge">--help</code> で使い方も出すようにしてあるので詳細は参照されたし。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% node ./app.js -i 0 --preview -b 背景画像.jpg
+</code></pre></div></div>
+
+<h3 id="仮想ウェブカメラとの結合">仮想ウェブカメラとの結合</h3>
+
+<p>昔からあるので、また定番なため有名化と思うが <a href="https://github.com/umlaeute/v4l2loopback">v4l2loopback</a> を入れれば良い。</p>
+
+<p><a href="https://github.com/umlaeute/v4l2loopback/blob/master/README.md">README</a> を読め、だけの話だが、例えば下記のようにすると <code class="highlighter-rouge">/dev/video2</code> という仮想ウェブカメラの v4l2 device file が生えてくる</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% sudo modprobe v4l2loopback devices=1 video_nr=2 exclusive_caps=1
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">exclusive_caps=1</code> がポイントで、これがないと単なるキャプチャデバイス扱いになるのか、ブラウザから選べないので今回の用途では必ず追加しておく必要がある。</p>
+
+<p>あとは <code class="highlighter-rouge">/dev/video2</code> に前述の合成結果を流し込めばいい。</p>
+
+<p>OpenCV のウィンドウに出す機能 (<code class="highlighter-rouge">cv.imshow()</code>) も動いたので、これで画面を表示して、
+<a href="/2020/05/gstreamer-ximagesrc-to-capture-window.html">GStreamer ximagesrc でウィンドウごとにキャプチャ</a>して、
+<code class="highlighter-rouge">v4l2sink</code>に流し込むことにした。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% gst-launch-1.0 -v ximagesrc xid=$XWINDOW_ID use-damage=false ! \
+     videoconvert ! \
+     videoscale ! \
+     "video/x-raw,width=640,height=480,framerate=30/1,format=YUY2" ! \
+     v4l2sink device=/dev/video2
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">$XWINDOW_ID</code> は <code class="highlighter-rouge">xwininfo(1)</code> で調べて各自の環境に変えること。</p>
+
+<p>いまは GStreamer を使ったが、OBS Studio を使ってウィンドウをキャプチャして、
+それを <a href="https://github.com/CatxFish/obs-v4l2sink">obs-v4l2sink</a> で流し込んでも良い。</p>
+
+<p>あとはオンライン会議アプリから仮想ウェブカメラを読み取れば良い。</p>
+
+<h3 id="ウィンドウキャプチャを介するズルを克服しようとして挫折">ウィンドウキャプチャを介する「ズル」を克服しようとして挫折</h3>
+
+<p>仮想ウェブカメラに投入する所でウィンドウキャプチャを介することとしたが、
+これははっきり言ってズルである。</p>
+
+<p>ここのズルをなんとかしようと数日頑張ったが、結局 JavaScript というかロジックの難解さもしくはマルチメディアフレームワークの難解さから切り上げることとした。</p>
+
+<p>真面目に実装する場合は、画像データを適切な形式にして仮想ウェブカメラの v4l2 loopback device に投げ込まないといけない。
+ただ、 bodypix の処理が重かったりばらつきがでるのでいわゆるフレーム落ちを考慮して非同期処理として
+一種のキューイング処理が必要となる。これはこれで面倒くさく、また汎用性が欠ける。</p>
+
+<p>そこでウィンドウキャプチャをして仮想ウェブカメラに GStreamer を使ったのであるが、
+Node.js から直接 GStreamer を叩いて v4l2 loopback device に投入することを考えた。</p>
+
+<p>GStreamer はなんでもありな非常にリッチなマルチメディアフレームワークであって、
+動画（や音声）の一連の処理を、
+複数の source/filter/sink からなる一連のパイプライン処理として行い、
+それらのエレメントを変えてやれば同様の処理が容易にできる。
+例えば sink をストリーミングにすればストリーミングできるし、
+同様にしてウィンドウ表示、ファイル保存もできる。filter も同様だ。</p>
+
+<p>ただ、これはあくまで実現性の話で、そういう風に作れるかどうかはフレームワークを使うプログラマに委ねられている。
+実際にはエレメントを変えれば勝手にいい感じにしてくれる魔法が働いているわけではなく、形式変換を指示していかなければならない。
+パイプラインを play する際にネゴシエーションが行われて、解決可能な場合は解決して形式を補ってくれる。
+複雑なパイプラインを組んでいくとネゴシエーションが不十分なので、色々と指示する必要がある。
+サイズはあっているか変更するか、フォーマットはあっているか、タイミング(framerate)はあっているか、処理速度のばらつきなどのためキューイングは必要か、…などだ。</p>
+
+<p>この形式変換を指示していかなければならないのは、フレームワークを使う側になっている（という設計方針だろう）。
+ただ、問題は、合わなかったときにエラーメッセージが貧弱であり、ひどい場合は何も出力されないまま正常終了するのである。
+これは非常に辛く、困難を極めて力が及ばなかった。</p>
+
+<p>というわけで、ズルをしない方法にするのは諦めた。
+今の OpenCV の手法で10fps程度の処理速度はでているため、いったん完了とした。</p>
+
+<h3 id="バグ-fatal-module-v4l2loopback-is-in-use">バグ: FATAL: Module v4l2loopback is in use.</h3>
+
+<p>v4l2 loopback device が busy 状態になって以後使えなくなるバグがある。
+原因はわかっていない。</p>
+
+<h3 id="おまけ-ウェブカメラ画像じゃなくて動画に適用してみた図">おまけ: ウェブカメラ画像じゃなくて動画に適用してみた図</h3>
+
+<p>bodypix-fun は、OpenCV のビデオキャプチャ処理 <code class="highlighter-rouge">new cv.VideoCapture()</code> が、
+ビデオデバイス入力とカメラを切り替えが容易なのでそういうふうにも作ってある。
+<code class="highlighter-rouge">node app.js -i foobar.mp4 --preview</code> のように実行すれば良い。</p>
+
+<figure>
+<img src="/images/2020-05-11-bodypix-fun-for-virtual-ground-on-linux-demo-roman-holiday.jpg" />
+<figcaption>動画に適用してみた例。「ローマの休日」より</figcaption>
+</figure>
+
+<h3 id="参考文献">参考文献</h3>
+
+<ul>
+  <li>Benjamin Elder, “<a href="https://elder.dev/posts/open-source-virtual-background/">Open Source Virtual Background</a>”, April 9th, 2020</li>
+  <li>Takatsugu Nokubi, <a href="https://qiita.com/knok/items/b3eb87769151ac04efeb">任意のバーチャル背景を使えるページを作った</a>, Qiita</li>
+  <li>tfujiwar418, <a href="http://tfujiwar.hatenablog.com/entry/2018/05/21/120815">TensorFlow.jsがWebGLで並列計算を実行する仕組みを理解する - 開発日誌</a></li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2020/05/port-glsl-sandbox-effect-to-gstreamer-glshader.html">
+      <span class="post-meta">2020-05-03</span>
+      <span class="post-title">Porting GLSL Sandbox effect to GStreamer glshader element</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2020/05/noted-apply-pitch-filter-to-live-microphone.html">
+      <span class="post-meta">2020-05-05</span>
+      <span class="post-title">Noted: Apply pitch filter to live microphone on linux</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2020/05/gstreamer-ximagesrc-to-capture-window.html">
+      <span class="post-meta">2020-05-01</span>
+      <span class="post-title">GStreamer ximagesrc でウィンドウごとにキャプチャできる件</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/08/code-reading-firefox-send.html">
+      <span class="post-meta">2017-08-12</span>
+      <span class="post-title">Code Reading: &quot;Firefox Send&quot; encryption</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2019/10/use-marionette-to-obtain-firefox-internal-information-easily.html">
+      <span class="post-meta">2019-10-20</span>
+      <span class="post-title">Use Marionette to obtain Firefox internal information easily</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2018/02/progress-of-year.html">
+      <span class="post-meta">2018-02-02</span>
+      <span class="post-title">年の進捗</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/11/How-to-create-a-javascript-xpcom-component-on-bootstrapped-addon.html">
+      <span class="post-meta">2014-11-16</span>
+      <span class="post-title">How to create a JavaScript XPCOM component on bootstrapped addon</span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2020
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
