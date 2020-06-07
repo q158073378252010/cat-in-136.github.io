@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <feed xmlns="http://www.w3.org/2005/Atom" >
-  <generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator>
+  <generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2020-05-16T23:51:50+09:00</updated>
+  <updated>2020-06-07T20:29:17+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -17,6 +17,120 @@
 
   
   
+  
+    <entry>
+      <title type="html">JaDice – Java/Swing で動く古めかしい外観の PDIC viewer を作った</title>
+      <link href="https://cat-in-136.github.io/2020/06/jadice.html" rel="alternate" type="text/html" title="JaDice -- Java/Swing で動く古めかしい外観の PDIC viewer を作った" />
+      <published>2020-06-07T20:22:11+09:00</published>
+      <updated>2020-06-07T20:22:11+09:00</updated>
+      <id>https://cat-in-136.github.io/2020/06/jadice</id>
+      
+      
+      
+      <content type="html" xml:base="https://cat-in-136.github.io/2020/06/jadice.html">&lt;p&gt;とあるローカル辞書アプリが linux 上で動かなくなってしまったことなどをきっかけに
+&lt;a href=&quot;https://github.com/jiro-aqua/aDice/&quot;&gt;jiro-aqua/aDice&lt;/a&gt; を
+Java Desktop App に移植することをここ最近やっていた。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;jaDice is a PDIC viewer for PC ported from android app “[adice]”&lt;/p&gt;
+
+  &lt;p&gt;Works on Java SE 8+ / OpenJDK 8+.&lt;/p&gt;
+
+  &lt;p&gt;&lt;img src=&quot;/images/2020-06-07-jadice-repository-open-graph.png&quot; /&gt;&lt;/p&gt;
+
+  &lt;p&gt;– &lt;a href=&quot;https://github.com/cat-in-136/jaDice&quot;&gt;cat-in-136/jaDice: PDIC viewer for PC ported from android app “adice”&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;行儀悪いことに windows だとユーザ設定をレジストリに書き散らす、
+嫌われやすいアプリに仕上がっているので、注意されたい。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;User setting is stored at&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;windows: &lt;code class=&quot;highlighter-rouge&quot;&gt;\HKEY_CURRENT_USER\Software\JavaSoft\Prefs\io\github\cat_in_136\jadice&lt;/code&gt; on the registry&lt;/li&gt;
+    &lt;li&gt;macos: &lt;code class=&quot;highlighter-rouge&quot;&gt;/io/github/cat_in_136/jadice&lt;/code&gt; on &lt;code class=&quot;highlighter-rouge&quot;&gt;~/Library/Preferences/com.apple.java.util.prefs.plist&lt;/code&gt;&lt;/li&gt;
+    &lt;li&gt;linux: &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.java/.userPrefs/io/github/_!':!}@&quot;0!&amp;amp;8!a@&quot;u!&amp;amp;8!:@!z!$}=/jadice/prefs.xml&lt;/code&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/2020-06-07-jadice-screenshot.svg&quot; width=&quot;449&quot; height=&quot;636&quot; /&gt;
+&lt;figcaption&gt;Screenshot of JaDice&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;PDIC の読み取りを自力で実装・移植してやろう、
+と1年ぐらい前からファイル形式を調べたりしてきたのだが、
+PDICファイルの内部で使っている BOCU-1 という文字コードの扱いなど
+ちらほらと面倒くさいところがあり、
+5回ぐらいプロジェクトを組む→投げ捨てるを繰り返していた。&lt;/p&gt;
+
+&lt;p&gt;突破口は手元に転がっていた。スマホ用の PDIC viewer である
+&lt;a href=&quot;https://play.google.com/store/apps/details?id=jp.sblo.pandora.adice&quot;&gt;aDice&lt;/a&gt;
+を使っていたのだが、冷静に考えてみると昔からストレス無く軽快に動く。
+しかも調べてみると github 上にソースが上がっていて、
+PDIC ファイル関連処理と android 用処理が綺麗に分離されたコードになっていた。
+かつての&lt;a href=&quot;https://jp.sharp/ws/011sh/&quot;&gt;アドエス(WS011SH)&lt;/a&gt;用の pDice
+とのソース管理の都合そうなっている経緯と推測される。
+しかも、このソースコードのライセンスが &lt;a href=&quot;http://www.kmonos.net/nysl/&quot;&gt;NYSL&lt;/a&gt; であるから、
+煮るなり焼くなり好きにしてよいわけだ。&lt;/p&gt;
+
+&lt;p&gt;この aDice の PDIC ファイル関連処理を丸パクリ、
+適当な GUI をつければいいだろうということで、やってみたら、
+当然のごとくサクサク動いた。&lt;/p&gt;
+
+&lt;p&gt;適当な GUI を付けるにあたっては JavaFX の使用も検討に加えたが、
+レイアウト以外はそこまで凝ったことはしないのと、
+OpenJFX移行などで可能なことはわかっているが色々とまだ混沌としていることがあるため現時点では避けた。
+技術が枯れていないためひとまず旧時代のライブラリだが OpenJDK にも標準添付である Swing を使うことにした。&lt;/p&gt;
+
+&lt;p&gt;一方で、新規に書くロジック部分は Kotlin で書くこととし、
+現代的な書き方としてメンテナンス性を上げておいた
+…というか内部クラスなど冗長な記述を書くのが面倒なだけだった気がしないでもない。&lt;/p&gt;
+
+&lt;p&gt;一点 aDice では C で書かれたネイティブコードで実行していた
+インデックスファイル生成処理があったが、
+今日の CPU の性能ではネイティブコードにしなくとも充分な
+パフォーマンスが出るだろうし、ほぼコピペで Java に移植できた。&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;img src=&quot;/images/2020-06-07-jadice-repository-open-graph.png&quot; /&gt;
+&lt;figcaption&gt;JaDice icon artwork&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;最後にアイコンも、これまた昔あった Tango Desktop Project の
+&lt;a href=&quot;https://commons.wikimedia.org/wiki/Category:Tango_project&quot;&gt;アイコン&lt;/a&gt;を
+複数組み合わせて aDice のアイコンを再構成したものであり、
+これまた丸パクリで作った。&lt;/p&gt;</content>
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name></name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="チラシの裏" />
+      
+
+      
+        <summary type="html">とあるローカル辞書アプリが linux 上で動かなくなってしまったことなどをきっかけに jiro-aqua/aDice を Java Desktop App に移植することをここ最近やっていた。 jaDice is a PDIC viewer for PC ported from android app “[adice]” Works on Java SE 8+ / OpenJDK 8+. – cat-in-136/jaDice: PDIC viewer for PC ported from android app “adice” 行儀悪いことに windows だとユーザ設定をレジストリに書き散らす、 嫌われやすいアプリに仕上がっているので、注意されたい。 User setting is stored at windows: \HKEY_CURRENT_USER\Software\JavaSoft\Prefs\io\github\cat_in_136\jadice on the registry macos: /io/github/cat_in_136/jadice on ~/Library/Preferences/com.apple.java.util.prefs.plist linux: ~/.java/.userPrefs/io/github/_!':!}@&quot;0!&amp;amp;8!a@&quot;u!&amp;amp;8!:@!z!$}=/jadice/prefs.xml Screenshot of JaDice PDIC の読み取りを自力で実装・移植してやろう、 と1年ぐらい前からファイル形式を調べたりしてきたのだが、 PDICファイルの内部で使っている BOCU-1 という文字コードの扱いなど ちらほらと面倒くさいところがあり、 5回ぐらいプロジェクトを組む→投げ捨てるを繰り返していた。 突破口は手元に転がっていた。スマホ用の PDIC viewer である aDice を使っていたのだが、冷静に考えてみると昔からストレス無く軽快に動く。 しかも調べてみると github 上にソースが上がっていて、 PDIC ファイル関連処理と android 用処理が綺麗に分離されたコードになっていた。 かつてのアドエス(WS011SH)用の pDice とのソース管理の都合そうなっている経緯と推測される。 しかも、このソースコードのライセンスが NYSL であるから、 煮るなり焼くなり好きにしてよいわけだ。 この aDice の PDIC ファイル関連処理を丸パクリ、 適当な GUI をつければいいだろうということで、やってみたら、 当然のごとくサクサク動いた。 適当な GUI を付けるにあたっては JavaFX の使用も検討に加えたが、 レイアウト以外はそこまで凝ったことはしないのと、 OpenJFX移行などで可能なことはわかっているが色々とまだ混沌としていることがあるため現時点では避けた。 技術が枯れていないためひとまず旧時代のライブラリだが OpenJDK にも標準添付である Swing を使うことにした。 一方で、新規に書くロジック部分は Kotlin で書くこととし、 現代的な書き方としてメンテナンス性を上げておいた …というか内部クラスなど冗長な記述を書くのが面倒なだけだった気がしないでもない。 一点 aDice では C で書かれたネイティブコードで実行していた インデックスファイル生成処理があったが、 今日の CPU の性能ではネイティブコードにしなくとも充分な パフォーマンスが出るだろうし、ほぼコピペで Java に移植できた。 JaDice icon artwork 最後にアイコンも、これまた昔あった Tango Desktop Project の アイコンを 複数組み合わせて aDice のアイコンを再構成したものであり、 これまた丸パクリで作った。</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">Diff between firefox 77.0 beta 6 default preference and firefox 76.0.1</title>
@@ -3916,122 +4030,6 @@ table.diff_firefox74_pref_diff tbody tr { transition: background 0.125s ease-in-
 
       
         <summary type="html">This is difference between the default preference of Firefox 74.0 beta 3 and one of 73.0. This diff table is generated with my small script firefox-prefjs-surveyer. Preference difference PrefFirefox 73.0Firefox 74.0 beta 3 app.releaseNotesURL https://www.mozilla.org/%LOCALE%/firefox/%VERSION%/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew https://www.mozilla.org/%LOCALE%/firefox/%VERSION%beta/releasenotes/?utm_source=firefox-browser&amp;amp;utm_medium=firefox-browser&amp;amp;utm_campaign=whatsnew app.update.channel release beta app.update.url.details https://www.mozilla.org/%LOCALE%/firefox/notes https://www.mozilla.org/%LOCALE%/firefox/beta/notes app.update.url.manual https://www.mozilla.org/firefox/ https://www.mozilla.org/firefox/beta apz.touch_acceleration_factor_x undefined 1.0 apz.touch_acceleration_factor_y undefined 1.0 browser.cache.offline.storage.enable true false browser.newtabpage.activity-stream.discoverystream.personalization.modelKeys undefined nb_model_business, nb_model_career, nb_model_education, nb_model_entertainment, nb_model_environment, nb_model_food, nb_model_gaming, nb_model_health_fitness, nb_model_parenting, nb_model_personal_finance, nb_model_politics, nb_model_science, nb_model_self_improvement, nb_model_sports, nb_model_technology, nb_model_travel browser.newtabpage.activity-stream.discoverystream.personalization.version undefined 1 browser.newtabpage.activity-stream.feeds.recommendationproviderswitcher undefined true browser.newtabpage.activity-stream.telemetry.ut.events false true browser.tabs.allowTabDetach undefined true browser.tabs.documentchannel false true browser.tabs.remote.separatedMozillaDomains addons.cdn.mozilla.net,addons.mozilla.org,accounts.firefox.com addons.mozilla.org,accounts.firefox.com browser.tabs.remote.useCORP false true browser.urlbar.openViewOnFocus false true browser.urlbar.update1 false true browser.urlbar.update1.expandTextOnFocus false undefined browser.urlbar.update1.interventions undefined true browser.urlbar.update1.restrictTabAfterKeyboardFocus undefined true browser.urlbar.update1.searchTips undefined true browser.urlbar.update1.view.stripHttps false true browser.urlbar.update2.expandTextOnFocus undefined false canvas.mozgetasfile.enabled undefined false corroborator.enabled false true devtools.performance.recording.preset undefined web-developer devtools.toolbox.content-frame true undefined dom.about_newtab_sanitization.enabled undefined false dom.image-lazy-loading.enabled undefined false dom.input_events.beforeinput.enabled undefined false dom.missing_prop_counters.enabled false true dom.security.featurePolicy.enabled false true dom.security.skip_about_page_csp_allowlist_and_assert undefined false dom.security.skip_about_page_has_csp_assert undefined false dom.security.skip_html_fragment_assertion undefined false dom.security.skip_remote_script_assertion_in_system_priv_context undefined false dom.serviceWorkers.parent_intercept false true dom.storage.next_gen false true dom.targetBlankNoOpener.enabled false true dom.textMetrics.actualBoundingBox.enabled undefined true dom.textMetrics.baselines.enabled undefined false dom.textMetrics.emHeight.enabled undefined false dom.textMetrics.fontBoundingBox.enabled undefined false dom.worker.console.dispatch_events_to_main_thread undefined true extensions.contentblocker.enabled false undefined extensions.experiments.enabled undefined false extensions.legacy.enabled false undefined extensions.webcompat-reporter.enabled false true full-screen-api.exit-on.windowOpen undefined true full-screen-api.exit-on.windowRaise undefined true geo.provider.network.timeout undefined 60000 geo.provider.network.url undefined https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY% geo.wifi.uri https://www.googleapis.com/geolocation/v1/geolocate?key=%GOOGLE_LOCATION_SERVICE_API_KEY% undefined geo.wifi.xhr.timeout 60000 undefined gfx.webrender.debug.tile-cache-logging undefined false gfx.webrender.enable-item-cache undefined false gfx.webrender.enable-low-priority-pool false true gfx.webrender.enable-multithreading undefined true javascript.options.parser_defer_allocation false undefined javascript.options.property_error_message_fix undefined false javascript.options.shared_memory false true layout.css.comparison-functions.enabled undefined false layout.css.moz-document.url-prefix-hack.enabled true false layout.css.outline-style-auto.enabled false true layout.css.parsing.parallel true undefined layout.css.prefixes.columns undefined false layout.css.serialize-grid-implicit-tracks undefined true layout.css.text-underline-position.enabled false true layout.css.use-counters-unimplemented.enabled false true layout.css.use-counters.enabled false true layout.dynamic-reflow-roots.enabled false true media.audioipc.pool_size 1 undefined media.audioipc.stack_size 262144 undefined media.peerconnection.ice.obfuscate_host_addresses false true media.videocontrols.picture-in-picture.keyboard-controls.enabled undefined false network.socket.forcePort undefined permissions.isolateBy.privateBrowsing false true places.search.matchDiacritics undefined false privacy.annotate_channels.strict_list.enabled false true privacy.dynamic_firstparty.limitForeign undefined false privacy.restrict3rdpartystorage.expiration_redirect undefined 900 privacy.restrict3rdpartystorage.heuristic.redirect undefined true privacy.userContext.longPressBehavior 0 undefined privacy.userContext.newTabContainerOnLeftClick.enabled undefined false security.block_Worker_with_wrong_mime false true security.disallow_non_local_systemprincipal_in_tests undefined false security.remote_settings.crlite_filters.enabled false true security.remote_settings.intermediates.enabled false true security.tls.version.min 1 3 services.sync.engine.bookmarks.validation.enabled undefined true services.sync.engine.passwords.validation.enabled undefined true signon.management.page.enabled true undefined toolkit.shutdown.fastShutdownStage undefined 0 toolkit.shutdown.lateWriteChecksStage undefined 0 toolkit.telemetry.enabled false true webgl.default-low-power false true webgl.disable-extensions false undefined webgl.out-of-process undefined false widget.wayland_dmabuf_backend.enabled false undefined</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Redmine 4.1 でアセットファイルの圧縮をするように頑張った顛末メモ</title>
-      <link href="https://cat-in-136.github.io/2020/02/redmine-41-compressed-asset-files-without-sprockets.html" rel="alternate" type="text/html" title="Redmine 4.1 でアセットファイルの圧縮をするように頑張った顛末メモ" />
-      <published>2020-02-05T22:00:47+09:00</published>
-      <updated>2020-02-05T22:00:47+09:00</updated>
-      <id>https://cat-in-136.github.io/2020/02/redmine-41-compressed-asset-files-without-sprockets</id>
-      
-      
-      
-      <content type="html" xml:base="https://cat-in-136.github.io/2020/02/redmine-41-compressed-asset-files-without-sprockets.html">&lt;p&gt;Redmine 4.1 では下記のとおり sprockets が削除された。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.redmine.org/issues/32223&quot;&gt;Defect #32223: Disable sprockets to avoid Sprockets::Railtie::ManifestNeededError raised by sprockets 4.0.0 - Redmine&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/rails/sprockets/issues/643&quot;&gt;Exception without manifest.js in 4.0.0 · Issue #643 · rails/sprockets&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;sprockets によるアセットの gzip 自動圧縮がされなくなった。
-gzipアセットはデータ転送の削減するが、この恩恵が得られなくなる。
-すなわちギガを消費するようになってしまう。&lt;/p&gt;
-
-&lt;p&gt;であるならば、 sprockets を再導入すればいい訳だが、
-消された理由からは、sprockets の再導入は難しそうであった。&lt;/p&gt;
-
-&lt;p&gt;経緯を確認してみると、
-sprockets 4.0.0 がインストールされると &lt;code class=&quot;highlighter-rouge&quot;&gt;Sprockets::Railtie::ManifestNeededError&lt;/code&gt; が発生しRedmineが起動しない問題に対して、sprockets 3.7 系で固定化する暫定対処をしていた。
-（&lt;a href=&quot;https://www.redmine.org/issues/32300&quot;&gt;Defect #32300: Don’t use sprockets 4.0.0 in order to avoid Sprockets::Railtie::ManifestNeededError - Redmine&lt;/a&gt;）
-これに対する正式対応が sprockets を使わなくするということになった模様だ。
-なお、 sprockets を自力で有効する場合についての情報は不明であった。
-もっとも sprockets はかなり複雑であり、ただ単に gzip したいという要求にはそもそも向かない。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;I don’t know if disabling/removing sprockets this way in the Redmine core makes enabling of the Rails asset pipeline locally more difficult than it currently is?&lt;/p&gt;
-  &lt;/blockquote&gt;
-
-  &lt;p&gt;Sorry, I don’t know.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ところで、gzip アセットを配信する仕組みを調べてみると、&lt;a href=&quot;https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/static.rb&quot;&gt;actionpack の &lt;code class=&quot;highlighter-rouge&quot;&gt;action_dispatch/middleware/static.rb&lt;/code&gt; の &lt;code class=&quot;highlighter-rouge&quot;&gt;ActionDispatch::FileHandler&lt;/code&gt; で処理されている&lt;/a&gt;ことがわかるが。
-興味深いことに、ただ単に precompiled gzip ファイルさえ置いてしまえば動作するようである。&lt;/p&gt;
-
-&lt;p&gt;というわけでバッチでも何でも良いので、public フォルダ配下のファイルについて gzip ファイルを作成してしまえば良い。&lt;/p&gt;
-
-&lt;p&gt;ただsprocketsのこの仕組みはversion 3.5頃でもコロコロと変わったことがあるらしく、&lt;a href=&quot;https://stackoverflow.com/questions/29700369/missing-gzip-version-of-css-and-js-assets&quot;&gt;その頃の先人たちの記録&lt;/a&gt;を見ると rake task で対処している例が見つかった。&lt;/p&gt;
-
-&lt;p&gt;ところで、heroku でもアセットの precompile を行ってくれるのだが、
-sprockets が無くとも &lt;code class=&quot;highlighter-rouge&quot;&gt;assets:precompile&lt;/code&gt; task を捏造さえすれば Heroku の Slug Compiler (Google Cloud Build の heroku 版だと思えば良い) の &lt;a href=&quot;https://devcenter.heroku.com/articles/ruby-support#rails-5-x-applications-compile-phase&quot;&gt;compile phase&lt;/a&gt; でビルドが動くことが判明した。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;As a final task in the compilation phase, the &lt;code class=&quot;highlighter-rouge&quot;&gt;assets:precompile&lt;/code&gt; Rake task is executed if you have a &lt;code class=&quot;highlighter-rouge&quot;&gt;assets:precompile&lt;/code&gt; Rake task defined, and don’t have a &lt;code class=&quot;highlighter-rouge&quot;&gt;public/assets/manifest-*.json&lt;/code&gt; file.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;…という経緯を経て、結局のところ、
-gzip 実行する &lt;code class=&quot;highlighter-rouge&quot;&gt;assets:precompile&lt;/code&gt; を作れば汎用的な解決策になるだろうということで、
-結果下記のようなタスクを追加するに至った。&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:assets&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;desc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Gzip all the HTML/CSS/JS files in the public folder&quot;&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:precompile&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'zlib'&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;begin&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;Rake&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'redmine:plugins:assets'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;invoke&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;rescue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;failed to execute redmine:plugins:assets task: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;no&quot;&gt;Dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'public'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'**'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'*.{html,css,js}'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.gz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;exist?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.gz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;Zlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;GzipWriter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.gz&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Zlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;BEST_COMPRESSION&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;gz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mtime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;mtime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;gz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;orig_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;basename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;gz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'rb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ポイントは &lt;code class=&quot;highlighter-rouge&quot;&gt;redmine:plugins:assets&lt;/code&gt; タスクを事前に実行しておいて、
-プラグインのアセットファイルも &lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt; フォルダにコピーをしてから、
-gzip 処理を施すことだ。そうしないとプラグインのアセットファイルが圧縮されない。&lt;/p&gt;
-
-&lt;p&gt;なお zopfli などを使えばもっと圧縮率を上げれるだろうがそこまではやっていない。
-そこまでやるなら brotli 使うぐらいの対処を施したいものである。&lt;/p&gt;</content>
-      
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name></name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="redmine" />
-      
-        <category term="チラシの裏" />
-      
-        <category term="httpd" />
-      
-
-      
-        <summary type="html">Redmine 4.1 では下記のとおり sprockets が削除された。 Defect #32223: Disable sprockets to avoid Sprockets::Railtie::ManifestNeededError raised by sprockets 4.0.0 - Redmine Exception without manifest.js in 4.0.0 · Issue #643 · rails/sprockets sprockets によるアセットの gzip 自動圧縮がされなくなった。 gzipアセットはデータ転送の削減するが、この恩恵が得られなくなる。 すなわちギガを消費するようになってしまう。 であるならば、 sprockets を再導入すればいい訳だが、 消された理由からは、sprockets の再導入は難しそうであった。 経緯を確認してみると、 sprockets 4.0.0 がインストールされると Sprockets::Railtie::ManifestNeededError が発生しRedmineが起動しない問題に対して、sprockets 3.7 系で固定化する暫定対処をしていた。 （Defect #32300: Don’t use sprockets 4.0.0 in order to avoid Sprockets::Railtie::ManifestNeededError - Redmine） これに対する正式対応が sprockets を使わなくするということになった模様だ。 なお、 sprockets を自力で有効する場合についての情報は不明であった。 もっとも sprockets はかなり複雑であり、ただ単に gzip したいという要求にはそもそも向かない。 I don’t know if disabling/removing sprockets this way in the Redmine core makes enabling of the Rails asset pipeline locally more difficult than it currently is? Sorry, I don’t know. ところで、gzip アセットを配信する仕組みを調べてみると、actionpack の action_dispatch/middleware/static.rb の ActionDispatch::FileHandler で処理されていることがわかるが。 興味深いことに、ただ単に precompiled gzip ファイルさえ置いてしまえば動作するようである。 というわけでバッチでも何でも良いので、public フォルダ配下のファイルについて gzip ファイルを作成してしまえば良い。 ただsprocketsのこの仕組みはversion 3.5頃でもコロコロと変わったことがあるらしく、その頃の先人たちの記録を見ると rake task で対処している例が見つかった。 ところで、heroku でもアセットの precompile を行ってくれるのだが、 sprockets が無くとも assets:precompile task を捏造さえすれば Heroku の Slug Compiler (Google Cloud Build の heroku 版だと思えば良い) の compile phase でビルドが動くことが判明した。 As a final task in the compilation phase, the assets:precompile Rake task is executed if you have a assets:precompile Rake task defined, and don’t have a public/assets/manifest-*.json file. …という経緯を経て、結局のところ、 gzip 実行する assets:precompile を作れば汎用的な解決策になるだろうということで、 結果下記のようなタスクを追加するに至った。 namespace :assets do desc &quot;Gzip all the HTML/CSS/JS files in the public folder&quot; task :precompile do require 'zlib' begin Rake::Task['redmine:plugins:assets'].invoke rescue =&amp;gt; error puts &quot;failed to execute redmine:plugins:assets task: #{error}&quot; end Dir.glob(File.join(Rails.root, 'public', '**', '*.{html,css,js}')).each do |path| File.delete(&quot;#{path}.gz&quot;) if File.exist?(&quot;#{path}.gz&quot;) Zlib::GzipWriter.open(&quot;#{path}.gz&quot;, Zlib::BEST_COMPRESSION) do |gz| gz.mtime = File.mtime(path) gz.orig_name = File.basename(path) gz.puts File.open(path, 'rb') {|f| f.read } end end end ポイントは redmine:plugins:assets タスクを事前に実行しておいて、 プラグインのアセットファイルも public フォルダにコピーをしてから、 gzip 処理を施すことだ。そうしないとプラグインのアセットファイルが圧縮されない。 なお zopfli などを使えばもっと圧縮率を上げれるだろうがそこまではやっていない。 そこまでやるなら brotli 使うぐらいの対処を施したいものである。</summary>
       
 
       

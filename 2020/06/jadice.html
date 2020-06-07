@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,max-scale=10,min-scale=0.5,user-scalable=yes" />
+  <title>JaDice -- Java/Swing で動く古めかしい外観の PDIC viewer を作った</title>
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
+
+  <link rel="canonical" href="https://cat-in-136.github.io/2020/06/jadice.html" />
+  <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
+  <meta property="og:url" content="https://cat-in-136.github.io/2020/06/jadice.html" />
+  <meta property="og:title" content="JaDice -- Java/Swing で動く古めかしい外観の PDIC viewer を作った" /><meta property="og:description" content="とあるローカル辞書アプリが linux 上で動かなくなってしまったことなどをきっかけに jiro-aqua/aDice を Java Desktop App に移植することをここ最近やっていた。..." /><meta property="og:type" content="article" /><meta property="og:image" content="/images/2020-06-07-jadice-repository-open-graph.png" /><meta property="og:site_name" content="cat_in_136.blog()" /><meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@cat_in_136" />
+  <meta name="twitter:creator" content="@cat_in_136" />
+</head>
+<body><header class="site-header">
+  <div class="wrapper">
+    <a class="site-title" href="/">cat_in_136.blog()</a>
+    <nav class="site-nav">
+      <a href="javascript:void(0);" class="menu-icon" title="barger button"></a>
+      <div class="trigger"><a class="page-link" href="/about">About</a><a class="page-link" href="/archive">Archive</a><a class="page-link" href="/tags">Tags</a></div>
+    </nav>
+  </div>
+</header>
+<div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name"><a href="/2020/06/jadice.html" itemprop="url">JaDice -- Java/Swing で動く古めかしい外観の PDIC viewer を作った</a></h1>
+
+    <div class="post-meta">Post date: <span itemprop="datePublished" content="2020-06-07T20:22:11+09:00">2020-06-07T20:22:11+09:00</span></div><div class="post-meta">Tags:
+      <span itemprop="keywords"><a class="tag" href="/tags/java">Java</a><a class="tag" href="/tags/%E3%83%81%E3%83%A9%E3%82%B7%E3%81%AE%E8%A3%8F">チラシの裏</a></span></div><div class="post-meta">
+      Github source: <a href="https://github.com/cat-in-136/blog/blob/master/_posts/2020-06-07-jadice.md" class="source-path">_posts/2020-06-07-jadice.md</a>
+        (<a href="https://github.com/cat-in-136/blog/commits/master/_posts/2020-06-07-jadice.md">History</a>)
+    </div><div class="post-meta">
+      Comments: <a href="#disqus_thread">↓</a>
+      <script id="dsq-count-scr" src="https://catin136blog.disqus.com/count.js" defer="defer" async="async"></script>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody" lang="ja">
+    <p>とあるローカル辞書アプリが linux 上で動かなくなってしまったことなどをきっかけに
+<a href="https://github.com/jiro-aqua/aDice/">jiro-aqua/aDice</a> を
+Java Desktop App に移植することをここ最近やっていた。</p>
+
+<blockquote>
+  <p>jaDice is a PDIC viewer for PC ported from android app “[adice]”</p>
+
+  <p>Works on Java SE 8+ / OpenJDK 8+.</p>
+
+  <p><img src="/images/2020-06-07-jadice-repository-open-graph.png" /></p>
+
+  <p>– <a href="https://github.com/cat-in-136/jaDice">cat-in-136/jaDice: PDIC viewer for PC ported from android app “adice”</a></p>
+</blockquote>
+
+<p>行儀悪いことに windows だとユーザ設定をレジストリに書き散らす、
+嫌われやすいアプリに仕上がっているので、注意されたい。</p>
+
+<blockquote>
+  <p>User setting is stored at</p>
+
+  <ul>
+    <li>windows: <code class="highlighter-rouge">\HKEY_CURRENT_USER\Software\JavaSoft\Prefs\io\github\cat_in_136\jadice</code> on the registry</li>
+    <li>macos: <code class="highlighter-rouge">/io/github/cat_in_136/jadice</code> on <code class="highlighter-rouge">~/Library/Preferences/com.apple.java.util.prefs.plist</code></li>
+    <li>linux: <code class="highlighter-rouge">~/.java/.userPrefs/io/github/_!':!}@"0!&amp;8!a@"u!&amp;8!:@!z!$}=/jadice/prefs.xml</code></li>
+  </ul>
+</blockquote>
+
+<figure>
+<img src="/images/2020-06-07-jadice-screenshot.svg" width="449" height="636" />
+<figcaption>Screenshot of JaDice</figcaption>
+</figure>
+
+<p>PDIC の読み取りを自力で実装・移植してやろう、
+と1年ぐらい前からファイル形式を調べたりしてきたのだが、
+PDICファイルの内部で使っている BOCU-1 という文字コードの扱いなど
+ちらほらと面倒くさいところがあり、
+5回ぐらいプロジェクトを組む→投げ捨てるを繰り返していた。</p>
+
+<p>突破口は手元に転がっていた。スマホ用の PDIC viewer である
+<a href="https://play.google.com/store/apps/details?id=jp.sblo.pandora.adice">aDice</a>
+を使っていたのだが、冷静に考えてみると昔からストレス無く軽快に動く。
+しかも調べてみると github 上にソースが上がっていて、
+PDIC ファイル関連処理と android 用処理が綺麗に分離されたコードになっていた。
+かつての<a href="https://jp.sharp/ws/011sh/">アドエス(WS011SH)</a>用の pDice
+とのソース管理の都合そうなっている経緯と推測される。
+しかも、このソースコードのライセンスが <a href="http://www.kmonos.net/nysl/">NYSL</a> であるから、
+煮るなり焼くなり好きにしてよいわけだ。</p>
+
+<p>この aDice の PDIC ファイル関連処理を丸パクリ、
+適当な GUI をつければいいだろうということで、やってみたら、
+当然のごとくサクサク動いた。</p>
+
+<p>適当な GUI を付けるにあたっては JavaFX の使用も検討に加えたが、
+レイアウト以外はそこまで凝ったことはしないのと、
+OpenJFX移行などで可能なことはわかっているが色々とまだ混沌としていることがあるため現時点では避けた。
+技術が枯れていないためひとまず旧時代のライブラリだが OpenJDK にも標準添付である Swing を使うことにした。</p>
+
+<p>一方で、新規に書くロジック部分は Kotlin で書くこととし、
+現代的な書き方としてメンテナンス性を上げておいた
+…というか内部クラスなど冗長な記述を書くのが面倒なだけだった気がしないでもない。</p>
+
+<p>一点 aDice では C で書かれたネイティブコードで実行していた
+インデックスファイル生成処理があったが、
+今日の CPU の性能ではネイティブコードにしなくとも充分な
+パフォーマンスが出るだろうし、ほぼコピペで Java に移植できた。</p>
+
+<figure>
+<img src="/images/2020-06-07-jadice-repository-open-graph.png" />
+<figcaption>JaDice icon artwork</figcaption>
+</figure>
+
+<p>最後にアイコンも、これまた昔あった Tango Desktop Project の
+<a href="https://commons.wikimedia.org/wiki/Category:Tango_project">アイコン</a>を
+複数組み合わせて aDice のアイコンを再構成したものであり、
+これまた丸パクリで作った。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    <div id="disqus_thread"></div>
+    <script type="application/javascript" src="https://catin136blog.disqus.com/embed.js" defer="defer" async="async"></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </footer>
+</article><aside class="post-related">
+  <h2>Related Posts</h2>
+  <ul class="post-list"><li class="post-item">
+    <a class="post-link" href="/2010/06/study-for-browser-panel-issue-and_26.html">
+      <span class="post-meta">2010-06-26</span>
+      <span class="post-title">Study for &quot;Browser&quot; panel issue and &quot;Animate fade-in&quot; #2</span><span class="post-thumb" data-image-path="/images/conf-mania-mac-ng.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2011/02/visual-guide-new-pref-of-configuration.html">
+      <span class="post-meta">2011-02-23</span>
+      <span class="post-title">Visual Guide : New pref of Configuration Mania v1.14.2011022201</span><span class="post-thumb" data-image-path="/images/HWaccel.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2015/11/redmine-scheduling-poll.html">
+      <span class="post-meta">2015-11-30</span>
+      <span class="post-title">【担当者さん必見】メンバーみんなで日程調整ができる「Scheduling Poll」プラグイン登場！</span><span class="post-thumb" data-image-path="/images/201511_redmine_scheduling_polls_ticket_vote.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2012/01/javagui.html">
+      <span class="post-meta">2012-01-15</span>
+      <span class="post-title">JavaのGUIをベクトルデータとしてスクリーンショットを撮る</span><span class="post-thumb" data-image-path="/images/swingset_java_ocean_gv.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2016/08/connectivitycheck-gstatic-com-android.html">
+      <span class="post-meta">2016-08-15</span>
+      <span class="post-title">connectivitycheck.gstatic.com への Android の接続を誤魔化してみるテスト</span><span class="post-thumb" data-image-path="/images/201608_connectivitycheck_noinetwifi.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2017/10/list-of-all-the-config-provided-by-configuration-mania.html">
+      <span class="post-meta">2017-10-26</span>
+      <span class="post-title">List of all the Config provided by Configuration Mania</span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2014/12/light-weight-font-android.html">
+      <span class="post-meta">2014-12-29</span>
+      <span class="post-title">Light な weight な日本語フォントを android に投入</span><span class="post-thumb" data-image-path="/images/201412_light_weight_font_screen103.png"></span></a>
+  </li>
+<li class="post-item">
+    <a class="post-link" href="/2020/02/xul-has-been-ported-to-web-components.html">
+      <span class="post-meta">2020-02-24</span>
+      <span class="post-title">XUL が Web Components になったね</span></a>
+  </li>
+</ul>
+</aside>
+      </div>
+    </div><footer class="site-footer">
+  <a href="#top" title="Go to top of page" onclick="window.scroll(0,0);return false;">↑</a>
+  <div class="wrapper" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WebSite">
+    <h2 class="footer-heading">cat_in_136.blog()</h2>
+    <p>
+      © 2020
+      <span itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Person">
+        <a href="/about"><span itemprop="name">cat_in_136</span></a>
+      </span>;
+      Content is available under a
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" itemprop="license" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a>
+      unless otherwise noted.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
