@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator>
   <link href="https://cat-in-136.github.io/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://cat-in-136.github.io/" rel="alternate" type="text/html" />
-  <updated>2020-07-11T13:15:00+09:00</updated>
+  <updated>2020-07-18T19:30:47+09:00</updated>
   <id>https://cat-in-136.github.io/</id>
 
   
@@ -1602,7 +1602,7 @@ Java Desktop App に移植することをここ最近やっていた。&lt;/p&gt
 
   &lt;p&gt;Works on Java SE 8+ / OpenJDK 8+.&lt;/p&gt;
 
-  &lt;p&gt;&lt;img src=&quot;/images/2020-06-07-jadice-repository-open-graph.png&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;img src=&quot;/images/2020-06-07-jadice-repository-open-graph.png&quot; width=&quot;1280&quot; height=&quot;640&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
 
   &lt;p&gt;– &lt;a href=&quot;https://github.com/cat-in-136/jaDice&quot;&gt;cat-in-136/jaDice: PDIC viewer for PC ported from android app “adice”&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1621,7 +1621,7 @@ Java Desktop App に移植することをここ最近やっていた。&lt;/p&gt
 &lt;/blockquote&gt;
 
 &lt;figure&gt;
-&lt;img src=&quot;/images/2020-06-07-jadice-screenshot.svg&quot; width=&quot;449&quot; height=&quot;636&quot; /&gt;
+&lt;img src=&quot;/images/2020-06-07-jadice-screenshot.svg&quot; width=&quot;449&quot; height=&quot;636&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;Screenshot of JaDice&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -1660,7 +1660,7 @@ OpenJFX移行などで可能なことはわかっているが色々とまだ混�
 パフォーマンスが出るだろうし、ほぼコピペで Java に移植できた。&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;img src=&quot;/images/2020-06-07-jadice-repository-open-graph.png&quot; /&gt;
+&lt;img src=&quot;/images/2020-06-07-jadice-repository-open-graph.png&quot; width=&quot;1280&quot; height=&quot;640&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;JaDice icon artwork&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -2737,7 +2737,7 @@ Node.js から直接 GStreamer を叩いて v4l2 loopback device に投入する
 &lt;code class=&quot;highlighter-rouge&quot;&gt;node app.js -i foobar.mp4 --preview&lt;/code&gt; のように実行すれば良い。&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;img src=&quot;/images/2020-05-11-bodypix-fun-for-virtual-ground-on-linux-demo-roman-holiday.jpg&quot; /&gt;
+&lt;img src=&quot;/images/2020-05-11-bodypix-fun-for-virtual-ground-on-linux-demo-roman-holiday.jpg&quot; width=&quot;640&quot; height=&quot;480&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;動画に適用してみた例。「ローマの休日」より&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -2857,7 +2857,7 @@ It can change dynamically!&lt;/p&gt;
 by clicking the button (highlighted with red box) on PulseAudio Volume Control.&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;img src=&quot;/images/2020-05-05-noted-apply-pitch-filter-to-live-microphone-pavucontrol.svg&quot; width=&quot;549&quot; height=&quot;390&quot; /&gt;
+&lt;img src=&quot;/images/2020-05-05-noted-apply-pitch-filter-to-live-microphone-pavucontrol.svg&quot; width=&quot;549&quot; height=&quot;390&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;Screenshot of PulseAudio Volume Control&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -2930,7 +2930,7 @@ So, I looked into how to stream “shader” into Gstreamer.&lt;/p&gt;
 &lt;p&gt;An input is actually required for glshader.
 glshader is an implement of &lt;code class=&quot;highlighter-rouge&quot;&gt;GstBaseTransform&lt;/code&gt;, which shall have a sink pad.&lt;/p&gt;
 
-&lt;figure&gt; &lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-diagram-glshader.svg&quot; width=&quot;957&quot; height=&quot;256&quot; /&gt;
+&lt;figure&gt; &lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-diagram-glshader.svg&quot; width=&quot;957&quot; height=&quot;256&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;Example diagram of glshader&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -3008,7 +3008,7 @@ For example,&lt;/p&gt;
 
 &lt;p&gt;Both yield same output as following:&lt;/p&gt;
 
-&lt;figure&gt; &lt;img src=&quot;/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-example.png&quot; /&gt;
+&lt;figure&gt; &lt;img src=&quot;/images/2020-05-03-port-glsl-sandbox-effect-to-gstreamer-glshader-example.png&quot; width=&quot;320&quot; height=&quot;240&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;Example output&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -3101,7 +3101,7 @@ getDisplayMedia demoで試せばすぐわかるがウィンドウ毎にキャプ
 （古典的なキャプチャツールの xwd や ffmpeg の x11grab などでは見たままの通り上にウィンドウが乗っていたらそれがキャプチャされる）&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-desktop-composition.svg&quot; width=&quot;384&quot; height=&quot;284&quot; /&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-desktop-composition.svg&quot; width=&quot;384&quot; height=&quot;284&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;半透明のときは勿論、そうでなくとも下のウィンドウも再描画され続けている&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -3183,7 +3183,7 @@ in the class field of their element information, and also have a non-zero autopl
 &lt;p&gt;こうしてウィンドウで表示されることになる。&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-example.png&quot; /&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-example.png&quot; width=&quot;450&quot; height=&quot;438&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;表示されるウィンドウ&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -3196,7 +3196,7 @@ in the class field of their element information, and also have a non-zero autopl
 &lt;p&gt;複数のモニタがつながった大きさのものがそのままキャプチャされてしまう。&lt;/p&gt;
 
 &lt;figure&gt;
-&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-multimonitor-view.png&quot; /&gt;
+&lt;img class=&quot;fitcontain&quot; src=&quot;/images/2020-05-01_gstreamer-ximagesrc-multimonitor-view.png&quot; width=&quot;621&quot; height=&quot;287&quot; loading=&quot;lazy&quot; /&gt;
 &lt;figcaption&gt;マルチモニタ環境時の ximagesrc 実行結果&lt;/figcaption&gt;
 &lt;/figure&gt;
 

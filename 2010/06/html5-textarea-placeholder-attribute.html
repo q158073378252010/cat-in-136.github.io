@@ -7,7 +7,6 @@
 
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
-  <script type="application/javascript" src="/javascript/blog.js" defer="defer" async="async"></script>
 
   <link rel="canonical" href="https://cat-in-136.github.io/2010/06/html5-textarea-placeholder-attribute.html" />
   <link rel="alternate" type="application/rss+xml" title="cat_in_136.blog() &raquo; Feed" href="/feed.xml" />
@@ -46,7 +45,7 @@
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"empty text"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
 <span class="nt">&lt;textarea</span> <span class="na">placeholder=</span><span class="s">"empty text"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/textarea&gt;</span></code></pre></figure>
-<p>When <code>placeholder="foo&amp;#x0a;bar"</code> is specified to &lt;textarea&gt;, "&amp;#x0a;"(LF) is removed on Firefox. On Chrome, line break after "foo".</p><p><img src="/images/placeholderLF.png" /></p><p>Since <a href="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder">HTML 5 specification</a> deny "&amp;#x0a;"(LF) to <code>placeholder</code> attribute, it seems to be no matter. <strong>"&amp;#x0a;"(LF) MUST NOT be contained in <code>placeholder</code> attribute.</strong> (i.e. <code>placeholder</code> must be a single-line text)</p><blockquote cite="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder"><p>The attribute, if specified, must have a value that contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters. </p></blockquote><h4>Sample</h4><textarea placeholder="foo&#x0a;bar"></textarea>
+<p>When <code>placeholder="foo&amp;#x0a;bar"</code> is specified to &lt;textarea&gt;, "&amp;#x0a;"(LF) is removed on Firefox. On Chrome, line break after "foo".</p><p><img src="/images/placeholderLF.png" width="242" height="125" loading="lazy" /></p><p>Since <a href="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder">HTML 5 specification</a> deny "&amp;#x0a;"(LF) to <code>placeholder</code> attribute, it seems to be no matter. <strong>"&amp;#x0a;"(LF) MUST NOT be contained in <code>placeholder</code> attribute.</strong> (i.e. <code>placeholder</code> must be a single-line text)</p><blockquote cite="http://dev.w3.org/html5/spec/the-button-element.html#attr-textarea-placeholder"><p>The attribute, if specified, must have a value that contains no U+000A LINE FEED (LF) or U+000D CARRIAGE RETURN (CR) characters. </p></blockquote><h4>Sample</h4><textarea placeholder="foo&#x0a;bar"></textarea>
 
   </div>
 
@@ -71,7 +70,7 @@
 <li class="post-item">
     <a class="post-link" href="/2010/06/moz-resize-can-be-applied-to-any.html">
       <span class="post-meta">2010-06-24</span>
-      <span class="post-title">-moz-resize can be applied to any elements!?</span><span class="post-thumb" data-image-path="/images/resizer_is_displayed_at_div_element.png"></span></a>
+      <span class="post-title">-moz-resize can be applied to any elements!?</span><img class="post-thumb" src="/images/resizer_is_displayed_at_div_element.png" loading="lazy" alt="thumbnail" /></a>
   </li>
 <li class="post-item">
     <a class="post-link" href="/2015/07/study-of-link-tracking-methods-and-protection.html">
@@ -96,7 +95,7 @@
 <li class="post-item">
     <a class="post-link" href="/2014/05/note-do-same-without.html">
       <span class="post-meta">2014-05-12</span>
-      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><span class="post-thumb" data-image-path="/images/note-do-same-without-value0.png"></span></a>
+      <span class="post-title">Note: do same without browser.tabs.closeButtons on Firefox 31+</span><img class="post-thumb" src="/images/note-do-same-without-value0.png" loading="lazy" alt="thumbnail" /></a>
   </li>
 </ul>
 </aside>
